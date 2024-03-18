@@ -1,0 +1,721 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8C1E00AE2BA823C80094FAA7 /* Handbid_iPadApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E00AD2BA823C80094FAA7 /* Handbid_iPadApp.swift */; };
+		8C1E00B02BA823C80094FAA7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E00AF2BA823C80094FAA7 /* ContentView.swift */; };
+		8C1E00B22BA823C90094FAA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00B12BA823C90094FAA7 /* Assets.xcassets */; };
+		8C1E00B52BA823C90094FAA7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00B42BA823C90094FAA7 /* Preview Assets.xcassets */; };
+		8C1E00BF2BA823C90094FAA7 /* Handbid_iPadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E00BE2BA823C90094FAA7 /* Handbid_iPadTests.swift */; };
+		8C1E00C92BA823C90094FAA7 /* Handbid_iPadUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E00C82BA823C90094FAA7 /* Handbid_iPadUITests.swift */; };
+		8C1E00CB2BA823C90094FAA7 /* Handbid_iPadUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E00CA2BA823C90094FAA7 /* Handbid_iPadUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8C1E00BB2BA823C90094FAA7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8C1E00A22BA823C80094FAA7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8C1E00A92BA823C80094FAA7;
+			remoteInfo = Handbid_iPad;
+		};
+		8C1E00C52BA823C90094FAA7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8C1E00A22BA823C80094FAA7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8C1E00A92BA823C80094FAA7;
+			remoteInfo = Handbid_iPad;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8C1E00AA2BA823C80094FAA7 /* Handbid_iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Handbid_iPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C1E00AD2BA823C80094FAA7 /* Handbid_iPadApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handbid_iPadApp.swift; sourceTree = "<group>"; };
+		8C1E00AF2BA823C80094FAA7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8C1E00B12BA823C90094FAA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8C1E00B42BA823C90094FAA7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8C1E00BA2BA823C90094FAA7 /* Handbid_iPadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C1E00BE2BA823C90094FAA7 /* Handbid_iPadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handbid_iPadTests.swift; sourceTree = "<group>"; };
+		8C1E00C42BA823C90094FAA7 /* Handbid_iPadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C1E00C82BA823C90094FAA7 /* Handbid_iPadUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handbid_iPadUITests.swift; sourceTree = "<group>"; };
+		8C1E00CA2BA823C90094FAA7 /* Handbid_iPadUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handbid_iPadUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8C1E00A72BA823C80094FAA7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C1E00B72BA823C90094FAA7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C1E00C12BA823C90094FAA7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8C1E00A12BA823C80094FAA7 = {
+			isa = PBXGroup;
+			children = (
+				8C1E00AC2BA823C80094FAA7 /* Handbid_iPad */,
+				8C1E00BD2BA823C90094FAA7 /* Handbid_iPadTests */,
+				8C1E00C72BA823C90094FAA7 /* Handbid_iPadUITests */,
+				8C1E00AB2BA823C80094FAA7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8C1E00AB2BA823C80094FAA7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8C1E00AA2BA823C80094FAA7 /* Handbid_iPad.app */,
+				8C1E00BA2BA823C90094FAA7 /* Handbid_iPadTests.xctest */,
+				8C1E00C42BA823C90094FAA7 /* Handbid_iPadUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8C1E00AC2BA823C80094FAA7 /* Handbid_iPad */ = {
+			isa = PBXGroup;
+			children = (
+				8C1E00AF2BA823C80094FAA7 /* ContentView.swift */,
+				8C1E00AD2BA823C80094FAA7 /* Handbid_iPadApp.swift */,
+				8C1E00B12BA823C90094FAA7 /* Assets.xcassets */,
+				8C1E00D92BA824B40094FAA7 /* Bridging-Header */,
+				8C1E00DA2BA824BF0094FAA7 /* Config-Env */,
+				8C1E00DB2BA8250A0094FAA7 /* Coordinator */,
+				8C1E00DC2BA825150094FAA7 /* Extensions */,
+				8C1E00DD2BA825230094FAA7 /* Fonts */,
+				8C1E00DF2BA825500094FAA7 /* Models */,
+				8C1E00E02BA825580094FAA7 /* Network */,
+				8C1E00B32BA823C90094FAA7 /* Preview Content */,
+				8C1E00DE2BA8253F0094FAA7 /* Resources */,
+				8C1E00E12BA8256E0094FAA7 /* Styles */,
+				8C1E00E52BA825C30094FAA7 /* Supporting-Methods */,
+				8C1E00E42BA8258F0094FAA7 /* Utils */,
+				8C1E00E22BA825820094FAA7 /* Views */,
+				8C1E00E32BA825860094FAA7 /* ViewModels */,
+			);
+			path = Handbid_iPad;
+			sourceTree = "<group>";
+		};
+		8C1E00B32BA823C90094FAA7 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				8C1E00B42BA823C90094FAA7 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8C1E00BD2BA823C90094FAA7 /* Handbid_iPadTests */ = {
+			isa = PBXGroup;
+			children = (
+				8C1E00BE2BA823C90094FAA7 /* Handbid_iPadTests.swift */,
+			);
+			path = Handbid_iPadTests;
+			sourceTree = "<group>";
+		};
+		8C1E00C72BA823C90094FAA7 /* Handbid_iPadUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8C1E00C82BA823C90094FAA7 /* Handbid_iPadUITests.swift */,
+				8C1E00CA2BA823C90094FAA7 /* Handbid_iPadUITestsLaunchTests.swift */,
+			);
+			path = Handbid_iPadUITests;
+			sourceTree = "<group>";
+		};
+		8C1E00D92BA824B40094FAA7 /* Bridging-Header */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Bridging-Header";
+			sourceTree = "<group>";
+		};
+		8C1E00DA2BA824BF0094FAA7 /* Config-Env */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Config-Env";
+			sourceTree = "<group>";
+		};
+		8C1E00DB2BA8250A0094FAA7 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		8C1E00DC2BA825150094FAA7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8C1E00DD2BA825230094FAA7 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		8C1E00DE2BA8253F0094FAA7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		8C1E00DF2BA825500094FAA7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8C1E00E02BA825580094FAA7 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				8C1E00E62BA826330094FAA7 /* Socket */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		8C1E00E12BA8256E0094FAA7 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		8C1E00E22BA825820094FAA7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8C1E00E72BA8263D0094FAA7 /* Registration */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8C1E00E32BA825860094FAA7 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				8C1E00E82BA826490094FAA7 /* Registration */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		8C1E00E42BA8258F0094FAA7 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		8C1E00E52BA825C30094FAA7 /* Supporting-Methods */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Supporting-Methods";
+			sourceTree = "<group>";
+		};
+		8C1E00E62BA826330094FAA7 /* Socket */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Socket;
+			sourceTree = "<group>";
+		};
+		8C1E00E72BA8263D0094FAA7 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		8C1E00E82BA826490094FAA7 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8C1E00A92BA823C80094FAA7 /* Handbid_iPad */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8C1E00CE2BA823C90094FAA7 /* Build configuration list for PBXNativeTarget "Handbid_iPad" */;
+			buildPhases = (
+				8C1E00A62BA823C80094FAA7 /* Sources */,
+				8C1E00A72BA823C80094FAA7 /* Frameworks */,
+				8C1E00A82BA823C80094FAA7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Handbid_iPad;
+			productName = Handbid_iPad;
+			productReference = 8C1E00AA2BA823C80094FAA7 /* Handbid_iPad.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8C1E00B92BA823C90094FAA7 /* Handbid_iPadTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8C1E00D12BA823C90094FAA7 /* Build configuration list for PBXNativeTarget "Handbid_iPadTests" */;
+			buildPhases = (
+				8C1E00B62BA823C90094FAA7 /* Sources */,
+				8C1E00B72BA823C90094FAA7 /* Frameworks */,
+				8C1E00B82BA823C90094FAA7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8C1E00BC2BA823C90094FAA7 /* PBXTargetDependency */,
+			);
+			name = Handbid_iPadTests;
+			productName = Handbid_iPadTests;
+			productReference = 8C1E00BA2BA823C90094FAA7 /* Handbid_iPadTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8C1E00C32BA823C90094FAA7 /* Handbid_iPadUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8C1E00D42BA823C90094FAA7 /* Build configuration list for PBXNativeTarget "Handbid_iPadUITests" */;
+			buildPhases = (
+				8C1E00C02BA823C90094FAA7 /* Sources */,
+				8C1E00C12BA823C90094FAA7 /* Frameworks */,
+				8C1E00C22BA823C90094FAA7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8C1E00C62BA823C90094FAA7 /* PBXTargetDependency */,
+			);
+			name = Handbid_iPadUITests;
+			productName = Handbid_iPadUITests;
+			productReference = 8C1E00C42BA823C90094FAA7 /* Handbid_iPadUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8C1E00A22BA823C80094FAA7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					8C1E00A92BA823C80094FAA7 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					8C1E00B92BA823C90094FAA7 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 8C1E00A92BA823C80094FAA7;
+					};
+					8C1E00C32BA823C90094FAA7 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 8C1E00A92BA823C80094FAA7;
+					};
+				};
+			};
+			buildConfigurationList = 8C1E00A52BA823C80094FAA7 /* Build configuration list for PBXProject "Handbid_iPad" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8C1E00A12BA823C80094FAA7;
+			productRefGroup = 8C1E00AB2BA823C80094FAA7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8C1E00A92BA823C80094FAA7 /* Handbid_iPad */,
+				8C1E00B92BA823C90094FAA7 /* Handbid_iPadTests */,
+				8C1E00C32BA823C90094FAA7 /* Handbid_iPadUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8C1E00A82BA823C80094FAA7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C1E00B52BA823C90094FAA7 /* Preview Assets.xcassets in Resources */,
+				8C1E00B22BA823C90094FAA7 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C1E00B82BA823C90094FAA7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C1E00C22BA823C90094FAA7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8C1E00A62BA823C80094FAA7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C1E00B02BA823C80094FAA7 /* ContentView.swift in Sources */,
+				8C1E00AE2BA823C80094FAA7 /* Handbid_iPadApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C1E00B62BA823C90094FAA7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C1E00BF2BA823C90094FAA7 /* Handbid_iPadTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C1E00C02BA823C90094FAA7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C1E00C92BA823C90094FAA7 /* Handbid_iPadUITests.swift in Sources */,
+				8C1E00CB2BA823C90094FAA7 /* Handbid_iPadUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8C1E00BC2BA823C90094FAA7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8C1E00A92BA823C80094FAA7 /* Handbid_iPad */;
+			targetProxy = 8C1E00BB2BA823C90094FAA7 /* PBXContainerItemProxy */;
+		};
+		8C1E00C62BA823C90094FAA7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8C1E00A92BA823C80094FAA7 /* Handbid_iPad */;
+			targetProxy = 8C1E00C52BA823C90094FAA7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		8C1E00CC2BA823C90094FAA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8C1E00CD2BA823C90094FAA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8C1E00CF2BA823C90094FAA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Handbid_iPad/Preview Content\"";
+				DEVELOPMENT_TEAM = 35JZN6VPM3;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Handbid-iPad";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8C1E00D02BA823C90094FAA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Handbid_iPad/Preview Content\"";
+				DEVELOPMENT_TEAM = 35JZN6VPM3;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Handbid-iPad";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		8C1E00D22BA823C90094FAA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 35JZN6VPM3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Handbid-iPadTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Handbid_iPad.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Handbid_iPad";
+			};
+			name = Debug;
+		};
+		8C1E00D32BA823C90094FAA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 35JZN6VPM3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Handbid-iPadTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Handbid_iPad.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Handbid_iPad";
+			};
+			name = Release;
+		};
+		8C1E00D52BA823C90094FAA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 35JZN6VPM3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Handbid-iPadUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Handbid_iPad;
+			};
+			name = Debug;
+		};
+		8C1E00D62BA823C90094FAA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 35JZN6VPM3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Handbid-iPadUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Handbid_iPad;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8C1E00A52BA823C80094FAA7 /* Build configuration list for PBXProject "Handbid_iPad" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8C1E00CC2BA823C90094FAA7 /* Debug */,
+				8C1E00CD2BA823C90094FAA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8C1E00CE2BA823C90094FAA7 /* Build configuration list for PBXNativeTarget "Handbid_iPad" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8C1E00CF2BA823C90094FAA7 /* Debug */,
+				8C1E00D02BA823C90094FAA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8C1E00D12BA823C90094FAA7 /* Build configuration list for PBXNativeTarget "Handbid_iPadTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8C1E00D22BA823C90094FAA7 /* Debug */,
+				8C1E00D32BA823C90094FAA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8C1E00D42BA823C90094FAA7 /* Build configuration list for PBXNativeTarget "Handbid_iPadUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8C1E00D52BA823C90094FAA7 /* Debug */,
+				8C1E00D62BA823C90094FAA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8C1E00A22BA823C80094FAA7 /* Project object */;
+}
