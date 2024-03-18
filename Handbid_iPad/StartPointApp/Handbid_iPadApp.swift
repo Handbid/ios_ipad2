@@ -4,11 +4,11 @@ import SwiftUI
 
 @main
 struct HandbidiPadAppHandbid: App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+	@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
-    }
+	var body: some Scene {
+		WindowGroup {
+			ContentView()
+		}
+	}
 }

@@ -482,7 +482,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if test -d \"/opt/homebrew/bin/\"; then\n  PATH=\"/opt/homebrew/bin/:${PATH}\"\nfi\n\nexport PATH\n\nSWIFTLINT_CONFIG_FILE=\"$SRCROOT/swiftlintRules.yml\"\n\nif which swiftlint >/dev/null; then\n  swiftlint --config \"$SWIFTLINT_CONFIG_FILE\" --debug\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" \"$SRCROOT\" --config .swiftformat --lint\n\n";
 			showEnvVarsInLog = 0;
 		};
 		BBBF1644E77A5575E8E17D2C /* [CP] Check Pods Manifest.lock */ = {

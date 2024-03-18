@@ -1,0 +1,6 @@
+module Pods_Handbid_iPad {
+  umbrella header "Pods-Handbid_iPad-umbrella.h"
+
+  export *
+  module * { export * }
+}

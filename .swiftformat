@@ -1,0 +1,8 @@
+# format options
+--indent tabs
+--elseposition next-line
+--self init-only
+
+# file options
+--exclude Pods
+
