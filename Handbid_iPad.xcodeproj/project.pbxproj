@@ -37,13 +37,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8C1E00AA2BA823C80094FAA7 /* Handbid_iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Handbid_iPad.app; path = "/Users/kuba/Desktop/ios_ipad2/build/Debug-iphoneos/Handbid_iPad.app"; sourceTree = "<absolute>"; };
 		8C1E00AD2BA823C80094FAA7 /* Handbid_iPadApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handbid_iPadApp.swift; sourceTree = "<group>"; };
 		8C1E00AF2BA823C80094FAA7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8C1E00B12BA823C90094FAA7 /* iPadAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = iPadAssets.xcassets; sourceTree = "<group>"; };
-		8C1E00BA2BA823C90094FAA7 /* Handbid_iPadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Handbid_iPadTests.xctest; path = "/Users/kuba/Desktop/ios_ipad2/build/Debug-iphoneos/Handbid_iPadTests.xctest"; sourceTree = "<absolute>"; };
 		8C1E00BE2BA823C90094FAA7 /* Handbid_iPadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handbid_iPadTests.swift; sourceTree = "<group>"; };
-		8C1E00C42BA823C90094FAA7 /* Handbid_iPadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Handbid_iPadUITests.xctest; path = "/Users/kuba/Desktop/ios_ipad2/build/Debug-iphoneos/Handbid_iPadUITests.xctest"; sourceTree = "<absolute>"; };
 		8C1E00C82BA823C90094FAA7 /* Handbid_iPadUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handbid_iPadUITests.swift; sourceTree = "<group>"; };
 		8C1E00CA2BA823C90094FAA7 /* Handbid_iPadUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handbid_iPadUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8C1E00F02BA82A130094FAA7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -56,6 +53,9 @@
 		8C1E00F82BA82AAC0094FAA7 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		8C1E01002BA85E630094FAA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8C1E01022BA85EB10094FAA7 /* Handbid-iPad-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Handbid-iPad-Info.plist"; path = "Handbid_iPad/Resources/Handbid-iPad-Info.plist"; sourceTree = SOURCE_ROOT; };
+		8CFCCFB92BA8B3C600CF6C33 /* Handbid_iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Handbid_iPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CFCCFBA2BA8B3C600CF6C33 /* Handbid_iPadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CFCCFBB2BA8B3C600CF6C33 /* Handbid_iPadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +90,10 @@
 				8C1E00AC2BA823C80094FAA7 /* Handbid_iPad */,
 				8C1E00BD2BA823C90094FAA7 /* Handbid_iPadTests */,
 				8C1E00C72BA823C90094FAA7 /* Handbid_iPadUITests */,
+				B64BA6889C440647A69DCC9C /* Pods */,
+				8CFCCFB92BA8B3C600CF6C33 /* Handbid_iPad.app */,
+				8CFCCFBA2BA8B3C600CF6C33 /* Handbid_iPadTests.xctest */,
+				8CFCCFBB2BA8B3C600CF6C33 /* Handbid_iPadUITests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -276,6 +280,13 @@
 			path = StartPointApp;
 			sourceTree = "<group>";
 		};
+		B64BA6889C440647A69DCC9C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -295,7 +306,7 @@
 			);
 			name = Handbid_iPad;
 			productName = Handbid_iPad;
-			productReference = 8C1E00AA2BA823C80094FAA7 /* Handbid_iPad.app */;
+			productReference = 8CFCCFB92BA8B3C600CF6C33 /* Handbid_iPad.app */;
 			productType = "com.apple.product-type.application";
 		};
 		8C1E00B92BA823C90094FAA7 /* Handbid_iPadTests */ = {
@@ -313,7 +324,7 @@
 			);
 			name = Handbid_iPadTests;
 			productName = Handbid_iPadTests;
-			productReference = 8C1E00BA2BA823C90094FAA7 /* Handbid_iPadTests.xctest */;
+			productReference = 8CFCCFBA2BA8B3C600CF6C33 /* Handbid_iPadTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		8C1E00C32BA823C90094FAA7 /* Handbid_iPadUITests */ = {
@@ -331,7 +342,7 @@
 			);
 			name = Handbid_iPadUITests;
 			productName = Handbid_iPadUITests;
-			productReference = 8C1E00C42BA823C90094FAA7 /* Handbid_iPadUITests.xctest */;
+			productReference = 8CFCCFBB2BA8B3C600CF6C33 /* Handbid_iPadUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -446,7 +457,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" \"$SRCROOT\" --config .swiftformat --lint\n\n";
+			shellScript = "\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
