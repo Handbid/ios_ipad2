@@ -1,6 +1,7 @@
 # format options
 --indent tabs
 --elseposition next-line
+--header " Copyright (c) {year} by Handbid. All rights reserved."
 --self init-only
 
 # file options

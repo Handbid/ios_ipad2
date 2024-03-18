@@ -1,9 +1,4 @@
-//
-//  Handbid_iPadUITestsLaunchTests.swift
-//  Handbid_iPadUITests
-//
-//  Created by Jakub Bak on 18/03/2024.
-//
+// Copyright (c) 2024 by Handbid. All rights reserved.
 
 import XCTest
 
