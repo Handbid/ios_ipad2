@@ -14,6 +14,9 @@
 		8C1E00BF2BA823C90094FAA7 /* Handbid_iPadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E00BE2BA823C90094FAA7 /* Handbid_iPadTests.swift */; };
 		8C1E00C92BA823C90094FAA7 /* Handbid_iPadUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E00C82BA823C90094FAA7 /* Handbid_iPadUITests.swift */; };
 		8C1E00CB2BA823C90094FAA7 /* Handbid_iPadUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E00CA2BA823C90094FAA7 /* Handbid_iPadUITestsLaunchTests.swift */; };
+		8C1E00F62BA82A130094FAA7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00EF2BA82A130094FAA7 /* Localizable.strings */; };
+		8C1E00F92BA82AB40094FAA7 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00F72BA82A9F0094FAA7 /* Debug.xcconfig */; };
+		8C1E00FA2BA82AB60094FAA7 /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00F82BA82AAC0094FAA7 /* Release.xcconfig */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,14 @@
 		8C1E00C42BA823C90094FAA7 /* Handbid_iPadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C1E00C82BA823C90094FAA7 /* Handbid_iPadUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handbid_iPadUITests.swift; sourceTree = "<group>"; };
 		8C1E00CA2BA823C90094FAA7 /* Handbid_iPadUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handbid_iPadUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8C1E00F02BA82A130094FAA7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8C1E00F12BA82A130094FAA7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8C1E00F22BA82A130094FAA7 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8C1E00F32BA82A130094FAA7 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8C1E00F42BA82A130094FAA7 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8C1E00F52BA82A130094FAA7 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8C1E00F72BA82A9F0094FAA7 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		8C1E00F82BA82AAC0094FAA7 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +85,7 @@
 		8C1E00A12BA823C80094FAA7 = {
 			isa = PBXGroup;
 			children = (
+				8C1E00EE2BA82A130094FAA7 /* Localization */,
 				8C1E00AC2BA823C80094FAA7 /* Handbid_iPad */,
 				8C1E00BD2BA823C90094FAA7 /* Handbid_iPadTests */,
 				8C1E00C72BA823C90094FAA7 /* Handbid_iPadUITests */,
@@ -150,6 +162,8 @@
 		8C1E00DA2BA824BF0094FAA7 /* Config-Env */ = {
 			isa = PBXGroup;
 			children = (
+				8C1E00F72BA82A9F0094FAA7 /* Debug.xcconfig */,
+				8C1E00F82BA82AAC0094FAA7 /* Release.xcconfig */,
 			);
 			path = "Config-Env";
 			sourceTree = "<group>";
@@ -255,6 +269,14 @@
 			path = Registration;
 			sourceTree = "<group>";
 		};
+		8C1E00EE2BA82A130094FAA7 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				8C1E00EF2BA82A130094FAA7 /* Localizable.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -262,6 +284,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8C1E00CE2BA823C90094FAA7 /* Build configuration list for PBXNativeTarget "Handbid_iPad" */;
 			buildPhases = (
+				8C1E00E92BA827D10094FAA7 /* Fetch localization */,
 				8C1E00A62BA823C80094FAA7 /* Sources */,
 				8C1E00A72BA823C80094FAA7 /* Frameworks */,
 				8C1E00A82BA823C80094FAA7 /* Resources */,
@@ -341,6 +364,11 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
+				es,
+				fr,
+				pt,
+				zh,
 			);
 			mainGroup = 8C1E00A12BA823C80094FAA7;
 			productRefGroup = 8C1E00AB2BA823C80094FAA7 /* Products */;
@@ -359,8 +387,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C1E00F92BA82AB40094FAA7 /* Debug.xcconfig in Resources */,
 				8C1E00B52BA823C90094FAA7 /* Preview Assets.xcassets in Resources */,
+				8C1E00F62BA82A130094FAA7 /* Localizable.strings in Resources */,
 				8C1E00B22BA823C90094FAA7 /* Assets.xcassets in Resources */,
+				8C1E00FA2BA82AB60094FAA7 /* Release.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,6 +410,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8C1E00E92BA827D10094FAA7 /* Fetch localization */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Fetch localization";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$SRCROOT/Extras/localization_ios.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8C1E00A62BA823C80094FAA7 /* Sources */ = {
@@ -421,6 +473,22 @@
 			targetProxy = 8C1E00C52BA823C90094FAA7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8C1E00EF2BA82A130094FAA7 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8C1E00F02BA82A130094FAA7 /* de */,
+				8C1E00F12BA82A130094FAA7 /* en */,
+				8C1E00F22BA82A130094FAA7 /* es */,
+				8C1E00F32BA82A130094FAA7 /* fr */,
+				8C1E00F42BA82A130094FAA7 /* pt */,
+				8C1E00F52BA82A130094FAA7 /* zh */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		8C1E00CC2BA823C90094FAA7 /* Debug */ = {
@@ -475,7 +543,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -532,7 +600,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -544,6 +612,7 @@
 		};
 		8C1E00CF2BA823C90094FAA7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C1E00F72BA82A9F0094FAA7 /* Debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -552,12 +621,13 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Handbid_iPad/Preview Content\"";
 				DEVELOPMENT_TEAM = 35JZN6VPM3;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -573,6 +643,7 @@
 		};
 		8C1E00D02BA823C90094FAA7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C1E00F82BA82AAC0094FAA7 /* Release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -581,12 +652,13 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Handbid_iPad/Preview Content\"";
 				DEVELOPMENT_TEAM = 35JZN6VPM3;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
