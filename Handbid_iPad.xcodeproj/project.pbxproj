@@ -37,13 +37,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8C1E00AA2BA823C80094FAA7 /* Handbid_iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Handbid_iPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C1E00AA2BA823C80094FAA7 /* Handbid_iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Handbid_iPad.app; path = "/Users/kuba/Desktop/ios_ipad2/build/Debug-iphoneos/Handbid_iPad.app"; sourceTree = "<absolute>"; };
 		8C1E00AD2BA823C80094FAA7 /* Handbid_iPadApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handbid_iPadApp.swift; sourceTree = "<group>"; };
 		8C1E00AF2BA823C80094FAA7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8C1E00B12BA823C90094FAA7 /* iPadAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = iPadAssets.xcassets; sourceTree = "<group>"; };
-		8C1E00BA2BA823C90094FAA7 /* Handbid_iPadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C1E00BA2BA823C90094FAA7 /* Handbid_iPadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Handbid_iPadTests.xctest; path = "/Users/kuba/Desktop/ios_ipad2/build/Debug-iphoneos/Handbid_iPadTests.xctest"; sourceTree = "<absolute>"; };
 		8C1E00BE2BA823C90094FAA7 /* Handbid_iPadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handbid_iPadTests.swift; sourceTree = "<group>"; };
-		8C1E00C42BA823C90094FAA7 /* Handbid_iPadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C1E00C42BA823C90094FAA7 /* Handbid_iPadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Handbid_iPadUITests.xctest; path = "/Users/kuba/Desktop/ios_ipad2/build/Debug-iphoneos/Handbid_iPadUITests.xctest"; sourceTree = "<absolute>"; };
 		8C1E00C82BA823C90094FAA7 /* Handbid_iPadUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handbid_iPadUITests.swift; sourceTree = "<group>"; };
 		8C1E00CA2BA823C90094FAA7 /* Handbid_iPadUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handbid_iPadUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8C1E00F02BA82A130094FAA7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -83,13 +83,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1C8C3BADFECB44A5494A6CBD /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		8C1E00A12BA823C80094FAA7 = {
 			isa = PBXGroup;
 			children = (
@@ -97,19 +90,7 @@
 				8C1E00AC2BA823C80094FAA7 /* Handbid_iPad */,
 				8C1E00BD2BA823C90094FAA7 /* Handbid_iPadTests */,
 				8C1E00C72BA823C90094FAA7 /* Handbid_iPadUITests */,
-				8C1E00AB2BA823C80094FAA7 /* Products */,
-				1C8C3BADFECB44A5494A6CBD /* Pods */,
 			);
-			sourceTree = "<group>";
-		};
-		8C1E00AB2BA823C80094FAA7 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				8C1E00AA2BA823C80094FAA7 /* Handbid_iPad.app */,
-				8C1E00BA2BA823C90094FAA7 /* Handbid_iPadTests.xctest */,
-				8C1E00C42BA823C90094FAA7 /* Handbid_iPadUITests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		8C1E00AC2BA823C80094FAA7 /* Handbid_iPad */ = {
@@ -390,7 +371,7 @@
 				zh,
 			);
 			mainGroup = 8C1E00A12BA823C80094FAA7;
-			productRefGroup = 8C1E00AB2BA823C80094FAA7 /* Products */;
+			productRefGroup = 8C1E00A12BA823C80094FAA7;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
