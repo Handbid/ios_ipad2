@@ -445,6 +445,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		8C1E00E92BA827D10094FAA7 /* Fetch localization */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -478,7 +479,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" \"$SRCROOT\" --lint --config .swiftformat --swiftversion 5.9\n";
+			shellScript = "\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" \"$SRCROOT\" --config .swiftformat --swiftversion 5.9 --lint\n";
 			showEnvVarsInLog = 0;
 		};
 		CFF9BD279B3D9E20B3E53BBC /* [CP] Check Pods Manifest.lock */ = {

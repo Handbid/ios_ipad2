@@ -10,13 +10,13 @@ import UIKit
 
 class AppDelegate: NSObject, UIApplicationDelegate {
 	func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
-		return true
+		true
 	}
 
 	func application(_: UIApplication, open _: URL,
 	                 options _: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool
 	{
-		return false
+		false
 	}
 
 	func applicationDidEnterBackground(_: UIApplication) {}
