@@ -323,7 +323,7 @@
 				8C1E00A62BA823C80094FAA7 /* Sources */,
 				8C1E00A72BA823C80094FAA7 /* Frameworks */,
 				8C1E00A82BA823C80094FAA7 /* Resources */,
-				8C1E01042BA866E00094FAA7 /* SwiftLint */,
+				8C1E01042BA866E00094FAA7 /* SwiftFormat */,
 			);
 			buildRules = (
 			);
@@ -465,7 +465,7 @@
 			shellPath = /bin/sh;
 			shellScript = "\"$SRCROOT/Extras/localization_ios.sh\"\n";
 		};
-		8C1E01042BA866E00094FAA7 /* SwiftLint */ = {
+		8C1E01042BA866E00094FAA7 /* SwiftFormat */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 12;
@@ -475,7 +475,7 @@
 			);
 			inputPaths = (
 			);
-			name = SwiftLint;
+			name = SwiftFormat;
 			outputFileListPaths = (
 			);
 			outputPaths = (
