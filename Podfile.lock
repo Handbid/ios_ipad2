@@ -1,5 +1,5 @@
 PODS:
-  - SwiftFormat/CLI (0.53.2)
+  - SwiftFormat/CLI (0.53.5)
 
 DEPENDENCIES:
   - SwiftFormat/CLI
@@ -9,8 +9,8 @@ SPEC REPOS:
     - SwiftFormat
 
 SPEC CHECKSUMS:
-  SwiftFormat: 19cf302c4ecf4f8c64d394d57589beb145debed5
+  SwiftFormat: 57d49d9a63f4249c625b1e623fb9fde0c30cae9d
 
 PODFILE CHECKSUM: 35a17d30720882e9f0f15ca273732be9699fed0e
 
-COCOAPODS: 1.15.0
+COCOAPODS: 1.15.2
