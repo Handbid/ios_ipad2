@@ -5,7 +5,7 @@ platform :ios, '17.0'
 #use_frameworks!
 
 def available_pods
-  pod 'SwiftLint', '~> 0.54.0'
+pod 'SwiftFormat/CLI', '~> 0.54.0'
 end
 
 target 'Handbid_iPad' do
