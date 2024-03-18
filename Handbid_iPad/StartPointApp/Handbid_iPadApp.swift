@@ -1,10 +1,9 @@
-//Copyright (c) 2024 by Handbid. All rights reserved.
+// Copyright (c) 2024 by Handbid. All rights reserved.
 
 import SwiftUI
 
 @main
-struct Handbid_iPadApp: App {
-    
+struct HandbidiPadAppHandbid: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     var body: some Scene {

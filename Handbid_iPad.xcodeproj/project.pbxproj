@@ -17,7 +17,7 @@
 		8C1E00F92BA82AB40094FAA7 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00F72BA82A9F0094FAA7 /* Debug.xcconfig */; };
 		8C1E00FA2BA82AB60094FAA7 /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00F82BA82AAC0094FAA7 /* Release.xcconfig */; };
 		8C1E01012BA85E630094FAA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E01002BA85E630094FAA7 /* AppDelegate.swift */; };
-		9BE2D4C71F1309DC3398E5D7 /* libPods-Handbid_iPad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E6684C2E0E8DE74BDA6CB37 /* libPods-Handbid_iPad.a */; };
+		AFCAF7E535C244DDC7BB4C44 /* libPods-Handbid_iPad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F62AA0F422A75435A4ACDA5B /* libPods-Handbid_iPad.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,9 +38,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1E67FD696FE744BF18404CC7 /* Pods-Handbid_iPad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPad.release.xcconfig"; path = "Target Support Files/Pods-Handbid_iPad/Pods-Handbid_iPad.release.xcconfig"; sourceTree = "<group>"; };
-		35154AA4170728E1FE1AEC9D /* Pods-Handbid_iPad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPad.debug.xcconfig"; path = "Target Support Files/Pods-Handbid_iPad/Pods-Handbid_iPad.debug.xcconfig"; sourceTree = "<group>"; };
-		6E6684C2E0E8DE74BDA6CB37 /* libPods-Handbid_iPad.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Handbid_iPad.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C1E00AA2BA823C80094FAA7 /* Handbid_iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Handbid_iPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C1E00AD2BA823C80094FAA7 /* Handbid_iPadApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handbid_iPadApp.swift; sourceTree = "<group>"; };
 		8C1E00AF2BA823C80094FAA7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -60,6 +57,9 @@
 		8C1E00F82BA82AAC0094FAA7 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		8C1E01002BA85E630094FAA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8C1E01022BA85EB10094FAA7 /* Handbid-iPad-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Handbid-iPad-Info.plist"; path = "Handbid_iPad/Resources/Handbid-iPad-Info.plist"; sourceTree = SOURCE_ROOT; };
+		A8338090125A8F78C44E2905 /* Pods-Handbid_iPad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPad.debug.xcconfig"; path = "Target Support Files/Pods-Handbid_iPad/Pods-Handbid_iPad.debug.xcconfig"; sourceTree = "<group>"; };
+		D3B833B2F3BD2BF0C8C05917 /* Pods-Handbid_iPad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPad.release.xcconfig"; path = "Target Support Files/Pods-Handbid_iPad/Pods-Handbid_iPad.release.xcconfig"; sourceTree = "<group>"; };
+		F62AA0F422A75435A4ACDA5B /* libPods-Handbid_iPad.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Handbid_iPad.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BE2D4C71F1309DC3398E5D7 /* libPods-Handbid_iPad.a in Frameworks */,
+				AFCAF7E535C244DDC7BB4C44 /* libPods-Handbid_iPad.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,16 +91,16 @@
 		1C8C3BADFECB44A5494A6CBD /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1E67FD696FE744BF18404CC7 /* Pods-Handbid_iPad.release.xcconfig */,
-				35154AA4170728E1FE1AEC9D /* Pods-Handbid_iPad.debug.xcconfig */,
+				D3B833B2F3BD2BF0C8C05917 /* Pods-Handbid_iPad.release.xcconfig */,
+				A8338090125A8F78C44E2905 /* Pods-Handbid_iPad.debug.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		41F6269F93ABB4701829BC21 /* Frameworks */ = {
+		58B2FBAFCBDD936A2933652B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6E6684C2E0E8DE74BDA6CB37 /* libPods-Handbid_iPad.a */,
+				F62AA0F422A75435A4ACDA5B /* libPods-Handbid_iPad.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -114,7 +114,7 @@
 				8C1E00C72BA823C90094FAA7 /* Handbid_iPadUITests */,
 				8C1E00AB2BA823C80094FAA7 /* Products */,
 				1C8C3BADFECB44A5494A6CBD /* Pods */,
-				41F6269F93ABB4701829BC21 /* Frameworks */,
+				58B2FBAFCBDD936A2933652B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -318,7 +318,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8C1E00CE2BA823C90094FAA7 /* Build configuration list for PBXNativeTarget "Handbid_iPad" */;
 			buildPhases = (
-				BC0404532ACE428D65928848 /* [CP] Check Pods Manifest.lock */,
+				BBBF1644E77A5575E8E17D2C /* [CP] Check Pods Manifest.lock */,
 				8C1E00E92BA827D10094FAA7 /* Fetch localization */,
 				8C1E00A62BA823C80094FAA7 /* Sources */,
 				8C1E00A72BA823C80094FAA7 /* Frameworks */,
@@ -468,7 +468,7 @@
 		8C1E01042BA866E00094FAA7 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -482,10 +482,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"SwiftLint not installed\"\nfi\n";
+			shellScript = "if test -d \"/opt/homebrew/bin/\"; then\n  PATH=\"/opt/homebrew/bin/:${PATH}\"\nfi\n\nexport PATH\n\nSWIFTLINT_CONFIG_FILE=\"$SRCROOT/swiftlintRules.yml\"\n\nif which swiftlint >/dev/null; then\n  swiftlint --config \"$SWIFTLINT_CONFIG_FILE\" --debug\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		BC0404532ACE428D65928848 /* [CP] Check Pods Manifest.lock */ = {
+		BBBF1644E77A5575E8E17D2C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -628,10 +628,11 @@
 		};
 		8C1E00D02BA823C90094FAA7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1E67FD696FE744BF18404CC7 /* Pods-Handbid_iPad.release.xcconfig */;
+			baseConfigurationReference = D3B833B2F3BD2BF0C8C05917 /* Pods-Handbid_iPad.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 35JZN6VPM3;
@@ -652,6 +653,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Handbid-iPad";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -755,10 +757,11 @@
 		};
 		8C1E00FC2BA82C9D0094FAA7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 35154AA4170728E1FE1AEC9D /* Pods-Handbid_iPad.debug.xcconfig */;
+			baseConfigurationReference = A8338090125A8F78C44E2905 /* Pods-Handbid_iPad.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 35JZN6VPM3;
@@ -779,6 +782,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Handbid-iPad";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

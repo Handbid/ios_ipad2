@@ -1,12 +1,12 @@
-//Copyright (c) 2024 by Handbid. All rights reserved.
+// Copyright (c) 2024 by Handbid. All rights reserved.
 
 import Foundation
 import UIKit
 import SwiftUI
 
-///***
-///After add Coordinator change App Delegate to class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
-///***
+/// ***
+// After add Coordinator change App Delegate to class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
+/// ***
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     

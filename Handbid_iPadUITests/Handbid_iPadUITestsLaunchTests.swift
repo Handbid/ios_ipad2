@@ -7,7 +7,7 @@
 
 import XCTest
 
-final class Handbid_iPadUITestsLaunchTests: XCTestCase {
+final class HandbidiPadUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
