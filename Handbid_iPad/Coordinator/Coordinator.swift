@@ -43,15 +43,6 @@ class Coordinator<T: PageProtocol, U>: ObservableObject {
 		viewBuilder(page)
 	}
 
-	func viewForCurrentPage() -> AnyView {
-		if pages.indices.contains(currentPageIndex) {
-			build(page: pages[currentPageIndex])
-		}
-		else {
-			AnyView(Text("No page selected"))
-		}
-	}
-
 	func navigateTo(_ index: Int) {
 		guard pages.indices.contains(index) else { return }
 		currentPageIndex = index

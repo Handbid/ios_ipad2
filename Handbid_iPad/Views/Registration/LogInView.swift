@@ -4,6 +4,7 @@ import SwiftUI
 
 struct LogInView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
+	@State private var currentPageView: AnyView?
 
 	var body: some View {
 		Text("Hello, World2!")

@@ -3,7 +3,7 @@
 import SwiftUI
 
 @main
-struct HandbidiPadApp: App {
+struct HandbidApp: App {
 	@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
 	@StateObject var registrationCoordinator = Coordinator<RegistrationPage, Any?> { page in

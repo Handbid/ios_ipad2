@@ -1,6 +1,5 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
-import Combine
 import SwiftUI
 
 struct RootPageView<T: PageProtocol>: View {
