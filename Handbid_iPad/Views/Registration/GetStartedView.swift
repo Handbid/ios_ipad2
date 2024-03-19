@@ -2,14 +2,9 @@
 
 import SwiftUI
 
-struct GetStartedView<T: PageProtocol>: View, PageView {
-	typealias PageType = T
-
-	let coordinator = RegistrationCoordinator<T, GetStartedView<T>>(registrationPageType: RegistrationPage.self)
-
+struct GetStartedView<T: PageProtocol>: View {
 	var body: some View {
 		Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-		//        coordinator.push(RegistrationPage.logIn, with: nil)
 	}
 }
 
