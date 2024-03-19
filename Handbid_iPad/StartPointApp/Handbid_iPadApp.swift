@@ -3,22 +3,22 @@
 import SwiftUI
 
 @main
-struct HandbidiPadAppHandbid: App {
+struct HandbidiPadApp: App {
 	@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-	@StateObject var registrationCoordinator = Coordinator<RegistrationPage, Any?>()
+
+	@StateObject var registrationCoordinator = Coordinator<RegistrationPage, Any?> { page in
+		switch page {
+		case .getStarted:
+			AnyView(GetStartedView<RegistrationPage>())
+		case .logIn:
+			AnyView(LogInView<RegistrationPage>())
+		}
+	}
 
 	var body: some Scene {
 		WindowGroup {
 			EnvironmentStartupView()
 				.environmentObject(registrationCoordinator)
-		}
-	}
-}
-
-struct EnvironmentStartupView: View {
-	var body: some View {
-		ZStack {
-			RootPageView<RegistrationPage>()
 		}
 	}
 }

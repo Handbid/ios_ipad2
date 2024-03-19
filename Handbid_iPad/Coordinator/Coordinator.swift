@@ -18,6 +18,12 @@ class Coordinator<T: PageProtocol, U>: ObservableObject {
 		}
 	}
 
+	private let viewBuilder: (T) -> AnyView
+
+	init(viewBuilder: @escaping (T) -> AnyView) {
+		self.viewBuilder = viewBuilder
+	}
+
 	func push(_ page: T, with model: U? = nil) {
 		navigationStack.append(page)
 		viewModels[page] = model
@@ -33,29 +39,16 @@ class Coordinator<T: PageProtocol, U>: ObservableObject {
 		navigationStack.removeAll()
 	}
 
-	@ViewBuilder
-	func build(page: T) -> some View {
-		switch page {
-		case let registrationPage as RegistrationPage:
-			switch registrationPage {
-			case .getStarted:
-				GetStartedView<RegistrationPage>()
-			case .logIn:
-				LogInView<RegistrationPage>()
-			}
-
-		default:
-			EmptyView()
-		}
+	func build(page: T) -> AnyView {
+		viewBuilder(page)
 	}
 
-	@ViewBuilder
-	private func viewForCurrentPage() -> some View {
+	func viewForCurrentPage() -> AnyView {
 		if pages.indices.contains(currentPageIndex) {
 			build(page: pages[currentPageIndex])
 		}
 		else {
-			Text("No page selected")
+			AnyView(Text("No page selected"))
 		}
 	}
 

@@ -25,6 +25,7 @@
 		8C8BEC382BA977AC0083D904 /* RegistrationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC372BA977AC0083D904 /* RegistrationPage.swift */; };
 		8C8BEC3A2BA977F00083D904 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC392BA977F00083D904 /* Coordinator.swift */; };
 		8C8BEC622BA9A5280083D904 /* UserRegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC612BA9A5280083D904 /* UserRegistrationModel.swift */; };
+		8C8BEC642BA9ADE20083D904 /* EnvironmentStartupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC632BA9ADE20083D904 /* EnvironmentStartupView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		8C8BEC372BA977AC0083D904 /* RegistrationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPage.swift; sourceTree = "<group>"; };
 		8C8BEC392BA977F00083D904 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		8C8BEC612BA9A5280083D904 /* UserRegistrationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegistrationModel.swift; sourceTree = "<group>"; };
+		8C8BEC632BA9ADE20083D904 /* EnvironmentStartupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentStartupView.swift; sourceTree = "<group>"; };
 		8CFCCFB92BA8B3C600CF6C33 /* Handbid_iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Handbid_iPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CFCCFBA2BA8B3C600CF6C33 /* Handbid_iPadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CFCCFBB2BA8B3C600CF6C33 /* Handbid_iPadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -293,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				8C1E00AD2BA823C80094FAA7 /* Handbid_iPadApp.swift */,
+				8C8BEC632BA9ADE20083D904 /* EnvironmentStartupView.swift */,
 			);
 			path = StartPointApp;
 			sourceTree = "<group>";
@@ -542,6 +545,7 @@
 				8C8BEC322BA976030083D904 /* GetStartedViewModel.swift in Sources */,
 				8C8BEC382BA977AC0083D904 /* RegistrationPage.swift in Sources */,
 				8C1E00AE2BA823C80094FAA7 /* Handbid_iPadApp.swift in Sources */,
+				8C8BEC642BA9ADE20083D904 /* EnvironmentStartupView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

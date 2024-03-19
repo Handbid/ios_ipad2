@@ -7,9 +7,17 @@ struct GetStartedView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 
 	var body: some View {
-		Text("Hello, World!")
-		Button("next") {
-			coordinator.push(RegistrationPage.logIn as! T)
+		ZStack {
+			Color.yellow.edgesIgnoringSafeArea(.all)
+			VStack {
+				Spacer()
+				Text("Hello, World!")
+				Spacer()
+				Button("next") {
+					coordinator.push(RegistrationPage.logIn as! T)
+				}
+				Spacer()
+			}
 		}
 	}
 }

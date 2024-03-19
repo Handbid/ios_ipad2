@@ -5,12 +5,13 @@ import SwiftUI
 
 struct RootPageView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
+	let page: T
 
 	var body: some View {
 		NavigationStack(path: $coordinator.navigationStack) {
-			coordinator.build(page: RegistrationPage.getStarted as! T)
-				.navigationDestination(for: T.self) { page in
-					coordinator.build(page: page)
+			coordinator.build(page: page)
+				.navigationDestination(for: T.self) { nextPage in
+					coordinator.build(page: nextPage)
 				}
 		}
 		.environmentObject(coordinator)
