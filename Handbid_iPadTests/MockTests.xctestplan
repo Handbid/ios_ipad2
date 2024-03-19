@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "D84314FB-CDF3-475A-9892-AA48FBCD1991",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Handbid_iPad.xcodeproj",
+        "identifier" : "8C1E00B92BA823C90094FAA7",
+        "name" : "Handbid_iPadTests"
+      }
+    }
+  ],
+  "version" : 1
+}

@@ -10,7 +10,6 @@
 		3A9A2EB46501BA2CBC5015A9 /* libPods-Handbid_iPad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D867E096CBDCF168A0EACE1 /* libPods-Handbid_iPad.a */; };
 		8C1E00AE2BA823C80094FAA7 /* HandbidApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E00AD2BA823C80094FAA7 /* HandbidApp.swift */; };
 		8C1E00B22BA823C90094FAA7 /* iPadAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00B12BA823C90094FAA7 /* iPadAssets.xcassets */; };
-		8C1E00BF2BA823C90094FAA7 /* Handbid_iPadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E00BE2BA823C90094FAA7 /* Handbid_iPadTests.swift */; };
 		8C1E00C92BA823C90094FAA7 /* Handbid_iPadUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E00C82BA823C90094FAA7 /* Handbid_iPadUITests.swift */; };
 		8C1E00CB2BA823C90094FAA7 /* Handbid_iPadUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E00CA2BA823C90094FAA7 /* Handbid_iPadUITestsLaunchTests.swift */; };
 		8C1E00F62BA82A130094FAA7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00EF2BA82A130094FAA7 /* Localizable.strings */; };
@@ -25,6 +24,7 @@
 		8C8BEC622BA9A5280083D904 /* UserRegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC612BA9A5280083D904 /* UserRegistrationModel.swift */; };
 		8C8BEC642BA9ADE20083D904 /* EnvironmentStartupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC632BA9ADE20083D904 /* EnvironmentStartupView.swift */; };
 		8C8BEC662BA9B7DD0083D904 /* PageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC652BA9B7DD0083D904 /* PageProtocol.swift */; };
+		8CB8C6982BA9DBEE002F2E8C /* CoordinatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB8C6972BA9DBEE002F2E8C /* CoordinatorTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +48,6 @@
 		5D867E096CBDCF168A0EACE1 /* libPods-Handbid_iPad.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Handbid_iPad.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C1E00AD2BA823C80094FAA7 /* HandbidApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandbidApp.swift; sourceTree = "<group>"; };
 		8C1E00B12BA823C90094FAA7 /* iPadAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = iPadAssets.xcassets; sourceTree = "<group>"; };
-		8C1E00BE2BA823C90094FAA7 /* Handbid_iPadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handbid_iPadTests.swift; sourceTree = "<group>"; };
 		8C1E00C82BA823C90094FAA7 /* Handbid_iPadUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handbid_iPadUITests.swift; sourceTree = "<group>"; };
 		8C1E00CA2BA823C90094FAA7 /* Handbid_iPadUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handbid_iPadUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8C1E00F02BA82A130094FAA7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -71,9 +70,11 @@
 		8C8BEC612BA9A5280083D904 /* UserRegistrationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegistrationModel.swift; sourceTree = "<group>"; };
 		8C8BEC632BA9ADE20083D904 /* EnvironmentStartupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentStartupView.swift; sourceTree = "<group>"; };
 		8C8BEC652BA9B7DD0083D904 /* PageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageProtocol.swift; sourceTree = "<group>"; };
+		8CB8C68E2BA9D5CB002F2E8C /* MockTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MockTests.xctestplan; sourceTree = "<group>"; };
+		8CB8C6972BA9DBEE002F2E8C /* CoordinatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorTest.swift; sourceTree = "<group>"; };
+		8CB8C6992BA9DC61002F2E8C /* Handbid_iPadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CB8C69A2BA9DC64002F2E8C /* Handbid_iPadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CFCCFB92BA8B3C600CF6C33 /* Handbid_iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Handbid_iPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8CFCCFBA2BA8B3C600CF6C33 /* Handbid_iPadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8CFCCFBB2BA8B3C600CF6C33 /* Handbid_iPadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B739F5FE01942DE0414584DA /* Pods-Handbid_iPad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPad.debug.xcconfig"; path = "Target Support Files/Pods-Handbid_iPad/Pods-Handbid_iPad.debug.xcconfig"; sourceTree = "<group>"; };
 		C9DC03F424D33ADC6A8C509E /* Pods-Handbid_iPad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPad.release.xcconfig"; path = "Target Support Files/Pods-Handbid_iPad/Pods-Handbid_iPad.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,9 +122,9 @@
 				8C1E00C72BA823C90094FAA7 /* Handbid_iPadUITests */,
 				B64BA6889C440647A69DCC9C /* Pods */,
 				8CFCCFB92BA8B3C600CF6C33 /* Handbid_iPad.app */,
-				8CFCCFBA2BA8B3C600CF6C33 /* Handbid_iPadTests.xctest */,
-				8CFCCFBB2BA8B3C600CF6C33 /* Handbid_iPadUITests.xctest */,
 				60DD83A9FABF01E21E29FB9C /* Frameworks */,
+				8CB8C6992BA9DC61002F2E8C /* Handbid_iPadUITests.xctest */,
+				8CB8C69A2BA9DC64002F2E8C /* Handbid_iPadTests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -152,7 +153,8 @@
 		8C1E00BD2BA823C90094FAA7 /* Handbid_iPadTests */ = {
 			isa = PBXGroup;
 			children = (
-				8C1E00BE2BA823C90094FAA7 /* Handbid_iPadTests.swift */,
+				8CB8C68E2BA9D5CB002F2E8C /* MockTests.xctestplan */,
+				8CB8C6972BA9DBEE002F2E8C /* CoordinatorTest.swift */,
 			);
 			path = Handbid_iPadTests;
 			sourceTree = "<group>";
@@ -368,7 +370,7 @@
 			);
 			name = Handbid_iPadTests;
 			productName = Handbid_iPadTests;
-			productReference = 8CFCCFBA2BA8B3C600CF6C33 /* Handbid_iPadTests.xctest */;
+			productReference = 8CB8C69A2BA9DC64002F2E8C /* Handbid_iPadTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		8C1E00C32BA823C90094FAA7 /* Handbid_iPadUITests */ = {
@@ -386,7 +388,7 @@
 			);
 			name = Handbid_iPadUITests;
 			productName = Handbid_iPadUITests;
-			productReference = 8CFCCFBB2BA8B3C600CF6C33 /* Handbid_iPadUITests.xctest */;
+			productReference = 8CB8C6992BA9DC61002F2E8C /* Handbid_iPadUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -404,6 +406,7 @@
 					};
 					8C1E00B92BA823C90094FAA7 = {
 						CreatedOnToolsVersion = 15.2;
+						LastSwiftMigration = 1520;
 						TestTargetID = 8C1E00A92BA823C80094FAA7;
 					};
 					8C1E00C32BA823C90094FAA7 = {
@@ -553,7 +556,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C1E00BF2BA823C90094FAA7 /* Handbid_iPadTests.swift in Sources */,
+				8CB8C6982BA9DBEE002F2E8C /* CoordinatorTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -694,7 +697,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 35JZN6VPM3;
@@ -703,6 +706,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Handbid-iPadTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -721,6 +726,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Handbid-iPadUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -826,7 +833,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 35JZN6VPM3;
@@ -835,6 +842,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Handbid-iPadTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -853,6 +862,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Handbid-iPadUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

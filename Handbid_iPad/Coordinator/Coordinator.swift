@@ -2,21 +2,28 @@
 
 import SwiftUI
 
-@MainActor
-class Coordinator<T: PageProtocol, U>: ObservableObject {
-	@Published var navigationStack = [T]()
-	@Published var pages = [T]()
-	@Published var currentPageIndex: Int = 0
-	var viewModels: [T: Any] = [:]
-	var model: U?
+protocol CoordinatorProtocol {
+	associatedtype Page: PageProtocol
+	associatedtype Model
 
-	var isLoggedIn: Bool = false {
-		didSet {
-			if isLoggedIn {
-				popToRoot()
-			}
-		}
-	}
+	var navigationStack: [Page] { get }
+	var currentPageIndex: Int { get }
+	var isLoggedIn: Bool { get set }
+	var model: Model? { get set }
+
+	func push(_ page: Page, with model: Model?)
+	func pop()
+	func popToRoot()
+	func build(page: Page) -> AnyView
+	func navigateTo(_ index: Int)
+}
+
+class Coordinator<T: PageProtocol, U>: CoordinatorProtocol, ObservableObject {
+	@Published var navigationStack = [T]()
+	private(set) var currentPageIndex: Int = 0
+	var viewModels = [T: Any]()
+	var isLoggedIn: Bool = false
+	var model: U?
 
 	private let viewBuilder: (T) -> AnyView
 
@@ -44,7 +51,7 @@ class Coordinator<T: PageProtocol, U>: ObservableObject {
 	}
 
 	func navigateTo(_ index: Int) {
-		guard pages.indices.contains(index) else { return }
+		guard navigationStack.indices.contains(index) else { return }
 		currentPageIndex = index
 	}
 }
