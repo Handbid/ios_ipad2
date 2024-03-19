@@ -3,11 +3,9 @@
 import SwiftUI
 
 struct LogInView<T: PageProtocol>: View {
+	@EnvironmentObject private var coordinator: RegistrationCoordinator<T>
+
 	var body: some View {
 		Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
 	}
 }
-
-// #Preview {
-//    LogInView()
-// }

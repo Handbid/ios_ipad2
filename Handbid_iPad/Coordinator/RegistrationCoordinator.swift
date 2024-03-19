@@ -2,113 +2,68 @@
 
 import SwiftUI
 
-protocol PageProtocol: RawRepresentable, Identifiable, Hashable where RawValue == String {}
+@MainActor
+class RegistrationCoordinator<T: PageProtocol>: ObservableObject {
+	@Published var navigationStack = [T]()
+	@Published var pages = [T]()
+	@Published var currentPageIndex: Int = 0
+	var viewModels: [T: Any] = [:]
+	var userRegistration: UserRegistrationModel?
 
-protocol PageView: View {
-	associatedtype PageType: PageProtocol
-}
-
-protocol CoordinatorBase {
-	associatedtype PageType: PageProtocol
-	associatedtype PageView: View
-	var navigationStack: [PageType] { get set }
-	var currentPageIndex: Int { get set }
-
-	mutating func push(_ page: PageType)
-	mutating func pop()
-	mutating func popToRoot()
-	func build(page: PageType) -> PageView
-	func viewForCurrentPage() -> PageView
-	mutating func navigateTo(_ index: Int)
-	func viewMaker(for page: PageType) -> (() -> AnyView)?
-}
-
-extension CoordinatorBase where PageType == RegistrationPage, PageView: View {
-	mutating func push(_ page: PageType) {
-		navigationStack.append(page)
+	var isLoggedIn: Bool = false {
+		didSet {
+			if isLoggedIn {
+				popToRoot()
+			}
+		}
 	}
 
-	mutating func pop() {
+	func push(_ page: T, with userRegistration: UserRegistrationModel? = nil) {
+		navigationStack.append(page)
+		viewModels[page] = userRegistration
+
+		if let userRegistration {
+			self.userRegistration = userRegistration
+		}
+	}
+
+	func pop() {
 		guard !navigationStack.isEmpty else { return }
 		navigationStack.removeLast()
 	}
 
-	mutating func popToRoot() {
+	func popToRoot() {
 		navigationStack.removeAll()
 	}
 
-	func build(page: PageType) -> PageView {
-		guard let viewMaker = viewMaker(for: page) else {
-			fatalError("No view maker found for page: \(page)")
+	@ViewBuilder
+	func build(page: T) -> some View {
+		switch page {
+		case let registrationPage as RegistrationPage:
+			switch registrationPage {
+			case .getStarted:
+				GetStartedView<RegistrationPage>()
+			case .logIn:
+				LogInView<RegistrationPage>()
+			}
+
+		default:
+			EmptyView()
 		}
-		return AnyView(viewMaker()) as! PageView
 	}
 
-	func viewForCurrentPage() -> PageView {
-		if navigationStack.indices.contains(currentPageIndex) {
-			return build(page: navigationStack[currentPageIndex])
+	@ViewBuilder
+	func viewForCurrentPage() -> some View {
+		if pages.indices.contains(currentPageIndex) {
+			build(page: pages[currentPageIndex])
 		}
 		else {
-			return AnyView(Text("No page selected")) as! PageView
+			Text("No page selected")
 		}
 	}
 
-	mutating func navigateTo(_ index: Int) {
-		guard navigationStack.indices.contains(index) else { return }
+	func navigateTo(_ index: Int) {
+		guard pages.indices.contains(index) else { return }
 		currentPageIndex = index
 	}
-}
-
-enum RegistrationPage: String, PageProtocol, Identifiable, Hashable {
-    case getStarted, logIn
-    var id: String {
-        rawValue
-    }
-}
-
-protocol PageViewFactory {
-	func makeGetStartedView() -> AnyView
-	func makeLogInView() -> AnyView
-}
-
-extension PageViewFactory {
-	func makeGetStartedView() -> AnyView {
-		fatalError("Not implemented")
-	}
-
-	func makeLogInView() -> AnyView {
-		fatalError("Not implemented")
-	}
-}
-
-struct RegistrationCoordinator<Factory: PageViewFactory>: CoordinatorBase {
-	typealias PageType = RegistrationPage
-	typealias PageView = AnyView
-
-	var navigationStack = [RegistrationPage]()
-	var currentPageIndex: Int = 0
-	var factory: Factory
-
-	func viewMaker(for page: PageType) -> (() -> AnyView)? {
-		switch page {
-		case .getStarted:
-			{ factory.makeGetStartedView() }
-		case .logIn:
-			{ factory.makeLogInView() }
-		}
-	}
-}
-
-struct CountryPhoneModel: Hashable, Equatable {
-	let name: String
-	let code: String
-	let flag: String
-}
-
-struct UserRegistrationModel {
-	var firstName: String
-	var lastName: String
-	var email: String
-	var phoneNumber: String
-	var selectedCountry: CountryPhoneModel?
 }
