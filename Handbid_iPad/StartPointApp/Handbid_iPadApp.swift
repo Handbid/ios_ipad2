@@ -5,7 +5,7 @@ import SwiftUI
 @main
 struct HandbidiPadAppHandbid: App {
 	@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-	@StateObject var registrationCoordinator = RegistrationCoordinator<RegistrationPage>()
+	@StateObject var registrationCoordinator = Coordinator<RegistrationPage, Any?>()
 
 	var body: some Scene {
 		WindowGroup {

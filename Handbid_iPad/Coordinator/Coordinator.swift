@@ -3,12 +3,12 @@
 import SwiftUI
 
 @MainActor
-class RegistrationCoordinator<T: PageProtocol>: ObservableObject {
+class Coordinator<T: PageProtocol, U>: ObservableObject {
 	@Published var navigationStack = [T]()
 	@Published var pages = [T]()
 	@Published var currentPageIndex: Int = 0
 	var viewModels: [T: Any] = [:]
-	var userRegistration: UserRegistrationModel?
+	var model: U?
 
 	var isLoggedIn: Bool = false {
 		didSet {
@@ -18,13 +18,10 @@ class RegistrationCoordinator<T: PageProtocol>: ObservableObject {
 		}
 	}
 
-	func push(_ page: T, with userRegistration: UserRegistrationModel? = nil) {
+	func push(_ page: T, with model: U? = nil) {
 		navigationStack.append(page)
-		viewModels[page] = userRegistration
-
-		if let userRegistration {
-			self.userRegistration = userRegistration
-		}
+		viewModels[page] = model
+		self.model = model
 	}
 
 	func pop() {
@@ -53,7 +50,7 @@ class RegistrationCoordinator<T: PageProtocol>: ObservableObject {
 	}
 
 	@ViewBuilder
-	func viewForCurrentPage() -> some View {
+	private func viewForCurrentPage() -> some View {
 		if pages.indices.contains(currentPageIndex) {
 			build(page: pages[currentPageIndex])
 		}

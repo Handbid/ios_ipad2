@@ -3,9 +3,18 @@
 import SwiftUI
 
 struct LogInView<T: PageProtocol>: View {
-	@EnvironmentObject private var coordinator: RegistrationCoordinator<T>
+	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 
 	var body: some View {
-		Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+		Text("Hello, World2!")
+		Button("next") {
+			coordinator.push(RegistrationPage.getStarted as! T)
+		}
+		Button("back 1") {
+			coordinator.pop()
+		}
+		Button("back 2") {
+			coordinator.popToRoot()
+		}
 	}
 }

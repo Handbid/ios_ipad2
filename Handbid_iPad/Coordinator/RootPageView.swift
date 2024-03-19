@@ -4,7 +4,7 @@ import Combine
 import SwiftUI
 
 struct RootPageView<T: PageProtocol>: View {
-	@EnvironmentObject private var coordinator: RegistrationCoordinator<T>
+	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 
 	var body: some View {
 		NavigationStack(path: $coordinator.navigationStack) {

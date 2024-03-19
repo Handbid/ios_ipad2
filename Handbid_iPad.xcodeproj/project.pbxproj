@@ -23,7 +23,7 @@
 		8C8BEC342BA976A90083D904 /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC332BA976A90083D904 /* LogInViewModel.swift */; };
 		8C8BEC362BA977560083D904 /* RootPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC352BA977560083D904 /* RootPageView.swift */; };
 		8C8BEC382BA977AC0083D904 /* RegistrationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC372BA977AC0083D904 /* RegistrationPage.swift */; };
-		8C8BEC3A2BA977F00083D904 /* RegistrationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC392BA977F00083D904 /* RegistrationCoordinator.swift */; };
+		8C8BEC3A2BA977F00083D904 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC392BA977F00083D904 /* Coordinator.swift */; };
 		8C8BEC622BA9A5280083D904 /* UserRegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC612BA9A5280083D904 /* UserRegistrationModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,7 +67,7 @@
 		8C8BEC332BA976A90083D904 /* LogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewModel.swift; sourceTree = "<group>"; };
 		8C8BEC352BA977560083D904 /* RootPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPageView.swift; sourceTree = "<group>"; };
 		8C8BEC372BA977AC0083D904 /* RegistrationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPage.swift; sourceTree = "<group>"; };
-		8C8BEC392BA977F00083D904 /* RegistrationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCoordinator.swift; sourceTree = "<group>"; };
+		8C8BEC392BA977F00083D904 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		8C8BEC612BA9A5280083D904 /* UserRegistrationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegistrationModel.swift; sourceTree = "<group>"; };
 		8CFCCFB92BA8B3C600CF6C33 /* Handbid_iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Handbid_iPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CFCCFBA2BA8B3C600CF6C33 /* Handbid_iPadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -185,7 +185,7 @@
 			children = (
 				8C8BEC372BA977AC0083D904 /* RegistrationPage.swift */,
 				8C8BEC352BA977560083D904 /* RootPageView.swift */,
-				8C8BEC392BA977F00083D904 /* RegistrationCoordinator.swift */,
+				8C8BEC392BA977F00083D904 /* Coordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -536,7 +536,7 @@
 				8C8BEC622BA9A5280083D904 /* UserRegistrationModel.swift in Sources */,
 				8C8BEC362BA977560083D904 /* RootPageView.swift in Sources */,
 				8C8BEC302BA975F10083D904 /* LogInView.swift in Sources */,
-				8C8BEC3A2BA977F00083D904 /* RegistrationCoordinator.swift in Sources */,
+				8C8BEC3A2BA977F00083D904 /* Coordinator.swift in Sources */,
 				8C1E01012BA85E630094FAA7 /* AppDelegate.swift in Sources */,
 				8C8BEC2E2BA975DE0083D904 /* GetStartedView.swift in Sources */,
 				8C8BEC322BA976030083D904 /* GetStartedViewModel.swift in Sources */,
