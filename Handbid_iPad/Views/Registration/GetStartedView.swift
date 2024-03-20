@@ -11,11 +11,13 @@ struct GetStartedView<T: PageProtocol>: View {
 			Color.yellow.edgesIgnoringSafeArea(.all)
 			VStack {
 				Spacer()
-				Text("Hello, World!")
+				Text("Get Started")
+					.accessibilityIdentifier("GetStartedView")
 				Spacer()
 				Button("next") {
 					coordinator.push(RegistrationPage.logIn as! T)
 				}
+				.accessibilityIdentifier("nextButton")
 				Spacer()
 			}
 		}

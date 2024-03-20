@@ -8,14 +8,18 @@ struct LogInView<T: PageProtocol>: View {
 
 	var body: some View {
 		Text("Hello, World2!")
+			.accessibilityIdentifier("HelloWorld2TextView")
 		Button("next") {
 			coordinator.push(RegistrationPage.getStarted as! T)
 		}
+		.accessibilityIdentifier("nextButton")
 		Button("back 1") {
 			coordinator.pop()
 		}
+		.accessibilityIdentifier("back1Button")
 		Button("back 2") {
 			coordinator.popToRoot()
 		}
+		.accessibilityIdentifier("back2Button")
 	}
 }
