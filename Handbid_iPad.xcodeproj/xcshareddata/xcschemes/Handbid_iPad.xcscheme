@@ -29,9 +29,34 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:Handbid_iPadTests/MockTests.xctestplan">
+            reference = "container:Handbid_iPadTests/MockTests.xctestplan"
+            default = "YES">
          </TestPlanReference>
       </TestPlans>
+      <Testables>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8C1E00C32BA823C90094FAA7"
+               BuildableName = "Handbid_iPadUITests.xctest"
+               BlueprintName = "Handbid_iPadUITests"
+               ReferencedContainer = "container:Handbid_iPad.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8CB8C69E2BAAE8B5002F2E8C"
+               BuildableName = "Handbid_iPadUICoordinatorTests.xctest"
+               BlueprintName = "Handbid_iPadUICoordinatorTests"
+               ReferencedContainer = "container:Handbid_iPad.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
