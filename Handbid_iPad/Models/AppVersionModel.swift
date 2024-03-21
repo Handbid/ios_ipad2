@@ -30,16 +30,16 @@ extension AppVersionModel: NetworkingService, NetworkingJSONDecodable {
 	}
 
 	// Example use in viewModel
-	//    import Combine
-	//    struct ExampleViewModel {
+	//    class LogInViewModel: ObservableObject {
 	//        private var cancellables = Set<AnyCancellable>()
-	//        mutating func fetchAppVersion() {
+	//
+	//        func fetchAppVersion() {
 	//            AppVersionModel().fetchAppVersion()
 	//                .sink(receiveCompletion: { completion in
 	//                    switch completion {
 	//                    case .finished:
 	//                        break
-	//                    case .failure(let error):
+	//                    case let .failure(error):
 	//                        print("Error fetching app version: \(error)")
 	//                    }
 	//                }, receiveValue: { version in
@@ -47,11 +47,12 @@ extension AppVersionModel: NetworkingService, NetworkingJSONDecodable {
 	//                })
 	//                .store(in: &cancellables)
 	//        }
+	//    }
 
 	func fetchAppVersion() -> AnyPublisher<[AppVersionModel], Error> {
-		get("/auth/app-info", params: ["appName": AppGlobal.appName,
-		                               "os": AppGlobal.os,
-		                               "whitelabelId": AppGlobal.whitelabelId])
+		get("/auth/app-info", params: ["appName": AppInfoProvider.appName,
+		                               "os": AppInfoProvider.os,
+		                               "whitelabelId": AppInfoProvider.whitelabelId])
 			.tryMap { try Self.decode($0) }
 			.map { [$0] }
 			.eraseToAnyPublisher()

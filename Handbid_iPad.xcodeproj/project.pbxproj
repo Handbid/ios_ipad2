@@ -32,7 +32,7 @@
 		8C0007BF2BAC764700AAEBA0 /* AppVersionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0007BE2BAC764700AAEBA0 /* AppVersionModel.swift */; };
 		8C0007CC2BAC8D4400AAEBA0 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00F72BA82A9F0094FAA7 /* Debug.xcconfig */; };
 		8C0007CD2BAC8D4500AAEBA0 /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00F82BA82AAC0094FAA7 /* Release.xcconfig */; };
-		8C0007D32BAC976700AAEBA0 /* AppGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0007C22BAC820500AAEBA0 /* AppGlobal.swift */; };
+		8C0007D32BAC976700AAEBA0 /* AppInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0007C22BAC820500AAEBA0 /* AppInfoProvider.swift */; };
 		8C1E00AE2BA823C80094FAA7 /* HandbidApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E00AD2BA823C80094FAA7 /* HandbidApp.swift */; };
 		8C1E00B22BA823C90094FAA7 /* iPadAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00B12BA823C90094FAA7 /* iPadAssets.xcassets */; };
 		8C1E00F62BA82A130094FAA7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00EF2BA82A130094FAA7 /* Localizable.strings */; };
@@ -95,9 +95,8 @@
 		8C0007A12BAC733900AAEBA0 /* NetworkingLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingLogger.swift; sourceTree = "<group>"; };
 		8C0007A22BAC733900AAEBA0 /* NetworkingLogLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingLogLevel.swift; sourceTree = "<group>"; };
 		8C0007BE2BAC764700AAEBA0 /* AppVersionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppVersionModel.swift; sourceTree = "<group>"; };
-		8C0007C22BAC820500AAEBA0 /* AppGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGlobal.swift; sourceTree = "<group>"; };
+		8C0007C22BAC820500AAEBA0 /* AppInfoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoProvider.swift; sourceTree = "<group>"; };
 		8C0007D12BAC8FBD00AAEBA0 /* Handbid-iPad-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Handbid-iPad-Bridging-Header.h"; sourceTree = "<group>"; };
-		8C0007D22BAC943100AAEBA0 /* Handbid-iPad-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Handbid-iPad-Prefix.pch"; sourceTree = "<group>"; };
 		8C1E00AD2BA823C80094FAA7 /* HandbidApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandbidApp.swift; sourceTree = "<group>"; };
 		8C1E00B12BA823C90094FAA7 /* iPadAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = iPadAssets.xcassets; sourceTree = "<group>"; };
 		8C1E00F02BA82A130094FAA7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -263,7 +262,6 @@
 			isa = PBXGroup;
 			children = (
 				8C0007D12BAC8FBD00AAEBA0 /* Handbid-iPad-Bridging-Header.h */,
-				8C0007D22BAC943100AAEBA0 /* Handbid-iPad-Prefix.pch */,
 			);
 			path = "Bridging-Header";
 			sourceTree = "<group>";
@@ -353,7 +351,7 @@
 		8C1E00E52BA825C30094FAA7 /* Supporting-Methods */ = {
 			isa = PBXGroup;
 			children = (
-				8C0007C22BAC820500AAEBA0 /* AppGlobal.swift */,
+				8C0007C22BAC820500AAEBA0 /* AppInfoProvider.swift */,
 			);
 			path = "Supporting-Methods";
 			sourceTree = "<group>";
@@ -425,8 +423,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8C1E00CE2BA823C90094FAA7 /* Build configuration list for PBXNativeTarget "Handbid_iPad" */;
 			buildPhases = (
-				8C1E00E92BA827D10094FAA7 /* Fetch localization */,
 				646EFA47C4523C588EB6401E /* [CP] Check Pods Manifest.lock */,
+				8C1E00E92BA827D10094FAA7 /* Fetch localization */,
 				8C1E00A62BA823C80094FAA7 /* Sources */,
 				8C1E00A82BA823C80094FAA7 /* Resources */,
 				8C1E00A72BA823C80094FAA7 /* Frameworks */,
@@ -656,7 +654,7 @@
 				8C0007A82BAC733900AAEBA0 /* NetworkingClient+Void.swift in Sources */,
 				8C0007B82BAC733900AAEBA0 /* MultipartData+HttpBodyConvertible.swift in Sources */,
 				8C1E00AE2BA823C80094FAA7 /* HandbidApp.swift in Sources */,
-				8C0007D32BAC976700AAEBA0 /* AppGlobal.swift in Sources */,
+				8C0007D32BAC976700AAEBA0 /* AppInfoProvider.swift in Sources */,
 				8C0007A62BAC733900AAEBA0 /* NetworkingClient+Multipart.swift in Sources */,
 				8C8BEC642BA9ADE20083D904 /* EnvironmentStartupView.swift in Sources */,
 				8C0007B22BAC733900AAEBA0 /* ArrowParsable.swift in Sources */,
@@ -782,7 +780,12 @@
 				DEVELOPMENT_TEAM = 35JZN6VPM3;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				GCC_PREFIX_HEADER = "Handbid_iPad/Bridging-Header/Handbid-iPad-Prefix.pch";
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Handbid_iPad/Resources/Handbid-iPad-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Handbid Manager";
@@ -796,6 +799,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -Xcc -fmodule-map-file=\"${PODS_CONFIGURATION_BUILD_DIR}/Arrow/Arrow.modulemap\" -DHANDBID_IPAD";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Handbid-iPad";
 				PRODUCT_MODULE_NAME = Handbid_iPad;
 				PRODUCT_NAME = Handbid_iPad;
@@ -925,7 +929,12 @@
 				DEVELOPMENT_TEAM = 35JZN6VPM3;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				GCC_PREFIX_HEADER = "Handbid_iPad/Bridging-Header/Handbid-iPad-Prefix.pch";
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Handbid_iPad/Resources/Handbid-iPad-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Handbid Manager";
@@ -939,6 +948,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -Xcc -fmodule-map-file=\"${PODS_CONFIGURATION_BUILD_DIR}/Arrow/Arrow.modulemap\" -DHANDBID_IPAD";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Handbid-iPad";
 				PRODUCT_MODULE_NAME = Handbid_iPad;
 				PRODUCT_NAME = Handbid_iPad;
