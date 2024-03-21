@@ -7,28 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8C0006E62BAC662900AAEBA0 /* NetworkingClient+NetworkingJSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0006CC2BAC662900AAEBA0 /* NetworkingClient+NetworkingJSONDecodable.swift */; };
-		8C0006E72BAC662900AAEBA0 /* NetworkingClient+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0006CD2BAC662900AAEBA0 /* NetworkingClient+Decodable.swift */; };
-		8C0006E82BAC662900AAEBA0 /* NetworkingClient+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0006CE2BAC662900AAEBA0 /* NetworkingClient+Data.swift */; };
-		8C0006E92BAC662900AAEBA0 /* NetworkingClient+Multipart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0006CF2BAC662900AAEBA0 /* NetworkingClient+Multipart.swift */; };
-		8C0006EA2BAC662900AAEBA0 /* NetworkingClient+Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0006D02BAC662900AAEBA0 /* NetworkingClient+Requests.swift */; };
-		8C0006EB2BAC662900AAEBA0 /* NetworkingClient+Void.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0006D12BAC662900AAEBA0 /* NetworkingClient+Void.swift */; };
-		8C0006EC2BAC662900AAEBA0 /* NetworkingClient+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0006D22BAC662900AAEBA0 /* NetworkingClient+JSON.swift */; };
-		8C0006ED2BAC662900AAEBA0 /* NetworkingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0006D32BAC662900AAEBA0 /* NetworkingRequest.swift */; };
-		8C0006EE2BAC662900AAEBA0 /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0006D52BAC662900AAEBA0 /* NetworkingError.swift */; };
-		8C0006EF2BAC662900AAEBA0 /* Params.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0006D62BAC662900AAEBA0 /* Params.swift */; };
-		8C0006F02BAC662900AAEBA0 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0006D82BAC662900AAEBA0 /* HTTPMethod.swift */; };
-		8C0006F12BAC662900AAEBA0 /* ArrowParsable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0006D92BAC662900AAEBA0 /* ArrowParsable.swift */; };
-		8C0006F22BAC662900AAEBA0 /* Servers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0006DA2BAC662900AAEBA0 /* Servers.swift */; };
-		8C0006F32BAC662900AAEBA0 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0006DB2BAC662900AAEBA0 /* NetworkingService.swift */; };
-		8C0006F42BAC662900AAEBA0 /* Params+HttpBodyConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0006DD2BAC662900AAEBA0 /* Params+HttpBodyConvertible.swift */; };
-		8C0006F52BAC662900AAEBA0 /* HttpBodyConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0006DE2BAC662900AAEBA0 /* HttpBodyConvertible.swift */; };
-		8C0006F62BAC662900AAEBA0 /* MultipartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0006DF2BAC662900AAEBA0 /* MultipartData.swift */; };
-		8C0006F72BAC662900AAEBA0 /* MultipartData+HttpBodyConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0006E02BAC662900AAEBA0 /* MultipartData+HttpBodyConvertible.swift */; };
-		8C0006F82BAC662900AAEBA0 /* NetworkingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0006E12BAC662900AAEBA0 /* NetworkingClient.swift */; };
-		8C0006F92BAC662900AAEBA0 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0006E22BAC662900AAEBA0 /* AppEnvironment.swift */; };
-		8C0006FA2BAC662900AAEBA0 /* NetworkingLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0006E42BAC662900AAEBA0 /* NetworkingLogger.swift */; };
-		8C0006FB2BAC662900AAEBA0 /* NetworkingLogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0006E52BAC662900AAEBA0 /* NetworkingLogLevel.swift */; };
 		8C1E00AE2BA823C80094FAA7 /* HandbidApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E00AD2BA823C80094FAA7 /* HandbidApp.swift */; };
 		8C1E00B22BA823C90094FAA7 /* iPadAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00B12BA823C90094FAA7 /* iPadAssets.xcassets */; };
 		8C1E00F62BA82A130094FAA7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00EF2BA82A130094FAA7 /* Localizable.strings */; };
@@ -64,28 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8C0006CC2BAC662900AAEBA0 /* NetworkingClient+NetworkingJSONDecodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkingClient+NetworkingJSONDecodable.swift"; sourceTree = "<group>"; };
-		8C0006CD2BAC662900AAEBA0 /* NetworkingClient+Decodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkingClient+Decodable.swift"; sourceTree = "<group>"; };
-		8C0006CE2BAC662900AAEBA0 /* NetworkingClient+Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkingClient+Data.swift"; sourceTree = "<group>"; };
-		8C0006CF2BAC662900AAEBA0 /* NetworkingClient+Multipart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkingClient+Multipart.swift"; sourceTree = "<group>"; };
-		8C0006D02BAC662900AAEBA0 /* NetworkingClient+Requests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkingClient+Requests.swift"; sourceTree = "<group>"; };
-		8C0006D12BAC662900AAEBA0 /* NetworkingClient+Void.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkingClient+Void.swift"; sourceTree = "<group>"; };
-		8C0006D22BAC662900AAEBA0 /* NetworkingClient+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkingClient+JSON.swift"; sourceTree = "<group>"; };
-		8C0006D32BAC662900AAEBA0 /* NetworkingRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingRequest.swift; sourceTree = "<group>"; };
-		8C0006D52BAC662900AAEBA0 /* NetworkingError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
-		8C0006D62BAC662900AAEBA0 /* Params.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Params.swift; sourceTree = "<group>"; };
-		8C0006D82BAC662900AAEBA0 /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
-		8C0006D92BAC662900AAEBA0 /* ArrowParsable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrowParsable.swift; sourceTree = "<group>"; };
-		8C0006DA2BAC662900AAEBA0 /* Servers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Servers.swift; sourceTree = "<group>"; };
-		8C0006DB2BAC662900AAEBA0 /* NetworkingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
-		8C0006DD2BAC662900AAEBA0 /* Params+HttpBodyConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Params+HttpBodyConvertible.swift"; sourceTree = "<group>"; };
-		8C0006DE2BAC662900AAEBA0 /* HttpBodyConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpBodyConvertible.swift; sourceTree = "<group>"; };
-		8C0006DF2BAC662900AAEBA0 /* MultipartData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipartData.swift; sourceTree = "<group>"; };
-		8C0006E02BAC662900AAEBA0 /* MultipartData+HttpBodyConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MultipartData+HttpBodyConvertible.swift"; sourceTree = "<group>"; };
-		8C0006E12BAC662900AAEBA0 /* NetworkingClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingClient.swift; sourceTree = "<group>"; };
-		8C0006E22BAC662900AAEBA0 /* AppEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
-		8C0006E42BAC662900AAEBA0 /* NetworkingLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingLogger.swift; sourceTree = "<group>"; };
-		8C0006E52BAC662900AAEBA0 /* NetworkingLogLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingLogLevel.swift; sourceTree = "<group>"; };
+		8C0007402BAC6EBF00AAEBA0 /* Handbid_iPadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C0007412BAC6EBF00AAEBA0 /* Handbid_iPadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C1E00AD2BA823C80094FAA7 /* HandbidApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandbidApp.swift; sourceTree = "<group>"; };
 		8C1E00B12BA823C90094FAA7 /* iPadAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = iPadAssets.xcassets; sourceTree = "<group>"; };
 		8C1E00F02BA82A130094FAA7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -110,8 +68,6 @@
 		8C8BEC652BA9B7DD0083D904 /* PageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageProtocol.swift; sourceTree = "<group>"; };
 		8CB8C68E2BA9D5CB002F2E8C /* MockTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MockTests.xctestplan; sourceTree = "<group>"; };
 		8CB8C6AB2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinatorTest.swift; sourceTree = "<group>"; };
-		8CB8C6AD2BAAF829002F2E8C /* Handbid_iPadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Handbid_iPadTests.xctest; path = "/Users/kuba/Desktop/ios_ipad22/build/Debug-iphoneos/Handbid_iPadTests.xctest"; sourceTree = "<absolute>"; };
-		8CB8C6AE2BAAF829002F2E8C /* Handbid_iPadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Handbid_iPadUITests.xctest; path = "/Users/kuba/Desktop/ios_ipad22/build/Debug-iphoneos/Handbid_iPadUITests.xctest"; sourceTree = "<absolute>"; };
 		8CFCCFB92BA8B3C600CF6C33 /* Handbid_iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Handbid_iPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -140,59 +96,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8C0006CA2BAC662900AAEBA0 /* NetworkServices */ = {
-			isa = PBXGroup;
-			children = (
-				8C0006E22BAC662900AAEBA0 /* AppEnvironment.swift */,
-				8C0006D92BAC662900AAEBA0 /* ArrowParsable.swift */,
-				8C0006D82BAC662900AAEBA0 /* HTTPMethod.swift */,
-				8C0006E12BAC662900AAEBA0 /* NetworkingClient.swift */,
-				8C0006D52BAC662900AAEBA0 /* NetworkingError.swift */,
-				8C0006D32BAC662900AAEBA0 /* NetworkingRequest.swift */,
-				8C0006DB2BAC662900AAEBA0 /* NetworkingService.swift */,
-				8C0006D62BAC662900AAEBA0 /* Params.swift */,
-				8C0006DA2BAC662900AAEBA0 /* Servers.swift */,
-				8C0006CB2BAC662900AAEBA0 /* Calls */,
-				8C0006E32BAC662900AAEBA0 /* Logging */,
-				8C0006DC2BAC662900AAEBA0 /* Multipart */,
-			);
-			path = NetworkServices;
-			sourceTree = "<group>";
-		};
-		8C0006CB2BAC662900AAEBA0 /* Calls */ = {
-			isa = PBXGroup;
-			children = (
-				8C0006CC2BAC662900AAEBA0 /* NetworkingClient+NetworkingJSONDecodable.swift */,
-				8C0006CD2BAC662900AAEBA0 /* NetworkingClient+Decodable.swift */,
-				8C0006CE2BAC662900AAEBA0 /* NetworkingClient+Data.swift */,
-				8C0006CF2BAC662900AAEBA0 /* NetworkingClient+Multipart.swift */,
-				8C0006D02BAC662900AAEBA0 /* NetworkingClient+Requests.swift */,
-				8C0006D12BAC662900AAEBA0 /* NetworkingClient+Void.swift */,
-				8C0006D22BAC662900AAEBA0 /* NetworkingClient+JSON.swift */,
-			);
-			path = Calls;
-			sourceTree = "<group>";
-		};
-		8C0006DC2BAC662900AAEBA0 /* Multipart */ = {
-			isa = PBXGroup;
-			children = (
-				8C0006DD2BAC662900AAEBA0 /* Params+HttpBodyConvertible.swift */,
-				8C0006DE2BAC662900AAEBA0 /* HttpBodyConvertible.swift */,
-				8C0006DF2BAC662900AAEBA0 /* MultipartData.swift */,
-				8C0006E02BAC662900AAEBA0 /* MultipartData+HttpBodyConvertible.swift */,
-			);
-			path = Multipart;
-			sourceTree = "<group>";
-		};
-		8C0006E32BAC662900AAEBA0 /* Logging */ = {
-			isa = PBXGroup;
-			children = (
-				8C0006E42BAC662900AAEBA0 /* NetworkingLogger.swift */,
-				8C0006E52BAC662900AAEBA0 /* NetworkingLogLevel.swift */,
-			);
-			path = Logging;
-			sourceTree = "<group>";
-		};
 		8C1E00A12BA823C80094FAA7 = {
 			isa = PBXGroup;
 			children = (
@@ -202,6 +105,8 @@
 				8C1E00C72BA823C90094FAA7 /* Handbid_iPadUITests */,
 				B64BA6889C440647A69DCC9C /* Pods */,
 				8CFCCFB92BA8B3C600CF6C33 /* Handbid_iPad.app */,
+				8C0007402BAC6EBF00AAEBA0 /* Handbid_iPadTests.xctest */,
+				8C0007412BAC6EBF00AAEBA0 /* Handbid_iPadUITests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -215,7 +120,6 @@
 				8C1E00DC2BA825150094FAA7 /* Extensions */,
 				8C1E00DD2BA825230094FAA7 /* Fonts */,
 				8C1E00DF2BA825500094FAA7 /* Models */,
-				8C0006CA2BAC662900AAEBA0 /* NetworkServices */,
 				8C1E00DE2BA8253F0094FAA7 /* Resources */,
 				8C1E01032BA862BB0094FAA7 /* StartPointApp */,
 				8C1E00E12BA8256E0094FAA7 /* Styles */,
@@ -425,7 +329,7 @@
 			);
 			name = Handbid_iPadTests;
 			productName = Handbid_iPadTests;
-			productReference = 8CB8C6AD2BAAF829002F2E8C /* Handbid_iPadTests.xctest */;
+			productReference = 8C0007402BAC6EBF00AAEBA0 /* Handbid_iPadTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		8C1E00C32BA823C90094FAA7 /* Handbid_iPadUITests */ = {
@@ -443,7 +347,7 @@
 			);
 			name = Handbid_iPadUITests;
 			productName = Handbid_iPadUITests;
-			productReference = 8CB8C6AE2BAAF829002F2E8C /* Handbid_iPadUITests.xctest */;
+			productReference = 8C0007412BAC6EBF00AAEBA0 /* Handbid_iPadUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -570,38 +474,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C8BEC342BA976A90083D904 /* LogInViewModel.swift in Sources */,
-				8C0006E82BAC662900AAEBA0 /* NetworkingClient+Data.swift in Sources */,
-				8C0006E62BAC662900AAEBA0 /* NetworkingClient+NetworkingJSONDecodable.swift in Sources */,
 				8C8BEC622BA9A5280083D904 /* UserRegistrationModel.swift in Sources */,
-				8C0006EC2BAC662900AAEBA0 /* NetworkingClient+JSON.swift in Sources */,
-				8C0006F92BAC662900AAEBA0 /* AppEnvironment.swift in Sources */,
 				8C8BEC362BA977560083D904 /* RootPageView.swift in Sources */,
 				8C8BEC302BA975F10083D904 /* LogInView.swift in Sources */,
-				8C0006ED2BAC662900AAEBA0 /* NetworkingRequest.swift in Sources */,
-				8C0006F82BAC662900AAEBA0 /* NetworkingClient.swift in Sources */,
-				8C0006EA2BAC662900AAEBA0 /* NetworkingClient+Requests.swift in Sources */,
-				8C0006FA2BAC662900AAEBA0 /* NetworkingLogger.swift in Sources */,
 				8C8BEC662BA9B7DD0083D904 /* PageProtocol.swift in Sources */,
-				8C0006EE2BAC662900AAEBA0 /* NetworkingError.swift in Sources */,
-				8C0006F32BAC662900AAEBA0 /* NetworkingService.swift in Sources */,
-				8C0006F12BAC662900AAEBA0 /* ArrowParsable.swift in Sources */,
 				8C8BEC3A2BA977F00083D904 /* Coordinator.swift in Sources */,
-				8C0006FB2BAC662900AAEBA0 /* NetworkingLogLevel.swift in Sources */,
-				8C0006F22BAC662900AAEBA0 /* Servers.swift in Sources */,
 				8C1E01012BA85E630094FAA7 /* AppDelegate.swift in Sources */,
-				8C0006EF2BAC662900AAEBA0 /* Params.swift in Sources */,
 				8C8BEC2E2BA975DE0083D904 /* GetStartedView.swift in Sources */,
 				8C8BEC322BA976030083D904 /* GetStartedViewModel.swift in Sources */,
-				8C0006E72BAC662900AAEBA0 /* NetworkingClient+Decodable.swift in Sources */,
 				8C8BEC382BA977AC0083D904 /* RegistrationPage.swift in Sources */,
-				8C0006EB2BAC662900AAEBA0 /* NetworkingClient+Void.swift in Sources */,
-				8C0006F72BAC662900AAEBA0 /* MultipartData+HttpBodyConvertible.swift in Sources */,
 				8C1E00AE2BA823C80094FAA7 /* HandbidApp.swift in Sources */,
-				8C0006F52BAC662900AAEBA0 /* HttpBodyConvertible.swift in Sources */,
-				8C0006F02BAC662900AAEBA0 /* HTTPMethod.swift in Sources */,
-				8C0006E92BAC662900AAEBA0 /* NetworkingClient+Multipart.swift in Sources */,
-				8C0006F62BAC662900AAEBA0 /* MultipartData.swift in Sources */,
-				8C0006F42BAC662900AAEBA0 /* Params+HttpBodyConvertible.swift in Sources */,
 				8C8BEC642BA9ADE20083D904 /* EnvironmentStartupView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
