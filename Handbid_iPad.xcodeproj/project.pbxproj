@@ -23,6 +23,9 @@
 		8C8BEC642BA9ADE20083D904 /* EnvironmentStartupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC632BA9ADE20083D904 /* EnvironmentStartupView.swift */; };
 		8C8BEC662BA9B7DD0083D904 /* PageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC652BA9B7DD0083D904 /* PageProtocol.swift */; };
 		8CB8C6AC2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB8C6AB2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift */; };
+		CEFC879D2BAC8A6500A8EAC6 /* SolidButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFC879C2BAC8A6500A8EAC6 /* SolidButtonStyle.swift */; };
+		CEFC879F2BAC8BCE00A8EAC6 /* BaseButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFC879E2BAC8BCE00A8EAC6 /* BaseButtonStyle.swift */; };
+		CEFC87A22BAC8D4200A8EAC6 /* BorderButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFC87A12BAC8D4200A8EAC6 /* BorderButtonStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,12 +70,15 @@
 		8C8BEC632BA9ADE20083D904 /* EnvironmentStartupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentStartupView.swift; sourceTree = "<group>"; };
 		8C8BEC652BA9B7DD0083D904 /* PageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageProtocol.swift; sourceTree = "<group>"; };
 		8CB8C68E2BA9D5CB002F2E8C /* MockTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MockTests.xctestplan; sourceTree = "<group>"; };
-		8CB8C69A2BA9DC64002F2E8C /* Handbid_iPadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Handbid_iPadTests.xctest; path = "/Users/kuba/Desktop/ios_ipad22/build/Debug-iphoneos/Handbid_iPadTests.xctest"; sourceTree = "<absolute>"; };
-		8CB8C6AA2BAAE8EB002F2E8C /* Handbid_iPadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Handbid_iPadUITests.xctest; path = "/Users/kuba/Desktop/ios_ipad22/build/Debug-iphoneos/Handbid_iPadUITests.xctest"; sourceTree = "<absolute>"; };
 		8CB8C6AB2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinatorTest.swift; sourceTree = "<group>"; };
 		8CFCCFB92BA8B3C600CF6C33 /* Handbid_iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Handbid_iPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B739F5FE01942DE0414584DA /* Pods-Handbid_iPad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPad.debug.xcconfig"; path = "Target Support Files/Pods-Handbid_iPad/Pods-Handbid_iPad.debug.xcconfig"; sourceTree = "<group>"; };
 		C9DC03F424D33ADC6A8C509E /* Pods-Handbid_iPad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPad.release.xcconfig"; path = "Target Support Files/Pods-Handbid_iPad/Pods-Handbid_iPad.release.xcconfig"; sourceTree = "<group>"; };
+		CEFC87962BAC674A00A8EAC6 /* Handbid_iPadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEFC87972BAC674A00A8EAC6 /* Handbid_iPadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEFC879C2BAC8A6500A8EAC6 /* SolidButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidButtonStyle.swift; sourceTree = "<group>"; };
+		CEFC879E2BAC8BCE00A8EAC6 /* BaseButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButtonStyle.swift; sourceTree = "<group>"; };
+		CEFC87A12BAC8D4200A8EAC6 /* BorderButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderButtonStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +125,8 @@
 				B64BA6889C440647A69DCC9C /* Pods */,
 				8CFCCFB92BA8B3C600CF6C33 /* Handbid_iPad.app */,
 				60DD83A9FABF01E21E29FB9C /* Frameworks */,
+				CEFC87962BAC674A00A8EAC6 /* Handbid_iPadTests.xctest */,
+				CEFC87972BAC674A00A8EAC6 /* Handbid_iPadUITests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -229,6 +237,7 @@
 		8C1E00E12BA8256E0094FAA7 /* Styles */ = {
 			isa = PBXGroup;
 			children = (
+				CEFC87A02BAC8D0B00A8EAC6 /* Buttons */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -322,6 +331,16 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		CEFC87A02BAC8D0B00A8EAC6 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				CEFC879C2BAC8A6500A8EAC6 /* SolidButtonStyle.swift */,
+				CEFC879E2BAC8BCE00A8EAC6 /* BaseButtonStyle.swift */,
+				CEFC87A12BAC8D4200A8EAC6 /* BorderButtonStyle.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -362,7 +381,7 @@
 			);
 			name = Handbid_iPadTests;
 			productName = Handbid_iPadTests;
-			productReference = 8CB8C69A2BA9DC64002F2E8C /* Handbid_iPadTests.xctest */;
+			productReference = CEFC87962BAC674A00A8EAC6 /* Handbid_iPadTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		8C1E00C32BA823C90094FAA7 /* Handbid_iPadUITests */ = {
@@ -380,7 +399,7 @@
 			);
 			name = Handbid_iPadUITests;
 			productName = Handbid_iPadUITests;
-			productReference = 8CB8C6AA2BAAE8EB002F2E8C /* Handbid_iPadUITests.xctest */;
+			productReference = CEFC87972BAC674A00A8EAC6 /* Handbid_iPadUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -531,6 +550,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C8BEC342BA976A90083D904 /* LogInViewModel.swift in Sources */,
+				CEFC879F2BAC8BCE00A8EAC6 /* BaseButtonStyle.swift in Sources */,
 				8C8BEC622BA9A5280083D904 /* UserRegistrationModel.swift in Sources */,
 				8C8BEC362BA977560083D904 /* RootPageView.swift in Sources */,
 				8C8BEC302BA975F10083D904 /* LogInView.swift in Sources */,
@@ -538,8 +558,10 @@
 				8C8BEC3A2BA977F00083D904 /* Coordinator.swift in Sources */,
 				8C1E01012BA85E630094FAA7 /* AppDelegate.swift in Sources */,
 				8C8BEC2E2BA975DE0083D904 /* GetStartedView.swift in Sources */,
+				CEFC87A22BAC8D4200A8EAC6 /* BorderButtonStyle.swift in Sources */,
 				8C8BEC322BA976030083D904 /* GetStartedViewModel.swift in Sources */,
 				8C8BEC382BA977AC0083D904 /* RegistrationPage.swift in Sources */,
+				CEFC879D2BAC8A6500A8EAC6 /* SolidButtonStyle.swift in Sources */,
 				8C1E00AE2BA823C80094FAA7 /* HandbidApp.swift in Sources */,
 				8C8BEC642BA9ADE20083D904 /* EnvironmentStartupView.swift in Sources */,
 			);
