@@ -1,15 +1,14 @@
-//Copyright (c) 2024 by Handbid. All rights reserved.
+// Copyright (c) 2024 by Handbid. All rights reserved.
 
-import Foundation
 import Arrow
+import Foundation
 
-extension ArrowParsable where Self: NetworkingJSONDecodable {
-    
-    public static func decode(_ json: Any) throws -> Self {
-        var t: Self = Self()
-        if let arrowJSON = JSON(json) {
-            t.deserialize(arrowJSON)
-        }
-        return t
-    }
+public extension ArrowParsable where Self: NetworkingJSONDecodable {
+	static func decode(_ json: Any) throws -> Self {
+		var t = Self()
+		if let arrowJSON = JSON(json) {
+			t.deserialize(arrowJSON)
+		}
+		return t
+	}
 }
