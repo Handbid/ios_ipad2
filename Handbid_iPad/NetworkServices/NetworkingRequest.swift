@@ -39,7 +39,8 @@ public class NetworkingRequest: NSObject, URLSessionTaskDelegate {
 		self.sessionConfiguration = config
 	}
 
-    // MARK: Properties - The `uploadPublisher()` method constructs and executes an upload task to send data to a server, along with tracking upload progress. It returns a publisher that emits a tuple containing optional data and progress updates.
+	// MARK: Properties - The `uploadPublisher()` method constructs and executes an upload task to send data to a server, along with tracking upload progress. It returns a publisher that emits a tuple containing optional data and progress updates.
+
 	public func uploadPublisher() -> AnyPublisher<(Data?, Progress), Error> {
 		guard let urlRequest = buildURLRequest() else {
 			return Fail(error: NetworkingError.unableToParseRequest as Error)
@@ -82,7 +83,8 @@ public class NetworkingRequest: NSObject, URLSessionTaskDelegate {
 		publisher(retryCount: maxRetryCount)
 	}
 
-    // MARK: Properties - The `execute()` method is an asynchronous method that constructs and executes a data task to send a request to a server. It returns the received data or throws an error if the request fails.
+	// MARK: Properties - The `execute()` method is an asynchronous method that constructs and executes a data task to send a request to a server. It returns the received data or throws an error if the request fails.
+
 	private func publisher(retryCount: Int) -> AnyPublisher<Data, Error> {
 		guard let urlRequest = buildURLRequest() else {
 			return Fail(error: NetworkingError.unableToParseRequest as Error)
@@ -125,7 +127,8 @@ public class NetworkingRequest: NSObject, URLSessionTaskDelegate {
 			}.receive(on: DispatchQueue.main).eraseToAnyPublisher()
 	}
 
-    // MARK: Properties - The `execute()` method is an asynchronous method that constructs and executes a data task to send a request to a server. It returns the received data or throws an error if the request fails.
+	// MARK: Properties - The `execute()` method is an asynchronous method that constructs and executes a data task to send a request to a server. It returns the received data or throws an error if the request fails.
+
 	func execute() async throws -> Data {
 		guard let urlRequest = buildURLRequest() else {
 			throw NetworkingError.unableToParseRequest
@@ -147,7 +150,8 @@ public class NetworkingRequest: NSObject, URLSessionTaskDelegate {
 		return data
 	}
 
-    // MARK: Properties - The `getURLWithParams()` method constructs a URL string with parameters encoded based on the request method.
+	// MARK: Properties - The `getURLWithParams()` method constructs a URL string with parameters encoded based on the request method.
+
 	private func getURLWithParams() -> String {
 		let urlString = baseURL + route
 		if params.isEmpty { return urlString }
@@ -171,7 +175,8 @@ public class NetworkingRequest: NSObject, URLSessionTaskDelegate {
 		return urlString
 	}
 
-    // MARK: Properties - The `buildURLRequest()` method constructs a URLRequest object based on the provided parameters, headers, and body data. It also handles multipart form data if specified.
+	// MARK: Properties - The `buildURLRequest()` method constructs a URLRequest object based on the provided parameters, headers, and body data. It also handles multipart form data if specified.
+
 	func buildURLRequest() -> URLRequest? {
 		var urlString = baseURL + route
 		if httpMethod == .get {
@@ -240,7 +245,8 @@ public class NetworkingRequest: NSObject, URLSessionTaskDelegate {
 		return request
 	}
 
-    // MARK: Properties - The `buildMultipartHttpBody()` method constructs the HTTP body for multipart form data requests.
+	// MARK: Properties - The `buildMultipartHttpBody()` method constructs the HTTP body for multipart form data requests.
+
 	private func buildMultipartHttpBody(params: Params, multiparts: [MultipartData], boundary: String) -> Data {
 		// Combine all multiparts together
 		let allMultiparts: [HttpBodyConvertible] = [params] + multiparts
@@ -255,7 +261,8 @@ public class NetworkingRequest: NSObject, URLSessionTaskDelegate {
 			+ boundaryEnding
 	}
 
-    // MARK: Properties - Additionally, there are helper methods and extensions to support URL encoding and parameter encoding.
+	// MARK: Properties - Additionally, there are helper methods and extensions to support URL encoding and parameter encoding.
+
 	public func urlSession(_: URLSession,
 	                       task _: URLSessionTask,
 	                       didSendBodyData _: Int64,

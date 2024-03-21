@@ -4,7 +4,6 @@ import Combine
 import Foundation
 
 public extension NetworkingClient {
-    
 	func getRequest(_ route: String, params: Params = Params()) -> NetworkingRequest {
 		request(.get, route, params: params)
 	}

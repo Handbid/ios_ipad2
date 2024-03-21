@@ -8,9 +8,7 @@ public protocol NetworkingService {
 }
 
 public extension NetworkingService {
-	// MARK: Properties - Data
-
-	// This method is designed to fetch data from the network in Data format using a publisher AnyPublisher<Data, Error>. It means you're getting a publisher that emits Data or an Error.
+	// Data
 
 	func get(_ route: String, params: Params = Params()) -> AnyPublisher<Data, Error> {
 		network.get(route, params: params)
@@ -40,9 +38,7 @@ public extension NetworkingService {
 		network.delete(route, params: params)
 	}
 
-	// MARK: Properties - Void
-
-	// This method also fetches data from the network, but in this case, it doesn't return any data (Void). However, in case of an error, it still publishes an Error.
+	// Void
 
 	func get(_ route: String, params: Params = Params()) -> AnyPublisher<Void, Error> {
 		network.get(route, params: params)
@@ -68,9 +64,7 @@ public extension NetworkingService {
 		network.delete(route, params: params)
 	}
 
-	// MARK: Properties -
-
-	// This method is quite generic as it returns data of type Any, indicating that it could be various types of data. It's useful when you're not certain about the type of data being returned. However, like the previous methods, it publishes an Error in case of failure
+	// JSON
 
 	func get(_ route: String, params: Params = Params()) -> AnyPublisher<Any, Error> {
 		network.get(route, params: params)
@@ -96,9 +90,7 @@ public extension NetworkingService {
 		network.delete(route, params: params)
 	}
 
-	// MARK: Properties - Decodable
-
-	// This method is generic and can fetch data from the network that can be decoded into a specific type T, conforming to the Decodable protocol. It publishes a publisher of type T or an Error
+	// Decodable
 
 	func get<T: Decodable>(_ route: String,
 	                       params: Params = Params(),
@@ -135,9 +127,7 @@ public extension NetworkingService {
 		network.delete(route, params: params, keypath: keypath)
 	}
 
-	// MARK: Properties - Array Decodable
-
-	// Instead of a single element of type T, it returns an array of elements of type T
+	// Array Decodable
 
 	func get<T: Decodable>(_ route: String,
 	                       params: Params = Params(),
@@ -174,9 +164,7 @@ public extension NetworkingService {
 		network.delete(route, params: params, keypath: keypath)
 	}
 
-	// MARK: Properties - NetworkingJSONDecodable
-
-	// This method requires the type T to conform to the NetworkingJSONDecodable protocol
+	// NetworkingJSONDecodable
 
 	func get<T: NetworkingJSONDecodable>(_ route: String,
 	                                     params: Params = Params(),
@@ -213,9 +201,7 @@ public extension NetworkingService {
 		network.delete(route, params: params, keypath: keypath)
 	}
 
-	// MARK: Properties - Array NetworkingJSONDecodable
-
-	// Returns an array of elements of type T
+	// Array NetworkingJSONDecodable
 
 	func get<T: NetworkingJSONDecodable>(_ route: String,
 	                                     params: Params = Params(),
@@ -253,8 +239,7 @@ public extension NetworkingService {
 	}
 }
 
-// MARK: - Properties - ASYNC
-
+// Async
 public extension NetworkingService {
 	// Data
 
