@@ -4,7 +4,7 @@ import Foundation
 
 enum AppGlobal {
 	static var appName: String {
-		#if Handbid_iPad
+		#if IS_HANDBID_IPAD
 			return "handbid"
 		#else
 			return "default"
@@ -16,7 +16,7 @@ enum AppGlobal {
 	}
 
 	static var whitelabelId: Int {
-		#if Handbid_iPad
+		#if IS_HANDBID_IPAD
 			return 1
 		#else
 			return 0

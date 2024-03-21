@@ -1,0 +1,10 @@
+//Copyright (c) 2024 by Handbid. All rights reserved.
+
+#ifndef Handbid_iPad_Prefix_pch
+#define Handbid_iPad_Prefix_pch
+
+#define SwiftHeader "Handbid_iPad-Swift.h"
+
+#define IS_HANDBID_IPAD YES
+
+#endif

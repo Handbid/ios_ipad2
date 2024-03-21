@@ -30,7 +30,9 @@
 		8C0007BC2BAC733900AAEBA0 /* NetworkingLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0007A12BAC733900AAEBA0 /* NetworkingLogger.swift */; };
 		8C0007BD2BAC733900AAEBA0 /* NetworkingLogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0007A22BAC733900AAEBA0 /* NetworkingLogLevel.swift */; };
 		8C0007BF2BAC764700AAEBA0 /* AppVersionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0007BE2BAC764700AAEBA0 /* AppVersionModel.swift */; };
-		8C0007C32BAC820500AAEBA0 /* AppGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0007C22BAC820500AAEBA0 /* AppGlobal.swift */; };
+		8C0007CC2BAC8D4400AAEBA0 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00F72BA82A9F0094FAA7 /* Debug.xcconfig */; };
+		8C0007CD2BAC8D4500AAEBA0 /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00F82BA82AAC0094FAA7 /* Release.xcconfig */; };
+		8C0007D32BAC976700AAEBA0 /* AppGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0007C22BAC820500AAEBA0 /* AppGlobal.swift */; };
 		8C1E00AE2BA823C80094FAA7 /* HandbidApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E00AD2BA823C80094FAA7 /* HandbidApp.swift */; };
 		8C1E00B22BA823C90094FAA7 /* iPadAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00B12BA823C90094FAA7 /* iPadAssets.xcassets */; };
 		8C1E00F62BA82A130094FAA7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00EF2BA82A130094FAA7 /* Localizable.strings */; };
@@ -94,6 +96,8 @@
 		8C0007A22BAC733900AAEBA0 /* NetworkingLogLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingLogLevel.swift; sourceTree = "<group>"; };
 		8C0007BE2BAC764700AAEBA0 /* AppVersionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppVersionModel.swift; sourceTree = "<group>"; };
 		8C0007C22BAC820500AAEBA0 /* AppGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGlobal.swift; sourceTree = "<group>"; };
+		8C0007D12BAC8FBD00AAEBA0 /* Handbid-iPad-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Handbid-iPad-Bridging-Header.h"; sourceTree = "<group>"; };
+		8C0007D22BAC943100AAEBA0 /* Handbid-iPad-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Handbid-iPad-Prefix.pch"; sourceTree = "<group>"; };
 		8C1E00AD2BA823C80094FAA7 /* HandbidApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandbidApp.swift; sourceTree = "<group>"; };
 		8C1E00B12BA823C90094FAA7 /* iPadAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = iPadAssets.xcassets; sourceTree = "<group>"; };
 		8C1E00F02BA82A130094FAA7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -258,6 +262,8 @@
 		8C1E00D92BA824B40094FAA7 /* Bridging-Header */ = {
 			isa = PBXGroup;
 			children = (
+				8C0007D12BAC8FBD00AAEBA0 /* Handbid-iPad-Bridging-Header.h */,
+				8C0007D22BAC943100AAEBA0 /* Handbid-iPad-Prefix.pch */,
 			);
 			path = "Bridging-Header";
 			sourceTree = "<group>";
@@ -526,8 +532,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C0007CD2BAC8D4500AAEBA0 /* Release.xcconfig in Resources */,
 				8C1E00F62BA82A130094FAA7 /* Localizable.strings in Resources */,
 				8C1E00B22BA823C90094FAA7 /* iPadAssets.xcassets in Resources */,
+				8C0007CC2BAC8D4400AAEBA0 /* Debug.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,7 +635,6 @@
 				8C0007A32BAC733900AAEBA0 /* NetworkingClient+NetworkingJSONDecodable.swift in Sources */,
 				8C8BEC622BA9A5280083D904 /* UserRegistrationModel.swift in Sources */,
 				8C0007B72BAC733900AAEBA0 /* MultipartData.swift in Sources */,
-				8C0007C32BAC820500AAEBA0 /* AppGlobal.swift in Sources */,
 				8C0007A92BAC733900AAEBA0 /* NetworkingClient+JSON.swift in Sources */,
 				8C8BEC362BA977560083D904 /* RootPageView.swift in Sources */,
 				8C8BEC302BA975F10083D904 /* LogInView.swift in Sources */,
@@ -649,6 +656,7 @@
 				8C0007A82BAC733900AAEBA0 /* NetworkingClient+Void.swift in Sources */,
 				8C0007B82BAC733900AAEBA0 /* MultipartData+HttpBodyConvertible.swift in Sources */,
 				8C1E00AE2BA823C80094FAA7 /* HandbidApp.swift in Sources */,
+				8C0007D32BAC976700AAEBA0 /* AppGlobal.swift in Sources */,
 				8C0007A62BAC733900AAEBA0 /* NetworkingClient+Multipart.swift in Sources */,
 				8C8BEC642BA9ADE20083D904 /* EnvironmentStartupView.swift in Sources */,
 				8C0007B22BAC733900AAEBA0 /* ArrowParsable.swift in Sources */,
@@ -766,12 +774,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				COPY_HEADERS_RUN_UNIFDEF = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 35JZN6VPM3;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_PREFIX_HEADER = "Handbid_iPad/Bridging-Header/Handbid-iPad-Prefix.pch";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Handbid_iPad/Resources/Handbid-iPad-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Handbid Manager";
@@ -791,6 +802,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = Release;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Handbid_iPad/Bridging-Header/Handbid-iPad-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -905,12 +917,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				COPY_HEADERS_RUN_UNIFDEF = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 35JZN6VPM3;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_PREFIX_HEADER = "Handbid_iPad/Bridging-Header/Handbid-iPad-Prefix.pch";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Handbid_iPad/Resources/Handbid-iPad-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Handbid Manager";
@@ -930,6 +945,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = Debug;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Handbid_iPad/Bridging-Header/Handbid-iPad-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
