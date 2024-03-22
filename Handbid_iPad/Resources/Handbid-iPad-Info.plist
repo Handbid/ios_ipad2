@@ -3,7 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>UIAppFonts</key>
-	<array/>
+	<array>
+		<string>Fonts/Inter.ttf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<false/>
 </dict>

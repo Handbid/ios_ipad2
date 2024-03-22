@@ -2,8 +2,8 @@
 
 import SwiftUI
 
-struct BorderButtonStyle: BaseButtonStyle {
-	static let accent = EdgesButtonStyle(backgroundColor: .white, borderColor: .accent)
+struct BorderButtonStyle: ButtonStyle {
+	static let accent = BorderButtonStyle(backgroundColor: .white, borderColor: .accent)
 
 	var backgroundColor: UIColor
 	var borderColor: UIColor
@@ -11,13 +11,18 @@ struct BorderButtonStyle: BaseButtonStyle {
 
 	func makeBody(configuration: Configuration) -> some View {
 		configuration.label
-			.padding(padding)
+			.modifier(BaseButtonSizeModifier())
 			.background(
 				RoundedRectangle(cornerRadius: cornerRadius)
 					.fill(Color(backgroundColor))
 					.stroke(Color(borderColor), lineWidth: 2.0)
 			)
-			.foregroundStyle(textColor ?? Color(borderColor))
-			.fontWeight(fontWieght)
+			.buttonLabelStyle(color: textColor ?? Color(borderColor))
+	}
+}
+
+extension Button {
+	func borderAccentStyle() -> some View {
+		buttonStyle(BorderButtonStyle.accent)
 	}
 }

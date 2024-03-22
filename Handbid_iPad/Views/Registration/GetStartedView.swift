@@ -11,15 +11,23 @@ struct GetStartedView<T: PageProtocol>: View {
 			Color.yellow.edgesIgnoringSafeArea(.all)
 			VStack {
 				Spacer()
-				Text("Get Started")
+				Text("Welcome to Handbid App")
+					.titleTextStyle()
 					.accessibilityIdentifier("GetStartedView")
 				Spacer()
-				Button("next") {
-					coordinator.push(RegistrationPage.logIn as! T)
+				HStack {
+					Button("next") {
+						coordinator.push(RegistrationPage.logIn as! T)
+					}
+					.solidAccentStyle()
+					.accessibilityIdentifier("nextButton")
+					Spacer()
+					Button("previous") {}
+						.borderAccentStyle()
 				}
-				.accessibilityIdentifier("nextButton")
 				Spacer()
 			}
+			.padding()
 		}
 	}
 }

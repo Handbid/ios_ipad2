@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-struct SolidButtonStyle: BaseButtonStyle {
+struct SolidButtonStyle: ButtonStyle {
 	static let accent = SolidButtonStyle(backgroundColor: UIColor.accent)
 	static let primary = SolidButtonStyle(backgroundColor: UIColor(named: "PrimaryButtonColor") ?? .black)
 
@@ -10,10 +10,19 @@ struct SolidButtonStyle: BaseButtonStyle {
 
 	func makeBody(configuration: Configuration) -> some View {
 		configuration.label
-			.padding(padding)
+			.modifier(BaseButtonSizeModifier())
 			.background(Color(backgroundColor))
 			.clipShape(RoundedRectangle(cornerRadius: cornerRadius))
-			.foregroundStyle(textColor)
-			.fontWeight(fontWieght)
+			.buttonLabelStyle(color: .white)
+	}
+}
+
+extension Button {
+	func solidAccentStyle() -> some View {
+		buttonStyle(SolidButtonStyle.accent)
+	}
+
+	func solidPrimaryStyle() -> some View {
+		buttonStyle(SolidButtonStyle.primary)
 	}
 }
