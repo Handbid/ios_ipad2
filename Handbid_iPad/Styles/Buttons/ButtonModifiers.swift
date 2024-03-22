@@ -12,6 +12,6 @@ struct BaseButtonSizeModifier: ViewModifier {
 	func body(content: Content) -> some View {
 		content
 			.padding()
-			.frame(maxWidth: .infinity)
+			.fullWidthStyle()
 	}
 }

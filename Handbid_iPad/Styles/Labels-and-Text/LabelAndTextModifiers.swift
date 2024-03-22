@@ -5,8 +5,8 @@ import SwiftUI
 struct BaseLabelModifier: ViewModifier {
 	var textColor: Color
 	var font: Font
-    var fontWeight: Font.Weight
-    
+	var fontWeight: Font.Weight
+
 	func body(content: Content) -> some View {
 		content
 			.font(font)
@@ -16,17 +16,18 @@ struct BaseLabelModifier: ViewModifier {
 }
 
 extension View {
-    private func baseTextStyle(
-        color: Color,
-        size: CGFloat,
-        weight: Font.Weight = Font.Weight.bold) -> some View {
-            modifier(BaseLabelModifier(
-                textColor: color,
-                font: Font.custom("Inter", size: size),
-                fontWeight: weight
-            )
-            )
-        }
+	private func baseTextStyle(
+		color: Color,
+		size: CGFloat,
+		weight: Font.Weight = Font.Weight.semibold
+	) -> some View {
+		modifier(BaseLabelModifier(
+			textColor: color,
+			font: Font.custom("Inter", size: size),
+			fontWeight: weight
+		)
+		)
+	}
 
 	func buttonLabelStyle(color: Color) -> some View {
 		baseTextStyle(color: color, size: 16.0)
@@ -41,6 +42,6 @@ extension View {
 	}
 
 	func bodyTextStyle() -> some View {
-        baseTextStyle(color: .bodyText, size: 16.0, weight: Font.Weight.regular)
+		baseTextStyle(color: .bodyText, size: 16.0, weight: Font.Weight.regular)
 	}
 }
