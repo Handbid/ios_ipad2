@@ -3,11 +3,7 @@
 import Foundation
 
 enum AppEnvironment {
-	case prod
-	case d1
-	case d2
-	case d3
-	case qa
+	case prod, d1, d2, d3, qa
 }
 
 extension AppEnvironment {
@@ -20,16 +16,11 @@ extension AppEnvironment {
 extension AppEnvironment {
 	static var baseURL: String {
 		switch AppEnvironment.currentState {
-		case .prod:
-			Environment.prod
-		case .d1:
-			Environment.d1
-		case .d2:
-			Environment.d2
-		case .d3:
-			Environment.d3
-		case .qa:
-			Environment.qa
+		case .prod: Environment.prod
+		case .d1: Environment.d1
+		case .d2: Environment.d2
+		case .d3: Environment.d3
+		case .qa: Environment.qa
 		}
 	}
 }
