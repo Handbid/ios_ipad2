@@ -16,7 +16,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 	func application(_: UIApplication, open url: URL,
 	                 options _: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool
 	{
-		if let environment = EnvironmentFactory.makeEnvironment(fromURL: url) ?? EnvironmentFactory.makeEnvironment(for: .prod) {
+		if let environment = EnvironmentManager.makeEnvironment(fromURL: url) ?? EnvironmentManager.makeEnvironment(for: .prod) {
 			EnvironmentManager.setEnvironment(environment)
 			return true
 		}

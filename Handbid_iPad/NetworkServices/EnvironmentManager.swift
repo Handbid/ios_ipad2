@@ -3,24 +3,12 @@
 import Foundation
 
 enum EnvironmentManager {
-	static func getCurrentEnvironment() -> AppEnvironmentType {
-		guard let selectedEnvironment = UserDefaults.standard.string(forKey: "selectedEnvironment"),
-		      let environmentType = AppEnvironmentType(rawValue: selectedEnvironment)
-		else {
-			return .prod
-		}
-		return environmentType
+	static func getCurrentBaseURL() -> String {
+		AppEnvironmentType.currentURLEnvironment
 	}
 
-	static func getCurrentBaseURL() -> String {
-		let currentEnvironment = getCurrentEnvironment()
-
-		switch currentEnvironment {
-		case .prod:
-			return "https://rest.handbid.com"
-		default:
-			return "https://\(currentEnvironment.rawValue)-rest.handbid.dev"
-		}
+	static func isProdActive() -> Bool {
+		AppEnvironmentType.currentState == .prod ? true : false
 	}
 
 	static func setEnvironment(_ environment: EnvironmentProtocol) {
@@ -33,7 +21,7 @@ enum EnvironmentManager {
 	}
 
 	static func setEnvironment(for environment: AppEnvironmentType) {
-		guard let environment = EnvironmentFactory.makeEnvironment(for: environment) else {
+		guard let environment = makeEnvironment(for: environment) else {
 			print("Error: Unable to create environment for the specified type.")
 			return
 		}
@@ -41,8 +29,62 @@ enum EnvironmentManager {
 	}
 
 	static func setEnvironment(fromURL url: URL) {
-		if let environment = EnvironmentFactory.makeEnvironment(fromURL: url) {
+		if let environment = makeEnvironment(fromURL: url) {
 			setEnvironment(environment)
 		}
+	}
+
+	static func makeEnvironment(for environment: AppEnvironmentType) -> EnvironmentProtocol? {
+		switch environment {
+		case .d1: AppEnvironment(baseURL: "https://d1-rest.handbid.dev", showLog: true)
+		case .d2: AppEnvironment(baseURL: "https://d2-rest.handbid.dev", showLog: true)
+		case .d3: AppEnvironment(baseURL: "https://d3-rest.handbid.dev", showLog: true)
+		case .qa: AppEnvironment(baseURL: "https://qa-rest.handbid.dev", showLog: true)
+		case .prod: AppEnvironment(baseURL: "https://rest.handbid.com", showLog: true)
+		}
+	}
+
+	static func makeEnvironment(fromURL url: URL) -> EnvironmentProtocol? {
+		guard let host = url.host else {
+			return nil
+		}
+
+		let environments: [(String, AppEnvironmentType)] = [
+			("qa-rest.handbid.dev", .qa),
+			("d1-rest.handbid.dev", .d1),
+			("d2-rest.handbid.dev", .d2),
+			("d3-rest.handbid.dev", .d3),
+			("rest.handbid.com", .prod),
+		]
+
+		for (prefix, environment) in environments {
+			if host.hasPrefix(prefix) {
+				return makeEnvironment(for: environment)
+			}
+		}
+
+		return makeEnvironment(for: .prod)
+	}
+
+	static func detectEnvironmentType(fromURL url: URL) -> AppEnvironmentType {
+		guard let host = url.host else {
+			return .prod
+		}
+
+		let environments: [(String, AppEnvironmentType)] = [
+			("qa-rest.handbid.dev", .qa),
+			("d1-rest.handbid.dev", .d1),
+			("d2-rest.handbid.dev", .d2),
+			("d3-rest.handbid.dev", .d3),
+			("rest.handbid.com", .prod),
+		]
+
+		for (prefix, environment) in environments {
+			if host.hasPrefix(prefix) {
+				return environment
+			}
+		}
+
+		return .prod
 	}
 }

@@ -16,16 +16,21 @@ struct GetStartedView<T: PageProtocol>: View {
 					.accessibilityIdentifier("GetStartedView")
 				Spacer()
 				Button("next") {
-					// EnvironmentManager.setEnvironment(for: .d1)
-					if EnvironmentFactory.isProdActive() {
+					coordinator.push(RegistrationPage.logIn as! T)
+				}
+				.accessibilityIdentifier("nextButton")
+				Spacer()
+				Button("env") {
+					if EnvironmentManager.isProdActive() {
+						EnvironmentManager.setEnvironment(for: .d1)
 						viewmodel.fetchAppVersion()
 					}
 					else {
-						EnvironmentManager.setEnvironment(for: .d1)
+						EnvironmentManager.setEnvironment(for: .prod)
+						viewmodel.fetchAppVersion()
 					}
-					// coordinator.push(RegistrationPage.logIn as! T)
 				}
-				.accessibilityIdentifier("nextButton")
+				.accessibilityIdentifier("env")
 				Spacer()
 			}
 		}
