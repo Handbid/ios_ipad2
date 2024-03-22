@@ -21,7 +21,7 @@ public class NetworkingClient {
 	private let logger = NetworkingLogger()
 
 	public init(timeout: TimeInterval? = nil) {
-		self.baseURL = AppEnvironment.baseURL
+		self.baseURL = EnvironmentManager.getCurrentBaseURL()
 		self.timeout = timeout
 	}
 

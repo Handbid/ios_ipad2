@@ -37,6 +37,7 @@
 		8C1E00B22BA823C90094FAA7 /* iPadAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00B12BA823C90094FAA7 /* iPadAssets.xcassets */; };
 		8C1E00F62BA82A130094FAA7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00EF2BA82A130094FAA7 /* Localizable.strings */; };
 		8C1E01012BA85E630094FAA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E01002BA85E630094FAA7 /* AppDelegate.swift */; };
+		8C69D30C2BAD63A000C52C11 /* EnvironmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C69D30B2BAD63A000C52C11 /* EnvironmentManager.swift */; };
 		8C8BEC2E2BA975DE0083D904 /* GetStartedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC2D2BA975DE0083D904 /* GetStartedView.swift */; };
 		8C8BEC302BA975F10083D904 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC2F2BA975F10083D904 /* LogInView.swift */; };
 		8C8BEC322BA976030083D904 /* GetStartedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC312BA976030083D904 /* GetStartedViewModel.swift */; };
@@ -109,6 +110,7 @@
 		8C1E00F82BA82AAC0094FAA7 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		8C1E01002BA85E630094FAA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8C1E01022BA85EB10094FAA7 /* Handbid-iPad-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Handbid-iPad-Info.plist"; path = "Handbid_iPad/Resources/Handbid-iPad-Info.plist"; sourceTree = SOURCE_ROOT; };
+		8C69D30B2BAD63A000C52C11 /* EnvironmentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentManager.swift; sourceTree = "<group>"; };
 		8C8BEC2D2BA975DE0083D904 /* GetStartedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedView.swift; sourceTree = "<group>"; };
 		8C8BEC2F2BA975F10083D904 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		8C8BEC312BA976030083D904 /* GetStartedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewModel.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				8C00079F2BAC733900AAEBA0 /* AppEnvironment.swift */,
 				8C0007952BAC733900AAEBA0 /* ArrowParsable.swift */,
 				8C0007962BAC733900AAEBA0 /* Environment.swift */,
+				8C69D30B2BAD63A000C52C11 /* EnvironmentManager.swift */,
 				8C0007942BAC733900AAEBA0 /* HTTPMethod.swift */,
 				8C00079E2BAC733900AAEBA0 /* NetworkingClient.swift */,
 				8C00078F2BAC733900AAEBA0 /* NetworkingError.swift */,
@@ -643,6 +646,7 @@
 				8C0007BD2BAC733900AAEBA0 /* NetworkingLogLevel.swift in Sources */,
 				8C8BEC662BA9B7DD0083D904 /* PageProtocol.swift in Sources */,
 				8C8BEC3A2BA977F00083D904 /* Coordinator.swift in Sources */,
+				8C69D30C2BAD63A000C52C11 /* EnvironmentManager.swift in Sources */,
 				8C0007BA2BAC733900AAEBA0 /* NetworkingClient.swift in Sources */,
 				8C1E01012BA85E630094FAA7 /* AppDelegate.swift in Sources */,
 				8C0007AD2BAC733900AAEBA0 /* NetworkingError.swift in Sources */,

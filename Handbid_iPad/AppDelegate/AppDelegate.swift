@@ -13,10 +13,14 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 		true
 	}
 
-	func application(_: UIApplication, open _: URL,
+	func application(_: UIApplication, open url: URL,
 	                 options _: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool
 	{
-		false
+		if let environment = EnvironmentFactory.makeEnvironment(fromURL: url) ?? EnvironmentFactory.makeEnvironment(for: .prod) {
+			EnvironmentManager.setEnvironment(environment)
+			return true
+		}
+		return false
 	}
 
 	func applicationDidEnterBackground(_: UIApplication) {}
