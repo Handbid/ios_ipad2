@@ -2,6 +2,7 @@
 
 import Arrow
 import Foundation
+import NetworkService
 
 public extension ArrowParsable where Self: NetworkingJSONDecodable {
 	static func decode(_ json: Any) throws -> Self {

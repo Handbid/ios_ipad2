@@ -17,11 +17,19 @@ platform :ios, '17.0'
     available_pods
 end
 
+
+target 'Handbid_iPadUITests' do
+    platform :ios, '17.0'
+    available_pods
+end
+
+
 post_install do |pi|
     pi.pods_project.targets.each do |t|
         t.build_configurations.each do |config|
             config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '17.0'
             config.build_settings['ONLY_ACTIVE_ARCH'] = 'NO'
+            config.build_settings['ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES'] = '$(inherited)'
         end
     end
 end

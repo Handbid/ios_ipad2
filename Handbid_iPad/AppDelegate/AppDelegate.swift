@@ -1,6 +1,7 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
 import Foundation
+import NetworkService
 import SwiftUI
 import UIKit
 

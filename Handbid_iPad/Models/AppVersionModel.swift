@@ -3,6 +3,7 @@
 import Arrow
 import Combine
 import Foundation
+import NetworkService
 
 struct AppVersionModel: Decodable {
 	var demoModeEnabled: Int?
