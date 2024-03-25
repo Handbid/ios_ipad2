@@ -1,7 +1,7 @@
 {
   "configurations" : [
     {
-      "id" : "D84314FB-CDF3-475A-9892-AA48FBCD1991",
+      "id" : "0CB123EE-0B1C-4793-990E-034A77A419C5",
       "name" : "Configuration 1",
       "options" : {
 
@@ -13,18 +13,18 @@
   },
   "testTargets" : [
     {
-      "target" : {
-        "containerPath" : "container:Handbid_iPad.xcodeproj",
-        "identifier" : "8C1E00C32BA823C90094FAA7",
-        "name" : "Handbid_iPadUITests"
-      }
-    },
-    {
       "enabled" : false,
       "target" : {
         "containerPath" : "container:Handbid_iPad.xcodeproj",
         "identifier" : "8C1E00B92BA823C90094FAA7",
         "name" : "Handbid_iPadTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Handbid_iPad.xcodeproj",
+        "identifier" : "8C1E00C32BA823C90094FAA7",
+        "name" : "Handbid_iPadUITests"
       }
     }
   ],
