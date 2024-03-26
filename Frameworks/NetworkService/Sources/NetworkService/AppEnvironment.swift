@@ -2,21 +2,21 @@
 
 import Foundation
 
-protocol EnvironmentProtocol {
+public protocol EnvironmentProtocol {
 	var baseURL: String { get }
 	var showLog: Bool { get }
 }
 
-struct AppEnvironment: EnvironmentProtocol {
-	let baseURL: String
-	let showLog: Bool
+public struct AppEnvironment: EnvironmentProtocol {
+	public let baseURL: String
+	public let showLog: Bool
 }
 
-enum AppEnvironmentType: String {
+public enum AppEnvironmentType: String {
 	case prod, d1, d2, d3, qa
 }
 
-extension AppEnvironmentType {
+public extension AppEnvironmentType {
 	static var currentState: AppEnvironmentType {
 		guard let selectedEnvironment = UserDefaults.standard.string(forKey: "selectedEnvironment"), !selectedEnvironment.isEmpty else { return .prod }
 		guard let environmentUrl = URL(string: selectedEnvironment) else { return .prod }

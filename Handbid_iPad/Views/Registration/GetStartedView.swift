@@ -1,6 +1,7 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
 import Combine
+import NetworkService
 import SwiftUI
 
 struct GetStartedView<T: PageProtocol>: View {

@@ -29,7 +29,7 @@ post_install do |pi|
         t.build_configurations.each do |config|
             config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '17.0'
             config.build_settings['ONLY_ACTIVE_ARCH'] = 'NO'
-            config.build_settings['ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES'] = '$(inherited)'
+            config.build_settings['ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES'] = 'NO'
         end
     end
 end

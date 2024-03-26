@@ -1,7 +1,7 @@
 {
   "configurations" : [
     {
-      "id" : "0CB123EE-0B1C-4793-990E-034A77A419C5",
+      "id" : "6366F512-3164-478C-8FAD-439CFA0287A2",
       "name" : "Configuration 1",
       "options" : {
 
@@ -12,14 +12,6 @@
     "testTimeoutsEnabled" : true
   },
   "testTargets" : [
-    {
-      "enabled" : false,
-      "target" : {
-        "containerPath" : "container:Handbid_iPad.xcodeproj",
-        "identifier" : "8C1E00B92BA823C90094FAA7",
-        "name" : "Handbid_iPadTests"
-      }
-    },
     {
       "target" : {
         "containerPath" : "container:Handbid_iPad.xcodeproj",

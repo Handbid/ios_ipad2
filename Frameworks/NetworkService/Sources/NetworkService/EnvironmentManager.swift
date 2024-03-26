@@ -2,16 +2,16 @@
 
 import Foundation
 
-enum EnvironmentManager {
-	static func getCurrentBaseURL() -> String {
+public enum EnvironmentManager {
+	public static func getCurrentBaseURL() -> String {
 		AppEnvironmentType.currentURLEnvironment
 	}
 
-	static func isProdActive() -> Bool {
+	public static func isProdActive() -> Bool {
 		AppEnvironmentType.currentState == .prod ? true : false
 	}
 
-	static func setEnvironment(_ environment: EnvironmentProtocol) {
+	public static func setEnvironment(_ environment: EnvironmentProtocol) {
 		let defaults = UserDefaults.standard
 		defaults.set(environment.baseURL, forKey: "selectedEnvironment")
 
@@ -20,7 +20,7 @@ enum EnvironmentManager {
 		}
 	}
 
-	static func setEnvironment(for environment: AppEnvironmentType) {
+	public static func setEnvironment(for environment: AppEnvironmentType) {
 		guard let environment = makeEnvironment(for: environment) else {
 			print("Error: Unable to create environment for the specified type.")
 			return
@@ -28,13 +28,13 @@ enum EnvironmentManager {
 		setEnvironment(environment)
 	}
 
-	static func setEnvironment(fromURL url: URL) {
+	public static func setEnvironment(fromURL url: URL) {
 		if let environment = makeEnvironment(fromURL: url) {
 			setEnvironment(environment)
 		}
 	}
 
-	static func makeEnvironment(for environment: AppEnvironmentType) -> EnvironmentProtocol? {
+	public static func makeEnvironment(for environment: AppEnvironmentType) -> EnvironmentProtocol? {
 		switch environment {
 		case .d1: AppEnvironment(baseURL: "https://d1-rest.handbid.dev", showLog: true)
 		case .d2: AppEnvironment(baseURL: "https://d2-rest.handbid.dev", showLog: true)
@@ -44,7 +44,7 @@ enum EnvironmentManager {
 		}
 	}
 
-	static func makeEnvironment(fromURL url: URL) -> EnvironmentProtocol? {
+	public static func makeEnvironment(fromURL url: URL) -> EnvironmentProtocol? {
 		guard let host = url.host else {
 			return nil
 		}
@@ -66,7 +66,7 @@ enum EnvironmentManager {
 		return makeEnvironment(for: .prod)
 	}
 
-	static func detectEnvironmentType(fromURL url: URL) -> AppEnvironmentType {
+	public static func detectEnvironmentType(fromURL url: URL) -> AppEnvironmentType {
 		guard let host = url.host else {
 			return .prod
 		}
