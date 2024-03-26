@@ -1,6 +1,7 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
 import Foundation
+import NetworkService
 import SwiftUI
 import UIKit
 
@@ -13,10 +14,14 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 		true
 	}
 
-	func application(_: UIApplication, open _: URL,
+	func application(_: UIApplication, open url: URL,
 	                 options _: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool
 	{
-		false
+		if let environment = EnvironmentManager.makeEnvironment(fromURL: url) ?? EnvironmentManager.makeEnvironment(for: .prod) {
+			EnvironmentManager.setEnvironment(environment)
+			return true
+		}
+		return false
 	}
 
 	func applicationDidEnterBackground(_: UIApplication) {}
