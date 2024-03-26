@@ -17,8 +17,6 @@
 		8C1E00B22BA823C90094FAA7 /* iPadAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00B12BA823C90094FAA7 /* iPadAssets.xcassets */; };
 		8C1E00F62BA82A130094FAA7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00EF2BA82A130094FAA7 /* Localizable.strings */; };
 		8C1E01012BA85E630094FAA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E01002BA85E630094FAA7 /* AppDelegate.swift */; };
-		8C69D3192BB2476900C52C11 /* NetworkService in Frameworks */ = {isa = PBXBuildFile; productRef = 8C69D3182BB2476900C52C11 /* NetworkService */; };
-		8C69D3232BB24A8300C52C11 /* NetworkService in Frameworks */ = {isa = PBXBuildFile; productRef = 8C69D3222BB24A8300C52C11 /* NetworkService */; };
 		8C8BEC2E2BA975DE0083D904 /* GetStartedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC2D2BA975DE0083D904 /* GetStartedView.swift */; };
 		8C8BEC302BA975F10083D904 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC2F2BA975F10083D904 /* LogInView.swift */; };
 		8C8BEC322BA976030083D904 /* GetStartedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC312BA976030083D904 /* GetStartedViewModel.swift */; };
@@ -30,6 +28,7 @@
 		8C8BEC642BA9ADE20083D904 /* EnvironmentStartupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC632BA9ADE20083D904 /* EnvironmentStartupView.swift */; };
 		8C8BEC662BA9B7DD0083D904 /* PageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC652BA9B7DD0083D904 /* PageProtocol.swift */; };
 		8CB8C6AC2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB8C6AB2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift */; };
+		8CEA290B2BB3517E005E3B33 /* NetworkService in Frameworks */ = {isa = PBXBuildFile; productRef = 8CEA290A2BB3517E005E3B33 /* NetworkService */; };
 		F1C4C0114974E047E10DC33B /* libPods-Handbid_iPad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1373BB04AFC12BD937203837 /* libPods-Handbid_iPad.a */; };
 /* End PBXBuildFile section */
 
@@ -71,8 +70,6 @@
 		8C1E00F82BA82AAC0094FAA7 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		8C1E01002BA85E630094FAA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8C1E01022BA85EB10094FAA7 /* Handbid-iPad-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Handbid-iPad-Info.plist"; path = "Handbid_iPad/Resources/Handbid-iPad-Info.plist"; sourceTree = SOURCE_ROOT; };
-		8C69D32A2BB24BE400C52C11 /* Handbid_iPadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Handbid_iPadTests.xctest; path = "/Users/kuba/Desktop/ios_ipad2/build/Debug-iphoneos/Handbid_iPadTests.xctest"; sourceTree = "<absolute>"; };
-		8C69D32B2BB24BE400C52C11 /* Handbid_iPadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Handbid_iPadUITests.xctest; path = "/Users/kuba/Desktop/ios_ipad2/build/Debug-iphoneos/Handbid_iPadUITests.xctest"; sourceTree = "<absolute>"; };
 		8C8BEC2D2BA975DE0083D904 /* GetStartedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedView.swift; sourceTree = "<group>"; };
 		8C8BEC2F2BA975F10083D904 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		8C8BEC312BA976030083D904 /* GetStartedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewModel.swift; sourceTree = "<group>"; };
@@ -84,6 +81,8 @@
 		8C8BEC632BA9ADE20083D904 /* EnvironmentStartupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentStartupView.swift; sourceTree = "<group>"; };
 		8C8BEC652BA9B7DD0083D904 /* PageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageProtocol.swift; sourceTree = "<group>"; };
 		8CB8C6AB2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinatorTest.swift; sourceTree = "<group>"; };
+		8CEA29072BB345F8005E3B33 /* Handbid_iPadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CEA29082BB345F8005E3B33 /* Handbid_iPadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CFCCFB92BA8B3C600CF6C33 /* Handbid_iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Handbid_iPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		922ADA74198046C523640E79 /* Pods-Handbid_iPad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPad.debug.xcconfig"; path = "Target Support Files/Pods-Handbid_iPad/Pods-Handbid_iPad.debug.xcconfig"; sourceTree = "<group>"; };
 		9F65848BAB2EAE1075D4E6BC /* libPods-Handbid_iPadUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Handbid_iPadUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,8 +93,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C69D3192BB2476900C52C11 /* NetworkService in Frameworks */,
 				F1C4C0114974E047E10DC33B /* libPods-Handbid_iPad.a in Frameworks */,
+				8CEA290B2BB3517E005E3B33 /* NetworkService in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,7 +102,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C69D3232BB24A8300C52C11 /* NetworkService in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +135,8 @@
 				8C1E00EE2BA82A130094FAA7 /* Localization */,
 				B64BA6889C440647A69DCC9C /* Pods */,
 				2A56D18883324BEFE877AE50 /* Frameworks */,
+				8CEA29072BB345F8005E3B33 /* Handbid_iPadTests.xctest */,
+				8CEA29082BB345F8005E3B33 /* Handbid_iPadUITests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -349,7 +349,7 @@
 			);
 			name = Handbid_iPad;
 			packageProductDependencies = (
-				8C69D3182BB2476900C52C11 /* NetworkService */,
+				8CEA290A2BB3517E005E3B33 /* NetworkService */,
 			);
 			productName = Handbid_iPad;
 			productReference = 8CFCCFB92BA8B3C600CF6C33 /* Handbid_iPad.app */;
@@ -370,10 +370,9 @@
 			);
 			name = Handbid_iPadTests;
 			packageProductDependencies = (
-				8C69D3222BB24A8300C52C11 /* NetworkService */,
 			);
 			productName = Handbid_iPadTests;
-			productReference = 8C69D32A2BB24BE400C52C11 /* Handbid_iPadTests.xctest */;
+			productReference = 8CEA29072BB345F8005E3B33 /* Handbid_iPadTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		8C1E00C32BA823C90094FAA7 /* Handbid_iPadUITests */ = {
@@ -392,7 +391,7 @@
 			);
 			name = Handbid_iPadUITests;
 			productName = Handbid_iPadUITests;
-			productReference = 8C69D32B2BB24BE400C52C11 /* Handbid_iPadUITests.xctest */;
+			productReference = 8CEA29082BB345F8005E3B33 /* Handbid_iPadUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -435,7 +434,7 @@
 			);
 			mainGroup = 8C1E00A12BA823C80094FAA7;
 			packageReferences = (
-				8C69D31E2BB2495100C52C11 /* XCLocalSwiftPackageReference "NetworkService" */,
+				8CEA29092BB3517E005E3B33 /* XCLocalSwiftPackageReference "Frameworks/NetworkService" */,
 			);
 			productRefGroup = 8C1E00A12BA823C80094FAA7;
 			projectDirPath = "";
@@ -987,20 +986,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		8C69D31E2BB2495100C52C11 /* XCLocalSwiftPackageReference "NetworkService" */ = {
+		8CEA29092BB3517E005E3B33 /* XCLocalSwiftPackageReference "Frameworks/NetworkService" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Frameworks/NetworkService;
 		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8C69D3182BB2476900C52C11 /* NetworkService */ = {
+		8CEA290A2BB3517E005E3B33 /* NetworkService */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = NetworkService;
-		};
-		8C69D3222BB24A8300C52C11 /* NetworkService */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8C69D31E2BB2495100C52C11 /* XCLocalSwiftPackageReference "NetworkService" */;
 			productName = NetworkService;
 		};
 /* End XCSwiftPackageProductDependency section */

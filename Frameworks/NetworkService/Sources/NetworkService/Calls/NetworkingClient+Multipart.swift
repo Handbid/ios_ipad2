@@ -3,7 +3,7 @@
 import Combine
 import Foundation
 
-public extension NetworkingClient {
+extension NetworkingClient {
 	func post(_ route: String,
 	          params: Params = Params(),
 	          multipartData: MultipartData) -> AnyPublisher<(Data?, Progress), Error>

@@ -8,7 +8,7 @@ public protocol NetworkingJSONDecodable {
 	static func decode(_ json: Any) throws -> Self
 }
 
-public extension NetworkingClient {
+extension NetworkingClient {
 	func get<T: NetworkingJSONDecodable>(_ route: String,
 	                                     params: Params = Params(),
 	                                     keypath: String? = nil) -> AnyPublisher<T, Error>

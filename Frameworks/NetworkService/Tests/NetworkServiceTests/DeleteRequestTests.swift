@@ -7,7 +7,7 @@ import XCTest
 @testable
 import NetworkService
 
-class DeletehRequestTests: XCTestCase {
+class DeleteRequestTests: XCTestCase {
 	private let network = NetworkingClient(baseURL: "https://mocked.com")
 	private var cancellables = Set<AnyCancellable>()
 

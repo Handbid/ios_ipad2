@@ -3,7 +3,7 @@
 import Combine
 import Foundation
 
-public extension NetworkingClient {
+extension NetworkingClient {
 	func get<T: Decodable>(_ route: String,
 	                       params: Params = Params(),
 	                       keypath: String? = nil) -> AnyPublisher<T, Error>
@@ -135,7 +135,7 @@ public extension NetworkingClient {
 	}
 }
 
-public extension NetworkingClient {
+extension NetworkingClient {
 	func get<T: Decodable>(_ route: String,
 	                       params: Params = Params(),
 	                       keypath: String? = nil) async throws -> T

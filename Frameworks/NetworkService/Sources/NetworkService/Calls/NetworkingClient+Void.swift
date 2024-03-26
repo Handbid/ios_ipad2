@@ -3,7 +3,7 @@
 import Combine
 import Foundation
 
-public extension NetworkingClient {
+extension NetworkingClient {
 	func get(_ route: String, params: Params = Params()) -> AnyPublisher<Void, Error> {
 		get(route, params: params)
 			.map { (_: Data) in () }
@@ -47,7 +47,7 @@ public extension NetworkingClient {
 	}
 }
 
-public extension NetworkingClient {
+extension NetworkingClient {
 	func get(_ route: String, params: Params = Params()) async throws {
 		let req = request(.get, route, params: params)
 		_ = try await req.execute()

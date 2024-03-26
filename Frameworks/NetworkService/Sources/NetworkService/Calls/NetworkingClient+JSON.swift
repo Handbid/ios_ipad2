@@ -3,7 +3,7 @@
 import Combine
 import Foundation
 
-public extension NetworkingClient {
+extension NetworkingClient {
 	func get(_ route: String, params: Params = Params()) -> AnyPublisher<Any, Error> {
 		get(route, params: params).toJSON()
 	}
@@ -33,7 +33,7 @@ public extension NetworkingClient {
 	}
 }
 
-public extension NetworkingClient {
+extension NetworkingClient {
 	func get(_ route: String, params: Params = Params()) async throws -> Any {
 		let req = request(.get, route, params: params)
 		let data = try await req.execute()
@@ -78,7 +78,7 @@ public extension NetworkingClient {
 }
 
 // Data to JSON
-public extension Publisher where Output == Data {
+extension Publisher where Output == Data {
 	func toJSON() -> AnyPublisher<Any, Error> {
 		tryMap { data -> Any in
 			try JSONSerialization.jsonObject(with: data, options: [])

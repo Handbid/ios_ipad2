@@ -3,7 +3,7 @@
 import Combine
 import Foundation
 
-public extension NetworkingClient {
+extension NetworkingClient {
 	func getRequest(_ route: String, params: Params = Params()) -> NetworkingRequest {
 		request(.get, route, params: params)
 	}
@@ -24,9 +24,9 @@ public extension NetworkingClient {
 		request(.delete, route, params: params)
 	}
 
-	internal func request(_ httpMethod: HTTPMethod,
-	                      _ route: String,
-	                      params: Params = Params()) -> NetworkingRequest
+	func request(_ httpMethod: HTTPMethod,
+	             _ route: String,
+	             params: Params = Params()) -> NetworkingRequest
 	{
 		let req = NetworkingRequest()
 		req.httpMethod = httpMethod
@@ -53,10 +53,10 @@ public extension NetworkingClient {
 		return req
 	}
 
-	internal func request(_ httpMethod: HTTPMethod,
-	                      _ route: String,
-	                      params _: Params = Params(),
-	                      encodableBody: Encodable? = nil) -> NetworkingRequest
+	func request(_ httpMethod: HTTPMethod,
+	             _ route: String,
+	             params _: Params = Params(),
+	             encodableBody: Encodable? = nil) -> NetworkingRequest
 	{
 		let req = NetworkingRequest()
 		req.httpMethod = httpMethod
