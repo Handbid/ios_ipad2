@@ -23,6 +23,22 @@ enum AppInfoProvider {
 		#endif
 	}
 
+	static var authClientSecret: String {
+		#if HANDBID_IPAD
+			return "secret_0bde28331a40673eaa324375"
+		#else
+			return ""
+		#endif
+	}
+
+	static var captchaKey: String {
+		#if HANDBID_IPAD
+			return "6LfXqsQhAAAAADkjuhu0IunPxNJpyJWXH38-9ylq"
+		#else
+			return ""
+		#endif
+	}
+
 	static var bundleIdentifier: String {
 		Bundle.main.bundleIdentifier ?? ""
 	}
