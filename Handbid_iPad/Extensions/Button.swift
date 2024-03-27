@@ -2,19 +2,24 @@
 
 import SwiftUI
 
-extension Button {
+extension View {
 	/// Apply button style with solid background and AccentColor
-	func solidAccentStyle() -> some View {
+	func solidAccentButtonStyle() -> some View {
 		buttonStyle(SolidButtonStyle.accent)
 	}
 
 	/// Apply button style with solid backgroun and PrimaryButtonColor
-	func solidPrimaryStyle() -> some View {
+	func solidPrimaryButtonStyle() -> some View {
 		buttonStyle(SolidButtonStyle.primary)
 	}
 
 	/// Apply button style with bordered background and AccentColor
-	func borderAccentStyle() -> some View {
+	func borderAccentButtonStyle() -> some View {
 		buttonStyle(BorderButtonStyle.accent)
+	}
+
+	/// Apply button style without background and text in AccentColor
+	func noBackgroundAccentButtonStyle() -> some View {
+		buttonStyle(NoBackgroundButtonStyle.accent)
 	}
 }

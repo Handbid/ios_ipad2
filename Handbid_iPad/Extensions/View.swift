@@ -10,6 +10,10 @@ extension View {
 		)
 	}
 
+	func textFieldLabelStyle() -> some View {
+		baseTextStyle(color: .hbGray, size: 13.0)
+	}
+
 	/// Apply BaseLabelModifier with params to View
 	private func baseTextStyle(
 		color: Color,
@@ -27,8 +31,8 @@ extension View {
 	}
 
 	/// Style designed for use in Button labels
-	func buttonLabelStyle(color: Color) -> some View {
-		baseTextStyle(color: color, size: 16.0, toUppercase: true)
+	func buttonLabelStyle(color: Color, uppercase: Bool = true) -> some View {
+		baseTextStyle(color: color, size: 16.0, toUppercase: uppercase)
 	}
 
 	/// Style designed for title sections in screens, similar to system .title style

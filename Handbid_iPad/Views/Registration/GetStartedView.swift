@@ -32,16 +32,16 @@ struct GetStartedView<T: PageProtocol>: View {
 			Button(LocalizedStringKey("login")) {
 				coordinator.push(RegistrationPage.logIn as! T)
 			}
-			.solidAccentStyle()
+			.solidAccentButtonStyle()
 			.accessibilityIdentifier("LoginButton")
 
 			Button(LocalizedStringKey("demoVersion")) {}
-				.solidPrimaryStyle()
+				.solidPrimaryButtonStyle()
 				.disabled(true)
 				.accessibilityIdentifier("DemoButton")
 
 			Button(LocalizedStringKey("btnAboutHandbid")) {}
-				.borderAccentStyle()
+				.borderAccentButtonStyle()
 				.accessibilityIdentifier("AboutHandbidButton")
 		}
 	}

@@ -5,6 +5,8 @@ import NetworkService
 
 class LogInViewModel: ObservableObject {
 	private var cancellables = Set<AnyCancellable>()
+	var login: String = ""
+	var password: String = ""
 
 	func fetchAppVersion() {
 		AppVersionModel().fetchAppVersion()
