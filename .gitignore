@@ -56,7 +56,7 @@ playground.xcworkspace
 Pods/
 Pods*
 Pods
- Podfile.lock
+Podfile.lock
  *.xcworkspace
  *.xcuserstate
 
@@ -110,3 +110,7 @@ xcuserdata
 # Code Injection
 # After new code Injection tools there's a generated folder /iOSInjectionProject
 # https://github.com/johnno1962/injectionforxcode
+
+.DS_Store
+*/.DS_Store
+
