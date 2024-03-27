@@ -81,7 +81,6 @@ extension AuthModel: NetworkingService, NetworkingJSONDecodable {
 
 		return post("/auth/login", params: params)
 			.tryMap { try Self.decode($0) }
-			.map { $0 }
 			.eraseToAnyPublisher()
 	}
 }
