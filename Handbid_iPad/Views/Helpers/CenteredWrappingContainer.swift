@@ -3,14 +3,14 @@
 import SwiftUI
 
 struct CenteredWrappingContainer<Content: View>: View {
-	var content: () -> Content
+	var content: (CGSize) -> Content
 	var portraitWidthFraction: CGFloat
 	var landscapeWidthFraction: CGFloat
 	@State private var frameWidthFraction: CGFloat
 
 	init(portraitWidthFraction: CGFloat = 0.7,
 	     landscapeWidthFraction: CGFloat = 0.5,
-	     @ViewBuilder content: @escaping () -> Content)
+	     @ViewBuilder content: @escaping (CGSize) -> Content)
 	{
 		self.content = content
 		self.portraitWidthFraction = portraitWidthFraction
@@ -28,8 +28,9 @@ struct CenteredWrappingContainer<Content: View>: View {
 
 				Spacer(minLength: horizontalMargin)
 				VStack(alignment: .center) {
+					let size = CGSize(width: frameWidthFraction * width, height: height)
 					Spacer(minLength: height * 0.1)
-					content()
+					content(size)
 						.frame(minWidth: width * frameWidthFraction, alignment: .center)
 						.background(.white)
 						.clipShape(RoundedRectangle(cornerRadius: 40))
@@ -37,6 +38,7 @@ struct CenteredWrappingContainer<Content: View>: View {
 				}
 				Spacer(minLength: horizontalMargin)
 			}
+
 		}.onReceive(NotificationCenter.Publisher(center: .default,
 		                                         name: UIDevice.orientationDidChangeNotification))
 		{ _ in

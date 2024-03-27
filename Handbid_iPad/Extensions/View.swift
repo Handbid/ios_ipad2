@@ -14,19 +14,21 @@ extension View {
 	private func baseTextStyle(
 		color: Color,
 		size: CGFloat,
-		weight: Font.Weight = Font.Weight.semibold
+		weight: Font.Weight = Font.Weight.semibold,
+		toUppercase: Bool = false
 	) -> some View {
 		modifier(BaseLabelModifier(
 			textColor: color,
 			font: Font.custom("Inter", size: size),
-			fontWeight: weight
+			fontWeight: weight,
+			toUppercase: toUppercase
 		)
 		)
 	}
 
 	/// Style designed for use in Button labels
 	func buttonLabelStyle(color: Color) -> some View {
-		baseTextStyle(color: color, size: 16.0)
+		baseTextStyle(color: color, size: 16.0, toUppercase: true)
 	}
 
 	/// Style designed for title sections in screens, similar to system .title style
