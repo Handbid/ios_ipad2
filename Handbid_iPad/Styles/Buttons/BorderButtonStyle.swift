@@ -20,9 +20,3 @@ struct BorderButtonStyle: ButtonStyle {
 			.buttonLabelStyle(color: textColor ?? Color(borderColor))
 	}
 }
-
-extension Button {
-	func borderAccentStyle() -> some View {
-		buttonStyle(BorderButtonStyle.accent)
-	}
-}

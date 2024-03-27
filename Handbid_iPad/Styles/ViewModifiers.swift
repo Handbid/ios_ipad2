@@ -7,9 +7,3 @@ struct FullWidthModifier: ViewModifier {
 		content.frame(maxWidth: .infinity)
 	}
 }
-
-extension View {
-	func fullWidthStyle() -> some View {
-		modifier(FullWidthModifier())
-	}
-}

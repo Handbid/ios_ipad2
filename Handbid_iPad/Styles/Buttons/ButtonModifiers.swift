@@ -2,12 +2,6 @@
 
 import SwiftUI
 
-extension ButtonStyle {
-	var cornerRadius: CGFloat {
-		40.0
-	}
-}
-
 struct BaseButtonSizeModifier: ViewModifier {
 	func body(content: Content) -> some View {
 		content

@@ -4,18 +4,12 @@ import SwiftUI
 
 struct CenteredWrappingContainer<Content: View>: View {
 	var content: () -> Content
-	var portraitWidthFraction: CGFloat = 0.7
-	var landscapeWidthFraction: CGFloat = 0.5
+	var portraitWidthFraction: CGFloat
+	var landscapeWidthFraction: CGFloat
 	@State private var frameWidthFraction: CGFloat
 
-	init(@ViewBuilder content: @escaping () -> Content) {
-		self.content = content
-		self.frameWidthFraction = UIDevice.current.orientation.isPortrait ? portraitWidthFraction :
-			landscapeWidthFraction
-	}
-
-	init(portraitWidthFraction: CGFloat,
-	     landscapeWidthFraction: CGFloat,
+	init(portraitWidthFraction: CGFloat = 0.7,
+	     landscapeWidthFraction: CGFloat = 0.5,
 	     @ViewBuilder content: @escaping () -> Content)
 	{
 		self.content = content
@@ -30,16 +24,18 @@ struct CenteredWrappingContainer<Content: View>: View {
 			let width = geometry.size.width
 			let height = geometry.size.height
 			HStack {
-				Spacer(minLength: width * (1 - frameWidthFraction) * 0.5)
+				let horizontalMargin = width * (1 - frameWidthFraction) * 0.5
+
+				Spacer(minLength: horizontalMargin)
 				VStack(alignment: .center) {
 					Spacer(minLength: height * 0.1)
 					content()
-						.frame(minWidth: width * 0.33, alignment: .center)
+						.frame(minWidth: width * frameWidthFraction, alignment: .center)
 						.background(.white)
 						.clipShape(RoundedRectangle(cornerRadius: 40))
 					Spacer(minLength: height * 0.1)
 				}
-				Spacer(minLength: width * (1 - frameWidthFraction) * 0.5)
+				Spacer(minLength: horizontalMargin)
 			}
 		}.onReceive(NotificationCenter.Publisher(center: .default,
 		                                         name: UIDevice.orientationDidChangeNotification))

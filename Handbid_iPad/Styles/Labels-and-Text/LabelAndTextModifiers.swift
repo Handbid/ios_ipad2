@@ -14,34 +14,3 @@ struct BaseLabelModifier: ViewModifier {
 			.foregroundStyle(textColor)
 	}
 }
-
-extension View {
-	private func baseTextStyle(
-		color: Color,
-		size: CGFloat,
-		weight: Font.Weight = Font.Weight.semibold
-	) -> some View {
-		modifier(BaseLabelModifier(
-			textColor: color,
-			font: Font.custom("Inter", size: size),
-			fontWeight: weight
-		)
-		)
-	}
-
-	func buttonLabelStyle(color: Color) -> some View {
-		baseTextStyle(color: color, size: 16.0)
-	}
-
-	func titleTextStyle() -> some View {
-		baseTextStyle(color: .headerText, size: 40.0)
-	}
-
-	func subTitleTextStyle() -> some View {
-		baseTextStyle(color: .headerText, size: 32.0)
-	}
-
-	func bodyTextStyle() -> some View {
-		baseTextStyle(color: .bodyText, size: 16.0, weight: Font.Weight.regular)
-	}
-}

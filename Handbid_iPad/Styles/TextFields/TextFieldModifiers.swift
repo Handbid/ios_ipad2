@@ -20,11 +20,3 @@ struct BaseTextFieldStyle: TextFieldStyle {
 			.bodyTextStyle()
 	}
 }
-
-extension View {
-	func basicTextFieldStyle() -> some View {
-		textFieldStyle(
-			BaseTextFieldStyle(cornerRadius: 8, backgroundColor: .white, borderColor: .hbGray, textColor: .bodyText)
-		)
-	}
-}
