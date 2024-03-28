@@ -4,10 +4,18 @@ import Combine
 import NetworkService
 import SwiftUI
 
+class GetStartedViewModel2: ObservableObject {
+	@Published var textField = ""
+	@Published var password = ""
+}
+
 struct GetStartedView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@State private var currentPageView: AnyView?
 	@ObservedObject var viewmodel = LogInViewModel()
+
+	@ObservedObject var viewmodel2 = GetStartedViewModel2()
+	@ObservedObject var globalStyle = GlobalStyle()
 
 	private func getLogoImage(_ size: CGSize) -> some View {
 		Image("LogoSplash")
@@ -29,20 +37,42 @@ struct GetStartedView<T: PageProtocol>: View {
 
 	private func getButtons() -> some View {
 		VStack {
-			Button(LocalizedStringKey("login")) {
-				coordinator.push(RegistrationPage.logIn as! T)
+//			Button(LocalizedStringKey("login")) {
+//				coordinator.push(RegistrationPage.logIn as! T)
+//			}
+//			.solidAccentButtonStyle()
+//			.accessibilityIdentifier("LoginButton")
+//
+//			Button(LocalizedStringKey("demoVersion")) {}
+//				.solidPrimaryButtonStyle()
+//				.disabled(true)
+//				.accessibilityIdentifier("DemoButton")
+//
+//			Button(LocalizedStringKey("btnAboutHandbid")) {}
+//				.borderAccentButtonStyle()
+//				.accessibilityIdentifier("AboutHandbidButton")
+
+			// MARK: -
+
+			Button<Text>.styled(config: .primaryButtonStyle, action: {}) {
+				Text("Button")
 			}
-			.solidAccentButtonStyle()
-			.accessibilityIdentifier("LoginButton")
 
-			Button(LocalizedStringKey("demoVersion")) {}
-				.solidPrimaryButtonStyle()
-				.disabled(true)
-				.accessibilityIdentifier("DemoButton")
+			Text("Text")
+				.applyTextStyle(config: globalStyle.largeTextStyle)
+				.multilineTextAlignment(.center)
+				.lineLimit(2)
 
-			Button(LocalizedStringKey("btnAboutHandbid")) {}
-				.borderAccentButtonStyle()
-				.accessibilityIdentifier("AboutHandbidButton")
+			Text("Text2")
+				.applyTextStyle(config: .smallTextStyle)
+				.multilineTextAlignment(.center)
+				.lineLimit(2)
+
+			TextField("Text", text: $viewmodel2.textField)
+				.applyTextFieldStyle(config: globalStyle.texfField)
+
+			SecureField("password", text: $viewmodel.password, onCommit: {})
+				.applySecureTextFieldStyle(config: globalStyle.secureTexfField)
 		}
 	}
 
