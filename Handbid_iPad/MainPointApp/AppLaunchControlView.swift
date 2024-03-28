@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-struct EnvironmentStartupView: View {
+struct AppLaunchControlView: View {
 	@EnvironmentObject var authManager: AuthManagerMainActor
 	@State private var isValidToken = false
 	@State private var isLoading = true
@@ -12,7 +12,7 @@ struct EnvironmentStartupView: View {
 		ZStack {
 			if isLoading {
 				withAnimation(.easeOut(duration: animationDuration)) {
-					ApplicationLaunchAnimationView()
+					StartupProgressAnimationView()
 						.background(Color.white)
 						.ignoresSafeArea(.all)
 				}

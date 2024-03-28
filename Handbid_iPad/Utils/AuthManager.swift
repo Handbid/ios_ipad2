@@ -42,7 +42,7 @@ class AuthManager: ObservableObject {
 			      let token = try? JSONDecoder().decode(TokenUser.self, from: tokenData),
 			      token.isValid
 			else {
-				clearKeychain()
+				clearKeychainAndLogOut(logOut: false)
 				return false
 			}
 
@@ -51,7 +51,7 @@ class AuthManager: ObservableObject {
 		}
 		catch {
 			print("Error decoding or refreshing token: \(error)")
-			clearKeychain()
+            clearKeychainAndLogOut(logOut: false)
 			return false
 		}
 	}
@@ -77,36 +77,6 @@ class AuthManager: ObservableObject {
 		}
 	}
 
-	// MARK: Saves the user's token to the keychain securely.
-
-	func saveTokenToKeychain(_ token: TokenUser) {
-		do {
-			let keychain = Keychain(service: AppInfoProvider.bundleIdentifier)
-			try keychain.remove("AuthDataUser")
-			try keychain.synchronizable(true).set(JSONEncoder().encode(token), key: "AuthDataUser")
-		}
-		catch {
-			print("Error saving token to Keychain: \(error)")
-		}
-	}
-
-	// MARK: Clears the keychain of any stored authentication data.
-
-	func clearKeychain() {
-		do {
-			try Keychain(service: AppInfoProvider.bundleIdentifier).remove("AuthDataUser")
-		}
-		catch {
-			print("Error clearing Keychain: \(error)")
-		}
-	}
-
-	// MARK: Validates if the provided token is not empty.
-
-	func isTokenValid(token: String) -> Bool {
-		!token.isEmpty
-	}
-
 	// MARK: Logs in the user with the provided authentication model.
 
 	func loginWithAuthModel(auth: AuthModel) async -> Bool {
@@ -120,6 +90,41 @@ class AuthManager: ObservableObject {
 		return true
 	}
 
+    // MARK: Saves the user's token to the keychain securely.
+
+    private func saveTokenToKeychain(_ token: TokenUser) {
+        do {
+            let keychain = Keychain(service: AppInfoProvider.bundleIdentifier)
+            try keychain.remove("AuthDataUser")
+            try keychain.synchronizable(true).set(JSONEncoder().encode(token), key: "AuthDataUser")
+        }
+        catch {
+            print("Error saving token to Keychain: \(error)")
+        }
+    }
+
+    // MARK: Logs out the user and clears any stored authentication data.
+
+    private func clearKeychainAndLogOut(logOut: Bool) {
+        do {
+            try Keychain(service: AppInfoProvider.bundleIdentifier).remove("AuthDataUser")
+
+            if (logOut){
+                currentToken = nil
+                isLoggedIn = false
+            }
+        }
+        catch {
+            print("Error clearing Keychain: \(error)")
+        }
+    }
+
+    // MARK: Validates if the provided token is not empty.
+
+    private func isTokenValid(token: String) -> Bool {
+        !token.isEmpty
+    }
+
 	// MARK: Refreshes the user's token using the provided authentication model.
 
 	private func refreshTokenWithAuth(auth _: AuthModel) async throws -> TokenUser {
@@ -131,19 +136,6 @@ class AuthManager: ObservableObject {
 		}
 
 		return newToken
-	}
-
-	// MARK: Logs out the user and clears any stored authentication data.
-
-	func logOut() {
-		do {
-			try Keychain(service: AppInfoProvider.bundleIdentifier).remove("AuthDataUser")
-			currentToken = nil
-			isLoggedIn = false
-		}
-		catch {
-			print("Error clearing Keychain: \(error)")
-		}
 	}
 }
 

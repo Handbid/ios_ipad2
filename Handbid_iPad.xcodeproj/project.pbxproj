@@ -13,13 +13,13 @@
 		8C0007CC2BAC8D4400AAEBA0 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00F72BA82A9F0094FAA7 /* Debug.xcconfig */; };
 		8C0007CD2BAC8D4500AAEBA0 /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00F82BA82AAC0094FAA7 /* Release.xcconfig */; };
 		8C0007D32BAC976700AAEBA0 /* AppInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0007C22BAC820500AAEBA0 /* AppInfoProvider.swift */; };
-		8C1E00AE2BA823C80094FAA7 /* HandbidApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E00AD2BA823C80094FAA7 /* HandbidApp.swift */; };
+		8C1E00AE2BA823C80094FAA7 /* MainAppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E00AD2BA823C80094FAA7 /* MainAppCoordinator.swift */; };
 		8C1E00B22BA823C90094FAA7 /* iPadAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00B12BA823C90094FAA7 /* iPadAssets.xcassets */; };
 		8C1E00F62BA82A130094FAA7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00EF2BA82A130094FAA7 /* Localizable.strings */; };
 		8C1E01012BA85E630094FAA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E01002BA85E630094FAA7 /* AppDelegate.swift */; };
 		8C4B7B7F2BB379440043B892 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7B7E2BB379440043B892 /* AuthManager.swift */; };
 		8C4B7B812BB379860043B892 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7B802BB379860043B892 /* AuthModel.swift */; };
-		8C4B7B832BB47DD30043B892 /* ApplicationLaunchAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7B822BB47DD30043B892 /* ApplicationLaunchAnimationView.swift */; };
+		8C4B7B832BB47DD30043B892 /* StartupProgressAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7B822BB47DD30043B892 /* StartupProgressAnimationView.swift */; };
 		8C4B7B852BB47E9C0043B892 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7B842BB47E9C0043B892 /* Color.swift */; };
 		8C8BEC2E2BA975DE0083D904 /* GetStartedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC2D2BA975DE0083D904 /* GetStartedView.swift */; };
 		8C8BEC302BA975F10083D904 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC2F2BA975F10083D904 /* LogInView.swift */; };
@@ -29,7 +29,7 @@
 		8C8BEC382BA977AC0083D904 /* RegistrationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC372BA977AC0083D904 /* RegistrationPage.swift */; };
 		8C8BEC3A2BA977F00083D904 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC392BA977F00083D904 /* Coordinator.swift */; };
 		8C8BEC622BA9A5280083D904 /* UserRegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC612BA9A5280083D904 /* UserRegistrationModel.swift */; };
-		8C8BEC642BA9ADE20083D904 /* EnvironmentStartupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC632BA9ADE20083D904 /* EnvironmentStartupView.swift */; };
+		8C8BEC642BA9ADE20083D904 /* AppLaunchControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC632BA9ADE20083D904 /* AppLaunchControlView.swift */; };
 		8C8BEC662BA9B7DD0083D904 /* PageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC652BA9B7DD0083D904 /* PageProtocol.swift */; };
 		8CB8C6AC2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB8C6AB2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift */; };
 		8CEA290B2BB3517E005E3B33 /* NetworkService in Frameworks */ = {isa = PBXBuildFile; productRef = 8CEA290A2BB3517E005E3B33 /* NetworkService */; };
@@ -74,7 +74,7 @@
 		8C0007BE2BAC764700AAEBA0 /* AppVersionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppVersionModel.swift; sourceTree = "<group>"; };
 		8C0007C22BAC820500AAEBA0 /* AppInfoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoProvider.swift; sourceTree = "<group>"; };
 		8C0007D12BAC8FBD00AAEBA0 /* Handbid-iPad-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Handbid-iPad-Bridging-Header.h"; sourceTree = "<group>"; };
-		8C1E00AD2BA823C80094FAA7 /* HandbidApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandbidApp.swift; sourceTree = "<group>"; };
+		8C1E00AD2BA823C80094FAA7 /* MainAppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppCoordinator.swift; sourceTree = "<group>"; };
 		8C1E00B12BA823C90094FAA7 /* iPadAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = iPadAssets.xcassets; sourceTree = "<group>"; };
 		8C1E00F02BA82A130094FAA7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8C1E00F12BA82A130094FAA7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -88,7 +88,7 @@
 		8C1E01022BA85EB10094FAA7 /* Handbid-iPad-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Handbid-iPad-Info.plist"; path = "Handbid_iPad/Resources/Handbid-iPad-Info.plist"; sourceTree = SOURCE_ROOT; };
 		8C4B7B7E2BB379440043B892 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		8C4B7B802BB379860043B892 /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
-		8C4B7B822BB47DD30043B892 /* ApplicationLaunchAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationLaunchAnimationView.swift; sourceTree = "<group>"; };
+		8C4B7B822BB47DD30043B892 /* StartupProgressAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupProgressAnimationView.swift; sourceTree = "<group>"; };
 		8C4B7B842BB47E9C0043B892 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		8C8BEC2D2BA975DE0083D904 /* GetStartedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedView.swift; sourceTree = "<group>"; };
 		8C8BEC2F2BA975F10083D904 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
@@ -98,7 +98,7 @@
 		8C8BEC372BA977AC0083D904 /* RegistrationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPage.swift; sourceTree = "<group>"; };
 		8C8BEC392BA977F00083D904 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		8C8BEC612BA9A5280083D904 /* UserRegistrationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegistrationModel.swift; sourceTree = "<group>"; };
-		8C8BEC632BA9ADE20083D904 /* EnvironmentStartupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentStartupView.swift; sourceTree = "<group>"; };
+		8C8BEC632BA9ADE20083D904 /* AppLaunchControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLaunchControlView.swift; sourceTree = "<group>"; };
 		8C8BEC652BA9B7DD0083D904 /* PageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageProtocol.swift; sourceTree = "<group>"; };
 		8CB8C6AB2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinatorTest.swift; sourceTree = "<group>"; };
 		8CEA29072BB345F8005E3B33 /* Handbid_iPadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,9 +178,9 @@
 				8C1E00DB2BA8250A0094FAA7 /* Coordinator */,
 				8C1E00DC2BA825150094FAA7 /* Extensions */,
 				8C1E00DD2BA825230094FAA7 /* Fonts */,
+				8C1E01032BA862BB0094FAA7 /* MainPointApp */,
 				8C1E00DF2BA825500094FAA7 /* Models */,
 				8C1E00DE2BA8253F0094FAA7 /* Resources */,
-				8C1E01032BA862BB0094FAA7 /* StartPointApp */,
 				8C1E00E12BA8256E0094FAA7 /* Styles */,
 				8C1E00E52BA825C30094FAA7 /* Supporting-Methods */,
 				8C1E00E42BA8258F0094FAA7 /* Utils */,
@@ -329,14 +329,14 @@
 			path = AppDelegate;
 			sourceTree = "<group>";
 		};
-		8C1E01032BA862BB0094FAA7 /* StartPointApp */ = {
+		8C1E01032BA862BB0094FAA7 /* MainPointApp */ = {
 			isa = PBXGroup;
 			children = (
-				8C4B7B822BB47DD30043B892 /* ApplicationLaunchAnimationView.swift */,
-				8C8BEC632BA9ADE20083D904 /* EnvironmentStartupView.swift */,
-				8C1E00AD2BA823C80094FAA7 /* HandbidApp.swift */,
+				8C8BEC632BA9ADE20083D904 /* AppLaunchControlView.swift */,
+				8C1E00AD2BA823C80094FAA7 /* MainAppCoordinator.swift */,
+				8C4B7B822BB47DD30043B892 /* StartupProgressAnimationView.swift */,
 			);
-			path = StartPointApp;
+			path = MainPointApp;
 			sourceTree = "<group>";
 		};
 		8C8BEC2B2BA975B70083D904 /* Registration */ = {
@@ -664,10 +664,10 @@
 				8C8BEC382BA977AC0083D904 /* RegistrationPage.swift in Sources */,
 				CE7DF8252BADDB7400FF7694 /* LabelAndTextModifiers.swift in Sources */,
 				CEFC879D2BAC8A6500A8EAC6 /* SolidButtonStyle.swift in Sources */,
-				8C1E00AE2BA823C80094FAA7 /* HandbidApp.swift in Sources */,
-				8C4B7B832BB47DD30043B892 /* ApplicationLaunchAnimationView.swift in Sources */,
+				8C1E00AE2BA823C80094FAA7 /* MainAppCoordinator.swift in Sources */,
+				8C4B7B832BB47DD30043B892 /* StartupProgressAnimationView.swift in Sources */,
 				8C0007D32BAC976700AAEBA0 /* AppInfoProvider.swift in Sources */,
-				8C8BEC642BA9ADE20083D904 /* EnvironmentStartupView.swift in Sources */,
+				8C8BEC642BA9ADE20083D904 /* AppLaunchControlView.swift in Sources */,
 				CE34FB3F2BB1963300701D2A /* CenteredWrappingContainer.swift in Sources */,
 				8C0007B22BAC733900AAEBA0 /* ArrowParsable.swift in Sources */,
 			);

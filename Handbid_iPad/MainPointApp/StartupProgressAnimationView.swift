@@ -4,7 +4,7 @@ import Foundation
 import ProgressIndicatorView
 import SwiftUI
 
-struct ApplicationLaunchAnimationView: View {
+struct StartupProgressAnimationView: View {
 	@State private var showProgressIndicator: Bool = true
 	@State private var progress: CGFloat = 0.0
 	@State private var enableAutoProgress: Bool = true
