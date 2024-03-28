@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		24B12D21A30E1616394A8522 /* libPods-Handbid_iPadUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F65848BAB2EAE1075D4E6BC /* libPods-Handbid_iPadUITests.a */; };
+		769B32512650F44DA89DB400 /* Pods_Handbid_iPad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10DF07E409C6778C40C7B829 /* Pods_Handbid_iPad.framework */; };
 		8C0007B22BAC733900AAEBA0 /* ArrowParsable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0007952BAC733900AAEBA0 /* ArrowParsable.swift */; };
 		8C0007BF2BAC764700AAEBA0 /* AppVersionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0007BE2BAC764700AAEBA0 /* AppVersionModel.swift */; };
 		8C0007CC2BAC8D4400AAEBA0 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00F72BA82A9F0094FAA7 /* Debug.xcconfig */; };
@@ -45,10 +46,11 @@
 		CE7DF82A2BADF23500FF7694 /* TextFieldModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DF8292BADF23500FF7694 /* TextFieldModifiers.swift */; };
 		CE7DF82C2BADF28000FF7694 /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DF82B2BADF28000FF7694 /* ViewModifiers.swift */; };
 		CE7DF82F2BADFD1900FF7694 /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DF82E2BADFD1900FF7694 /* PinView.swift */; };
+		CEE2BB272BB5BBB10033556D /* RegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2BB262BB5BBB10033556D /* RegisterRepository.swift */; };
+		CEE2BB292BB5D1070033556D /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2BB282BB5D1070033556D /* ApiConstants.swift */; };
 		CEFC879D2BAC8A6500A8EAC6 /* SolidButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFC879C2BAC8A6500A8EAC6 /* SolidButtonStyle.swift */; };
 		CEFC879F2BAC8BCE00A8EAC6 /* ButtonModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFC879E2BAC8BCE00A8EAC6 /* ButtonModifiers.swift */; };
 		CEFC87A22BAC8D4200A8EAC6 /* BorderButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFC87A12BAC8D4200A8EAC6 /* BorderButtonStyle.swift */; };
-		F1C4C0114974E047E10DC33B /* libPods-Handbid_iPad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1373BB04AFC12BD937203837 /* libPods-Handbid_iPad.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,7 +71,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1373BB04AFC12BD937203837 /* libPods-Handbid_iPad.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Handbid_iPad.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		10DF07E409C6778C40C7B829 /* Pods_Handbid_iPad.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Handbid_iPad.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		447125EEFC7B11026C7F4A96 /* Pods-Handbid_iPadUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPadUITests.debug.xcconfig"; path = "Target Support Files/Pods-Handbid_iPadUITests/Pods-Handbid_iPadUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		466FE7E4B730FC4263EFB99B /* Pods-Handbid_iPadUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPadUITests.release.xcconfig"; path = "Target Support Files/Pods-Handbid_iPadUITests/Pods-Handbid_iPadUITests.release.xcconfig"; sourceTree = "<group>"; };
 		6DEC9B0776E5FBAF4B1F1340 /* Pods-Handbid_iPad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPad.release.xcconfig"; path = "Target Support Files/Pods-Handbid_iPad/Pods-Handbid_iPad.release.xcconfig"; sourceTree = "<group>"; };
@@ -118,6 +120,8 @@
 		CE7DF8292BADF23500FF7694 /* TextFieldModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldModifiers.swift; sourceTree = "<group>"; };
 		CE7DF82B2BADF28000FF7694 /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
 		CE7DF82E2BADFD1900FF7694 /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
+		CEE2BB262BB5BBB10033556D /* RegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRepository.swift; sourceTree = "<group>"; };
+		CEE2BB282BB5D1070033556D /* ApiConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConstants.swift; sourceTree = "<group>"; };
 		CEFC879C2BAC8A6500A8EAC6 /* SolidButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidButtonStyle.swift; sourceTree = "<group>"; };
 		CEFC879E2BAC8BCE00A8EAC6 /* ButtonModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModifiers.swift; sourceTree = "<group>"; };
 		CEFC87A12BAC8D4200A8EAC6 /* BorderButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderButtonStyle.swift; sourceTree = "<group>"; };
@@ -128,8 +132,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1C4C0114974E047E10DC33B /* libPods-Handbid_iPad.a in Frameworks */,
 				8CEA290B2BB3517E005E3B33 /* NetworkService in Frameworks */,
+				769B32512650F44DA89DB400 /* Pods_Handbid_iPad.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,8 +158,8 @@
 		2A56D18883324BEFE877AE50 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1373BB04AFC12BD937203837 /* libPods-Handbid_iPad.a */,
 				9F65848BAB2EAE1075D4E6BC /* libPods-Handbid_iPadUITests.a */,
+				10DF07E409C6778C40C7B829 /* Pods_Handbid_iPad.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -182,9 +186,9 @@
 				8C1E00D92BA824B40094FAA7 /* Bridging-Header */,
 				8C1E00DA2BA824BF0094FAA7 /* Config-Env */,
 				8C1E00DB2BA8250A0094FAA7 /* Coordinator */,
+				CEE2BB242BB5BB310033556D /* Data */,
 				8C1E00DC2BA825150094FAA7 /* Extensions */,
 				8C1E00DD2BA825230094FAA7 /* Fonts */,
-				8C1E00DF2BA825500094FAA7 /* Models */,
 				8C1E00DE2BA8253F0094FAA7 /* Resources */,
 				8C1E01032BA862BB0094FAA7 /* StartPointApp */,
 				8C1E00E12BA8256E0094FAA7 /* Styles */,
@@ -401,6 +405,24 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		CEE2BB242BB5BB310033556D /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				CEE2BB252BB5BB7A0033556D /* Repositories */,
+				8C1E00DF2BA825500094FAA7 /* Models */,
+				CEE2BB282BB5D1070033556D /* ApiConstants.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		CEE2BB252BB5BB7A0033556D /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				CEE2BB262BB5BBB10033556D /* RegisterRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
 		CEFC87A02BAC8D0B00A8EAC6 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
@@ -425,6 +447,7 @@
 				8C1E00A82BA823C80094FAA7 /* Resources */,
 				8C1E00A72BA823C80094FAA7 /* Frameworks */,
 				8C1E01042BA866E00094FAA7 /* SwiftFormat */,
+				08D4455E04EFA8EDABB8CB8C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -452,8 +475,6 @@
 				8C1E00BC2BA823C90094FAA7 /* PBXTargetDependency */,
 			);
 			name = Handbid_iPadTests;
-			packageProductDependencies = (
-			);
 			productName = Handbid_iPadTests;
 			productReference = 8CEA29072BB345F8005E3B33 /* Handbid_iPadTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -517,7 +538,7 @@
 			);
 			mainGroup = 8C1E00A12BA823C80094FAA7;
 			packageReferences = (
-				8CEA29092BB3517E005E3B33 /* XCLocalSwiftPackageReference "Frameworks/NetworkService" */,
+				8CEA29092BB3517E005E3B33 /* XCLocalSwiftPackageReference "NetworkService" */,
 			);
 			productRefGroup = 8C1E00A12BA823C80094FAA7;
 			projectDirPath = "";
@@ -562,6 +583,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		08D4455E04EFA8EDABB8CB8C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Handbid_iPad/Pods-Handbid_iPad-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Handbid_iPad/Pods-Handbid_iPad-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Handbid_iPad/Pods-Handbid_iPad-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		269FF51212C6B460E7B4477B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -656,6 +694,7 @@
 				8C8BEC342BA976A90083D904 /* LogInViewModel.swift in Sources */,
 				CEFC879F2BAC8BCE00A8EAC6 /* ButtonModifiers.swift in Sources */,
 				8C8BEC622BA9A5280083D904 /* UserRegistrationModel.swift in Sources */,
+				CEE2BB292BB5D1070033556D /* ApiConstants.swift in Sources */,
 				CE7DF82C2BADF28000FF7694 /* ViewModifiers.swift in Sources */,
 				8C8BEC362BA977560083D904 /* RootPageView.swift in Sources */,
 				8C8BEC302BA975F10083D904 /* LogInView.swift in Sources */,
@@ -668,6 +707,7 @@
 				CE073EE62BB485CD0079F342 /* PasswordField.swift in Sources */,
 				8C1E01012BA85E630094FAA7 /* AppDelegate.swift in Sources */,
 				CE073EDC2BB4307A0079F342 /* ButtonStyle.swift in Sources */,
+				CEE2BB272BB5BBB10033556D /* RegisterRepository.swift in Sources */,
 				8C8BEC2E2BA975DE0083D904 /* GetStartedView.swift in Sources */,
 				CEFC87A22BAC8D4200A8EAC6 /* BorderButtonStyle.swift in Sources */,
 				CE073EDA2BB4303A0079F342 /* Button.swift in Sources */,
@@ -1088,7 +1128,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		8CEA29092BB3517E005E3B33 /* XCLocalSwiftPackageReference "Frameworks/NetworkService" */ = {
+		8CEA29092BB3517E005E3B33 /* XCLocalSwiftPackageReference "NetworkService" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Frameworks/NetworkService;
 		};

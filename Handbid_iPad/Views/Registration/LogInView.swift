@@ -40,7 +40,7 @@ struct LogInView<T: PageProtocol>: View {
 				getTextFields()
 
 				Button(LocalizedStringKey("login")) {
-					coordinator.push(RegistrationPage.getStarted as! T)
+					viewModel.logIn()
 				}
 				.solidPrimaryButtonStyle()
 				.padding([.top, .bottom], 0.025 * size.height)

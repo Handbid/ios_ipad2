@@ -5,11 +5,12 @@ import NetworkService
 
 class LogInViewModel: ObservableObject {
 	private var cancellables = Set<AnyCancellable>()
+	private var repository: RegisterRepository = RegisterRepositoryImpl(NetworkingClient())
 	var login: String = ""
 	var password: String = ""
 
 	func fetchAppVersion() {
-		AppVersionModel().fetchAppVersion()
+		repository.getAppVersion()
 			.sink(receiveCompletion: { completion in
 				switch completion {
 				case .finished:
@@ -19,6 +20,21 @@ class LogInViewModel: ObservableObject {
 				}
 			}, receiveValue: { version in
 				print(version)
+			})
+			.store(in: &cancellables)
+	}
+
+	func logIn() {
+		repository.logIn(email: login, password: password)
+			.sink(receiveCompletion: { completion in
+				switch completion {
+				case .finished:
+					break
+				case let .failure(error):
+					print("Error logging in: \(error)")
+				}
+			}, receiveValue: { response in
+				print(response)
 			})
 			.store(in: &cancellables)
 	}
