@@ -7,6 +7,8 @@ platform :ios, '17.0'
 def available_pods
 
 pod 'Arrow', '~> 5.1.1'
+pod 'KeychainAccess'
+pod 'ProgressIndicatorView', '~> 1.0.0'
 pod 'SwiftFormat/CLI'
 pod "RecaptchaEnterprise", "18.5.0-beta02"
 

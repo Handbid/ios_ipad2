@@ -1,15 +1,9 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
-import Foundation
 import NetworkService
 import SwiftUI
-import UIKit
 
-/// ***
-// After add Coordinator change App Delegate to class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
-/// ***
-
-class AppDelegate: NSObject, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
 	func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
 		true
 	}

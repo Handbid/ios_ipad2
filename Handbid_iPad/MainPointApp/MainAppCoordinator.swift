@@ -2,8 +2,10 @@
 
 import SwiftUI
 
-struct HandbidApp: View {
+@main
+struct MainAppCoordinator: App {
 	@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
 	@StateObject var registrationCoordinator = Coordinator<RegistrationPage, Any?> { page in
 		switch page {
 		case .getStarted:
@@ -13,17 +15,11 @@ struct HandbidApp: View {
 		}
 	}
 
-	var body: some View {
-		EnvironmentStartupView()
-			.environmentObject(registrationCoordinator)
-	}
-}
-
-@main
-struct HandbidAppLauncher: App {
 	var body: some Scene {
 		WindowGroup {
-			HandbidApp()
+			AppLaunchControlView()
+				.environmentObject(AuthManagerMainActor())
+				.environmentObject(registrationCoordinator)
 		}
 	}
 }
