@@ -30,26 +30,6 @@ extension AppVersionModel: NetworkingService, NetworkingJSONDecodable {
 		NetworkingClient()
 	}
 
-	// Example use in viewModel
-	//    class LogInViewModel: ObservableObject {
-	//        private var cancellables = Set<AnyCancellable>()
-	//
-	//        func fetchAppVersion() {
-	//            AppVersionModel().fetchAppVersion()
-	//                .sink(receiveCompletion: { completion in
-	//                    switch completion {
-	//                    case .finished:
-	//                        break
-	//                    case let .failure(error):
-	//                        print("Error fetching app version: \(error)")
-	//                    }
-	//                }, receiveValue: { version in
-	//                    print(version)
-	//                })
-	//                .store(in: &cancellables)
-	//        }
-	//    }
-
 	func fetchAppVersion() -> AnyPublisher<[AppVersionModel], Error> {
 		get("/auth/app-info", params: ["appName": AppInfoProvider.appName,
 		                               "os": AppInfoProvider.os,

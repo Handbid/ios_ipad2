@@ -1,1 +1,9 @@
 "btnAboutHandbid" = "À PROPOS HANDBID";
+"demoVersion" = "Version démo";
+"email" = "E-mail";
+"emailHint" = "Saisissez votre e-mail";
+"forgotPassword" = "Mot de passe oublié ?";
+"login" = "S\'identifier";
+"password" = "Mot de passe";
+"passwordHint" = "Entrez votre mot de passe";
+"welcomeToHandbid" = "Bienvenue sur l\'application Handbid";
