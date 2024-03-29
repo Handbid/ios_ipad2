@@ -8,59 +8,64 @@ struct GetStartedView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@State private var currentPageView: AnyView?
 	@ObservedObject var viewmodel = LogInViewModel()
-	var body: some View {
-		ZStack {
-			Color.yellow.edgesIgnoringSafeArea(.all)
-			VStack {
-				Spacer()
-				Text("Welcome to Handbid App")
-					.titleTextStyle()
-					.accessibilityIdentifier("GetStartedView")
-				Spacer()
-				HStack {
-					Button("next") {
-						coordinator.push(RegistrationPage.logIn as! T)
-					}
-					.solidAccentStyle()
-					.accessibilityIdentifier("nextButton")
-					Spacer()
-					Button("previous") {}
-						.borderAccentStyle()
+
+	private func getLogoImage(_ size: CGSize) -> some View {
+		Image("LogoSplash")
+			.resizable()
+			.scaledToFit()
+			.frame(width: size.width * 0.3)
+			.onLongPressGesture(minimumDuration: 0.5) {
+				if EnvironmentManager.isProdActive() {
+					EnvironmentManager.setEnvironment(for: .d1)
+					viewmodel.fetchAppVersion()
 				}
-				Spacer()
-				Button("env") {
-					if EnvironmentManager.isProdActive() {
-						EnvironmentManager.setEnvironment(for: .d1)
-						viewmodel.fetchAppVersion()
-					}
-					else {
-						EnvironmentManager.setEnvironment(for: .prod)
-						viewmodel.fetchAppVersion()
-					}
+				else {
+					EnvironmentManager.setEnvironment(for: .prod)
+					viewmodel.fetchAppVersion()
 				}
-				.accessibilityIdentifier("env")
-				Spacer()
 			}
-			.padding()
+			.accessibilityIdentifier("AppLogo")
+	}
+
+	private func getButtons() -> some View {
+		VStack {
+			Button(LocalizedStringKey("login")) {
+				coordinator.push(RegistrationPage.logIn as! T)
+			}
+			.solidAccentButtonStyle()
+			.accessibilityIdentifier("LoginButton")
+
+			Button(LocalizedStringKey("demoVersion")) {}
+				.solidPrimaryButtonStyle()
+				.disabled(true)
+				.accessibilityIdentifier("DemoButton")
+
+			Button(LocalizedStringKey("btnAboutHandbid")) {}
+				.borderAccentButtonStyle()
+				.accessibilityIdentifier("AboutHandbidButton")
 		}
 	}
-}
 
-class LogInViewModel: ObservableObject {
-	private var cancellables = Set<AnyCancellable>()
+	var body: some View {
+		CenteredWrappingContainer(landscapeWidthFraction: 0.4) { size in
+			VStack {
+				getLogoImage(size)
 
-	func fetchAppVersion() {
-		AppVersionModel().fetchAppVersion()
-			.sink(receiveCompletion: { completion in
-				switch completion {
-				case .finished:
-					break
-				case let .failure(error):
-					print("Error fetching app version: \(error)")
-				}
-			}, receiveValue: { version in
-				print(version)
-			})
-			.store(in: &cancellables)
+				Text(LocalizedStringKey("welcomeToHandbid"))
+					.wrapTextModifier()
+					.titleTextStyle()
+					.padding([.bottom, .top], 0.05 * size.height)
+					.accessibilityIdentifier("GetStartedView")
+
+				getButtons()
+			}
+			.padding([.bottom, .top], 0.05 * size.height)
+			.padding([.leading, .trailing], 0.1 * size.width)
+		}.background {
+			Image("SplashBackground")
+				.resizable()
+				.scaledToFill()
+				.ignoresSafeArea()
+		}
 	}
 }

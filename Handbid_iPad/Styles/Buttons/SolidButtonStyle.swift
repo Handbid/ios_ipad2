@@ -16,13 +16,3 @@ struct SolidButtonStyle: ButtonStyle {
 			.buttonLabelStyle(color: .white)
 	}
 }
-
-extension Button {
-	func solidAccentStyle() -> some View {
-		buttonStyle(SolidButtonStyle.accent)
-	}
-
-	func solidPrimaryStyle() -> some View {
-		buttonStyle(SolidButtonStyle.primary)
-	}
-}

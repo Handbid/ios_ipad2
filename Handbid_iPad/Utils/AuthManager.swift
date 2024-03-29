@@ -51,7 +51,7 @@ class AuthManager: ObservableObject {
 		}
 		catch {
 			print("Error decoding or refreshing token: \(error)")
-            clearKeychainAndLogOut(logOut: false)
+			clearKeychainAndLogOut(logOut: false)
 			return false
 		}
 	}
@@ -90,40 +90,40 @@ class AuthManager: ObservableObject {
 		return true
 	}
 
-    // MARK: Saves the user's token to the keychain securely.
+	// MARK: Saves the user's token to the keychain securely.
 
-    private func saveTokenToKeychain(_ token: TokenUser) {
-        do {
-            let keychain = Keychain(service: AppInfoProvider.bundleIdentifier)
-            try keychain.remove("AuthDataUser")
-            try keychain.synchronizable(true).set(JSONEncoder().encode(token), key: "AuthDataUser")
-        }
-        catch {
-            print("Error saving token to Keychain: \(error)")
-        }
-    }
+	private func saveTokenToKeychain(_ token: TokenUser) {
+		do {
+			let keychain = Keychain(service: AppInfoProvider.bundleIdentifier)
+			try keychain.remove("AuthDataUser")
+			try keychain.synchronizable(true).set(JSONEncoder().encode(token), key: "AuthDataUser")
+		}
+		catch {
+			print("Error saving token to Keychain: \(error)")
+		}
+	}
 
-    // MARK: Logs out the user and clears any stored authentication data.
+	// MARK: Logs out the user and clears any stored authentication data.
 
-    private func clearKeychainAndLogOut(logOut: Bool) {
-        do {
-            try Keychain(service: AppInfoProvider.bundleIdentifier).remove("AuthDataUser")
+	private func clearKeychainAndLogOut(logOut: Bool) {
+		do {
+			try Keychain(service: AppInfoProvider.bundleIdentifier).remove("AuthDataUser")
 
-            if (logOut){
-                currentToken = nil
-                isLoggedIn = false
-            }
-        }
-        catch {
-            print("Error clearing Keychain: \(error)")
-        }
-    }
+			if logOut {
+				currentToken = nil
+				isLoggedIn = false
+			}
+		}
+		catch {
+			print("Error clearing Keychain: \(error)")
+		}
+	}
 
-    // MARK: Validates if the provided token is not empty.
+	// MARK: Validates if the provided token is not empty.
 
-    private func isTokenValid(token: String) -> Bool {
-        !token.isEmpty
-    }
+	private func isTokenValid(token: String) -> Bool {
+		!token.isEmpty
+	}
 
 	// MARK: Refreshes the user's token using the provided authentication model.
 
