@@ -21,6 +21,12 @@
 		8C4B7B832BB47DD30043B892 /* StartupProgressAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7B822BB47DD30043B892 /* StartupProgressAnimationView.swift */; };
 		8C4B7B852BB47E9C0043B892 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7B842BB47E9C0043B892 /* Color.swift */; };
 		8C4B7B872BB6DCC80043B892 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7B862BB6DCC80043B892 /* AuthModel.swift */; };
+		8C4B7B892BB6FCEA0043B892 /* ButtonStyleConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7B882BB6FCEA0043B892 /* ButtonStyleConfiguration.swift */; };
+		8C4B7B8B2BB6FD030043B892 /* StyledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7B8A2BB6FD030043B892 /* StyledButton.swift */; };
+		8C4B7B932BB7019C0043B892 /* TextStyleConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7B922BB7019C0043B892 /* TextStyleConfiguration.swift */; };
+		8C4B7B972BB7022A0043B892 /* SecureTextFieldStyleConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7B962BB7022A0043B892 /* SecureTextFieldStyleConfiguration.swift */; };
+		8C4B7B9B2BB7026D0043B892 /* TextFieldStyleConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7B9A2BB7026D0043B892 /* TextFieldStyleConfiguration.swift */; };
+		8C4B7B9F2BB708EB0043B892 /* ViewElementExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7B9E2BB708EB0043B892 /* ViewElementExtensions.swift */; };
 		8C8BEC2E2BA975DE0083D904 /* GetStartedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC2D2BA975DE0083D904 /* GetStartedView.swift */; };
 		8C8BEC302BA975F10083D904 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC2F2BA975F10083D904 /* LogInView.swift */; };
 		8C8BEC322BA976030083D904 /* GetStartedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC312BA976030083D904 /* GetStartedViewModel.swift */; };
@@ -34,7 +40,6 @@
 		8CEA290B2BB3517E005E3B33 /* NetworkService in Frameworks */ = {isa = PBXBuildFile; productRef = 8CEA290A2BB3517E005E3B33 /* NetworkService */; };
 		A750B07567CC3E21E4095C70 /* libPods-Handbid_iPadUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E77E5B8916E2FBB6366D1733 /* libPods-Handbid_iPadUITests.a */; };
 		CE073ED82BB42D710079F342 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE073ED72BB42D710079F342 /* View.swift */; };
-		CE073EDA2BB4303A0079F342 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE073ED92BB4303A0079F342 /* Button.swift */; };
 		CE073EDC2BB4307A0079F342 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE073EDB2BB4307A0079F342 /* ButtonStyle.swift */; };
 		CE073EDE2BB4629C0079F342 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE073EDD2BB4629C0079F342 /* Text.swift */; };
 		CE073EE22BB47E3F0079F342 /* NoBackgroundButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE073EE12BB47E3F0079F342 /* NoBackgroundButtonStyle.swift */; };
@@ -97,6 +102,12 @@
 		8C4B7B822BB47DD30043B892 /* StartupProgressAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupProgressAnimationView.swift; sourceTree = "<group>"; };
 		8C4B7B842BB47E9C0043B892 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		8C4B7B862BB6DCC80043B892 /* AuthModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
+		8C4B7B882BB6FCEA0043B892 /* ButtonStyleConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyleConfiguration.swift; sourceTree = "<group>"; };
+		8C4B7B8A2BB6FD030043B892 /* StyledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledButton.swift; sourceTree = "<group>"; };
+		8C4B7B922BB7019C0043B892 /* TextStyleConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyleConfiguration.swift; sourceTree = "<group>"; };
+		8C4B7B962BB7022A0043B892 /* SecureTextFieldStyleConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureTextFieldStyleConfiguration.swift; sourceTree = "<group>"; };
+		8C4B7B9A2BB7026D0043B892 /* TextFieldStyleConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStyleConfiguration.swift; sourceTree = "<group>"; };
+		8C4B7B9E2BB708EB0043B892 /* ViewElementExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewElementExtensions.swift; sourceTree = "<group>"; };
 		8C8BEC2D2BA975DE0083D904 /* GetStartedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedView.swift; sourceTree = "<group>"; };
 		8C8BEC2F2BA975F10083D904 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		8C8BEC312BA976030083D904 /* GetStartedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewModel.swift; sourceTree = "<group>"; };
@@ -112,7 +123,6 @@
 		8CFCCFB92BA8B3C600CF6C33 /* Handbid_iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Handbid_iPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE66CC06D22619074C3D5612 /* Pods-Handbid_iPadUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPadUITests.debug.xcconfig"; path = "Target Support Files/Pods-Handbid_iPadUITests/Pods-Handbid_iPadUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CE073ED72BB42D710079F342 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
-		CE073ED92BB4303A0079F342 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		CE073EDB2BB4307A0079F342 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		CE073EDD2BB4629C0079F342 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		CE073EE12BB47E3F0079F342 /* NoBackgroundButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoBackgroundButtonStyle.swift; sourceTree = "<group>"; };
@@ -185,6 +195,7 @@
 				8C1E00DB2BA8250A0094FAA7 /* Coordinator */,
 				CEE2BB242BB5BB310033556D /* Data */,
 				8C1E00DC2BA825150094FAA7 /* Extensions */,
+				8C4B7B8C2BB6FD390043B892 /* Extensons Style */,
 				8C1E00DD2BA825230094FAA7 /* Fonts */,
 				8C1E01032BA862BB0094FAA7 /* MainPointApp */,
 				8C1E00DF2BA825500094FAA7 /* Models */,
@@ -246,7 +257,6 @@
 			children = (
 				8C0007952BAC733900AAEBA0 /* ArrowParsable.swift */,
 				CE073ED72BB42D710079F342 /* View.swift */,
-				CE073ED92BB4303A0079F342 /* Button.swift */,
 				CE073EDB2BB4307A0079F342 /* ButtonStyle.swift */,
 				CE073EDD2BB4629C0079F342 /* Text.swift */,
 				8C4B7B842BB47E9C0043B892 /* Color.swift */,
@@ -286,7 +296,6 @@
 				CE7DF8282BADF20800FF7694 /* TextFields */,
 				CE7DF8232BADDB4C00FF7694 /* Labels-and-Text */,
 				CEFC87A02BAC8D0B00A8EAC6 /* Buttons */,
-				CE7DF82B2BADF28000FF7694 /* ViewModifiers.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -350,6 +359,46 @@
 			path = MainPointApp;
 			sourceTree = "<group>";
 		};
+		8C4B7B8C2BB6FD390043B892 /* Extensons Style */ = {
+			isa = PBXGroup;
+			children = (
+				8C4B7B962BB7022A0043B892 /* SecureTextFieldStyleConfiguration.swift */,
+				8C4B7B922BB7019C0043B892 /* TextStyleConfiguration.swift */,
+				8C4B7B882BB6FCEA0043B892 /* ButtonStyleConfiguration.swift */,
+				8C4B7B8A2BB6FD030043B892 /* StyledButton.swift */,
+				8C4B7B9A2BB7026D0043B892 /* TextFieldStyleConfiguration.swift */,
+				8C4B7B9E2BB708EB0043B892 /* ViewElementExtensions.swift */,
+			);
+			path = "Extensons Style";
+			sourceTree = "<group>";
+		};
+		8C4B7B8F2BB700A60043B892 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				CE7DF82B2BADF28000FF7694 /* ViewModifiers.swift */,
+				CEFC879C2BAC8A6500A8EAC6 /* SolidButtonStyle.swift */,
+				CEFC87A12BAC8D4200A8EAC6 /* BorderButtonStyle.swift */,
+				CE073EE12BB47E3F0079F342 /* NoBackgroundButtonStyle.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		8C4B7B942BB701E50043B892 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				CE7DF8242BADDB7400FF7694 /* LabelAndTextModifiers.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		8C4B7B952BB701EE0043B892 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				CE7DF8292BADF23500FF7694 /* TextFieldModifiers.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
 		8C8BEC2B2BA975B70083D904 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
@@ -382,7 +431,7 @@
 		CE7DF8232BADDB4C00FF7694 /* Labels-and-Text */ = {
 			isa = PBXGroup;
 			children = (
-				CE7DF8242BADDB7400FF7694 /* LabelAndTextModifiers.swift */,
+				8C4B7B942BB701E50043B892 /* Other */,
 			);
 			path = "Labels-and-Text";
 			sourceTree = "<group>";
@@ -390,7 +439,7 @@
 		CE7DF8282BADF20800FF7694 /* TextFields */ = {
 			isa = PBXGroup;
 			children = (
-				CE7DF8292BADF23500FF7694 /* TextFieldModifiers.swift */,
+				8C4B7B952BB701EE0043B892 /* Other */,
 			);
 			path = TextFields;
 			sourceTree = "<group>";
@@ -426,10 +475,8 @@
 		CEFC87A02BAC8D0B00A8EAC6 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
-				CEFC879C2BAC8A6500A8EAC6 /* SolidButtonStyle.swift */,
 				CEFC879E2BAC8BCE00A8EAC6 /* ButtonModifiers.swift */,
-				CEFC87A12BAC8D4200A8EAC6 /* BorderButtonStyle.swift */,
-				CE073EE12BB47E3F0079F342 /* NoBackgroundButtonStyle.swift */,
+				8C4B7B8F2BB700A60043B892 /* Other */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -709,18 +756,21 @@
 				8C8BEC302BA975F10083D904 /* LogInView.swift in Sources */,
 				CE7DF82A2BADF23500FF7694 /* TextFieldModifiers.swift in Sources */,
 				CE073ED82BB42D710079F342 /* View.swift in Sources */,
+				8C4B7B972BB7022A0043B892 /* SecureTextFieldStyleConfiguration.swift in Sources */,
 				CE7DF82F2BADFD1900FF7694 /* PinView.swift in Sources */,
 				CE073EE42BB4809C0079F342 /* FormField.swift in Sources */,
 				8C8BEC662BA9B7DD0083D904 /* PageProtocol.swift in Sources */,
 				8C8BEC3A2BA977F00083D904 /* Coordinator.swift in Sources */,
 				CE073EE62BB485CD0079F342 /* PasswordField.swift in Sources */,
+				8C4B7B9F2BB708EB0043B892 /* ViewElementExtensions.swift in Sources */,
 				8C1E01012BA85E630094FAA7 /* AppDelegate.swift in Sources */,
 				CE073EDC2BB4307A0079F342 /* ButtonStyle.swift in Sources */,
 				8C4B7B872BB6DCC80043B892 /* AuthModel.swift in Sources */,
 				CEE2BB272BB5BBB10033556D /* RegisterRepository.swift in Sources */,
 				8C8BEC2E2BA975DE0083D904 /* GetStartedView.swift in Sources */,
+				8C4B7B892BB6FCEA0043B892 /* ButtonStyleConfiguration.swift in Sources */,
+				8C4B7B932BB7019C0043B892 /* TextStyleConfiguration.swift in Sources */,
 				CEFC87A22BAC8D4200A8EAC6 /* BorderButtonStyle.swift in Sources */,
-				CE073EDA2BB4303A0079F342 /* Button.swift in Sources */,
 				8C8BEC322BA976030083D904 /* GetStartedViewModel.swift in Sources */,
 				8C4B7B852BB47E9C0043B892 /* Color.swift in Sources */,
 				8C8BEC382BA977AC0083D904 /* RegistrationPage.swift in Sources */,
@@ -732,6 +782,8 @@
 				8C1E00AE2BA823C80094FAA7 /* MainAppCoordinator.swift in Sources */,
 				8C4B7B832BB47DD30043B892 /* StartupProgressAnimationView.swift in Sources */,
 				8C0007D32BAC976700AAEBA0 /* AppInfoProvider.swift in Sources */,
+				8C4B7B9B2BB7026D0043B892 /* TextFieldStyleConfiguration.swift in Sources */,
+				8C4B7B8B2BB6FD030043B892 /* StyledButton.swift in Sources */,
 				8C8BEC642BA9ADE20083D904 /* AppLaunchControlView.swift in Sources */,
 				CE34FB3F2BB1963300701D2A /* CenteredWrappingContainer.swift in Sources */,
 				8C0007B22BAC733900AAEBA0 /* ArrowParsable.swift in Sources */,

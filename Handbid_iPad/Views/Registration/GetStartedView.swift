@@ -43,6 +43,10 @@ struct GetStartedView<T: PageProtocol>: View {
 			Button(LocalizedStringKey("btnAboutHandbid")) {}
 				.borderAccentButtonStyle()
 				.accessibilityIdentifier("AboutHandbidButton")
+
+//			Button<Text>.styled(config: .primaryButtonStyle, action: {}) {
+//				Text("Button")
+//			}
 		}
 	}
 
@@ -56,8 +60,10 @@ struct GetStartedView<T: PageProtocol>: View {
 					.titleTextStyle()
 					.padding([.bottom, .top], 0.05 * size.height)
 					.accessibilityIdentifier("GetStartedView")
-
-				getButtons()
+				Button<Text>.styled(config: .primaryButtonStyle, action: {}) {
+					Text("Button")
+				}
+				// getButtons()
 			}
 			.padding([.bottom, .top], 0.05 * size.height)
 			.padding([.leading, .trailing], 0.1 * size.width)

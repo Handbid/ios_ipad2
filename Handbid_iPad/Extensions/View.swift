@@ -54,4 +54,24 @@ extension View {
 	func fullWidthStyle() -> some View {
 		modifier(FullWidthModifier())
 	}
+
+	/// Apply button style with solid background and AccentColor
+	func solidAccentButtonStyle() -> some View {
+		buttonStyle(SolidButtonStyle.accent)
+	}
+
+	/// Apply button style with solid backgroun and PrimaryButtonColor
+	func solidPrimaryButtonStyle() -> some View {
+		buttonStyle(SolidButtonStyle.primary)
+	}
+
+	/// Apply button style with bordered background and AccentColor
+	func borderAccentButtonStyle() -> some View {
+		buttonStyle(BorderButtonStyle.accent)
+	}
+
+	/// Apply button style without background and text in AccentColor
+	func noBackgroundAccentButtonStyle() -> some View {
+		buttonStyle(NoBackgroundButtonStyle.accent)
+	}
 }
