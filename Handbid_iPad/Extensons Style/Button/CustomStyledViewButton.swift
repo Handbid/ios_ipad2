@@ -3,7 +3,7 @@
 import SwiftUI
 
 private struct ButtonStyleModifier: ViewModifier {
-	let config: ButtonStyleSettings
+	let config: ButtonStyleConfiguration
 
 	func body(content: Content) -> some View {
 		content

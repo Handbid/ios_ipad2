@@ -5,10 +5,10 @@ import SwiftUI
 enum ButtonStyles {
 	case primaryButtonStyle
 
-	var configuration: ButtonStyleSettings {
+	var configuration: ButtonStyleConfiguration {
 		switch self {
 		case .primaryButtonStyle:
-			ButtonStyleSettings(
+			ButtonStyleConfiguration(
 				backgroundColor: .purple,
 				foregroundColor: .white,
 				borderWidth: 0,
