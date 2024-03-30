@@ -3,7 +3,7 @@
 import Foundation
 import SwiftUI
 
-struct ButtonStyleConfiguration {
+struct ButtonStyleSettings {
 	var backgroundColor: Color
 	var foregroundColor: Color
 	var borderColor: Color?

@@ -21,12 +21,13 @@
 		8C4B7B832BB47DD30043B892 /* StartupProgressAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7B822BB47DD30043B892 /* StartupProgressAnimationView.swift */; };
 		8C4B7B852BB47E9C0043B892 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7B842BB47E9C0043B892 /* Color.swift */; };
 		8C4B7B872BB6DCC80043B892 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7B862BB6DCC80043B892 /* AuthModel.swift */; };
-		8C4B7B892BB6FCEA0043B892 /* ButtonStyleConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7B882BB6FCEA0043B892 /* ButtonStyleConfiguration.swift */; };
-		8C4B7B8B2BB6FD030043B892 /* StyledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7B8A2BB6FD030043B892 /* StyledButton.swift */; };
+		8C4B7B892BB6FCEA0043B892 /* ButtonStyleSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7B882BB6FCEA0043B892 /* ButtonStyleSettings.swift */; };
+		8C4B7B8B2BB6FD030043B892 /* CustomStyledViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7B8A2BB6FD030043B892 /* CustomStyledViewButton.swift */; };
 		8C4B7B932BB7019C0043B892 /* TextStyleConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7B922BB7019C0043B892 /* TextStyleConfiguration.swift */; };
 		8C4B7B972BB7022A0043B892 /* SecureTextFieldStyleConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7B962BB7022A0043B892 /* SecureTextFieldStyleConfiguration.swift */; };
 		8C4B7B9B2BB7026D0043B892 /* TextFieldStyleConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7B9A2BB7026D0043B892 /* TextFieldStyleConfiguration.swift */; };
 		8C4B7B9F2BB708EB0043B892 /* ViewElementExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7B9E2BB708EB0043B892 /* ViewElementExtensions.swift */; };
+		8C4B7BA22BB88FFB0043B892 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7BA12BB88FFB0043B892 /* ButtonStyles.swift */; };
 		8C8BEC2E2BA975DE0083D904 /* GetStartedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC2D2BA975DE0083D904 /* GetStartedView.swift */; };
 		8C8BEC302BA975F10083D904 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC2F2BA975F10083D904 /* LogInView.swift */; };
 		8C8BEC322BA976030083D904 /* GetStartedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC312BA976030083D904 /* GetStartedViewModel.swift */; };
@@ -102,12 +103,13 @@
 		8C4B7B822BB47DD30043B892 /* StartupProgressAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupProgressAnimationView.swift; sourceTree = "<group>"; };
 		8C4B7B842BB47E9C0043B892 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		8C4B7B862BB6DCC80043B892 /* AuthModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
-		8C4B7B882BB6FCEA0043B892 /* ButtonStyleConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyleConfiguration.swift; sourceTree = "<group>"; };
-		8C4B7B8A2BB6FD030043B892 /* StyledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledButton.swift; sourceTree = "<group>"; };
+		8C4B7B882BB6FCEA0043B892 /* ButtonStyleSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyleSettings.swift; sourceTree = "<group>"; };
+		8C4B7B8A2BB6FD030043B892 /* CustomStyledViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyledViewButton.swift; sourceTree = "<group>"; };
 		8C4B7B922BB7019C0043B892 /* TextStyleConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyleConfiguration.swift; sourceTree = "<group>"; };
 		8C4B7B962BB7022A0043B892 /* SecureTextFieldStyleConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureTextFieldStyleConfiguration.swift; sourceTree = "<group>"; };
 		8C4B7B9A2BB7026D0043B892 /* TextFieldStyleConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStyleConfiguration.swift; sourceTree = "<group>"; };
 		8C4B7B9E2BB708EB0043B892 /* ViewElementExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewElementExtensions.swift; sourceTree = "<group>"; };
+		8C4B7BA12BB88FFB0043B892 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		8C8BEC2D2BA975DE0083D904 /* GetStartedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedView.swift; sourceTree = "<group>"; };
 		8C8BEC2F2BA975F10083D904 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		8C8BEC312BA976030083D904 /* GetStartedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewModel.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				8C1E00FF2BA85E3B0094FAA7 /* AppDelegate */,
 				8C1E00D92BA824B40094FAA7 /* Bridging-Header */,
 				8C1E00DA2BA824BF0094FAA7 /* Config-Env */,
+				8C4B7BA02BB88F920043B892 /* Configuration Appearence */,
 				8C1E00DB2BA8250A0094FAA7 /* Coordinator */,
 				CEE2BB242BB5BB310033556D /* Data */,
 				8C1E00DC2BA825150094FAA7 /* Extensions */,
@@ -363,9 +366,8 @@
 			isa = PBXGroup;
 			children = (
 				8C4B7B962BB7022A0043B892 /* SecureTextFieldStyleConfiguration.swift */,
+				8C4B7BA32BB8906C0043B892 /* Button */,
 				8C4B7B922BB7019C0043B892 /* TextStyleConfiguration.swift */,
-				8C4B7B882BB6FCEA0043B892 /* ButtonStyleConfiguration.swift */,
-				8C4B7B8A2BB6FD030043B892 /* StyledButton.swift */,
 				8C4B7B9A2BB7026D0043B892 /* TextFieldStyleConfiguration.swift */,
 				8C4B7B9E2BB708EB0043B892 /* ViewElementExtensions.swift */,
 			);
@@ -397,6 +399,23 @@
 				CE7DF8292BADF23500FF7694 /* TextFieldModifiers.swift */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		8C4B7BA02BB88F920043B892 /* Configuration Appearence */ = {
+			isa = PBXGroup;
+			children = (
+				8C4B7BA12BB88FFB0043B892 /* ButtonStyles.swift */,
+			);
+			path = "Configuration Appearence";
+			sourceTree = "<group>";
+		};
+		8C4B7BA32BB8906C0043B892 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				8C4B7B882BB6FCEA0043B892 /* ButtonStyleSettings.swift */,
+				8C4B7B8A2BB6FD030043B892 /* CustomStyledViewButton.swift */,
+			);
+			path = Button;
 			sourceTree = "<group>";
 		};
 		8C8BEC2B2BA975B70083D904 /* Registration */ = {
@@ -768,9 +787,10 @@
 				8C4B7B872BB6DCC80043B892 /* AuthModel.swift in Sources */,
 				CEE2BB272BB5BBB10033556D /* RegisterRepository.swift in Sources */,
 				8C8BEC2E2BA975DE0083D904 /* GetStartedView.swift in Sources */,
-				8C4B7B892BB6FCEA0043B892 /* ButtonStyleConfiguration.swift in Sources */,
+				8C4B7B892BB6FCEA0043B892 /* ButtonStyleSettings.swift in Sources */,
 				8C4B7B932BB7019C0043B892 /* TextStyleConfiguration.swift in Sources */,
 				CEFC87A22BAC8D4200A8EAC6 /* BorderButtonStyle.swift in Sources */,
+				8C4B7BA22BB88FFB0043B892 /* ButtonStyles.swift in Sources */,
 				8C8BEC322BA976030083D904 /* GetStartedViewModel.swift in Sources */,
 				8C4B7B852BB47E9C0043B892 /* Color.swift in Sources */,
 				8C8BEC382BA977AC0083D904 /* RegistrationPage.swift in Sources */,
@@ -783,7 +803,7 @@
 				8C4B7B832BB47DD30043B892 /* StartupProgressAnimationView.swift in Sources */,
 				8C0007D32BAC976700AAEBA0 /* AppInfoProvider.swift in Sources */,
 				8C4B7B9B2BB7026D0043B892 /* TextFieldStyleConfiguration.swift in Sources */,
-				8C4B7B8B2BB6FD030043B892 /* StyledButton.swift in Sources */,
+				8C4B7B8B2BB6FD030043B892 /* CustomStyledViewButton.swift in Sources */,
 				8C8BEC642BA9ADE20083D904 /* AppLaunchControlView.swift in Sources */,
 				CE34FB3F2BB1963300701D2A /* CenteredWrappingContainer.swift in Sources */,
 				8C0007B22BAC733900AAEBA0 /* ArrowParsable.swift in Sources */,
