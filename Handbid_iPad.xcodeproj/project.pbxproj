@@ -54,6 +54,8 @@
 		8CABF5D22BB9E16900A34870 /* CustomFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5D12BB9E16900A34870 /* CustomFontSize.swift */; };
 		8CABF5D42BB9E17C00A34870 /* CustomDimensValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5D32BB9E17C00A34870 /* CustomDimensValues.swift */; };
 		8CABF5D62BB9E19900A34870 /* LayoutProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5D52BB9E19900A34870 /* LayoutProperties.swift */; };
+		8CABF5DA2BB9F35A00A34870 /* NavigationBackButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5D92BB9F35A00A34870 /* NavigationBackButtonModifier.swift */; };
+		8CABF5DC2BB9F37700A34870 /* RegistrationBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5DB2BB9F37700A34870 /* RegistrationBackButton.swift */; };
 		8CB8C6AC2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB8C6AB2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift */; };
 		8CEA290B2BB3517E005E3B33 /* NetworkService in Frameworks */ = {isa = PBXBuildFile; productRef = 8CEA290A2BB3517E005E3B33 /* NetworkService */; };
 		A750B07567CC3E21E4095C70 /* libPods-Handbid_iPadUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E77E5B8916E2FBB6366D1733 /* libPods-Handbid_iPadUITests.a */; };
@@ -153,6 +155,8 @@
 		8CABF5D12BB9E16900A34870 /* CustomFontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFontSize.swift; sourceTree = "<group>"; };
 		8CABF5D32BB9E17C00A34870 /* CustomDimensValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDimensValues.swift; sourceTree = "<group>"; };
 		8CABF5D52BB9E19900A34870 /* LayoutProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutProperties.swift; sourceTree = "<group>"; };
+		8CABF5D92BB9F35A00A34870 /* NavigationBackButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBackButtonModifier.swift; sourceTree = "<group>"; };
+		8CABF5DB2BB9F37700A34870 /* RegistrationBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationBackButton.swift; sourceTree = "<group>"; };
 		8CB8C6AB2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinatorTest.swift; sourceTree = "<group>"; };
 		8CEA29072BB345F8005E3B33 /* Handbid_iPadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CEA29082BB345F8005E3B33 /* Handbid_iPadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -440,6 +444,7 @@
 				8C4B7BAC2BB8942D0043B892 /* TextFieldStyles.swift */,
 				8C4B7BB62BB9C1080043B892 /* TextSecuredStyles.swift */,
 				8C4B7BB02BB8944C0043B892 /* TextStyles.swift */,
+				8CABF5D82BB9F33D00A34870 /* Navigation */,
 				8C4B7B8C2BB6FD390043B892 /* Extensions Style */,
 			);
 			path = "Configuration Appearence";
@@ -482,8 +487,8 @@
 			isa = PBXGroup;
 			children = (
 				8CABF5BE2BB9C61A00A34870 /* ChangePasswordView.swift */,
-				8CABF5BA2BB9C5F400A34870 /* ForgotPasswordView.swift */,
 				8CABF5CB2BB9CF0300A34870 /* ChooseEnvironmentView.swift */,
+				8CABF5BA2BB9C5F400A34870 /* ForgotPasswordView.swift */,
 				8C8BEC2D2BA975DE0083D904 /* GetStartedView.swift */,
 				8C8BEC2F2BA975F10083D904 /* LogInView.swift */,
 				8CABF5BC2BB9C60900A34870 /* ResetPasswordView.swift */,
@@ -509,6 +514,15 @@
 				8CABF5CF2BB9E11300A34870 /* ResponsiveView.swift */,
 			);
 			path = "Calculate Size View";
+			sourceTree = "<group>";
+		};
+		8CABF5D82BB9F33D00A34870 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				8CABF5D92BB9F35A00A34870 /* NavigationBackButtonModifier.swift */,
+				8CABF5DB2BB9F37700A34870 /* RegistrationBackButton.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 		B64BA6889C440647A69DCC9C /* Pods */ = {
@@ -875,6 +889,7 @@
 				8C4B7B892BB6FCEA0043B892 /* ButtonStyleConfiguration.swift in Sources */,
 				CEFC87A22BAC8D4200A8EAC6 /* BorderButtonStyle.swift in Sources */,
 				8C4B7BA22BB88FFB0043B892 /* ButtonStyles.swift in Sources */,
+				8CABF5DC2BB9F37700A34870 /* RegistrationBackButton.swift in Sources */,
 				8CABF5D02BB9E11300A34870 /* ResponsiveView.swift in Sources */,
 				8C8BEC322BA976030083D904 /* GetStartedViewModel.swift in Sources */,
 				8C4B7B852BB47E9C0043B892 /* Color.swift in Sources */,
@@ -897,6 +912,7 @@
 				8CABF5C82BB9C81100A34870 /* BackgroundContainerImage.swift in Sources */,
 				8C4B7B8B2BB6FD030043B892 /* CustomStyledViewButton.swift in Sources */,
 				8C8BEC642BA9ADE20083D904 /* AppLaunchControlView.swift in Sources */,
+				8CABF5DA2BB9F35A00A34870 /* NavigationBackButtonModifier.swift in Sources */,
 				CE34FB3F2BB1963300701D2A /* OverlayInternalView.swift in Sources */,
 				8C0007B22BAC733900AAEBA0 /* ArrowParsable.swift in Sources */,
 			);

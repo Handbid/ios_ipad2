@@ -81,4 +81,8 @@ extension View {
 			.scaledToFill()
 			.edgesIgnoringSafeArea(.all)
 	}
+
+	func backButtonNavigation(style: NavigationBackButtonStyle) -> some View {
+		modifier(NavigationBackButtonModifier(style: style))
+	}
 }

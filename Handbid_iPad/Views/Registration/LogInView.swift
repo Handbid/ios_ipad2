@@ -20,6 +20,7 @@ struct LogInView<T: PageProtocol>: View {
 		}.background {
 			backgroundImageView(for: .registrationWelcome)
 		}
+		.backButtonNavigation(style: .registration)
 		.ignoresSafeArea()
 	}
 
@@ -59,8 +60,8 @@ struct LogInView<T: PageProtocol>: View {
 			}.accessibilityIdentifier("LogIn")
 
 			Button<Text>.styled(config: .fourthButtonStyle, action: {
-                coordinator.push(RegistrationPage.forgotPassword as! T)
-            }) {
+				coordinator.push(RegistrationPage.forgotPassword as! T)
+			}) {
 				Text(LocalizedStringKey("forgotPassword"))
 			}.accessibilityIdentifier("ForgotPassword")
 		}
