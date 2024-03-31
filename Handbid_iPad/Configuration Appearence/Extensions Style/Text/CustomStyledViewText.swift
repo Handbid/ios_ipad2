@@ -8,7 +8,7 @@ extension Text {
 	}
 
 	@ViewBuilder
-	private func applyTextStyle(style: TextFieldStyleConfiguration) -> some View {
+	private func applyTextStyle(style: TextStyleConfiguration) -> some View {
 		let textField = font(style.fontStyle)
 			.fontWeight(style.fontWeightStyle)
 			.foregroundColor(style.defaultTextColor)

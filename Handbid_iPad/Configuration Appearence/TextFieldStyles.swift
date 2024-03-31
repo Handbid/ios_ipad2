@@ -5,17 +5,17 @@ import SwiftUI
 enum TextFieldStyles {
 	case headerTitle
 
-	var configuration: TextFieldStyleConfiguration {
+	var configuration: TextStyleConfiguration {
 		switch self {
 		case .headerTitle:
-			TextFieldStyleConfiguration(
+			TextStyleConfiguration(
 				fontStyle: .callout,
 				fontWeightStyle: .medium
 			)
 		}
 	}
 
-	static func style(for type: TextFieldStyles) -> TextFieldStyleConfiguration {
+	static func style(for type: TextFieldStyles) -> TextStyleConfiguration {
 		switch type {
 		case .headerTitle: TextFieldStyles.headerTitle.configuration
 		}

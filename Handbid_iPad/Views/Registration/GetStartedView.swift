@@ -72,6 +72,9 @@ struct GetStartedView<T: PageProtocol>: View {
 
 				Text("upss")
 					.applyTextStyle(style: .headerTitle)
+
+				Text("bottom")
+					.applyTextStyle(style: .bottom)
 				// .applyTextStyle(config:)
 
 				// .applyTextFieldStyle(config: )

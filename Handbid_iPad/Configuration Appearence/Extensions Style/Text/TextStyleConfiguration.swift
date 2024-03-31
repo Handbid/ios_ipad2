@@ -64,9 +64,9 @@ struct TextStyleConfiguration {
 		self.borderStyle = borderStyle
 		self.autoCorrectionDisabled = autoCorrectionDisabled
 	}
-}
 
-enum BorderType {
-	case solid
-	case dashed
+	enum BorderType {
+		case solid
+		case dashed
+	}
 }

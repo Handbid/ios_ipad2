@@ -3,21 +3,24 @@
 import Foundation
 
 enum TextLabelStyles {
-	case headerTitle
+	case headerTitle, bottom
 
-	var configuration: TextFieldStyleConfiguration {
+	var configuration: TextStyleConfiguration {
 		switch self {
 		case .headerTitle:
-			TextFieldStyleConfiguration(
+			TextStyleConfiguration(
 				fontStyle: .callout,
 				fontWeightStyle: .medium
 			)
+		case .bottom:
+			TextStyleConfiguration(fontStyle: .largeTitle, fontWeightStyle: .bold)
 		}
 	}
 
-	static func style(for type: TextLabelStyles) -> TextFieldStyleConfiguration {
+	static func style(for type: TextLabelStyles) -> TextStyleConfiguration {
 		switch type {
 		case .headerTitle: TextLabelStyles.headerTitle.configuration
+		case .bottom: TextLabelStyles.bottom.configuration
 		}
 	}
 }
