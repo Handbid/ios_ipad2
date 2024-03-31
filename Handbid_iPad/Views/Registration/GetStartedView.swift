@@ -11,7 +11,7 @@ struct GetStartedView<T: PageProtocol>: View {
 	var body: some View {
 		ZStack {
 			if contentLoaded {
-				CenteredWrappingContainer(cornerRadius: 40) {
+				OverlayInternalView(cornerRadius: 40) {
 					VStack {
 						getLogoImage()
 						getHeaderText()
