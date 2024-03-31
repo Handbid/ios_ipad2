@@ -10,34 +10,20 @@ class LogInViewModel: ObservableObject {
 	@Published var email: String = ""
 	@Published var password: String = ""
 	@Published var isFormValid = true
-
 	@Published var errorMessage: String = ""
 
-	func fetchAppVersion() {
-		repository.getAppVersion()
-			.sink(receiveCompletion: { completion in
-				switch completion {
-				case .finished:
-					break
-				case let .failure(error):
-					print("Error fetching app version: \(error)")
-				}
-			}, receiveValue: { version in
-				print(version)
-			})
-			.store(in: &cancellables)
-	}
-
-	func logIn(email: String, password: String) {
+	func logIn() {
 		if !email.isValidEmail() {
 			errorMessage = "Incorrect Email Format"
 			isFormValid = false
 			return
-		} else if !password.isPasswordSecure() {
+		}
+		else if !password.isPasswordSecure() {
 			errorMessage = "Password Not Meet Requirements"
 			isFormValid = false
 			return
-		} else {
+		}
+		else {
 			isFormValid = true
 		}
 
