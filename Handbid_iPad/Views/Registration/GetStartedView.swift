@@ -66,6 +66,14 @@ struct GetStartedView<T: PageProtocol>: View {
 
 				TextField("sdsa", text: $viewmodel.login)
 					.applyTextFieldStyle(style: .headerTitle)
+
+				SecureField("dfdsf", text: $viewmodel.password)
+					.applySecuredFieldStyle(style: .headerTitle)
+
+				Text("upss")
+					.applyTextStyle(style: .headerTitle)
+				// .applyTextStyle(config:)
+
 				// .applyTextFieldStyle(config: )
 				// getButtons()
 			}

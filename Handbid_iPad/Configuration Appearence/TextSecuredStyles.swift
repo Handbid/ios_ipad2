@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-enum TextFieldStyles {
+enum TextSecuredStyles {
 	case headerTitle
 
 	var configuration: TextFieldStyleConfiguration {
@@ -15,9 +15,9 @@ enum TextFieldStyles {
 		}
 	}
 
-	static func style(for type: TextFieldStyles) -> TextFieldStyleConfiguration {
+	static func style(for type: TextSecuredStyles) -> TextFieldStyleConfiguration {
 		switch type {
-		case .headerTitle: TextFieldStyles.headerTitle.configuration
+		case .headerTitle: TextSecuredStyles.headerTitle.configuration
 		}
 	}
 }

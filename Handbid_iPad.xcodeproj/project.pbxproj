@@ -31,6 +31,8 @@
 		8C4B7BAD2BB8942D0043B892 /* TextFieldStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7BAC2BB8942D0043B892 /* TextFieldStyles.swift */; };
 		8C4B7BAF2BB8943E0043B892 /* SecureTextFieldsStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7BAE2BB8943E0043B892 /* SecureTextFieldsStyles.swift */; };
 		8C4B7BB12BB8944C0043B892 /* TextStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7BB02BB8944C0043B892 /* TextStyles.swift */; };
+		8C4B7BB52BB9BEDC0043B892 /* CustomStyledViewSecuredField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7BB42BB9BEDC0043B892 /* CustomStyledViewSecuredField.swift */; };
+		8C4B7BB72BB9C1080043B892 /* TextSecuredStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7BB62BB9C1080043B892 /* TextSecuredStyles.swift */; };
 		8C8BEC2E2BA975DE0083D904 /* GetStartedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC2D2BA975DE0083D904 /* GetStartedView.swift */; };
 		8C8BEC302BA975F10083D904 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC2F2BA975F10083D904 /* LogInView.swift */; };
 		8C8BEC322BA976030083D904 /* GetStartedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC312BA976030083D904 /* GetStartedViewModel.swift */; };
@@ -116,6 +118,8 @@
 		8C4B7BAC2BB8942D0043B892 /* TextFieldStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStyles.swift; sourceTree = "<group>"; };
 		8C4B7BAE2BB8943E0043B892 /* SecureTextFieldsStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureTextFieldsStyles.swift; sourceTree = "<group>"; };
 		8C4B7BB02BB8944C0043B892 /* TextStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyles.swift; sourceTree = "<group>"; };
+		8C4B7BB42BB9BEDC0043B892 /* CustomStyledViewSecuredField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyledViewSecuredField.swift; sourceTree = "<group>"; };
+		8C4B7BB62BB9C1080043B892 /* TextSecuredStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextSecuredStyles.swift; sourceTree = "<group>"; };
 		8C8BEC2D2BA975DE0083D904 /* GetStartedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedView.swift; sourceTree = "<group>"; };
 		8C8BEC2F2BA975F10083D904 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		8C8BEC312BA976030083D904 /* GetStartedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewModel.swift; sourceTree = "<group>"; };
@@ -411,6 +415,7 @@
 				8C4B7BA12BB88FFB0043B892 /* ButtonStyles.swift */,
 				8C4B7BAE2BB8943E0043B892 /* SecureTextFieldsStyles.swift */,
 				8C4B7BAC2BB8942D0043B892 /* TextFieldStyles.swift */,
+				8C4B7BB62BB9C1080043B892 /* TextSecuredStyles.swift */,
 				8C4B7BB02BB8944C0043B892 /* TextStyles.swift */,
 			);
 			path = "Configuration Appearence";
@@ -437,10 +442,19 @@
 		8C4B7BA52BB891EF0043B892 /* TextField */ = {
 			isa = PBXGroup;
 			children = (
+				8C4B7BB32BB9BEBC0043B892 /* SecuredField */,
 				8C4B7BA62BB892AC0043B892 /* CustomStyledViewTextField.swift */,
 				8C4B7B9A2BB7026D0043B892 /* TextFieldStyleConfiguration.swift */,
 			);
 			path = TextField;
+			sourceTree = "<group>";
+		};
+		8C4B7BB32BB9BEBC0043B892 /* SecuredField */ = {
+			isa = PBXGroup;
+			children = (
+				8C4B7BB42BB9BEDC0043B892 /* CustomStyledViewSecuredField.swift */,
+			);
+			path = SecuredField;
 			sourceTree = "<group>";
 		};
 		8C8BEC2B2BA975B70083D904 /* Registration */ = {
@@ -824,10 +838,12 @@
 				8C8BEC382BA977AC0083D904 /* RegistrationPage.swift in Sources */,
 				CE7DF8252BADDB7400FF7694 /* LabelAndTextModifiers.swift in Sources */,
 				CEFC879D2BAC8A6500A8EAC6 /* SolidButtonStyle.swift in Sources */,
+				8C4B7BB72BB9C1080043B892 /* TextSecuredStyles.swift in Sources */,
 				8C1E00AE2BA823C80094FAA7 /* MainAppCoordinator.swift in Sources */,
 				CE073EE22BB47E3F0079F342 /* NoBackgroundButtonStyle.swift in Sources */,
 				CE073EDE2BB4629C0079F342 /* Text.swift in Sources */,
 				8C1E00AE2BA823C80094FAA7 /* MainAppCoordinator.swift in Sources */,
+				8C4B7BB52BB9BEDC0043B892 /* CustomStyledViewSecuredField.swift in Sources */,
 				8C4B7B832BB47DD30043B892 /* StartupProgressAnimationView.swift in Sources */,
 				8C0007D32BAC976700AAEBA0 /* AppInfoProvider.swift in Sources */,
 				8C4B7B9B2BB7026D0043B892 /* TextFieldStyleConfiguration.swift in Sources */,
