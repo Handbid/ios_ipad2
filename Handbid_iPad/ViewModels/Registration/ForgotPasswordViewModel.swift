@@ -3,7 +3,7 @@
 import Combine
 import NetworkService
 
-class GetStartedViewModel: ObservableObject {
+class ForgotPasswordViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     private var repository: RegisterRepository = RegisterRepositoryImpl(NetworkingClient())
 }

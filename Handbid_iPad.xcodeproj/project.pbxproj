@@ -40,6 +40,12 @@
 		8C8BEC3A2BA977F00083D904 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC392BA977F00083D904 /* Coordinator.swift */; };
 		8C8BEC642BA9ADE20083D904 /* AppLaunchControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC632BA9ADE20083D904 /* AppLaunchControlView.swift */; };
 		8C8BEC662BA9B7DD0083D904 /* PageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC652BA9B7DD0083D904 /* PageProtocol.swift */; };
+		8CABF5BB2BB9C5F400A34870 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5BA2BB9C5F400A34870 /* ForgotPasswordView.swift */; };
+		8CABF5BD2BB9C60900A34870 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5BC2BB9C60900A34870 /* ResetPasswordView.swift */; };
+		8CABF5BF2BB9C61A00A34870 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5BE2BB9C61A00A34870 /* ChangePasswordView.swift */; };
+		8CABF5C12BB9C63C00A34870 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5C02BB9C63C00A34870 /* ChangePasswordViewModel.swift */; };
+		8CABF5C32BB9C64E00A34870 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5C22BB9C64E00A34870 /* ForgotPasswordViewModel.swift */; };
+		8CABF5C52BB9C65E00A34870 /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5C42BB9C65E00A34870 /* ResetPasswordViewModel.swift */; };
 		8CB8C6AC2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB8C6AB2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift */; };
 		8CEA290B2BB3517E005E3B33 /* NetworkService in Frameworks */ = {isa = PBXBuildFile; productRef = 8CEA290A2BB3517E005E3B33 /* NetworkService */; };
 		A750B07567CC3E21E4095C70 /* libPods-Handbid_iPadUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E77E5B8916E2FBB6366D1733 /* libPods-Handbid_iPadUITests.a */; };
@@ -125,6 +131,12 @@
 		8C8BEC392BA977F00083D904 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		8C8BEC632BA9ADE20083D904 /* AppLaunchControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLaunchControlView.swift; sourceTree = "<group>"; };
 		8C8BEC652BA9B7DD0083D904 /* PageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageProtocol.swift; sourceTree = "<group>"; };
+		8CABF5BA2BB9C5F400A34870 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		8CABF5BC2BB9C60900A34870 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
+		8CABF5BE2BB9C61A00A34870 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
+		8CABF5C02BB9C63C00A34870 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
+		8CABF5C22BB9C64E00A34870 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
+		8CABF5C42BB9C65E00A34870 /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
 		8CB8C6AB2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinatorTest.swift; sourceTree = "<group>"; };
 		8CEA29072BB345F8005E3B33 /* Handbid_iPadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CEA29082BB345F8005E3B33 /* Handbid_iPadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -438,8 +450,11 @@
 		8C8BEC2B2BA975B70083D904 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
+				8CABF5C02BB9C63C00A34870 /* ChangePasswordViewModel.swift */,
+				8CABF5C22BB9C64E00A34870 /* ForgotPasswordViewModel.swift */,
 				8C8BEC312BA976030083D904 /* GetStartedViewModel.swift */,
 				8C8BEC332BA976A90083D904 /* LogInViewModel.swift */,
+				8CABF5C42BB9C65E00A34870 /* ResetPasswordViewModel.swift */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -447,8 +462,11 @@
 		8C8BEC2C2BA975C30083D904 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
+				8CABF5BE2BB9C61A00A34870 /* ChangePasswordView.swift */,
+				8CABF5BA2BB9C5F400A34870 /* ForgotPasswordView.swift */,
 				8C8BEC2D2BA975DE0083D904 /* GetStartedView.swift */,
 				8C8BEC2F2BA975F10083D904 /* LogInView.swift */,
+				8CABF5BC2BB9C60900A34870 /* ResetPasswordView.swift */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -786,9 +804,12 @@
 				8C4B7B7F2BB379440043B892 /* AuthManager.swift in Sources */,
 				8C8BEC342BA976A90083D904 /* LogInViewModel.swift in Sources */,
 				CEFC879F2BAC8BCE00A8EAC6 /* ButtonModifiers.swift in Sources */,
+				8CABF5C12BB9C63C00A34870 /* ChangePasswordViewModel.swift in Sources */,
 				CEE2BB292BB5D1070033556D /* ApiConstants.swift in Sources */,
+				8CABF5C32BB9C64E00A34870 /* ForgotPasswordViewModel.swift in Sources */,
 				8C4B7BA72BB892AC0043B892 /* CustomStyledViewTextField.swift in Sources */,
 				CE7DF82C2BADF28000FF7694 /* ViewModifiers.swift in Sources */,
+				8CABF5BF2BB9C61A00A34870 /* ChangePasswordView.swift in Sources */,
 				8C8BEC362BA977560083D904 /* RootPageView.swift in Sources */,
 				8C8BEC302BA975F10083D904 /* LogInView.swift in Sources */,
 				CE7DF82A2BADF23500FF7694 /* TextFieldModifiers.swift in Sources */,
@@ -816,8 +837,11 @@
 				CEFC879D2BAC8A6500A8EAC6 /* SolidButtonStyle.swift in Sources */,
 				8C4B7BB72BB9C1080043B892 /* TextSecuredStyles.swift in Sources */,
 				8C1E00AE2BA823C80094FAA7 /* MainAppCoordinator.swift in Sources */,
+				8CABF5BD2BB9C60900A34870 /* ResetPasswordView.swift in Sources */,
 				CE073EE22BB47E3F0079F342 /* NoBackgroundButtonStyle.swift in Sources */,
 				CE073EDE2BB4629C0079F342 /* Text.swift in Sources */,
+				8CABF5BB2BB9C5F400A34870 /* ForgotPasswordView.swift in Sources */,
+				8CABF5C52BB9C65E00A34870 /* ResetPasswordViewModel.swift in Sources */,
 				8C1E00AE2BA823C80094FAA7 /* MainAppCoordinator.swift in Sources */,
 				8C4B7BB52BB9BEDC0043B892 /* CustomStyledViewSecuredField.swift in Sources */,
 				8C4B7B832BB47DD30043B892 /* StartupProgressAnimationView.swift in Sources */,
