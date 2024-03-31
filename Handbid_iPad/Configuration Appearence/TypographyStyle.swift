@@ -8,14 +8,14 @@ enum TypographyStyle {
 	private var fontName: String {
 		switch self {
 		case .headerTitleRegistration:
-			"Inter.ttf"
+			"Inter"
 		}
 	}
 
 	private var fontTextStyle: Font.TextStyle {
 		switch self {
 		case .headerTitleRegistration:
-			.title
+			.headline
 		}
 	}
 
