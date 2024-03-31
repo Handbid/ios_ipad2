@@ -63,6 +63,9 @@ struct GetStartedView<T: PageProtocol>: View {
 				Button<Text>.styled(config: .primaryButtonStyle, action: {}) {
 					Text("Button")
 				}
+
+				TextField("sdsa", text: $viewmodel.login)
+				// .applyTextFieldStyle(config: )
 				// getButtons()
 			}
 			.padding([.bottom, .top], 0.05 * size.height)

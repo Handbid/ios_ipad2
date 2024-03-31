@@ -3,17 +3,19 @@
 import SwiftUI
 
 extension TextField {
-    @ViewBuilder
-    func applyTextFieldStyle(config: TextStyleConfiguration) -> some View {
-        let textField = font(config.font)
-            .fontWeight(config.fontWeight)
-            .foregroundColor(config.foregroundColor)
-            .multilineTextAlignment(config.alignment)
+	@ViewBuilder
+	func applyTextFieldStyle(style: TextStyles) -> some View {
+		let config = style.configuration
+		let textField = font(config.font)
+			.fontWeight(config.fontWeight)
+			.foregroundColor(config.foregroundColor)
+			.multilineTextAlignment(config.alignment)
 
-        if config.rounded {
-            textField.textFieldStyle(RoundedBorderTextFieldStyle())
-        } else {
-            textField
-        }
-    }
+		if config.rounded {
+			textField.textFieldStyle(RoundedBorderTextFieldStyle())
+		}
+		else {
+			textField
+		}
+	}
 }

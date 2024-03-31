@@ -17,6 +17,8 @@ private struct ButtonStyleModifier: ViewModifier {
 				RoundedRectangle(cornerRadius: config.cornerRadius)
 					.stroke(config.borderColor ?? config.backgroundColor, lineWidth: config.borderWidth)
 			)
+			.shadow(color: config.shadowColor ?? .clear, radius: config.shadowRadius)
+			.padding(config.padding)
 	}
 }
 
