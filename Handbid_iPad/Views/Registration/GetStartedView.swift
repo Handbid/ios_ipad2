@@ -25,6 +25,7 @@ struct GetStartedView<T: PageProtocol>: View {
 		.background {
 			backgroundImageView(for: .registrationWelcome)
 		}
+		.ignoresSafeArea()
 	}
 
 	private func getLogoImage() -> some View {
@@ -44,14 +45,17 @@ struct GetStartedView<T: PageProtocol>: View {
 				coordinator.push(RegistrationPage.logIn as! T)
 			}) {
 				Text(LocalizedStringKey("login"))
+					.textCase(.uppercase)
 			}.accessibilityIdentifier("LoginButton")
 
 			Button<Text>.styled(config: .secondaryButtonStyle, action: {}) {
 				Text(LocalizedStringKey("demoVersion"))
+					.textCase(.uppercase)
 			}.accessibilityIdentifier("DemoButton")
 
 			Button<Text>.styled(config: .thirdButtonStyle, action: {}) {
 				Text(LocalizedStringKey("btnAboutHandbid"))
+					.textCase(.uppercase)
 			}.accessibilityIdentifier("AboutHandbidButton")
 		}
 	}

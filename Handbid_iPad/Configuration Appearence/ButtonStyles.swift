@@ -3,7 +3,7 @@
 import SwiftUI
 
 enum ButtonStyles {
-	case primaryButtonStyle, secondaryButtonStyle, thirdButtonStyle
+	case primaryButtonStyle, secondaryButtonStyle, thirdButtonStyle, fourthButtonStyle
 
 	var configuration: ButtonStyleConfiguration {
 		switch self {
@@ -28,6 +28,11 @@ enum ButtonStyles {
 				borderWidth: 1,
 				cornerRadius: 40,
 				font: .system(size: 16, weight: .semibold)
+			)
+		case .fourthButtonStyle:
+			ButtonStyleConfiguration(
+				foregroundColor: Color(hex: "#694BFF"),
+				font: .system(size: 13, weight: .semibold)
 			)
 		}
 	}
