@@ -3,7 +3,7 @@
 import Foundation
 
 enum TextLabelStyles {
-	case headerTitle, bottom
+	case headerTitle, body
 
 	var configuration: TextStyleConfiguration {
 		switch self {
@@ -12,15 +12,18 @@ enum TextLabelStyles {
 				fontStyle: TypographyStyle.headerTitleRegistration.asFont(),
 				fontWeightStyle: .semibold
 			)
-		case .bottom:
-			TextStyleConfiguration(fontStyle: .largeTitle, fontWeightStyle: .bold)
+		case .body:
+			TextStyleConfiguration(
+				fontStyle: .body, fontWeightStyle: .medium,
+				alignment: .center
+			)
 		}
 	}
 
 	static func style(for type: TextLabelStyles) -> TextStyleConfiguration {
 		switch type {
 		case .headerTitle: TextLabelStyles.headerTitle.configuration
-		case .bottom: TextLabelStyles.bottom.configuration
+		case .body: TextLabelStyles.body.configuration
 		}
 	}
 }

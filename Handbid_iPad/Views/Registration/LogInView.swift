@@ -39,7 +39,7 @@ struct LogInView<T: PageProtocol>: View {
 	}
 
 	private func getTextFields() -> some View {
-		VStack {
+		VStack(spacing: 20) {
 			FormField(fieldValue: $viewModel.login,
 			          labelKey: LocalizedStringKey("email"),
 			          hintKey: LocalizedStringKey("emailHint"))

@@ -6,6 +6,7 @@ import SwiftUI
 
 struct GetStartedView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
+	@ObservedObject private var viewModel = GetStartedViewModel()
 	@State private var contentLoaded = false
 
 	var body: some View {
@@ -48,12 +49,16 @@ struct GetStartedView<T: PageProtocol>: View {
 					.textCase(.uppercase)
 			}.accessibilityIdentifier("LoginButton")
 
-			Button<Text>.styled(config: .secondaryButtonStyle, action: {}) {
+			Button<Text>.styled(config: .secondaryButtonStyle, action: {
+				viewModel.logInAnonymously()
+			}) {
 				Text(LocalizedStringKey("demoVersion"))
 					.textCase(.uppercase)
 			}.accessibilityIdentifier("DemoButton")
 
-			Button<Text>.styled(config: .thirdButtonStyle, action: {}) {
+			Button<Text>.styled(config: .thirdButtonStyle, action: {
+				viewModel.openHandbidWebsite()
+			}) {
 				Text(LocalizedStringKey("btnAboutHandbid"))
 					.textCase(.uppercase)
 			}.accessibilityIdentifier("AboutHandbidButton")

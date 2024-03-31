@@ -4,6 +4,7 @@ import SwiftUI
 
 struct ChangePasswordView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
+	@ObservedObject private var viewModel = ChangePasswordViewModel()
 
 	var body: some View {
 		ZStack {
@@ -28,14 +29,14 @@ struct ChangePasswordView<T: PageProtocol>: View {
 	}
 
 	private func getTextFields() -> some View {
-		VStack {
-			//            FormField(fieldValue: $viewModel.login,
-			//                      labelKey: LocalizedStringKey("email"),
-			//                      hintKey: LocalizedStringKey("emailHint"))
-//
-			//            PasswordField(fieldValue: $viewModel.password,
-			//                          labelKey: LocalizedStringKey("password"),
-			//                          hintKey: LocalizedStringKey("passwordHint"))
+		VStack(spacing: 20) {
+			PasswordField(fieldValue: $viewModel.password,
+			              labelKey: LocalizedStringKey("password"),
+			              hintKey: LocalizedStringKey("passwordHint"))
+
+			PasswordField(fieldValue: $viewModel.confirmPassword,
+			              labelKey: LocalizedStringKey("password"),
+			              hintKey: LocalizedStringKey("passwordHint"))
 		}
 	}
 

@@ -6,4 +6,6 @@ import NetworkService
 class ChangePasswordViewModel: ObservableObject {
 	private var cancellables = Set<AnyCancellable>()
 	private var repository: RegisterRepository = RegisterRepositoryImpl(NetworkingClient())
+	var password: String = ""
+	var confirmPassword: String = ""
 }

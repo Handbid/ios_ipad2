@@ -9,7 +9,11 @@ protocol RegisterRepository {
 	func logIn(email: String, password: String) -> AnyPublisher<Any, Error>
 }
 
-class RegisterRepositoryImpl: RegisterRepository, NetworkingService {
+protocol LogInAnonymously {
+	func logInAnonymously() -> AnyPublisher<AppVersionModel, Error>
+}
+
+class RegisterRepositoryImpl: RegisterRepository, LogInAnonymously, NetworkingService {
 	var network: NetworkService.NetworkingClient
 	private var recaptchaClient: RecaptchaClient?
 	private var recaptchaToken = ""
@@ -43,6 +47,14 @@ class RegisterRepositoryImpl: RegisterRepository, NetworkingService {
 				print(error.errorMessage ?? "Unknown error on fetching reCaptcha token")
 			}
 		}
+	}
+
+	func logInAnonymously() -> AnyPublisher<AppVersionModel, Error> {
+		get(ApiConstants.GET_APP_VERSION, params: ["appName": AppInfoProvider.appName,
+		                                           "os": AppInfoProvider.os,
+		                                           "whitelabelId": AppInfoProvider.whitelabelId])
+			.tryMap { try AppVersionModel.decode($0) }
+			.eraseToAnyPublisher()
 	}
 
 	func getAppVersion() -> AnyPublisher<AppVersionModel, Error> {

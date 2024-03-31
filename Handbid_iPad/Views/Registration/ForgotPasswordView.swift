@@ -4,6 +4,7 @@ import SwiftUI
 
 struct ForgotPasswordView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
+	@ObservedObject private var viewModel = ForgotPasswordViewModel()
 
 	var body: some View {
 		ZStack {
@@ -29,14 +30,10 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 
 	private func getTextFields() -> some View {
 		VStack {
-			//            FormField(fieldValue: $viewModel.login,
-			//                      labelKey: LocalizedStringKey("email"),
-			//                      hintKey: LocalizedStringKey("emailHint"))
-
-			//            PasswordField(fieldValue: $viewModel.password,
-			//                          labelKey: LocalizedStringKey("password"),
-			//                          hintKey: LocalizedStringKey("passwordHint"))
-		}
+			FormField(fieldValue: $viewModel.login,
+			          labelKey: LocalizedStringKey("email"),
+			          hintKey: LocalizedStringKey("emailHint"))
+		}.padding(.bottom)
 	}
 
 	private func getButtons() -> some View {

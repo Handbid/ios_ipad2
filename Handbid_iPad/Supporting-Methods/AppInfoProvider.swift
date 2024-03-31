@@ -39,6 +39,14 @@ enum AppInfoProvider {
 		#endif
 	}
 
+	static var aboutHandbidLink: String {
+		#if HANDBID_IPAD
+			return "https://www.handbid.com/about-us/"
+		#else
+			return ""
+		#endif
+	}
+
 	static var bundleIdentifier: String {
 		Bundle.main.bundleIdentifier ?? ""
 	}

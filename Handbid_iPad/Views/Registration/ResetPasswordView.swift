@@ -10,7 +10,7 @@ struct ResetPasswordView<T: PageProtocol>: View {
 			OverlayInternalView(cornerRadius: 40) {
 				VStack {
 					getHeaderText()
-					/// getTextFields()
+					getBodyText()
 					getButtons()
 				}.padding()
 			}
@@ -25,6 +25,12 @@ struct ResetPasswordView<T: PageProtocol>: View {
 		Text(LocalizedStringKey("Reset Password"))
 			.applyTextStyle(style: .headerTitle)
 			.accessibilityIdentifier("ResetPassword")
+	}
+
+	private func getBodyText() -> some View {
+		Text(LocalizedStringKey("We have sent you a confirmation code by email, please enter the code below."))
+			.applyTextStyle(style: .body)
+			.accessibilityIdentifier("ResetPasswordBody")
 	}
 
 	private func getButtons() -> some View {
