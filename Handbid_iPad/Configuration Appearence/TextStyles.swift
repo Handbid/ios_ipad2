@@ -1,9 +1,9 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
-import Foundation
+import SwiftUI
 
 enum TextLabelStyles {
-	case headerTitle, body
+	case headerTitle, body, error
 
 	var configuration: TextStyleConfiguration {
 		switch self {
@@ -17,6 +17,12 @@ enum TextLabelStyles {
 				fontStyle: .body, fontWeightStyle: .medium,
 				alignment: .center
 			)
+		case .error:
+			TextStyleConfiguration(
+				fontStyle: .caption, fontWeightStyle: .medium,
+				alignment: .center,
+				defaultTextColor: Color(hex: "#E2296C")
+			)
 		}
 	}
 
@@ -24,6 +30,7 @@ enum TextLabelStyles {
 		switch type {
 		case .headerTitle: TextLabelStyles.headerTitle.configuration
 		case .body: TextLabelStyles.body.configuration
+		case .error: TextLabelStyles.error.configuration
 		}
 	}
 }
