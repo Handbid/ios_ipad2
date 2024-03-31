@@ -11,14 +11,12 @@ struct GetStartedView<T: PageProtocol>: View {
 	var body: some View {
 		ZStack {
 			if contentLoaded {
-				CenteredWrappingContainer(landscapeWidthFraction: 0.4) { size in
+				CenteredWrappingContainer(cornerRadius: 40) {
 					VStack {
-						getLogoImage(size)
+						getLogoImage()
 						getHeaderText()
 						getButtons()
-					}
-					.padding([.bottom, .top], 0.05 * size.height)
-					.padding([.leading, .trailing], 0.1 * size.width)
+					}.padding()
 				}
 			}
 		}.onAppear {
@@ -29,11 +27,11 @@ struct GetStartedView<T: PageProtocol>: View {
 		}
 	}
 
-	private func getLogoImage(_ size: CGSize) -> some View {
+	private func getLogoImage() -> some View {
 		Image("LogoSplash")
 			.resizable()
 			.scaledToFit()
-			.frame(width: size.width * 0.3)
+			.frame(height: 50)
 			.onLongPressGesture(minimumDuration: 5) {
 				coordinator.push(RegistrationPage.chooseEnvironment as! T)
 			}

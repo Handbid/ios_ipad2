@@ -9,7 +9,7 @@ enum TextLabelStyles {
 		switch self {
 		case .headerTitle:
 			TextStyleConfiguration(
-				fontStyle: .title,
+				fontStyle: TypographyStyle.headerTitleRegistration.asFont(),
 				fontWeightStyle: .bold
 			)
 		case .bottom:

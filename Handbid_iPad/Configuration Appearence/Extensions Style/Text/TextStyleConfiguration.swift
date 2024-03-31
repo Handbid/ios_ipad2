@@ -32,7 +32,7 @@ struct TextStyleConfiguration {
 		defaultTextColor: Color = .black,
 		placeholderColor: Color = .gray,
 		disabledColor: Color = .gray,
-		backgroundColor: Color = .white,
+		backgroundColor: Color = .clear,
 		errorColor: Color = .red,
 		borderColor: Color = .clear,
 		focusedBorderColorEnable: Bool = false,

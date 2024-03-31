@@ -28,29 +28,30 @@ struct LogInView<T: PageProtocol>: View {
 	}
 
 	var body: some View {
-		CenteredWrappingContainer(landscapeWidthFraction: 0.4) { size in
-			VStack {
-				getImageView(size: size)
-
-				Text(LocalizedStringKey("login"))
-					.padding(.bottom, 0.05 * size.height)
-					.subTitleTextStyle()
-					.accessibilityIdentifier("loginHeader")
-
-				getTextFields()
-
-				Button(LocalizedStringKey("login")) {
-					viewModel.logIn()
-				}
-				.solidPrimaryButtonStyle()
-				.padding([.top, .bottom], 0.025 * size.height)
-				.accessibilityIdentifier("loginButton")
-
-				Button(LocalizedStringKey("forgotPassword")) {}
-					.noBackgroundAccentButtonStyle()
-			}
-			.padding([.bottom, .top], 0.05 * size.height)
-			.padding([.leading, .trailing], 0.1 * size.width)
-		}.background(Color.accent)
+		Text("ups")
+//		CenteredWrappingContainer(landscapeWidthFraction: 0.4) { size in
+//			VStack {
+//				getImageView(size: size)
+//
+//				Text(LocalizedStringKey("login"))
+//					.padding(.bottom, 0.05 * size.height)
+//					.subTitleTextStyle()
+//					.accessibilityIdentifier("loginHeader")
+//
+//				getTextFields()
+//
+//				Button(LocalizedStringKey("login")) {
+//					viewModel.logIn()
+//				}
+//				.solidPrimaryButtonStyle()
+//				.padding([.top, .bottom], 0.025 * size.height)
+//				.accessibilityIdentifier("loginButton")
+//
+//				Button(LocalizedStringKey("forgotPassword")) {}
+//					.noBackgroundAccentButtonStyle()
+//			}
+//			.padding([.bottom, .top], 0.05 * size.height)
+//			.padding([.leading, .trailing], 0.1 * size.width)
+//		}.background(Color.accent)
 	}
 }

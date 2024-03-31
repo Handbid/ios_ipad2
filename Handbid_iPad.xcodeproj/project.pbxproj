@@ -49,6 +49,7 @@
 		8CABF5C82BB9C81100A34870 /* BackgroundContainerImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5C72BB9C81100A34870 /* BackgroundContainerImage.swift */; };
 		8CABF5CA2BB9CEF900A34870 /* ChooseEnvironmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5C92BB9CEF900A34870 /* ChooseEnvironmentViewModel.swift */; };
 		8CABF5CC2BB9CF0300A34870 /* ChooseEnvironmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5CB2BB9CF0300A34870 /* ChooseEnvironmentView.swift */; };
+		8CABF5CE2BB9D89900A34870 /* TypographyStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5CD2BB9D89900A34870 /* TypographyStyle.swift */; };
 		8CB8C6AC2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB8C6AB2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift */; };
 		8CEA290B2BB3517E005E3B33 /* NetworkService in Frameworks */ = {isa = PBXBuildFile; productRef = 8CEA290A2BB3517E005E3B33 /* NetworkService */; };
 		A750B07567CC3E21E4095C70 /* libPods-Handbid_iPadUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E77E5B8916E2FBB6366D1733 /* libPods-Handbid_iPadUITests.a */; };
@@ -143,6 +144,7 @@
 		8CABF5C72BB9C81100A34870 /* BackgroundContainerImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundContainerImage.swift; sourceTree = "<group>"; };
 		8CABF5C92BB9CEF900A34870 /* ChooseEnvironmentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseEnvironmentViewModel.swift; sourceTree = "<group>"; };
 		8CABF5CB2BB9CF0300A34870 /* ChooseEnvironmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseEnvironmentView.swift; sourceTree = "<group>"; };
+		8CABF5CD2BB9D89900A34870 /* TypographyStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypographyStyle.swift; sourceTree = "<group>"; };
 		8CB8C6AB2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinatorTest.swift; sourceTree = "<group>"; };
 		8CEA29072BB345F8005E3B33 /* Handbid_iPadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CEA29082BB345F8005E3B33 /* Handbid_iPadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -426,6 +428,7 @@
 			isa = PBXGroup;
 			children = (
 				8C4B7BA12BB88FFB0043B892 /* ButtonStyles.swift */,
+				8CABF5CD2BB9D89900A34870 /* TypographyStyle.swift */,
 				8C4B7BAC2BB8942D0043B892 /* TextFieldStyles.swift */,
 				8C4B7BB62BB9C1080043B892 /* TextSecuredStyles.swift */,
 				8C4B7BB02BB8944C0043B892 /* TextStyles.swift */,
@@ -837,6 +840,7 @@
 				8C4B7BB12BB8944C0043B892 /* TextStyles.swift in Sources */,
 				8C8BEC662BA9B7DD0083D904 /* PageProtocol.swift in Sources */,
 				8C4B7BAD2BB8942D0043B892 /* TextFieldStyles.swift in Sources */,
+				8CABF5CE2BB9D89900A34870 /* TypographyStyle.swift in Sources */,
 				8C8BEC3A2BA977F00083D904 /* Coordinator.swift in Sources */,
 				CE073EE62BB485CD0079F342 /* PasswordField.swift in Sources */,
 				8C1E01012BA85E630094FAA7 /* AppDelegate.swift in Sources */,
