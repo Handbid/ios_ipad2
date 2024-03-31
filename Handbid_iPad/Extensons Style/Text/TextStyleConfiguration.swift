@@ -26,7 +26,7 @@ struct TextStyleConfiguration {
 	init(
 		fontStyle: Font = .system(size: 16),
 		fontWeightStyle: Font.Weight = .regular,
-		alignment: TextAlignment = .center,
+		alignment: TextAlignment = .leading,
 		isSecure: Bool = false,
 		maxCharacterCount: Int = Int.max,
 		defaultTextColor: Color = .black,

@@ -3,8 +3,12 @@
 import SwiftUI
 
 extension TextField {
+	func applyTextFieldStyle(style: TextStyles) -> some View {
+		applyTextFieldStyle(style: TextStyles.style(for: style))
+	}
+
 	@ViewBuilder
-	func applyTextFieldStyle(style: TextStyleConfiguration) -> some View {
+	func applyTextFieldStyle(style: TextFieldStyleConfiguration) -> some View {
 		let textField = font(style.fontStyle)
 			.fontWeight(style.fontWeightStyle)
 			.foregroundColor(style.defaultTextColor)

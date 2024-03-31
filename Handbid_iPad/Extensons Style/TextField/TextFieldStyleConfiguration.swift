@@ -3,23 +3,70 @@
 import SwiftUI
 
 struct TextFieldStyleConfiguration {
-	var font: Font
-	var fontWeight: Font.Weight
-	var foregroundColor: Color
+	var fontStyle: Font
+	var fontWeightStyle: Font.Weight
 	var alignment: TextAlignment
-	var rounded: Bool
+	var isSecure: Bool
+	var maxCharacterCount: Int
+	var defaultTextColor: Color
+	var placeholderColor: Color
+	var disabledColor: Color
+	var backgroundColor: Color
+	var errorColor: Color
+	var borderColor: Color
+	var focusedBorderColorEnable: Bool
+	var focusedBorderColor: Color
+	var errorTextFont: Font
+	var placeholderTextFont: Font
+	var borderWidthValue: CGFloat
+	var roundedCornerRadius: CGFloat
+	var borderStyle: BorderType
+	var autoCorrectionDisabled: Bool
 
 	init(
-		font: Font = .system(size: 16),
-		fontWeight: Font.Weight = .regular,
-		foregroundColor: Color = .black,
-		alignment: TextAlignment = .center,
-		rounded: Bool = false
+		fontStyle: Font = .system(size: 16),
+		fontWeightStyle: Font.Weight = .regular,
+		alignment: TextAlignment = .leading,
+		isSecure: Bool = false,
+		maxCharacterCount: Int = Int.max,
+		defaultTextColor: Color = .black,
+		placeholderColor: Color = .gray,
+		disabledColor: Color = .gray,
+		backgroundColor: Color = .white,
+		errorColor: Color = .red,
+		borderColor: Color = .gray,
+		focusedBorderColorEnable: Bool = false,
+		focusedBorderColor: Color = .blue,
+		errorTextFont: Font = .system(size: 12),
+		placeholderTextFont: Font = .system(size: 16),
+		borderWidthValue: CGFloat = 1.0,
+		roundedCornerRadius: CGFloat = 5.0,
+		borderStyle: BorderType = .solid,
+		autoCorrectionDisabled: Bool = false
 	) {
-		self.font = font
-		self.fontWeight = fontWeight
-		self.foregroundColor = foregroundColor
+		self.fontStyle = fontStyle
+		self.fontWeightStyle = fontWeightStyle
 		self.alignment = alignment
-		self.rounded = rounded
+		self.isSecure = isSecure
+		self.maxCharacterCount = maxCharacterCount
+		self.defaultTextColor = defaultTextColor
+		self.placeholderColor = placeholderColor
+		self.disabledColor = disabledColor
+		self.backgroundColor = backgroundColor
+		self.errorColor = errorColor
+		self.borderColor = borderColor
+		self.focusedBorderColorEnable = focusedBorderColorEnable
+		self.focusedBorderColor = focusedBorderColor
+		self.errorTextFont = errorTextFont
+		self.placeholderTextFont = placeholderTextFont
+		self.borderWidthValue = borderWidthValue
+		self.roundedCornerRadius = roundedCornerRadius
+		self.borderStyle = borderStyle
+		self.autoCorrectionDisabled = autoCorrectionDisabled
+	}
+
+	enum BorderType {
+		case solid
+		case dashed
 	}
 }
