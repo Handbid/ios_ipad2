@@ -4,18 +4,23 @@ import SwiftUI
 
 extension TextField {
 	@ViewBuilder
-	func applyTextFieldStyle(style: TextStyles) -> some View {
-		let config = style.configuration
-		let textField = font(config.font)
-			.fontWeight(config.fontWeight)
-			.foregroundColor(config.foregroundColor)
-			.multilineTextAlignment(config.alignment)
-
-		if config.rounded {
-			textField.textFieldStyle(RoundedBorderTextFieldStyle())
-		}
-		else {
-			textField
-		}
+	func applyTextFieldStyle(style: TextStyleConfiguration) -> some View {
+		let textField = font(style.fontStyle)
+			.fontWeight(style.fontWeightStyle)
+			.foregroundColor(style.defaultTextColor)
+			.padding()
+			.background(style.backgroundColor)
+			.cornerRadius(style.roundedCornerRadius)
+			.overlay(
+				RoundedRectangle(cornerRadius: style.roundedCornerRadius)
+					.stroke(style.borderColor, lineWidth: style.borderWidthValue)
+			)
+			.textFieldStyle(PlainTextFieldStyle())
+			.multilineTextAlignment(style.alignment)
+			.frame(maxWidth: .infinity)
+			.disabled(style.autoCorrectionDisabled)
+			.textContentType(style.isSecure ? .password : .none)
+			.lineLimit(style.maxCharacterCount)
+		textField
 	}
 }

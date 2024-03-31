@@ -65,6 +65,7 @@ struct GetStartedView<T: PageProtocol>: View {
 				}
 
 				TextField("sdsa", text: $viewmodel.login)
+					.applyTextFieldStyle(style: TextStyles.headerTitle.configuration)
 				// .applyTextFieldStyle(config: )
 				// getButtons()
 			}
