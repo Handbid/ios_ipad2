@@ -46,6 +46,9 @@
 		8CABF5C12BB9C63C00A34870 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5C02BB9C63C00A34870 /* ChangePasswordViewModel.swift */; };
 		8CABF5C32BB9C64E00A34870 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5C22BB9C64E00A34870 /* ForgotPasswordViewModel.swift */; };
 		8CABF5C52BB9C65E00A34870 /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5C42BB9C65E00A34870 /* ResetPasswordViewModel.swift */; };
+		8CABF5C82BB9C81100A34870 /* BackgroundContainerImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5C72BB9C81100A34870 /* BackgroundContainerImage.swift */; };
+		8CABF5CA2BB9CEF900A34870 /* ChooseEnvironmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5C92BB9CEF900A34870 /* ChooseEnvironmentViewModel.swift */; };
+		8CABF5CC2BB9CF0300A34870 /* ChooseEnvironmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5CB2BB9CF0300A34870 /* ChooseEnvironmentView.swift */; };
 		8CB8C6AC2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB8C6AB2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift */; };
 		8CEA290B2BB3517E005E3B33 /* NetworkService in Frameworks */ = {isa = PBXBuildFile; productRef = 8CEA290A2BB3517E005E3B33 /* NetworkService */; };
 		A750B07567CC3E21E4095C70 /* libPods-Handbid_iPadUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E77E5B8916E2FBB6366D1733 /* libPods-Handbid_iPadUITests.a */; };
@@ -137,6 +140,9 @@
 		8CABF5C02BB9C63C00A34870 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
 		8CABF5C22BB9C64E00A34870 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		8CABF5C42BB9C65E00A34870 /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
+		8CABF5C72BB9C81100A34870 /* BackgroundContainerImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundContainerImage.swift; sourceTree = "<group>"; };
+		8CABF5C92BB9CEF900A34870 /* ChooseEnvironmentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseEnvironmentViewModel.swift; sourceTree = "<group>"; };
+		8CABF5CB2BB9CF0300A34870 /* ChooseEnvironmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseEnvironmentView.swift; sourceTree = "<group>"; };
 		8CB8C6AB2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinatorTest.swift; sourceTree = "<group>"; };
 		8CEA29072BB345F8005E3B33 /* Handbid_iPadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CEA29082BB345F8005E3B33 /* Handbid_iPadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -382,6 +388,7 @@
 		8C4B7B8C2BB6FD390043B892 /* Extensions Style */ = {
 			isa = PBXGroup;
 			children = (
+				8CABF5C62BB9C80400A34870 /* Background */,
 				8C4B7BA32BB8906C0043B892 /* Button */,
 				8C4B7BA42BB891E80043B892 /* Text */,
 			);
@@ -451,6 +458,7 @@
 			isa = PBXGroup;
 			children = (
 				8CABF5C02BB9C63C00A34870 /* ChangePasswordViewModel.swift */,
+				8CABF5C92BB9CEF900A34870 /* ChooseEnvironmentViewModel.swift */,
 				8CABF5C22BB9C64E00A34870 /* ForgotPasswordViewModel.swift */,
 				8C8BEC312BA976030083D904 /* GetStartedViewModel.swift */,
 				8C8BEC332BA976A90083D904 /* LogInViewModel.swift */,
@@ -464,11 +472,20 @@
 			children = (
 				8CABF5BE2BB9C61A00A34870 /* ChangePasswordView.swift */,
 				8CABF5BA2BB9C5F400A34870 /* ForgotPasswordView.swift */,
+				8CABF5CB2BB9CF0300A34870 /* ChooseEnvironmentView.swift */,
 				8C8BEC2D2BA975DE0083D904 /* GetStartedView.swift */,
 				8C8BEC2F2BA975F10083D904 /* LogInView.swift */,
 				8CABF5BC2BB9C60900A34870 /* ResetPasswordView.swift */,
 			);
 			path = Registration;
+			sourceTree = "<group>";
+		};
+		8CABF5C62BB9C80400A34870 /* Background */ = {
+			isa = PBXGroup;
+			children = (
+				8CABF5C72BB9C81100A34870 /* BackgroundContainerImage.swift */,
+			);
+			path = Background;
 			sourceTree = "<group>";
 		};
 		B64BA6889C440647A69DCC9C /* Pods */ = {
@@ -501,10 +518,10 @@
 		CE7DF82D2BADFD0700FF7694 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				CE7DF82E2BADFD1900FF7694 /* PinView.swift */,
 				CE34FB3E2BB1963300701D2A /* CenteredWrappingContainer.swift */,
 				CE073EE32BB4809C0079F342 /* FormField.swift */,
 				CE073EE52BB485CD0079F342 /* PasswordField.swift */,
+				CE7DF82E2BADFD1900FF7694 /* PinView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -806,6 +823,7 @@
 				CEFC879F2BAC8BCE00A8EAC6 /* ButtonModifiers.swift in Sources */,
 				8CABF5C12BB9C63C00A34870 /* ChangePasswordViewModel.swift in Sources */,
 				CEE2BB292BB5D1070033556D /* ApiConstants.swift in Sources */,
+				8CABF5CA2BB9CEF900A34870 /* ChooseEnvironmentViewModel.swift in Sources */,
 				8CABF5C32BB9C64E00A34870 /* ForgotPasswordViewModel.swift in Sources */,
 				8C4B7BA72BB892AC0043B892 /* CustomStyledViewTextField.swift in Sources */,
 				CE7DF82C2BADF28000FF7694 /* ViewModifiers.swift in Sources */,
@@ -842,11 +860,13 @@
 				CE073EDE2BB4629C0079F342 /* Text.swift in Sources */,
 				8CABF5BB2BB9C5F400A34870 /* ForgotPasswordView.swift in Sources */,
 				8CABF5C52BB9C65E00A34870 /* ResetPasswordViewModel.swift in Sources */,
+				8CABF5CC2BB9CF0300A34870 /* ChooseEnvironmentView.swift in Sources */,
 				8C1E00AE2BA823C80094FAA7 /* MainAppCoordinator.swift in Sources */,
 				8C4B7BB52BB9BEDC0043B892 /* CustomStyledViewSecuredField.swift in Sources */,
 				8C4B7B832BB47DD30043B892 /* StartupProgressAnimationView.swift in Sources */,
 				8C0007D32BAC976700AAEBA0 /* AppInfoProvider.swift in Sources */,
 				8C4B7B9B2BB7026D0043B892 /* TextStyleConfiguration.swift in Sources */,
+				8CABF5C82BB9C81100A34870 /* BackgroundContainerImage.swift in Sources */,
 				8C4B7B8B2BB6FD030043B892 /* CustomStyledViewButton.swift in Sources */,
 				8C8BEC642BA9ADE20083D904 /* AppLaunchControlView.swift in Sources */,
 				CE34FB3F2BB1963300701D2A /* CenteredWrappingContainer.swift in Sources */,

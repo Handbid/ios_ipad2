@@ -4,6 +4,6 @@ import Combine
 import NetworkService
 
 class ChangePasswordViewModel: ObservableObject {
-    private var cancellables = Set<AnyCancellable>()
-    private var repository: RegisterRepository = RegisterRepositoryImpl(NetworkingClient())
+	private var cancellables = Set<AnyCancellable>()
+	private var repository: RegisterRepository = RegisterRepositoryImpl(NetworkingClient())
 }

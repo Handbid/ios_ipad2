@@ -9,8 +9,8 @@ enum TextLabelStyles {
 		switch self {
 		case .headerTitle:
 			TextStyleConfiguration(
-				fontStyle: .callout,
-				fontWeightStyle: .medium
+				fontStyle: .title,
+				fontWeightStyle: .bold
 			)
 		case .bottom:
 			TextStyleConfiguration(fontStyle: .largeTitle, fontWeightStyle: .bold)

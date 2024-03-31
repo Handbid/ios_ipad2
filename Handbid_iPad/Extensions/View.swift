@@ -74,4 +74,11 @@ extension View {
 	func noBackgroundAccentButtonStyle() -> some View {
 		buttonStyle(NoBackgroundButtonStyle.accent)
 	}
+
+	func backgroundImageView(for image: BackgroundContainerImage) -> some View {
+		Image(image.rawValue)
+			.resizable()
+			.scaledToFill()
+			.edgesIgnoringSafeArea(.all)
+	}
 }

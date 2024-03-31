@@ -6,87 +6,61 @@ import SwiftUI
 
 struct GetStartedView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
-	@State private var currentPageView: AnyView?
-	@ObservedObject var viewmodel = LogInViewModel()
+	@State private var contentLoaded = false
+
+	var body: some View {
+		ZStack {
+			if contentLoaded {
+				CenteredWrappingContainer(landscapeWidthFraction: 0.4) { size in
+					VStack {
+						getLogoImage(size)
+						getHeaderText()
+						getButtons()
+					}
+					.padding([.bottom, .top], 0.05 * size.height)
+					.padding([.leading, .trailing], 0.1 * size.width)
+				}
+			}
+		}.onAppear {
+			contentLoaded = true
+		}
+		.background {
+			backgroundImageView(for: .registrationWelcome)
+		}
+	}
 
 	private func getLogoImage(_ size: CGSize) -> some View {
 		Image("LogoSplash")
 			.resizable()
 			.scaledToFit()
 			.frame(width: size.width * 0.3)
-			.onLongPressGesture(minimumDuration: 0.5) {
-				if EnvironmentManager.isProdActive() {
-					EnvironmentManager.setEnvironment(for: .d1)
-					viewmodel.fetchAppVersion()
-				}
-				else {
-					EnvironmentManager.setEnvironment(for: .prod)
-					viewmodel.fetchAppVersion()
-				}
+			.onLongPressGesture(minimumDuration: 5) {
+				coordinator.push(RegistrationPage.chooseEnvironment as! T)
 			}
 			.accessibilityIdentifier("AppLogo")
 	}
 
 	private func getButtons() -> some View {
-		VStack {
-			Button(LocalizedStringKey("login")) {
+		VStack(spacing: 10) {
+			Button<Text>.styled(config: .primaryButtonStyle, action: {
 				coordinator.push(RegistrationPage.logIn as! T)
-			}
-			.solidAccentButtonStyle()
-			.accessibilityIdentifier("LoginButton")
+			}) {
+				Text(LocalizedStringKey("login"))
+			}.accessibilityIdentifier("LoginButton")
 
-			Button(LocalizedStringKey("demoVersion")) {}
-				.solidPrimaryButtonStyle()
-				.disabled(true)
-				.accessibilityIdentifier("DemoButton")
+			Button<Text>.styled(config: .secondaryButtonStyle, action: {}) {
+				Text(LocalizedStringKey("demoVersion"))
+			}.accessibilityIdentifier("DemoButton")
 
-			Button(LocalizedStringKey("btnAboutHandbid")) {}
-				.borderAccentButtonStyle()
-				.accessibilityIdentifier("AboutHandbidButton")
-
-//			Button<Text>.styled(config: .primaryButtonStyle, action: {}) {
-//				Text("Button")
-//			}
+			Button<Text>.styled(config: .thirdButtonStyle, action: {}) {
+				Text(LocalizedStringKey("btnAboutHandbid"))
+			}.accessibilityIdentifier("AboutHandbidButton")
 		}
 	}
 
-	var body: some View {
-		CenteredWrappingContainer(landscapeWidthFraction: 0.4) { size in
-			VStack {
-				getLogoImage(size)
-
-				Text(LocalizedStringKey("welcomeToHandbid"))
-					.wrapTextModifier()
-					.titleTextStyle()
-					.padding([.bottom, .top], 0.05 * size.height)
-					.accessibilityIdentifier("GetStartedView")
-				Button<Text>.styled(config: .primaryButtonStyle, action: {}) {
-					Text("Button")
-				}
-
-				TextField("sdsa", text: $viewmodel.login)
-					.applyTextFieldStyle(style: .headerTitle)
-
-				SecureField("dfdsf", text: $viewmodel.password)
-					.applySecuredFieldStyle(style: .headerTitle)
-
-				Text("upss")
-					.applyTextStyle(style: .headerTitle)
-
-				Text("bottom")
-					.applyTextStyle(style: .bottom)
-				// .applyTextStyle(config:)
-
-				// .applyTextFieldStyle(config: )
-				// getButtons()
-			}
-			.padding([.bottom, .top], 0.05 * size.height)
-			.padding([.leading, .trailing], 0.1 * size.width)
-		}.background {
-			Image("SplashBackground")
-				.resizable()
-				.scaledToFill()
-				.ignoresSafeArea()
-		}
+	private func getHeaderText() -> some View {
+		Text(LocalizedStringKey("welcomeToHandbid"))
+			.applyTextStyle(style: .headerTitle)
+			.accessibilityIdentifier("GetStartedView")
 	}
 }
