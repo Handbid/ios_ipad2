@@ -20,8 +20,11 @@ struct ChangePasswordView<T: PageProtocol>: View {
 		OverlayInternalView(cornerRadius: 40) {
 			VStack(spacing: 20) {
 				getHeaderText()
+					.animation(.easeInOut(duration: 0.3), value: !viewModel.isCorrectPassword)
 				getTextFields()
+					.animation(.easeInOut(duration: 0.3), value: !viewModel.isCorrectPassword)
 				getErrorMessage()
+					.animation(.easeInOut(duration: 0.3), value: !viewModel.isCorrectPassword)
 				getButtons()
 				Spacer()
 			}

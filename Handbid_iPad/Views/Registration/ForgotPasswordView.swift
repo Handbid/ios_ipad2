@@ -22,8 +22,11 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 		OverlayInternalView(cornerRadius: 40) {
 			VStack(spacing: 20) {
 				getHeaderText()
+					.animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
 				getTextFields()
+					.animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
 				getErrorMessage()
+					.animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
 				getButtons()
 				Spacer()
 			}

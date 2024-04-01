@@ -39,7 +39,7 @@ struct OverlayInternalView<Content: View>: View {
 									GeometryReader { geo in
 										Color.clear
 											.onAppear {
-												DispatchQueue.main.async {
+												withAnimation(.easeInOut(duration: 0.2)) {
 													contentHeight = geo.size.height
 												}
 											}
@@ -47,6 +47,8 @@ struct OverlayInternalView<Content: View>: View {
 								)
 						}
 						.padding(.bottom, keyboardHeight)
+						.transition(.opacity)
+						.animation(.easeInOut, value: contentHeight)
 					Spacer()
 				}
 				Spacer()

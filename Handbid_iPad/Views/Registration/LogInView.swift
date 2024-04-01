@@ -26,10 +26,15 @@ struct LogInView<T: PageProtocol>: View {
 		OverlayInternalView(cornerRadius: 40) {
 			VStack(spacing: 20) {
 				getLogoImage()
+					.animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
 				getHeaderText()
+					.animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
 				getTextFields()
+					.animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
 				getErrorMessage()
+					.animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
 				getButtons()
+					.animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
 				Spacer()
 			}
 			.padding()

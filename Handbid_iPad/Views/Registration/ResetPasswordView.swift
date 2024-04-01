@@ -23,10 +23,15 @@ struct ResetPasswordView<T: PageProtocol>: View {
 		OverlayInternalView(cornerRadius: 40) {
 			VStack(spacing: 20) {
 				getHeaderText()
+					.animation(.easeInOut(duration: 0.3), value: !viewModel.isPinValid)
 				getBodyText()
+					.animation(.easeInOut(duration: 0.3), value: !viewModel.isPinValid)
 				getPinView()
+					.animation(.easeInOut(duration: 0.3), value: !viewModel.isPinValid)
 				getErrorMessage()
+					.animation(.easeInOut(duration: 0.3), value: !viewModel.isPinValid)
 				getButtons()
+					.animation(.easeInOut(duration: 0.3), value: !viewModel.isPinValid)
 				Spacer()
 			}
 			.padding()
