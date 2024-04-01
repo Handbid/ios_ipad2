@@ -12,6 +12,7 @@ DEPENDENCIES:
   - KeychainAccess
   - ProgressIndicatorView (~> 1.0.0)
   - RecaptchaEnterprise (= 18.5.0-beta02)
+  - RecaptchaInterop
   - SwiftFormat/CLI
 
 SPEC REPOS:
@@ -31,6 +32,6 @@ SPEC CHECKSUMS:
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
   SwiftFormat: 57d49d9a63f4249c625b1e623fb9fde0c30cae9d
 
-PODFILE CHECKSUM: a7a6373d5bde1ee8485896288e568fda8672d7c4
+PODFILE CHECKSUM: 1d6e1f1592d1766a2777cc81f7cd338d9429d026
 
 COCOAPODS: 1.15.2
