@@ -6,7 +6,20 @@ import NetworkService
 class ResetPasswordViewModel: ObservableObject {
 	private var cancellables = Set<AnyCancellable>()
 	private var repository: RegisterRepository = RegisterRepositoryImpl(NetworkingClient())
-	@Published var email = ""
-	@Published var emailMatch = true
-	@Published var isEmailValid = true
+	@Published var errorMessage: String = ""
+	@Published var isPinValid = true
+	@Published var pin: String = ""
+
+	func validatePin() {
+		if !pin.isValidPin() {
+			errorMessage = "Incorrect Pin Format"
+			isPinValid = false
+			return
+		}
+		isPinValid = true
+	}
+
+	func resetErrorMessage() {
+		errorMessage = ""
+	}
 }

@@ -16,4 +16,10 @@ extension String {
 			rangeOfCharacter(from: uppercaseLetterCharacterSet) != nil &&
 			rangeOfCharacter(from: specialCharacterSet) != nil
 	}
+
+	func isValidPin() -> Bool {
+		let pinRegex = #"^\d{4}$"#
+		let pinPredicate = NSPredicate(format: "SELF MATCHES %@", pinRegex)
+		return pinPredicate.evaluate(with: self)
+	}
 }
