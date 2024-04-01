@@ -19,6 +19,20 @@ enum TypographyStyle {
 		}
 	}
 
+	private var iPhoneFontSize: CGFloat {
+		switch self {
+		case .headerTitleRegistration:
+			26
+		}
+	}
+
+	private var iPadFontSize: CGFloat {
+		switch self {
+		case .headerTitleRegistration:
+			40
+		}
+	}
+
 	private var fontSize: CGFloat {
 		switch self {
 		case .headerTitleRegistration:
@@ -27,6 +41,12 @@ enum TypographyStyle {
 	}
 
 	func asFont() -> Font {
-		Font.custom(fontName, size: fontSize, relativeTo: fontTextStyle)
+		let fontSize: CGFloat = if UIDevice.current.userInterfaceIdiom == .pad {
+			iPadFontSize
+		}
+		else {
+			iPhoneFontSize
+		}
+		return Font.custom(fontName, size: fontSize, relativeTo: fontTextStyle)
 	}
 }

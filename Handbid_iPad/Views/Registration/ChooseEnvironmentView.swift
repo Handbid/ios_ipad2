@@ -75,7 +75,6 @@ struct ChooseEnvironmentView<T: PageProtocol>: View {
 		VStack(spacing: 10) {
 			Button<Text>.styled(config: .secondaryButtonStyle, action: {
 				viewModel.saveEnvironment()
-				// viewModel.openHandbidWebsite()
 			}) {
 				Text(LocalizedStringKey("Save"))
 					.textCase(.uppercase)
