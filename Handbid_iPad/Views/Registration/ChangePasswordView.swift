@@ -5,11 +5,16 @@ import SwiftUI
 struct ChangePasswordView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@ObservedObject private var viewModel = ChangePasswordViewModel()
+	@State private var isBlurred = false
 
 	var body: some View {
 		ZStack {
 			if viewModel.isCorrectPassword { content } else { content }
-		}.background {
+		}
+		.onAppear {
+			isBlurred = false
+		}
+		.background {
 			backgroundImageView(for: .registrationWelcome)
 		}
 		.backButtonNavigation(style: .registration)
@@ -28,6 +33,7 @@ struct ChangePasswordView<T: PageProtocol>: View {
 				getButtons()
 				Spacer()
 			}
+			.blur(radius: isBlurred ? 10 : 0)
 			.padding()
 		}
 	}

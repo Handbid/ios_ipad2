@@ -47,7 +47,7 @@ struct OverlayInternalView<Content: View>: View {
 								)
 						}
 						.padding(.bottom, keyboardHeight)
-						.transition(.opacity)
+						.transition(.asymmetric(insertion: .identity, removal: .opacity))
 						.animation(.easeInOut, value: contentHeight)
 					Spacer()
 				}

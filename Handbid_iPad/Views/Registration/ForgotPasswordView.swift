@@ -5,13 +5,17 @@ import SwiftUI
 struct ForgotPasswordView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@ObservedObject private var viewModel = ForgotPasswordViewModel()
+	@State private var isBlurred = false
 
 	var body: some View {
 		ZStack {
 			if viewModel.isFormValid { content } else { content }
-		}.background {
+		}
+		.background {
 			backgroundImageView(for: .registrationWelcome)
-		}.onAppear {
+		}
+		.onAppear {
+			isBlurred = false
 			viewModel.resetErrorMessage()
 		}
 		.backButtonNavigation(style: .registration)
@@ -30,6 +34,7 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 				getButtons()
 				Spacer()
 			}
+			.blur(radius: isBlurred ? 10 : 0)
 			.padding()
 		}
 	}
@@ -62,6 +67,7 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 			Button<Text>.styled(config: .secondaryButtonStyle, action: {
 				viewModel.valideEmail()
 				if viewModel.isFormValid {
+					isBlurred = true
 					coordinator.push(RegistrationPage.resetPassword as! T)
 				}
 			}) {

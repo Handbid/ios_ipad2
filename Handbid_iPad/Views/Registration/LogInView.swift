@@ -5,6 +5,7 @@ import SwiftUI
 struct LogInView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@ObservedObject private var viewModel = LogInViewModel()
+	@State private var isBlurred = false
 
 	var body: some View {
 		ZStack {
@@ -16,6 +17,7 @@ struct LogInView<T: PageProtocol>: View {
 			Alert(title: Text("Error"), message: Text(viewModel.errorMessage), dismissButton: .default(Text("OK")))
 		}
 		.onAppear {
+			isBlurred = false
 			viewModel.resetErrorMessage()
 		}
 		.backButtonNavigation(style: .registration)
@@ -37,6 +39,7 @@ struct LogInView<T: PageProtocol>: View {
 					.animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
 				Spacer()
 			}
+			.blur(radius: isBlurred ? 10 : 0)
 			.padding()
 		}
 	}
@@ -86,6 +89,7 @@ struct LogInView<T: PageProtocol>: View {
 			}.accessibilityIdentifier("LogIn")
 
 			Button<Text>.styled(config: .fourthButtonStyle, action: {
+				isBlurred = true
 				coordinator.push(RegistrationPage.forgotPassword as! T)
 			}) {
 				Text(LocalizedStringKey("forgotPassword"))

@@ -6,6 +6,7 @@ import SwiftUI
 struct ChooseEnvironmentView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@ObservedObject private var viewModel = ChooseEnvironmentViewModel()
+	@State private var isBlurred = false
 
 	var body: some View {
 		ZStack {
@@ -15,9 +16,15 @@ struct ChooseEnvironmentView<T: PageProtocol>: View {
 					getHeaderText()
 					getListView()
 					getButtons()
-				}.padding()
+				}
+				.blur(radius: isBlurred ? 10 : 0)
+				.padding()
 			}
-		}.background {
+		}
+		.onAppear {
+			isBlurred = false
+		}
+		.background {
 			backgroundImageView(for: .registrationWelcome)
 		}
 		.backButtonNavigation(style: .registration)
@@ -29,9 +36,6 @@ struct ChooseEnvironmentView<T: PageProtocol>: View {
 			.resizable()
 			.scaledToFit()
 			.frame(height: 50)
-			.onLongPressGesture(minimumDuration: 0.5) {
-				coordinator.push(RegistrationPage.chooseEnvironment as! T)
-			}
 			.accessibilityIdentifier("AppLogo")
 	}
 

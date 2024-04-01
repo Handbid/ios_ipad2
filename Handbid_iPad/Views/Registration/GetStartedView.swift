@@ -8,6 +8,7 @@ struct GetStartedView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@ObservedObject private var viewModel = GetStartedViewModel()
 	@State private var contentLoaded = false
+	@State private var isBlurred = false
 
 	var body: some View {
 		ZStack {
@@ -19,8 +20,11 @@ struct GetStartedView<T: PageProtocol>: View {
 						getButtons()
 					}.padding()
 				}
+				.blur(radius: isBlurred ? 10 : 0)
 			}
-		}.onAppear {
+		}
+		.onAppear {
+			isBlurred = false
 			contentLoaded = true
 		}
 		.background {
@@ -35,6 +39,7 @@ struct GetStartedView<T: PageProtocol>: View {
 			.scaledToFit()
 			.frame(height: 50)
 			.onLongPressGesture(minimumDuration: 0.5) {
+				isBlurred = true
 				coordinator.push(RegistrationPage.chooseEnvironment as! T)
 			}
 			.accessibilityIdentifier("AppLogo")
@@ -49,6 +54,7 @@ struct GetStartedView<T: PageProtocol>: View {
 	private func getButtons() -> some View {
 		VStack(spacing: 10) {
 			Button<Text>.styled(config: .primaryButtonStyle, action: {
+				isBlurred = true
 				coordinator.push(RegistrationPage.logIn as! T)
 			}) {
 				Text(LocalizedStringKey("login"))

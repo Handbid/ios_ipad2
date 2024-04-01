@@ -6,13 +6,17 @@ struct ResetPasswordView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@ObservedObject private var viewModel = ResetPasswordViewModel()
 	@FocusState private var isFocused: Bool
+	@State private var isBlurred = false
 
 	var body: some View {
 		ZStack {
 			if viewModel.isPinValid { content } else { content }
-		}.background {
+		}
+		.background {
 			backgroundImageView(for: .registrationWelcome)
-		}.onAppear {
+		}
+		.onAppear {
+			isBlurred = false
 			viewModel.resetErrorMessage()
 		}
 		.backButtonNavigation(style: .registration)
@@ -34,6 +38,7 @@ struct ResetPasswordView<T: PageProtocol>: View {
 					.animation(.easeInOut(duration: 0.3), value: !viewModel.isPinValid)
 				Spacer()
 			}
+			.blur(radius: isBlurred ? 10 : 0)
 			.padding()
 		}
 	}
@@ -78,6 +83,7 @@ struct ResetPasswordView<T: PageProtocol>: View {
 				.onChange(of: viewModel.pin) { _, newValue in
 					if newValue.count == 4 {
 						if !newValue.contains("*"), newValue.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil {
+							isBlurred = true
 							coordinator.push(RegistrationPage.changePassword as! T)
 						}
 						else {
@@ -110,6 +116,7 @@ struct ResetPasswordView<T: PageProtocol>: View {
 		VStack(spacing: 10) {
 			Button<Text>.styled(config: .secondaryButtonStyle, action: {
 				if viewModel.isPinValid, viewModel.pin.count == 4 {
+					isBlurred = true
 					coordinator.push(RegistrationPage.changePassword as! T)
 				}
 			}) {
