@@ -48,32 +48,34 @@ struct ChooseEnvironmentView<T: PageProtocol>: View {
 	]
 
 	private func getListView() -> some View {
-		VStack {
-			List {
-				Section(header: Text("Select Environment")) {
-					ForEach(environmentOptions) { option in
-						Button(action: {
-							deselectAllOptions()
-							selectOption(option)
-						}) {
-							HStack {
-								Text(option.name)
-								Spacer()
-								Image(systemName: option.isSelected ? "checkmark.circle.fill" : "circle")
+		List {
+			Section(header: Text("Select Environment")) {
+				ForEach(environmentOptions) { option in
+					Button(action: {
+						deselectAllOptions()
+						selectOption(option)
+					}) {
+						HStack {
+							Text(option.name)
+								.foregroundColor(.primary)
+							Spacer()
+							if option.isSelected {
+								Image(systemName: "checkmark.circle.fill")
 									.foregroundColor(.accentColor)
 							}
+							else {
+								Image(systemName: "circle")
+							}
 						}
-						.buttonStyle(PlainButtonStyle())
 					}
+					.buttonStyle(PlainButtonStyle())
 				}
-				.listRowBackground(Color.gray.opacity(0.2))
-				.listRowInsets(EdgeInsets())
 			}
-			.background(Color.clear)
-			.scrollDisabled(true)
-			.listStyle(InsetGroupedListStyle())
-			.frame(height: CGFloat(environmentOptions.count * 60))
+			.listRowBackground(Color.gray.opacity(0.2))
 		}
+		.scrollContentBackground(.hidden)
+		.scrollDisabled(true)
+		.frame(height: CGFloat(environmentOptions.count * 60))
 	}
 
 	private func getButtons() -> some View {
