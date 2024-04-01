@@ -1,5 +1,6 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
+import NetworkService
 import SwiftUI
 
 struct ChooseEnvironmentView<T: PageProtocol>: View {
@@ -40,26 +41,18 @@ struct ChooseEnvironmentView<T: PageProtocol>: View {
 			.accessibilityIdentifier("ChooseEnvironmentToConnect")
 	}
 
-	@State private var environmentOptions = [
-		EnvironmentOption(name: "Option 1", isSelected: false),
-		EnvironmentOption(name: "Option 2", isSelected: false),
-		EnvironmentOption(name: "Option 3", isSelected: false),
-		EnvironmentOption(name: "Option 4", isSelected: false),
-	]
-
 	private func getListView() -> some View {
 		List {
 			Section(header: Text("Select Environment")) {
-				ForEach(environmentOptions) { option in
+				ForEach(viewModel.environmentOptions, id: \.self) { option in
 					Button(action: {
-						deselectAllOptions()
 						selectOption(option)
 					}) {
 						HStack {
-							Text(option.name)
+							Text(option.rawValue)
 								.foregroundColor(.primary)
 							Spacer()
-							if option.isSelected {
+							if let selectedOption = viewModel.selectedOption, selectedOption == option {
 								Image(systemName: "checkmark.circle.fill")
 									.foregroundColor(.accentColor)
 							}
@@ -75,30 +68,27 @@ struct ChooseEnvironmentView<T: PageProtocol>: View {
 		}
 		.scrollContentBackground(.hidden)
 		.scrollDisabled(true)
-		.frame(height: CGFloat(environmentOptions.count * 60))
+		.frame(height: CGFloat(viewModel.environmentOptions.count * 60))
 	}
 
 	private func getButtons() -> some View {
 		VStack(spacing: 10) {
 			Button<Text>.styled(config: .secondaryButtonStyle, action: {
+				viewModel.saveEnvironment()
 				// viewModel.openHandbidWebsite()
 			}) {
-				Text(LocalizedStringKey("Connect"))
+				Text(LocalizedStringKey("Save"))
 					.textCase(.uppercase)
-			}.accessibilityIdentifier("Connect")
+			}.accessibilityIdentifier("Save")
 		}
 	}
 
 	private func deselectAllOptions() {
-		for index in environmentOptions.indices {
-			environmentOptions[index].isSelected = false
-		}
+		viewModel.selectedOption = nil
 	}
 
-	private func selectOption(_ option: EnvironmentOption) {
-		if let index = environmentOptions.firstIndex(where: { $0.id == option.id }) {
-			environmentOptions[index].isSelected = true
-		}
+	private func selectOption(_ option: AppEnvironmentType) {
+		viewModel.selectedOption = option
 	}
 }
 
