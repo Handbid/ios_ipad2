@@ -27,7 +27,7 @@ class RegisterRepositoryImpl: RegisterRepository, LogInAnonymously, NetworkingSe
 		Future { promise in
 			Task {
 				do {
-					self.recaptchaClient = try await Recaptcha.getClient(withSiteKey: ApiConstants.clientSecret)
+					self.recaptchaClient = try await Recaptcha.getClient(withSiteKey: AppInfoProvider.captchaKey)
 					promise(.success(()))
 				}
 				catch {
@@ -59,7 +59,7 @@ class RegisterRepositoryImpl: RegisterRepository, LogInAnonymously, NetworkingSe
 	}
 
 	func logInAnonymously() -> AnyPublisher<AppVersionModel, Error> {
-		get(ApiConstants.getAppVersion, params: ["appName": AppInfoProvider.appName,
+		get(ApiEndpoints.getAppVersion, params: ["appName": AppInfoProvider.appName,
 		                                         "os": AppInfoProvider.os,
 		                                         "whitelabelId": AppInfoProvider.whitelabelId])
 			.tryMap { try AppVersionModel.decode($0) }
@@ -67,7 +67,7 @@ class RegisterRepositoryImpl: RegisterRepository, LogInAnonymously, NetworkingSe
 	}
 
 	func getAppVersion() -> AnyPublisher<AppVersionModel, Error> {
-		get(ApiConstants.getAppVersion, params: ["appName": AppInfoProvider.appName,
+		get(ApiEndpoints.getAppVersion, params: ["appName": AppInfoProvider.appName,
 		                                         "os": AppInfoProvider.os,
 		                                         "whitelabelId": AppInfoProvider.whitelabelId])
 			.tryMap { try AppVersionModel.decode($0) }
@@ -80,14 +80,14 @@ class RegisterRepositoryImpl: RegisterRepository, LogInAnonymously, NetworkingSe
 				self.getRecaptchaToken()
 			}
 			.flatMap { recaptchaToken -> AnyPublisher<Any, Error> in
-				self.get(ApiConstants.logInUser, params: ["username": email,
-				                                          "password": password,
-				                                          "grant_type": "password",
-				                                          "client_id": AppInfoProvider.os,
-				                                          "client_secret": ApiConstants.clientSecret,
-				                                          "captchaKey": ApiConstants.recaptchaKey,
-				                                          "captchaToken": recaptchaToken,
-				                                          "whitelabelId": AppInfoProvider.whitelabelId])
+				self.post(ApiEndpoints.logInUser, params: ["username": email,
+				                                           "password": password,
+				                                           "grant_type": "password",
+				                                           "client_id": AppInfoProvider.os,
+				                                           "client_secret": AppInfoProvider.authClientSecret,
+				                                           "captchaKey": AppInfoProvider.captchaKey,
+				                                           "captchaToken": recaptchaToken,
+				                                           "whitelabelId": AppInfoProvider.whitelabelId])
 			}
 			.eraseToAnyPublisher()
 	}

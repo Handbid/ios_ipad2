@@ -11,6 +11,7 @@ class LogInViewModel: ObservableObject {
 	@Published var password: String = ""
 	@Published var isFormValid = true
 	@Published var errorMessage: String = ""
+	@Published var showError: Bool = false
 
 	func logIn() {
 		if !email.isValidEmail() {
@@ -34,6 +35,8 @@ class LogInViewModel: ObservableObject {
 					break
 				case let .failure(error):
 					print("Error logging in: \(error)")
+					self.errorMessage = error.localizedDescription
+					self.showError = true
 				}
 			}, receiveValue: { response in
 				print(response)

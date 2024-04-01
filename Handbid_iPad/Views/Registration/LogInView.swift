@@ -12,6 +12,8 @@ struct LogInView<T: PageProtocol>: View {
 		}
 		.background {
 			backgroundImageView(for: .registrationWelcome)
+		}.alert(isPresented: $viewModel.showError) {
+			Alert(title: Text("Error"), message: Text(viewModel.errorMessage), dismissButton: .default(Text("OK")))
 		}
 		.onAppear {
 			viewModel.resetErrorMessage()
