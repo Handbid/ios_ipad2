@@ -34,10 +34,16 @@ struct GetStartedView<T: PageProtocol>: View {
 			.resizable()
 			.scaledToFit()
 			.frame(height: 50)
-			.onLongPressGesture(minimumDuration: 5) {
+			.onLongPressGesture(minimumDuration: 0.5) {
 				coordinator.push(RegistrationPage.chooseEnvironment as! T)
 			}
 			.accessibilityIdentifier("AppLogo")
+	}
+
+	private func getHeaderText() -> some View {
+		Text(LocalizedStringKey("welcomeToHandbid"))
+			.applyTextStyle(style: .headerTitle)
+			.accessibilityIdentifier("GetStartedView")
 	}
 
 	private func getButtons() -> some View {
@@ -63,11 +69,5 @@ struct GetStartedView<T: PageProtocol>: View {
 					.textCase(.uppercase)
 			}.accessibilityIdentifier("AboutHandbidButton")
 		}
-	}
-
-	private func getHeaderText() -> some View {
-		Text(LocalizedStringKey("welcomeToHandbid"))
-			.applyTextStyle(style: .headerTitle)
-			.accessibilityIdentifier("GetStartedView")
 	}
 }
