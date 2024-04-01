@@ -10,7 +10,8 @@ enum TextLabelStyles {
 		case .headerTitle:
 			TextStyleConfiguration(
 				fontStyle: TypographyStyle.headerTitleRegistration.asFont(),
-				fontWeightStyle: .semibold
+				fontWeightStyle: .semibold,
+				alignment: .center
 			)
 		case .body:
 			TextStyleConfiguration(
