@@ -71,11 +71,19 @@ struct ResetPasswordView<T: PageProtocol>: View {
 				.ignoresSafeArea(.keyboard, edges: .bottom)
 				.padding()
 				.onChange(of: viewModel.pin) { _, newValue in
-					if newValue.count == 4, !newValue.contains("*"), newValue.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil {
-						coordinator.push(RegistrationPage.changePassword as! T)
+					if newValue.count == 4 {
+						if !newValue.contains("*"), newValue.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil {
+							coordinator.push(RegistrationPage.changePassword as! T)
+						}
+						else {
+							viewModel.validatePin()
+							if !viewModel.isPinValid {
+								viewModel.resetErrorMessage()
+							}
+						}
 					}
-					else if newValue.count == 4 {
-						viewModel.validatePin()
+					else if newValue.count > 4 {
+						viewModel.resetErrorMessage()
 					}
 				}
 		}
@@ -96,7 +104,9 @@ struct ResetPasswordView<T: PageProtocol>: View {
 	private func getButtons() -> some View {
 		VStack(spacing: 10) {
 			Button<Text>.styled(config: .secondaryButtonStyle, action: {
-				coordinator.push(RegistrationPage.changePassword as! T)
+				if viewModel.isPinValid, viewModel.pin.count == 4 {
+					coordinator.push(RegistrationPage.changePassword as! T)
+				}
 			}) {
 				Text(LocalizedStringKey("Confirm"))
 					.textCase(.uppercase)

@@ -8,18 +8,25 @@ struct ChangePasswordView<T: PageProtocol>: View {
 
 	var body: some View {
 		ZStack {
-			OverlayInternalView(cornerRadius: 40) {
-				VStack {
-					getHeaderText()
-					getTextFields()
-					getButtons()
-				}.padding()
-			}
+			if viewModel.isCorrectPassword { content } else { content }
 		}.background {
 			backgroundImageView(for: .registrationWelcome)
 		}
 		.backButtonNavigation(style: .registration)
 		.ignoresSafeArea()
+	}
+
+	private var content: some View {
+		OverlayInternalView(cornerRadius: 40) {
+			VStack(spacing: 20) {
+				getHeaderText()
+				getTextFields()
+				getErrorMessage()
+				getButtons()
+				Spacer()
+			}
+			.padding()
+		}
 	}
 
 	private func getHeaderText() -> some View {
@@ -40,10 +47,22 @@ struct ChangePasswordView<T: PageProtocol>: View {
 		}
 	}
 
+	private func getErrorMessage() -> some View {
+		VStack(spacing: 10) {
+			if !viewModel.isCorrectPassword {
+				Text(viewModel.errorMessage)
+					.applyTextStyle(style: .error)
+			}
+		}
+	}
+
 	private func getButtons() -> some View {
 		VStack(spacing: 10) {
 			Button<Text>.styled(config: .secondaryButtonStyle, action: {
-				// coordinator.push(RegistrationPage.resetPassword as! T)
+				viewModel.validatePassword()
+				if viewModel.isCorrectPassword {
+					// coordinator.push(RegistrationPage.resetPassword as! T)
+				}
 			}) {
 				Text(LocalizedStringKey("Change Password"))
 					.textCase(.uppercase)

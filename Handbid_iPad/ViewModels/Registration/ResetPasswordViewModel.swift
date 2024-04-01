@@ -7,7 +7,7 @@ class ResetPasswordViewModel: ObservableObject {
 	private var cancellables = Set<AnyCancellable>()
 	private var repository: RegisterRepository = RegisterRepositoryImpl(NetworkingClient())
 	@Published var errorMessage: String = ""
-	@Published var isPinValid = true
+	@Published var isPinValid = false
 	@Published var pin: String = ""
 
 	func validatePin() {
@@ -20,6 +20,8 @@ class ResetPasswordViewModel: ObservableObject {
 	}
 
 	func resetErrorMessage() {
+		pin = ""
 		errorMessage = ""
+		isPinValid = true
 	}
 }
