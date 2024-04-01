@@ -790,8 +790,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "
-";
+			shellScript = "\"$SRCROOT/Extras/localization_ios.sh\"\n";
 		};
 		8C1E01042BA866E00094FAA7 /* SwiftFormat */ = {
 			isa = PBXShellScriptBuildPhase;
