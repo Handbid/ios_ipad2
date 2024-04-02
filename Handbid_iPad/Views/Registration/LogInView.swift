@@ -3,10 +3,15 @@
 import SwiftUI
 
 struct LogInView<T: PageProtocol>: View {
+    private enum Field: Int, CaseIterable {
+        case email, password
+    }
+    
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@StateObject  private var viewModel = LogInViewModel()
 	@State private var isBlurred = false
-
+    @FocusState private var focusedField: Field?
+    
 	var body: some View {
 		ZStack {
 			if viewModel.isFormValid { content } else { content }
@@ -20,28 +25,35 @@ struct LogInView<T: PageProtocol>: View {
 			isBlurred = false
 			viewModel.resetErrorMessage()
 		}
+        .onTapGesture {
+            if focusedField != nil {
+                focusedField = nil
+            }
+        }
 		.backButtonNavigation(style: .registration)
 		.ignoresSafeArea()
 	}
 
 	private var content: some View {
-		OverlayInternalView(cornerRadius: 40) {
-			VStack(spacing: 20) {
-				getLogoImage()
-					.animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
-				getHeaderText()
-					.animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
-				getTextFields()
-					.animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
-				getErrorMessage()
-					.animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
-				getButtons()
-					.animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
-				Spacer()
-			}
-			.blur(radius: isBlurred ? 10 : 0)
-			.padding()
-		}
+        OverlayInternalView(cornerRadius: 40) {
+            ScrollView {
+                VStack(spacing: 20) {
+                    getLogoImage()
+                        .animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
+                    getHeaderText()
+                        .animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
+                    getTextFields()
+                        .animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
+                    getErrorMessage()
+                        .animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
+                    getButtons()
+                        .animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
+                    Spacer()
+                }
+                .blur(radius: isBlurred ? 10 : 0)
+                .padding()
+            }
+        }
 	}
 
 	private func getLogoImage() -> some View {
@@ -63,10 +75,12 @@ struct LogInView<T: PageProtocol>: View {
 			FormField(fieldValue: $viewModel.email,
 			          labelKey: LocalizedStringKey("email"),
 			          hintKey: LocalizedStringKey("emailHint"))
+            .focused($focusedField, equals: .email)
 
 			PasswordField(fieldValue: $viewModel.password,
 			              labelKey: LocalizedStringKey("password"),
 			              hintKey: LocalizedStringKey("passwordHint"))
+            .focused($focusedField, equals: .password)
 		}
 	}
 
