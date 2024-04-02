@@ -4,10 +4,11 @@ import Combine
 import Foundation
 import NetworkService
 import RecaptchaEnterprise
+import Arrow
 
 protocol RegisterRepository {
 	func getAppVersion() -> AnyPublisher<AppVersionModel, Error>
-	func logIn(email: String, password: String) -> AnyPublisher<Any, Error>
+    func logIn(email: String, password: String?, pin: String?) -> AnyPublisher<AuthModel, Error>
 }
 
 protocol LogInAnonymously {
@@ -74,21 +75,27 @@ class RegisterRepositoryImpl: RegisterRepository, LogInAnonymously, NetworkingSe
 			.eraseToAnyPublisher()
 	}
 
-	func logIn(email: String, password: String) -> AnyPublisher<Any, Error> {
-		executeRecaptcha(withAction: RecaptchaAction.login)
-			.flatMap { _ in
-				self.getRecaptchaToken()
-			}
-			.flatMap { recaptchaToken -> AnyPublisher<Any, Error> in
-				self.post(ApiEndpoints.logInUser, params: ["username": email,
-				                                           "password": password,
-				                                           "grant_type": "password",
-				                                           "client_id": AppInfoProvider.os,
-				                                           "client_secret": AppInfoProvider.authClientSecret,
-				                                           "captchaKey": AppInfoProvider.captchaKey,
-				                                           "captchaToken": recaptchaToken,
-				                                           "whitelabelId": AppInfoProvider.whitelabelId])
-			}
-			.eraseToAnyPublisher()
-	}
+    func logIn(email: String, password: String?, pin: String?) -> AnyPublisher<AuthModel, Error> {
+        
+        var params: Params = ["username": email,
+                              "captchaToken": recaptchaToken,
+                              "client_id": AppInfoProvider.os,
+                              "client_secret": AppInfoProvider.authClientSecret,
+                              "grant_type": GrantType.password.rawValue,
+                              "captchaKey": AppInfoProvider.captchaKey,
+                              "whitelabelId": AppInfoProvider.whitelabelId]
+        
+        if let password = password {
+            params["password"] = password
+        }
+        
+        if let pin = pin {
+            params["pin"] = pin
+        }
+        
+        return post(ApiEndpoints.logInUser, params: params)
+            .tryMap { try AuthModel.decode($0) }
+            .map { $0 }
+            .eraseToAnyPublisher()
+    }
 }

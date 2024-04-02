@@ -61,26 +61,4 @@ extension AuthModel: NetworkingService, NetworkingJSONDecodable {
 	var network: NetworkingClient {
 		NetworkingClient()
 	}
-
-	func signIn(username: String, password: String?, pin: String?, captchaToken: String) -> AnyPublisher<AuthModel, Error> {
-		var params: Params = ["username": username,
-		                      "captchaToken": captchaToken,
-		                      "client_id": AppInfoProvider.os,
-		                      "client_secret": AppInfoProvider.authClientSecret,
-		                      "grant_type": GrantType.password.rawValue,
-		                      "captchaKey": AppInfoProvider.captchaKey,
-		                      "whitelabelId": AppInfoProvider.appName]
-
-		if let password {
-			params["password"] = password
-		}
-
-		if let pin {
-			params["pin"] = pin
-		}
-
-		return post("/auth/login", params: params)
-			.tryMap { try Self.decode($0) }
-			.eraseToAnyPublisher()
-	}
 }

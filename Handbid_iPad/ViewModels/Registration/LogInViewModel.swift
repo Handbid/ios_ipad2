@@ -6,6 +6,7 @@ import NetworkService
 class LogInViewModel: ObservableObject {
 	private var cancellables = Set<AnyCancellable>()
 	private var repository: RegisterRepository = RegisterRepositoryImpl(NetworkingClient())
+    private var authManager: AuthManager = AuthManager()
 
 	@Published var email: String = ""
 	@Published var password: String = ""
@@ -28,20 +29,17 @@ class LogInViewModel: ObservableObject {
 			isFormValid = true
 		}
 
-		repository.logIn(email: email, password: password)
-			.sink(receiveCompletion: { completion in
-				switch completion {
-				case .finished:
-					break
-				case let .failure(error):
-					print("Error logging in: \(error)")
-					self.errorMessage = error.localizedDescription
-					self.showError = true
-				}
-			}, receiveValue: { response in
-				print(response)
-			})
-			.store(in: &cancellables)
+        repository.logIn(email: email, password: password, pin: nil)
+             .sink(receiveCompletion: { completion in
+             }, receiveValue: { response in
+                 Task {
+                     guard let authData = response as? AuthModel else { return }
+                     let success = await self.authManager.loginWithAuthModel(auth: authData)
+        
+                     print(response)
+                 }
+             })
+             .store(in: &cancellables)
 	}
 
 	func resetErrorMessage() {
