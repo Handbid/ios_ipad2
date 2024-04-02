@@ -4,7 +4,7 @@ import SwiftUI
 
 struct EmptyAuctionView<T: PageProtocol>: View {
     @EnvironmentObject private var coordinator: Coordinator<T, Any?>
-    @EnvironmentObject var authManager: AuthManager
+    @StateObject private var authManager = AuthManager()
 
     var body: some View {
         Button("log out") {

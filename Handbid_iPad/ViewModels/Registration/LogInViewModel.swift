@@ -4,45 +4,66 @@ import Combine
 import NetworkService
 
 class LogInViewModel: ObservableObject {
-	private var cancellables = Set<AnyCancellable>()
+    private var cancellables = Set<AnyCancellable>()
     private var repository: RegisterRepository = RegisterRepositoryImpl(NetworkingClient())
     private var authManager: AuthManager = AuthManager()
-
-	@Published var email: String = ""
-	@Published var password: String = ""
-	@Published var isFormValid = true
-	@Published var errorMessage: String = ""
-	@Published var showError: Bool = false
-
-	func logIn() {
-		if !email.isValidEmail() {
-			errorMessage = "Incorrect Email Format"
-			isFormValid = false
-			return
-		}
-		else if !password.isPasswordSecure() {
-			errorMessage = "Password Not Meet Requirements"
-			isFormValid = false
-			return
-		}
-		else {
-			isFormValid = true
-		}
-
-        repository.logIn(email: email, password: password, pin: nil)
-             .sink(receiveCompletion: { completion in
-             }, receiveValue: { response in
-                 Task {
-                     guard let authData = response as? AuthModel else { return }
-                     let success = await self.authManager.loginWithAuthModel(auth: authData)
+    
+    @Published var email: String = ""
+    @Published var password: String = ""
+    @Published var isFormValid = true
+    @Published var errorMessage: String = ""
+    @Published var showError: Bool = false
+    
+    func logIn() {
+        if !email.isValidEmail() {
+            errorMessage = "Incorrect Email Format"
+            isFormValid = false
+            return
+        }
+        else if !password.isPasswordSecure() {
+            errorMessage = "Password Not Meet Requirements"
+            isFormValid = false
+            return
+        }
+        else {
+            isFormValid = true
+        }
         
-                     print(response)
-                 }
-             })
-             .store(in: &cancellables)
-	}
-
-	func resetErrorMessage() {
-		errorMessage = ""
-	}
+        repository.getReCaptchaToken()
+            .sink(receiveCompletion: { completion in
+                
+            }, receiveValue: { token in
+                
+                ///auth
+                AuthModel().signIn(username: self.email, password: self.password, pin: nil, captchaToken: token)
+                    .sink(receiveCompletion: { completion in
+                    switch completion {
+                    case .finished:
+                        break
+                    case .failure(let error):
+                        print("Error fetching app version: \(error)")
+                    }
+                }, receiveValue: { receieData in
+                    Task {
+                        let authData = await self.authManager.loginWithAuthModel(auth: receieData as AuthModel)
+                        
+                        if authData {
+                            print("Login successful")
+                            let saveData = await self.authManager.loginWithAuthModel(auth: receieData)
+                            if(saveData){
+                                print("Data is saved")
+                            }
+                        } else {
+                            print("Login failed")
+                        }
+                    }
+                }).store(in: &self.cancellables)
+            })
+            .store(in: &cancellables)
+        
+    }
+    
+    func resetErrorMessage() {
+        errorMessage = ""
+    }
 }
