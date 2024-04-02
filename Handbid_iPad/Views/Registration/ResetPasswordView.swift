@@ -13,7 +13,7 @@ struct ResetPasswordView<T: PageProtocol>: View {
 			if viewModel.isPinValid { content } else { content }
 		}
 		.background {
-			backgroundImageView(for: .registrationWelcome)
+            backgroundView(for: .color(.accentViolet))
 		}
 		.onAppear {
 			isBlurred = false

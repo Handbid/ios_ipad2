@@ -25,7 +25,7 @@ struct ChooseEnvironmentView<T: PageProtocol>: View {
 			isBlurred = false
 		}
 		.background {
-			backgroundImageView(for: .registrationWelcome)
+            backgroundView(for: .color(.accentViolet))
 		}
 		.backButtonNavigation(style: .registration)
 		.ignoresSafeArea()

@@ -12,7 +12,7 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 			if viewModel.isFormValid { content } else { content }
 		}
 		.background {
-			backgroundImageView(for: .registrationWelcome)
+            backgroundView(for: .color(.accentViolet))
 		}
 		.onAppear {
 			isBlurred = false

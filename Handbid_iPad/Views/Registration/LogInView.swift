@@ -12,7 +12,7 @@ struct LogInView<T: PageProtocol>: View {
 			if viewModel.isFormValid { content } else { content }
 		}
 		.background {
-			backgroundImageView(for: .registrationWelcome)
+            backgroundView(for: .color(.accentViolet))
 		}.alert(isPresented: $viewModel.showError) {
 			Alert(title: Text("Error"), message: Text(viewModel.errorMessage), dismissButton: .default(Text("OK")))
 		}
