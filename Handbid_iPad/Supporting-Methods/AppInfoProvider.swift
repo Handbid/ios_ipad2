@@ -33,7 +33,15 @@ enum AppInfoProvider {
 
 	static var captchaKey: String {
 		#if HANDBID_IPAD
-			return "6LfXqsQhAAAAADkjuhu0IunPxNJpyJWXH38-9ylq"
+			return "6LdU5KkpAAAAANZD-3GdFspTDdqhjg6z29dE9zsR"
+		#else
+			return ""
+		#endif
+	}
+
+	static var aboutHandbidLink: String {
+		#if HANDBID_IPAD
+			return "https://www.handbid.com/about-us/"
 		#else
 			return ""
 		#endif

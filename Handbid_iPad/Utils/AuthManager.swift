@@ -105,7 +105,7 @@ class AuthManager: ObservableObject {
 
 	// MARK: Logs out the user and clears any stored authentication data.
 
-	private func clearKeychainAndLogOut(logOut: Bool) {
+	func clearKeychainAndLogOut(logOut: Bool) {
 		do {
 			try Keychain(service: AppInfoProvider.bundleIdentifier).remove("AuthDataUser")
 

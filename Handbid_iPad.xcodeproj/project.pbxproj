@@ -7,20 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		367FCC00F3F4B7233D16A8C9 /* Pods_Handbid_iPad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33865F4C90EDDBEF89424F48 /* Pods_Handbid_iPad.framework */; };
+		0855E4F4BA57DCA631AF9C12 /* libPods-Handbid_iPadUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC95F51E6AF06BFF966AF29 /* libPods-Handbid_iPadUITests.a */; };
+		6186902EA15B7BA5F8544027 /* libPods-Handbid_iPad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 47A588E0CD65F7067778CB03 /* libPods-Handbid_iPad.a */; };
 		8C0007B22BAC733900AAEBA0 /* ArrowParsable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0007952BAC733900AAEBA0 /* ArrowParsable.swift */; };
 		8C0007BF2BAC764700AAEBA0 /* AppVersionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0007BE2BAC764700AAEBA0 /* AppVersionModel.swift */; };
 		8C0007CC2BAC8D4400AAEBA0 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00F72BA82A9F0094FAA7 /* Debug.xcconfig */; };
 		8C0007CD2BAC8D4500AAEBA0 /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00F82BA82AAC0094FAA7 /* Release.xcconfig */; };
 		8C0007D32BAC976700AAEBA0 /* AppInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0007C22BAC820500AAEBA0 /* AppInfoProvider.swift */; };
-		8C1E00AE2BA823C80094FAA7 /* MainAppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E00AD2BA823C80094FAA7 /* MainAppCoordinator.swift */; };
 		8C1E00B22BA823C90094FAA7 /* iPadAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00B12BA823C90094FAA7 /* iPadAssets.xcassets */; };
 		8C1E00F62BA82A130094FAA7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00EF2BA82A130094FAA7 /* Localizable.strings */; };
 		8C1E01012BA85E630094FAA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E01002BA85E630094FAA7 /* AppDelegate.swift */; };
+		8C3D3C012BBA1E33002A5CFC /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3D3C002BBA1E33002A5CFC /* String.swift */; };
+		8C3D3C042BBB7F09002A5CFC /* MainAppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E00AD2BA823C80094FAA7 /* MainAppCoordinator.swift */; };
+		8C3D3C072BBB85CC002A5CFC /* EmptyAuctionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3D3C062BBB85CC002A5CFC /* EmptyAuctionView.swift */; };
+		8C3D3C082BBBA487002A5CFC /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC332BA976A90083D904 /* LogInViewModel.swift */; };
 		8C4B7B7F2BB379440043B892 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7B7E2BB379440043B892 /* AuthManager.swift */; };
 		8C4B7B832BB47DD30043B892 /* StartupProgressAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7B822BB47DD30043B892 /* StartupProgressAnimationView.swift */; };
 		8C4B7B852BB47E9C0043B892 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7B842BB47E9C0043B892 /* Color.swift */; };
 		8C4B7B872BB6DCC80043B892 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7B862BB6DCC80043B892 /* AuthModel.swift */; };
+		8C4B7B892BB6FCEA0043B892 /* ButtonStyleConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7B882BB6FCEA0043B892 /* ButtonStyleConfiguration.swift */; };
+		8C4B7B8B2BB6FD030043B892 /* CustomStyledViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7B8A2BB6FD030043B892 /* CustomStyledViewButton.swift */; };
+		8C4B7B9B2BB7026D0043B892 /* TextStyleConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7B9A2BB7026D0043B892 /* TextStyleConfiguration.swift */; };
+		8C4B7BA22BB88FFB0043B892 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7BA12BB88FFB0043B892 /* ButtonStyles.swift */; };
+		8C4B7BA72BB892AC0043B892 /* CustomStyledViewTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7BA62BB892AC0043B892 /* CustomStyledViewTextField.swift */; };
+		8C4B7BAB2BB892F20043B892 /* CustomStyledViewText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7BAA2BB892F20043B892 /* CustomStyledViewText.swift */; };
+		8C4B7BAD2BB8942D0043B892 /* TextFieldStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7BAC2BB8942D0043B892 /* TextFieldStyles.swift */; };
+		8C4B7BB12BB8944C0043B892 /* TextStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7BB02BB8944C0043B892 /* TextStyles.swift */; };
+		8C4B7BB52BB9BEDC0043B892 /* CustomStyledViewSecuredField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7BB42BB9BEDC0043B892 /* CustomStyledViewSecuredField.swift */; };
+		8C4B7BB72BB9C1080043B892 /* TextSecuredStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7BB62BB9C1080043B892 /* TextSecuredStyles.swift */; };
 		8C8BEC2E2BA975DE0083D904 /* GetStartedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC2D2BA975DE0083D904 /* GetStartedView.swift */; };
 		8C8BEC302BA975F10083D904 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC2F2BA975F10083D904 /* LogInView.swift */; };
 		8C8BEC322BA976030083D904 /* GetStartedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC312BA976030083D904 /* GetStartedViewModel.swift */; };
@@ -30,17 +44,31 @@
 		8C8BEC3A2BA977F00083D904 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC392BA977F00083D904 /* Coordinator.swift */; };
 		8C8BEC642BA9ADE20083D904 /* AppLaunchControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC632BA9ADE20083D904 /* AppLaunchControlView.swift */; };
 		8C8BEC662BA9B7DD0083D904 /* PageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC652BA9B7DD0083D904 /* PageProtocol.swift */; };
+		8CABF5BB2BB9C5F400A34870 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5BA2BB9C5F400A34870 /* ForgotPasswordView.swift */; };
+		8CABF5BD2BB9C60900A34870 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5BC2BB9C60900A34870 /* ResetPasswordView.swift */; };
+		8CABF5BF2BB9C61A00A34870 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5BE2BB9C61A00A34870 /* ChangePasswordView.swift */; };
+		8CABF5C12BB9C63C00A34870 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5C02BB9C63C00A34870 /* ChangePasswordViewModel.swift */; };
+		8CABF5C32BB9C64E00A34870 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5C22BB9C64E00A34870 /* ForgotPasswordViewModel.swift */; };
+		8CABF5C52BB9C65E00A34870 /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5C42BB9C65E00A34870 /* ResetPasswordViewModel.swift */; };
+		8CABF5C82BB9C81100A34870 /* BackgroundContainerImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5C72BB9C81100A34870 /* BackgroundContainerImage.swift */; };
+		8CABF5CA2BB9CEF900A34870 /* ChooseEnvironmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5C92BB9CEF900A34870 /* ChooseEnvironmentViewModel.swift */; };
+		8CABF5CC2BB9CF0300A34870 /* ChooseEnvironmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5CB2BB9CF0300A34870 /* ChooseEnvironmentView.swift */; };
+		8CABF5CE2BB9D89900A34870 /* TypographyStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5CD2BB9D89900A34870 /* TypographyStyle.swift */; };
+		8CABF5D02BB9E11300A34870 /* ResponsiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5CF2BB9E11300A34870 /* ResponsiveView.swift */; };
+		8CABF5D22BB9E16900A34870 /* CustomFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5D12BB9E16900A34870 /* CustomFontSize.swift */; };
+		8CABF5D42BB9E17C00A34870 /* CustomDimensValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5D32BB9E17C00A34870 /* CustomDimensValues.swift */; };
+		8CABF5D62BB9E19900A34870 /* LayoutProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5D52BB9E19900A34870 /* LayoutProperties.swift */; };
+		8CABF5DA2BB9F35A00A34870 /* NavigationBackButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5D92BB9F35A00A34870 /* NavigationBackButtonModifier.swift */; };
+		8CABF5DC2BB9F37700A34870 /* RegistrationBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5DB2BB9F37700A34870 /* RegistrationBackButton.swift */; };
 		8CB8C6AC2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB8C6AB2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift */; };
 		8CEA290B2BB3517E005E3B33 /* NetworkService in Frameworks */ = {isa = PBXBuildFile; productRef = 8CEA290A2BB3517E005E3B33 /* NetworkService */; };
-		A750B07567CC3E21E4095C70 /* libPods-Handbid_iPadUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E77E5B8916E2FBB6366D1733 /* libPods-Handbid_iPadUITests.a */; };
 		CE073ED82BB42D710079F342 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE073ED72BB42D710079F342 /* View.swift */; };
-		CE073EDA2BB4303A0079F342 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE073ED92BB4303A0079F342 /* Button.swift */; };
 		CE073EDC2BB4307A0079F342 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE073EDB2BB4307A0079F342 /* ButtonStyle.swift */; };
 		CE073EDE2BB4629C0079F342 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE073EDD2BB4629C0079F342 /* Text.swift */; };
 		CE073EE22BB47E3F0079F342 /* NoBackgroundButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE073EE12BB47E3F0079F342 /* NoBackgroundButtonStyle.swift */; };
 		CE073EE42BB4809C0079F342 /* FormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE073EE32BB4809C0079F342 /* FormField.swift */; };
 		CE073EE62BB485CD0079F342 /* PasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE073EE52BB485CD0079F342 /* PasswordField.swift */; };
-		CE34FB3F2BB1963300701D2A /* CenteredWrappingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE34FB3E2BB1963300701D2A /* CenteredWrappingContainer.swift */; };
+		CE34FB3F2BB1963300701D2A /* OverlayInternalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE34FB3E2BB1963300701D2A /* OverlayInternalView.swift */; };
 		CE7DF8212BAD9E5300FF7694 /* Inter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE7DF8202BAD9E5300FF7694 /* Inter.ttf */; };
 		CE7DF8222BAD9E5300FF7694 /* Inter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE7DF8202BAD9E5300FF7694 /* Inter.ttf */; };
 		CE7DF8252BADDB7400FF7694 /* LabelAndTextModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DF8242BADDB7400FF7694 /* LabelAndTextModifiers.swift */; };
@@ -74,9 +102,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		07B5075C59A9E958F31D77F1 /* Pods-Handbid_iPadUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPadUITests.release.xcconfig"; path = "Target Support Files/Pods-Handbid_iPadUITests/Pods-Handbid_iPadUITests.release.xcconfig"; sourceTree = "<group>"; };
-		33865F4C90EDDBEF89424F48 /* Pods_Handbid_iPad.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Handbid_iPad.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4255FC530721EA8AC7EB04E1 /* Pods-Handbid_iPad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPad.release.xcconfig"; path = "Target Support Files/Pods-Handbid_iPad/Pods-Handbid_iPad.release.xcconfig"; sourceTree = "<group>"; };
+		3CC95F51E6AF06BFF966AF29 /* libPods-Handbid_iPadUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Handbid_iPadUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		47A588E0CD65F7067778CB03 /* libPods-Handbid_iPad.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Handbid_iPad.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C0007952BAC733900AAEBA0 /* ArrowParsable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrowParsable.swift; sourceTree = "<group>"; };
 		8C0007BE2BAC764700AAEBA0 /* AppVersionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppVersionModel.swift; sourceTree = "<group>"; };
 		8C0007C22BAC820500AAEBA0 /* AppInfoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoProvider.swift; sourceTree = "<group>"; };
@@ -93,10 +120,22 @@
 		8C1E00F82BA82AAC0094FAA7 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		8C1E01002BA85E630094FAA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8C1E01022BA85EB10094FAA7 /* Handbid-iPad-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Handbid-iPad-Info.plist"; path = "Handbid_iPad/Resources/Handbid-iPad-Info.plist"; sourceTree = SOURCE_ROOT; };
+		8C3D3C002BBA1E33002A5CFC /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		8C3D3C062BBB85CC002A5CFC /* EmptyAuctionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyAuctionView.swift; sourceTree = "<group>"; };
 		8C4B7B7E2BB379440043B892 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		8C4B7B822BB47DD30043B892 /* StartupProgressAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupProgressAnimationView.swift; sourceTree = "<group>"; };
 		8C4B7B842BB47E9C0043B892 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		8C4B7B862BB6DCC80043B892 /* AuthModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
+		8C4B7B882BB6FCEA0043B892 /* ButtonStyleConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyleConfiguration.swift; sourceTree = "<group>"; };
+		8C4B7B8A2BB6FD030043B892 /* CustomStyledViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyledViewButton.swift; sourceTree = "<group>"; };
+		8C4B7B9A2BB7026D0043B892 /* TextStyleConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyleConfiguration.swift; sourceTree = "<group>"; };
+		8C4B7BA12BB88FFB0043B892 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
+		8C4B7BA62BB892AC0043B892 /* CustomStyledViewTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyledViewTextField.swift; sourceTree = "<group>"; };
+		8C4B7BAA2BB892F20043B892 /* CustomStyledViewText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyledViewText.swift; sourceTree = "<group>"; };
+		8C4B7BAC2BB8942D0043B892 /* TextFieldStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStyles.swift; sourceTree = "<group>"; };
+		8C4B7BB02BB8944C0043B892 /* TextStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyles.swift; sourceTree = "<group>"; };
+		8C4B7BB42BB9BEDC0043B892 /* CustomStyledViewSecuredField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyledViewSecuredField.swift; sourceTree = "<group>"; };
+		8C4B7BB62BB9C1080043B892 /* TextSecuredStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextSecuredStyles.swift; sourceTree = "<group>"; };
 		8C8BEC2D2BA975DE0083D904 /* GetStartedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedView.swift; sourceTree = "<group>"; };
 		8C8BEC2F2BA975F10083D904 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		8C8BEC312BA976030083D904 /* GetStartedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewModel.swift; sourceTree = "<group>"; };
@@ -106,19 +145,35 @@
 		8C8BEC392BA977F00083D904 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		8C8BEC632BA9ADE20083D904 /* AppLaunchControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLaunchControlView.swift; sourceTree = "<group>"; };
 		8C8BEC652BA9B7DD0083D904 /* PageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageProtocol.swift; sourceTree = "<group>"; };
+		8CA455A02BBAAC7300634B5B /* Handbid_iPad.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Handbid_iPad.entitlements; sourceTree = "<group>"; };
+		8CABF5BA2BB9C5F400A34870 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		8CABF5BC2BB9C60900A34870 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
+		8CABF5BE2BB9C61A00A34870 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
+		8CABF5C02BB9C63C00A34870 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
+		8CABF5C22BB9C64E00A34870 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
+		8CABF5C42BB9C65E00A34870 /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
+		8CABF5C72BB9C81100A34870 /* BackgroundContainerImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundContainerImage.swift; sourceTree = "<group>"; };
+		8CABF5C92BB9CEF900A34870 /* ChooseEnvironmentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseEnvironmentViewModel.swift; sourceTree = "<group>"; };
+		8CABF5CB2BB9CF0300A34870 /* ChooseEnvironmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseEnvironmentView.swift; sourceTree = "<group>"; };
+		8CABF5CD2BB9D89900A34870 /* TypographyStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypographyStyle.swift; sourceTree = "<group>"; };
+		8CABF5CF2BB9E11300A34870 /* ResponsiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponsiveView.swift; sourceTree = "<group>"; };
+		8CABF5D12BB9E16900A34870 /* CustomFontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFontSize.swift; sourceTree = "<group>"; };
+		8CABF5D32BB9E17C00A34870 /* CustomDimensValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDimensValues.swift; sourceTree = "<group>"; };
+		8CABF5D52BB9E19900A34870 /* LayoutProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutProperties.swift; sourceTree = "<group>"; };
+		8CABF5D92BB9F35A00A34870 /* NavigationBackButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBackButtonModifier.swift; sourceTree = "<group>"; };
+		8CABF5DB2BB9F37700A34870 /* RegistrationBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationBackButton.swift; sourceTree = "<group>"; };
 		8CB8C6AB2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinatorTest.swift; sourceTree = "<group>"; };
 		8CEA29072BB345F8005E3B33 /* Handbid_iPadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CEA29082BB345F8005E3B33 /* Handbid_iPadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CFCCFB92BA8B3C600CF6C33 /* Handbid_iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Handbid_iPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		AE66CC06D22619074C3D5612 /* Pods-Handbid_iPadUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPadUITests.debug.xcconfig"; path = "Target Support Files/Pods-Handbid_iPadUITests/Pods-Handbid_iPadUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		A95C33233A18F3D827465488 /* Pods-Handbid_iPadUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPadUITests.debug.xcconfig"; path = "Target Support Files/Pods-Handbid_iPadUITests/Pods-Handbid_iPadUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CE073ED72BB42D710079F342 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
-		CE073ED92BB4303A0079F342 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		CE073EDB2BB4307A0079F342 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		CE073EDD2BB4629C0079F342 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		CE073EE12BB47E3F0079F342 /* NoBackgroundButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoBackgroundButtonStyle.swift; sourceTree = "<group>"; };
 		CE073EE32BB4809C0079F342 /* FormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormField.swift; sourceTree = "<group>"; };
 		CE073EE52BB485CD0079F342 /* PasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordField.swift; sourceTree = "<group>"; };
-		CE34FB3E2BB1963300701D2A /* CenteredWrappingContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenteredWrappingContainer.swift; sourceTree = "<group>"; };
+		CE34FB3E2BB1963300701D2A /* OverlayInternalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayInternalView.swift; sourceTree = "<group>"; };
 		CE7DF8202BAD9E5300FF7694 /* Inter.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Inter.ttf; sourceTree = "<group>"; };
 		CE7DF8242BADDB7400FF7694 /* LabelAndTextModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelAndTextModifiers.swift; sourceTree = "<group>"; };
 		CE7DF8292BADF23500FF7694 /* TextFieldModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldModifiers.swift; sourceTree = "<group>"; };
@@ -129,8 +184,9 @@
 		CEFC879C2BAC8A6500A8EAC6 /* SolidButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidButtonStyle.swift; sourceTree = "<group>"; };
 		CEFC879E2BAC8BCE00A8EAC6 /* ButtonModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModifiers.swift; sourceTree = "<group>"; };
 		CEFC87A12BAC8D4200A8EAC6 /* BorderButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderButtonStyle.swift; sourceTree = "<group>"; };
-		E77E5B8916E2FBB6366D1733 /* libPods-Handbid_iPadUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Handbid_iPadUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F72703FF5CF1B9070F3FE13A /* Pods-Handbid_iPad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPad.debug.xcconfig"; path = "Target Support Files/Pods-Handbid_iPad/Pods-Handbid_iPad.debug.xcconfig"; sourceTree = "<group>"; };
+		E2A4842D2220F7D3D69BACE2 /* Pods-Handbid_iPadUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPadUITests.release.xcconfig"; path = "Target Support Files/Pods-Handbid_iPadUITests/Pods-Handbid_iPadUITests.release.xcconfig"; sourceTree = "<group>"; };
+		EB79E9AC5168F94222018306 /* Pods-Handbid_iPad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPad.debug.xcconfig"; path = "Target Support Files/Pods-Handbid_iPad/Pods-Handbid_iPad.debug.xcconfig"; sourceTree = "<group>"; };
+		FDFCFCFC1A5FE688F4B9D27D /* Pods-Handbid_iPad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPad.release.xcconfig"; path = "Target Support Files/Pods-Handbid_iPad/Pods-Handbid_iPad.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,7 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CEA290B2BB3517E005E3B33 /* NetworkService in Frameworks */,
-				367FCC00F3F4B7233D16A8C9 /* Pods_Handbid_iPad.framework in Frameworks */,
+				6186902EA15B7BA5F8544027 /* libPods-Handbid_iPad.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,13 +210,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A750B07567CC3E21E4095C70 /* libPods-Handbid_iPadUITests.a in Frameworks */,
+				0855E4F4BA57DCA631AF9C12 /* libPods-Handbid_iPadUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7E9162660D6B94AC68127036 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				47A588E0CD65F7067778CB03 /* libPods-Handbid_iPad.a */,
+				3CC95F51E6AF06BFF966AF29 /* libPods-Handbid_iPadUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8C1E00A12BA823C80094FAA7 = {
 			isa = PBXGroup;
 			children = (
@@ -172,16 +237,18 @@
 				B64BA6889C440647A69DCC9C /* Pods */,
 				8CEA29072BB345F8005E3B33 /* Handbid_iPadTests.xctest */,
 				8CEA29082BB345F8005E3B33 /* Handbid_iPadUITests.xctest */,
-				E8B803AE8571554825E33108 /* Frameworks */,
+				7E9162660D6B94AC68127036 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		8C1E00AC2BA823C80094FAA7 /* Handbid_iPad */ = {
 			isa = PBXGroup;
 			children = (
+				8CA455A02BBAAC7300634B5B /* Handbid_iPad.entitlements */,
 				8C1E00FF2BA85E3B0094FAA7 /* AppDelegate */,
 				8C1E00D92BA824B40094FAA7 /* Bridging-Header */,
 				8C1E00DA2BA824BF0094FAA7 /* Config-Env */,
+				8C4B7BA02BB88F920043B892 /* Configuration Appearence */,
 				8C1E00DB2BA8250A0094FAA7 /* Coordinator */,
 				CEE2BB242BB5BB310033556D /* Data */,
 				8C1E00DC2BA825150094FAA7 /* Extensions */,
@@ -246,10 +313,10 @@
 			children = (
 				8C0007952BAC733900AAEBA0 /* ArrowParsable.swift */,
 				CE073ED72BB42D710079F342 /* View.swift */,
-				CE073ED92BB4303A0079F342 /* Button.swift */,
 				CE073EDB2BB4307A0079F342 /* ButtonStyle.swift */,
 				CE073EDD2BB4629C0079F342 /* Text.swift */,
 				8C4B7B842BB47E9C0043B892 /* Color.swift */,
+				8C3D3C002BBA1E33002A5CFC /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -286,7 +353,6 @@
 				CE7DF8282BADF20800FF7694 /* TextFields */,
 				CE7DF8232BADDB4C00FF7694 /* Labels-and-Text */,
 				CEFC87A02BAC8D0B00A8EAC6 /* Buttons */,
-				CE7DF82B2BADF28000FF7694 /* ViewModifiers.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -294,6 +360,7 @@
 		8C1E00E22BA825820094FAA7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8C3D3C052BBB85B8002A5CFC /* Auction */,
 				CE7DF82D2BADFD0700FF7694 /* Helpers */,
 				8C8BEC2C2BA975C30083D904 /* Registration */,
 			);
@@ -350,11 +417,94 @@
 			path = MainPointApp;
 			sourceTree = "<group>";
 		};
+		8C3D3C052BBB85B8002A5CFC /* Auction */ = {
+			isa = PBXGroup;
+			children = (
+				8C3D3C062BBB85CC002A5CFC /* EmptyAuctionView.swift */,
+			);
+			path = Auction;
+			sourceTree = "<group>";
+		};
+		8C4B7B8C2BB6FD390043B892 /* Extensions Style */ = {
+			isa = PBXGroup;
+			children = (
+				8CABF5C62BB9C80400A34870 /* Background */,
+				8C4B7BA32BB8906C0043B892 /* Button */,
+				8C4B7BA42BB891E80043B892 /* Text */,
+			);
+			path = "Extensions Style";
+			sourceTree = "<group>";
+		};
+		8C4B7B8F2BB700A60043B892 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				CE7DF82B2BADF28000FF7694 /* ViewModifiers.swift */,
+				CEFC879C2BAC8A6500A8EAC6 /* SolidButtonStyle.swift */,
+				CEFC87A12BAC8D4200A8EAC6 /* BorderButtonStyle.swift */,
+				CE073EE12BB47E3F0079F342 /* NoBackgroundButtonStyle.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		8C4B7B942BB701E50043B892 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				CE7DF8242BADDB7400FF7694 /* LabelAndTextModifiers.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		8C4B7B952BB701EE0043B892 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				CE7DF8292BADF23500FF7694 /* TextFieldModifiers.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		8C4B7BA02BB88F920043B892 /* Configuration Appearence */ = {
+			isa = PBXGroup;
+			children = (
+				8C4B7BA12BB88FFB0043B892 /* ButtonStyles.swift */,
+				8CABF5CD2BB9D89900A34870 /* TypographyStyle.swift */,
+				8C4B7BAC2BB8942D0043B892 /* TextFieldStyles.swift */,
+				8C4B7BB62BB9C1080043B892 /* TextSecuredStyles.swift */,
+				8C4B7BB02BB8944C0043B892 /* TextStyles.swift */,
+				8CABF5D82BB9F33D00A34870 /* Navigation */,
+				8C4B7B8C2BB6FD390043B892 /* Extensions Style */,
+			);
+			path = "Configuration Appearence";
+			sourceTree = "<group>";
+		};
+		8C4B7BA32BB8906C0043B892 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				8C4B7B882BB6FCEA0043B892 /* ButtonStyleConfiguration.swift */,
+				8C4B7B8A2BB6FD030043B892 /* CustomStyledViewButton.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		8C4B7BA42BB891E80043B892 /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				8C4B7BB42BB9BEDC0043B892 /* CustomStyledViewSecuredField.swift */,
+				8C4B7BAA2BB892F20043B892 /* CustomStyledViewText.swift */,
+				8C4B7BA62BB892AC0043B892 /* CustomStyledViewTextField.swift */,
+				8C4B7B9A2BB7026D0043B892 /* TextStyleConfiguration.swift */,
+			);
+			path = Text;
+			sourceTree = "<group>";
+		};
 		8C8BEC2B2BA975B70083D904 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
+				8CABF5C02BB9C63C00A34870 /* ChangePasswordViewModel.swift */,
+				8CABF5C92BB9CEF900A34870 /* ChooseEnvironmentViewModel.swift */,
+				8CABF5C22BB9C64E00A34870 /* ForgotPasswordViewModel.swift */,
 				8C8BEC312BA976030083D904 /* GetStartedViewModel.swift */,
 				8C8BEC332BA976A90083D904 /* LogInViewModel.swift */,
+				8CABF5C42BB9C65E00A34870 /* ResetPasswordViewModel.swift */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -362,19 +512,52 @@
 		8C8BEC2C2BA975C30083D904 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
+				8CABF5BE2BB9C61A00A34870 /* ChangePasswordView.swift */,
+				8CABF5CB2BB9CF0300A34870 /* ChooseEnvironmentView.swift */,
+				8CABF5BA2BB9C5F400A34870 /* ForgotPasswordView.swift */,
 				8C8BEC2D2BA975DE0083D904 /* GetStartedView.swift */,
 				8C8BEC2F2BA975F10083D904 /* LogInView.swift */,
+				8CABF5BC2BB9C60900A34870 /* ResetPasswordView.swift */,
 			);
 			path = Registration;
+			sourceTree = "<group>";
+		};
+		8CABF5C62BB9C80400A34870 /* Background */ = {
+			isa = PBXGroup;
+			children = (
+				8CABF5C72BB9C81100A34870 /* BackgroundContainerImage.swift */,
+			);
+			path = Background;
+			sourceTree = "<group>";
+		};
+		8CABF5D72BB9E1BA00A34870 /* Calculate Size View */ = {
+			isa = PBXGroup;
+			children = (
+				CE34FB3E2BB1963300701D2A /* OverlayInternalView.swift */,
+				8CABF5D52BB9E19900A34870 /* LayoutProperties.swift */,
+				8CABF5D32BB9E17C00A34870 /* CustomDimensValues.swift */,
+				8CABF5D12BB9E16900A34870 /* CustomFontSize.swift */,
+				8CABF5CF2BB9E11300A34870 /* ResponsiveView.swift */,
+			);
+			path = "Calculate Size View";
+			sourceTree = "<group>";
+		};
+		8CABF5D82BB9F33D00A34870 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				8CABF5D92BB9F35A00A34870 /* NavigationBackButtonModifier.swift */,
+				8CABF5DB2BB9F37700A34870 /* RegistrationBackButton.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 		B64BA6889C440647A69DCC9C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4255FC530721EA8AC7EB04E1 /* Pods-Handbid_iPad.release.xcconfig */,
-				F72703FF5CF1B9070F3FE13A /* Pods-Handbid_iPad.debug.xcconfig */,
-				07B5075C59A9E958F31D77F1 /* Pods-Handbid_iPadUITests.release.xcconfig */,
-				AE66CC06D22619074C3D5612 /* Pods-Handbid_iPadUITests.debug.xcconfig */,
+				FDFCFCFC1A5FE688F4B9D27D /* Pods-Handbid_iPad.release.xcconfig */,
+				EB79E9AC5168F94222018306 /* Pods-Handbid_iPad.debug.xcconfig */,
+				E2A4842D2220F7D3D69BACE2 /* Pods-Handbid_iPadUITests.release.xcconfig */,
+				A95C33233A18F3D827465488 /* Pods-Handbid_iPadUITests.debug.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -382,7 +565,7 @@
 		CE7DF8232BADDB4C00FF7694 /* Labels-and-Text */ = {
 			isa = PBXGroup;
 			children = (
-				CE7DF8242BADDB7400FF7694 /* LabelAndTextModifiers.swift */,
+				8C4B7B942BB701E50043B892 /* Other */,
 			);
 			path = "Labels-and-Text";
 			sourceTree = "<group>";
@@ -390,7 +573,7 @@
 		CE7DF8282BADF20800FF7694 /* TextFields */ = {
 			isa = PBXGroup;
 			children = (
-				CE7DF8292BADF23500FF7694 /* TextFieldModifiers.swift */,
+				8C4B7B952BB701EE0043B892 /* Other */,
 			);
 			path = TextFields;
 			sourceTree = "<group>";
@@ -398,10 +581,10 @@
 		CE7DF82D2BADFD0700FF7694 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				CE7DF82E2BADFD1900FF7694 /* PinView.swift */,
-				CE34FB3E2BB1963300701D2A /* CenteredWrappingContainer.swift */,
+				8CABF5D72BB9E1BA00A34870 /* Calculate Size View */,
 				CE073EE32BB4809C0079F342 /* FormField.swift */,
 				CE073EE52BB485CD0079F342 /* PasswordField.swift */,
+				CE7DF82E2BADFD1900FF7694 /* PinView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -426,21 +609,10 @@
 		CEFC87A02BAC8D0B00A8EAC6 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
-				CEFC879C2BAC8A6500A8EAC6 /* SolidButtonStyle.swift */,
 				CEFC879E2BAC8BCE00A8EAC6 /* ButtonModifiers.swift */,
-				CEFC87A12BAC8D4200A8EAC6 /* BorderButtonStyle.swift */,
-				CE073EE12BB47E3F0079F342 /* NoBackgroundButtonStyle.swift */,
+				8C4B7B8F2BB700A60043B892 /* Other */,
 			);
 			path = Buttons;
-			sourceTree = "<group>";
-		};
-		E8B803AE8571554825E33108 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				33865F4C90EDDBEF89424F48 /* Pods_Handbid_iPad.framework */,
-				E77E5B8916E2FBB6366D1733 /* libPods-Handbid_iPadUITests.a */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -450,13 +622,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8C1E00CE2BA823C90094FAA7 /* Build configuration list for PBXNativeTarget "Handbid_iPad" */;
 			buildPhases = (
-				AE64DA9752AA449C6ED5977D /* [CP] Check Pods Manifest.lock */,
+				F4EFEC1A54F01614D432E704 /* [CP] Check Pods Manifest.lock */,
 				8C1E00E92BA827D10094FAA7 /* Fetch localization */,
 				8C1E00A62BA823C80094FAA7 /* Sources */,
 				8C1E00A82BA823C80094FAA7 /* Resources */,
 				8C1E00A72BA823C80094FAA7 /* Frameworks */,
 				8C1E01042BA866E00094FAA7 /* SwiftFormat */,
-				D5E5B9AC456272B5B5C75831 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -492,7 +663,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8C1E00D42BA823C90094FAA7 /* Build configuration list for PBXNativeTarget "Handbid_iPadUITests" */;
 			buildPhases = (
-				A25FA828BC6D7414BFA4CF6F /* [CP] Check Pods Manifest.lock */,
+				557F15B5624B85AE98C13A06 /* [CP] Check Pods Manifest.lock */,
 				8C1E00C02BA823C90094FAA7 /* Sources */,
 				8C1E00C12BA823C90094FAA7 /* Frameworks */,
 				8C1E00C22BA823C90094FAA7 /* Resources */,
@@ -592,46 +763,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		8C1E00E92BA827D10094FAA7 /* Fetch localization */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 12;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Fetch localization";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"$SRCROOT/Extras/localization_ios.sh\"\n";
-		};
-		8C1E01042BA866E00094FAA7 /* SwiftFormat */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 12;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftFormat;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" \"$SRCROOT\" --config .swiftformat --swiftversion 5.9\n";
-			showEnvVarsInLog = 0;
-		};
-		A25FA828BC6D7414BFA4CF6F /* [CP] Check Pods Manifest.lock */ = {
+		557F15B5624B85AE98C13A06 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -653,7 +785,47 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AE64DA9752AA449C6ED5977D /* [CP] Check Pods Manifest.lock */ = {
+		8C1E00E92BA827D10094FAA7 /* Fetch localization */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Fetch localization";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "\"$SRCROOT/Extras/localization_ios.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8C1E01042BA866E00094FAA7 /* SwiftFormat */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftFormat;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" \"$SRCROOT\" --config .swiftformat --swiftversion 5.9\n";
+			showEnvVarsInLog = 0;
+		};
+		F4EFEC1A54F01614D432E704 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -675,23 +847,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D5E5B9AC456272B5B5C75831 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Handbid_iPad/Pods-Handbid_iPad-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Handbid_iPad/Pods-Handbid_iPad-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Handbid_iPad/Pods-Handbid_iPad-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -699,41 +854,67 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C3D3C042BBB7F09002A5CFC /* MainAppCoordinator.swift in Sources */,
 				8C0007BF2BAC764700AAEBA0 /* AppVersionModel.swift in Sources */,
 				8C4B7B7F2BB379440043B892 /* AuthManager.swift in Sources */,
 				8C8BEC342BA976A90083D904 /* LogInViewModel.swift in Sources */,
+				8C3D3C072BBB85CC002A5CFC /* EmptyAuctionView.swift in Sources */,
 				CEFC879F2BAC8BCE00A8EAC6 /* ButtonModifiers.swift in Sources */,
+				8C3D3C012BBA1E33002A5CFC /* String.swift in Sources */,
+				8CABF5D42BB9E17C00A34870 /* CustomDimensValues.swift in Sources */,
+				8CABF5C12BB9C63C00A34870 /* ChangePasswordViewModel.swift in Sources */,
 				CEE2BB292BB5D1070033556D /* ApiConstants.swift in Sources */,
+				8CABF5CA2BB9CEF900A34870 /* ChooseEnvironmentViewModel.swift in Sources */,
+				8CABF5C32BB9C64E00A34870 /* ForgotPasswordViewModel.swift in Sources */,
+				8CABF5D22BB9E16900A34870 /* CustomFontSize.swift in Sources */,
+				8C4B7BA72BB892AC0043B892 /* CustomStyledViewTextField.swift in Sources */,
 				CE7DF82C2BADF28000FF7694 /* ViewModifiers.swift in Sources */,
+				8CABF5BF2BB9C61A00A34870 /* ChangePasswordView.swift in Sources */,
+				8CABF5D62BB9E19900A34870 /* LayoutProperties.swift in Sources */,
 				8C8BEC362BA977560083D904 /* RootPageView.swift in Sources */,
 				8C8BEC302BA975F10083D904 /* LogInView.swift in Sources */,
 				CE7DF82A2BADF23500FF7694 /* TextFieldModifiers.swift in Sources */,
 				CE073ED82BB42D710079F342 /* View.swift in Sources */,
 				CE7DF82F2BADFD1900FF7694 /* PinView.swift in Sources */,
 				CE073EE42BB4809C0079F342 /* FormField.swift in Sources */,
+				8C4B7BB12BB8944C0043B892 /* TextStyles.swift in Sources */,
 				8C8BEC662BA9B7DD0083D904 /* PageProtocol.swift in Sources */,
+				8C4B7BAD2BB8942D0043B892 /* TextFieldStyles.swift in Sources */,
+				8CABF5CE2BB9D89900A34870 /* TypographyStyle.swift in Sources */,
 				8C8BEC3A2BA977F00083D904 /* Coordinator.swift in Sources */,
 				CE073EE62BB485CD0079F342 /* PasswordField.swift in Sources */,
 				8C1E01012BA85E630094FAA7 /* AppDelegate.swift in Sources */,
 				CE073EDC2BB4307A0079F342 /* ButtonStyle.swift in Sources */,
 				8C4B7B872BB6DCC80043B892 /* AuthModel.swift in Sources */,
 				CEE2BB272BB5BBB10033556D /* RegisterRepository.swift in Sources */,
+				8C4B7BAB2BB892F20043B892 /* CustomStyledViewText.swift in Sources */,
 				8C8BEC2E2BA975DE0083D904 /* GetStartedView.swift in Sources */,
+				8C4B7B892BB6FCEA0043B892 /* ButtonStyleConfiguration.swift in Sources */,
 				CEFC87A22BAC8D4200A8EAC6 /* BorderButtonStyle.swift in Sources */,
-				CE073EDA2BB4303A0079F342 /* Button.swift in Sources */,
+				8C4B7BA22BB88FFB0043B892 /* ButtonStyles.swift in Sources */,
+				8CABF5DC2BB9F37700A34870 /* RegistrationBackButton.swift in Sources */,
+				8CABF5D02BB9E11300A34870 /* ResponsiveView.swift in Sources */,
 				8C8BEC322BA976030083D904 /* GetStartedViewModel.swift in Sources */,
 				8C4B7B852BB47E9C0043B892 /* Color.swift in Sources */,
 				8C8BEC382BA977AC0083D904 /* RegistrationPage.swift in Sources */,
 				CE7DF8252BADDB7400FF7694 /* LabelAndTextModifiers.swift in Sources */,
 				CEFC879D2BAC8A6500A8EAC6 /* SolidButtonStyle.swift in Sources */,
-				8C1E00AE2BA823C80094FAA7 /* MainAppCoordinator.swift in Sources */,
+				8C4B7BB72BB9C1080043B892 /* TextSecuredStyles.swift in Sources */,
+				8CABF5BD2BB9C60900A34870 /* ResetPasswordView.swift in Sources */,
 				CE073EE22BB47E3F0079F342 /* NoBackgroundButtonStyle.swift in Sources */,
 				CE073EDE2BB4629C0079F342 /* Text.swift in Sources */,
-				8C1E00AE2BA823C80094FAA7 /* MainAppCoordinator.swift in Sources */,
+				8CABF5BB2BB9C5F400A34870 /* ForgotPasswordView.swift in Sources */,
+				8CABF5C52BB9C65E00A34870 /* ResetPasswordViewModel.swift in Sources */,
+				8CABF5CC2BB9CF0300A34870 /* ChooseEnvironmentView.swift in Sources */,
+				8C4B7BB52BB9BEDC0043B892 /* CustomStyledViewSecuredField.swift in Sources */,
 				8C4B7B832BB47DD30043B892 /* StartupProgressAnimationView.swift in Sources */,
 				8C0007D32BAC976700AAEBA0 /* AppInfoProvider.swift in Sources */,
+				8C4B7B9B2BB7026D0043B892 /* TextStyleConfiguration.swift in Sources */,
+				8CABF5C82BB9C81100A34870 /* BackgroundContainerImage.swift in Sources */,
+				8C4B7B8B2BB6FD030043B892 /* CustomStyledViewButton.swift in Sources */,
 				8C8BEC642BA9ADE20083D904 /* AppLaunchControlView.swift in Sources */,
-				CE34FB3F2BB1963300701D2A /* CenteredWrappingContainer.swift in Sources */,
+				8CABF5DA2BB9F35A00A34870 /* NavigationBackButtonModifier.swift in Sources */,
+				CE34FB3F2BB1963300701D2A /* OverlayInternalView.swift in Sources */,
 				8C0007B22BAC733900AAEBA0 /* ArrowParsable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -742,6 +923,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C3D3C082BBBA487002A5CFC /* LogInViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -846,16 +1028,18 @@
 		};
 		8C1E00D02BA823C90094FAA7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4255FC530721EA8AC7EB04E1 /* Pods-Handbid_iPad.release.xcconfig */;
+			baseConfigurationReference = FDFCFCFC1A5FE688F4B9D27D /* Pods-Handbid_iPad.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Handbid_iPad/Handbid_iPad.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_HEADERS_RUN_UNIFDEF = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 35JZN6VPM3;
+				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -873,6 +1057,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Handbid Manager";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -880,8 +1065,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/handbid/Magtek/Release-iphoneos",
+				);
 				MARKETING_VERSION = 1.0;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -Xcc -fmodule-map-file=\"${PODS_CONFIGURATION_BUILD_DIR}/Arrow/Arrow.modulemap\" -DHANDBID_IPAD";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Handbid-iPad";
 				PRODUCT_MODULE_NAME = Handbid_iPad;
@@ -892,6 +1081,8 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "Handbid_iPad/Bridging-Header/Handbid-iPad-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_WORKSPACE = YES;
+				VALID_ARCHS = "arm64 armv7";
 			};
 			name = Release;
 		};
@@ -922,7 +1113,7 @@
 		};
 		8C1E00D62BA823C90094FAA7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 07B5075C59A9E958F31D77F1 /* Pods-Handbid_iPadUITests.release.xcconfig */;
+			baseConfigurationReference = E2A4842D2220F7D3D69BACE2 /* Pods-Handbid_iPadUITests.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1004,16 +1195,19 @@
 		};
 		8C1E00FC2BA82C9D0094FAA7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F72703FF5CF1B9070F3FE13A /* Pods-Handbid_iPad.debug.xcconfig */;
+			baseConfigurationReference = EB79E9AC5168F94222018306 /* Pods-Handbid_iPad.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Handbid_iPad/Handbid_iPad.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_HEADERS_RUN_UNIFDEF = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 35JZN6VPM3;
+				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1031,6 +1225,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Handbid Manager";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -1038,6 +1233,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				"LIBRARY_SEARCH_PATHS[sdk=iphoneos*]" = "$(inherited)";
+				"LIBRARY_SEARCH_PATHS[sdk=iphonesimulator*]" = "$(inherited)";
 				MARKETING_VERSION = 1.0;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -Xcc -fmodule-map-file=\"${PODS_CONFIGURATION_BUILD_DIR}/Arrow/Arrow.modulemap\" -DHANDBID_IPAD";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Handbid-iPad";
@@ -1049,6 +1247,8 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "Handbid_iPad/Bridging-Header/Handbid-iPad-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_WORKSPACE = YES;
+				VALID_ARCHS = "arm64 armv7 i386 x86_64";
 			};
 			name = Debug;
 		};
@@ -1079,7 +1279,7 @@
 		};
 		8C1E00FE2BA82C9D0094FAA7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AE66CC06D22619074C3D5612 /* Pods-Handbid_iPadUITests.debug.xcconfig */;
+			baseConfigurationReference = A95C33233A18F3D827465488 /* Pods-Handbid_iPadUITests.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;

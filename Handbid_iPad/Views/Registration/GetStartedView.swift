@@ -5,67 +5,84 @@ import NetworkService
 import SwiftUI
 
 struct GetStartedView<T: PageProtocol>: View {
-	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
-	@State private var currentPageView: AnyView?
-	@ObservedObject var viewmodel = LogInViewModel()
-
-	private func getLogoImage(_ size: CGSize) -> some View {
-		Image("LogoSplash")
-			.resizable()
-			.scaledToFit()
-			.frame(width: size.width * 0.3)
-			.onLongPressGesture(minimumDuration: 0.5) {
-				if EnvironmentManager.isProdActive() {
-					EnvironmentManager.setEnvironment(for: .d1)
-					viewmodel.fetchAppVersion()
-				}
-				else {
-					EnvironmentManager.setEnvironment(for: .prod)
-					viewmodel.fetchAppVersion()
-				}
-			}
-			.accessibilityIdentifier("AppLogo")
-	}
-
-	private func getButtons() -> some View {
-		VStack {
-			Button(LocalizedStringKey("login")) {
-				coordinator.push(RegistrationPage.logIn as! T)
-			}
-			.solidAccentButtonStyle()
-			.accessibilityIdentifier("LoginButton")
-
-			Button(LocalizedStringKey("demoVersion")) {}
-				.solidPrimaryButtonStyle()
-				.disabled(true)
-				.accessibilityIdentifier("DemoButton")
-
-			Button(LocalizedStringKey("btnAboutHandbid")) {}
-				.borderAccentButtonStyle()
-				.accessibilityIdentifier("AboutHandbidButton")
-		}
-	}
-
-	var body: some View {
-		CenteredWrappingContainer(landscapeWidthFraction: 0.4) { size in
-			VStack {
-				getLogoImage(size)
-
-				Text(LocalizedStringKey("welcomeToHandbid"))
-					.wrapTextModifier()
-					.titleTextStyle()
-					.padding([.bottom, .top], 0.05 * size.height)
-					.accessibilityIdentifier("GetStartedView")
-
-				getButtons()
-			}
-			.padding([.bottom, .top], 0.05 * size.height)
-			.padding([.leading, .trailing], 0.1 * size.width)
-		}.background {
-			Image("SplashBackground")
-				.resizable()
-				.scaledToFill()
-				.ignoresSafeArea()
-		}
-	}
+    @EnvironmentObject private var coordinator: Coordinator<T, Any?>
+    @ObservedObject private var viewModel = GetStartedViewModel()
+    @State private var contentLoaded = false
+    @State private var isBlurred = false
+    
+    var body: some View {
+        ZStack {
+            if contentLoaded { content } else { content }
+        }
+        .background {
+            backgroundImageView(for: .registrationWelcome)
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now()) {
+                contentLoaded = true
+            }
+            isBlurred = false
+        }
+        .ignoresSafeArea()
+    }
+    
+    private var content: some View {
+        OverlayInternalView(cornerRadius: 40) {
+            VStack {
+                getLogoImage()
+                    .animation(.easeInOut(duration: 0.3), value: contentLoaded)
+                getHeaderText()
+                    .animation(.easeInOut(duration: 0.3), value: contentLoaded)
+                getButtons()
+                    .animation(.easeInOut(duration: 0.3), value: contentLoaded)
+                
+            }.padding()
+        }
+        .blur(radius: isBlurred ? 10 : 0)
+        .padding()
+    }
+    
+    private func getLogoImage() -> some View {
+        Image("LogoSplash")
+            .resizable()
+            .scaledToFit()
+            .frame(height: 50)
+            .onLongPressGesture(minimumDuration: 0.5) {
+                isBlurred = true
+                coordinator.push(RegistrationPage.chooseEnvironment as! T)
+            }
+            .accessibilityIdentifier("AppLogo")
+    }
+    
+    private func getHeaderText() -> some View {
+        Text(LocalizedStringKey("welcomeToHandbid"))
+            .applyTextStyle(style: .headerTitle)
+            .accessibilityIdentifier("GetStartedView")
+    }
+    
+    private func getButtons() -> some View {
+        VStack(spacing: 10) {
+            Button<Text>.styled(config: .primaryButtonStyle, action: {
+                isBlurred = true
+                coordinator.push(RegistrationPage.logIn as! T)
+            }) {
+                Text(LocalizedStringKey("login"))
+                    .textCase(.uppercase)
+            }.accessibilityIdentifier("LoginButton")
+            
+            Button<Text>.styled(config: .secondaryButtonStyle, action: {
+                viewModel.logInAnonymously()
+            }) {
+                Text(LocalizedStringKey("demoVersion"))
+                    .textCase(.uppercase)
+            }.accessibilityIdentifier("DemoButton")
+            
+            Button<Text>.styled(config: .thirdButtonStyle, action: {
+                viewModel.openHandbidWebsite()
+            }) {
+                Text(LocalizedStringKey("btnAboutHandbid"))
+                    .textCase(.uppercase)
+            }.accessibilityIdentifier("AboutHandbidButton")
+        }
+    }
 }

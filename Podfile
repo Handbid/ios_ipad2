@@ -3,6 +3,7 @@
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '17.0'
 #use_frameworks!
+inhibit_all_warnings!
 
 def available_pods
 
@@ -11,13 +12,12 @@ pod 'KeychainAccess'
 pod 'ProgressIndicatorView', '~> 1.0.0'
 pod 'SwiftFormat/CLI'
 pod "RecaptchaEnterprise", "18.5.0-beta02"
+pod 'RecaptchaInterop', :modular_headers => true
 
 end
 
 target 'Handbid_iPad' do
-platform :ios, '17.0'
-    use_frameworks!
-  
+platform :ios, '17.0'  
     available_pods
 end
 

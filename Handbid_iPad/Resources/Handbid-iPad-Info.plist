@@ -4,9 +4,11 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Fonts/Inter.ttf</string>
+		<string>Inter.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<false/>
+	<key>UIBackgroundModes</key>
+	<array/>
 </dict>
 </plist>
