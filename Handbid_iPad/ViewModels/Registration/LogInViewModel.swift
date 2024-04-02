@@ -5,7 +5,7 @@ import NetworkService
 
 class LogInViewModel: ObservableObject {
 	private var cancellables = Set<AnyCancellable>()
-	private var repository: RegisterRepository = RegisterRepositoryImpl(NetworkingClient())
+    private var repository: RegisterRepository = RegisterRepositoryImpl(NetworkingClient())
     private var authManager: AuthManager = AuthManager()
 
 	@Published var email: String = ""

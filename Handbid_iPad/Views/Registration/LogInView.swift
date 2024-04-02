@@ -4,7 +4,7 @@ import SwiftUI
 
 struct LogInView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
-	@ObservedObject private var viewModel = LogInViewModel()
+	@StateObject  private var viewModel = LogInViewModel()
 	@State private var isBlurred = false
 
 	var body: some View {
