@@ -6,6 +6,7 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@ObservedObject private var viewModel = ForgotPasswordViewModel()
 	@State private var isBlurred = false
+    @FocusState private var isFocused: Bool
 
 	var body: some View {
 		ZStack {
@@ -18,6 +19,11 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 			isBlurred = false
 			viewModel.resetErrorMessage()
 		}
+        .onTapGesture {
+            if isFocused {
+                isFocused = false
+            }
+        }
 		.backButtonNavigation(style: .registration)
 		.ignoresSafeArea()
 	}
@@ -50,6 +56,7 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 			FormField(fieldValue: $viewModel.email,
 			          labelKey: LocalizedStringKey("email"),
 			          hintKey: LocalizedStringKey("emailHint"))
+            .focused($isFocused, equals: true)
 		}.padding(.bottom)
 	}
 
