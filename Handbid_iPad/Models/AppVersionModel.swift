@@ -5,7 +5,7 @@ import Combine
 import Foundation
 import NetworkService
 
-struct AppVersionModel: Decodable {
+struct AppVersionModel: Decodable, NetworkingJSONDecodable {
 	var demoModeEnabled: Int?
 	var id: Int?
 	var os: String?
@@ -22,20 +22,5 @@ extension AppVersionModel: ArrowParsable {
 		minimumVersion <-- json["appVersion.minimumVersion"]
 		currentVersion <-- json["appVersion.currentVersion"]
 		demoModeEnabled <-- json["demoModeEnabled"]
-	}
-}
-
-extension AppVersionModel: NetworkingService, NetworkingJSONDecodable {
-	var network: NetworkingClient {
-		NetworkingClient()
-	}
-
-	func fetchAppVersion() -> AnyPublisher<[AppVersionModel], Error> {
-		get("/auth/app-info", params: ["appName": AppInfoProvider.appName,
-		                               "os": AppInfoProvider.os,
-		                               "whitelabelId": AppInfoProvider.whitelabelId])
-			.tryMap { try Self.decode($0) }
-			.map { [$0] }
-			.eraseToAnyPublisher()
 	}
 }

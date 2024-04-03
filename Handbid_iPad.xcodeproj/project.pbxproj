@@ -79,6 +79,7 @@
 		CE7DF82F2BADFD1900FF7694 /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DF82E2BADFD1900FF7694 /* PinView.swift */; };
 		CEE2BB272BB5BBB10033556D /* RegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2BB262BB5BBB10033556D /* RegisterRepository.swift */; };
 		CEE2BB292BB5D1070033556D /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2BB282BB5D1070033556D /* ApiConstants.swift */; };
+		CEEC46132BBD8DE900C685BF /* AnyPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEC46122BBD8DE900C685BF /* AnyPublisher.swift */; };
 		CEFC879D2BAC8A6500A8EAC6 /* SolidButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFC879C2BAC8A6500A8EAC6 /* SolidButtonStyle.swift */; };
 		CEFC879F2BAC8BCE00A8EAC6 /* ButtonModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFC879E2BAC8BCE00A8EAC6 /* ButtonModifiers.swift */; };
 		CEFC87A22BAC8D4200A8EAC6 /* BorderButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFC87A12BAC8D4200A8EAC6 /* BorderButtonStyle.swift */; };
@@ -181,6 +182,7 @@
 		CE7DF82E2BADFD1900FF7694 /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		CEE2BB262BB5BBB10033556D /* RegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRepository.swift; sourceTree = "<group>"; };
 		CEE2BB282BB5D1070033556D /* ApiConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConstants.swift; sourceTree = "<group>"; };
+		CEEC46122BBD8DE900C685BF /* AnyPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyPublisher.swift; sourceTree = "<group>"; };
 		CEFC879C2BAC8A6500A8EAC6 /* SolidButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidButtonStyle.swift; sourceTree = "<group>"; };
 		CEFC879E2BAC8BCE00A8EAC6 /* ButtonModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModifiers.swift; sourceTree = "<group>"; };
 		CEFC87A12BAC8D4200A8EAC6 /* BorderButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderButtonStyle.swift; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 				CE073EDD2BB4629C0079F342 /* Text.swift */,
 				8C4B7B842BB47E9C0043B892 /* Color.swift */,
 				8C3D3C002BBA1E33002A5CFC /* String.swift */,
+				CEEC46122BBD8DE900C685BF /* AnyPublisher.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -907,6 +910,7 @@
 				8CABF5C52BB9C65E00A34870 /* ResetPasswordViewModel.swift in Sources */,
 				8CABF5CC2BB9CF0300A34870 /* ChooseEnvironmentView.swift in Sources */,
 				8C4B7BB52BB9BEDC0043B892 /* CustomStyledViewSecuredField.swift in Sources */,
+				CEEC46132BBD8DE900C685BF /* AnyPublisher.swift in Sources */,
 				8C4B7B832BB47DD30043B892 /* StartupProgressAnimationView.swift in Sources */,
 				8C0007D32BAC976700AAEBA0 /* AppInfoProvider.swift in Sources */,
 				8C4B7B9B2BB7026D0043B892 /* TextStyleConfiguration.swift in Sources */,
