@@ -16,24 +16,24 @@ struct ChooseEnvironmentView<T: PageProtocol>: View {
 			isBlurred = false
 		}
 		.background {
-            backgroundView(for: .color(.accentViolet))
+			backgroundView(for: .color(.accentViolet))
 		}
 		.backButtonNavigation(style: .registration)
 		.ignoresSafeArea()
 	}
 
-    private var content: some View {
-        OverlayInternalView(cornerRadius: 40) {
-            VStack {
-                getLogoImage()
-                getHeaderText()
-                getListView()
-                getButtons()
-            }
-            .blur(radius: isBlurred ? 10 : 0)
-            .padding()
-        }
-    }
+	private var content: some View {
+		OverlayInternalView(cornerRadius: 40) {
+			VStack {
+				getLogoImage()
+				getHeaderText()
+				getListView()
+				getButtons()
+			}
+			.blur(radius: isBlurred ? 10 : 0)
+			.padding()
+		}
+	}
 
 	private func getLogoImage() -> some View {
 		Image("LogoSplash")

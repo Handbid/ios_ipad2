@@ -3,18 +3,18 @@
 import SwiftUI
 
 struct FormField: View {
-    @Binding var fieldValue: String
-    var labelKey: LocalizedStringKey
-    var hintKey: LocalizedStringKey
+	@Binding var fieldValue: String
+	var labelKey: LocalizedStringKey
+	var hintKey: LocalizedStringKey
 
-    var body: some View {
-        VStack(alignment: .leading) {
-            Text(labelKey)
-                .applyTextStyle(style: .formHeader)
-                .frame(height: 15)
+	var body: some View {
+		VStack(alignment: .leading) {
+			Text(labelKey)
+				.applyTextStyle(style: .formHeader)
+				.frame(height: 15)
 
-            TextField(hintKey, text: $fieldValue)
-                .applyTextFieldStyle(style: .form)
-        }
-    }
+			TextField(hintKey, text: $fieldValue)
+				.applyTextFieldStyle(style: .form)
+		}
+	}
 }

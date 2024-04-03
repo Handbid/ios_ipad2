@@ -12,13 +12,13 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 			content
 		}
 		.background {
-            backgroundView(for: .color(.accentViolet))
+			backgroundView(for: .color(.accentViolet))
 		}
 		.onAppear {
 			isBlurred = false
 			viewModel.resetErrorMessage()
 		}
-        .keyboardResponsive()
+		.keyboardResponsive()
 		.backButtonNavigation(style: .registration)
 		.ignoresSafeArea()
 	}
@@ -50,17 +50,17 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 		}.padding(.bottom)
 	}
 
-    private func getErrorMessage() -> some View {
-        VStack(spacing: 10) {
-            if !viewModel.isFormValid {
-                GeometryReader { geometry in
-                    Text(viewModel.errorMessage)
-                        .applyTextStyle(style: .error)
-                        .frame(minHeight: geometry.size.height)
-                }
-            }
-        }
-    }
+	private func getErrorMessage() -> some View {
+		VStack(spacing: 10) {
+			if !viewModel.isFormValid {
+				GeometryReader { geometry in
+					Text(viewModel.errorMessage)
+						.applyTextStyle(style: .error)
+						.frame(minHeight: geometry.size.height)
+				}
+			}
+		}
+	}
 
 	private func getButtons() -> some View {
 		VStack(spacing: 10) {

@@ -13,9 +13,9 @@ struct ResetPasswordView<T: PageProtocol>: View {
 			content
 		}
 		.background {
-            backgroundView(for: .color(.accentViolet))
+			backgroundView(for: .color(.accentViolet))
 		}
-        .keyboardResponsive()
+		.keyboardResponsive()
 		.onAppear {
 			isBlurred = false
 			viewModel.resetErrorMessage()
@@ -50,26 +50,26 @@ struct ResetPasswordView<T: PageProtocol>: View {
 			.accessibilityIdentifier("registration_label_confirmationCodeByEmail")
 	}
 
-    private func getPinView() -> some View {
-        PinView(pin: $viewModel.pin, onPinComplete: { enterPin in
-            isBlurred = true
-            coordinator.push(RegistrationPage.changePassword as! T)
-        }, onPinInvalid: {
-            viewModel.validatePin()
-        }, maxLength: 4)
-    }
+	private func getPinView() -> some View {
+		PinView(pin: $viewModel.pin, onPinComplete: { _ in
+			isBlurred = true
+			coordinator.push(RegistrationPage.changePassword as! T)
+		}, onPinInvalid: {
+			viewModel.validatePin()
+		}, maxLength: 4)
+	}
 
-    private func getErrorMessage() -> some View {
-        VStack(spacing: 10) {
-            if !viewModel.isPinValid {
-                GeometryReader { geometry in
-                    Text(viewModel.errorMessage)
-                        .applyTextStyle(style: .error)
-                        .frame(minHeight: geometry.size.height)
-                }
-            }
-        }
-    }
+	private func getErrorMessage() -> some View {
+		VStack(spacing: 10) {
+			if !viewModel.isPinValid {
+				GeometryReader { geometry in
+					Text(viewModel.errorMessage)
+						.applyTextStyle(style: .error)
+						.frame(minHeight: geometry.size.height)
+				}
+			}
+		}
+	}
 
 	private func getButtons() -> some View {
 		VStack(spacing: 10) {

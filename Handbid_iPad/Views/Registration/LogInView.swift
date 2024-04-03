@@ -3,12 +3,12 @@
 import SwiftUI
 
 struct LogInView<T: PageProtocol>: View {
-    private enum Field: Int, CaseIterable {
-        case email, password
-    }
-    
+	private enum Field: Int, CaseIterable {
+		case email, password
+	}
+
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
-	@StateObject  private var viewModel = LogInViewModel()
+	@StateObject private var viewModel = LogInViewModel()
 	@State private var isBlurred = false
 
 	var body: some View {
@@ -16,7 +16,7 @@ struct LogInView<T: PageProtocol>: View {
 			content
 		}
 		.background {
-            backgroundView(for: .color(.accentViolet))
+			backgroundView(for: .color(.accentViolet))
 		}.alert(isPresented: $viewModel.showError) {
 			Alert(title: Text("Error"), message: Text(viewModel.errorMessage), dismissButton: .default(Text("OK")))
 		}
@@ -24,24 +24,24 @@ struct LogInView<T: PageProtocol>: View {
 			isBlurred = false
 			viewModel.resetErrorMessage()
 		}
-        .keyboardResponsive()
+		.keyboardResponsive()
 		.backButtonNavigation(style: .registration)
 		.ignoresSafeArea()
 	}
 
-    private var content: some View {
-        OverlayInternalView(cornerRadius: 40) {
-            VStack(spacing: 20) {
-                getLogoImage()
-                getHeaderText()
-                getTextFields()
-                getErrorMessage()
-                getButtons()
-            }
-            .blur(radius: isBlurred ? 10 : 0)
-            .padding()
-        }
-    }
+	private var content: some View {
+		OverlayInternalView(cornerRadius: 40) {
+			VStack(spacing: 20) {
+				getLogoImage()
+				getHeaderText()
+				getTextFields()
+				getErrorMessage()
+				getButtons()
+			}
+			.blur(radius: isBlurred ? 10 : 0)
+			.padding()
+		}
+	}
 
 	private func getLogoImage() -> some View {
 		Image("LogoSplash")
@@ -69,18 +69,17 @@ struct LogInView<T: PageProtocol>: View {
 		}
 	}
 
-    private func getErrorMessage() -> some View {
-        VStack(spacing: 10) {
-            if !viewModel.isFormValid {
-                GeometryReader { geometry in
-                    Text(viewModel.errorMessage)
-                        .applyTextStyle(style: .error)
-                        .frame(minHeight: geometry.size.height)
-                }
-            }
-        }
-    }
-
+	private func getErrorMessage() -> some View {
+		VStack(spacing: 10) {
+			if !viewModel.isFormValid {
+				GeometryReader { geometry in
+					Text(viewModel.errorMessage)
+						.applyTextStyle(style: .error)
+						.frame(minHeight: geometry.size.height)
+				}
+			}
+		}
+	}
 
 	private func getButtons() -> some View {
 		VStack(spacing: 10) {

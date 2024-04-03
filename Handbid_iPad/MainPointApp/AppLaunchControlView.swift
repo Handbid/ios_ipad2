@@ -19,13 +19,13 @@ struct AppLaunchControlView: View {
 			}
 			else {
 				if isValidToken {
-                    AnyView(EmptyAuctionView<RegistrationPage>())
-                        .onChange(of: authManager.isLoggedIn) {
-                            if !isValidToken {
-                                isValidToken = false
-                                print("User logged out. Navigate to the start screen or login view.")
-                            }
-                        }
+					AnyView(EmptyAuctionView<RegistrationPage>())
+						.onChange(of: authManager.isLoggedIn) {
+							if !isValidToken {
+								isValidToken = false
+								print("User logged out. Navigate to the start screen or login view.")
+							}
+						}
 				}
 				else {
 					RootPageView(page: RegistrationPage.getStarted)

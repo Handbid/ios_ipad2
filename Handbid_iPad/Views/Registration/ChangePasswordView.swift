@@ -11,12 +11,12 @@ struct ChangePasswordView<T: PageProtocol>: View {
 		ZStack {
 			content
 		}
-        .keyboardResponsive()
+		.keyboardResponsive()
 		.onAppear {
 			isBlurred = false
 		}
 		.background {
-            backgroundView(for: .color(.accentViolet))
+			backgroundView(for: .color(.accentViolet))
 		}
 		.backButtonNavigation(style: .registration)
 		.ignoresSafeArea()
@@ -53,17 +53,17 @@ struct ChangePasswordView<T: PageProtocol>: View {
 		}
 	}
 
-    private func getErrorMessage() -> some View {
-        VStack(spacing: 10) {
-            if !viewModel.isCorrectPassword {
-                GeometryReader { geometry in
-                    Text(viewModel.errorMessage)
-                        .applyTextStyle(style: .error)
-                        .frame(minHeight: geometry.size.height)
-                }
-            }
-        }
-    }
+	private func getErrorMessage() -> some View {
+		VStack(spacing: 10) {
+			if !viewModel.isCorrectPassword {
+				GeometryReader { geometry in
+					Text(viewModel.errorMessage)
+						.applyTextStyle(style: .error)
+						.frame(minHeight: geometry.size.height)
+				}
+			}
+		}
+	}
 
 	private func getButtons() -> some View {
 		VStack(spacing: 10) {
