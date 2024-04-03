@@ -11,18 +11,21 @@ enum TextLabelStyles {
             return TextStyleConfiguration(
                 fontStyle: TypographyStyle.headerTitleRegistration.asFont(),
                 fontWeightStyle: .semibold,
+                textAlignment: .center,
                 alignment: .center
             )
         case .body:
             return TextStyleConfiguration(
                 fontStyle: .body,
                 fontWeightStyle: .medium,
+                textAlignment: .center,
                 alignment: .center
             )
         case .error:
             return TextStyleConfiguration(
                 fontStyle: .caption,
                 fontWeightStyle: .medium,
+                textAlignment: .center,
                 alignment: .center,
                 defaultTextColor: Color(hex: "#E2296C")
             )
@@ -30,6 +33,7 @@ enum TextLabelStyles {
             return TextStyleConfiguration(
                 fontStyle: .callout,
                 fontWeightStyle: .light,
+                textAlignment: .leading,
                 alignment: .leading,
                 defaultTextColor: .accentGrayForm
             )
