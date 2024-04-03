@@ -10,7 +10,7 @@ struct ResetPasswordView<T: PageProtocol>: View {
 
 	var body: some View {
 		ZStack {
-			if viewModel.isPinValid { content } else { content }
+			content
 		}
 		.background {
             backgroundView(for: .color(.accentViolet))

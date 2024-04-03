@@ -10,7 +10,7 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 
 	var body: some View {
 		ZStack {
-			if viewModel.isFormValid { content } else { content }
+			content
 		}
 		.background {
             backgroundView(for: .color(.accentViolet))

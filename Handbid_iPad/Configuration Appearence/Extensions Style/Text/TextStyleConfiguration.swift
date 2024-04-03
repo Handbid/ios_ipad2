@@ -22,6 +22,8 @@ struct TextStyleConfiguration {
 	var roundedCornerRadius: CGFloat
 	var borderStyle: BorderType
 	var autoCorrectionDisabled: Bool
+    var fixedSizeHorizontal: Bool
+    var fixedSizeVertical: Bool
 
 	init(
 		fontStyle: Font = .system(size: 16),
@@ -42,7 +44,9 @@ struct TextStyleConfiguration {
 		borderWidthValue: CGFloat = 1.0,
 		roundedCornerRadius: CGFloat = 5.0,
 		borderStyle: BorderType = .solid,
-		autoCorrectionDisabled: Bool = false
+		autoCorrectionDisabled: Bool = false,
+        fixedSizeHorizontal: Bool = false,
+        fixedSizeVertical: Bool = true
 	) {
 		self.fontStyle = fontStyle
 		self.fontWeightStyle = fontWeightStyle
@@ -63,6 +67,8 @@ struct TextStyleConfiguration {
 		self.roundedCornerRadius = roundedCornerRadius
 		self.borderStyle = borderStyle
 		self.autoCorrectionDisabled = autoCorrectionDisabled
+        self.fixedSizeHorizontal = fixedSizeHorizontal
+        self.fixedSizeVertical = fixedSizeVertical
 	}
 
 	enum BorderType {

@@ -14,7 +14,7 @@ struct LogInView<T: PageProtocol>: View {
     
 	var body: some View {
 		ZStack {
-			if viewModel.isFormValid { content } else { content }
+			content
 		}
 		.background {
             backgroundView(for: .color(.accentViolet))
@@ -34,27 +34,25 @@ struct LogInView<T: PageProtocol>: View {
 		.ignoresSafeArea()
 	}
 
-	private var content: some View {
+    private var content: some View {
         OverlayInternalView(cornerRadius: 40) {
-            ScrollView {
-                VStack(spacing: 20) {
-                    getLogoImage()
-                        .animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
-                    getHeaderText()
-                        .animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
-                    getTextFields()
-                        .animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
-                    getErrorMessage()
-                        .animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
-                    getButtons()
-                        .animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
-                    Spacer()
-                }
-                .blur(radius: isBlurred ? 10 : 0)
-                .padding()
+            VStack(spacing: 20) {
+                getLogoImage()
+                    .animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
+                getHeaderText()
+                    .animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
+                getTextFields()
+                    .animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
+                getErrorMessage()
+                    .animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
+                getButtons()
+                    .animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
+                Spacer()
             }
+            .blur(radius: isBlurred ? 10 : 0)
+            .padding()
         }
-	}
+    }
 
 	private func getLogoImage() -> some View {
 		Image("LogoSplash")

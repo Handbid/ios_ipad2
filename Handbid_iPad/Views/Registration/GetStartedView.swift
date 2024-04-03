@@ -59,7 +59,7 @@ struct GetStartedView<T: PageProtocol>: View {
             .applyTextStyle(style: .headerTitle)
             .accessibilityIdentifier("GetStartedView")
     }
-    
+
     private func getButtons() -> some View {
         VStack(spacing: 10) {
             Button<Text>.styled(config: .primaryButtonStyle, action: {

@@ -24,7 +24,7 @@ extension Text {
 			.frame(maxWidth: .infinity)
 			.disabled(style.autoCorrectionDisabled)
 			.textContentType(style.isSecure ? .password : .none)
-			.lineLimit(style.maxCharacterCount)
+            .fixedSize(horizontal: style.fixedSizeHorizontal, vertical: style.fixedSizeVertical)
 		textField
 	}
 }

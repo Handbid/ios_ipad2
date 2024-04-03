@@ -9,7 +9,7 @@ struct ChangePasswordView<T: PageProtocol>: View {
 
 	var body: some View {
 		ZStack {
-			if viewModel.isCorrectPassword { content } else { content }
+			content
 		}
 		.onAppear {
 			isBlurred = false
