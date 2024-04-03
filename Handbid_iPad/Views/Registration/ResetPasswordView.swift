@@ -39,15 +39,15 @@ struct ResetPasswordView<T: PageProtocol>: View {
 	}
 
 	private func getHeaderText() -> some View {
-		Text(LocalizedStringKey("Reset Password"))
+		Text(LocalizedStringKey("registration_label_resetPassword"))
 			.applyTextStyle(style: .headerTitle)
-			.accessibilityIdentifier("ResetPassword")
+			.accessibilityIdentifier("registration_label_resetPassword")
 	}
 
 	private func getBodyText() -> some View {
-		Text(LocalizedStringKey("We have sent you a confirmation code by email, please enter the code below."))
+		Text(LocalizedStringKey("registration_label_confirmationCodeByEmail"))
 			.applyTextStyle(style: .body)
-			.accessibilityIdentifier("ResetPasswordBody")
+			.accessibilityIdentifier("registration_label_confirmationCodeByEmail")
 	}
 
     private func getPinView() -> some View {
@@ -79,9 +79,9 @@ struct ResetPasswordView<T: PageProtocol>: View {
 					coordinator.push(RegistrationPage.changePassword as! T)
 				}
 			}) {
-				Text(LocalizedStringKey("Confirm"))
+				Text(LocalizedStringKey("registration_btn_confirm"))
 					.textCase(.uppercase)
-			}.accessibilityIdentifier("Confirm")
+			}.accessibilityIdentifier("registration_btn_confirm")
 		}
 	}
 }

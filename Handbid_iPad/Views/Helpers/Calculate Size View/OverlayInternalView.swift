@@ -40,7 +40,6 @@ struct OverlayInternalView<Content: View>: View {
                                 })
                         )
                         .padding(.bottom, keyboardHeight)
-                        .animation(.easeInOut, value: contentHeight)
                     Spacer()
                 }
                 Spacer()

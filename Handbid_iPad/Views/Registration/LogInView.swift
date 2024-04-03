@@ -52,20 +52,20 @@ struct LogInView<T: PageProtocol>: View {
 	}
 
 	private func getHeaderText() -> some View {
-		Text(LocalizedStringKey("login"))
+		Text(LocalizedStringKey("registration_label_login"))
 			.applyTextStyle(style: .headerTitle)
-			.accessibilityIdentifier("GetStartedView")
+			.accessibilityIdentifier("registration_label_login")
 	}
 
 	private func getTextFields() -> some View {
 		VStack(spacing: 20) {
 			FormField(fieldValue: $viewModel.email,
-			          labelKey: LocalizedStringKey("email"),
-			          hintKey: LocalizedStringKey("emailHint"))
+			          labelKey: LocalizedStringKey("registration_label_email"),
+			          hintKey: LocalizedStringKey("registration_hint_email"))
 
 			PasswordField(fieldValue: $viewModel.password,
-			              labelKey: LocalizedStringKey("password"),
-			              hintKey: LocalizedStringKey("passwordHint"))
+			              labelKey: LocalizedStringKey("registration_label_password"),
+			              hintKey: LocalizedStringKey("registration_hint_enterPassword"))
 		}
 	}
 
@@ -87,16 +87,16 @@ struct LogInView<T: PageProtocol>: View {
 			Button<Text>.styled(config: .secondaryButtonStyle, action: {
 				viewModel.logIn()
 			}) {
-				Text(LocalizedStringKey("login"))
+				Text(LocalizedStringKey("registration_btn_login"))
 					.textCase(.uppercase)
-			}.accessibilityIdentifier("LogIn")
+			}.accessibilityIdentifier("registration_btn_login")
 
 			Button<Text>.styled(config: .fourthButtonStyle, action: {
 				isBlurred = true
 				coordinator.push(RegistrationPage.forgotPassword as! T)
 			}) {
-				Text(LocalizedStringKey("forgotPassword"))
-			}.accessibilityIdentifier("ForgotPassword")
+				Text(LocalizedStringKey("registration_btn_password"))
+			}.accessibilityIdentifier("registration_btn_password")
 		}
 	}
 }

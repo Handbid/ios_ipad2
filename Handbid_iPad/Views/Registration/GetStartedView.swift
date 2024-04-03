@@ -52,9 +52,9 @@ struct GetStartedView<T: PageProtocol>: View {
     }
     
     private func getHeaderText() -> some View {
-        Text(LocalizedStringKey("welcomeToHandbid"))
+        Text(LocalizedStringKey("registration_label_welcomeHandbid"))
             .applyTextStyle(style: .headerTitle)
-            .accessibilityIdentifier("GetStartedView")
+            .accessibilityIdentifier("registration_label_welcomeHandbid")
     }
 
     private func getButtons() -> some View {
@@ -63,23 +63,23 @@ struct GetStartedView<T: PageProtocol>: View {
                 isBlurred = true
                 coordinator.push(RegistrationPage.logIn as! T)
             }) {
-                Text(LocalizedStringKey("login"))
+                Text(LocalizedStringKey("registration_btn_login"))
                     .textCase(.uppercase)
-            }.accessibilityIdentifier("LoginButton")
-            
+            }.accessibilityIdentifier("registration_btn_login")
+
             Button<Text>.styled(config: .secondaryButtonStyle, action: {
                 viewModel.logInAnonymously()
             }) {
-                Text(LocalizedStringKey("demoVersion"))
+                Text(LocalizedStringKey("registration_btn_demoVersion"))
                     .textCase(.uppercase)
-            }.accessibilityIdentifier("DemoButton")
-            
+            }.accessibilityIdentifier("registration_btn_demoVersion")
+
             Button<Text>.styled(config: .thirdButtonStyle, action: {
                 viewModel.openHandbidWebsite()
             }) {
-                Text(LocalizedStringKey("btnAboutHandbid"))
+                Text(LocalizedStringKey("registration_btn_aboutHandbid"))
                     .textCase(.uppercase)
-            }.accessibilityIdentifier("AboutHandbidButton")
+            }.accessibilityIdentifier("registration_btn_aboutHandbid")
         }
     }
 }
