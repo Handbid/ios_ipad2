@@ -20,7 +20,7 @@ extension SecureField {
 					.stroke(style.borderColor, lineWidth: style.borderWidthValue)
 			)
 			.textFieldStyle(PlainTextFieldStyle())
-			.multilineTextAlignment(style.alignment)
+			.multilineTextAlignment(style.textAlignment)
 			.frame(maxWidth: .infinity)
 			.disabled(style.autoCorrectionDisabled)
 			.textContentType(style.isSecure ? .password : .none)

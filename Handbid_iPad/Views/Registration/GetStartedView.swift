@@ -18,7 +18,7 @@ struct GetStartedView<T: PageProtocol>: View {
             backgroundImageView(for: .registrationWelcome)
         }
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now()) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                 contentLoaded = true
             }
             isBlurred = false

@@ -5,7 +5,8 @@ import SwiftUI
 struct TextStyleConfiguration {
 	var fontStyle: Font
 	var fontWeightStyle: Font.Weight
-	var alignment: TextAlignment
+    var textAlignment: TextAlignment
+	var alignment: Alignment
 	var isSecure: Bool
 	var maxCharacterCount: Int
 	var defaultTextColor: Color
@@ -28,7 +29,8 @@ struct TextStyleConfiguration {
 	init(
 		fontStyle: Font = .system(size: 16),
 		fontWeightStyle: Font.Weight = .regular,
-		alignment: TextAlignment = .leading,
+        textAlignment: TextAlignment = .leading,
+		alignment: Alignment = .leading,
 		isSecure: Bool = false,
 		maxCharacterCount: Int = Int.max,
 		defaultTextColor: Color = .black,
@@ -50,6 +52,7 @@ struct TextStyleConfiguration {
 	) {
 		self.fontStyle = fontStyle
 		self.fontWeightStyle = fontWeightStyle
+        self.textAlignment = textAlignment
 		self.alignment = alignment
 		self.isSecure = isSecure
 		self.maxCharacterCount = maxCharacterCount
