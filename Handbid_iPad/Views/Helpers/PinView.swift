@@ -3,16 +3,16 @@
 import SwiftUI
 
 struct PinView: View {
-    @FocusState private var isFocused: Bool
     @Binding var pin: String
     var onPinComplete: (String) -> Void
     var onPinInvalid: () -> Void
     var maxLength: Int
+    @FocusState private var isFocused: Bool
 
     var body: some View {
         VStack(spacing: 20) {
             HStack(spacing: 10) {
-                ForEach(Array(pin.prefix(maxLength)), id: \.self) { _ in
+                ForEach(Array(pin.prefix(maxLength)).indices, id: \.self) { index in
                     Text("*")
                         .applyTextStyle(style: .headerTitle)
                 }
@@ -34,6 +34,9 @@ struct PinView: View {
                 .ignoresSafeArea(.keyboard, edges: .bottom)
                 .padding()
                 .onChange(of: pin) { oldValue, newValue in
+                    if newValue.count > maxLength {
+                        pin = String(newValue.prefix(maxLength))
+                    }
                     if newValue.count == maxLength {
                         if newValue.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil {
                             onPinComplete(newValue)
@@ -48,5 +51,3 @@ struct PinView: View {
         }
     }
 }
-
-

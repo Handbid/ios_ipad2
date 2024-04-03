@@ -15,7 +15,7 @@ struct ResetPasswordView<T: PageProtocol>: View {
 		.background {
             backgroundView(for: .color(.accentViolet))
 		}
-        //.keyboardResponsive()
+        .keyboardResponsive()
 		.onAppear {
 			isBlurred = false
 			viewModel.resetErrorMessage()
