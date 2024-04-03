@@ -10,8 +10,7 @@ struct LogInView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@StateObject  private var viewModel = LogInViewModel()
 	@State private var isBlurred = false
-    @FocusState private var focusedField: Field?
-    
+
 	var body: some View {
 		ZStack {
 			content
@@ -25,11 +24,7 @@ struct LogInView<T: PageProtocol>: View {
 			isBlurred = false
 			viewModel.resetErrorMessage()
 		}
-        .onTapGesture {
-            if focusedField != nil {
-                focusedField = nil
-            }
-        }
+        .keyboardResponsive()
 		.backButtonNavigation(style: .registration)
 		.ignoresSafeArea()
 	}
@@ -67,12 +62,10 @@ struct LogInView<T: PageProtocol>: View {
 			FormField(fieldValue: $viewModel.email,
 			          labelKey: LocalizedStringKey("email"),
 			          hintKey: LocalizedStringKey("emailHint"))
-            .focused($focusedField, equals: .email)
 
 			PasswordField(fieldValue: $viewModel.password,
 			              labelKey: LocalizedStringKey("password"),
 			              hintKey: LocalizedStringKey("passwordHint"))
-            .focused($focusedField, equals: .password)
 		}
 	}
 

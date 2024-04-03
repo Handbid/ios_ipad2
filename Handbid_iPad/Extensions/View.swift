@@ -26,4 +26,8 @@ extension View {
     func backButtonNavigation(style: NavigationBackButtonStyle) -> some View {
         modifier(NavigationBackButtonModifier(style: style))
     }
+
+    func keyboardResponsive() -> some View {
+        self.modifier(KeyboardResponsiveModifier())
+    }
 }

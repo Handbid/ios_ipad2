@@ -11,6 +11,7 @@ struct ChangePasswordView<T: PageProtocol>: View {
 		ZStack {
 			content
 		}
+        .keyboardResponsive()
 		.onAppear {
 			isBlurred = false
 		}

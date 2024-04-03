@@ -15,6 +15,7 @@ struct ResetPasswordView<T: PageProtocol>: View {
 		.background {
             backgroundView(for: .color(.accentViolet))
 		}
+        //.keyboardResponsive()
 		.onAppear {
 			isBlurred = false
 			viewModel.resetErrorMessage()
@@ -49,53 +50,14 @@ struct ResetPasswordView<T: PageProtocol>: View {
 			.accessibilityIdentifier("ResetPasswordBody")
 	}
 
-	private func getPinView() -> some View {
-		VStack(spacing: 20) {
-			HStack(spacing: 10) {
-				ForEach(Array(viewModel.pin.prefix(4)), id: \.self) { _ in
-					Text("*")
-						.applyTextStyle(style: .headerTitle)
-				}
-				if viewModel.pin.count < 4 {
-					ForEach(0 ..< (4 - viewModel.pin.count), id: \.self) { _ in
-						Text("_")
-							.applyTextStyle(style: .headerTitle)
-					}
-				}
-			}
-			.padding()
-
-			TextField("", text: $viewModel.pin)
-				.keyboardType(.numberPad)
-				.foregroundColor(.clear)
-				.accentColor(.clear)
-				.background(Color.clear)
-				.focused($isFocused)
-				.frame(width: 0, height: 0)
-				.ignoresSafeArea(.keyboard, edges: .bottom)
-				.padding()
-				.onChange(of: viewModel.pin) { _, newValue in
-					if newValue.count == 4 {
-						if !newValue.contains("*"), newValue.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil {
-							isBlurred = true
-							coordinator.push(RegistrationPage.changePassword as! T)
-						}
-						else {
-							viewModel.validatePin()
-							if !viewModel.isPinValid {
-								viewModel.resetErrorMessage()
-							}
-						}
-					}
-					else if newValue.count > 4 {
-						viewModel.resetErrorMessage()
-					}
-				}
-		}
-		.onTapGesture {
-			isFocused = true
-		}
-	}
+    private func getPinView() -> some View {
+        PinView(pin: $viewModel.pin, onPinComplete: { enterPin in
+            isBlurred = true
+            coordinator.push(RegistrationPage.changePassword as! T)
+        }, onPinInvalid: {
+            viewModel.validatePin()
+        }, maxLength: 4)
+    }
 
     private func getErrorMessage() -> some View {
         VStack(spacing: 10) {

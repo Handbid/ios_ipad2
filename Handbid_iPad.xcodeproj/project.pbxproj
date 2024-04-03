@@ -60,6 +60,7 @@
 		8CABF5D62BB9E19900A34870 /* LayoutProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5D52BB9E19900A34870 /* LayoutProperties.swift */; };
 		8CABF5DA2BB9F35A00A34870 /* NavigationBackButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5D92BB9F35A00A34870 /* NavigationBackButtonModifier.swift */; };
 		8CABF5DC2BB9F37700A34870 /* RegistrationBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5DB2BB9F37700A34870 /* RegistrationBackButton.swift */; };
+		8CAFD93A2BBD90F700C7D763 /* KeyboardResponsiveModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFD9392BBD90F700C7D763 /* KeyboardResponsiveModifier.swift */; };
 		8CB8C6AC2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB8C6AB2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift */; };
 		8CEA290B2BB3517E005E3B33 /* NetworkService in Frameworks */ = {isa = PBXBuildFile; productRef = 8CEA290A2BB3517E005E3B33 /* NetworkService */; };
 		CE073ED82BB42D710079F342 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE073ED72BB42D710079F342 /* View.swift */; };
@@ -152,6 +153,7 @@
 		8CABF5D52BB9E19900A34870 /* LayoutProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutProperties.swift; sourceTree = "<group>"; };
 		8CABF5D92BB9F35A00A34870 /* NavigationBackButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBackButtonModifier.swift; sourceTree = "<group>"; };
 		8CABF5DB2BB9F37700A34870 /* RegistrationBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationBackButton.swift; sourceTree = "<group>"; };
+		8CAFD9392BBD90F700C7D763 /* KeyboardResponsiveModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponsiveModifier.swift; sourceTree = "<group>"; };
 		8CB8C6AB2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinatorTest.swift; sourceTree = "<group>"; };
 		8CEA29072BB345F8005E3B33 /* Handbid_iPadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CEA29082BB345F8005E3B33 /* Handbid_iPadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -413,6 +415,7 @@
 				8C4B7BB02BB8944C0043B892 /* TextStyles.swift */,
 				8CABF5D82BB9F33D00A34870 /* Navigation */,
 				8C4B7B8C2BB6FD390043B892 /* Extensions Style */,
+				8CAFD9392BBD90F700C7D763 /* KeyboardResponsiveModifier.swift */,
 			);
 			path = "Configuration Appearence";
 			sourceTree = "<group>";
@@ -786,6 +789,7 @@
 				8CABF5BF2BB9C61A00A34870 /* ChangePasswordView.swift in Sources */,
 				8CABF5D62BB9E19900A34870 /* LayoutProperties.swift in Sources */,
 				8C8BEC362BA977560083D904 /* RootPageView.swift in Sources */,
+				8CAFD93A2BBD90F700C7D763 /* KeyboardResponsiveModifier.swift in Sources */,
 				8C8BEC302BA975F10083D904 /* LogInView.swift in Sources */,
 				CE073ED82BB42D710079F342 /* View.swift in Sources */,
 				CE7DF82F2BADFD1900FF7694 /* PinView.swift in Sources */,
