@@ -10,16 +10,7 @@ struct ChooseEnvironmentView<T: PageProtocol>: View {
 
 	var body: some View {
 		ZStack {
-			OverlayInternalView(cornerRadius: 40) {
-				VStack {
-					getLogoImage()
-					getHeaderText()
-					getListView()
-					getButtons()
-				}
-				.blur(radius: isBlurred ? 10 : 0)
-				.padding()
-			}
+			content
 		}
 		.onAppear {
 			isBlurred = false
@@ -30,6 +21,19 @@ struct ChooseEnvironmentView<T: PageProtocol>: View {
 		.backButtonNavigation(style: .registration)
 		.ignoresSafeArea()
 	}
+
+    private var content: some View {
+        OverlayInternalView(cornerRadius: 40) {
+            VStack {
+                getLogoImage()
+                getHeaderText()
+                getListView()
+                getButtons()
+            }
+            .blur(radius: isBlurred ? 10 : 0)
+            .padding()
+        }
+    }
 
 	private func getLogoImage() -> some View {
 		Image("LogoSplash")

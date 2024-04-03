@@ -4,58 +4,60 @@ import Combine
 import SwiftUI
 
 struct OverlayInternalView<Content: View>: View {
-	@State private var contentHeight: CGFloat = 0
-	@State private var keyboardHeight: CGFloat = 0
-	let overlayContent: () -> Content
-	let cornerRadius: CGFloat
-	let backgroundColor: Color?
+    @State private var contentHeight: CGFloat = 0
+    @State private var keyboardHeight: CGFloat = 0
+    let overlayContent: () -> Content
+    let cornerRadius: CGFloat
+    let backgroundColor: Color?
 
-	init(cornerRadius: CGFloat,
-	     backgroundColor: Color? = .white,
-	     overlayContent: @escaping () -> Content)
-	{
-		self.cornerRadius = cornerRadius
-		self.overlayContent = overlayContent
-		self.backgroundColor = backgroundColor
-	}
+    init(cornerRadius: CGFloat,
+         backgroundColor: Color? = .white,
+         @ViewBuilder overlayContent: @escaping () -> Content) {
+        self.cornerRadius = cornerRadius
+        self.overlayContent = overlayContent
+        self.backgroundColor = backgroundColor
+    }
 
-	var body: some View {
-		ResponsiveView { layoutProperties in
-			VStack {
-				Spacer()
-				HStack {
-					Spacer()
-					RoundedRectangle(cornerRadius: cornerRadius)
-						.foregroundColor(backgroundColor)
-						.cornerRadius(cornerRadius)
-						.frame(
-							width: calculateWidth(layoutProperties: layoutProperties),
-							height: min(contentHeight + keyboardHeight, UIScreen.main.bounds.height * 0.8)
-						)
-						.overlay {
-							overlayContent()
-								.fixedSize(horizontal: false, vertical: true)
-								.background(
-									GeometryReader { geo in
-										Color.clear
-											.onAppear {
-												withAnimation(.easeInOut(duration: 0.2)) {
-													contentHeight = geo.size.height
-												}
-											}
-									}
-								)
-						}
-						.padding(.bottom, keyboardHeight)
-						.transition(.asymmetric(insertion: .identity, removal: .opacity))
-						.animation(.easeInOut, value: contentHeight)
-					Spacer()
-				}
-				Spacer()
-			}
-		}
-	}
-
+    var body: some View {
+        ResponsiveView { layoutProperties in
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    RoundedRectangle(cornerRadius: cornerRadius)
+                        .foregroundColor(backgroundColor)
+                        .cornerRadius(cornerRadius)
+                        .frame(
+                            width: calculateWidth(layoutProperties: layoutProperties),
+                            height: max(contentHeight, keyboardHeight)
+                        )
+                        .overlay(
+                            overlayContent()
+                                .background(GeometryReader { geo in
+                                    Color.clear.onAppear {
+                                        self.contentHeight = geo.size.height
+                                    }
+                                })
+                        )
+                        .padding(.bottom, keyboardHeight)
+                        .animation(.easeInOut, value: contentHeight)
+                    Spacer()
+                }
+                Spacer()
+            }
+        }
+        .onAppear {
+            NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { notification in
+                if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                    keyboardHeight = keyboardSize.height
+                }
+            }
+            NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { _ in
+                keyboardHeight = 0
+            }
+        }
+    }
+    
 	private func calculateWidth(layoutProperties: LayoutProperties) -> CGFloat {
 		switch UIDevice.current.userInterfaceIdiom {
 		case .pad:

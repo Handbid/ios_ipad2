@@ -18,7 +18,7 @@ struct GetStartedView<T: PageProtocol>: View {
             backgroundImageView(for: .registrationWelcome)
         }
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now()) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                 contentLoaded = true
             }
             isBlurred = false
@@ -30,11 +30,8 @@ struct GetStartedView<T: PageProtocol>: View {
         OverlayInternalView(cornerRadius: 40) {
             VStack {
                 getLogoImage()
-                    .animation(.easeInOut(duration: 0.3), value: contentLoaded)
                 getHeaderText()
-                    .animation(.easeInOut(duration: 0.3), value: contentLoaded)
                 getButtons()
-                    .animation(.easeInOut(duration: 0.3), value: contentLoaded)
                 
             }.padding()
         }
@@ -59,7 +56,7 @@ struct GetStartedView<T: PageProtocol>: View {
             .applyTextStyle(style: .headerTitle)
             .accessibilityIdentifier("GetStartedView")
     }
-    
+
     private func getButtons() -> some View {
         VStack(spacing: 10) {
             Button<Text>.styled(config: .primaryButtonStyle, action: {

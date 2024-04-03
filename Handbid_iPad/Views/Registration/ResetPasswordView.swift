@@ -10,11 +10,12 @@ struct ResetPasswordView<T: PageProtocol>: View {
 
 	var body: some View {
 		ZStack {
-			if viewModel.isPinValid { content } else { content }
+			content
 		}
 		.background {
             backgroundView(for: .color(.accentViolet))
 		}
+        //.keyboardResponsive()
 		.onAppear {
 			isBlurred = false
 			viewModel.resetErrorMessage()
@@ -27,16 +28,10 @@ struct ResetPasswordView<T: PageProtocol>: View {
 		OverlayInternalView(cornerRadius: 40) {
 			VStack(spacing: 20) {
 				getHeaderText()
-					.animation(.easeInOut(duration: 0.3), value: !viewModel.isPinValid)
 				getBodyText()
-					.animation(.easeInOut(duration: 0.3), value: !viewModel.isPinValid)
 				getPinView()
-					.animation(.easeInOut(duration: 0.3), value: !viewModel.isPinValid)
 				getErrorMessage()
-					.animation(.easeInOut(duration: 0.3), value: !viewModel.isPinValid)
 				getButtons()
-					.animation(.easeInOut(duration: 0.3), value: !viewModel.isPinValid)
-				Spacer()
 			}
 			.blur(radius: isBlurred ? 10 : 0)
 			.padding()
@@ -55,62 +50,26 @@ struct ResetPasswordView<T: PageProtocol>: View {
 			.accessibilityIdentifier("ResetPasswordBody")
 	}
 
-	private func getPinView() -> some View {
-		VStack(spacing: 20) {
-			HStack(spacing: 10) {
-				ForEach(Array(viewModel.pin.prefix(4)), id: \.self) { _ in
-					Text("*")
-						.applyTextStyle(style: .headerTitle)
-				}
-				if viewModel.pin.count < 4 {
-					ForEach(0 ..< (4 - viewModel.pin.count), id: \.self) { _ in
-						Text("_")
-							.applyTextStyle(style: .headerTitle)
-					}
-				}
-			}
-			.padding()
+    private func getPinView() -> some View {
+        PinView(pin: $viewModel.pin, onPinComplete: { enterPin in
+            isBlurred = true
+            coordinator.push(RegistrationPage.changePassword as! T)
+        }, onPinInvalid: {
+            viewModel.validatePin()
+        }, maxLength: 4)
+    }
 
-			TextField("", text: $viewModel.pin)
-				.keyboardType(.numberPad)
-				.foregroundColor(.clear)
-				.accentColor(.clear)
-				.background(Color.clear)
-				.focused($isFocused)
-				.frame(width: 0, height: 0)
-				.ignoresSafeArea(.keyboard, edges: .bottom)
-				.padding()
-				.onChange(of: viewModel.pin) { _, newValue in
-					if newValue.count == 4 {
-						if !newValue.contains("*"), newValue.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil {
-							isBlurred = true
-							coordinator.push(RegistrationPage.changePassword as! T)
-						}
-						else {
-							viewModel.validatePin()
-							if !viewModel.isPinValid {
-								viewModel.resetErrorMessage()
-							}
-						}
-					}
-					else if newValue.count > 4 {
-						viewModel.resetErrorMessage()
-					}
-				}
-		}
-		.onTapGesture {
-			isFocused = true
-		}
-	}
-
-	private func getErrorMessage() -> some View {
-		VStack(spacing: 10) {
-			if !viewModel.isPinValid {
-				Text(viewModel.errorMessage)
-					.applyTextStyle(style: .error)
-			}
-		}
-	}
+    private func getErrorMessage() -> some View {
+        VStack(spacing: 10) {
+            if !viewModel.isPinValid {
+                GeometryReader { geometry in
+                    Text(viewModel.errorMessage)
+                        .applyTextStyle(style: .error)
+                        .frame(minHeight: geometry.size.height)
+                }
+            }
+        }
+    }
 
 	private func getButtons() -> some View {
 		VStack(spacing: 10) {

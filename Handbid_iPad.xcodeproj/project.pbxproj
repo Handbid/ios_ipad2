@@ -60,29 +60,20 @@
 		8CABF5D62BB9E19900A34870 /* LayoutProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5D52BB9E19900A34870 /* LayoutProperties.swift */; };
 		8CABF5DA2BB9F35A00A34870 /* NavigationBackButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5D92BB9F35A00A34870 /* NavigationBackButtonModifier.swift */; };
 		8CABF5DC2BB9F37700A34870 /* RegistrationBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5DB2BB9F37700A34870 /* RegistrationBackButton.swift */; };
+		8CAFD93A2BBD90F700C7D763 /* KeyboardResponsiveModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFD9392BBD90F700C7D763 /* KeyboardResponsiveModifier.swift */; };
 		8CB8C6AC2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB8C6AB2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift */; };
 		8CEA290B2BB3517E005E3B33 /* NetworkService in Frameworks */ = {isa = PBXBuildFile; productRef = 8CEA290A2BB3517E005E3B33 /* NetworkService */; };
 		CE073ED82BB42D710079F342 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE073ED72BB42D710079F342 /* View.swift */; };
-		CE073EDC2BB4307A0079F342 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE073EDB2BB4307A0079F342 /* ButtonStyle.swift */; };
-		CE073EDE2BB4629C0079F342 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE073EDD2BB4629C0079F342 /* Text.swift */; };
-		CE073EE22BB47E3F0079F342 /* NoBackgroundButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE073EE12BB47E3F0079F342 /* NoBackgroundButtonStyle.swift */; };
 		CE073EE42BB4809C0079F342 /* FormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE073EE32BB4809C0079F342 /* FormField.swift */; };
 		CE073EE62BB485CD0079F342 /* PasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE073EE52BB485CD0079F342 /* PasswordField.swift */; };
 		CE34FB3F2BB1963300701D2A /* OverlayInternalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE34FB3E2BB1963300701D2A /* OverlayInternalView.swift */; };
 		CE7DF8212BAD9E5300FF7694 /* Inter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE7DF8202BAD9E5300FF7694 /* Inter.ttf */; };
 		CE7DF8222BAD9E5300FF7694 /* Inter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE7DF8202BAD9E5300FF7694 /* Inter.ttf */; };
-		CE7DF8252BADDB7400FF7694 /* LabelAndTextModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DF8242BADDB7400FF7694 /* LabelAndTextModifiers.swift */; };
-		CE7DF8262BADDB7400FF7694 /* LabelAndTextModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DF8242BADDB7400FF7694 /* LabelAndTextModifiers.swift */; };
 		CE7DF8272BADF13C00FF7694 /* iPadAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00B12BA823C90094FAA7 /* iPadAssets.xcassets */; };
-		CE7DF82A2BADF23500FF7694 /* TextFieldModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DF8292BADF23500FF7694 /* TextFieldModifiers.swift */; };
-		CE7DF82C2BADF28000FF7694 /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DF82B2BADF28000FF7694 /* ViewModifiers.swift */; };
 		CE7DF82F2BADFD1900FF7694 /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DF82E2BADFD1900FF7694 /* PinView.swift */; };
 		CEE2BB272BB5BBB10033556D /* RegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2BB262BB5BBB10033556D /* RegisterRepository.swift */; };
 		CEE2BB292BB5D1070033556D /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2BB282BB5D1070033556D /* ApiConstants.swift */; };
 		CEEC46132BBD8DE900C685BF /* AnyPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEC46122BBD8DE900C685BF /* AnyPublisher.swift */; };
-		CEFC879D2BAC8A6500A8EAC6 /* SolidButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFC879C2BAC8A6500A8EAC6 /* SolidButtonStyle.swift */; };
-		CEFC879F2BAC8BCE00A8EAC6 /* ButtonModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFC879E2BAC8BCE00A8EAC6 /* ButtonModifiers.swift */; };
-		CEFC87A22BAC8D4200A8EAC6 /* BorderButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFC87A12BAC8D4200A8EAC6 /* BorderButtonStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,29 +154,21 @@
 		8CABF5D52BB9E19900A34870 /* LayoutProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutProperties.swift; sourceTree = "<group>"; };
 		8CABF5D92BB9F35A00A34870 /* NavigationBackButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBackButtonModifier.swift; sourceTree = "<group>"; };
 		8CABF5DB2BB9F37700A34870 /* RegistrationBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationBackButton.swift; sourceTree = "<group>"; };
+		8CAFD9392BBD90F700C7D763 /* KeyboardResponsiveModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponsiveModifier.swift; sourceTree = "<group>"; };
 		8CB8C6AB2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinatorTest.swift; sourceTree = "<group>"; };
 		8CEA29072BB345F8005E3B33 /* Handbid_iPadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CEA29082BB345F8005E3B33 /* Handbid_iPadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CFCCFB92BA8B3C600CF6C33 /* Handbid_iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Handbid_iPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A95C33233A18F3D827465488 /* Pods-Handbid_iPadUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPadUITests.debug.xcconfig"; path = "Target Support Files/Pods-Handbid_iPadUITests/Pods-Handbid_iPadUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CE073ED72BB42D710079F342 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
-		CE073EDB2BB4307A0079F342 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
-		CE073EDD2BB4629C0079F342 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
-		CE073EE12BB47E3F0079F342 /* NoBackgroundButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoBackgroundButtonStyle.swift; sourceTree = "<group>"; };
 		CE073EE32BB4809C0079F342 /* FormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormField.swift; sourceTree = "<group>"; };
 		CE073EE52BB485CD0079F342 /* PasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordField.swift; sourceTree = "<group>"; };
 		CE34FB3E2BB1963300701D2A /* OverlayInternalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayInternalView.swift; sourceTree = "<group>"; };
 		CE7DF8202BAD9E5300FF7694 /* Inter.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Inter.ttf; sourceTree = "<group>"; };
-		CE7DF8242BADDB7400FF7694 /* LabelAndTextModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelAndTextModifiers.swift; sourceTree = "<group>"; };
-		CE7DF8292BADF23500FF7694 /* TextFieldModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldModifiers.swift; sourceTree = "<group>"; };
-		CE7DF82B2BADF28000FF7694 /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
 		CE7DF82E2BADFD1900FF7694 /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		CEE2BB262BB5BBB10033556D /* RegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRepository.swift; sourceTree = "<group>"; };
 		CEE2BB282BB5D1070033556D /* ApiConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConstants.swift; sourceTree = "<group>"; };
 		CEEC46122BBD8DE900C685BF /* AnyPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyPublisher.swift; sourceTree = "<group>"; };
-		CEFC879C2BAC8A6500A8EAC6 /* SolidButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidButtonStyle.swift; sourceTree = "<group>"; };
-		CEFC879E2BAC8BCE00A8EAC6 /* ButtonModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModifiers.swift; sourceTree = "<group>"; };
-		CEFC87A12BAC8D4200A8EAC6 /* BorderButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderButtonStyle.swift; sourceTree = "<group>"; };
 		E2A4842D2220F7D3D69BACE2 /* Pods-Handbid_iPadUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPadUITests.release.xcconfig"; path = "Target Support Files/Pods-Handbid_iPadUITests/Pods-Handbid_iPadUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EB79E9AC5168F94222018306 /* Pods-Handbid_iPad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPad.debug.xcconfig"; path = "Target Support Files/Pods-Handbid_iPad/Pods-Handbid_iPad.debug.xcconfig"; sourceTree = "<group>"; };
 		FDFCFCFC1A5FE688F4B9D27D /* Pods-Handbid_iPad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPad.release.xcconfig"; path = "Target Support Files/Pods-Handbid_iPad/Pods-Handbid_iPad.release.xcconfig"; sourceTree = "<group>"; };
@@ -258,7 +241,6 @@
 				8C1E01032BA862BB0094FAA7 /* MainPointApp */,
 				8C1E00DF2BA825500094FAA7 /* Models */,
 				8C1E00DE2BA8253F0094FAA7 /* Resources */,
-				8C1E00E12BA8256E0094FAA7 /* Styles */,
 				8C1E00E52BA825C30094FAA7 /* Supporting-Methods */,
 				8C1E00E42BA8258F0094FAA7 /* Utils */,
 				8C1E00E32BA825860094FAA7 /* ViewModels */,
@@ -315,8 +297,6 @@
 			children = (
 				8C0007952BAC733900AAEBA0 /* ArrowParsable.swift */,
 				CE073ED72BB42D710079F342 /* View.swift */,
-				CE073EDB2BB4307A0079F342 /* ButtonStyle.swift */,
-				CE073EDD2BB4629C0079F342 /* Text.swift */,
 				8C4B7B842BB47E9C0043B892 /* Color.swift */,
 				8C3D3C002BBA1E33002A5CFC /* String.swift */,
 				CEEC46122BBD8DE900C685BF /* AnyPublisher.swift */,
@@ -348,16 +328,6 @@
 				8C4B7B862BB6DCC80043B892 /* AuthModel.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		8C1E00E12BA8256E0094FAA7 /* Styles */ = {
-			isa = PBXGroup;
-			children = (
-				CE7DF8282BADF20800FF7694 /* TextFields */,
-				CE7DF8232BADDB4C00FF7694 /* Labels-and-Text */,
-				CEFC87A02BAC8D0B00A8EAC6 /* Buttons */,
-			);
-			path = Styles;
 			sourceTree = "<group>";
 		};
 		8C1E00E22BA825820094FAA7 /* Views */ = {
@@ -438,33 +408,6 @@
 			path = "Extensions Style";
 			sourceTree = "<group>";
 		};
-		8C4B7B8F2BB700A60043B892 /* Other */ = {
-			isa = PBXGroup;
-			children = (
-				CE7DF82B2BADF28000FF7694 /* ViewModifiers.swift */,
-				CEFC879C2BAC8A6500A8EAC6 /* SolidButtonStyle.swift */,
-				CEFC87A12BAC8D4200A8EAC6 /* BorderButtonStyle.swift */,
-				CE073EE12BB47E3F0079F342 /* NoBackgroundButtonStyle.swift */,
-			);
-			path = Other;
-			sourceTree = "<group>";
-		};
-		8C4B7B942BB701E50043B892 /* Other */ = {
-			isa = PBXGroup;
-			children = (
-				CE7DF8242BADDB7400FF7694 /* LabelAndTextModifiers.swift */,
-			);
-			path = Other;
-			sourceTree = "<group>";
-		};
-		8C4B7B952BB701EE0043B892 /* Other */ = {
-			isa = PBXGroup;
-			children = (
-				CE7DF8292BADF23500FF7694 /* TextFieldModifiers.swift */,
-			);
-			path = Other;
-			sourceTree = "<group>";
-		};
 		8C4B7BA02BB88F920043B892 /* Configuration Appearence */ = {
 			isa = PBXGroup;
 			children = (
@@ -475,6 +418,7 @@
 				8C4B7BB02BB8944C0043B892 /* TextStyles.swift */,
 				8CABF5D82BB9F33D00A34870 /* Navigation */,
 				8C4B7B8C2BB6FD390043B892 /* Extensions Style */,
+				8CAFD9392BBD90F700C7D763 /* KeyboardResponsiveModifier.swift */,
 			);
 			path = "Configuration Appearence";
 			sourceTree = "<group>";
@@ -565,22 +509,6 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		CE7DF8232BADDB4C00FF7694 /* Labels-and-Text */ = {
-			isa = PBXGroup;
-			children = (
-				8C4B7B942BB701E50043B892 /* Other */,
-			);
-			path = "Labels-and-Text";
-			sourceTree = "<group>";
-		};
-		CE7DF8282BADF20800FF7694 /* TextFields */ = {
-			isa = PBXGroup;
-			children = (
-				8C4B7B952BB701EE0043B892 /* Other */,
-			);
-			path = TextFields;
-			sourceTree = "<group>";
-		};
 		CE7DF82D2BADFD0700FF7694 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -607,15 +535,6 @@
 				CEE2BB262BB5BBB10033556D /* RegisterRepository.swift */,
 			);
 			path = Repositories;
-			sourceTree = "<group>";
-		};
-		CEFC87A02BAC8D0B00A8EAC6 /* Buttons */ = {
-			isa = PBXGroup;
-			children = (
-				CEFC879E2BAC8BCE00A8EAC6 /* ButtonModifiers.swift */,
-				8C4B7B8F2BB700A60043B892 /* Other */,
-			);
-			path = Buttons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -862,7 +781,6 @@
 				8C4B7B7F2BB379440043B892 /* AuthManager.swift in Sources */,
 				8C8BEC342BA976A90083D904 /* LogInViewModel.swift in Sources */,
 				8C3D3C072BBB85CC002A5CFC /* EmptyAuctionView.swift in Sources */,
-				CEFC879F2BAC8BCE00A8EAC6 /* ButtonModifiers.swift in Sources */,
 				8C3D3C012BBA1E33002A5CFC /* String.swift in Sources */,
 				8CABF5D42BB9E17C00A34870 /* CustomDimensValues.swift in Sources */,
 				8CABF5C12BB9C63C00A34870 /* ChangePasswordViewModel.swift in Sources */,
@@ -871,12 +789,11 @@
 				8CABF5C32BB9C64E00A34870 /* ForgotPasswordViewModel.swift in Sources */,
 				8CABF5D22BB9E16900A34870 /* CustomFontSize.swift in Sources */,
 				8C4B7BA72BB892AC0043B892 /* CustomStyledViewTextField.swift in Sources */,
-				CE7DF82C2BADF28000FF7694 /* ViewModifiers.swift in Sources */,
 				8CABF5BF2BB9C61A00A34870 /* ChangePasswordView.swift in Sources */,
 				8CABF5D62BB9E19900A34870 /* LayoutProperties.swift in Sources */,
 				8C8BEC362BA977560083D904 /* RootPageView.swift in Sources */,
+				8CAFD93A2BBD90F700C7D763 /* KeyboardResponsiveModifier.swift in Sources */,
 				8C8BEC302BA975F10083D904 /* LogInView.swift in Sources */,
-				CE7DF82A2BADF23500FF7694 /* TextFieldModifiers.swift in Sources */,
 				CE073ED82BB42D710079F342 /* View.swift in Sources */,
 				CE7DF82F2BADFD1900FF7694 /* PinView.swift in Sources */,
 				CE073EE42BB4809C0079F342 /* FormField.swift in Sources */,
@@ -887,25 +804,19 @@
 				8C8BEC3A2BA977F00083D904 /* Coordinator.swift in Sources */,
 				CE073EE62BB485CD0079F342 /* PasswordField.swift in Sources */,
 				8C1E01012BA85E630094FAA7 /* AppDelegate.swift in Sources */,
-				CE073EDC2BB4307A0079F342 /* ButtonStyle.swift in Sources */,
 				8C4B7B872BB6DCC80043B892 /* AuthModel.swift in Sources */,
 				CEE2BB272BB5BBB10033556D /* RegisterRepository.swift in Sources */,
 				8C4B7BAB2BB892F20043B892 /* CustomStyledViewText.swift in Sources */,
 				8C8BEC2E2BA975DE0083D904 /* GetStartedView.swift in Sources */,
 				8C4B7B892BB6FCEA0043B892 /* ButtonStyleConfiguration.swift in Sources */,
-				CEFC87A22BAC8D4200A8EAC6 /* BorderButtonStyle.swift in Sources */,
 				8C4B7BA22BB88FFB0043B892 /* ButtonStyles.swift in Sources */,
 				8CABF5DC2BB9F37700A34870 /* RegistrationBackButton.swift in Sources */,
 				8CABF5D02BB9E11300A34870 /* ResponsiveView.swift in Sources */,
 				8C8BEC322BA976030083D904 /* GetStartedViewModel.swift in Sources */,
 				8C4B7B852BB47E9C0043B892 /* Color.swift in Sources */,
 				8C8BEC382BA977AC0083D904 /* RegistrationPage.swift in Sources */,
-				CE7DF8252BADDB7400FF7694 /* LabelAndTextModifiers.swift in Sources */,
-				CEFC879D2BAC8A6500A8EAC6 /* SolidButtonStyle.swift in Sources */,
 				8C4B7BB72BB9C1080043B892 /* TextSecuredStyles.swift in Sources */,
 				8CABF5BD2BB9C60900A34870 /* ResetPasswordView.swift in Sources */,
-				CE073EE22BB47E3F0079F342 /* NoBackgroundButtonStyle.swift in Sources */,
-				CE073EDE2BB4629C0079F342 /* Text.swift in Sources */,
 				8CABF5BB2BB9C5F400A34870 /* ForgotPasswordView.swift in Sources */,
 				8CABF5C52BB9C65E00A34870 /* ResetPasswordViewModel.swift in Sources */,
 				8CABF5CC2BB9CF0300A34870 /* ChooseEnvironmentView.swift in Sources */,
@@ -935,7 +846,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE7DF8262BADDB7400FF7694 /* LabelAndTextModifiers.swift in Sources */,
 				8CB8C6AC2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -5,7 +5,8 @@ import SwiftUI
 struct TextStyleConfiguration {
 	var fontStyle: Font
 	var fontWeightStyle: Font.Weight
-	var alignment: TextAlignment
+    var textAlignment: TextAlignment
+	var alignment: Alignment
 	var isSecure: Bool
 	var maxCharacterCount: Int
 	var defaultTextColor: Color
@@ -22,11 +23,14 @@ struct TextStyleConfiguration {
 	var roundedCornerRadius: CGFloat
 	var borderStyle: BorderType
 	var autoCorrectionDisabled: Bool
+    var fixedSizeHorizontal: Bool
+    var fixedSizeVertical: Bool
 
 	init(
 		fontStyle: Font = .system(size: 16),
 		fontWeightStyle: Font.Weight = .regular,
-		alignment: TextAlignment = .leading,
+        textAlignment: TextAlignment = .leading,
+		alignment: Alignment = .leading,
 		isSecure: Bool = false,
 		maxCharacterCount: Int = Int.max,
 		defaultTextColor: Color = .black,
@@ -42,10 +46,13 @@ struct TextStyleConfiguration {
 		borderWidthValue: CGFloat = 1.0,
 		roundedCornerRadius: CGFloat = 5.0,
 		borderStyle: BorderType = .solid,
-		autoCorrectionDisabled: Bool = false
+		autoCorrectionDisabled: Bool = false,
+        fixedSizeHorizontal: Bool = false,
+        fixedSizeVertical: Bool = true
 	) {
 		self.fontStyle = fontStyle
 		self.fontWeightStyle = fontWeightStyle
+        self.textAlignment = textAlignment
 		self.alignment = alignment
 		self.isSecure = isSecure
 		self.maxCharacterCount = maxCharacterCount
@@ -63,6 +70,8 @@ struct TextStyleConfiguration {
 		self.roundedCornerRadius = roundedCornerRadius
 		self.borderStyle = borderStyle
 		self.autoCorrectionDisabled = autoCorrectionDisabled
+        self.fixedSizeHorizontal = fixedSizeHorizontal
+        self.fixedSizeVertical = fixedSizeVertical
 	}
 
 	enum BorderType {

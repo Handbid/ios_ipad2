@@ -10,11 +10,10 @@ struct LogInView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@StateObject  private var viewModel = LogInViewModel()
 	@State private var isBlurred = false
-    @FocusState private var focusedField: Field?
-    
+
 	var body: some View {
 		ZStack {
-			if viewModel.isFormValid { content } else { content }
+			content
 		}
 		.background {
             backgroundView(for: .color(.accentViolet))
@@ -25,36 +24,24 @@ struct LogInView<T: PageProtocol>: View {
 			isBlurred = false
 			viewModel.resetErrorMessage()
 		}
-        .onTapGesture {
-            if focusedField != nil {
-                focusedField = nil
-            }
-        }
+        .keyboardResponsive()
 		.backButtonNavigation(style: .registration)
 		.ignoresSafeArea()
 	}
 
-	private var content: some View {
+    private var content: some View {
         OverlayInternalView(cornerRadius: 40) {
-            ScrollView {
-                VStack(spacing: 20) {
-                    getLogoImage()
-                        .animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
-                    getHeaderText()
-                        .animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
-                    getTextFields()
-                        .animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
-                    getErrorMessage()
-                        .animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
-                    getButtons()
-                        .animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
-                    Spacer()
-                }
-                .blur(radius: isBlurred ? 10 : 0)
-                .padding()
+            VStack(spacing: 20) {
+                getLogoImage()
+                getHeaderText()
+                getTextFields()
+                getErrorMessage()
+                getButtons()
             }
+            .blur(radius: isBlurred ? 10 : 0)
+            .padding()
         }
-	}
+    }
 
 	private func getLogoImage() -> some View {
 		Image("LogoSplash")
@@ -75,23 +62,25 @@ struct LogInView<T: PageProtocol>: View {
 			FormField(fieldValue: $viewModel.email,
 			          labelKey: LocalizedStringKey("email"),
 			          hintKey: LocalizedStringKey("emailHint"))
-            .focused($focusedField, equals: .email)
 
 			PasswordField(fieldValue: $viewModel.password,
 			              labelKey: LocalizedStringKey("password"),
 			              hintKey: LocalizedStringKey("passwordHint"))
-            .focused($focusedField, equals: .password)
 		}
 	}
 
-	private func getErrorMessage() -> some View {
-		VStack(spacing: 10) {
-			if !viewModel.isFormValid {
-				Text(viewModel.errorMessage)
-					.applyTextStyle(style: .error)
-			}
-		}
-	}
+    private func getErrorMessage() -> some View {
+        VStack(spacing: 10) {
+            if !viewModel.isFormValid {
+                GeometryReader { geometry in
+                    Text(viewModel.errorMessage)
+                        .applyTextStyle(style: .error)
+                        .frame(minHeight: geometry.size.height)
+                }
+            }
+        }
+    }
+
 
 	private func getButtons() -> some View {
 		VStack(spacing: 10) {
