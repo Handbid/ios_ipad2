@@ -27,16 +27,10 @@ struct ResetPasswordView<T: PageProtocol>: View {
 		OverlayInternalView(cornerRadius: 40) {
 			VStack(spacing: 20) {
 				getHeaderText()
-					.animation(.easeInOut(duration: 0.3), value: !viewModel.isPinValid)
 				getBodyText()
-					.animation(.easeInOut(duration: 0.3), value: !viewModel.isPinValid)
 				getPinView()
-					.animation(.easeInOut(duration: 0.3), value: !viewModel.isPinValid)
 				getErrorMessage()
-					.animation(.easeInOut(duration: 0.3), value: !viewModel.isPinValid)
 				getButtons()
-					.animation(.easeInOut(duration: 0.3), value: !viewModel.isPinValid)
-				Spacer()
 			}
 			.blur(radius: isBlurred ? 10 : 0)
 			.padding()
@@ -103,14 +97,17 @@ struct ResetPasswordView<T: PageProtocol>: View {
 		}
 	}
 
-	private func getErrorMessage() -> some View {
-		VStack(spacing: 10) {
-			if !viewModel.isPinValid {
-				Text(viewModel.errorMessage)
-					.applyTextStyle(style: .error)
-			}
-		}
-	}
+    private func getErrorMessage() -> some View {
+        VStack(spacing: 10) {
+            if !viewModel.isPinValid {
+                GeometryReader { geometry in
+                    Text(viewModel.errorMessage)
+                        .applyTextStyle(style: .error)
+                        .frame(minHeight: geometry.size.height)
+                }
+            }
+        }
+    }
 
 	private func getButtons() -> some View {
 		VStack(spacing: 10) {

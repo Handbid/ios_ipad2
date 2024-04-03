@@ -25,13 +25,9 @@ struct ChangePasswordView<T: PageProtocol>: View {
 		OverlayInternalView(cornerRadius: 40) {
 			VStack(spacing: 20) {
 				getHeaderText()
-					.animation(.easeInOut(duration: 0.3), value: !viewModel.isCorrectPassword)
 				getTextFields()
-					.animation(.easeInOut(duration: 0.3), value: !viewModel.isCorrectPassword)
 				getErrorMessage()
-					.animation(.easeInOut(duration: 0.3), value: !viewModel.isCorrectPassword)
 				getButtons()
-				Spacer()
 			}
 			.blur(radius: isBlurred ? 10 : 0)
 			.padding()
@@ -56,14 +52,17 @@ struct ChangePasswordView<T: PageProtocol>: View {
 		}
 	}
 
-	private func getErrorMessage() -> some View {
-		VStack(spacing: 10) {
-			if !viewModel.isCorrectPassword {
-				Text(viewModel.errorMessage)
-					.applyTextStyle(style: .error)
-			}
-		}
-	}
+    private func getErrorMessage() -> some View {
+        VStack(spacing: 10) {
+            if !viewModel.isCorrectPassword {
+                GeometryReader { geometry in
+                    Text(viewModel.errorMessage)
+                        .applyTextStyle(style: .error)
+                        .frame(minHeight: geometry.size.height)
+                }
+            }
+        }
+    }
 
 	private func getButtons() -> some View {
 		VStack(spacing: 10) {

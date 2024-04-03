@@ -32,13 +32,9 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 		OverlayInternalView(cornerRadius: 40) {
 			VStack(spacing: 20) {
 				getHeaderText()
-					.animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
 				getTextFields()
-					.animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
 				getErrorMessage()
-					.animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
 				getButtons()
-				Spacer()
 			}
 			.blur(radius: isBlurred ? 10 : 0)
 			.padding()
@@ -60,14 +56,17 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 		}.padding(.bottom)
 	}
 
-	private func getErrorMessage() -> some View {
-		VStack(spacing: 10) {
-			if !viewModel.isFormValid {
-				Text(viewModel.errorMessage)
-					.applyTextStyle(style: .error)
-			}
-		}
-	}
+    private func getErrorMessage() -> some View {
+        VStack(spacing: 10) {
+            if !viewModel.isFormValid {
+                GeometryReader { geometry in
+                    Text(viewModel.errorMessage)
+                        .applyTextStyle(style: .error)
+                        .frame(minHeight: geometry.size.height)
+                }
+            }
+        }
+    }
 
 	private func getButtons() -> some View {
 		VStack(spacing: 10) {

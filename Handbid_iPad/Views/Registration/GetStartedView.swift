@@ -30,11 +30,8 @@ struct GetStartedView<T: PageProtocol>: View {
         OverlayInternalView(cornerRadius: 40) {
             VStack {
                 getLogoImage()
-                    .animation(.easeInOut(duration: 0.3), value: contentLoaded)
                 getHeaderText()
-                    .animation(.easeInOut(duration: 0.3), value: contentLoaded)
                 getButtons()
-                    .animation(.easeInOut(duration: 0.3), value: contentLoaded)
                 
             }.padding()
         }
