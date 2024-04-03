@@ -409,13 +409,13 @@
 			isa = PBXGroup;
 			children = (
 				8C4B7BA12BB88FFB0043B892 /* ButtonStyles.swift */,
-				8CABF5CD2BB9D89900A34870 /* TypographyStyle.swift */,
+				8CAFD9392BBD90F700C7D763 /* KeyboardResponsiveModifier.swift */,
 				8C4B7BAC2BB8942D0043B892 /* TextFieldStyles.swift */,
 				8C4B7BB62BB9C1080043B892 /* TextSecuredStyles.swift */,
 				8C4B7BB02BB8944C0043B892 /* TextStyles.swift */,
-				8CABF5D82BB9F33D00A34870 /* Navigation */,
+				8CABF5CD2BB9D89900A34870 /* TypographyStyle.swift */,
 				8C4B7B8C2BB6FD390043B892 /* Extensions Style */,
-				8CAFD9392BBD90F700C7D763 /* KeyboardResponsiveModifier.swift */,
+				8CABF5D82BB9F33D00A34870 /* Navigation */,
 			);
 			path = "Configuration Appearence";
 			sourceTree = "<group>";
@@ -706,8 +706,7 @@
 		};
 		8C1E00E92BA827D10094FAA7 /* Fetch localization */ = {
 			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -719,7 +718,7 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"$SRCROOT/Extras/localization_ios.sh\"\n";
 			showEnvVarsInLog = 0;

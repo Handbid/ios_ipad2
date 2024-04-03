@@ -6,4 +6,11 @@
 "login" = "Login";
 "password" = "Password";
 "passwordHint" = "Enter your password";
+"registration_btn_changePassword" = "Change Password";
+"registration_btn_save" = "Save";
+"registration_hint_enterPassword" = "Enter your password";
+"registration_label_changePassword" = "Change Password";
+"registration_label_chooseEnvironmentToConnect" = "Choose Environment to connect";
+"registration_label_password" = "Password";
+"registration_label_selectEnvironment" = "Select Environment";
 "welcomeToHandbid" = "Welcome to \nHandbid App";

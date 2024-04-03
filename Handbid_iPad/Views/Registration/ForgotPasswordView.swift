@@ -37,16 +37,16 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 	}
 
 	private func getHeaderText() -> some View {
-		Text(LocalizedStringKey("Forgot Password"))
+		Text(LocalizedStringKey("registration_label_forgotPassword"))
 			.applyTextStyle(style: .headerTitle)
-			.accessibilityIdentifier("GetStartedView")
+			.accessibilityIdentifier("registration_label_forgotPassword")
 	}
 
 	private func getTextFields() -> some View {
 		VStack {
 			FormField(fieldValue: $viewModel.email,
-			          labelKey: LocalizedStringKey("email"),
-			          hintKey: LocalizedStringKey("emailHint"))
+			          labelKey: LocalizedStringKey("registration_label_email"),
+			          hintKey: LocalizedStringKey("registration_hint_email"))
 		}.padding(.bottom)
 	}
 
@@ -71,9 +71,9 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 					coordinator.push(RegistrationPage.resetPassword as! T)
 				}
 			}) {
-				Text(LocalizedStringKey("Confirm"))
+				Text(LocalizedStringKey("registration_btn_confirm"))
 					.textCase(.uppercase)
-			}.accessibilityIdentifier("Confirm")
+			}.accessibilityIdentifier("registration_btn_confirm")
 		}
 	}
 }

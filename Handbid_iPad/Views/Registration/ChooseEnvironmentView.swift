@@ -44,14 +44,14 @@ struct ChooseEnvironmentView<T: PageProtocol>: View {
 	}
 
 	private func getHeaderText() -> some View {
-		Text(LocalizedStringKey("Choose Environment to connect"))
+		Text(LocalizedStringKey("registration_label_chooseEnvironmentToConnect"))
 			.applyTextStyle(style: .headerTitle)
-			.accessibilityIdentifier("ChooseEnvironmentToConnect")
+			.accessibilityIdentifier("registration_label_chooseEnvironmentToConnect")
 	}
 
 	private func getListView() -> some View {
 		List {
-			Section(header: Text("Select Environment")) {
+			Section(header: Text(LocalizedStringKey("registration_label_selectEnvironment"))) {
 				ForEach(viewModel.environmentOptions, id: \.self) { option in
 					Button(action: {
 						selectOption(option)
@@ -84,9 +84,9 @@ struct ChooseEnvironmentView<T: PageProtocol>: View {
 			Button<Text>.styled(config: .secondaryButtonStyle, action: {
 				viewModel.saveEnvironment()
 			}) {
-				Text(LocalizedStringKey("Save"))
+				Text(LocalizedStringKey("registration_btn_save"))
 					.textCase(.uppercase)
-			}.accessibilityIdentifier("Save")
+			}.accessibilityIdentifier("registration_btn_save")
 		}
 	}
 
