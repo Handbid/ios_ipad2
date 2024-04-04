@@ -6,12 +6,11 @@ struct AppLaunchControlView: View {
 	@EnvironmentObject var authManager: AuthManagerMainActor
 	@State private var isValidToken = false
 	@State private var isLoading = true
-	@State private var animationDuration = 1.0
 
 	var body: some View {
 		ZStack {
 			if isLoading {
-				withAnimation(.easeOut(duration: animationDuration)) {
+				withAnimation(.easeOut(duration: 1.0)) {
 					StartupProgressAnimationView()
 						.background(Color.white)
 						.ignoresSafeArea(.all)
@@ -19,38 +18,41 @@ struct AppLaunchControlView: View {
 			}
 			else {
 				if isValidToken {
-                    AnyView(EmptyAuctionView<RegistrationPage>())
-                        .onChange(of: authManager.isLoggedIn) {
-                            if !isValidToken {
-                                isValidToken = false
-                                print("User logged out. Navigate to the start screen or login view.")
-                            }
-                        }
+					EmptyAuctionView<RegistrationPage>()
 				}
 				else {
 					RootPageView(page: RegistrationPage.getStarted)
-						.onChange(of: authManager.isLoggedIn) {
-							isValidToken = true
-							print("User logged")
-						}
 				}
 			}
 		}
+		.onReceive(NotificationCenter.default.publisher(for: .userLoggedIn).receive(on: RunLoop.main)) { _ in
+			updateStatus(loggedIn: true)
+		}
+		.onReceive(NotificationCenter.default.publisher(for: .userLoggedOut).receive(on: RunLoop.main)) { _ in
+			updateStatus(loggedIn: false)
+			checkUserStatus()
+		}
 		.onAppear {
-			Task {
-				await checkUserStatus()
-				try await Task.sleep(nanoseconds: 1_000_000_000)
-				isLoading = false
-			}
+			checkUserStatus()
 		}
 	}
 
-	func checkUserStatus() async {
-		do {
-			isValidToken = try await authManager.isLoggedInAsync()
-		}
-		catch {
-			isValidToken = false
+	private func updateStatus(loggedIn: Bool) {
+		isLoading = !loggedIn
+		isValidToken = loggedIn
+	}
+
+	private func checkUserStatus() {
+		Task {
+			try await Task.sleep(nanoseconds: 1_000_000_000)
+
+			do {
+				isValidToken = try await authManager.isLoggedInAsync()
+			}
+			catch {
+				isValidToken = false
+			}
+			isLoading = false
 		}
 	}
 }

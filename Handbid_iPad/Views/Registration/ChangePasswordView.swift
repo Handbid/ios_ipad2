@@ -11,15 +11,15 @@ struct ChangePasswordView<T: PageProtocol>: View {
 		ZStack {
 			content
 		}
-        .keyboardResponsive()
+		.keyboardResponsive()
 		.onAppear {
 			isBlurred = false
 		}
 		.background {
-            backgroundView(for: .color(.accentViolet))
+			backgroundView(for: .color(.accentViolet))
 		}
 		.backButtonNavigation(style: .registration)
-		.ignoresSafeArea()
+		.ignoresSafeArea(.keyboard, edges: .bottom)
 	}
 
 	private var content: some View {
@@ -36,34 +36,34 @@ struct ChangePasswordView<T: PageProtocol>: View {
 	}
 
 	private func getHeaderText() -> some View {
-		Text(LocalizedStringKey("Change Password"))
+		Text(LocalizedStringKey("registration_label_changePassword"))
 			.applyTextStyle(style: .headerTitle)
-			.accessibilityIdentifier("ChangePassword")
+			.accessibilityIdentifier("registration_label_changePassword")
 	}
 
 	private func getTextFields() -> some View {
 		VStack(spacing: 20) {
 			PasswordField(fieldValue: $viewModel.password,
-			              labelKey: LocalizedStringKey("password"),
-			              hintKey: LocalizedStringKey("passwordHint"))
+			              labelKey: LocalizedStringKey("registration_label_password"),
+			              hintKey: LocalizedStringKey("registration_hint_enterPassword"))
 
 			PasswordField(fieldValue: $viewModel.confirmPassword,
-			              labelKey: LocalizedStringKey("password"),
-			              hintKey: LocalizedStringKey("passwordHint"))
+			              labelKey: LocalizedStringKey("registration_label_password"),
+			              hintKey: LocalizedStringKey("registration_hint_enterPassword"))
 		}
 	}
 
-    private func getErrorMessage() -> some View {
-        VStack(spacing: 10) {
-            if !viewModel.isCorrectPassword {
-                GeometryReader { geometry in
-                    Text(viewModel.errorMessage)
-                        .applyTextStyle(style: .error)
-                        .frame(minHeight: geometry.size.height)
-                }
-            }
-        }
-    }
+	private func getErrorMessage() -> some View {
+		VStack(spacing: 10) {
+			if !viewModel.isCorrectPassword {
+				GeometryReader { geometry in
+					Text(viewModel.errorMessage)
+						.applyTextStyle(style: .error)
+						.frame(minHeight: geometry.size.height)
+				}
+			}
+		}
+	}
 
 	private func getButtons() -> some View {
 		VStack(spacing: 10) {
@@ -73,9 +73,9 @@ struct ChangePasswordView<T: PageProtocol>: View {
 					// coordinator.push(RegistrationPage.resetPassword as! T)
 				}
 			}) {
-				Text(LocalizedStringKey("Change Password"))
+				Text(LocalizedStringKey("registration_btn_changePassword"))
 					.textCase(.uppercase)
-			}.accessibilityIdentifier("ChangePassword")
+			}.accessibilityIdentifier("registration_btn_changePassword")
 		}
 	}
 }

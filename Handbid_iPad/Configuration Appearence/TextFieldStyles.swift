@@ -9,12 +9,12 @@ enum TextFieldStyles {
 		switch self {
 		case .form:
 			TextStyleConfiguration(
-                fontStyle: .body,
-                fontWeightStyle: .medium,
-                defaultTextColor: .black,
-                placeholderColor: .accentGrayForm,
-                borderColor: .accentGrayForm,
-                borderWidthValue: 1
+				fontStyle: .body,
+				fontWeightStyle: .medium,
+				defaultTextColor: .black,
+				placeholderColor: .accentGrayForm,
+				borderColor: .accentGrayForm,
+				borderWidthValue: 1
 			)
 		}
 	}

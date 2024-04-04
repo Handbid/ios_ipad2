@@ -12,15 +12,15 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 			content
 		}
 		.background {
-            backgroundView(for: .color(.accentViolet))
+			backgroundView(for: .color(.accentViolet))
 		}
 		.onAppear {
 			isBlurred = false
 			viewModel.resetErrorMessage()
 		}
-        .keyboardResponsive()
+		.keyboardResponsive()
 		.backButtonNavigation(style: .registration)
-		.ignoresSafeArea()
+		.ignoresSafeArea(.keyboard, edges: .bottom)
 	}
 
 	private var content: some View {
@@ -37,30 +37,30 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 	}
 
 	private func getHeaderText() -> some View {
-		Text(LocalizedStringKey("Forgot Password"))
+		Text(LocalizedStringKey("registration_label_forgotPassword"))
 			.applyTextStyle(style: .headerTitle)
-			.accessibilityIdentifier("GetStartedView")
+			.accessibilityIdentifier("registration_label_forgotPassword")
 	}
 
 	private func getTextFields() -> some View {
 		VStack {
 			FormField(fieldValue: $viewModel.email,
-			          labelKey: LocalizedStringKey("email"),
-			          hintKey: LocalizedStringKey("emailHint"))
+			          labelKey: LocalizedStringKey("registration_label_email"),
+			          hintKey: LocalizedStringKey("registration_hint_email"))
 		}.padding(.bottom)
 	}
 
-    private func getErrorMessage() -> some View {
-        VStack(spacing: 10) {
-            if !viewModel.isFormValid {
-                GeometryReader { geometry in
-                    Text(viewModel.errorMessage)
-                        .applyTextStyle(style: .error)
-                        .frame(minHeight: geometry.size.height)
-                }
-            }
-        }
-    }
+	private func getErrorMessage() -> some View {
+		VStack(spacing: 10) {
+			if !viewModel.isFormValid {
+				GeometryReader { geometry in
+					Text(viewModel.errorMessage)
+						.applyTextStyle(style: .error)
+						.frame(minHeight: geometry.size.height)
+				}
+			}
+		}
+	}
 
 	private func getButtons() -> some View {
 		VStack(spacing: 10) {
@@ -71,9 +71,9 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 					coordinator.push(RegistrationPage.resetPassword as! T)
 				}
 			}) {
-				Text(LocalizedStringKey("Confirm"))
+				Text(LocalizedStringKey("registration_btn_confirm"))
 					.textCase(.uppercase)
-			}.accessibilityIdentifier("Confirm")
+			}.accessibilityIdentifier("registration_btn_confirm")
 		}
 	}
 }

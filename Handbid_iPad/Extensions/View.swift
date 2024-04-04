@@ -3,31 +3,30 @@
 import SwiftUI
 
 extension View {
+	func backgroundImageView(for image: BackgroundContainerImage) -> some View {
+		Image(image.rawValue)
+			.resizable()
+			.scaledToFill()
+			.edgesIgnoringSafeArea(.all)
+	}
 
-    func backgroundImageView(for image: BackgroundContainerImage) -> some View {
-        Image(image.rawValue)
-            .resizable()
-            .scaledToFill()
-            .edgesIgnoringSafeArea(.all)
-    }
-    
-    func backgroundView(for background: BackgroundContainer) -> some View {
-        switch background {
-        case .image(let image):
-            return AnyView(Image(image.rawValue)
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all))
-        case .color(let color):
-            return AnyView(color.edgesIgnoringSafeArea(.all))
-        }
-    }
-    
-    func backButtonNavigation(style: NavigationBackButtonStyle) -> some View {
-        modifier(NavigationBackButtonModifier(style: style))
-    }
+	func backgroundView(for background: BackgroundContainer) -> some View {
+		switch background {
+		case let .image(image):
+			AnyView(Image(image.rawValue)
+				.resizable()
+				.scaledToFill()
+				.edgesIgnoringSafeArea(.all))
+		case let .color(color):
+			AnyView(color.edgesIgnoringSafeArea(.all))
+		}
+	}
 
-    func keyboardResponsive() -> some View {
-        self.modifier(KeyboardResponsiveModifier())
-    }
+	func backButtonNavigation(style: NavigationBackButtonStyle) -> some View {
+		modifier(NavigationBackButtonModifier(style: style))
+	}
+
+	func keyboardResponsive() -> some View {
+		modifier(KeyboardResponsiveModifier())
+	}
 }

@@ -1,10 +1,10 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
+import Arrow
 import Combine
 import Foundation
 import NetworkService
 import RecaptchaEnterprise
-import Arrow
 
 protocol RegisterRepository {
     func getAppVersion() async throws -> AppVersionModel
@@ -13,11 +13,10 @@ protocol RegisterRepository {
 }
 
 protocol LogInAnonymously {
-    func logInAnonymously() -> AnyPublisher<AppVersionModel, Error>
+	func logInAnonymously() -> AnyPublisher<AppVersionModel, Error>
 }
 
 class RegisterRepositoryImpl: RegisterRepository, LogInAnonymously, NetworkingService {
-
     var network: NetworkService.NetworkingClient
     private var recaptchaClient: RecaptchaClient?
     private var recaptchaToken = ""
