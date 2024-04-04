@@ -18,6 +18,12 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 			isBlurred = false
 			viewModel.resetErrorMessage()
 		}
+		.onReceive(viewModel.$isSuccessfulRequest) { value in
+			isBlurred = false
+			if value {
+				coordinator.push(RegistrationPage.resetPassword as! T)
+			}
+		}
 		.keyboardResponsive()
 		.backButtonNavigation(style: .registration)
 		.ignoresSafeArea(.keyboard, edges: .bottom)
@@ -52,7 +58,7 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 
 	private func getErrorMessage() -> some View {
 		VStack(spacing: 10) {
-			if !viewModel.isFormValid {
+			if !viewModel.isFormValid || !viewModel.isSuccessfulRequest {
 				GeometryReader { geometry in
 					Text(viewModel.errorMessage)
 						.applyTextStyle(style: .error)
@@ -65,10 +71,10 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 	private func getButtons() -> some View {
 		VStack(spacing: 10) {
 			Button<Text>.styled(config: .secondaryButtonStyle, action: {
-				viewModel.valideEmail()
+				viewModel.validateEmail()
 				if viewModel.isFormValid {
+					viewModel.requestPasswordReset()
 					isBlurred = true
-					coordinator.push(RegistrationPage.resetPassword as! T)
 				}
 			}) {
 				Text(LocalizedStringKey("registration_btn_confirm"))

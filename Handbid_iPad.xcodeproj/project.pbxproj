@@ -67,6 +67,8 @@
 		CE073ED82BB42D710079F342 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE073ED72BB42D710079F342 /* View.swift */; };
 		CE073EE42BB4809C0079F342 /* FormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE073EE32BB4809C0079F342 /* FormField.swift */; };
 		CE073EE62BB485CD0079F342 /* PasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE073EE52BB485CD0079F342 /* PasswordField.swift */; };
+		CE0CEE7F2BBEB39F004A27FD /* ResetPasswordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CEE7E2BBEB39F004A27FD /* ResetPasswordRepository.swift */; };
+		CE0CEE812BBED0B4004A27FD /* ResetPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CEE802BBED0B4004A27FD /* ResetPasswordModel.swift */; };
 		CE34FB3F2BB1963300701D2A /* OverlayInternalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE34FB3E2BB1963300701D2A /* OverlayInternalView.swift */; };
 		CE7DF8212BAD9E5300FF7694 /* Inter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE7DF8202BAD9E5300FF7694 /* Inter.ttf */; };
 		CE7DF8222BAD9E5300FF7694 /* Inter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE7DF8202BAD9E5300FF7694 /* Inter.ttf */; };
@@ -165,6 +167,8 @@
 		CE073ED72BB42D710079F342 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		CE073EE32BB4809C0079F342 /* FormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormField.swift; sourceTree = "<group>"; };
 		CE073EE52BB485CD0079F342 /* PasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordField.swift; sourceTree = "<group>"; };
+		CE0CEE7E2BBEB39F004A27FD /* ResetPasswordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordRepository.swift; sourceTree = "<group>"; };
+		CE0CEE802BBED0B4004A27FD /* ResetPasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordModel.swift; sourceTree = "<group>"; };
 		CE34FB3E2BB1963300701D2A /* OverlayInternalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayInternalView.swift; sourceTree = "<group>"; };
 		CE7DF8202BAD9E5300FF7694 /* Inter.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Inter.ttf; sourceTree = "<group>"; };
 		CE7DF82E2BADFD1900FF7694 /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
@@ -329,6 +333,7 @@
 			children = (
 				8C0007BE2BAC764700AAEBA0 /* AppVersionModel.swift */,
 				8C4B7B862BB6DCC80043B892 /* AuthModel.swift */,
+				CE0CEE802BBED0B4004A27FD /* ResetPasswordModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -536,6 +541,7 @@
 			isa = PBXGroup;
 			children = (
 				CEE2BB262BB5BBB10033556D /* RegisterRepository.swift */,
+				CE0CEE7E2BBEB39F004A27FD /* ResetPasswordRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -824,11 +830,13 @@
 				8CABF5C52BB9C65E00A34870 /* ResetPasswordViewModel.swift in Sources */,
 				8CABF5CC2BB9CF0300A34870 /* ChooseEnvironmentView.swift in Sources */,
 				8C4B7BB52BB9BEDC0043B892 /* CustomStyledViewSecuredField.swift in Sources */,
+				CE0CEE7F2BBEB39F004A27FD /* ResetPasswordRepository.swift in Sources */,
 				CEEC46132BBD8DE900C685BF /* AnyPublisher.swift in Sources */,
 				8C4B7B832BB47DD30043B892 /* StartupProgressAnimationView.swift in Sources */,
 				8C0007D32BAC976700AAEBA0 /* AppInfoProvider.swift in Sources */,
 				8C4B7B9B2BB7026D0043B892 /* TextStyleConfiguration.swift in Sources */,
 				8CABF5C82BB9C81100A34870 /* BackgroundContainerImage.swift in Sources */,
+				CE0CEE812BBED0B4004A27FD /* ResetPasswordModel.swift in Sources */,
 				8C4B7B8B2BB6FD030043B892 /* CustomStyledViewButton.swift in Sources */,
 				8C8BEC642BA9ADE20083D904 /* AppLaunchControlView.swift in Sources */,
 				8CABF5DA2BB9F35A00A34870 /* NavigationBackButtonModifier.swift in Sources */,
