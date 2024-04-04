@@ -23,7 +23,7 @@ struct GetStartedView<T: PageProtocol>: View {
 			}
 			isBlurred = false
 		}
-		.ignoresSafeArea()
+		.ignoresSafeArea(.keyboard, edges: .bottom)
 	}
 
 	private var content: some View {

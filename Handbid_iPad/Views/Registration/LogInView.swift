@@ -26,7 +26,7 @@ struct LogInView<T: PageProtocol>: View {
 		}
 		.keyboardResponsive()
 		.backButtonNavigation(style: .registration)
-		.ignoresSafeArea()
+		.ignoresSafeArea(.keyboard, edges: .bottom)
 	}
 
 	private var content: some View {

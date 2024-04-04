@@ -21,7 +21,7 @@ struct ResetPasswordView<T: PageProtocol>: View {
 			viewModel.resetErrorMessage()
 		}
 		.backButtonNavigation(style: .registration)
-		.ignoresSafeArea()
+		.ignoresSafeArea(.keyboard, edges: .bottom)
 	}
 
 	private var content: some View {

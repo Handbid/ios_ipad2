@@ -19,7 +19,7 @@ struct ChooseEnvironmentView<T: PageProtocol>: View {
 			backgroundView(for: .color(.accentViolet))
 		}
 		.backButtonNavigation(style: .registration)
-		.ignoresSafeArea()
+		.ignoresSafeArea(.keyboard, edges: .bottom)
 	}
 
 	private var content: some View {
