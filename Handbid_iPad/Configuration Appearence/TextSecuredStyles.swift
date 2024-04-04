@@ -3,21 +3,25 @@
 import SwiftUI
 
 enum TextSecuredStyles {
-	case headerTitle
+	case formField
 
 	var configuration: TextStyleConfiguration {
 		switch self {
-		case .headerTitle:
+		case .formField:
 			TextStyleConfiguration(
-				fontStyle: .callout,
-				fontWeightStyle: .medium
+				fontStyle: .body,
+				fontWeightStyle: .medium,
+				defaultTextColor: .black,
+				placeholderColor: .accentGrayForm,
+				borderColor: .accentGrayForm,
+				borderWidthValue: 1
 			)
 		}
 	}
 
 	static func style(for type: TextSecuredStyles) -> TextStyleConfiguration {
 		switch type {
-		case .headerTitle: TextSecuredStyles.headerTitle.configuration
+		case .formField: TextSecuredStyles.formField.configuration
 		}
 	}
 }

@@ -12,7 +12,7 @@ struct OverlayInternalView<Content: View>: View {
 
 	init(cornerRadius: CGFloat,
 	     backgroundColor: Color? = .white,
-	     overlayContent: @escaping () -> Content)
+	     @ViewBuilder overlayContent: @escaping () -> Content)
 	{
 		self.cornerRadius = cornerRadius
 		self.overlayContent = overlayContent
@@ -30,28 +30,30 @@ struct OverlayInternalView<Content: View>: View {
 						.cornerRadius(cornerRadius)
 						.frame(
 							width: calculateWidth(layoutProperties: layoutProperties),
-							height: min(contentHeight + keyboardHeight, UIScreen.main.bounds.height * 0.8)
+							height: max(contentHeight, keyboardHeight)
 						)
-						.overlay {
+						.overlay(
 							overlayContent()
-								.fixedSize(horizontal: false, vertical: true)
-								.background(
-									GeometryReader { geo in
-										Color.clear
-											.onAppear {
-												withAnimation(.easeInOut(duration: 0.2)) {
-													contentHeight = geo.size.height
-												}
-											}
+								.background(GeometryReader { geo in
+									Color.clear.onAppear {
+										contentHeight = geo.size.height
 									}
-								)
-						}
+								})
+						)
 						.padding(.bottom, keyboardHeight)
-						.transition(.asymmetric(insertion: .identity, removal: .opacity))
-						.animation(.easeInOut, value: contentHeight)
 					Spacer()
 				}
 				Spacer()
+			}
+		}
+		.onAppear {
+			NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { notification in
+				if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+					keyboardHeight = keyboardSize.height
+				}
+			}
+			NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { _ in
+				keyboardHeight = 0
 			}
 		}
 	}

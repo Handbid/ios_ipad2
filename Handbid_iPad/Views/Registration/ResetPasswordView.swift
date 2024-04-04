@@ -10,33 +10,28 @@ struct ResetPasswordView<T: PageProtocol>: View {
 
 	var body: some View {
 		ZStack {
-			if viewModel.isPinValid { content } else { content }
+			content
 		}
 		.background {
-            backgroundView(for: .color(.accentViolet))
+			backgroundView(for: .color(.accentViolet))
 		}
+		.keyboardResponsive()
 		.onAppear {
 			isBlurred = false
 			viewModel.resetErrorMessage()
 		}
 		.backButtonNavigation(style: .registration)
-		.ignoresSafeArea()
+		.ignoresSafeArea(.keyboard, edges: .bottom)
 	}
 
 	private var content: some View {
 		OverlayInternalView(cornerRadius: 40) {
 			VStack(spacing: 20) {
 				getHeaderText()
-					.animation(.easeInOut(duration: 0.3), value: !viewModel.isPinValid)
 				getBodyText()
-					.animation(.easeInOut(duration: 0.3), value: !viewModel.isPinValid)
 				getPinView()
-					.animation(.easeInOut(duration: 0.3), value: !viewModel.isPinValid)
 				getErrorMessage()
-					.animation(.easeInOut(duration: 0.3), value: !viewModel.isPinValid)
 				getButtons()
-					.animation(.easeInOut(duration: 0.3), value: !viewModel.isPinValid)
-				Spacer()
 			}
 			.blur(radius: isBlurred ? 10 : 0)
 			.padding()
@@ -44,70 +39,34 @@ struct ResetPasswordView<T: PageProtocol>: View {
 	}
 
 	private func getHeaderText() -> some View {
-		Text(LocalizedStringKey("Reset Password"))
+		Text(LocalizedStringKey("registration_label_resetPassword"))
 			.applyTextStyle(style: .headerTitle)
-			.accessibilityIdentifier("ResetPassword")
+			.accessibilityIdentifier("registration_label_resetPassword")
 	}
 
 	private func getBodyText() -> some View {
-		Text(LocalizedStringKey("We have sent you a confirmation code by email, please enter the code below."))
+		Text(LocalizedStringKey("registration_label_confirmationCodeByEmail"))
 			.applyTextStyle(style: .body)
-			.accessibilityIdentifier("ResetPasswordBody")
+			.accessibilityIdentifier("registration_label_confirmationCodeByEmail")
 	}
 
 	private func getPinView() -> some View {
-		VStack(spacing: 20) {
-			HStack(spacing: 10) {
-				ForEach(Array(viewModel.pin.prefix(4)), id: \.self) { _ in
-					Text("*")
-						.applyTextStyle(style: .headerTitle)
-				}
-				if viewModel.pin.count < 4 {
-					ForEach(0 ..< (4 - viewModel.pin.count), id: \.self) { _ in
-						Text("_")
-							.applyTextStyle(style: .headerTitle)
-					}
-				}
-			}
-			.padding()
-
-			TextField("", text: $viewModel.pin)
-				.keyboardType(.numberPad)
-				.foregroundColor(.clear)
-				.accentColor(.clear)
-				.background(Color.clear)
-				.focused($isFocused)
-				.frame(width: 0, height: 0)
-				.ignoresSafeArea(.keyboard, edges: .bottom)
-				.padding()
-				.onChange(of: viewModel.pin) { _, newValue in
-					if newValue.count == 4 {
-						if !newValue.contains("*"), newValue.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil {
-							isBlurred = true
-							coordinator.push(RegistrationPage.changePassword as! T)
-						}
-						else {
-							viewModel.validatePin()
-							if !viewModel.isPinValid {
-								viewModel.resetErrorMessage()
-							}
-						}
-					}
-					else if newValue.count > 4 {
-						viewModel.resetErrorMessage()
-					}
-				}
-		}
-		.onTapGesture {
-			isFocused = true
-		}
+		PinView(pin: $viewModel.pin, onPinComplete: { _ in
+			isBlurred = true
+			coordinator.push(RegistrationPage.changePassword as! T)
+		}, onPinInvalid: {
+			viewModel.validatePin()
+		}, maxLength: 4)
 	}
 
 	private func getErrorMessage() -> some View {
 		VStack(spacing: 10) {
 			if !viewModel.isPinValid {
-				Text(viewModel.errorMessage)
-					.applyTextStyle(style: .error)
+				GeometryReader { geometry in
+					Text(viewModel.errorMessage)
+						.applyTextStyle(style: .error)
+						.frame(minHeight: geometry.size.height)
+				}
 			}
 		}
 	}
@@ -120,9 +79,9 @@ struct ResetPasswordView<T: PageProtocol>: View {
 					coordinator.push(RegistrationPage.changePassword as! T)
 				}
 			}) {
-				Text(LocalizedStringKey("Confirm"))
+				Text(LocalizedStringKey("registration_btn_confirm"))
 					.textCase(.uppercase)
-			}.accessibilityIdentifier("Confirm")
+			}.accessibilityIdentifier("registration_btn_confirm")
 		}
 	}
 }

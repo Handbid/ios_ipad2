@@ -10,10 +10,11 @@ struct FormField: View {
 	var body: some View {
 		VStack(alignment: .leading) {
 			Text(labelKey)
-				.textFieldLabelStyle()
+				.applyTextStyle(style: .formHeader)
+				.frame(height: 15)
 
 			TextField(hintKey, text: $fieldValue)
-				.basicTextFieldStyle()
+				.applyTextFieldStyle(style: .form)
 		}
 	}
 }

@@ -8,6 +8,6 @@ enum BackgroundContainerImage: String {
 }
 
 enum BackgroundContainer {
-    case image(BackgroundContainerImage)
-    case color(Color)
+	case image(BackgroundContainerImage)
+	case color(Color)
 }

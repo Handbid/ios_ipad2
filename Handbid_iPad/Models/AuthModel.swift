@@ -10,7 +10,7 @@ enum GrantType: String {
 	case refreshToken = "refresh_token"
 }
 
-struct AuthModel: Decodable, Encodable {
+struct AuthModel: Decodable, Encodable, NetworkingJSONDecodable {
 	var token: String?
 	var accessToken: String?
 	var expiresIn: Int?
@@ -55,34 +55,4 @@ extension AuthModel: ArrowParsable {
 		isPasswordExpired <-- json["data.isPasswordExpired"]
 		oneTimePassword <-- json["data.oneTimePassword"]
 	}
-}
-
-extension AuthModel: NetworkingService, NetworkingJSONDecodable {
-	var network: NetworkingClient {
-		NetworkingClient()
-	}
-    
-    func signIn(username: String, password: String?, pin: String?, captchaToken: String) -> AnyPublisher<AuthModel, Error> {
-        
-        var params: Params = ["username": username,
-                              "captchaToken": captchaToken,
-                              "client_id": AppInfoProvider.os,
-                              "client_secret": AppInfoProvider.authClientSecret,
-                              "grant_type": GrantType.password.rawValue,
-                              "captchaKey": AppInfoProvider.captchaKey,
-                              "whitelabelId": AppInfoProvider.whitelabelId]
-        
-        if let password = password {
-            params["password"] = password
-        }
-
-        if let pin = pin {
-            params["pin"] = pin
-        }
-        
-        return post("/auth/login", params: params)
-            .tryMap { try Self.decode($0) }
-            .map { $0 }
-            .eraseToAnyPublisher()
-    }
 }

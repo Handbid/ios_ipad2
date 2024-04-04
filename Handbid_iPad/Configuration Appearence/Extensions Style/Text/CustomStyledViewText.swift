@@ -20,11 +20,11 @@ extension Text {
 					.stroke(style.borderColor, lineWidth: style.borderWidthValue)
 			)
 			.textFieldStyle(PlainTextFieldStyle())
-			.multilineTextAlignment(style.alignment)
-			.frame(maxWidth: .infinity)
+			.multilineTextAlignment(style.textAlignment)
+			.fixedSize(horizontal: style.fixedSizeHorizontal, vertical: style.fixedSizeVertical)
 			.disabled(style.autoCorrectionDisabled)
 			.textContentType(style.isSecure ? .password : .none)
-			.lineLimit(style.maxCharacterCount)
+			.frame(maxWidth: .infinity, alignment: style.alignment)
 		textField
 	}
 }

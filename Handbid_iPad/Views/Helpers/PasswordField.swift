@@ -11,16 +11,17 @@ struct PasswordField: View {
 	var body: some View {
 		VStack(alignment: .leading) {
 			Text(labelKey)
-				.textFieldLabelStyle()
+				.applyTextStyle(style: .formHeader)
+				.frame(height: 15)
 
 			ZStack(alignment: .trailing) {
 				if isPasswordShown {
 					TextField(hintKey, text: $fieldValue)
-						.basicTextFieldStyle()
+						.applyTextFieldStyle(style: .form)
 				}
 				else {
 					SecureField(hintKey, text: $fieldValue)
-						.basicTextFieldStyle()
+						.applySecuredFieldStyle(style: .formField)
 				}
 
 				Image(isPasswordShown ? "EyeIconCrossed" : "EyeIcon")

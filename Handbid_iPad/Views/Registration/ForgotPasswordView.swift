@@ -6,39 +6,30 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@ObservedObject private var viewModel = ForgotPasswordViewModel()
 	@State private var isBlurred = false
-    @FocusState private var isFocused: Bool
 
 	var body: some View {
 		ZStack {
-			if viewModel.isFormValid { content } else { content }
+			content
 		}
 		.background {
-            backgroundView(for: .color(.accentViolet))
+			backgroundView(for: .color(.accentViolet))
 		}
 		.onAppear {
 			isBlurred = false
 			viewModel.resetErrorMessage()
 		}
-        .onTapGesture {
-            if isFocused {
-                isFocused = false
-            }
-        }
+		.keyboardResponsive()
 		.backButtonNavigation(style: .registration)
-		.ignoresSafeArea()
+		.ignoresSafeArea(.keyboard, edges: .bottom)
 	}
 
 	private var content: some View {
 		OverlayInternalView(cornerRadius: 40) {
 			VStack(spacing: 20) {
 				getHeaderText()
-					.animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
 				getTextFields()
-					.animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
 				getErrorMessage()
-					.animation(.easeInOut(duration: 0.3), value: !viewModel.isFormValid)
 				getButtons()
-				Spacer()
 			}
 			.blur(radius: isBlurred ? 10 : 0)
 			.padding()
@@ -46,25 +37,27 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 	}
 
 	private func getHeaderText() -> some View {
-		Text(LocalizedStringKey("Forgot Password"))
+		Text(LocalizedStringKey("registration_label_forgotPassword"))
 			.applyTextStyle(style: .headerTitle)
-			.accessibilityIdentifier("GetStartedView")
+			.accessibilityIdentifier("registration_label_forgotPassword")
 	}
 
 	private func getTextFields() -> some View {
 		VStack {
 			FormField(fieldValue: $viewModel.email,
-			          labelKey: LocalizedStringKey("email"),
-			          hintKey: LocalizedStringKey("emailHint"))
-            .focused($isFocused, equals: true)
+			          labelKey: LocalizedStringKey("registration_label_email"),
+			          hintKey: LocalizedStringKey("registration_hint_email"))
 		}.padding(.bottom)
 	}
 
 	private func getErrorMessage() -> some View {
 		VStack(spacing: 10) {
 			if !viewModel.isFormValid {
-				Text(viewModel.errorMessage)
-					.applyTextStyle(style: .error)
+				GeometryReader { geometry in
+					Text(viewModel.errorMessage)
+						.applyTextStyle(style: .error)
+						.frame(minHeight: geometry.size.height)
+				}
 			}
 		}
 	}
@@ -78,9 +71,9 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 					coordinator.push(RegistrationPage.resetPassword as! T)
 				}
 			}) {
-				Text(LocalizedStringKey("Confirm"))
+				Text(LocalizedStringKey("registration_btn_confirm"))
 					.textCase(.uppercase)
-			}.accessibilityIdentifier("Confirm")
+			}.accessibilityIdentifier("registration_btn_confirm")
 		}
 	}
 }
