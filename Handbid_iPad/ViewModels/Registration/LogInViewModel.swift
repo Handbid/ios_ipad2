@@ -34,7 +34,6 @@ class LogInViewModel: ObservableObject {
 
 			}, receiveValue: { token in
 
-				/// auth
 				AuthModel().signIn(username: self.email, password: self.password, pin: nil, captchaToken: token)
 					.sink(receiveCompletion: { completion in
 						switch completion {
@@ -52,6 +51,7 @@ class LogInViewModel: ObservableObject {
 								let saveData = await self.authManager.loginWithAuthModel(auth: receieData)
 								if saveData {
 									print("Data is saved")
+									NotificationCenter.default.post(name: .userLoggedIn, object: nil)
 								}
 							}
 							else {

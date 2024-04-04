@@ -19,28 +19,33 @@ struct AppLaunchControlView: View {
 			}
 			else {
 				if isValidToken {
-					AnyView(EmptyAuctionView<RegistrationPage>())
-						.onChange(of: authManager.isLoggedIn) {
-							if !isValidToken {
-								isValidToken = false
-								print("User logged out. Navigate to the start screen or login view.")
-							}
-						}
+					EmptyAuctionView<RegistrationPage>()
 				}
 				else {
 					RootPageView(page: RegistrationPage.getStarted)
-						.onChange(of: authManager.isLoggedIn) {
-							isValidToken = true
-							print("User logged")
-						}
 				}
 			}
 		}
+		.onReceive(NotificationCenter.default.publisher(for: .userLoggedIn).receive(on: RunLoop.main)) { _ in
+			isLoading = false
+			isValidToken = true
+		}
+		.onReceive(NotificationCenter.default.publisher(for: .userLoggedOut).receive(on: RunLoop.main)) { _ in
+			isValidToken = false
+		}
 		.onAppear {
 			Task {
-				await checkUserStatus()
 				try await Task.sleep(nanoseconds: 1_000_000_000)
-				isLoading = false
+
+				do {
+					let isLoggedIn = try await authManager.isLoggedInAsync()
+					isValidToken = isLoggedIn
+					isLoading = false
+				}
+				catch {
+					isValidToken = false
+					isLoading = false
+				}
 			}
 		}
 	}

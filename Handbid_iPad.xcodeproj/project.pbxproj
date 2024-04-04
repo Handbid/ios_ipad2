@@ -63,6 +63,7 @@
 		8CAFD93A2BBD90F700C7D763 /* KeyboardResponsiveModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFD9392BBD90F700C7D763 /* KeyboardResponsiveModifier.swift */; };
 		8CB8C6AC2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB8C6AB2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift */; };
 		8CEA290B2BB3517E005E3B33 /* NetworkService in Frameworks */ = {isa = PBXBuildFile; productRef = 8CEA290A2BB3517E005E3B33 /* NetworkService */; };
+		8CFE2CC72BBE84DF00AF60F1 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFE2CC62BBE84DF00AF60F1 /* NotificationName.swift */; };
 		CE073ED82BB42D710079F342 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE073ED72BB42D710079F342 /* View.swift */; };
 		CE073EE42BB4809C0079F342 /* FormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE073EE32BB4809C0079F342 /* FormField.swift */; };
 		CE073EE62BB485CD0079F342 /* PasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE073EE52BB485CD0079F342 /* PasswordField.swift */; };
@@ -158,6 +159,7 @@
 		8CEA29072BB345F8005E3B33 /* Handbid_iPadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CEA29082BB345F8005E3B33 /* Handbid_iPadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CFCCFB92BA8B3C600CF6C33 /* Handbid_iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Handbid_iPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CFE2CC62BBE84DF00AF60F1 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		A95C33233A18F3D827465488 /* Pods-Handbid_iPadUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPadUITests.debug.xcconfig"; path = "Target Support Files/Pods-Handbid_iPadUITests/Pods-Handbid_iPadUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CE073ED72BB42D710079F342 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		CE073EE32BB4809C0079F342 /* FormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormField.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 				CE073ED72BB42D710079F342 /* View.swift */,
 				8C4B7B842BB47E9C0043B892 /* Color.swift */,
 				8C3D3C002BBA1E33002A5CFC /* String.swift */,
+				8CFE2CC62BBE84DF00AF60F1 /* NotificationName.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -795,6 +798,7 @@
 				CE073EE42BB4809C0079F342 /* FormField.swift in Sources */,
 				8C4B7BB12BB8944C0043B892 /* TextStyles.swift in Sources */,
 				8C8BEC662BA9B7DD0083D904 /* PageProtocol.swift in Sources */,
+				8CFE2CC72BBE84DF00AF60F1 /* NotificationName.swift in Sources */,
 				8C4B7BAD2BB8942D0043B892 /* TextFieldStyles.swift in Sources */,
 				8CABF5CE2BB9D89900A34870 /* TypographyStyle.swift in Sources */,
 				8C8BEC3A2BA977F00083D904 /* Coordinator.swift in Sources */,
