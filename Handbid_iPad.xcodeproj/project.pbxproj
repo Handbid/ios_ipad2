@@ -235,19 +235,19 @@
 		8C1CC4F22BBF304400AF80F4 /* Handbid_iPadTests */ = {
 			isa = PBXGroup;
 			children = (
-				8C1CC4F32BBF304400AF80F4 /* Handbid_iPadTests.swift */,
-				8C1CC4FC2BBF3B4D00AF80F4 /* Models_Tests */,
+				8C3D3C092BBF4C85002A5CFC /* ViewModel_Tests */,
+				8C1CC4FC2BBF3B4D00AF80F4 /* Model_Tests */,
 			);
 			path = Handbid_iPadTests;
 			sourceTree = "<group>";
 		};
-		8C1CC4FC2BBF3B4D00AF80F4 /* Models_Tests */ = {
+		8C1CC4FC2BBF3B4D00AF80F4 /* Model_Tests */ = {
 			isa = PBXGroup;
 			children = (
 				8C1CC4FD2BBF3B7700AF80F4 /* AppVersionModel_Test.swift */,
 				8C1CC4FF2BBF3BC700AF80F4 /* AuthModel_Test.swift */,
 			);
-			path = Models_Tests;
+			path = Model_Tests;
 			sourceTree = "<group>";
 		};
 		8C1E00A12BA823C80094FAA7 = {
@@ -429,6 +429,22 @@
 				8C3D3C062BBB85CC002A5CFC /* EmptyAuctionView.swift */,
 			);
 			path = Auction;
+			sourceTree = "<group>";
+		};
+		8C3D3C092BBF4C85002A5CFC /* ViewModel_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				8C3D3C0A2BBF4C8F002A5CFC /* Registration */,
+			);
+			path = ViewModel_Tests;
+			sourceTree = "<group>";
+		};
+		8C3D3C0A2BBF4C8F002A5CFC /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				8C1CC4F32BBF304400AF80F4 /* Handbid_iPadTests.swift */,
+			);
+			path = Registration;
 			sourceTree = "<group>";
 		};
 		8C4B7B8C2BB6FD390043B892 /* Extensions Style */ = {

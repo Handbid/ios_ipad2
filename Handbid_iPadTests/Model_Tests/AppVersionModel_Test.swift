@@ -8,7 +8,7 @@ final class AppVersionModel_Test: XCTestCase {
 		let json: [String: Any] = [
 			"appVersion.id": 1,
 			"appVersion.os": "iOS",
-			"appVersion.appName": "YourApp",
+			"appVersion.appName": "Handbid",
 			"appVersion.minimumVersion": "1.0",
 			"appVersion.currentVersion": "2.0",
 			"demoModeEnabled": 1,
