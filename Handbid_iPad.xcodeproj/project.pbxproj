@@ -74,6 +74,7 @@
 		CE7DF82F2BADFD1900FF7694 /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DF82E2BADFD1900FF7694 /* PinView.swift */; };
 		CEE2BB272BB5BBB10033556D /* RegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2BB262BB5BBB10033556D /* RegisterRepository.swift */; };
 		CEE2BB292BB5D1070033556D /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2BB282BB5D1070033556D /* ApiConstants.swift */; };
+		CEEC46132BBD8DE900C685BF /* AnyPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEC46122BBD8DE900C685BF /* AnyPublisher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,6 +170,7 @@
 		CE7DF82E2BADFD1900FF7694 /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		CEE2BB262BB5BBB10033556D /* RegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRepository.swift; sourceTree = "<group>"; };
 		CEE2BB282BB5D1070033556D /* ApiConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConstants.swift; sourceTree = "<group>"; };
+		CEEC46122BBD8DE900C685BF /* AnyPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyPublisher.swift; sourceTree = "<group>"; };
 		E2A4842D2220F7D3D69BACE2 /* Pods-Handbid_iPadUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPadUITests.release.xcconfig"; path = "Target Support Files/Pods-Handbid_iPadUITests/Pods-Handbid_iPadUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EB79E9AC5168F94222018306 /* Pods-Handbid_iPad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPad.debug.xcconfig"; path = "Target Support Files/Pods-Handbid_iPad/Pods-Handbid_iPad.debug.xcconfig"; sourceTree = "<group>"; };
 		FDFCFCFC1A5FE688F4B9D27D /* Pods-Handbid_iPad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPad.release.xcconfig"; path = "Target Support Files/Pods-Handbid_iPad/Pods-Handbid_iPad.release.xcconfig"; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 				CE073ED72BB42D710079F342 /* View.swift */,
 				8C4B7B842BB47E9C0043B892 /* Color.swift */,
 				8C3D3C002BBA1E33002A5CFC /* String.swift */,
+				CEEC46122BBD8DE900C685BF /* AnyPublisher.swift */,
 				8CFE2CC62BBE84DF00AF60F1 /* NotificationName.swift */,
 			);
 			path = Extensions;
@@ -821,6 +824,7 @@
 				8CABF5C52BB9C65E00A34870 /* ResetPasswordViewModel.swift in Sources */,
 				8CABF5CC2BB9CF0300A34870 /* ChooseEnvironmentView.swift in Sources */,
 				8C4B7BB52BB9BEDC0043B892 /* CustomStyledViewSecuredField.swift in Sources */,
+				CEEC46132BBD8DE900C685BF /* AnyPublisher.swift in Sources */,
 				8C4B7B832BB47DD30043B892 /* StartupProgressAnimationView.swift in Sources */,
 				8C0007D32BAC976700AAEBA0 /* AppInfoProvider.swift in Sources */,
 				8C4B7B9B2BB7026D0043B892 /* TextStyleConfiguration.swift in Sources */,
