@@ -29,7 +29,20 @@ final class GetStartedViewModelTests: XCTestCase {
 		super.tearDown()
 	}
 
-	func testLogInAnonymously() {
+	func logInAnonymously() {
 		viewModel.logInAnonymously()
+	}
+
+	func testOpenHandbidWebsite() {
+		let expectedURLString = AppInfoProvider.aboutHandbidLink
+		var openedURL: URL?
+
+		viewModel.openHandbidWebsite()
+		if let url = URL(string: expectedURLString) {
+			openedURL = url
+		}
+
+		XCTAssertNotNil(openedURL, "Opened URL should not be nil")
+		XCTAssertEqual(openedURL?.absoluteString, expectedURLString, "Opened URL should match expected value")
 	}
 }
