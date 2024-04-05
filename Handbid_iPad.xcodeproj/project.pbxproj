@@ -15,7 +15,7 @@
 		8C0007CD2BAC8D4500AAEBA0 /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00F82BA82AAC0094FAA7 /* Release.xcconfig */; };
 		8C0007D32BAC976700AAEBA0 /* AppInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0007C22BAC820500AAEBA0 /* AppInfoProvider.swift */; };
 		8C1CC4D92BBF2DBA00AF80F4 /* Arrow in Frameworks */ = {isa = PBXBuildFile; productRef = 8C1CC4D82BBF2DBA00AF80F4 /* Arrow */; };
-		8C1CC4F42BBF304400AF80F4 /* Handbid_iPadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1CC4F32BBF304400AF80F4 /* Handbid_iPadTests.swift */; };
+		8C1CC4F42BBF304400AF80F4 /* GetStartedViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1CC4F32BBF304400AF80F4 /* GetStartedViewModel_Tests.swift */; };
 		8C1CC4FE2BBF3B7700AF80F4 /* AppVersionModel_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1CC4FD2BBF3B7700AF80F4 /* AppVersionModel_Test.swift */; };
 		8C1CC5002BBF3BC700AF80F4 /* AuthModel_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1CC4FF2BBF3BC700AF80F4 /* AuthModel_Test.swift */; };
 		8C1E00B22BA823C90094FAA7 /* iPadAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00B12BA823C90094FAA7 /* iPadAssets.xcassets */; };
@@ -108,7 +108,7 @@
 		8C0007C22BAC820500AAEBA0 /* AppInfoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoProvider.swift; sourceTree = "<group>"; };
 		8C0007D12BAC8FBD00AAEBA0 /* Handbid-iPad-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Handbid-iPad-Bridging-Header.h"; sourceTree = "<group>"; };
 		8C1CC4F12BBF304400AF80F4 /* Handbid_iPadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8C1CC4F32BBF304400AF80F4 /* Handbid_iPadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handbid_iPadTests.swift; sourceTree = "<group>"; };
+		8C1CC4F32BBF304400AF80F4 /* GetStartedViewModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewModel_Tests.swift; sourceTree = "<group>"; };
 		8C1CC4FA2BBF31A000AF80F4 /* libKeychainAccess.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libKeychainAccess.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C1CC4FD2BBF3B7700AF80F4 /* AppVersionModel_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionModel_Test.swift; sourceTree = "<group>"; };
 		8C1CC4FF2BBF3BC700AF80F4 /* AuthModel_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel_Test.swift; sourceTree = "<group>"; };
@@ -442,7 +442,7 @@
 		8C3D3C0A2BBF4C8F002A5CFC /* Registration */ = {
 			isa = PBXGroup;
 			children = (
-				8C1CC4F32BBF304400AF80F4 /* Handbid_iPadTests.swift */,
+				8C1CC4F32BBF304400AF80F4 /* GetStartedViewModel_Tests.swift */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -852,7 +852,7 @@
 			files = (
 				8C1CC5002BBF3BC700AF80F4 /* AuthModel_Test.swift in Sources */,
 				8C1CC4FE2BBF3B7700AF80F4 /* AppVersionModel_Test.swift in Sources */,
-				8C1CC4F42BBF304400AF80F4 /* Handbid_iPadTests.swift in Sources */,
+				8C1CC4F42BBF304400AF80F4 /* GetStartedViewModel_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
