@@ -22,6 +22,8 @@
 		8C1CC5072BBFC65D00AF80F4 /* LogInViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1CC5062BBFC65D00AF80F4 /* LogInViewModel_Tests.swift */; };
 		8C1CC5092BBFCA7200AF80F4 /* MockAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1CC5082BBFCA7200AF80F4 /* MockAuthManager.swift */; };
 		8C1CC50B2BBFCA9C00AF80F4 /* MockRegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1CC50A2BBFCA9C00AF80F4 /* MockRegisterRepository.swift */; };
+		8C1CC50D2BBFD93600AF80F4 /* MockChooseEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1CC50C2BBFD93600AF80F4 /* MockChooseEnvironment.swift */; };
+		8C1CC50F2BBFD9DC00AF80F4 /* ChooseEnvironmentViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1CC50E2BBFD9DC00AF80F4 /* ChooseEnvironmentViewModel_Tests.swift */; };
 		8C1E00B22BA823C90094FAA7 /* iPadAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00B12BA823C90094FAA7 /* iPadAssets.xcassets */; };
 		8C1E00F62BA82A130094FAA7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00EF2BA82A130094FAA7 /* Localizable.strings */; };
 		8C1E01012BA85E630094FAA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E01002BA85E630094FAA7 /* AppDelegate.swift */; };
@@ -120,6 +122,8 @@
 		8C1CC5062BBFC65D00AF80F4 /* LogInViewModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewModel_Tests.swift; sourceTree = "<group>"; };
 		8C1CC5082BBFCA7200AF80F4 /* MockAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthManager.swift; sourceTree = "<group>"; };
 		8C1CC50A2BBFCA9C00AF80F4 /* MockRegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRegisterRepository.swift; sourceTree = "<group>"; };
+		8C1CC50C2BBFD93600AF80F4 /* MockChooseEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockChooseEnvironment.swift; sourceTree = "<group>"; };
+		8C1CC50E2BBFD9DC00AF80F4 /* ChooseEnvironmentViewModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseEnvironmentViewModel_Tests.swift; sourceTree = "<group>"; };
 		8C1E00AD2BA823C80094FAA7 /* MainAppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppCoordinator.swift; sourceTree = "<group>"; };
 		8C1E00B12BA823C90094FAA7 /* iPadAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = iPadAssets.xcassets; sourceTree = "<group>"; };
 		8C1E00F02BA82A130094FAA7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -263,6 +267,7 @@
 			children = (
 				8C1CC5042BBFC41000AF80F4 /* MockLogInAnonymously.swift */,
 				8C1CC5082BBFCA7200AF80F4 /* MockAuthManager.swift */,
+				8C1CC50C2BBFD93600AF80F4 /* MockChooseEnvironment.swift */,
 				8C1CC50A2BBFCA9C00AF80F4 /* MockRegisterRepository.swift */,
 			);
 			path = Repository;
@@ -463,6 +468,7 @@
 			children = (
 				8C1CC4F32BBF304400AF80F4 /* GetStartedViewModel_Tests.swift */,
 				8C1CC5062BBFC65D00AF80F4 /* LogInViewModel_Tests.swift */,
+				8C1CC50E2BBFD9DC00AF80F4 /* ChooseEnvironmentViewModel_Tests.swift */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -875,7 +881,9 @@
 				8C1CC4FE2BBF3B7700AF80F4 /* AppVersionModel_Test.swift in Sources */,
 				8C1CC5052BBFC41000AF80F4 /* MockLogInAnonymously.swift in Sources */,
 				8C1CC50B2BBFCA9C00AF80F4 /* MockRegisterRepository.swift in Sources */,
+				8C1CC50F2BBFD9DC00AF80F4 /* ChooseEnvironmentViewModel_Tests.swift in Sources */,
 				8C1CC5072BBFC65D00AF80F4 /* LogInViewModel_Tests.swift in Sources */,
+				8C1CC50D2BBFD93600AF80F4 /* MockChooseEnvironment.swift in Sources */,
 				8C1CC4F42BBF304400AF80F4 /* GetStartedViewModel_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
