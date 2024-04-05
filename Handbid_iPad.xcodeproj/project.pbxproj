@@ -7,14 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0855E4F4BA57DCA631AF9C12 /* libPods-Handbid_iPadUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CC95F51E6AF06BFF966AF29 /* libPods-Handbid_iPadUITests.a */; };
-		6186902EA15B7BA5F8544027 /* libPods-Handbid_iPad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 47A588E0CD65F7067778CB03 /* libPods-Handbid_iPad.a */; };
+		22138ABEDC909B95336BCAF1 /* libPods-Handbid_iPadUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD99188E9BE63D176EBCC768 /* libPods-Handbid_iPadUITests.a */; };
+		5DF39E51EC057A0406558611 /* libPods-Handbid_iPad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 380925D2BC0ACBAC73906C8C /* libPods-Handbid_iPad.a */; };
 		8C0007B22BAC733900AAEBA0 /* ArrowParsable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0007952BAC733900AAEBA0 /* ArrowParsable.swift */; };
 		8C0007BF2BAC764700AAEBA0 /* AppVersionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0007BE2BAC764700AAEBA0 /* AppVersionModel.swift */; };
 		8C0007CC2BAC8D4400AAEBA0 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00F72BA82A9F0094FAA7 /* Debug.xcconfig */; };
 		8C0007CD2BAC8D4500AAEBA0 /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00F82BA82AAC0094FAA7 /* Release.xcconfig */; };
 		8C0007D32BAC976700AAEBA0 /* AppInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0007C22BAC820500AAEBA0 /* AppInfoProvider.swift */; };
-		8C1CC4D92BBF2DBA00AF80F4 /* Arrow in Frameworks */ = {isa = PBXBuildFile; productRef = 8C1CC4D82BBF2DBA00AF80F4 /* Arrow */; };
 		8C1CC4F42BBF304400AF80F4 /* GetStartedViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1CC4F32BBF304400AF80F4 /* GetStartedViewModel_Tests.swift */; };
 		8C1CC4FE2BBF3B7700AF80F4 /* AppVersionModel_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1CC4FD2BBF3B7700AF80F4 /* AppVersionModel_Test.swift */; };
 		8C1CC5002BBF3BC700AF80F4 /* AuthModel_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1CC4FF2BBF3BC700AF80F4 /* AuthModel_Test.swift */; };
@@ -24,6 +23,7 @@
 		8C1CC50B2BBFCA9C00AF80F4 /* MockRegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1CC50A2BBFCA9C00AF80F4 /* MockRegisterRepository.swift */; };
 		8C1CC50D2BBFD93600AF80F4 /* MockChooseEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1CC50C2BBFD93600AF80F4 /* MockChooseEnvironment.swift */; };
 		8C1CC50F2BBFD9DC00AF80F4 /* ChooseEnvironmentViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1CC50E2BBFD9DC00AF80F4 /* ChooseEnvironmentViewModel_Tests.swift */; };
+		8C1CC5112BBFDF3C00AF80F4 /* Arrow in Frameworks */ = {isa = PBXBuildFile; productRef = 8C1CC5102BBFDF3C00AF80F4 /* Arrow */; };
 		8C1E00B22BA823C90094FAA7 /* iPadAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00B12BA823C90094FAA7 /* iPadAssets.xcassets */; };
 		8C1E00F62BA82A130094FAA7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00EF2BA82A130094FAA7 /* Localizable.strings */; };
 		8C1E01012BA85E630094FAA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E01002BA85E630094FAA7 /* AppDelegate.swift */; };
@@ -73,7 +73,7 @@
 		8CB8C6AC2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB8C6AB2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift */; };
 		8CEA290B2BB3517E005E3B33 /* NetworkService in Frameworks */ = {isa = PBXBuildFile; productRef = 8CEA290A2BB3517E005E3B33 /* NetworkService */; };
 		8CFE2CC72BBE84DF00AF60F1 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFE2CC62BBE84DF00AF60F1 /* NotificationName.swift */; };
-		978774E7C7F8226E79E9CF5B /* libPods-Handbid_iPadTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 387F2D7986D4F3BB09C3FCF0 /* libPods-Handbid_iPadTests.a */; };
+		A340801FD890C94F50D8895A /* libPods-Handbid_iPadTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A79C29DE090D3DBF308CF41D /* libPods-Handbid_iPadTests.a */; };
 		CE073ED82BB42D710079F342 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE073ED72BB42D710079F342 /* View.swift */; };
 		CE073EE42BB4809C0079F342 /* FormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE073EE32BB4809C0079F342 /* FormField.swift */; };
 		CE073EE62BB485CD0079F342 /* PasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE073EE52BB485CD0079F342 /* PasswordField.swift */; };
@@ -105,10 +105,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		260AA8B2BE53390441237B57 /* Pods-Handbid_iPadTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPadTests.debug.xcconfig"; path = "Target Support Files/Pods-Handbid_iPadTests/Pods-Handbid_iPadTests.debug.xcconfig"; sourceTree = "<group>"; };
-		387F2D7986D4F3BB09C3FCF0 /* libPods-Handbid_iPadTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Handbid_iPadTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3CC95F51E6AF06BFF966AF29 /* libPods-Handbid_iPadUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Handbid_iPadUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		47A588E0CD65F7067778CB03 /* libPods-Handbid_iPad.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Handbid_iPad.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		380925D2BC0ACBAC73906C8C /* libPods-Handbid_iPad.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Handbid_iPad.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		88C66DEC96D0D0E948B46232 /* Pods-Handbid_iPadUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPadUITests.release.xcconfig"; path = "Target Support Files/Pods-Handbid_iPadUITests/Pods-Handbid_iPadUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8C0007952BAC733900AAEBA0 /* ArrowParsable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrowParsable.swift; sourceTree = "<group>"; };
 		8C0007BE2BAC764700AAEBA0 /* AppVersionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppVersionModel.swift; sourceTree = "<group>"; };
 		8C0007C22BAC820500AAEBA0 /* AppInfoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoProvider.swift; sourceTree = "<group>"; };
@@ -185,7 +183,10 @@
 		8CFE2CD02BBEE7F400AF60F1 /* Handbid_iPadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CFE2CE92BBF2B4500AF60F1 /* libArrow.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libArrow.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CFE2CEB2BBF2BAD00AF60F1 /* libArrow.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libArrow.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		A95C33233A18F3D827465488 /* Pods-Handbid_iPadUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPadUITests.debug.xcconfig"; path = "Target Support Files/Pods-Handbid_iPadUITests/Pods-Handbid_iPadUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		94BF53A0A1727B95DA7B275B /* Pods-Handbid_iPadTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPadTests.release.xcconfig"; path = "Target Support Files/Pods-Handbid_iPadTests/Pods-Handbid_iPadTests.release.xcconfig"; sourceTree = "<group>"; };
+		9FD986DE59ADD0C65C7155CF /* Pods-Handbid_iPad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPad.debug.xcconfig"; path = "Target Support Files/Pods-Handbid_iPad/Pods-Handbid_iPad.debug.xcconfig"; sourceTree = "<group>"; };
+		A79C29DE090D3DBF308CF41D /* libPods-Handbid_iPadTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Handbid_iPadTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C98F41D24CD1EFB3610289F5 /* Pods-Handbid_iPadUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPadUITests.debug.xcconfig"; path = "Target Support Files/Pods-Handbid_iPadUITests/Pods-Handbid_iPadUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CE073ED72BB42D710079F342 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		CE073EE32BB4809C0079F342 /* FormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormField.swift; sourceTree = "<group>"; };
 		CE073EE52BB485CD0079F342 /* PasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordField.swift; sourceTree = "<group>"; };
@@ -195,10 +196,9 @@
 		CEE2BB262BB5BBB10033556D /* RegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRepository.swift; sourceTree = "<group>"; };
 		CEE2BB282BB5D1070033556D /* ApiConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConstants.swift; sourceTree = "<group>"; };
 		CEEC46122BBD8DE900C685BF /* AnyPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyPublisher.swift; sourceTree = "<group>"; };
-		E2A4842D2220F7D3D69BACE2 /* Pods-Handbid_iPadUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPadUITests.release.xcconfig"; path = "Target Support Files/Pods-Handbid_iPadUITests/Pods-Handbid_iPadUITests.release.xcconfig"; sourceTree = "<group>"; };
-		E7EC93FEA81135E3FF578FD2 /* Pods-Handbid_iPadTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPadTests.release.xcconfig"; path = "Target Support Files/Pods-Handbid_iPadTests/Pods-Handbid_iPadTests.release.xcconfig"; sourceTree = "<group>"; };
-		EB79E9AC5168F94222018306 /* Pods-Handbid_iPad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPad.debug.xcconfig"; path = "Target Support Files/Pods-Handbid_iPad/Pods-Handbid_iPad.debug.xcconfig"; sourceTree = "<group>"; };
-		FDFCFCFC1A5FE688F4B9D27D /* Pods-Handbid_iPad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPad.release.xcconfig"; path = "Target Support Files/Pods-Handbid_iPad/Pods-Handbid_iPad.release.xcconfig"; sourceTree = "<group>"; };
+		DD99188E9BE63D176EBCC768 /* libPods-Handbid_iPadUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Handbid_iPadUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3ADFE66A5AAEF7E210805B6 /* Pods-Handbid_iPadTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPadTests.debug.xcconfig"; path = "Target Support Files/Pods-Handbid_iPadTests/Pods-Handbid_iPadTests.debug.xcconfig"; sourceTree = "<group>"; };
+		FCE75E48B23DA0ED54CB1842 /* Pods-Handbid_iPad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPad.release.xcconfig"; path = "Target Support Files/Pods-Handbid_iPad/Pods-Handbid_iPad.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,7 +206,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				978774E7C7F8226E79E9CF5B /* libPods-Handbid_iPadTests.a in Frameworks */,
+				A340801FD890C94F50D8895A /* libPods-Handbid_iPadTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,9 +214,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C1CC4D92BBF2DBA00AF80F4 /* Arrow in Frameworks */,
+				8C1CC5112BBFDF3C00AF80F4 /* Arrow in Frameworks */,
 				8CEA290B2BB3517E005E3B33 /* NetworkService in Frameworks */,
-				6186902EA15B7BA5F8544027 /* libPods-Handbid_iPad.a in Frameworks */,
+				5DF39E51EC057A0406558611 /* libPods-Handbid_iPad.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,7 +224,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0855E4F4BA57DCA631AF9C12 /* libPods-Handbid_iPadUITests.a in Frameworks */,
+				22138ABEDC909B95336BCAF1 /* libPods-Handbid_iPadUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,9 +237,9 @@
 				8C1CC4FA2BBF31A000AF80F4 /* libKeychainAccess.a */,
 				8CFE2CEB2BBF2BAD00AF60F1 /* libArrow.a */,
 				8CFE2CE92BBF2B4500AF60F1 /* libArrow.a */,
-				47A588E0CD65F7067778CB03 /* libPods-Handbid_iPad.a */,
-				3CC95F51E6AF06BFF966AF29 /* libPods-Handbid_iPadUITests.a */,
-				387F2D7986D4F3BB09C3FCF0 /* libPods-Handbid_iPadTests.a */,
+				380925D2BC0ACBAC73906C8C /* libPods-Handbid_iPad.a */,
+				A79C29DE090D3DBF308CF41D /* libPods-Handbid_iPadTests.a */,
+				DD99188E9BE63D176EBCC768 /* libPods-Handbid_iPadUITests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -576,12 +576,12 @@
 		B64BA6889C440647A69DCC9C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				FDFCFCFC1A5FE688F4B9D27D /* Pods-Handbid_iPad.release.xcconfig */,
-				EB79E9AC5168F94222018306 /* Pods-Handbid_iPad.debug.xcconfig */,
-				E2A4842D2220F7D3D69BACE2 /* Pods-Handbid_iPadUITests.release.xcconfig */,
-				A95C33233A18F3D827465488 /* Pods-Handbid_iPadUITests.debug.xcconfig */,
-				E7EC93FEA81135E3FF578FD2 /* Pods-Handbid_iPadTests.release.xcconfig */,
-				260AA8B2BE53390441237B57 /* Pods-Handbid_iPadTests.debug.xcconfig */,
+				FCE75E48B23DA0ED54CB1842 /* Pods-Handbid_iPad.release.xcconfig */,
+				9FD986DE59ADD0C65C7155CF /* Pods-Handbid_iPad.debug.xcconfig */,
+				94BF53A0A1727B95DA7B275B /* Pods-Handbid_iPadTests.release.xcconfig */,
+				E3ADFE66A5AAEF7E210805B6 /* Pods-Handbid_iPadTests.debug.xcconfig */,
+				88C66DEC96D0D0E948B46232 /* Pods-Handbid_iPadUITests.release.xcconfig */,
+				C98F41D24CD1EFB3610289F5 /* Pods-Handbid_iPadUITests.debug.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -621,7 +621,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8C1CC4F72BBF304500AF80F4 /* Build configuration list for PBXNativeTarget "Handbid_iPadTests" */;
 			buildPhases = (
-				D9E0F6D518F666465AB3D366 /* [CP] Check Pods Manifest.lock */,
+				436F8654EF4E8A7E9FBA0F51 /* [CP] Check Pods Manifest.lock */,
 				8C1CC4ED2BBF304400AF80F4 /* Sources */,
 				8C1CC4EE2BBF304400AF80F4 /* Frameworks */,
 				8C1CC4EF2BBF304400AF80F4 /* Resources */,
@@ -640,7 +640,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8C1E00CE2BA823C90094FAA7 /* Build configuration list for PBXNativeTarget "Handbid_iPad" */;
 			buildPhases = (
-				F4EFEC1A54F01614D432E704 /* [CP] Check Pods Manifest.lock */,
+				3CE7C6D493622855405775B1 /* [CP] Check Pods Manifest.lock */,
 				8C1E00E92BA827D10094FAA7 /* Fetch localization */,
 				8C1E00A62BA823C80094FAA7 /* Sources */,
 				8C1E00A82BA823C80094FAA7 /* Resources */,
@@ -654,7 +654,7 @@
 			name = Handbid_iPad;
 			packageProductDependencies = (
 				8CEA290A2BB3517E005E3B33 /* NetworkService */,
-				8C1CC4D82BBF2DBA00AF80F4 /* Arrow */,
+				8C1CC5102BBFDF3C00AF80F4 /* Arrow */,
 			);
 			productName = Handbid_iPad;
 			productReference = 8CFCCFB92BA8B3C600CF6C33 /* Handbid_iPad.app */;
@@ -664,7 +664,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8C1E00D42BA823C90094FAA7 /* Build configuration list for PBXNativeTarget "Handbid_iPadUITests" */;
 			buildPhases = (
-				557F15B5624B85AE98C13A06 /* [CP] Check Pods Manifest.lock */,
+				C924E2B5DDADAB73893465D8 /* [CP] Check Pods Manifest.lock */,
 				8C1E00C02BA823C90094FAA7 /* Sources */,
 				8C1E00C12BA823C90094FAA7 /* Frameworks */,
 				8C1E00C22BA823C90094FAA7 /* Resources */,
@@ -764,7 +764,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		557F15B5624B85AE98C13A06 /* [CP] Check Pods Manifest.lock */ = {
+		3CE7C6D493622855405775B1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -779,7 +779,29 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Handbid_iPadUITests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Handbid_iPad-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		436F8654EF4E8A7E9FBA0F51 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Handbid_iPadTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -825,7 +847,7 @@
 			shellScript = "\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" \"$SRCROOT\" --config .swiftformat --swiftversion 5.9\n";
 			showEnvVarsInLog = 0;
 		};
-		D9E0F6D518F666465AB3D366 /* [CP] Check Pods Manifest.lock */ = {
+		C924E2B5DDADAB73893465D8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -840,29 +862,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Handbid_iPadTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F4EFEC1A54F01614D432E704 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Handbid_iPad-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Handbid_iPadUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -993,7 +993,7 @@
 /* Begin XCBuildConfiguration section */
 		8C1CC4F82BBF304500AF80F4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E7EC93FEA81135E3FF578FD2 /* Pods-Handbid_iPadTests.release.xcconfig */;
+			baseConfigurationReference = 94BF53A0A1727B95DA7B275B /* Pods-Handbid_iPadTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1016,7 +1016,7 @@
 		};
 		8C1CC4F92BBF304500AF80F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 260AA8B2BE53390441237B57 /* Pods-Handbid_iPadTests.debug.xcconfig */;
+			baseConfigurationReference = E3ADFE66A5AAEF7E210805B6 /* Pods-Handbid_iPadTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1107,7 +1107,7 @@
 		};
 		8C1E00D02BA823C90094FAA7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FDFCFCFC1A5FE688F4B9D27D /* Pods-Handbid_iPad.release.xcconfig */;
+			baseConfigurationReference = FCE75E48B23DA0ED54CB1842 /* Pods-Handbid_iPad.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1116,7 +1116,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_HEADERS_RUN_UNIFDEF = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 35JZN6VPM3;
 				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
@@ -1150,7 +1150,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				ONLY_ACTIVE_ARCH = NO;
-				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -Xcc -fmodule-map-file=\"${PODS_CONFIGURATION_BUILD_DIR}/Arrow/Arrow.modulemap\" -DHANDBID_IPAD";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -Xcc -DHANDBID_IPAD";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Handbid-iPad";
 				PRODUCT_MODULE_NAME = Handbid_iPad;
 				PRODUCT_NAME = Handbid_iPad;
@@ -1167,7 +1167,7 @@
 		};
 		8C1E00D62BA823C90094FAA7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E2A4842D2220F7D3D69BACE2 /* Pods-Handbid_iPadUITests.release.xcconfig */;
+			baseConfigurationReference = 88C66DEC96D0D0E948B46232 /* Pods-Handbid_iPadUITests.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1249,7 +1249,7 @@
 		};
 		8C1E00FC2BA82C9D0094FAA7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EB79E9AC5168F94222018306 /* Pods-Handbid_iPad.debug.xcconfig */;
+			baseConfigurationReference = 9FD986DE59ADD0C65C7155CF /* Pods-Handbid_iPad.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1259,7 +1259,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_HEADERS_RUN_UNIFDEF = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 35JZN6VPM3;
 				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
@@ -1291,7 +1291,7 @@
 				"LIBRARY_SEARCH_PATHS[sdk=iphoneos*]" = "$(inherited)";
 				"LIBRARY_SEARCH_PATHS[sdk=iphonesimulator*]" = "$(inherited)";
 				MARKETING_VERSION = 1.0;
-				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -Xcc -fmodule-map-file=\"${PODS_CONFIGURATION_BUILD_DIR}/Arrow/Arrow.modulemap\" -DHANDBID_IPAD";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -Xcc -DHANDBID_IPAD";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Handbid-iPad";
 				PRODUCT_MODULE_NAME = Handbid_iPad;
 				PRODUCT_NAME = Handbid_iPad;
@@ -1308,7 +1308,7 @@
 		};
 		8C1E00FE2BA82C9D0094FAA7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A95C33233A18F3D827465488 /* Pods-Handbid_iPadUITests.debug.xcconfig */;
+			baseConfigurationReference = C98F41D24CD1EFB3610289F5 /* Pods-Handbid_iPadUITests.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1388,7 +1388,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8C1CC4D82BBF2DBA00AF80F4 /* Arrow */ = {
+		8C1CC5102BBFDF3C00AF80F4 /* Arrow */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8C1CC4D72BBF2DBA00AF80F4 /* XCRemoteSwiftPackageReference "Arrow" */;
 			productName = Arrow;
