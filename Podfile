@@ -7,7 +7,6 @@ inhibit_all_warnings!
 
 def available_pods
 
-pod 'Arrow', '~> 5.1.1'
 pod 'KeychainAccess'
 pod 'ProgressIndicatorView', '~> 1.0.0'
 pod 'SwiftFormat/CLI'

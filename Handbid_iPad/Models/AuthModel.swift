@@ -1,8 +1,6 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
 import Arrow
-import Combine
-import Foundation
 import NetworkService
 
 enum GrantType: String {
@@ -10,7 +8,7 @@ enum GrantType: String {
 	case refreshToken = "refresh_token"
 }
 
-struct AuthModel: Decodable, Encodable, NetworkingJSONDecodable {
+struct AuthModel: Decodable, NetworkingJSONDecodable {
 	var token: String?
 	var accessToken: String?
 	var expiresIn: Int?
@@ -38,6 +36,24 @@ struct AuthModel: Decodable, Encodable, NetworkingJSONDecodable {
 }
 
 extension AuthModel: ArrowParsable {
+	init(json: [String: Any]) {
+		self.token = json["data.token"] as? String
+		self.accessToken = json["data.access_token"] as? String
+		self.expiresIn = json["data.expires_in"] as? Int
+		self.tokenType = json["data.token_type"] as? String
+		self.refreshToken = json["data.refresh_token"] as? String
+		self.currentPaddleNumber = json["data.currentPaddleNumber"] as? String
+		self.username = json["data.username"] as? String
+		self.identity = json["data.identity"] as? Int
+		self.guid = json["data.guid"] as? String
+		self.role = json["data.role"] as? String
+		self.authenticatedTwice = json["data.authenticatedTwice"] as? Bool
+		self.phoneLastFourDigit = json["data.phoneLastFourDigit"] as? String
+		self.countryCode = json["data.countryCode"] as? String
+		self.isPasswordExpired = json["data.isPasswordExpired"] as? Bool
+		self.oneTimePassword = json["data.oneTimePassword"] as? Int
+	}
+
 	mutating func deserialize(_ json: JSON) {
 		token <-- json["data.token"]
 		accessToken <-- json["data.access_token"]
