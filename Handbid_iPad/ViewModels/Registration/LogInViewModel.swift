@@ -3,15 +3,31 @@
 import Combine
 import NetworkService
 
-class LogInViewModel: ObservableObject {
-	private var repository: RegisterRepository = RegisterRepositoryImpl(NetworkingClient())
-	private var authManager: AuthManager = .init()
+protocol LogInViewModelProtocol {
+	var email: String { get set }
+	var password: String { get set }
+	var isFormValid: Bool { get }
+	var errorMessage: String { get }
+	var showError: Bool { get }
+
+	func logIn()
+	func resetErrorMessage()
+}
+
+class LogInViewModel: ObservableObject, LogInViewModelProtocol {
+	private var repository: RegisterRepository
+	private var authManager: AuthManager
 
 	@Published var email: String = ""
 	@Published var password: String = ""
 	@Published var isFormValid = true
 	@Published var errorMessage: String = ""
 	@Published var showError: Bool = false
+
+	init(repository: RegisterRepository, authManager: AuthManager) {
+		self.repository = repository
+		self.authManager = authManager
+	}
 
 	func logIn() {
 		if !email.isValidEmail() {

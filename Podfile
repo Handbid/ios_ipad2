@@ -20,6 +20,11 @@ platform :ios, '17.0'
     available_pods
 end
 
+target 'Handbid_iPadTests' do
+platform :ios, '17.0'  
+    available_pods
+end
+
 
 target 'Handbid_iPadUITests' do
     platform :ios, '17.0'
