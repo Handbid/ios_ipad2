@@ -11,7 +11,6 @@ struct LogInView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@StateObject private var viewModel = LogInViewModel(repository: RegisterRepositoryImpl(NetworkingClient()), authManager: AuthManager())
 	@State private var isBlurred = false
-	@State private var keyboardHeight: CGFloat = 0
 
 	var body: some View {
 		ZStack {
@@ -25,14 +24,6 @@ struct LogInView<T: PageProtocol>: View {
 		.onAppear {
 			isBlurred = false
 			viewModel.resetErrorMessage()
-			NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { notification in
-				if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-					keyboardHeight = keyboardSize.height
-				}
-			}
-			NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { _ in
-				keyboardHeight = 0
-			}
 		}
 		.keyboardResponsive()
 		.backButtonNavigation(style: .registration)
@@ -51,7 +42,6 @@ struct LogInView<T: PageProtocol>: View {
 			.blur(radius: isBlurred ? 10 : 0)
 			.padding()
 		}
-		.padding(.bottom, keyboardHeight)
 	}
 
 	private func getLogoImage() -> some View {

@@ -23,6 +23,7 @@ class LogInViewModel: ObservableObject, LogInViewModelProtocol {
 	@Published var isFormValid = true
 	@Published var errorMessage: String = ""
 	@Published var showError: Bool = false
+	@Published var isScrollViewEnabled: Bool = true
 
 	init(repository: RegisterRepository, authManager: AuthManager) {
 		self.repository = repository
