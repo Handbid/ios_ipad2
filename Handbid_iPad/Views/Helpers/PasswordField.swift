@@ -14,6 +14,7 @@ struct PasswordField: View {
 			Text(labelKey)
 				.applyTextStyle(style: .formHeader)
 				.frame(height: 15)
+				.padding(.leading, -15)
 
 			ZStack(alignment: .trailing) {
 				if isPasswordShown {

@@ -13,6 +13,7 @@ struct FormField: View {
 			Text(labelKey)
 				.applyTextStyle(style: .formHeader)
 				.frame(height: 15)
+				.padding(.leading, -15)
 
 			TextField(hintKey, text: $fieldValue, onEditingChanged: { editing in
 				isEditing = editing

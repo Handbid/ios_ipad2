@@ -11,6 +11,8 @@ enum TextFieldStyles {
 			TextStyleConfiguration(
 				fontStyle: .body,
 				fontWeightStyle: .medium,
+				textAlignment: .leading,
+				alignment: .leading,
 				defaultTextColor: .black,
 				placeholderColor: .accentGrayForm,
 				borderColor: .accentGrayForm,
