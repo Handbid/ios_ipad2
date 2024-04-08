@@ -15,7 +15,6 @@
 		8C0007CC2BAC8D4400AAEBA0 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00F72BA82A9F0094FAA7 /* Debug.xcconfig */; };
 		8C0007CD2BAC8D4500AAEBA0 /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00F82BA82AAC0094FAA7 /* Release.xcconfig */; };
 		8C0007D32BAC976700AAEBA0 /* AppInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0007C22BAC820500AAEBA0 /* AppInfoProvider.swift */; };
-		8C1CC5152BC2477000AF80F4 /* Arrow in Frameworks */ = {isa = PBXBuildFile; productRef = 8C1CC5142BC2477000AF80F4 /* Arrow */; };
 		8C1CC5332BC3D77100AF80F4 /* Handbid_iPadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1CC5322BC3D77100AF80F4 /* Handbid_iPadTests.swift */; };
 		8C1CC5392BC3D84F00AF80F4 /* AuthModel_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1CC5172BC2480D00AF80F4 /* AuthModel_Test.swift */; };
 		8C1CC53A2BC3D85300AF80F4 /* AppVersionModel_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1CC5182BC2480D00AF80F4 /* AppVersionModel_Test.swift */; };
@@ -213,7 +212,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C1CC5152BC2477000AF80F4 /* Arrow in Frameworks */,
 				8CEA290B2BB3517E005E3B33 /* NetworkService in Frameworks */,
 				5228F42F2E4D5C5CAB09A60E /* libPods-Handbid_iPad.a in Frameworks */,
 			);
@@ -651,7 +649,6 @@
 			name = Handbid_iPad;
 			packageProductDependencies = (
 				8CEA290A2BB3517E005E3B33 /* NetworkService */,
-				8C1CC5142BC2477000AF80F4 /* Arrow */,
 			);
 			productName = Handbid_iPad;
 			productReference = 8CFCCFB92BA8B3C600CF6C33 /* Handbid_iPad.app */;
@@ -716,7 +713,6 @@
 			mainGroup = 8C1E00A12BA823C80094FAA7;
 			packageReferences = (
 				8CEA29092BB3517E005E3B33 /* XCLocalSwiftPackageReference "Frameworks/NetworkService" */,
-				8C1CC5132BC2477000AF80F4 /* XCRemoteSwiftPackageReference "Arrow" */,
 			);
 			productRefGroup = 8C1E00A12BA823C80094FAA7;
 			projectDirPath = "";
@@ -1112,7 +1108,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_HEADERS_RUN_UNIFDEF = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 35JZN6VPM3;
 				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
@@ -1255,7 +1251,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_HEADERS_RUN_UNIFDEF = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 35JZN6VPM3;
 				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
@@ -1372,23 +1368,7 @@
 		};
 /* End XCLocalSwiftPackageReference section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		8C1CC5132BC2477000AF80F4 /* XCRemoteSwiftPackageReference "Arrow" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/freshOS/Arrow.git";
-			requirement = {
-				kind = exactVersion;
-				version = 6.0.2;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		8C1CC5142BC2477000AF80F4 /* Arrow */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8C1CC5132BC2477000AF80F4 /* XCRemoteSwiftPackageReference "Arrow" */;
-			productName = Arrow;
-		};
 		8CEA290A2BB3517E005E3B33 /* NetworkService */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = NetworkService;
