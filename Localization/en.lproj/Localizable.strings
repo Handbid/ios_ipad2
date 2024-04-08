@@ -1,3 +1,4 @@
+"global_btn_ok" = "Ok";
 "global_label_unknownError" = "Unknown error";
 "registration_btn_aboutHandbid" = "About Handbid";
 "registration_btn_changePassword" = "Change Password";
@@ -10,11 +11,11 @@
 "registration_hint_enterPassword" = "Enter your password";
 "registration_label_changePassword" = "Change Password";
 "registration_label_chooseEnvironmentToConnect" = "Choose Environment to connect";
-"registration_label_confirmationCodeByEmail" = "We have sent you a confirmation code by email, please enter the code below.";
 "registration_label_email" = "E-mail";
 "registration_label_forgotPassword" = "Forgot Password";
 "registration_label_login" = "Login";
 "registration_label_password" = "Password";
+"registration_label_resetLinkByEmail" = "We have sent you a password reset link by email. Use it to finish the process.";
 "registration_label_resetPassword" = "Reset Password";
 "registration_label_selectEnvironment" = "Select Environment";
 "registration_label_welcomeHandbid" = "Welcome to \nHandbid App";

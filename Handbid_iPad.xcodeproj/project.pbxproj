@@ -45,8 +45,7 @@
 		8C8BEC642BA9ADE20083D904 /* AppLaunchControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC632BA9ADE20083D904 /* AppLaunchControlView.swift */; };
 		8C8BEC662BA9B7DD0083D904 /* PageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC652BA9B7DD0083D904 /* PageProtocol.swift */; };
 		8CABF5BB2BB9C5F400A34870 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5BA2BB9C5F400A34870 /* ForgotPasswordView.swift */; };
-		8CABF5BD2BB9C60900A34870 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5BC2BB9C60900A34870 /* ResetPasswordView.swift */; };
-		8CABF5BF2BB9C61A00A34870 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5BE2BB9C61A00A34870 /* ChangePasswordView.swift */; };
+		8CABF5BD2BB9C60900A34870 /* PasswordResetConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5BC2BB9C60900A34870 /* PasswordResetConfirmationView.swift */; };
 		8CABF5C12BB9C63C00A34870 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5C02BB9C63C00A34870 /* ChangePasswordViewModel.swift */; };
 		8CABF5C32BB9C64E00A34870 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5C22BB9C64E00A34870 /* ForgotPasswordViewModel.swift */; };
 		8CABF5C52BB9C65E00A34870 /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5C42BB9C65E00A34870 /* ResetPasswordViewModel.swift */; };
@@ -142,8 +141,7 @@
 		8C8BEC652BA9B7DD0083D904 /* PageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageProtocol.swift; sourceTree = "<group>"; };
 		8CA455A02BBAAC7300634B5B /* Handbid_iPad.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Handbid_iPad.entitlements; sourceTree = "<group>"; };
 		8CABF5BA2BB9C5F400A34870 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
-		8CABF5BC2BB9C60900A34870 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
-		8CABF5BE2BB9C61A00A34870 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
+		8CABF5BC2BB9C60900A34870 /* PasswordResetConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetConfirmationView.swift; sourceTree = "<group>"; };
 		8CABF5C02BB9C63C00A34870 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
 		8CABF5C22BB9C64E00A34870 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		8CABF5C42BB9C65E00A34870 /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
@@ -467,12 +465,11 @@
 		8C8BEC2C2BA975C30083D904 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
-				8CABF5BE2BB9C61A00A34870 /* ChangePasswordView.swift */,
 				8CABF5CB2BB9CF0300A34870 /* ChooseEnvironmentView.swift */,
 				8CABF5BA2BB9C5F400A34870 /* ForgotPasswordView.swift */,
 				8C8BEC2D2BA975DE0083D904 /* GetStartedView.swift */,
 				8C8BEC2F2BA975F10083D904 /* LogInView.swift */,
-				8CABF5BC2BB9C60900A34870 /* ResetPasswordView.swift */,
+				8CABF5BC2BB9C60900A34870 /* PasswordResetConfirmationView.swift */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -797,7 +794,6 @@
 				8CABF5C32BB9C64E00A34870 /* ForgotPasswordViewModel.swift in Sources */,
 				8CABF5D22BB9E16900A34870 /* CustomFontSize.swift in Sources */,
 				8C4B7BA72BB892AC0043B892 /* CustomStyledViewTextField.swift in Sources */,
-				8CABF5BF2BB9C61A00A34870 /* ChangePasswordView.swift in Sources */,
 				8CABF5D62BB9E19900A34870 /* LayoutProperties.swift in Sources */,
 				8C8BEC362BA977560083D904 /* RootPageView.swift in Sources */,
 				8CAFD93A2BBD90F700C7D763 /* KeyboardResponsiveModifier.swift in Sources */,
@@ -825,7 +821,7 @@
 				8C4B7B852BB47E9C0043B892 /* Color.swift in Sources */,
 				8C8BEC382BA977AC0083D904 /* RegistrationPage.swift in Sources */,
 				8C4B7BB72BB9C1080043B892 /* TextSecuredStyles.swift in Sources */,
-				8CABF5BD2BB9C60900A34870 /* ResetPasswordView.swift in Sources */,
+				8CABF5BD2BB9C60900A34870 /* PasswordResetConfirmationView.swift in Sources */,
 				8CABF5BB2BB9C5F400A34870 /* ForgotPasswordView.swift in Sources */,
 				8CABF5C52BB9C65E00A34870 /* ResetPasswordViewModel.swift in Sources */,
 				8CABF5CC2BB9CF0300A34870 /* ChooseEnvironmentView.swift in Sources */,

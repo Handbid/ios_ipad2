@@ -14,12 +14,10 @@ struct MainAppCoordinator: App {
 			AnyView(LogInView<RegistrationPage>())
 		case .chooseEnvironment:
 			AnyView(ChooseEnvironmentView<RegistrationPage>())
-		case .changePassword:
-			AnyView(ChangePasswordView<RegistrationPage>())
 		case .forgotPassword:
 			AnyView(ForgotPasswordView<RegistrationPage>())
-		case .resetPassword:
-			AnyView(ResetPasswordView<RegistrationPage>())
+		case .resetPasswordConfirmation:
+			AnyView(PasswordResetConfirmationView<RegistrationPage>())
 		}
 	}
 

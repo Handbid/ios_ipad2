@@ -21,7 +21,7 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 		.onReceive(viewModel.$isSuccessfulRequest) { value in
 			isBlurred = false
 			if value {
-				coordinator.push(RegistrationPage.resetPassword as! T)
+				coordinator.push(RegistrationPage.resetPasswordConfirmation as! T)
 			}
 		}
 		.keyboardResponsive()
