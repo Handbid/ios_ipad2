@@ -7,6 +7,7 @@ struct PasswordField: View {
 	var labelKey: LocalizedStringKey
 	var hintKey: LocalizedStringKey
 	@State var isPasswordShown = false
+	@State private var isEditing = false
 
 	var body: some View {
 		VStack(alignment: .leading) {
@@ -16,19 +17,25 @@ struct PasswordField: View {
 
 			ZStack(alignment: .trailing) {
 				if isPasswordShown {
-					TextField(hintKey, text: $fieldValue)
-						.applyTextFieldStyle(style: .form)
+					TextField(hintKey, text: $fieldValue, onEditingChanged: { editing in
+						isEditing = editing
+					})
+					.applyTextFieldStyle(style: .form)
 				}
 				else {
-					SecureField(hintKey, text: $fieldValue)
-						.applySecuredFieldStyle(style: .formField)
+					SecureField(hintKey, text: $fieldValue, onCommit: {
+						isEditing = false
+					})
+					.applySecuredFieldStyle(style: .formField)
 				}
 
-				Image(isPasswordShown ? "EyeIconCrossed" : "EyeIcon")
-					.padding()
-					.onTapGesture {
-						isPasswordShown = !isPasswordShown
-					}
+				if isEditing {
+					Image(isPasswordShown ? "EyeIconCrossed" : "EyeIcon")
+						.padding()
+						.onTapGesture {
+							isPasswordShown = !isPasswordShown
+						}
+				}
 			}
 		}
 	}
