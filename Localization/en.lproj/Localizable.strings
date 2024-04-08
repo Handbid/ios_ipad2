@@ -13,8 +13,10 @@
 "registration_label_chooseEnvironmentToConnect" = "Choose Environment to connect";
 "registration_label_email" = "E-mail";
 "registration_label_forgotPassword" = "Forgot Password";
+"registration_label_incorrectEmail" = "Incorrect Email Format";
 "registration_label_login" = "Login";
 "registration_label_password" = "Password";
+"registration_label_passwordRequirements" = "Password doesn\'t meet the requirements";
 "registration_label_resetLinkByEmail" = "We have sent you a password reset link by email. Use it to finish the process.";
 "registration_label_resetPassword" = "Reset Password";
 "registration_label_selectEnvironment" = "Select Environment";

@@ -32,12 +32,12 @@ class LogInViewModel: ObservableObject, LogInViewModelProtocol {
 
 	func logIn() {
 		if !email.isValidEmail() {
-			errorMessage = "Incorrect Email Format"
+			errorMessage = NSLocalizedString("registration_label_incorrectEmail", comment: "Incorrect Email Format")
 			isFormValid = false
 			return
 		}
 		else if !password.isPasswordSecure() {
-			errorMessage = "Password Not Meet Requirements"
+			errorMessage = NSLocalizedString("registration_label_passwordRequirements", comment: "Password doesn't meet the requirements")
 			isFormValid = false
 			return
 		}
@@ -51,6 +51,7 @@ class LogInViewModel: ObservableObject, LogInViewModelProtocol {
 				authResponse = try await repository.logIn(username: self.email, password: self.password, pin: nil)
 			}
 			catch {
+				errorMessage = "Error logging in: \(error)"
 				print("Error logging in: \(error)")
 				return
 			}
