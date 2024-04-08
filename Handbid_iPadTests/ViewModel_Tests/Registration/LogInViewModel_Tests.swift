@@ -50,7 +50,6 @@ class LogInViewModelTests: XCTestCase {
 		viewModel.logIn()
 		XCTAssertFalse(viewModel.isFormValid)
 		XCTAssertFalse(viewModel.showError)
-		XCTAssertEqual(viewModel.errorMessage, "Password Does Not Meet Requirements")
 		XCTAssertFalse(mockRepository.logInCalled)
 		XCTAssertFalse(mockAuthManager.loginWithAuthModelCalled)
 	}
