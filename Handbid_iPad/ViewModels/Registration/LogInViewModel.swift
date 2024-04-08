@@ -51,8 +51,10 @@ class LogInViewModel: ObservableObject, LogInViewModelProtocol {
 				authResponse = try await repository.logIn(username: self.email, password: self.password, pin: nil)
 			}
 			catch {
-				errorMessage = "Error logging in: \(error)"
-				print("Error logging in: \(error)")
+				DispatchQueue.safeMainAsync {
+					self.errorMessage = NSLocalizedString("login_label_incorrectCredentials", comment: "Incorrect email or password")
+					self.isFormValid = false
+				}
 				return
 			}
 
