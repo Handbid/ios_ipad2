@@ -47,7 +47,6 @@ class LogInViewModel: ObservableObject, LogInViewModelProtocol {
 
 		Task {
 			var authResponse: AuthModel
-			/// auth
 			do {
 				authResponse = try await repository.logIn(username: self.email, password: self.password, pin: nil)
 			}
@@ -63,6 +62,7 @@ class LogInViewModel: ObservableObject, LogInViewModelProtocol {
 				let saveData = await self.authManager.loginWithAuthModel(auth: authResponse)
 				if saveData {
 					print("Data is saved")
+					NotificationCenter.default.post(name: .userLoggedIn, object: nil)
 				}
 			}
 			else {
