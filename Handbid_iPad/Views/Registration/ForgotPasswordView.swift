@@ -6,6 +6,7 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@ObservedObject private var viewModel = ForgotPasswordViewModel()
 	@State private var isBlurred = false
+	@FocusState private var focusedField: Field?
 
 	var body: some View {
 		ZStack {
@@ -17,6 +18,12 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 		.onAppear {
 			isBlurred = false
 			viewModel.resetErrorMessage()
+		}
+		.onTapGesture {
+			if focusedField != nil {
+				focusedField = nil
+				hideKeyboard()
+			}
 		}
 		.keyboardResponsive()
 		.backButtonNavigation(style: .registration)
@@ -44,9 +51,11 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 
 	private func getTextFields() -> some View {
 		VStack {
-			FormField(fieldValue: $viewModel.email,
+			FormField(fieldType: .email,
 			          labelKey: LocalizedStringKey("registration_label_email"),
-			          hintKey: LocalizedStringKey("registration_hint_email"))
+			          hintKey: LocalizedStringKey("registration_hint_email"),
+			          fieldValue: $viewModel.email,
+			          focusedField: _focusedField)
 		}.padding(.bottom)
 	}
 

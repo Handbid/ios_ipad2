@@ -6,18 +6,25 @@ struct ChangePasswordView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@ObservedObject private var viewModel = ChangePasswordViewModel()
 	@State private var isBlurred = false
+	@FocusState private var focusedField: Field?
 
 	var body: some View {
 		ZStack {
 			content
 		}
-		.keyboardResponsive()
 		.onAppear {
 			isBlurred = false
 		}
 		.background {
 			backgroundView(for: .color(.accentViolet))
 		}
+		.onTapGesture {
+			if focusedField != nil {
+				focusedField = nil
+				hideKeyboard()
+			}
+		}
+		.keyboardResponsive()
 		.backButtonNavigation(style: .registration)
 		.ignoresSafeArea(.keyboard, edges: .bottom)
 	}
@@ -43,13 +50,17 @@ struct ChangePasswordView<T: PageProtocol>: View {
 
 	private func getTextFields() -> some View {
 		VStack(spacing: 20) {
-			PasswordField(fieldValue: $viewModel.password,
-			              labelKey: LocalizedStringKey("registration_label_password"),
-			              hintKey: LocalizedStringKey("registration_hint_enterPassword"))
+			FormField(fieldType: .email,
+			          labelKey: LocalizedStringKey("registration_label_password"),
+			          hintKey: LocalizedStringKey("registration_hint_enterPassword"),
+			          fieldValue: $viewModel.password,
+			          focusedField: _focusedField)
 
-			PasswordField(fieldValue: $viewModel.confirmPassword,
-			              labelKey: LocalizedStringKey("registration_label_password"),
-			              hintKey: LocalizedStringKey("registration_hint_enterPassword"))
+			FormField(fieldType: .email,
+			          labelKey: LocalizedStringKey("registration_label_password"),
+			          hintKey: LocalizedStringKey("registration_hint_enterPassword"),
+			          fieldValue: $viewModel.confirmPassword,
+			          focusedField: _focusedField)
 		}
 	}
 

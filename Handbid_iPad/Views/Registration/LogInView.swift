@@ -4,13 +4,10 @@ import NetworkService
 import SwiftUI
 
 struct LogInView<T: PageProtocol>: View {
-	private enum Field: Int, CaseIterable {
-		case email, password
-	}
-
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@StateObject private var viewModel = LogInViewModel(repository: RegisterRepositoryImpl(NetworkingClient()), authManager: AuthManager())
 	@State private var isBlurred = false
+	@FocusState private var focusedField: Field?
 
 	var body: some View {
 		ZStack {
@@ -25,6 +22,12 @@ struct LogInView<T: PageProtocol>: View {
 			isBlurred = false
 			viewModel.resetErrorMessage()
 		}
+		.onTapGesture {
+			if focusedField != nil {
+				focusedField = nil
+				hideKeyboard()
+			}
+		}
 		.keyboardResponsive()
 		.backButtonNavigation(style: .registration)
 		.ignoresSafeArea(.keyboard, edges: .bottom)
@@ -35,7 +38,7 @@ struct LogInView<T: PageProtocol>: View {
 			VStack(spacing: 20) {
 				getLogoImage()
 				getHeaderText()
-				getTextFields()
+				getTextFields2()
 				getErrorMessage()
 				getButtons()
 			}
@@ -58,15 +61,19 @@ struct LogInView<T: PageProtocol>: View {
 			.accessibilityIdentifier("registration_label_login")
 	}
 
-	private func getTextFields() -> some View {
+	private func getTextFields2() -> some View {
 		VStack(spacing: 20) {
-			FormField(fieldValue: $viewModel.email,
+			FormField(fieldType: .email,
 			          labelKey: LocalizedStringKey("registration_label_email"),
-			          hintKey: LocalizedStringKey("registration_hint_email"))
+			          hintKey: LocalizedStringKey("registration_hint_email"),
+			          fieldValue: $viewModel.email,
+			          focusedField: _focusedField)
 
-			PasswordField(fieldValue: $viewModel.password,
-			              labelKey: LocalizedStringKey("registration_label_password"),
-			              hintKey: LocalizedStringKey("registration_hint_enterPassword"))
+			FormField(fieldType: .password,
+			          labelKey: LocalizedStringKey("registration_label_password"),
+			          hintKey: LocalizedStringKey("registration_hint_enterPassword"),
+			          fieldValue: $viewModel.password,
+			          focusedField: _focusedField)
 		}
 	}
 
