@@ -1,3 +1,5 @@
+"global_btn_ok" = "好";
+"global_label_unknownError" = "未知错误";
 "registration_btn_aboutHandbid" = "关于汉德";
 "registration_btn_changePassword" = "更改密码";
 "registration_btn_confirm" = "确认";
@@ -9,11 +11,11 @@
 "registration_hint_enterPassword" = "输入您的密码";
 "registration_label_changePassword" = "更改密码";
 "registration_label_chooseEnvironmentToConnect" = "选择要连接的环境";
-"registration_label_confirmationCodeByEmail" = "我们已通过电子邮件向您发送了确认码，请输入下面的代码。";
 "registration_label_email" = "电子邮件";
 "registration_label_forgotPassword" = "忘记密码";
 "registration_label_login" = "登录";
 "registration_label_password" = "密码";
+"registration_label_resetLinkByEmail" = "我们已通过电子邮件向您发送了密码重置链接。请使用该链接完成重置过程。";
 "registration_label_resetPassword" = "重设密码";
 "registration_label_selectEnvironment" = "选择环境";
 "registration_label_welcomeHandbid" = "欢迎使用\nHandbid 应用程序";

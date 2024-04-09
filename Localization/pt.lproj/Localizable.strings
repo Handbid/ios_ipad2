@@ -1,3 +1,5 @@
+"global_btn_ok" = "Ok";
+"global_label_unknownError" = "Erro desconhecido";
 "registration_btn_aboutHandbid" = "Sobre Handbid";
 "registration_btn_changePassword" = "Alterar a senha";
 "registration_btn_confirm" = "confirme";
@@ -9,11 +11,11 @@
 "registration_hint_enterPassword" = "Coloque sua senha";
 "registration_label_changePassword" = "Alterar a senha";
 "registration_label_chooseEnvironmentToConnect" = "Escolha Ambiente para conectar";
-"registration_label_confirmationCodeByEmail" = "Enviamos a você um código de confirmação por e-mail, digite o código abaixo.";
 "registration_label_email" = "E-mail";
 "registration_label_forgotPassword" = "Esqueceu sua senha";
 "registration_label_login" = "Conecte-se";
 "registration_label_password" = "Senha";
+"registration_label_resetLinkByEmail" = "Enviámos-lhe uma ligação de redefinição da palavra-passe por correio eletrónico. Utilize-a para concluir o processo.";
 "registration_label_resetPassword" = "Redefinir senha";
 "registration_label_selectEnvironment" = "Selecione Ambiente";
 "registration_label_welcomeHandbid" = "Bem-vindo ao aplicativo \nHandbid";

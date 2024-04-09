@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-struct ResetPasswordView<T: PageProtocol>: View {
+struct PasswordResetConfirmationView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@ObservedObject private var viewModel = ResetPasswordViewModel()
 	@FocusState private var isFocused: Bool
@@ -29,8 +29,6 @@ struct ResetPasswordView<T: PageProtocol>: View {
 			VStack(spacing: 20) {
 				getHeaderText()
 				getBodyText()
-				getPinView()
-				getErrorMessage()
 				getButtons()
 			}
 			.blur(radius: isBlurred ? 10 : 0)
@@ -45,43 +43,19 @@ struct ResetPasswordView<T: PageProtocol>: View {
 	}
 
 	private func getBodyText() -> some View {
-		Text(LocalizedStringKey("registration_label_confirmationCodeByEmail"))
+		Text(LocalizedStringKey("registration_label_resetLinkByEmail"))
 			.applyTextStyle(style: .body)
-			.accessibilityIdentifier("registration_label_confirmationCodeByEmail")
-	}
-
-	private func getPinView() -> some View {
-		PinView(pin: $viewModel.pin, onPinComplete: { _ in
-			isBlurred = true
-			coordinator.push(RegistrationPage.changePassword as! T)
-		}, onPinInvalid: {
-			viewModel.validatePin()
-		}, maxLength: 4)
-	}
-
-	private func getErrorMessage() -> some View {
-		VStack(spacing: 10) {
-			if !viewModel.isPinValid {
-				GeometryReader { geometry in
-					Text(viewModel.errorMessage)
-						.applyTextStyle(style: .error)
-						.frame(minHeight: geometry.size.height)
-				}
-			}
-		}
+			.accessibilityIdentifier("registration_label_resetLinkByEmail")
 	}
 
 	private func getButtons() -> some View {
 		VStack(spacing: 10) {
 			Button<Text>.styled(config: .secondaryButtonStyle, action: {
-				if viewModel.isPinValid, viewModel.pin.count == 4 {
-					isBlurred = true
-					coordinator.push(RegistrationPage.changePassword as! T)
-				}
+				coordinator.popToRoot()
 			}) {
-				Text(LocalizedStringKey("registration_btn_confirm"))
+				Text(LocalizedStringKey("global_btn_ok"))
 					.textCase(.uppercase)
-			}.accessibilityIdentifier("registration_btn_confirm")
+			}.accessibilityIdentifier("global_btn_ok")
 		}
 	}
 }

@@ -33,6 +33,7 @@ class LogInViewModel: ObservableObject {
 			/// auth
 			do {
 				authResponse = try await repository.logIn(username: self.email, password: self.password, pin: nil)
+				print(authResponse)
 			}
 			catch {
 				print("Error logging in: \(error)")
