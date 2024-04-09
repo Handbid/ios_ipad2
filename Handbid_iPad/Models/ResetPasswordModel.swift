@@ -1,7 +1,6 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
 import Arrow
-import Foundation
 import NetworkService
 
 struct ResetPasswordModel: Decodable, Encodable, NetworkingJSONDecodable {
