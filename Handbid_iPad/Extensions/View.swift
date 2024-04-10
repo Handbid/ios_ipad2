@@ -29,4 +29,8 @@ extension View {
 	func keyboardResponsive() -> some View {
 		modifier(KeyboardResponsiveModifier())
 	}
+
+	func hideKeyboard() {
+		UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+	}
 }

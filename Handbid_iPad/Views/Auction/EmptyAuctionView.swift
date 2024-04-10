@@ -8,8 +8,11 @@ struct EmptyAuctionView<T: PageProtocol>: View {
 
 	var body: some View {
 		Button("log out") {
-			authManager.clearKeychainAndLogOut(logOut: true)
-			NotificationCenter.default.post(name: .userLoggedOut, object: nil)
+			do {
+				authManager.clearKeychainAndLogOut(logOut: true)
+				NotificationCenter.default.post(name: .userLoggedOut, object: nil)
+				coordinator.popToRoot()
+			}
 		}
 	}
 }

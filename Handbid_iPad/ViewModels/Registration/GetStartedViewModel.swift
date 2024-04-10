@@ -5,7 +5,11 @@ import NetworkService
 
 class GetStartedViewModel: ObservableObject {
 	private var cancellables = Set<AnyCancellable>()
-	private var repository: LogInAnonymously = RegisterRepositoryImpl(NetworkingClient())
+	private let repository: LogInAnonymously
+
+	init(repository: LogInAnonymously) {
+		self.repository = repository
+	}
 
 	func openHandbidWebsite() {
 		if let url = URL(string: AppInfoProvider.aboutHandbidLink) {
@@ -20,7 +24,7 @@ class GetStartedViewModel: ObservableObject {
 				case .finished:
 					break
 				case let .failure(error):
-					print("Error fetching app version: \(error)")
+					print("Error logging in anonymously: \(error)")
 				}
 			}, receiveValue: { version in
 				print(version)

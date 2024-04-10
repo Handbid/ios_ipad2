@@ -13,10 +13,18 @@
   },
   "testTargets" : [
     {
+      "enabled" : false,
       "target" : {
         "containerPath" : "container:Handbid_iPad.xcodeproj",
         "identifier" : "8C1E00C32BA823C90094FAA7",
         "name" : "Handbid_iPadUITests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Handbid_iPad.xcodeproj",
+        "identifier" : "8C1E00B92BA823C90094FAA7",
+        "name" : "Handbid_iPadTests"
       }
     }
   ],

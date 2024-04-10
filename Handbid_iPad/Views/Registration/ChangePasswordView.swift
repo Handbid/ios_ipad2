@@ -1,11 +1,10 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
-import NetworkService
 import SwiftUI
 
-struct LogInView<T: PageProtocol>: View {
+struct ChangePasswordView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
-	@StateObject private var viewModel = LogInViewModel(repository: RegisterRepositoryImpl(NetworkingClient()), authManager: AuthManager())
+	@ObservedObject private var viewModel = ChangePasswordViewModel()
 	@State private var isBlurred = false
 	@FocusState private var focusedField: Field?
 
@@ -13,14 +12,11 @@ struct LogInView<T: PageProtocol>: View {
 		ZStack {
 			content
 		}
-		.background {
-			backgroundView(for: .color(.accentViolet))
-		}.alert(isPresented: $viewModel.showError) {
-			Alert(title: Text("Error"), message: Text(viewModel.errorMessage), dismissButton: .default(Text("OK")))
-		}
 		.onAppear {
 			isBlurred = false
-			viewModel.resetErrorMessage()
+		}
+		.background {
+			backgroundView(for: .color(.accentViolet))
 		}
 		.onTapGesture {
 			if focusedField != nil {
@@ -36,7 +32,6 @@ struct LogInView<T: PageProtocol>: View {
 	private var content: some View {
 		OverlayInternalView(cornerRadius: 40) {
 			VStack(spacing: 20) {
-				getLogoImage()
 				getHeaderText()
 				getTextFields()
 				getErrorMessage()
@@ -47,39 +42,31 @@ struct LogInView<T: PageProtocol>: View {
 		}
 	}
 
-	private func getLogoImage() -> some View {
-		Image("LogoSplash")
-			.resizable()
-			.scaledToFit()
-			.frame(height: 40)
-			.accessibilityIdentifier("AppLogo")
-	}
-
 	private func getHeaderText() -> some View {
-		Text(LocalizedStringKey("registration_label_login"))
+		Text(LocalizedStringKey("registration_label_changePassword"))
 			.applyTextStyle(style: .headerTitle)
-			.accessibilityIdentifier("registration_label_login")
+			.accessibilityIdentifier("registration_label_changePassword")
 	}
 
 	private func getTextFields() -> some View {
 		VStack(spacing: 20) {
 			FormField(fieldType: .email,
-			          labelKey: LocalizedStringKey("registration_label_email"),
-			          hintKey: LocalizedStringKey("registration_hint_email"),
-			          fieldValue: $viewModel.email,
-			          focusedField: _focusedField)
-
-			FormField(fieldType: .password,
 			          labelKey: LocalizedStringKey("registration_label_password"),
 			          hintKey: LocalizedStringKey("registration_hint_enterPassword"),
 			          fieldValue: $viewModel.password,
+			          focusedField: _focusedField)
+
+			FormField(fieldType: .email,
+			          labelKey: LocalizedStringKey("registration_label_password"),
+			          hintKey: LocalizedStringKey("registration_hint_enterPassword"),
+			          fieldValue: $viewModel.confirmPassword,
 			          focusedField: _focusedField)
 		}
 	}
 
 	private func getErrorMessage() -> some View {
 		VStack(spacing: 10) {
-			if !viewModel.isFormValid {
+			if !viewModel.isCorrectPassword {
 				GeometryReader { geometry in
 					Text(viewModel.errorMessage)
 						.applyTextStyle(style: .error)
@@ -92,18 +79,14 @@ struct LogInView<T: PageProtocol>: View {
 	private func getButtons() -> some View {
 		VStack(spacing: 10) {
 			Button<Text>.styled(config: .secondaryButtonStyle, action: {
-				viewModel.logIn()
+				viewModel.validatePassword()
+				if viewModel.isCorrectPassword {
+					// coordinator.push(RegistrationPage.resetPassword as! T)
+				}
 			}) {
-				Text(LocalizedStringKey("registration_btn_login"))
+				Text(LocalizedStringKey("registration_btn_changePassword"))
 					.textCase(.uppercase)
-			}.accessibilityIdentifier("registration_btn_login")
-
-			Button<Text>.styled(config: .fourthButtonStyle, action: {
-				isBlurred = true
-				coordinator.push(RegistrationPage.forgotPassword as! T)
-			}) {
-				Text(LocalizedStringKey("registration_btn_password"))
-			}.accessibilityIdentifier("registration_btn_password")
+			}.accessibilityIdentifier("registration_btn_changePassword")
 		}
 	}
 }
