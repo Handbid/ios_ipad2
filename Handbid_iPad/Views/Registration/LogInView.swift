@@ -38,7 +38,7 @@ struct LogInView<T: PageProtocol>: View {
 			VStack(spacing: 20) {
 				getLogoImage()
 				getHeaderText()
-				getTextFields2()
+				getTextFields()
 				getErrorMessage()
 				getButtons()
 			}
@@ -61,7 +61,7 @@ struct LogInView<T: PageProtocol>: View {
 			.accessibilityIdentifier("registration_label_login")
 	}
 
-	private func getTextFields2() -> some View {
+	private func getTextFields() -> some View {
 		VStack(spacing: 20) {
 			FormField(fieldType: .email,
 			          labelKey: LocalizedStringKey("registration_label_email"),
