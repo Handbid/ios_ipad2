@@ -9,12 +9,7 @@ extension String {
 
 	func isPasswordSecure() -> Bool {
 		let minPasswordLength = 8
-		let uppercaseLetterCharacterSet = CharacterSet.uppercaseLetters
-		let specialCharacterSet = CharacterSet(charactersIn: "!@#$%^&*()_-+=~`|/.,:;<>[]{}")
-
-		return count >= minPasswordLength &&
-			rangeOfCharacter(from: uppercaseLetterCharacterSet) != nil &&
-			rangeOfCharacter(from: specialCharacterSet) != nil
+		return count >= minPasswordLength
 	}
 
 	func isValidPin() -> Bool {

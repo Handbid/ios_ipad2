@@ -8,7 +8,7 @@ PODS:
   - SwiftFormat/CLI (0.53.5)
 
 DEPENDENCIES:
-  - Arrow (~> 5.1.1)
+  - Arrow
   - KeychainAccess
   - ProgressIndicatorView (~> 1.0.0)
   - RecaptchaEnterprise (= 18.5.0-beta02)
@@ -32,6 +32,6 @@ SPEC CHECKSUMS:
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
   SwiftFormat: 57d49d9a63f4249c625b1e623fb9fde0c30cae9d
 
-PODFILE CHECKSUM: 90459fe64bd12c109392a2735303955a051a1e7f
+PODFILE CHECKSUM: ed6538ebe84b23ad4c5fc2a8b9a613e8adbf568a
 
 COCOAPODS: 1.15.2
