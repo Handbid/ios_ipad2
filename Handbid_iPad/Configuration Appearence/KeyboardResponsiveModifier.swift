@@ -4,7 +4,6 @@ import SwiftUI
 
 struct KeyboardResponsiveModifier: ViewModifier {
 	@State private var offset: CGFloat = 0
-	@FocusState var isFocused: Bool
 
 	func body(content: Content) -> some View {
 		content

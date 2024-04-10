@@ -15,7 +15,6 @@
 		8C0007CC2BAC8D4400AAEBA0 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00F72BA82A9F0094FAA7 /* Debug.xcconfig */; };
 		8C0007CD2BAC8D4500AAEBA0 /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00F82BA82AAC0094FAA7 /* Release.xcconfig */; };
 		8C0007D32BAC976700AAEBA0 /* AppInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0007C22BAC820500AAEBA0 /* AppInfoProvider.swift */; };
-		8C1CC5332BC3D77100AF80F4 /* Handbid_iPadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1CC5322BC3D77100AF80F4 /* Handbid_iPadTests.swift */; };
 		8C1CC5392BC3D84F00AF80F4 /* AuthModel_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1CC5172BC2480D00AF80F4 /* AuthModel_Test.swift */; };
 		8C1CC53A2BC3D85300AF80F4 /* AppVersionModel_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1CC5182BC2480D00AF80F4 /* AppVersionModel_Test.swift */; };
 		8C1CC53B2BC3D89200AF80F4 /* GetStartedViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1CC51D2BC2480D00AF80F4 /* GetStartedViewModel_Tests.swift */; };
@@ -76,7 +75,6 @@
 		8CFE2CC72BBE84DF00AF60F1 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFE2CC62BBE84DF00AF60F1 /* NotificationName.swift */; };
 		CE073ED82BB42D710079F342 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE073ED72BB42D710079F342 /* View.swift */; };
 		CE073EE42BB4809C0079F342 /* FormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE073EE32BB4809C0079F342 /* FormField.swift */; };
-		CE073EE62BB485CD0079F342 /* PasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE073EE52BB485CD0079F342 /* PasswordField.swift */; };
 		CE0CEE7F2BBEB39F004A27FD /* ResetPasswordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CEE7E2BBEB39F004A27FD /* ResetPasswordRepository.swift */; };
 		CE0CEE812BBED0B4004A27FD /* ResetPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CEE802BBED0B4004A27FD /* ResetPasswordModel.swift */; };
 		CE34FB3F2BB1963300701D2A /* OverlayInternalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE34FB3E2BB1963300701D2A /* OverlayInternalView.swift */; };
@@ -126,7 +124,6 @@
 		8C1CC5212BC2480D00AF80F4 /* MockLogInAnonymously.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockLogInAnonymously.swift; sourceTree = "<group>"; };
 		8C1CC5222BC2480D00AF80F4 /* MockChooseEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockChooseEnvironment.swift; sourceTree = "<group>"; };
 		8C1CC5302BC3D77100AF80F4 /* Handbid_iPadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8C1CC5322BC3D77100AF80F4 /* Handbid_iPadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handbid_iPadTests.swift; sourceTree = "<group>"; };
 		8C1E00AD2BA823C80094FAA7 /* MainAppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppCoordinator.swift; sourceTree = "<group>"; };
 		8C1E00B12BA823C90094FAA7 /* iPadAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = iPadAssets.xcassets; sourceTree = "<group>"; };
 		8C1E00F02BA82A130094FAA7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -191,7 +188,6 @@
 		9B8BBA64C6D22165E2DF351D /* Pods-Handbid_iPadTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Handbid_iPadTests.release.xcconfig"; path = "Target Support Files/Pods-Handbid_iPadTests/Pods-Handbid_iPadTests.release.xcconfig"; sourceTree = "<group>"; };
 		CE073ED72BB42D710079F342 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		CE073EE32BB4809C0079F342 /* FormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormField.swift; sourceTree = "<group>"; };
-		CE073EE52BB485CD0079F342 /* PasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordField.swift; sourceTree = "<group>"; };
 		CE0CEE7E2BBEB39F004A27FD /* ResetPasswordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordRepository.swift; sourceTree = "<group>"; };
 		CE0CEE802BBED0B4004A27FD /* ResetPasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordModel.swift; sourceTree = "<group>"; };
 		CE34FB3E2BB1963300701D2A /* OverlayInternalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayInternalView.swift; sourceTree = "<group>"; };
@@ -286,7 +282,6 @@
 			children = (
 				8C1CC5192BC2480D00AF80F4 /* ViewModel_Tests */,
 				8C1CC5162BC2480D00AF80F4 /* Model_Tests */,
-				8C1CC5322BC3D77100AF80F4 /* Handbid_iPadTests.swift */,
 			);
 			path = Handbid_iPadTests;
 			sourceTree = "<group>";
@@ -875,7 +870,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C1CC53D2BC3D8AC00AF80F4 /* MockChooseEnvironment.swift in Sources */,
-				8C1CC5332BC3D77100AF80F4 /* Handbid_iPadTests.swift in Sources */,
 				8C1CC53C2BC3D89C00AF80F4 /* MockLogInAnonymously.swift in Sources */,
 				8C1CC5392BC3D84F00AF80F4 /* AuthModel_Test.swift in Sources */,
 				8C1CC53E2BC3D8AE00AF80F4 /* MockRegisterRepository.swift in Sources */,
