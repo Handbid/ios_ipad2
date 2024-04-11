@@ -13,15 +13,6 @@ struct AppVersionModel: Decodable, NetworkingJSONDecodable {
 }
 
 extension AppVersionModel: ArrowParsable {
-	init(json: [String: Any]) {
-		self.id = json["appVersion.id"] as? Int
-		self.os = json["appVersion.os"] as? String
-		self.appName = json["appVersion.appName"] as? String
-		self.minimumVersion = json["appVersion.minimumVersion"] as? String
-		self.currentVersion = json["appVersion.currentVersion"] as? String
-		self.demoModeEnabled = json["demoModeEnabled"] as? Int
-	}
-
 	mutating func deserialize(_ json: JSON) {
 		id <-- json["appVersion.id"]
 		os <-- json["appVersion.os"]
