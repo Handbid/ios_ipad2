@@ -1,10 +1,11 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
+import NetworkService
 import SwiftUI
 
 struct ForgotPasswordView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
-	@ObservedObject private var viewModel = ForgotPasswordViewModel()
+	@ObservedObject private var viewModel = ForgotPasswordViewModel(repository: ResetPasswordRepositoryImpl(NetworkingClient()))
 	@State private var isBlurred = false
 	@FocusState private var focusedField: Field?
 
