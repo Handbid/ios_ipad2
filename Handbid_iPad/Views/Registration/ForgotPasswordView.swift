@@ -27,10 +27,7 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 			}
 		}
 		.onTapGesture {
-			if focusedField != nil {
-				focusedField = nil
-				hideKeyboard()
-			}
+			hideKeyboard()
 		}
 		.keyboardResponsive()
 		.backButtonNavigation(style: .registration)
