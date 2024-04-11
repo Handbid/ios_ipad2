@@ -3,7 +3,7 @@
 import Arrow
 import NetworkService
 
-struct ResetPasswordModel: Decodable, Encodable, NetworkingJSONDecodable {
+struct ResetPasswordModel: Decodable, NetworkingJSONDecodable {
 	var success: Bool?
 	var message: String?
 }
