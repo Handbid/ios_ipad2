@@ -1,6 +1,5 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
-import NetworkService
 import SwiftUI
 
 struct PasswordResetConfirmationView<T: PageProtocol>: View {
