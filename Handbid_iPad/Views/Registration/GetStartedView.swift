@@ -9,6 +9,7 @@ struct GetStartedView<T: PageProtocol>: View {
 	@ObservedObject private var viewModel = GetStartedViewModel(repository: RegisterRepositoryImpl(NetworkingClient()))
 	@State private var contentLoaded = false
 	@State private var isBlurred = false
+	let inspection = Inspection<Self>()
 
 	var body: some View {
 		ZStack {
@@ -22,6 +23,9 @@ struct GetStartedView<T: PageProtocol>: View {
 				contentLoaded = true
 			}
 			isBlurred = false
+		}
+		.onReceive(inspection.notice) {
+			inspection.visit(self, $0)
 		}
 		.ignoresSafeArea(.keyboard, edges: .bottom)
 	}

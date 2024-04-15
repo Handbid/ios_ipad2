@@ -1,5 +1,6 @@
 "global_btn_ok" = "Ok";
 "global_label_unknownError" = "Erreur inconnue";
+"login_label_incorrectCredentials" = "Courriel ou mot de passe incorrect";
 "registration_btn_aboutHandbid" = "À propos de Handbid";
 "registration_btn_changePassword" = "Changer le mot de passe";
 "registration_btn_confirm" = "Confirmer";
@@ -13,8 +14,10 @@
 "registration_label_chooseEnvironmentToConnect" = "Choisissez Environnement pour vous connecter";
 "registration_label_email" = "E-mail";
 "registration_label_forgotPassword" = "Mot de passe oublié";
+"registration_label_incorrectEmail" = "Format d\'e-mail incorrect";
 "registration_label_login" = "Se connecter";
 "registration_label_password" = "Mot de passe";
+"registration_label_passwordRequirements" = "Le mot de passe ne répond pas aux exigences";
 "registration_label_resetLinkByEmail" = "Nous vous avons envoyé un lien de réinitialisation du mot de passe par courriel. Utilisez-le pour terminer la procédure.";
 "registration_label_resetPassword" = "réinitialiser le mot de passe";
 "registration_label_selectEnvironment" = "Sélectionnez l\'environnement";

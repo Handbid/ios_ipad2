@@ -1,5 +1,6 @@
 "global_btn_ok" = "Ok";
 "global_label_unknownError" = "Erro desconhecido";
+"login_label_incorrectCredentials" = "Correio eletrónico ou palavra-passe incorrectos";
 "registration_btn_aboutHandbid" = "Sobre Handbid";
 "registration_btn_changePassword" = "Alterar a senha";
 "registration_btn_confirm" = "confirme";
@@ -13,8 +14,10 @@
 "registration_label_chooseEnvironmentToConnect" = "Escolha Ambiente para conectar";
 "registration_label_email" = "E-mail";
 "registration_label_forgotPassword" = "Esqueceu sua senha";
+"registration_label_incorrectEmail" = "Formato incorreto do correio eletrónico";
 "registration_label_login" = "Conecte-se";
 "registration_label_password" = "Senha";
+"registration_label_passwordRequirements" = "A palavra-passe não cumpre os requisitos";
 "registration_label_resetLinkByEmail" = "Enviámos-lhe uma ligação de redefinição da palavra-passe por correio eletrónico. Utilize-a para concluir o processo.";
 "registration_label_resetPassword" = "Redefinir senha";
 "registration_label_selectEnvironment" = "Selecione Ambiente";
