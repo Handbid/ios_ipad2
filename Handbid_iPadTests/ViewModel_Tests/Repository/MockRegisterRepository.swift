@@ -1,21 +1,22 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
+import Arrow
 @testable import Handbid_iPad
+import XCTest
 
 class MockRegisterRepository: RegisterRepository {
 	var logInCalled = false
 
 	func getAppVersion() async throws -> Handbid_iPad.AppVersionModel {
-		let json: [String: Any] = [
-			"appVersion.id": 1,
-			"appVersion.os": "iOS",
-			"appVersion.appName": "Handbid",
-			"appVersion.minimumVersion": "1.0",
-			"appVersion.currentVersion": "2.0",
-			"demoModeEnabled": 1,
-		]
-		logInCalled = true
-		return AppVersionModel(json: json)
+		let appVersionModel = AppVersionModel(
+			demoModeEnabled: 1,
+			id: 1,
+			os: "iOS",
+			appName: "Handbid",
+			minimumVersion: "1.0",
+			currentVersion: "2.0"
+		)
+		return appVersionModel
 	}
 
 	func getReCaptchaToken() async throws -> String {

@@ -4,7 +4,6 @@ import SwiftUI
 
 struct PasswordResetConfirmationView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
-	@ObservedObject private var viewModel = ResetPasswordViewModel()
 	@FocusState private var isFocused: Bool
 	@State private var isBlurred = false
 
@@ -18,7 +17,6 @@ struct PasswordResetConfirmationView<T: PageProtocol>: View {
 		.keyboardResponsive()
 		.onAppear {
 			isBlurred = false
-			viewModel.resetErrorMessage()
 		}
 		.backButtonNavigation(style: .registration)
 		.ignoresSafeArea(.keyboard, edges: .bottom)

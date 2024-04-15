@@ -15,7 +15,8 @@ struct LogInView<T: PageProtocol>: View {
 		}
 		.background {
 			backgroundView(for: .color(.accentViolet))
-		}.alert(isPresented: $viewModel.showError) {
+		}
+		.alert(isPresented: $viewModel.showError) {
 			Alert(title: Text("Error"), message: Text(viewModel.errorMessage), dismissButton: .default(Text("OK")))
 		}
 		.onAppear {
@@ -23,10 +24,7 @@ struct LogInView<T: PageProtocol>: View {
 			viewModel.resetErrorMessage()
 		}
 		.onTapGesture {
-			if focusedField != nil {
-				focusedField = nil
-				hideKeyboard()
-			}
+			hideKeyboard()
 		}
 		.keyboardResponsive()
 		.backButtonNavigation(style: .registration)

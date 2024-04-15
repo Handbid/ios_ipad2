@@ -1,5 +1,6 @@
 "global_btn_ok" = "Ok";
 "global_label_unknownError" = "Unbekannter Fehler";
+"login_label_incorrectCredentials" = "Falsche E-Mail oder falsches Passwort";
 "registration_btn_aboutHandbid" = "Über Handbid";
 "registration_btn_changePassword" = "Kennwort ändern";
 "registration_btn_confirm" = "Bestätigen";
@@ -13,8 +14,10 @@
 "registration_label_chooseEnvironmentToConnect" = "Wählen Sie „Umgebung“, um eine Verbindung herzustellen";
 "registration_label_email" = "Email";
 "registration_label_forgotPassword" = "Passwort vergessen";
+"registration_label_incorrectEmail" = "Falsches E-Mail-Format";
 "registration_label_login" = "Anmeldung";
 "registration_label_password" = "Passwort";
+"registration_label_passwordRequirements" = "Das Passwort entspricht nicht den Anforderungen";
 "registration_label_resetLinkByEmail" = "Wir haben Ihnen per E-Mail einen Link zum Zurücksetzen des Passworts geschickt. Verwenden Sie ihn, um den Vorgang abzuschließen.";
 "registration_label_resetPassword" = "Passwort zurücksetzen";
 "registration_label_selectEnvironment" = "Wählen Sie Umgebung aus";

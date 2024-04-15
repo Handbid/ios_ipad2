@@ -146,25 +146,22 @@ public class NetworkingRequest: NSObject, URLSessionTaskDelegate {
 
 	private func getURLWithParams() -> String {
 		let urlString = baseURL + route
-		if params.isEmpty { return urlString }
-		guard let url = URL(string: urlString) else {
+		guard !params.isEmpty, let url = URL(string: urlString) else {
 			return urlString
 		}
-		if var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) {
-			var queryItems = urlComponents.queryItems ?? [URLQueryItem]()
-			for param in params {
-				// arrayParam[] syntax
-				if let array = param.value as? [CustomStringConvertible] {
-					for item in array {
-						queryItems.append(URLQueryItem(name: "\(param.key)[]", value: "\(item)"))
-					}
-				}
-				queryItems.append(URLQueryItem(name: param.key, value: "\(param.value)"))
-			}
-			urlComponents.queryItems = queryItems
-			return urlComponents.url?.absoluteString ?? urlString
+
+		guard var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
+			return urlString
 		}
-		return urlString
+
+		urlComponents.queryItems = params.map { key, value in
+			URLQueryItem(name: key, value: "\(value)")
+		}
+
+		let query = params.asPercentEncodedString()
+		urlComponents.percentEncodedQuery = query
+
+		return urlComponents.url?.absoluteString ?? urlString
 	}
 
 	func buildURLRequest() -> URLRequest? {
