@@ -299,10 +299,10 @@
 				8C1E00C72BA823C90094FAA7 /* Handbid_iPadUITests */,
 				8C1E00EE2BA82A130094FAA7 /* Localization */,
 				B64BA6889C440647A69DCC9C /* Pods */,
-				8CEA29082BB345F8005E3B33 /* Handbid_iPadUITests.xctest */,
 				8C1CC5312BC3D77100AF80F4 /* Handbid_iPadTests */,
 				250FEEB1DC942573F1D23390 /* Frameworks */,
 				8C1CC5302BC3D77100AF80F4 /* Handbid_iPadTests.xctest */,
+				8CEA29082BB345F8005E3B33 /* Handbid_iPadUITests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
