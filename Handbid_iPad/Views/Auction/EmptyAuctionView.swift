@@ -7,31 +7,55 @@ protocol TopBarContentFactory {
 	func createTopBarContent(isSidebarVisible: Binding<Bool>) -> TopBarContent
 }
 
-struct AuctionTopBarContentFactory: TopBarContentFactory {
+class AuctionTopBarContentFactory: TopBarContentFactory {
+	private var viewModel: AuctionViewModel
+
+	init(viewModel: AuctionViewModel) {
+		self.viewModel = viewModel
+	}
+
 	func createTopBarContent(isSidebarVisible: Binding<Bool>) -> TopBarContent {
-		AuctionTopBarContent(isSidebarVisible: isSidebarVisible)
+		AuctionTopBarContent(isSidebarVisible: isSidebarVisible, onSearch: viewModel.searchData, onFilter: viewModel.filterData, onRefresh: viewModel.refreshData)
 	}
 }
 
-struct PaddleTopBarContentFactory: TopBarContentFactory {
+class PaddleTopBarContentFactory: TopBarContentFactory {
+	private var viewModel: PaddleViewModel
+
+	init(viewModel: PaddleViewModel) {
+		self.viewModel = viewModel
+	}
+
 	func createTopBarContent(isSidebarVisible: Binding<Bool>) -> TopBarContent {
 		PaddleTopBarContent(isSidebarVisible: isSidebarVisible)
 	}
 }
 
-struct MyBidsTopBarContentFactory: TopBarContentFactory {
+class MyBidsTopBarContentFactory: TopBarContentFactory {
+	private var viewModel: MyBidsViewModel
+
+	init(viewModel: MyBidsViewModel) {
+		self.viewModel = viewModel
+	}
+
 	func createTopBarContent(isSidebarVisible: Binding<Bool>) -> TopBarContent {
 		MyBidsTopBarContent(isSidebarVisible: isSidebarVisible)
 	}
 }
 
-struct ManagerTopBarContentFactory: TopBarContentFactory {
+class ManagerTopBarContentFactory: TopBarContentFactory {
+	private var viewModel: ManagerViewModel
+
+	init(viewModel: ManagerViewModel) {
+		self.viewModel = viewModel
+	}
+
 	func createTopBarContent(isSidebarVisible: Binding<Bool>) -> TopBarContent {
-		ManagerTopBarContent(isSidebarVisible: isSidebarVisible)
+		ManagerTopBarContent(isSidebarVisible: isSidebarVisible, onAllAuctions: viewModel.allAuction)
 	}
 }
 
-struct DefaultTopBarContentFactory: TopBarContentFactory {
+class DefaultTopBarContentFactory: TopBarContentFactory {
 	func createTopBarContent(isSidebarVisible: Binding<Bool>) -> TopBarContent {
 		DefaultTopBarContent(isSidebarVisible: isSidebarVisible)
 	}
@@ -42,6 +66,11 @@ struct EmptyAuctionView<T: PageProtocol>: View {
 	@StateObject private var authManager = AuthManager()
 	@State private var selectedView: String = "Auction"
 	@State private var isSidebarVisible: Bool = true
+
+	@StateObject private var auctionViewModel = AuctionViewModel()
+	@StateObject private var paddleViewModel = PaddleViewModel()
+	@StateObject private var myBidsViewModel = MyBidsViewModel()
+	@StateObject private var managerViewModel = ManagerViewModel()
 
 	var body: some View {
 		VStack(spacing: 0) {
@@ -61,133 +90,136 @@ struct EmptyAuctionView<T: PageProtocol>: View {
 	}
 
 	func topBarContent(for view: String) -> TopBarContent {
-		let factory: TopBarContentFactory = switch view {
+		switch view {
 		case "Auction":
-			AuctionTopBarContentFactory()
+			AuctionTopBarContentFactory(viewModel: auctionViewModel).createTopBarContent(isSidebarVisible: $isSidebarVisible)
 		case "Paddle":
-			PaddleTopBarContentFactory()
+			PaddleTopBarContentFactory(viewModel: paddleViewModel).createTopBarContent(isSidebarVisible: $isSidebarVisible)
 		case "My Bids":
-			MyBidsTopBarContentFactory()
+			MyBidsTopBarContentFactory(viewModel: myBidsViewModel).createTopBarContent(isSidebarVisible: $isSidebarVisible)
 		case "Manager":
-			ManagerTopBarContentFactory()
+			ManagerTopBarContentFactory(viewModel: managerViewModel).createTopBarContent(isSidebarVisible: $isSidebarVisible)
 		default:
-			DefaultTopBarContentFactory()
+			DefaultTopBarContentFactory().createTopBarContent(isSidebarVisible: $isSidebarVisible)
 		}
-		return factory.createTopBarContent(isSidebarVisible: $isSidebarVisible)
 	}
 }
 
 protocol TopBarContent {
-	var leftView: AnyView { get }
+	var leftViews: [AnyView] { get }
 	var centerView: AnyView { get }
-	var rightView: AnyView { get }
+	var rightViews: [AnyView] { get }
 }
 
 struct AuctionTopBarContent: TopBarContent {
 	@Binding var isSidebarVisible: Bool
+	var onSearch: () -> Void
+	var onFilter: () -> Void
+	var onRefresh: () -> Void
 
-	var leftView: AnyView {
-		AnyView(Button(action: {
-			isSidebarVisible.toggle()
-		}) {
-			Image(systemName: "line.horizontal.3")
-
-		})
+	var leftViews: [AnyView] {
+		[
+			AnyView(Button(action: { isSidebarVisible.toggle() }) {
+				Image(systemName: "line.horizontal.3")
+			}),
+		]
 	}
 
 	var centerView: AnyView {
-		AnyView(VStack {
-			Text("Auction Name")
-			Text("Date of Auction").font(.subheadline)
-		})
+		AnyView(Text("Auction Details"))
 	}
 
-	var rightView: AnyView {
-		AnyView(HStack {
-			Button(action: {}) { Image(systemName: "magnifyingglass") }
-			Button(action: {}) { Image(systemName: "line.horizontal.3.decrease.circle") }
-			Button(action: {}) { Image(systemName: "arrow.clockwise") }
-		})
+	var rightViews: [AnyView] {
+		[
+			AnyView(HStack {
+				Button(action: onSearch) { Image(systemName: "magnifyingglass") }
+				Button(action: onFilter) { Image(systemName: "line.horizontal.3.decrease.circle") }
+				Button(action: onRefresh) { Image(systemName: "arrow.clockwise") }
+			}),
+		]
 	}
 }
 
 struct PaddleTopBarContent: TopBarContent {
 	@Binding var isSidebarVisible: Bool
 
-	var leftView: AnyView {
-		AnyView(Button(action: {
+	var leftViews: [AnyView] {
+		[AnyView(Button(action: {
 			isSidebarVisible.toggle()
 		}) {
 			Image(systemName: "line.horizontal.3")
-		})
+		})]
 	}
 
 	var centerView: AnyView {
 		AnyView(Text("Paddle Number"))
 	}
 
-	var rightView: AnyView {
-		AnyView(EmptyView())
+	var rightViews: [AnyView] {
+		[]
 	}
 }
 
 struct MyBidsTopBarContent: TopBarContent {
 	@Binding var isSidebarVisible: Bool
 
-	var leftView: AnyView {
-		AnyView(Button(action: {
+	var leftViews: [AnyView] {
+		[AnyView(Button(action: {
 			isSidebarVisible.toggle()
 		}) {
 			Image(systemName: "line.horizontal.3")
-		})
+		})]
 	}
 
 	var centerView: AnyView {
 		AnyView(Text("My Bids"))
 	}
 
-	var rightView: AnyView {
-		AnyView(EmptyView())
+	var rightViews: [AnyView] {
+		[]
 	}
 }
 
 struct ManagerTopBarContent: TopBarContent {
 	@Binding var isSidebarVisible: Bool
+	var onAllAuctions: () -> Void
 
-	var leftView: AnyView {
-		AnyView(Button(action: {
+	var leftViews: [AnyView] {
+		[AnyView(Button(action: {
 			isSidebarVisible.toggle()
 		}) {
 			Image(systemName: "line.horizontal.3")
-		})
+		})]
 	}
 
 	var centerView: AnyView {
 		AnyView(Text("Auction Name"))
 	}
 
-	var rightView: AnyView {
-		AnyView(Button(action: {}) { Image(systemName: "square.stack.3d.down.right") })
+	var rightViews: [AnyView] {
+		[AnyView(HStack {
+			Button(action: onAllAuctions) { Image(systemName: "square.stack.3d.down.right") }
+		})]
 	}
 }
 
 struct DefaultTopBarContent: TopBarContent {
 	@Binding var isSidebarVisible: Bool
 
-	var leftView: AnyView {
-		AnyView(Button(action: {
+	var leftViews: [AnyView] {
+		[AnyView(Button(action: {
 			isSidebarVisible.toggle()
 		}) {
 			Image(systemName: "line.horizontal.3")
-		})
+		})]
 	}
 
 	var centerView: AnyView {
 		AnyView(Text("Select a View"))
 	}
 
-	var rightView: AnyView {
-		AnyView(EmptyView())
+	var rightViews: [AnyView] {
+		[]
 	}
 }
 
@@ -197,11 +229,11 @@ struct TopBar: View {
 
 	var body: some View {
 		HStack {
-			content.leftView.padding(.leading, 10) // Dodaj padding po lewej stronie
+			ForEach(Array(content.leftViews.enumerated()), id: \.offset) { _, view in view }
 			Spacer()
 			content.centerView
 			Spacer()
-			content.rightView.padding(.trailing, 10) // Dodaj padding po prawej stronie
+			ForEach(Array(content.rightViews.enumerated()), id: \.offset) { _, view in view }
 		}
 		.padding(.vertical, 10)
 		.frame(height: TopBar.barHeight)
@@ -228,7 +260,7 @@ struct Sidebar: View {
 				selectedView = "Manager"
 			}
 		}
-		.padding(10) // Zastosuj padding do całego VStack
+		.padding(10)
 		.frame(minWidth: 200, idealWidth: 250, maxWidth: 300, maxHeight: .infinity)
 		.background(Color.blue)
 		.foregroundColor(.white)
@@ -264,20 +296,30 @@ protocol ViewModelProtocol: ObservableObject {
 	var title: String { get }
 }
 
-class AuctionViewModel: ViewModelProtocol {
-	var title = "Auction Details"
+class AuctionViewModel: ObservableObject, ViewModelProtocol {
+	@Published var title = "Auction Details"
+	@Published var auctionDate = "Next Auction: Tomorrow"
+
+	func searchData() {}
+	func filterData() {}
+	func refreshData() {}
 }
 
-class PaddleViewModel: ViewModelProtocol {
-	var title = "Paddle Information"
+class PaddleViewModel: ObservableObject, ViewModelProtocol {
+	@Published var title = "Paddle Information"
+	@Published var paddleNumber = "Paddle #102"
 }
 
-class MyBidsViewModel: ViewModelProtocol {
-	var title = "My Bids"
+class MyBidsViewModel: ObservableObject, ViewModelProtocol {
+	@Published var title = "My Bids"
+	@Published var numberOfBids = "You have 5 active bids"
 }
 
-class ManagerViewModel: ViewModelProtocol {
-	var title = "Auction Manager"
+class ManagerViewModel: ObservableObject, ViewModelProtocol {
+	@Published var title = "Auction Manager"
+	@Published var status = "Next auction setup in progress"
+
+	func allAuction() {}
 }
 
 protocol ContentViewProtocol: View {}
