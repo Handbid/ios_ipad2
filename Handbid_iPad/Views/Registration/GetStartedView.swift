@@ -11,6 +11,12 @@ struct GetStartedView<T: PageProtocol>: View {
 	@State private var isBlurred = false
 	let inspection = Inspection<Self>()
 
+	init() {}
+
+	init(viewModel: GetStartedViewModel) {
+		self.viewModel = viewModel
+	}
+
 	var body: some View {
 		ZStack {
 			if contentLoaded { content } else { content }

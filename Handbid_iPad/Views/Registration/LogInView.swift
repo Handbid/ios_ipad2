@@ -5,9 +5,16 @@ import SwiftUI
 
 struct LogInView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
-	@StateObject private var viewModel = LogInViewModel(repository: RegisterRepositoryImpl(NetworkingClient()), authManager: AuthManager())
+	@ObservedObject private var viewModel: LogInViewModel
 	@State private var isBlurred = false
-	@FocusState private var focusedField: Field?
+	@FocusState var focusedField: Field?
+	let inspection = Inspection<Self>()
+
+	init(viewModel: LogInViewModel = LogInViewModel(repository: RegisterRepositoryImpl(NetworkingClient()),
+	                                                authManager: AuthManager()))
+	{
+		self.viewModel = viewModel
+	}
 
 	var body: some View {
 		ZStack {
@@ -15,10 +22,16 @@ struct LogInView<T: PageProtocol>: View {
 		}
 		.background {
 			backgroundView(for: .color(.accentViolet))
-		}.alert(isPresented: $viewModel.showError) {
-			Alert(title: Text("Error"), message: Text(viewModel.errorMessage), dismissButton: .default(Text("OK")))
+		}.alert(LocalizedStringKey("global_label_error"),
+		        isPresented: $viewModel.showError)
+		{
+			Button(LocalizedStringKey("global_btn_ok")) {
+				viewModel.resetErrorMessage()
+			}
 		}
-		.onAppear {
+		message: {
+			Text(viewModel.errorMessage)
+		}.onAppear {
 			isBlurred = false
 			viewModel.resetErrorMessage()
 		}
@@ -27,6 +40,9 @@ struct LogInView<T: PageProtocol>: View {
 				focusedField = nil
 				hideKeyboard()
 			}
+		}
+		.onReceive(inspection.notice) {
+			inspection.visit(self, $0)
 		}
 		.keyboardResponsive()
 		.backButtonNavigation(style: .registration)
@@ -84,6 +100,7 @@ struct LogInView<T: PageProtocol>: View {
 					Text(viewModel.errorMessage)
 						.applyTextStyle(style: .error)
 						.frame(minHeight: geometry.size.height)
+						.accessibilityIdentifier("registration_label_loginError")
 				}
 			}
 		}
