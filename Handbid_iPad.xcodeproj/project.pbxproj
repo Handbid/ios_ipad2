@@ -77,6 +77,8 @@
 		CE073EE42BB4809C0079F342 /* FormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE073EE32BB4809C0079F342 /* FormField.swift */; };
 		CE0CEE7F2BBEB39F004A27FD /* ResetPasswordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CEE7E2BBEB39F004A27FD /* ResetPasswordRepository.swift */; };
 		CE0CEE812BBED0B4004A27FD /* ResetPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CEE802BBED0B4004A27FD /* ResetPasswordModel.swift */; };
+		CE1E7BBC2BD0286D00BD3DD1 /* ChooseEnvironmentView_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1E7BBB2BD0286D00BD3DD1 /* ChooseEnvironmentView_Tests.swift */; };
+		CE1E7BBE2BD028B600BD3DD1 /* MockChooseEnvironmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1E7BBD2BD028B600BD3DD1 /* MockChooseEnvironmentViewModel.swift */; };
 		CE22793E2BC691CC00F4430F /* GetStartedView_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE22793D2BC691CC00F4430F /* GetStartedView_Tests.swift */; };
 		CE34FB3F2BB1963300701D2A /* OverlayInternalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE34FB3E2BB1963300701D2A /* OverlayInternalView.swift */; };
 		CE6F8DBE2BCEC6BE009DBE7E /* MockGetStartedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F8DBD2BCEC6BE009DBE7E /* MockGetStartedViewModel.swift */; };
@@ -197,6 +199,8 @@
 		CE073EE32BB4809C0079F342 /* FormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormField.swift; sourceTree = "<group>"; };
 		CE0CEE7E2BBEB39F004A27FD /* ResetPasswordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordRepository.swift; sourceTree = "<group>"; };
 		CE0CEE802BBED0B4004A27FD /* ResetPasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordModel.swift; sourceTree = "<group>"; };
+		CE1E7BBB2BD0286D00BD3DD1 /* ChooseEnvironmentView_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseEnvironmentView_Tests.swift; sourceTree = "<group>"; };
+		CE1E7BBD2BD028B600BD3DD1 /* MockChooseEnvironmentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockChooseEnvironmentViewModel.swift; sourceTree = "<group>"; };
 		CE22793D2BC691CC00F4430F /* GetStartedView_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedView_Tests.swift; sourceTree = "<group>"; };
 		CE34FB3E2BB1963300701D2A /* OverlayInternalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayInternalView.swift; sourceTree = "<group>"; };
 		CE6F8DBD2BCEC6BE009DBE7E /* MockGetStartedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGetStartedViewModel.swift; sourceTree = "<group>"; };
@@ -621,6 +625,7 @@
 			children = (
 				CE6F8DBD2BCEC6BE009DBE7E /* MockGetStartedViewModel.swift */,
 				CE6F8DC12BCEE513009DBE7E /* MockLogInViewModel.swift */,
+				CE1E7BBD2BD028B600BD3DD1 /* MockChooseEnvironmentViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -640,6 +645,7 @@
 			children = (
 				CE22793D2BC691CC00F4430F /* GetStartedView_Tests.swift */,
 				CE6F8DBF2BCECC3D009DBE7E /* LogInView_Tests.swift */,
+				CE1E7BBB2BD0286D00BD3DD1 /* ChooseEnvironmentView_Tests.swift */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -949,9 +955,11 @@
 				8C1CC53A2BC3D85300AF80F4 /* AppVersionModel_Test.swift in Sources */,
 				CE6F8DBE2BCEC6BE009DBE7E /* MockGetStartedViewModel.swift in Sources */,
 				8C1CC53B2BC3D89200AF80F4 /* GetStartedViewModel_Tests.swift in Sources */,
+				CE1E7BBE2BD028B600BD3DD1 /* MockChooseEnvironmentViewModel.swift in Sources */,
 				CE6F8DC02BCECC3D009DBE7E /* LogInView_Tests.swift in Sources */,
 				CE9E2D112BC846140008FD8A /* InspectionExtension.swift in Sources */,
 				8C1CC5412BC3D8B800AF80F4 /* LogInViewModel_Tests.swift in Sources */,
+				CE1E7BBC2BD0286D00BD3DD1 /* ChooseEnvironmentView_Tests.swift in Sources */,
 				8C1CC53F2BC3D8B000AF80F4 /* MockAuthManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
