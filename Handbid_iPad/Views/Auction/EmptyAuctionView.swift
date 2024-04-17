@@ -238,23 +238,24 @@ struct Sidebar: View {
 struct MainView: View {
 	var selectedView: String
 
-	var body: some View {
-		contentView(for: selectedView)
-	}
-
 	@ViewBuilder
-	func contentView(for view: String) -> some View {
-		switch view {
+	var body: some View {
+		switch selectedView {
 		case "Auction":
 			AuctionView(viewModel: AuctionViewModel())
+				.frame(maxWidth: .infinity, maxHeight: .infinity)
 		case "Paddle":
 			PaddleView(viewModel: PaddleViewModel())
+				.frame(maxWidth: .infinity, maxHeight: .infinity)
 		case "My Bids":
 			MyBidsView(viewModel: MyBidsViewModel())
+				.frame(maxWidth: .infinity, maxHeight: .infinity)
 		case "Manager":
 			ManagerView(viewModel: ManagerViewModel())
+				.frame(maxWidth: .infinity, maxHeight: .infinity)
 		default:
-			Text("Select a View").frame(maxWidth: .infinity, maxHeight: .infinity)
+			Text("Select a View")
+				.frame(maxWidth: .infinity, maxHeight: .infinity)
 		}
 	}
 }
@@ -285,7 +286,12 @@ struct AuctionView: ContentViewProtocol {
 	@ObservedObject var viewModel: AuctionViewModel
 
 	var body: some View {
-		Text(viewModel.title)
+		VStack {
+			Text(viewModel.title)
+		}
+		.frame(maxWidth: .infinity, maxHeight: .infinity)
+		.background(Color.red)
+		.edgesIgnoringSafeArea(.all)
 	}
 }
 
@@ -293,7 +299,12 @@ struct PaddleView: ContentViewProtocol {
 	@ObservedObject var viewModel: PaddleViewModel
 
 	var body: some View {
-		Text(viewModel.title)
+		VStack {
+			Text(viewModel.title)
+		}
+		.frame(maxWidth: .infinity, maxHeight: .infinity)
+		.background(Color.gray)
+		.edgesIgnoringSafeArea(.all)
 	}
 }
 
@@ -301,7 +312,12 @@ struct MyBidsView: ContentViewProtocol {
 	@ObservedObject var viewModel: MyBidsViewModel
 
 	var body: some View {
-		Text(viewModel.title)
+		VStack {
+			Text(viewModel.title)
+		}
+		.frame(maxWidth: .infinity, maxHeight: .infinity)
+		.background(Color.yellow)
+		.edgesIgnoringSafeArea(.all)
 	}
 }
 
@@ -309,6 +325,11 @@ struct ManagerView: ContentViewProtocol {
 	@ObservedObject var viewModel: ManagerViewModel
 
 	var body: some View {
-		Text(viewModel.title)
+		VStack {
+			Text(viewModel.title)
+		}
+		.frame(maxWidth: .infinity, maxHeight: .infinity)
+		.background(Color.green)
+		.edgesIgnoringSafeArea(.all)
 	}
 }
