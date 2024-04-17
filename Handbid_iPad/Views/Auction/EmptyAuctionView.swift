@@ -46,13 +46,17 @@ struct EmptyAuctionView<T: PageProtocol>: View {
 	var body: some View {
 		VStack(spacing: 0) {
 			TopBar(content: topBarContent(for: selectedView))
-			HStack(spacing: 0) {
-				if isSidebarVisible {
-					Sidebar(selectedView: $selectedView)
+			GeometryReader { geometry in
+				HStack(spacing: 0) {
+					if isSidebarVisible {
+						Sidebar(selectedView: $selectedView)
+							.frame(width: 150)
+							.transition(.move(edge: .leading))
+					}
+					MainView(selectedView: selectedView)
+						.frame(width: isSidebarVisible ? geometry.size.width - 150 : geometry.size.width)
 				}
-				MainView(selectedView: selectedView)
 			}
-			.frame(maxWidth: .infinity, maxHeight: .infinity)
 		}
 	}
 
@@ -235,10 +239,76 @@ struct MainView: View {
 	var selectedView: String
 
 	var body: some View {
-		VStack {
-			Text("\(selectedView) Content Goes Here")
+		contentView(for: selectedView)
+	}
+
+	@ViewBuilder
+	func contentView(for view: String) -> some View {
+		switch view {
+		case "Auction":
+			AuctionView(viewModel: AuctionViewModel())
+		case "Paddle":
+			PaddleView(viewModel: PaddleViewModel())
+		case "My Bids":
+			MyBidsView(viewModel: MyBidsViewModel())
+		case "Manager":
+			ManagerView(viewModel: ManagerViewModel())
+		default:
+			Text("Select a View").frame(maxWidth: .infinity, maxHeight: .infinity)
 		}
-		.frame(maxWidth: .infinity, maxHeight: .infinity)
-		.background(Color.gray.opacity(0.1))
+	}
+}
+
+protocol ViewModelProtocol: ObservableObject {
+	var title: String { get }
+}
+
+class AuctionViewModel: ViewModelProtocol {
+	var title = "Auction Details"
+}
+
+class PaddleViewModel: ViewModelProtocol {
+	var title = "Paddle Information"
+}
+
+class MyBidsViewModel: ViewModelProtocol {
+	var title = "My Bids"
+}
+
+class ManagerViewModel: ViewModelProtocol {
+	var title = "Auction Manager"
+}
+
+protocol ContentViewProtocol: View {}
+
+struct AuctionView: ContentViewProtocol {
+	@ObservedObject var viewModel: AuctionViewModel
+
+	var body: some View {
+		Text(viewModel.title)
+	}
+}
+
+struct PaddleView: ContentViewProtocol {
+	@ObservedObject var viewModel: PaddleViewModel
+
+	var body: some View {
+		Text(viewModel.title)
+	}
+}
+
+struct MyBidsView: ContentViewProtocol {
+	@ObservedObject var viewModel: MyBidsViewModel
+
+	var body: some View {
+		Text(viewModel.title)
+	}
+}
+
+struct ManagerView: ContentViewProtocol {
+	@ObservedObject var viewModel: ManagerViewModel
+
+	var body: some View {
+		Text(viewModel.title)
 	}
 }
