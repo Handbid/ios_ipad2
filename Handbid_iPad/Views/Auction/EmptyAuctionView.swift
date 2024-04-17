@@ -1,6 +1,41 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
+import Combine
 import SwiftUI
+
+protocol TopBarContentFactory {
+	func createTopBarContent(isSidebarVisible: Binding<Bool>) -> TopBarContent
+}
+
+struct AuctionTopBarContentFactory: TopBarContentFactory {
+	func createTopBarContent(isSidebarVisible: Binding<Bool>) -> TopBarContent {
+		AuctionTopBarContent(isSidebarVisible: isSidebarVisible)
+	}
+}
+
+struct PaddleTopBarContentFactory: TopBarContentFactory {
+	func createTopBarContent(isSidebarVisible: Binding<Bool>) -> TopBarContent {
+		PaddleTopBarContent(isSidebarVisible: isSidebarVisible)
+	}
+}
+
+struct MyBidsTopBarContentFactory: TopBarContentFactory {
+	func createTopBarContent(isSidebarVisible: Binding<Bool>) -> TopBarContent {
+		MyBidsTopBarContent(isSidebarVisible: isSidebarVisible)
+	}
+}
+
+struct ManagerTopBarContentFactory: TopBarContentFactory {
+	func createTopBarContent(isSidebarVisible: Binding<Bool>) -> TopBarContent {
+		ManagerTopBarContent(isSidebarVisible: isSidebarVisible)
+	}
+}
+
+struct DefaultTopBarContentFactory: TopBarContentFactory {
+	func createTopBarContent(isSidebarVisible: Binding<Bool>) -> TopBarContent {
+		DefaultTopBarContent(isSidebarVisible: isSidebarVisible)
+	}
+}
 
 struct EmptyAuctionView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
@@ -22,18 +57,19 @@ struct EmptyAuctionView<T: PageProtocol>: View {
 	}
 
 	func topBarContent(for view: String) -> TopBarContent {
-		switch view {
+		let factory: TopBarContentFactory = switch view {
 		case "Auction":
-			AuctionTopBarContent(isSidebarVisible: $isSidebarVisible)
+			AuctionTopBarContentFactory()
 		case "Paddle":
-			PaddleTopBarContent(isSidebarVisible: $isSidebarVisible)
+			PaddleTopBarContentFactory()
 		case "My Bids":
-			MyBidsTopBarContent(isSidebarVisible: $isSidebarVisible)
+			MyBidsTopBarContentFactory()
 		case "Manager":
-			ManagerTopBarContent(isSidebarVisible: $isSidebarVisible)
+			ManagerTopBarContentFactory()
 		default:
-			DefaultTopBarContent(isSidebarVisible: $isSidebarVisible)
+			DefaultTopBarContentFactory()
 		}
+		return factory.createTopBarContent(isSidebarVisible: $isSidebarVisible)
 	}
 }
 
