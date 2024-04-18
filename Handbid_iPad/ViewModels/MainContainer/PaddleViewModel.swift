@@ -11,19 +11,16 @@ class PaddleViewModel: ObservableObject, ViewModelTopBarProtocol {
 		self.dataService = dataService
 	}
 
-//	var centerViewContent: AnyView {
-//		AnyView(VStack {
-//			Text(title).bold()
-//		})
-//	}
-	var centerViewData: TopBarCenterViewData = .init(
-		type: .title,
-		title: "Paddel Title"
-	)
+	var centerViewData: TopBarCenterViewData {
+		TopBarCenterViewData(
+			type: .title,
+			title: title
+		)
+	}
 
 	var actions: [TopBarAction] {
 		[
-			TopBarAction(icon: "plus", action: addPaddle),
+			// TopBarAction(icon: "plus", action: addPaddle),
 		]
 	}
 

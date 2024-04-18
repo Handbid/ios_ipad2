@@ -3,19 +3,19 @@
 import SwiftUI
 
 class AnyViewMainContainerFactory: ObservableObject {
-	private let _makeAuctionView: () -> AnyView
-	private let _makePaddleView: () -> AnyView
+	private let auctionView: () -> AnyView
+	private let paddleView: () -> AnyView
 
 	init<VF: MainContainerProtocolFactory>(wrappedFactory: VF) where VF.AuctionViewType == AnyView, VF.PaddleViewType == AnyView {
-		self._makeAuctionView = { AnyView(wrappedFactory.makeAuctionView()) }
-		self._makePaddleView = { AnyView(wrappedFactory.makePaddleView()) }
+		self.auctionView = { AnyView(wrappedFactory.makeAuctionView()) }
+		self.paddleView = { AnyView(wrappedFactory.makePaddleView()) }
 	}
 
 	func makeAuctionView() -> AnyView {
-		_makeAuctionView()
+		auctionView()
 	}
 
 	func makePaddleView() -> AnyView {
-		_makePaddleView()
+		paddleView()
 	}
 }

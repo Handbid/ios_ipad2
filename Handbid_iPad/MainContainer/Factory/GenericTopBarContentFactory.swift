@@ -3,7 +3,7 @@
 import Combine
 import SwiftUI
 
-struct AuctionTopBarContentFactory<ViewModel: ViewModelTopBarProtocol>: TopBarContentFactory {
+struct GenericTopBarContentFactory<ViewModel: ViewModelTopBarProtocol>: TopBarContentFactory {
 	var viewModel: ViewModel
 
 	init(viewModel: ViewModel) {
@@ -11,6 +11,6 @@ struct AuctionTopBarContentFactory<ViewModel: ViewModelTopBarProtocol>: TopBarCo
 	}
 
 	func createTopBarContent(isSidebarVisible: Binding<Bool>) -> TopBarContent {
-		AuctionTopBarContent(isSidebarVisible: isSidebarVisible, viewModel: viewModel)
+		GenericTopBarContent(isSidebarVisible: isSidebarVisible, viewModel: viewModel)
 	}
 }

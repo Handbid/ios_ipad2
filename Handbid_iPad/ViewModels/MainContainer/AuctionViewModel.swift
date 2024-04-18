@@ -12,10 +12,12 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 		self.dataService = dataService
 	}
 
-	var centerViewData: TopBarCenterViewData = .init(
-        type: .custom,
-		title: "Auction Title"
-	)
+	var centerViewData: TopBarCenterViewData {
+		TopBarCenterViewData(
+			type: .title,
+			title: title
+		)
+	}
 
 	var actions: [TopBarAction] {
 		[

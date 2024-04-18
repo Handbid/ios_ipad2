@@ -39,9 +39,9 @@ struct MainContainer<T: PageProtocol>: View {
 	private func topBarContent(for viewType: MainContainerTypeView) -> TopBarContent {
 		switch viewType {
 		case .auction:
-			AuctionTopBarContentFactory(viewModel: auctionViewModel).createTopBarContent(isSidebarVisible: $isSidebarVisible)
+			GenericTopBarContentFactory(viewModel: auctionViewModel).createTopBarContent(isSidebarVisible: $isSidebarVisible)
 		case .paddle:
-			PaddleTopBarContentFactory(viewModel: paddleViewModel).createTopBarContent(isSidebarVisible: $isSidebarVisible)
+			GenericTopBarContentFactory(viewModel: paddleViewModel).createTopBarContent(isSidebarVisible: $isSidebarVisible)
 		}
 	}
 }
