@@ -57,7 +57,6 @@
 		8CABF5BD2BB9C60900A34870 /* PasswordResetConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5BC2BB9C60900A34870 /* PasswordResetConfirmationView.swift */; };
 		8CABF5C12BB9C63C00A34870 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5C02BB9C63C00A34870 /* ChangePasswordViewModel.swift */; };
 		8CABF5C32BB9C64E00A34870 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5C22BB9C64E00A34870 /* ForgotPasswordViewModel.swift */; };
-		8CABF5C52BB9C65E00A34870 /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5C42BB9C65E00A34870 /* ResetPasswordViewModel.swift */; };
 		8CABF5C82BB9C81100A34870 /* BackgroundContainerImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5C72BB9C81100A34870 /* BackgroundContainerImage.swift */; };
 		8CABF5CA2BB9CEF900A34870 /* ChooseEnvironmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5C92BB9CEF900A34870 /* ChooseEnvironmentViewModel.swift */; };
 		8CABF5CC2BB9CF0300A34870 /* ChooseEnvironmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5CB2BB9CF0300A34870 /* ChooseEnvironmentView.swift */; };
@@ -93,6 +92,7 @@
 		CE9E2D112BC846140008FD8A /* InspectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9E2D102BC846140008FD8A /* InspectionExtension.swift */; };
 		CEAB750D2BD12B65000AFB46 /* ForgotPasswordView_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB750C2BD12B65000AFB46 /* ForgotPasswordView_Tests.swift */; };
 		CEAB750F2BD12BEE000AFB46 /* MockForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB750E2BD12BEE000AFB46 /* MockForgotPasswordViewModel.swift */; };
+		CEAB75112BD165D5000AFB46 /* PasswordResetConfirmationView_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB75102BD165D5000AFB46 /* PasswordResetConfirmationView_Tests.swift */; };
 		CEE2BB272BB5BBB10033556D /* RegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2BB262BB5BBB10033556D /* RegisterRepository.swift */; };
 		CEE2BB292BB5D1070033556D /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2BB282BB5D1070033556D /* ApiConstants.swift */; };
 		CEEC46132BBD8DE900C685BF /* AnyPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEC46122BBD8DE900C685BF /* AnyPublisher.swift */; };
@@ -177,7 +177,6 @@
 		8CABF5BC2BB9C60900A34870 /* PasswordResetConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetConfirmationView.swift; sourceTree = "<group>"; };
 		8CABF5C02BB9C63C00A34870 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
 		8CABF5C22BB9C64E00A34870 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
-		8CABF5C42BB9C65E00A34870 /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
 		8CABF5C72BB9C81100A34870 /* BackgroundContainerImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundContainerImage.swift; sourceTree = "<group>"; };
 		8CABF5C92BB9CEF900A34870 /* ChooseEnvironmentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseEnvironmentViewModel.swift; sourceTree = "<group>"; };
 		8CABF5CB2BB9CF0300A34870 /* ChooseEnvironmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseEnvironmentView.swift; sourceTree = "<group>"; };
@@ -215,6 +214,7 @@
 		CE9E2D102BC846140008FD8A /* InspectionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionExtension.swift; sourceTree = "<group>"; };
 		CEAB750C2BD12B65000AFB46 /* ForgotPasswordView_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView_Tests.swift; sourceTree = "<group>"; };
 		CEAB750E2BD12BEE000AFB46 /* MockForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockForgotPasswordViewModel.swift; sourceTree = "<group>"; };
+		CEAB75102BD165D5000AFB46 /* PasswordResetConfirmationView_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetConfirmationView_Tests.swift; sourceTree = "<group>"; };
 		CEE2BB262BB5BBB10033556D /* RegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRepository.swift; sourceTree = "<group>"; };
 		CEE2BB282BB5D1070033556D /* ApiConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConstants.swift; sourceTree = "<group>"; };
 		CEEC46122BBD8DE900C685BF /* AnyPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyPublisher.swift; sourceTree = "<group>"; };
@@ -547,7 +547,6 @@
 				8CABF5C22BB9C64E00A34870 /* ForgotPasswordViewModel.swift */,
 				8C8BEC312BA976030083D904 /* GetStartedViewModel.swift */,
 				8C8BEC332BA976A90083D904 /* LogInViewModel.swift */,
-				8CABF5C42BB9C65E00A34870 /* ResetPasswordViewModel.swift */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -652,6 +651,7 @@
 				CE6F8DBF2BCECC3D009DBE7E /* LogInView_Tests.swift */,
 				CE1E7BBB2BD0286D00BD3DD1 /* ChooseEnvironmentView_Tests.swift */,
 				CEAB750C2BD12B65000AFB46 /* ForgotPasswordView_Tests.swift */,
+				CEAB75102BD165D5000AFB46 /* PasswordResetConfirmationView_Tests.swift */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -950,6 +950,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEAB75112BD165D5000AFB46 /* PasswordResetConfirmationView_Tests.swift in Sources */,
 				CE6F8DC22BCEE513009DBE7E /* MockLogInViewModel.swift in Sources */,
 				8C1CC53D2BC3D8AC00AF80F4 /* MockChooseEnvironment.swift in Sources */,
 				8C1CC53C2BC3D89C00AF80F4 /* MockLogInAnonymously.swift in Sources */,
@@ -1018,7 +1019,6 @@
 				8C4B7BB72BB9C1080043B892 /* TextSecuredStyles.swift in Sources */,
 				8CABF5BD2BB9C60900A34870 /* PasswordResetConfirmationView.swift in Sources */,
 				8CABF5BB2BB9C5F400A34870 /* ForgotPasswordView.swift in Sources */,
-				8CABF5C52BB9C65E00A34870 /* ResetPasswordViewModel.swift in Sources */,
 				CE9E2D0E2BC845D70008FD8A /* Inspection.swift in Sources */,
 				8CABF5CC2BB9CF0300A34870 /* ChooseEnvironmentView.swift in Sources */,
 				8C4B7BB52BB9BEDC0043B892 /* CustomStyledViewSecuredField.swift in Sources */,
