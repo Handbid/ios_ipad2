@@ -33,7 +33,7 @@ class AuctionTopBarContentFactory: TopBarContentFactory {
 	}
 
 	func createTopBarContent(isSidebarVisible: Binding<Bool>) -> TopBarContent {
-		AuctionTopBarContent(isSidebarVisible: isSidebarVisible, onSearch: viewModel.searchData, onFilter: viewModel.filterData, onRefresh: viewModel.refreshData)
+		AuctionTopBarContent(isSidebarVisible: isSidebarVisible, onSearch: viewModel.searchData, onFilter: viewModel.filterData, onRefresh: viewModel.refreshData, viewModel: viewModel)
 	}
 }
 
@@ -45,7 +45,7 @@ class PaddleTopBarContentFactory: TopBarContentFactory {
 	}
 
 	func createTopBarContent(isSidebarVisible: Binding<Bool>) -> TopBarContent {
-		PaddleTopBarContent(isSidebarVisible: isSidebarVisible)
+		PaddleTopBarContent(isSidebarVisible: isSidebarVisible, viewModel: viewModel)
 	}
 }
 
@@ -61,7 +61,7 @@ struct EmptyAuctionView<T: PageProtocol>: View {
 	@State private var selectedView: MainContainerViewType = .auction
 	@State private var isSidebarVisible: Bool = true
 
-	var auctionViewModel: AuctionViewModel = .init(dataService: AuctionDataService())
+	let auctionViewModel: AuctionViewModel = .init(dataService: AuctionDataService())
 	var paddleViewModel: PaddleViewModel = .init()
 
 	var body: some View {
@@ -84,9 +84,9 @@ struct EmptyAuctionView<T: PageProtocol>: View {
 	private func topBarContent(for viewType: MainContainerViewType) -> TopBarContent {
 		switch viewType {
 		case .auction:
-			GenericTopBarContentFactory(viewModel: AnyViewModel(auctionViewModel)).createTopBarContent(isSidebarVisible: $isSidebarVisible)
+			AuctionTopBarContentFactory(viewModel: auctionViewModel).createTopBarContent(isSidebarVisible: $isSidebarVisible)
 		case .paddle:
-			GenericTopBarContentFactory(viewModel: AnyViewModel(paddleViewModel)).createTopBarContent(isSidebarVisible: $isSidebarVisible)
+			PaddleTopBarContentFactory(viewModel: paddleViewModel).createTopBarContent(isSidebarVisible: $isSidebarVisible)
 		}
 	}
 }
@@ -124,11 +124,12 @@ struct TopBarAction {
 	let action: () -> Void
 }
 
-struct AuctionTopBarContent: TopBarContent {
+struct AuctionTopBarContent<ViewModel: ViewModelProtocol>: TopBarContent {
 	@Binding var isSidebarVisible: Bool
 	var onSearch: () -> Void
 	var onFilter: () -> Void
 	var onRefresh: () -> Void
+	var viewModel: ViewModel
 
 	var leftViews: [AnyView] {
 		[
@@ -139,7 +140,7 @@ struct AuctionTopBarContent: TopBarContent {
 	}
 
 	var centerView: AnyView {
-		AnyView(Text("Auction Details"))
+		viewModel.centerViewContent
 	}
 
 	var rightViews: [AnyView] {
@@ -153,19 +154,18 @@ struct AuctionTopBarContent: TopBarContent {
 	}
 }
 
-struct PaddleTopBarContent: TopBarContent {
+struct PaddleTopBarContent<ViewModel: ViewModelProtocol>: TopBarContent {
 	@Binding var isSidebarVisible: Bool
+	var viewModel: ViewModel
 
 	var leftViews: [AnyView] {
-		[AnyView(Button(action: {
-			isSidebarVisible.toggle()
-		}) {
+		[AnyView(Button(action: { isSidebarVisible.toggle() }) {
 			Image(systemName: "line.horizontal.3")
 		})]
 	}
 
 	var centerView: AnyView {
-		AnyView(Text("Paddle Number"))
+		viewModel.centerViewContent
 	}
 
 	var rightViews: [AnyView] {
@@ -234,7 +234,7 @@ protocol ViewModelProtocol: ObservableObject, TopBarActionProvider {
 
 class AuctionViewModel: ObservableObject, ViewModelProtocol {
 	var dataService: DataService
-	@Published var title = "Auction Details"
+	@Published var title = "Auction Details 2"
 	@Published var auctionDate = "Next Auction: Tomorrow"
 
 	init(dataService: DataService) {
@@ -243,7 +243,7 @@ class AuctionViewModel: ObservableObject, ViewModelProtocol {
 
 	var centerViewContent: AnyView {
 		AnyView(VStack {
-			Text("Auction Details").bold()
+			Text("Auction Details 3").bold()
 			Text("Date: \(auctionDate)").font(.subheadline)
 		})
 	}
