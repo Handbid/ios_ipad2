@@ -36,10 +36,7 @@ struct LogInView<T: PageProtocol>: View {
 			viewModel.resetErrorMessage()
 		}
 		.onTapGesture {
-			if focusedField != nil {
-				focusedField = nil
-				hideKeyboard()
-			}
+			hideKeyboard()
 		}
 		.onReceive(inspection.notice) {
 			inspection.visit(self, $0)

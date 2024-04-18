@@ -5,11 +5,15 @@ import NetworkService
 
 class ForgotPasswordViewModel: ObservableObject {
 	private var cancellables = Set<AnyCancellable>()
-	private var repository: ResetPasswordRepository = ResetPasswordRepositoryImpl(NetworkingClient())
+	private var repository: ResetPasswordRepository
 	@Published var isFormValid = true
 	@Published var email: String = ""
 	@Published var errorMessage: String = ""
 	@Published var requestStatus: RequestStatus = .noResult
+
+	init(repository: ResetPasswordRepository) {
+		self.repository = repository
+	}
 
 	func validateEmail() {
 		if !email.isValidEmail() {

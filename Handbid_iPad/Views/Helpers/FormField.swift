@@ -25,8 +25,11 @@ struct FormField: View {
 				.padding(.leading, -15)
 			TextField(hintKey, text: $fieldValue)
 				.applyTextFieldStyle(style: .form)
+				.keyboardType(.emailAddress)
+				.textContentType(.emailAddress)
 				.focused($focusedField, equals: .email)
 				.id(Field.email)
+				.onTapGesture {}
 		case .password:
 			Text(labelKey)
 				.applyTextStyle(style: .formHeader)
@@ -37,14 +40,18 @@ struct FormField: View {
 				if isPasswordShown {
 					TextField(hintKey, text: $fieldValue)
 						.applyTextFieldStyle(style: .form)
+						.textContentType(.password)
 						.focused($focusedField, equals: .password)
 						.id(Field.password)
+						.onTapGesture {}
 				}
 				else {
 					SecureField(hintKey, text: $fieldValue)
 						.applySecuredFieldStyle(style: .formField)
+						.textContentType(.password)
 						.focused($focusedField, equals: .password)
 						.id(Field.password)
+						.onTapGesture {}
 				}
 
 				Image(isPasswordShown ? "EyeIconCrossed" : "EyeIcon")

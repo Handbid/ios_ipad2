@@ -1,5 +1,6 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
+import NetworkService
 import SwiftUI
 
 struct ForgotPasswordView<T: PageProtocol>: View {
@@ -9,7 +10,7 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 	@FocusState private var focusedField: Field?
 	var inspection = Inspection<Self>()
 
-	init(viewModel: ForgotPasswordViewModel = ForgotPasswordViewModel()) {
+	init(viewModel: ForgotPasswordViewModel = ForgotPasswordViewModel(repository: ResetPasswordRepositoryImpl(NetworkingClient()))) {
 		self.viewModel = viewModel
 	}
 
@@ -34,10 +35,7 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 			}
 		}
 		.onTapGesture {
-			if focusedField != nil {
-				focusedField = nil
-				hideKeyboard()
-			}
+			hideKeyboard()
 		}
 		.onReceive(inspection.notice) {
 			inspection.visit(self, $0)
