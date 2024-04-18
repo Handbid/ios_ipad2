@@ -74,14 +74,19 @@ struct EmptyAuctionView<T: PageProtocol>: View {
 }
 
 class AnyViewModel: ViewModelProtocol {
-	private let _title: () -> String
+	private let _centerViewContent: () -> AnyView
 	private let _actions: () -> [TopBarAction]
 
-	var title: String { _title() }
-	var actions: [TopBarAction] { _actions() }
+	var centerViewContent: AnyView {
+		_centerViewContent()
+	}
+
+	var actions: [TopBarAction] {
+		_actions()
+	}
 
 	init(_ viewModel: some ViewModelProtocol) {
-		self._title = { viewModel.title }
+		self._centerViewContent = { viewModel.centerViewContent }
 		self._actions = { viewModel.actions }
 	}
 }
@@ -162,7 +167,7 @@ struct TopBar: View {
 			Spacer()
 			ForEach(Array(content.rightViews.enumerated()), id: \.offset) { _, view in view }
 		}
-		.padding(.vertical, 10)
+		.padding([.vertical, .leading, .trailing], 10)
 		.frame(height: TopBar.barHeight)
 		.background(Color.blue)
 		.foregroundColor(.white)
@@ -205,12 +210,19 @@ struct MainView: View {
 }
 
 protocol ViewModelProtocol: ObservableObject, TopBarActionProvider {
-	var title: String { get }
+	var centerViewContent: AnyView { get }
 }
 
 class AuctionViewModel: ObservableObject, ViewModelProtocol {
 	@Published var title = "Auction Details"
 	@Published var auctionDate = "Next Auction: Tomorrow"
+
+	var centerViewContent: AnyView {
+		AnyView(VStack {
+			Text("Auction Details").bold()
+			Text("Date: \(auctionDate)").font(.subheadline)
+		})
+	}
 
 	var actions: [TopBarAction] {
 		[
@@ -229,25 +241,18 @@ class PaddleViewModel: ObservableObject, ViewModelProtocol {
 	@Published var title = "Paddle Information"
 	@Published var paddleNumber = "Paddle #102"
 
+	var centerViewContent: AnyView {
+		AnyView(VStack {
+			Text(title).bold()
+		})
+	}
+
 	var actions: [TopBarAction] {
 		[
 			TopBarAction(icon: "plus", action: { print("Add paddle") }),
 		]
 	}
 }
-
-// class ManagerViewModel: ObservableObject, ViewModelProtocol {
-//	@Published var title = "Auction Manager"
-//	@Published var status = "Next auction setup in progress"
-//
-//	var actions: [TopBarAction] {
-//		[
-//			TopBarAction(icon: "plus", action: allAuction),
-//		]
-//	}
-//
-//	func allAuction() {}
-// }
 
 protocol ContentViewProtocol: View {
 	associatedtype ViewModel: ViewModelProtocol
@@ -275,7 +280,7 @@ struct GenericTopBarContent<ViewModel: ViewModelProtocol>: TopBarContent {
 	}
 
 	var centerView: AnyView {
-		AnyView(Text(viewModel.title))
+		viewModel.centerViewContent
 	}
 
 	var rightViews: [AnyView] {
