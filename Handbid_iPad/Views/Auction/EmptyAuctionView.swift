@@ -16,7 +16,7 @@ extension TopBarContentFactory {
 }
 
 protocol DataService: ObservableObject {
-	func fetchData()
+	func fetchData(completion: @escaping (Result<Data, Error>) -> Void)
 	func refreshData()
 }
 
@@ -61,7 +61,14 @@ class AnyViewFactory: ObservableObject {
 }
 
 class AuctionDataService: DataService {
-	func fetchData() {}
+	enum DataServiceError: Error {
+		case fetchFailed
+	}
+
+	func fetchData(completion: @escaping (Result<Data, Error>) -> Void) {
+		completion(.failure(DataServiceError.fetchFailed))
+	}
+
 	func refreshData() {}
 }
 
@@ -80,8 +87,15 @@ class DataServiceWrapper: ObservableObject {
 		self.wrappedService = wrappedService
 	}
 
-	func fetchData() {
-		wrappedService.fetchData()
+	func fetchData(completion: @escaping (Result<Data, Error>) -> Void) {
+		wrappedService.fetchData { result in
+			switch result {
+			case let .success(data):
+				completion(.success(data))
+			case let .failure(error):
+				completion(.failure(error))
+			}
+		}
 	}
 
 	func refreshData() {
@@ -160,24 +174,6 @@ struct EmptyAuctionView<T: PageProtocol>: View {
 		}
 	}
 }
-
- class AnyViewModel: ViewModelProtocol {
-	private let _centerViewContent: () -> AnyView
-	private let _actions: () -> [TopBarAction]
-
-	var centerViewContent: AnyView {
-		_centerViewContent()
-	}
-
-	var actions: [TopBarAction] {
-		_actions()
-	}
-
-	init(_ viewModel: some ViewModelProtocol) {
-		self._centerViewContent = { viewModel.centerViewContent }
-		self._actions = { viewModel.actions }
-	}
- }
 
 protocol TopBarContent {
 	var leftViews: [AnyView] { get }
@@ -318,7 +314,16 @@ class AuctionViewModel: ObservableObject, ViewModelProtocol {
 	func searchData() {}
 	func refreshData() {}
 	func filterData() {
-		dataService.fetchData()
+		dataService.fetchData { result in
+			DispatchQueue.main.async {
+				switch result {
+				case let .success(data):
+					print("Data fetched successfully: \(data)")
+				case let .failure(error):
+					print("Error fetching data: \(error)")
+				}
+			}
+		}
 	}
 }
 
@@ -348,17 +353,9 @@ class PaddleViewModel: ObservableObject, ViewModelProtocol {
 	}
 }
 
-protocol ContentViewProtocol {
+protocol ContentView: View {
 	associatedtype ViewModel: ViewModelProtocol
-	static func create(viewModel: ViewModel) -> Self
-}
-
-class GenericTopBarContentFactory<ViewModelType: ViewModelProtocol>: TopBarContentFactory {
-	var viewModel: ViewModelType
-
-	init(viewModel: ViewModelType) {
-		self.viewModel = viewModel
-	}
+	init(viewModel: ViewModel)
 }
 
 struct GenericTopBarContent<ViewModel: ViewModelProtocol>: TopBarContent {
@@ -380,11 +377,11 @@ struct GenericTopBarContent<ViewModel: ViewModelProtocol>: TopBarContent {
 	}
 }
 
-struct AuctionView: View, ContentViewProtocol {
+struct AuctionView: ContentView {
 	@ObservedObject var viewModel: AuctionViewModel
 
-	static func create(viewModel: AuctionViewModel) -> AuctionView {
-		AuctionView(viewModel: viewModel)
+	init(viewModel: AuctionViewModel) {
+		self.viewModel = viewModel
 	}
 
 	var body: some View {
@@ -397,8 +394,12 @@ struct AuctionView: View, ContentViewProtocol {
 	}
 }
 
-struct PaddleView: View {
+struct PaddleView: ContentView {
 	@ObservedObject var viewModel: PaddleViewModel
+
+	init(viewModel: PaddleViewModel) {
+		self.viewModel = viewModel
+	}
 
 	var body: some View {
 		VStack {
@@ -407,11 +408,5 @@ struct PaddleView: View {
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		.background(Color.gray)
 		.edgesIgnoringSafeArea(.all)
-	}
-}
-
-extension PaddleView: ContentViewProtocol {
-	static func create(viewModel: PaddleViewModel) -> PaddleView {
-		PaddleView(viewModel: viewModel)
 	}
 }
