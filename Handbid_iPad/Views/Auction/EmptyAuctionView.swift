@@ -4,11 +4,29 @@ import Combine
 import SwiftUI
 
 protocol TopBarContentFactory {
+	associatedtype ViewModelType: ViewModelProtocol
+	var viewModel: ViewModelType { get }
 	func createTopBarContent(isSidebarVisible: Binding<Bool>) -> TopBarContent
 }
 
+extension TopBarContentFactory {
+	func createTopBarContent(isSidebarVisible: Binding<Bool>) -> TopBarContent {
+		GenericTopBarContent(isSidebarVisible: isSidebarVisible, viewModel: viewModel)
+	}
+}
+
+protocol DataService {
+	func fetchData()
+	func refreshData()
+}
+
+class AuctionDataService: DataService {
+	func fetchData() {}
+	func refreshData() {}
+}
+
 class AuctionTopBarContentFactory: TopBarContentFactory {
-	private var viewModel: AuctionViewModel
+	private(set) var viewModel: AuctionViewModel
 
 	init(viewModel: AuctionViewModel) {
 		self.viewModel = viewModel
@@ -20,7 +38,7 @@ class AuctionTopBarContentFactory: TopBarContentFactory {
 }
 
 class PaddleTopBarContentFactory: TopBarContentFactory {
-	private var viewModel: PaddleViewModel
+	private(set) var viewModel: PaddleViewModel
 
 	init(viewModel: PaddleViewModel) {
 		self.viewModel = viewModel
@@ -43,7 +61,7 @@ struct EmptyAuctionView<T: PageProtocol>: View {
 	@State private var selectedView: MainContainerViewType = .auction
 	@State private var isSidebarVisible: Bool = true
 
-	var auctionViewModel: AuctionViewModel = .init()
+	var auctionViewModel: AuctionViewModel = .init(dataService: AuctionDataService())
 	var paddleViewModel: PaddleViewModel = .init()
 
 	var body: some View {
@@ -195,12 +213,13 @@ struct Sidebar: View {
 
 struct MainView: View {
 	var selectedView: MainContainerViewType
+	let auctionDataService: DataService = AuctionDataService()
 
 	@ViewBuilder
 	var body: some View {
 		switch selectedView {
 		case .auction:
-			AuctionView(viewModel: AuctionViewModel())
+			AuctionView(viewModel: AuctionViewModel(dataService: auctionDataService))
 				.frame(maxWidth: .infinity, maxHeight: .infinity)
 		case .paddle:
 			PaddleView(viewModel: PaddleViewModel())
@@ -214,8 +233,13 @@ protocol ViewModelProtocol: ObservableObject, TopBarActionProvider {
 }
 
 class AuctionViewModel: ObservableObject, ViewModelProtocol {
+	var dataService: DataService
 	@Published var title = "Auction Details"
 	@Published var auctionDate = "Next Auction: Tomorrow"
+
+	init(dataService: DataService) {
+		self.dataService = dataService
+	}
 
 	var centerViewContent: AnyView {
 		AnyView(VStack {
@@ -254,20 +278,16 @@ class PaddleViewModel: ObservableObject, ViewModelProtocol {
 	}
 }
 
-protocol ContentViewProtocol: View {
+protocol ContentViewProtocol {
 	associatedtype ViewModel: ViewModelProtocol
-	init(viewModel: ViewModel)
+	static func create(viewModel: ViewModel) -> Self
 }
 
-class GenericTopBarContentFactory: TopBarContentFactory {
-	private var viewModel: AnyViewModel
+class GenericTopBarContentFactory<ViewModelType: ViewModelProtocol>: TopBarContentFactory {
+	var viewModel: ViewModelType
 
-	init(viewModel: AnyViewModel) {
+	init(viewModel: ViewModelType) {
 		self.viewModel = viewModel
-	}
-
-	func createTopBarContent(isSidebarVisible: Binding<Bool>) -> TopBarContent {
-		GenericTopBarContent(isSidebarVisible: isSidebarVisible, viewModel: viewModel)
 	}
 }
 
@@ -290,8 +310,12 @@ struct GenericTopBarContent<ViewModel: ViewModelProtocol>: TopBarContent {
 	}
 }
 
-struct AuctionView: ContentViewProtocol {
+struct AuctionView: View {
 	@ObservedObject var viewModel: AuctionViewModel
+
+	init(viewModel: AuctionViewModel) {
+		self.viewModel = viewModel
+	}
 
 	var body: some View {
 		VStack {
@@ -303,7 +327,13 @@ struct AuctionView: ContentViewProtocol {
 	}
 }
 
-struct PaddleView: ContentViewProtocol {
+extension AuctionView: ContentViewProtocol {
+	static func create(viewModel: AuctionViewModel) -> AuctionView {
+		AuctionView(viewModel: viewModel)
+	}
+}
+
+struct PaddleView: View {
 	@ObservedObject var viewModel: PaddleViewModel
 
 	var body: some View {
@@ -313,5 +343,11 @@ struct PaddleView: ContentViewProtocol {
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		.background(Color.gray)
 		.edgesIgnoringSafeArea(.all)
+	}
+}
+
+extension PaddleView: ContentViewProtocol {
+	static func create(viewModel: PaddleViewModel) -> PaddleView {
+		PaddleView(viewModel: viewModel)
 	}
 }
