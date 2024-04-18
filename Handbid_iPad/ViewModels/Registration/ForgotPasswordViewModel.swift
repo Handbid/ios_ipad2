@@ -9,7 +9,7 @@ class ForgotPasswordViewModel: ObservableObject {
 	@Published var isFormValid = true
 	@Published var email: String = ""
 	@Published var errorMessage: String = ""
-	@Published var isSuccessfulRequest = false
+	@Published var requestStatus: RequestStatus = .noResult
 
 	func validateEmail() {
 		if !email.isValidEmail() {
@@ -27,13 +27,14 @@ class ForgotPasswordViewModel: ObservableObject {
 				case .finished:
 					break
 				case let .failure(error):
+					self.requestStatus = .failed
 					self.errorMessage = "\(error)"
 				}
 			}, receiveValue: { response in
 				print(response)
-				self.isSuccessfulRequest = response.success ?? false
+				self.requestStatus = response.success == true ? .successful : .failed
 
-				if !self.isSuccessfulRequest {
+				if self.requestStatus == .failed {
 					self.errorMessage = response.message ?? String(localized: LocalizedStringResource("global_label_unknownError"))
 				}
 			}).store(in: &cancellables)
@@ -42,4 +43,8 @@ class ForgotPasswordViewModel: ObservableObject {
 	func resetErrorMessage() {
 		errorMessage = ""
 	}
+}
+
+enum RequestStatus {
+	case noResult, successful, failed
 }
