@@ -11,7 +11,14 @@ struct GenericTopBarContent<ViewModel: ViewModelTopBarProtocol>: TopBarContent {
 	}
 
 	var centerView: AnyView {
-		viewModel.centerViewContent
+		switch viewModel.centerViewData.type {
+		case .title:
+			AnyView(Text(viewModel.centerViewData.title ?? "").bold())
+		case .image:
+			AnyView(viewModel.centerViewData.image ?? Image(systemName: "photo"))
+		case .custom:
+			viewModel.centerViewData.customView ?? AnyView(EmptyView())
+		}
 	}
 
 	var rightViews: [AnyView] {
