@@ -17,7 +17,7 @@ struct AppLaunchControlView: View {
 				}
 			}
 			else {
-				if isValidToken {
+				if !isValidToken {
 					EmptyAuctionView<RegistrationPage>()
 				}
 				else {
