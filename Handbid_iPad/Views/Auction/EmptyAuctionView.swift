@@ -31,11 +31,16 @@ class PaddleTopBarContentFactory: TopBarContentFactory {
 	}
 }
 
+enum MainContainerViewType {
+	case auction
+	case paddle
+}
+
 struct EmptyAuctionView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@StateObject private var authManager = AuthManager()
 
-	@State private var selectedView: String = "Auction"
+	@State private var selectedView: MainContainerViewType = .auction
 	@State private var isSidebarVisible: Bool = true
 
 	var auctionViewModel: AuctionViewModel = .init()
@@ -58,16 +63,13 @@ struct EmptyAuctionView<T: PageProtocol>: View {
 		}
 	}
 
-	private func topBarContent(for view: String) -> TopBarContent {
-		let factory = switch view {
-		case "Auction":
-			GenericTopBarContentFactory(viewModel: AnyViewModel(auctionViewModel))
-		case "Paddle":
-			GenericTopBarContentFactory(viewModel: AnyViewModel(paddleViewModel))
-		default:
-			GenericTopBarContentFactory(viewModel: AnyViewModel(auctionViewModel))
+	private func topBarContent(for viewType: MainContainerViewType) -> TopBarContent {
+		switch viewType {
+		case .auction:
+			GenericTopBarContentFactory(viewModel: AnyViewModel(auctionViewModel)).createTopBarContent(isSidebarVisible: $isSidebarVisible)
+		case .paddle:
+			GenericTopBarContentFactory(viewModel: AnyViewModel(paddleViewModel)).createTopBarContent(isSidebarVisible: $isSidebarVisible)
 		}
-		return factory.createTopBarContent(isSidebarVisible: $isSidebarVisible)
 	}
 }
 
@@ -168,15 +170,15 @@ struct TopBar: View {
 }
 
 struct Sidebar: View {
-	@Binding var selectedView: String
+	@Binding var selectedView: MainContainerViewType
 
 	var body: some View {
 		VStack(alignment: .leading, spacing: 20) {
 			Button("Auction") {
-				selectedView = "Auction"
+				selectedView = .auction
 			}
 			Button("Paddle") {
-				selectedView = "Paddle"
+				selectedView = .paddle
 			}
 		}
 		.padding(10)
@@ -187,19 +189,16 @@ struct Sidebar: View {
 }
 
 struct MainView: View {
-	var selectedView: String
+	var selectedView: MainContainerViewType
 
 	@ViewBuilder
 	var body: some View {
 		switch selectedView {
-		case "Auction":
+		case .auction:
 			AuctionView(viewModel: AuctionViewModel())
 				.frame(maxWidth: .infinity, maxHeight: .infinity)
-		case "Paddle":
+		case .paddle:
 			PaddleView(viewModel: PaddleViewModel())
-				.frame(maxWidth: .infinity, maxHeight: .infinity)
-		default:
-			Text("Select a view")
 				.frame(maxWidth: .infinity, maxHeight: .infinity)
 		}
 	}
@@ -237,18 +236,18 @@ class PaddleViewModel: ObservableObject, ViewModelProtocol {
 	}
 }
 
-class ManagerViewModel: ObservableObject, ViewModelProtocol {
-	@Published var title = "Auction Manager"
-	@Published var status = "Next auction setup in progress"
-
-	var actions: [TopBarAction] {
-		[
-			TopBarAction(icon: "plus", action: allAuction),
-		]
-	}
-
-	func allAuction() {}
-}
+// class ManagerViewModel: ObservableObject, ViewModelProtocol {
+//	@Published var title = "Auction Manager"
+//	@Published var status = "Next auction setup in progress"
+//
+//	var actions: [TopBarAction] {
+//		[
+//			TopBarAction(icon: "plus", action: allAuction),
+//		]
+//	}
+//
+//	func allAuction() {}
+// }
 
 protocol ContentViewProtocol: View {
 	associatedtype ViewModel: ViewModelProtocol
