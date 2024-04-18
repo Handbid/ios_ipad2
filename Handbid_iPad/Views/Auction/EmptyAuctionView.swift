@@ -25,22 +25,22 @@ class AuctionDataService: DataService {
 	func refreshData() {}
 }
 
-class AuctionTopBarContentFactory: TopBarContentFactory {
-	private(set) var viewModel: AuctionViewModel
+struct AuctionTopBarContentFactory<ViewModel: ViewModelProtocol>: TopBarContentFactory {
+	var viewModel: ViewModel
 
-	init(viewModel: AuctionViewModel) {
+	init(viewModel: ViewModel) {
 		self.viewModel = viewModel
 	}
 
 	func createTopBarContent(isSidebarVisible: Binding<Bool>) -> TopBarContent {
-		AuctionTopBarContent(isSidebarVisible: isSidebarVisible, onSearch: viewModel.searchData, onFilter: viewModel.filterData, onRefresh: viewModel.refreshData, viewModel: viewModel)
+		AuctionTopBarContent(isSidebarVisible: isSidebarVisible, viewModel: viewModel)
 	}
 }
 
-class PaddleTopBarContentFactory: TopBarContentFactory {
-	private(set) var viewModel: PaddleViewModel
+class PaddleTopBarContentFactory<ViewModel: ViewModelProtocol>: TopBarContentFactory {
+	private(set) var viewModel: ViewModel
 
-	init(viewModel: PaddleViewModel) {
+	init(viewModel: ViewModel) {
 		self.viewModel = viewModel
 	}
 
@@ -126,17 +126,10 @@ struct TopBarAction {
 
 struct AuctionTopBarContent<ViewModel: ViewModelProtocol>: TopBarContent {
 	@Binding var isSidebarVisible: Bool
-	var onSearch: () -> Void
-	var onFilter: () -> Void
-	var onRefresh: () -> Void
 	var viewModel: ViewModel
 
 	var leftViews: [AnyView] {
-		[
-			AnyView(Button(action: { isSidebarVisible.toggle() }) {
-				Image(systemName: "line.horizontal.3")
-			}),
-		]
+		[AnyView(Button(action: { isSidebarVisible.toggle() }) { Image(systemName: "line.horizontal.3") })]
 	}
 
 	var centerView: AnyView {
@@ -144,13 +137,9 @@ struct AuctionTopBarContent<ViewModel: ViewModelProtocol>: TopBarContent {
 	}
 
 	var rightViews: [AnyView] {
-		[
-			AnyView(HStack {
-				Button(action: onSearch) { Image(systemName: "magnifyingglass") }
-				Button(action: onFilter) { Image(systemName: "line.horizontal.3.decrease.circle") }
-				Button(action: onRefresh) { Image(systemName: "arrow.clockwise") }
-			}),
-		]
+		viewModel.actions.map { action in
+			AnyView(Button(action: action.action) { Image(systemName: action.icon) })
+		}
 	}
 }
 
@@ -175,6 +164,7 @@ struct PaddleTopBarContent<ViewModel: ViewModelProtocol>: TopBarContent {
 
 struct TopBar: View {
 	var content: TopBarContent
+
 	static let barHeight: CGFloat = 60
 
 	var body: some View {
@@ -234,7 +224,8 @@ protocol ViewModelProtocol: ObservableObject, TopBarActionProvider {
 
 class AuctionViewModel: ObservableObject, ViewModelProtocol {
 	var dataService: DataService
-	@Published var title = "Auction Details 2"
+
+	@Published var title = "Auction Details"
 	@Published var auctionDate = "Next Auction: Tomorrow"
 
 	init(dataService: DataService) {
@@ -243,7 +234,7 @@ class AuctionViewModel: ObservableObject, ViewModelProtocol {
 
 	var centerViewContent: AnyView {
 		AnyView(VStack {
-			Text("Auction Details 3").bold()
+			Text(title).bold()
 			Text("Date: \(auctionDate)").font(.subheadline)
 		})
 	}
@@ -310,11 +301,11 @@ struct GenericTopBarContent<ViewModel: ViewModelProtocol>: TopBarContent {
 	}
 }
 
-struct AuctionView: View {
+struct AuctionView: View, ContentViewProtocol {
 	@ObservedObject var viewModel: AuctionViewModel
 
-	init(viewModel: AuctionViewModel) {
-		self.viewModel = viewModel
+	static func create(viewModel: AuctionViewModel) -> AuctionView {
+		AuctionView(viewModel: viewModel)
 	}
 
 	var body: some View {
@@ -324,12 +315,6 @@ struct AuctionView: View {
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		.background(Color.red)
 		.edgesIgnoringSafeArea(.all)
-	}
-}
-
-extension AuctionView: ContentViewProtocol {
-	static func create(viewModel: AuctionViewModel) -> AuctionView {
-		AuctionView(viewModel: viewModel)
 	}
 }
 
