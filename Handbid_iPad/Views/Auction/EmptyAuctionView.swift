@@ -48,31 +48,39 @@ struct EmptyAuctionView<T: PageProtocol>: View {
 				HStack(spacing: 0) {
 					if isSidebarVisible {
 						Sidebar(selectedView: $selectedView)
-							.frame(width: 150)
+							.frame(width: 80)
 							.transition(.move(edge: .leading))
 					}
 					MainView(selectedView: selectedView)
-						.frame(width: isSidebarVisible ? geometry.size.width - 150 : geometry.size.width)
+						.frame(width: isSidebarVisible ? geometry.size.width - 80 : geometry.size.width)
 				}
 			}
 		}
 	}
 
-	func topBarContent(for view: String) -> TopBarContent {
-		switch view {
+	private func topBarContent(for view: String) -> TopBarContent {
+		let factory = switch view {
 		case "Auction":
-			GenericTopBarContentFactory(viewModel: auctionViewModel) { isSidebarVisible, viewModel in
-				AuctionTopBarContentFactory(viewModel: auctionViewModel).createTopBarContent(isSidebarVisible: $isSidebarVisible)
-			}.createTopBarContent(isSidebarVisible: $isSidebarVisible)
+			GenericTopBarContentFactory(viewModel: AnyViewModel(auctionViewModel))
 		case "Paddle":
-			GenericTopBarContentFactory(viewModel: paddleViewModel) { isSidebarVisible, _ in
-				PaddleTopBarContent(isSidebarVisible: isSidebarVisible)
-			}.createTopBarContent(isSidebarVisible: $isSidebarVisible)
+			GenericTopBarContentFactory(viewModel: AnyViewModel(paddleViewModel))
 		default:
-			GenericTopBarContentFactory(viewModel: auctionViewModel) { isSidebarVisible, viewModel in
-				AuctionTopBarContentFactory(viewModel: auctionViewModel).createTopBarContent(isSidebarVisible: $isSidebarVisible)
-			}.createTopBarContent(isSidebarVisible: $isSidebarVisible)
+			GenericTopBarContentFactory(viewModel: AnyViewModel(auctionViewModel))
 		}
+		return factory.createTopBarContent(isSidebarVisible: $isSidebarVisible)
+	}
+}
+
+class AnyViewModel: ViewModelProtocol {
+	private let _title: () -> String
+	private let _actions: () -> [TopBarAction]
+
+	var title: String { _title() }
+	var actions: [TopBarAction] { _actions() }
+
+	init(_ viewModel: some ViewModelProtocol) {
+		self._title = { viewModel.title }
+		self._actions = { viewModel.actions }
 	}
 }
 
@@ -80,6 +88,15 @@ protocol TopBarContent {
 	var leftViews: [AnyView] { get }
 	var centerView: AnyView { get }
 	var rightViews: [AnyView] { get }
+}
+
+protocol TopBarActionProvider {
+	var actions: [TopBarAction] { get }
+}
+
+struct TopBarAction {
+	let icon: String
+	let action: () -> Void
 }
 
 struct AuctionTopBarContent: TopBarContent {
@@ -182,19 +199,27 @@ struct MainView: View {
 			PaddleView(viewModel: PaddleViewModel())
 				.frame(maxWidth: .infinity, maxHeight: .infinity)
 		default:
-			AuctionView(viewModel: AuctionViewModel())
+			Text("Select a view")
 				.frame(maxWidth: .infinity, maxHeight: .infinity)
 		}
 	}
 }
 
-protocol ViewModelProtocol: ObservableObject {
+protocol ViewModelProtocol: ObservableObject, TopBarActionProvider {
 	var title: String { get }
 }
 
 class AuctionViewModel: ObservableObject, ViewModelProtocol {
 	@Published var title = "Auction Details"
 	@Published var auctionDate = "Next Auction: Tomorrow"
+
+	var actions: [TopBarAction] {
+		[
+			TopBarAction(icon: "magnifyingglass", action: searchData),
+			TopBarAction(icon: "line.horizontal.3.decrease.circle", action: filterData),
+			TopBarAction(icon: "arrow.clockwise", action: refreshData),
+		]
+	}
 
 	func searchData() {}
 	func filterData() {}
@@ -204,11 +229,23 @@ class AuctionViewModel: ObservableObject, ViewModelProtocol {
 class PaddleViewModel: ObservableObject, ViewModelProtocol {
 	@Published var title = "Paddle Information"
 	@Published var paddleNumber = "Paddle #102"
+
+	var actions: [TopBarAction] {
+		[
+			TopBarAction(icon: "plus", action: { print("Add paddle") }),
+		]
+	}
 }
 
 class ManagerViewModel: ObservableObject, ViewModelProtocol {
 	@Published var title = "Auction Manager"
 	@Published var status = "Next auction setup in progress"
+
+	var actions: [TopBarAction] {
+		[
+			TopBarAction(icon: "plus", action: allAuction),
+		]
+	}
 
 	func allAuction() {}
 }
@@ -218,17 +255,34 @@ protocol ContentViewProtocol: View {
 	init(viewModel: ViewModel)
 }
 
-class GenericTopBarContentFactory<ViewModel: ViewModelProtocol>: TopBarContentFactory {
-	private var viewModel: ViewModel
-	private var contentProvider: (Binding<Bool>, ViewModel) -> TopBarContent
+class GenericTopBarContentFactory: TopBarContentFactory {
+	private var viewModel: AnyViewModel
 
-	init(viewModel: ViewModel, contentProvider: @escaping (Binding<Bool>, ViewModel) -> TopBarContent) {
+	init(viewModel: AnyViewModel) {
 		self.viewModel = viewModel
-		self.contentProvider = contentProvider
 	}
 
 	func createTopBarContent(isSidebarVisible: Binding<Bool>) -> TopBarContent {
-		contentProvider(isSidebarVisible, viewModel)
+		GenericTopBarContent(isSidebarVisible: isSidebarVisible, viewModel: viewModel)
+	}
+}
+
+struct GenericTopBarContent<ViewModel: ViewModelProtocol>: TopBarContent {
+	@Binding var isSidebarVisible: Bool
+	var viewModel: ViewModel
+
+	var leftViews: [AnyView] {
+		[AnyView(Button(action: { isSidebarVisible.toggle() }) { Image(systemName: "line.horizontal.3") })]
+	}
+
+	var centerView: AnyView {
+		AnyView(Text(viewModel.title))
+	}
+
+	var rightViews: [AnyView] {
+		viewModel.actions.map { action in
+			AnyView(Button(action: action.action) { Image(systemName: action.icon) })
+		}
 	}
 }
 
