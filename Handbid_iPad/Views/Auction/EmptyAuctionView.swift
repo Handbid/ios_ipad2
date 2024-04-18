@@ -15,14 +15,78 @@ extension TopBarContentFactory {
 	}
 }
 
-protocol DataService {
+protocol DataService: ObservableObject {
 	func fetchData()
 	func refreshData()
+}
+
+protocol ViewFactory {
+	associatedtype AuctionViewType: View
+	associatedtype PaddleViewType: View
+
+	func makeAuctionView() -> AuctionViewType
+	func makePaddleView() -> PaddleViewType
+}
+
+struct AppViewFactory: ViewFactory {
+	func makeAuctionView() -> AnyView {
+		let service = DataServiceFactory.getService()
+		let viewModel = AuctionViewModel(dataService: service)
+		return AnyView(AuctionView(viewModel: viewModel))
+	}
+
+	func makePaddleView() -> AnyView {
+		let service = DataServiceFactory.getService()
+		let viewModel = PaddleViewModel(dataService: service)
+		return AnyView(PaddleView(viewModel: viewModel))
+	}
+}
+
+class AnyViewFactory: ObservableObject {
+	private let _makeAuctionView: () -> AnyView
+	private let _makePaddleView: () -> AnyView
+
+	init<VF: ViewFactory>(wrappedFactory: VF) where VF.AuctionViewType == AnyView, VF.PaddleViewType == AnyView {
+		self._makeAuctionView = { AnyView(wrappedFactory.makeAuctionView()) }
+		self._makePaddleView = { AnyView(wrappedFactory.makePaddleView()) }
+	}
+
+	func makeAuctionView() -> AnyView {
+		_makeAuctionView()
+	}
+
+	func makePaddleView() -> AnyView {
+		_makePaddleView()
+	}
 }
 
 class AuctionDataService: DataService {
 	func fetchData() {}
 	func refreshData() {}
+}
+
+class DataServiceFactory {
+	static var defaultService: any DataService = AuctionDataService()
+
+	static func getService() -> DataServiceWrapper {
+		DataServiceWrapper(wrappedService: defaultService)
+	}
+}
+
+class DataServiceWrapper: ObservableObject {
+	var wrappedService: any DataService
+
+	init(wrappedService: any DataService) {
+		self.wrappedService = wrappedService
+	}
+
+	func fetchData() {
+		wrappedService.fetchData()
+	}
+
+	func refreshData() {
+		wrappedService.refreshData()
+	}
 }
 
 struct AuctionTopBarContentFactory<ViewModel: ViewModelProtocol>: TopBarContentFactory {
@@ -61,8 +125,14 @@ struct EmptyAuctionView<T: PageProtocol>: View {
 	@State private var selectedView: MainContainerViewType = .auction
 	@State private var isSidebarVisible: Bool = true
 
-	let auctionViewModel: AuctionViewModel = .init(dataService: AuctionDataService())
-	var paddleViewModel: PaddleViewModel = .init()
+	let auctionViewModel: AuctionViewModel
+	var paddleViewModel: PaddleViewModel
+
+	init() {
+		let dataService = DataServiceFactory.getService()
+		self.auctionViewModel = AuctionViewModel(dataService: dataService)
+		self.paddleViewModel = PaddleViewModel(dataService: dataService)
+	}
 
 	var body: some View {
 		VStack(spacing: 0) {
@@ -91,7 +161,7 @@ struct EmptyAuctionView<T: PageProtocol>: View {
 	}
 }
 
-class AnyViewModel: ViewModelProtocol {
+ class AnyViewModel: ViewModelProtocol {
 	private let _centerViewContent: () -> AnyView
 	private let _actions: () -> [TopBarAction]
 
@@ -107,7 +177,7 @@ class AnyViewModel: ViewModelProtocol {
 		self._centerViewContent = { viewModel.centerViewContent }
 		self._actions = { viewModel.actions }
 	}
-}
+ }
 
 protocol TopBarContent {
 	var leftViews: [AnyView] { get }
@@ -202,18 +272,16 @@ struct Sidebar: View {
 }
 
 struct MainView: View {
+	@EnvironmentObject var viewFactory: AnyViewFactory
 	var selectedView: MainContainerViewType
-	let auctionDataService: DataService = AuctionDataService()
 
 	@ViewBuilder
 	var body: some View {
 		switch selectedView {
 		case .auction:
-			AuctionView(viewModel: AuctionViewModel(dataService: auctionDataService))
-				.frame(maxWidth: .infinity, maxHeight: .infinity)
+			viewFactory.makeAuctionView()
 		case .paddle:
-			PaddleView(viewModel: PaddleViewModel())
-				.frame(maxWidth: .infinity, maxHeight: .infinity)
+			viewFactory.makePaddleView()
 		}
 	}
 }
@@ -223,12 +291,12 @@ protocol ViewModelProtocol: ObservableObject, TopBarActionProvider {
 }
 
 class AuctionViewModel: ObservableObject, ViewModelProtocol {
-	var dataService: DataService
+	@ObservedObject var dataService: DataServiceWrapper
 
 	@Published var title = "Auction Details"
 	@Published var auctionDate = "Next Auction: Tomorrow"
 
-	init(dataService: DataService) {
+	init(dataService: DataServiceWrapper) {
 		self.dataService = dataService
 	}
 
@@ -248,13 +316,20 @@ class AuctionViewModel: ObservableObject, ViewModelProtocol {
 	}
 
 	func searchData() {}
-	func filterData() {}
 	func refreshData() {}
+	func filterData() {
+		dataService.fetchData()
+	}
 }
 
 class PaddleViewModel: ObservableObject, ViewModelProtocol {
 	@Published var title = "Paddle Information"
 	@Published var paddleNumber = "Paddle #102"
+	@ObservedObject var dataService: DataServiceWrapper
+
+	init(dataService: DataServiceWrapper) {
+		self.dataService = dataService
+	}
 
 	var centerViewContent: AnyView {
 		AnyView(VStack {
@@ -264,8 +339,12 @@ class PaddleViewModel: ObservableObject, ViewModelProtocol {
 
 	var actions: [TopBarAction] {
 		[
-			TopBarAction(icon: "plus", action: { print("Add paddle") }),
+			TopBarAction(icon: "plus", action: addPaddle),
 		]
+	}
+
+	private func addPaddle() {
+		print("Add paddle")
 	}
 }
 
