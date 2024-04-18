@@ -7,7 +7,7 @@ struct GenericTopBarContent<ViewModel: ViewModelTopBarProtocol>: TopBarContent {
 	var viewModel: ViewModel
 
 	var leftViews: [AnyView] {
-		[AnyView(Button(action: { isSidebarVisible.toggle() }) { Image(systemName: "line.horizontal.3") })]
+		[AnyView(Button(action: { isSidebarVisible.toggle() }) { Image("menuIcon") })]
 	}
 
 	var centerView: AnyView {
@@ -23,7 +23,12 @@ struct GenericTopBarContent<ViewModel: ViewModelTopBarProtocol>: TopBarContent {
 
 	var rightViews: [AnyView] {
 		viewModel.actions.map { action in
-			AnyView(Button(action: action.action) { Image(systemName: action.icon) })
+			AnyView(Button(action: action.action) {
+				Image(action.icon)
+					.resizable()
+					.scaledToFit()
+					.frame(width: 30)
+			})
 		}
 	}
 }

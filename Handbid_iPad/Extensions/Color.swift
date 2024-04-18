@@ -21,6 +21,7 @@ extension Color {
 
 	static var accentViolet = Color(hex: "694BFF")
 	static var accentGrayForm = Color(hex: "B1B1B1")
+	static var accentGrayBackground = Color(hex: "F7F7F9")
 	static var white = Color(hex: "ffffff")
 }
 

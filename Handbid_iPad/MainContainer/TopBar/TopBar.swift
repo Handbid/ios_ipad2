@@ -4,20 +4,20 @@ import SwiftUI
 
 struct TopBar: View {
 	var content: TopBarContent
-
+	let centerViewWidthRatio: CGFloat = 0.6
 	static let barHeight: CGFloat = 60
 
 	var body: some View {
 		HStack {
 			ForEach(Array(content.leftViews.enumerated()), id: \.offset) { _, view in view }
-			Spacer()
 			content.centerView
+				.frame(width: UIScreen.main.bounds.width * centerViewWidthRatio)
 			Spacer()
 			ForEach(Array(content.rightViews.enumerated()), id: \.offset) { _, view in view }
 		}
 		.padding([.vertical, .leading, .trailing], 10)
 		.frame(height: TopBar.barHeight)
-		.background(Color.blue)
-		.foregroundColor(.white)
+		.background(Color.white)
+		.foregroundColor(.black)
 	}
 }

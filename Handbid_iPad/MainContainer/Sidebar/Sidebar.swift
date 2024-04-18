@@ -16,7 +16,7 @@ struct Sidebar: View {
 		}
 		.padding(10)
 		.frame(minWidth: 200, idealWidth: 250, maxWidth: 300, maxHeight: .infinity)
-		.background(Color.blue)
-		.foregroundColor(.white)
+		.background(Color.white)
+		.foregroundColor(.black)
 	}
 }

@@ -14,7 +14,7 @@ struct AuctionView: ContentView {
 			Text(viewModel.title)
 		}
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
-		.background(Color.red)
+		.background(Color.accentGrayBackground)
 		.edgesIgnoringSafeArea(.all)
 	}
 }

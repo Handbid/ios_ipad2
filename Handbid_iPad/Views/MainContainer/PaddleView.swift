@@ -14,7 +14,7 @@ struct PaddleView: ContentView {
 			Text(viewModel.title)
 		}
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
-		.background(Color.gray)
+		.background(Color.accentGrayBackground)
 		.edgesIgnoringSafeArea(.all)
 	}
 }
