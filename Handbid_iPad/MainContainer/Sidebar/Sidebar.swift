@@ -27,32 +27,32 @@ struct Sidebar: View {
 			}
 
 			SidebarItem(
-				isSelected: selectedView == .paddle,
+				isSelected: selectedView == .myBids,
 				iconName: "bidSidebarIcon",
 				showLockIcon: false,
 				text: "My Bids"
 			) {
-				selectedView = .paddle
+				selectedView = .myBids
 			}
 
 			SidebarItem(
-				isSelected: selectedView == .paddle,
+				isSelected: selectedView == .manager,
 				iconName: "settingsSidebarIcon",
 				showLockIcon: true,
 				text: "Manager"
 			) {
-				selectedView = .paddle
+				selectedView = .manager
 			}
 
 			Spacer()
 
 			SidebarItem(
-				isSelected: selectedView == .paddle,
+				isSelected: selectedView == .logout,
 				iconName: "logoutSidebarIcon",
 				showLockIcon: false,
 				text: "Logout"
 			) {
-				selectedView = .paddle
+				selectedView = .logout
 			}
 		}
 		.padding(10)

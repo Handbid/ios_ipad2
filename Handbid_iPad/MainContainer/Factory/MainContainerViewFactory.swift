@@ -14,4 +14,22 @@ struct MainContainerViewFactory: MainContainerProtocolFactory {
 		let viewModel = PaddleViewModel(dataService: service)
 		return AnyView(PaddleView(viewModel: viewModel))
 	}
+
+	func makeMyBidsView() -> AnyView {
+		let service = DataServiceFactory.getService()
+		let viewModel = MyBidsViewModel(dataService: service)
+		return AnyView(MyBidsView(viewModel: viewModel))
+	}
+
+	func makeManagerView() -> AnyView {
+		let service = DataServiceFactory.getService()
+		let viewModel = ManagerViewModel(dataService: service)
+		return AnyView(ManagerView(viewModel: viewModel))
+	}
+
+	func makeLogOutView() -> AnyView {
+		let service = DataServiceFactory.getService()
+		let viewModel = LogOutViewModel(dataService: service)
+		return AnyView(LogOutView(viewModel: viewModel))
+	}
 }

@@ -12,11 +12,17 @@ struct MainContainer<T: PageProtocol>: View {
 
 	let auctionViewModel: AuctionViewModel
 	var paddleViewModel: PaddleViewModel
+	let myBidsViewModel: MyBidsViewModel
+	let managerViewModel: ManagerViewModel
+	let logOutViewModel: LogOutViewModel
 
 	init() {
 		let dataService = DataServiceFactory.getService()
 		self.auctionViewModel = AuctionViewModel(dataService: dataService)
 		self.paddleViewModel = PaddleViewModel(dataService: dataService)
+		self.myBidsViewModel = MyBidsViewModel(dataService: dataService)
+		self.managerViewModel = ManagerViewModel(dataService: dataService)
+		self.logOutViewModel = LogOutViewModel(dataService: dataService)
 	}
 
 	var body: some View {
@@ -42,6 +48,12 @@ struct MainContainer<T: PageProtocol>: View {
 			GenericTopBarContentFactory(viewModel: auctionViewModel).createTopBarContent(isSidebarVisible: $isSidebarVisible)
 		case .paddle:
 			GenericTopBarContentFactory(viewModel: paddleViewModel).createTopBarContent(isSidebarVisible: $isSidebarVisible)
+		case .myBids:
+			GenericTopBarContentFactory(viewModel: myBidsViewModel).createTopBarContent(isSidebarVisible: $isSidebarVisible)
+		case .manager:
+			GenericTopBarContentFactory(viewModel: managerViewModel).createTopBarContent(isSidebarVisible: $isSidebarVisible)
+		case .logout:
+			GenericTopBarContentFactory(viewModel: logOutViewModel).createTopBarContent(isSidebarVisible: $isSidebarVisible)
 		}
 	}
 }

@@ -58,6 +58,12 @@
 		8C8BEC662BA9B7DD0083D904 /* PageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC652BA9B7DD0083D904 /* PageProtocol.swift */; };
 		8C9FA43A2BD157790041F28E /* GenericTopBarContentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA4392BD157790041F28E /* GenericTopBarContentFactory.swift */; };
 		8C9FA43C2BD256430041F28E /* SidebarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA43B2BD256430041F28E /* SidebarItem.swift */; };
+		8C9FA43E2BD27FDF0041F28E /* MyBidsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA43D2BD27FDF0041F28E /* MyBidsViewModel.swift */; };
+		8C9FA4402BD27FE80041F28E /* ManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA43F2BD27FE80041F28E /* ManagerViewModel.swift */; };
+		8C9FA4422BD27FF20041F28E /* LogOutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA4412BD27FF20041F28E /* LogOutViewModel.swift */; };
+		8C9FA4442BD282B00041F28E /* MyBidsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA4432BD282B00041F28E /* MyBidsView.swift */; };
+		8C9FA4462BD282B90041F28E /* ManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA4452BD282B90041F28E /* ManagerView.swift */; };
+		8C9FA4482BD282C30041F28E /* LogOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA4472BD282C30041F28E /* LogOutView.swift */; };
 		8CABF5BB2BB9C5F400A34870 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5BA2BB9C5F400A34870 /* ForgotPasswordView.swift */; };
 		8CABF5BD2BB9C60900A34870 /* PasswordResetConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5BC2BB9C60900A34870 /* PasswordResetConfirmationView.swift */; };
 		8CABF5C32BB9C64E00A34870 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5C22BB9C64E00A34870 /* ForgotPasswordViewModel.swift */; };
@@ -191,6 +197,12 @@
 		8C8BEC652BA9B7DD0083D904 /* PageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageProtocol.swift; sourceTree = "<group>"; };
 		8C9FA4392BD157790041F28E /* GenericTopBarContentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTopBarContentFactory.swift; sourceTree = "<group>"; };
 		8C9FA43B2BD256430041F28E /* SidebarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItem.swift; sourceTree = "<group>"; };
+		8C9FA43D2BD27FDF0041F28E /* MyBidsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBidsViewModel.swift; sourceTree = "<group>"; };
+		8C9FA43F2BD27FE80041F28E /* ManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerViewModel.swift; sourceTree = "<group>"; };
+		8C9FA4412BD27FF20041F28E /* LogOutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutViewModel.swift; sourceTree = "<group>"; };
+		8C9FA4432BD282B00041F28E /* MyBidsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBidsView.swift; sourceTree = "<group>"; };
+		8C9FA4452BD282B90041F28E /* ManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerView.swift; sourceTree = "<group>"; };
+		8C9FA4472BD282C30041F28E /* LogOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutView.swift; sourceTree = "<group>"; };
 		8CA455A02BBAAC7300634B5B /* Handbid_iPad.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Handbid_iPad.entitlements; sourceTree = "<group>"; };
 		8CABF5BA2BB9C5F400A34870 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		8CABF5BC2BB9C60900A34870 /* PasswordResetConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetConfirmationView.swift; sourceTree = "<group>"; };
@@ -520,8 +532,11 @@
 			isa = PBXGroup;
 			children = (
 				8CD1080D2BD122CC00E83261 /* AuctionView.swift */,
-				8CD1080F2BD122E000E83261 /* PaddleView.swift */,
+				8C9FA4472BD282C30041F28E /* LogOutView.swift */,
 				8C3D3C062BBB85CC002A5CFC /* MainContainer.swift */,
+				8C9FA4452BD282B90041F28E /* ManagerView.swift */,
+				8C9FA4432BD282B00041F28E /* MyBidsView.swift */,
+				8CD1080F2BD122E000E83261 /* PaddleView.swift */,
 			);
 			path = MainContainer;
 			sourceTree = "<group>";
@@ -683,6 +698,9 @@
 			isa = PBXGroup;
 			children = (
 				8CD108122BD1233E00E83261 /* AuctionViewModel.swift */,
+				8C9FA4412BD27FF20041F28E /* LogOutViewModel.swift */,
+				8C9FA43F2BD27FE80041F28E /* ManagerViewModel.swift */,
+				8C9FA43D2BD27FDF0041F28E /* MyBidsViewModel.swift */,
 				8CD108152BD1237D00E83261 /* PaddleViewModel.swift */,
 			);
 			path = MainContainer;
@@ -1065,6 +1083,7 @@
 				8CAFD93A2BBD90F700C7D763 /* KeyboardResponsiveModifier.swift in Sources */,
 				8CD108132BD1233E00E83261 /* AuctionViewModel.swift in Sources */,
 				8C9FA43A2BD157790041F28E /* GenericTopBarContentFactory.swift in Sources */,
+				8C9FA4402BD27FE80041F28E /* ManagerViewModel.swift in Sources */,
 				8C8BEC302BA975F10083D904 /* LogInView.swift in Sources */,
 				CE073ED82BB42D710079F342 /* View.swift in Sources */,
 				CE7DF82F2BADFD1900FF7694 /* PinView.swift in Sources */,
@@ -1076,9 +1095,11 @@
 				8C8BEC662BA9B7DD0083D904 /* PageProtocol.swift in Sources */,
 				8CD1081E2BD124AE00E83261 /* AnyViewMainContainerFactory.swift in Sources */,
 				8CFE2CC72BBE84DF00AF60F1 /* NotificationName.swift in Sources */,
+				8C9FA4422BD27FF20041F28E /* LogOutViewModel.swift in Sources */,
 				8C4B7BAD2BB8942D0043B892 /* TextFieldStyles.swift in Sources */,
 				8CD108102BD122E000E83261 /* PaddleView.swift in Sources */,
 				8CABF5CE2BB9D89900A34870 /* TypographyStyle.swift in Sources */,
+				8C9FA4462BD282B90041F28E /* ManagerView.swift in Sources */,
 				8CD107F52BD11EEA00E83261 /* TopBarContent.swift in Sources */,
 				8CD108282BD125DC00E83261 /* AuctionDataService.swift in Sources */,
 				8C8BEC3A2BA977F00083D904 /* Coordinator.swift in Sources */,
@@ -1087,6 +1108,7 @@
 				8CD107FF2BD11F9500E83261 /* Sidebar.swift in Sources */,
 				8CD107FC2BD11F7B00E83261 /* ViewModelTopBarProtocol.swift in Sources */,
 				CEE2BB272BB5BBB10033556D /* RegisterRepository.swift in Sources */,
+				8C9FA4482BD282C30041F28E /* LogOutView.swift in Sources */,
 				8C4B7BAB2BB892F20043B892 /* CustomStyledViewText.swift in Sources */,
 				8CD1081C2BD1243800E83261 /* GenericTopBarContent.swift in Sources */,
 				8C8BEC2E2BA975DE0083D904 /* GetStartedView.swift in Sources */,
@@ -1095,10 +1117,12 @@
 				8CABF5DC2BB9F37700A34870 /* RegistrationBackButton.swift in Sources */,
 				8CABF5D02BB9E11300A34870 /* ResponsiveView.swift in Sources */,
 				8C8BEC322BA976030083D904 /* GetStartedViewModel.swift in Sources */,
+				8C9FA43E2BD27FDF0041F28E /* MyBidsViewModel.swift in Sources */,
 				8CD108162BD1237D00E83261 /* PaddleViewModel.swift in Sources */,
 				8C4B7B852BB47E9C0043B892 /* Color.swift in Sources */,
 				8CD108072BD1216C00E83261 /* MainContainerViewFactory.swift in Sources */,
 				8C8BEC382BA977AC0083D904 /* RegistrationPage.swift in Sources */,
+				8C9FA4442BD282B00041F28E /* MyBidsView.swift in Sources */,
 				8C4B7BB72BB9C1080043B892 /* TextSecuredStyles.swift in Sources */,
 				8CABF5BD2BB9C60900A34870 /* PasswordResetConfirmationView.swift in Sources */,
 				8CABF5BB2BB9C5F400A34870 /* ForgotPasswordView.swift in Sources */,

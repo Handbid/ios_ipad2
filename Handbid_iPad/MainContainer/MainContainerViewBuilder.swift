@@ -13,6 +13,12 @@ struct MainContainerViewBuilder: View {
 			viewFactory.makeAuctionView()
 		case .paddle:
 			viewFactory.makePaddleView()
+		case .myBids:
+			viewFactory.makeMyBidsView()
+		case .manager:
+			viewFactory.makeManagerView()
+		case .logout:
+			viewFactory.makeLogOutView()
 		}
 	}
 }
