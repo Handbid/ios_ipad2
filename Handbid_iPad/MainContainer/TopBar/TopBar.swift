@@ -11,7 +11,7 @@ struct TopBar: View {
 		HStack {
 			ForEach(Array(content.leftViews.enumerated()), id: \.offset) { _, view in view }
 			content.centerView
-				.frame(width: UIScreen.main.bounds.width * centerViewWidthRatio)
+			// .frame(width: UIScreen.main.bounds.width * centerViewWidthRatio)
 			Spacer()
 			ForEach(Array(content.rightViews.enumerated()), id: \.offset) { _, view in view }
 		}

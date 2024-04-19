@@ -25,7 +25,6 @@ struct GenericTopBarContent<ViewModel: ViewModelTopBarProtocol>: TopBarContent {
 		viewModel.actions.map { action in
 			AnyView(Button(action: action.action) {
 				Image(action.icon)
-					.resizable()
 					.scaledToFit()
 					.frame(width: 30)
 			})

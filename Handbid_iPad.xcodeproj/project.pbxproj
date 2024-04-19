@@ -57,6 +57,7 @@
 		8C8BEC642BA9ADE20083D904 /* AppLaunchControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC632BA9ADE20083D904 /* AppLaunchControlView.swift */; };
 		8C8BEC662BA9B7DD0083D904 /* PageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC652BA9B7DD0083D904 /* PageProtocol.swift */; };
 		8C9FA43A2BD157790041F28E /* GenericTopBarContentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA4392BD157790041F28E /* GenericTopBarContentFactory.swift */; };
+		8C9FA43C2BD256430041F28E /* SidebarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA43B2BD256430041F28E /* SidebarItem.swift */; };
 		8CABF5BB2BB9C5F400A34870 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5BA2BB9C5F400A34870 /* ForgotPasswordView.swift */; };
 		8CABF5BD2BB9C60900A34870 /* PasswordResetConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5BC2BB9C60900A34870 /* PasswordResetConfirmationView.swift */; };
 		8CABF5C32BB9C64E00A34870 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5C22BB9C64E00A34870 /* ForgotPasswordViewModel.swift */; };
@@ -189,6 +190,7 @@
 		8C8BEC632BA9ADE20083D904 /* AppLaunchControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLaunchControlView.swift; sourceTree = "<group>"; };
 		8C8BEC652BA9B7DD0083D904 /* PageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageProtocol.swift; sourceTree = "<group>"; };
 		8C9FA4392BD157790041F28E /* GenericTopBarContentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTopBarContentFactory.swift; sourceTree = "<group>"; };
+		8C9FA43B2BD256430041F28E /* SidebarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItem.swift; sourceTree = "<group>"; };
 		8CA455A02BBAAC7300634B5B /* Handbid_iPad.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Handbid_iPad.entitlements; sourceTree = "<group>"; };
 		8CABF5BA2BB9C5F400A34870 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		8CABF5BC2BB9C60900A34870 /* PasswordResetConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetConfirmationView.swift; sourceTree = "<group>"; };
@@ -672,6 +674,7 @@
 			isa = PBXGroup;
 			children = (
 				8CD107FE2BD11F9500E83261 /* Sidebar.swift */,
+				8C9FA43B2BD256430041F28E /* SidebarItem.swift */,
 			);
 			path = Sidebar;
 			sourceTree = "<group>";
@@ -1041,6 +1044,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CD108232BD1251900E83261 /* DataServiceWrapper.swift in Sources */,
+				8C9FA43C2BD256430041F28E /* SidebarItem.swift in Sources */,
 				8C3D3C042BBB7F09002A5CFC /* MainAppCoordinator.swift in Sources */,
 				8C0007BF2BAC764700AAEBA0 /* AppVersionModel.swift in Sources */,
 				8C4B7B7F2BB379440043B892 /* AuthManager.swift in Sources */,

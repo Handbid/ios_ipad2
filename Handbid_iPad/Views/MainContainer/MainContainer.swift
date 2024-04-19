@@ -26,11 +26,11 @@ struct MainContainer<T: PageProtocol>: View {
 				HStack(spacing: 0) {
 					if isSidebarVisible {
 						Sidebar(selectedView: $selectedView)
-							.frame(width: 80)
+							.frame(width: 90)
 							.transition(.move(edge: .leading))
 					}
 					MainContainerViewBuilder(selectedView: selectedView)
-						.frame(width: isSidebarVisible ? geometry.size.width - 80 : geometry.size.width)
+						.frame(width: isSidebarVisible ? geometry.size.width - 90 : geometry.size.width)
 				}
 			}
 		}
