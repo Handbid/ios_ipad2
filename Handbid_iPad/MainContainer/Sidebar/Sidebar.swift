@@ -45,6 +45,15 @@ struct Sidebar: View {
 			}
 
 			Spacer()
+
+			SidebarItem(
+				isSelected: selectedView == .paddle,
+				iconName: "logoutSidebarIcon",
+				showLockIcon: false,
+				text: "Logout"
+			) {
+				selectedView = .paddle
+			}
 		}
 		.padding(10)
 		.background(Color(UIColor.systemBackground))
