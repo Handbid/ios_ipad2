@@ -20,17 +20,25 @@ struct SidebarItem: View {
 							Circle()
 								.stroke(Color.accentGrayForm, lineWidth: isSelected ? 0 : 1)
 						)
+						.scaleEffect(isSelected ? 1.1 : 1)
+						.animation(.spring(), value: isSelected)
+
 					Image(iconName)
 						.resizable()
 						.aspectRatio(contentMode: .fit)
 						.frame(width: 30, height: 30)
 						.foregroundColor(isSelected ? .white : .primary)
+						.rotationEffect(isSelected ? .degrees(360) : .degrees(0))
+						.animation(.easeInOut, value: isSelected)
 
 					if showLockIcon {
 						Image("lockSidebarIcon")
-							.foregroundColor(isSelected ? .white : .primary)
+							.resizable()
+							.aspectRatio(contentMode: .fit)
 							.frame(width: 12, height: 16)
+							.foregroundColor(isSelected ? .white : .primary)
 							.offset(x: 18, y: 16)
+							.animation(.easeInOut, value: isSelected)
 					}
 				}
 				Text(text)
@@ -41,5 +49,7 @@ struct SidebarItem: View {
 			.padding(10)
 		}
 		.background(Color.clear)
+		.scaleEffect(isSelected ? 1.1 : 1)
+		.animation(.spring(), value: isSelected)
 	}
 }
