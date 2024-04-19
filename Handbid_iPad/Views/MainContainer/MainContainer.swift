@@ -28,20 +28,38 @@ struct MainContainer<T: PageProtocol>: View {
 				ZStack(alignment: .leading) {
 					MainContainerViewBuilder(selectedView: selectedView)
 						.frame(width: geometry.size.width)
+						.clipShape(TopLeftRoundedCorner(radius: 40, corners: .topLeft))
 						.zIndex(0)
+						.edgesIgnoringSafeArea(.bottom)
 
 					if isSidebarVisible {
 						Sidebar(selectedView: $selectedView)
 							.frame(width: 90)
-							.transition(.move(edge: .leading))
+							.transition(.move(edge: .leading).combined(with: .opacity))
+							.animation(.easeInOut(duration: 0.5), value: isSidebarVisible)
 							.zIndex(1)
 					}
 				}
+			}
+		}
+		.onChange(of: deviceContext.isPhone) { _, isNewValue in
+			if isNewValue {
+				isSidebarVisible = false
 			}
 		}
 	}
 
 	private func topBarContent(for _: MainContainerTypeView) -> TopBarContent {
 		GenericTopBarContentFactory(viewModel: auctionViewModel, deviceContext: deviceContext).createTopBarContent(isSidebarVisible: $isSidebarVisible)
+	}
+}
+
+struct TopLeftRoundedCorner: Shape {
+	var radius: CGFloat
+	var corners: UIRectCorner
+
+	func path(in rect: CGRect) -> Path {
+		let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+		return Path(path.cgPath)
 	}
 }
