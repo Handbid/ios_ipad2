@@ -10,7 +10,7 @@ struct Sidebar: View {
 		VStack(alignment: .leading, spacing: 20) {
 			SidebarItem(
 				isSelected: selectedView == .auction,
-				iconName: selectedView == .auction ? "cart.fill" : "cart",
+				iconName: "auctionSidebarIcon",
 				showLockIcon: false,
 				text: "Auction"
 			) {
@@ -19,7 +19,7 @@ struct Sidebar: View {
 
 			SidebarItem(
 				isSelected: selectedView == .paddle,
-				iconName: selectedView == .paddle ? "hammer.fill" : "hammer",
+				iconName: "paddleSidebarIcon",
 				showLockIcon: false,
 				text: "Paddle"
 			) {
@@ -28,7 +28,7 @@ struct Sidebar: View {
 
 			SidebarItem(
 				isSelected: selectedView == .paddle,
-				iconName: selectedView == .paddle ? "square.and.arrow.up.fill" : "square.and.arrow.up",
+				iconName: "bidSidebarIcon",
 				showLockIcon: false,
 				text: "My Bids"
 			) {
@@ -37,7 +37,7 @@ struct Sidebar: View {
 
 			SidebarItem(
 				isSelected: selectedView == .paddle,
-				iconName: selectedView == .paddle ? "person.3.fill" : "person.3",
+				iconName: "settingsSidebarIcon",
 				showLockIcon: true,
 				text: "Manager"
 			) {

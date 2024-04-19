@@ -17,7 +17,7 @@ struct TopBar: View {
 		}
 		.padding([.vertical, .leading, .trailing], 10)
 		.frame(height: TopBar.barHeight)
-		.background(Color.white)
-		.foregroundColor(.black)
+		.background(Color(UIColor.systemBackground))
+		.foregroundColor(Color(UIColor.label))
 	}
 }

@@ -7,7 +7,7 @@ struct GenericTopBarContent<ViewModel: ViewModelTopBarProtocol>: TopBarContent {
 	var viewModel: ViewModel
 
 	var leftViews: [AnyView] {
-		[AnyView(Button(action: { isSidebarVisible.toggle() }) { Image("menuIcon") })]
+		[AnyView(Button(action: { isSidebarVisible.toggle() }) { Image("menuIcon").foregroundColor(.primary) })]
 	}
 
 	var centerView: AnyView {
@@ -15,7 +15,7 @@ struct GenericTopBarContent<ViewModel: ViewModelTopBarProtocol>: TopBarContent {
 		case .title:
 			AnyView(Text(viewModel.centerViewData.title ?? "").bold())
 		case .image:
-			AnyView(viewModel.centerViewData.image ?? Image(systemName: "photo"))
+			AnyView(viewModel.centerViewData.image.foregroundColor(.primary))
 		case .custom:
 			viewModel.centerViewData.customView ?? AnyView(EmptyView())
 		}
@@ -27,7 +27,14 @@ struct GenericTopBarContent<ViewModel: ViewModelTopBarProtocol>: TopBarContent {
 				Image(action.icon)
 					.scaledToFit()
 					.frame(width: 30)
+					.foregroundColor(Color.primary)
 			})
 		}
+	}
+}
+
+extension View {
+	func eraseToAnyView() -> AnyView {
+		AnyView(self)
 	}
 }

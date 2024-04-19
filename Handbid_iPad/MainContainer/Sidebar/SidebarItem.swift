@@ -20,22 +20,22 @@ struct SidebarItem: View {
 							Circle()
 								.stroke(Color.accentGrayForm, lineWidth: isSelected ? 0 : 1)
 						)
-					Image(systemName: iconName)
+					Image(iconName)
 						.resizable()
 						.aspectRatio(contentMode: .fit)
 						.frame(width: 30, height: 30)
 						.foregroundColor(isSelected ? .white : .primary)
 
 					if showLockIcon {
-						Image(systemName: "lock.fill")
-							.foregroundColor(isSelected ? .black : .primary)
+						Image("lockSidebarIcon")
+							.foregroundColor(isSelected ? .white : .primary)
 							.frame(width: 12, height: 16)
 							.offset(x: 18, y: 16)
 					}
 				}
 				Text(text)
 					.font(.system(size: 11, weight: .regular))
-					.foregroundColor(isSelected ? .accentViolet : .primary)
+					.foregroundColor(.primary)
 					.lineLimit(1)
 			}
 			.padding(10)
