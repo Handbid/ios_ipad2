@@ -5,36 +5,51 @@ import SwiftUI
 struct GenericTopBarContent<ViewModel: ViewModelTopBarProtocol>: TopBarContent {
 	@Binding var isSidebarVisible: Bool
 	var viewModel: ViewModel
+	var logo: Image?
 
 	var leftViews: [AnyView] {
-		[AnyView(Button(action: { isSidebarVisible.toggle() }) { Image("menuIcon").foregroundColor(.primary) })]
+		if let logo {
+			[AnyView(logo.foregroundColor(.primary))]
+		}
+		else {
+			[createMenuButton()]
+		}
 	}
 
 	var centerView: AnyView {
-		switch viewModel.centerViewData.type {
-		case .title:
-			AnyView(Text(viewModel.centerViewData.title ?? "").bold())
-		case .image:
-			AnyView(viewModel.centerViewData.image.foregroundColor(.primary))
-		case .custom:
-			viewModel.centerViewData.customView ?? AnyView(EmptyView())
-		}
+		createCenterView()
 	}
 
 	var rightViews: [AnyView] {
 		viewModel.actions.map { action in
-			AnyView(Button(action: action.action) {
-				Image(action.icon)
-					.scaledToFit()
-					.frame(width: 30)
-					.foregroundColor(Color.primary)
-			})
+			createActionButton(for: action)
 		}
 	}
-}
 
-extension View {
-	func eraseToAnyView() -> AnyView {
-		AnyView(self)
+	private func createMenuButton() -> AnyView {
+		Button(action: { isSidebarVisible.toggle() }) {
+			Image("menuIcon").foregroundColor(.primary)
+		}.eraseToAnyView()
+	}
+
+	private func createCenterView() -> AnyView {
+		switch viewModel.centerViewData.type {
+		case .title:
+			Text(viewModel.centerViewData.title ?? "")
+				.bold()
+				.eraseToAnyView()
+		case .image:
+			viewModel.centerViewData.image
+				.foregroundColor(.primary)
+				.eraseToAnyView()
+		case .custom:
+			viewModel.centerViewData.customView ?? EmptyView().eraseToAnyView()
+		}
+	}
+
+	private func createActionButton(for action: TopBarAction) -> AnyView {
+		Button(action: action.action) {
+			Image(action.icon).scaledToFit().frame(width: 30).foregroundColor(.primary)
+		}.eraseToAnyView()
 	}
 }

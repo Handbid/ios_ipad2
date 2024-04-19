@@ -8,7 +8,8 @@ struct MainContainer<T: PageProtocol>: View {
 	@StateObject private var authManager = AuthManager()
 
 	@State private var selectedView: MainContainerTypeView = .auction
-	@State private var isSidebarVisible: Bool = true
+	@State private var isSidebarVisible: Bool = DeviceConfigurator.isSidebarAlwaysVisible
+	@ObservedObject private var deviceContext = DeviceContext()
 
 	let auctionViewModel: AuctionViewModel
 	var paddleViewModel: PaddleViewModel
@@ -17,12 +18,7 @@ struct MainContainer<T: PageProtocol>: View {
 	let logOutViewModel: LogOutViewModel
 
 	init() {
-		let dataService = DataServiceFactory.getService()
-		self.auctionViewModel = AuctionViewModel(dataService: dataService)
-		self.paddleViewModel = PaddleViewModel(dataService: dataService)
-		self.myBidsViewModel = MyBidsViewModel(dataService: dataService)
-		self.managerViewModel = ManagerViewModel(dataService: dataService)
-		self.logOutViewModel = LogOutViewModel(dataService: dataService)
+		(self.auctionViewModel, self.paddleViewModel, self.myBidsViewModel, self.managerViewModel, self.logOutViewModel) = ViewModelFactory.createAllViewModels()
 	}
 
 	var body: some View {
@@ -42,18 +38,8 @@ struct MainContainer<T: PageProtocol>: View {
 		}
 	}
 
-	private func topBarContent(for viewType: MainContainerTypeView) -> TopBarContent {
-		switch viewType {
-		case .auction:
-			GenericTopBarContentFactory(viewModel: auctionViewModel).createTopBarContent(isSidebarVisible: $isSidebarVisible)
-		case .paddle:
-			GenericTopBarContentFactory(viewModel: paddleViewModel).createTopBarContent(isSidebarVisible: $isSidebarVisible)
-		case .myBids:
-			GenericTopBarContentFactory(viewModel: myBidsViewModel).createTopBarContent(isSidebarVisible: $isSidebarVisible)
-		case .manager:
-			GenericTopBarContentFactory(viewModel: managerViewModel).createTopBarContent(isSidebarVisible: $isSidebarVisible)
-		case .logout:
-			GenericTopBarContentFactory(viewModel: logOutViewModel).createTopBarContent(isSidebarVisible: $isSidebarVisible)
-		}
+	private func topBarContent(for _: MainContainerTypeView) -> TopBarContent {
+		let factory = GenericTopBarContentFactory(viewModel: auctionViewModel, deviceContext: deviceContext).createTopBarContent(isSidebarVisible: $isSidebarVisible)
+		return factory
 	}
 }

@@ -18,11 +18,7 @@ class PaddleViewModel: ObservableObject, ViewModelTopBarProtocol {
 		)
 	}
 
-	var actions: [TopBarAction] {
-		[
-			// TopBarAction(icon: "plus", action: addPaddle),
-		]
-	}
+	var actions: [TopBarAction] { [] }
 
 	private func addPaddle() {
 		print("Add paddle")
