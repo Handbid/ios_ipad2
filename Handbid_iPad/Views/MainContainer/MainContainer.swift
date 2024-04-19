@@ -25,14 +25,17 @@ struct MainContainer<T: PageProtocol>: View {
 		VStack(spacing: 0) {
 			TopBar(content: topBarContent(for: selectedView))
 			GeometryReader { geometry in
-				HStack(spacing: 0) {
+				ZStack(alignment: .leading) {
+					MainContainerViewBuilder(selectedView: selectedView)
+						.frame(width: geometry.size.width)
+						.zIndex(0)
+
 					if isSidebarVisible {
 						Sidebar(selectedView: $selectedView)
 							.frame(width: 90)
 							.transition(.move(edge: .leading))
+							.zIndex(1)
 					}
-					MainContainerViewBuilder(selectedView: selectedView)
-						.frame(width: isSidebarVisible ? geometry.size.width - 90 : geometry.size.width)
 				}
 			}
 		}
