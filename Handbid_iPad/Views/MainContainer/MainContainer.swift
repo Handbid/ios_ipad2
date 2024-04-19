@@ -9,7 +9,7 @@ struct MainContainer<T: PageProtocol>: View {
 
 	@State private var selectedView: MainContainerTypeView = .auction
 	@State private var isSidebarVisible: Bool = DeviceConfigurator.isSidebarAlwaysVisible
-	@ObservedObject private var deviceContext = DeviceContext()
+	@StateObject private var deviceContext = DeviceContext()
 
 	let auctionViewModel: AuctionViewModel
 	var paddleViewModel: PaddleViewModel
@@ -39,7 +39,6 @@ struct MainContainer<T: PageProtocol>: View {
 	}
 
 	private func topBarContent(for _: MainContainerTypeView) -> TopBarContent {
-		let factory = GenericTopBarContentFactory(viewModel: auctionViewModel, deviceContext: deviceContext).createTopBarContent(isSidebarVisible: $isSidebarVisible)
-		return factory
+		GenericTopBarContentFactory(viewModel: auctionViewModel, deviceContext: deviceContext).createTopBarContent(isSidebarVisible: $isSidebarVisible)
 	}
 }
