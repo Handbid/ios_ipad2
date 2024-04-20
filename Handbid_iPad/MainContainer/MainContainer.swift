@@ -70,7 +70,18 @@ struct MainContainer<T: PageProtocol>: View {
 			.zIndex(1)
 	}
 
-	private func topBarContent(for _: MainContainerTypeView) -> TopBarContent {
-		GenericTopBarContentFactory(viewModel: auctionViewModel, deviceContext: deviceContext).createTopBarContent(isSidebarVisible: $isSidebarVisible)
+	private func topBarContent(for viewType: MainContainerTypeView) -> TopBarContent {
+		switch viewType {
+		case .auction:
+			GenericTopBarContentFactory(viewModel: auctionViewModel, deviceContext: deviceContext).createTopBarContent(isSidebarVisible: $isSidebarVisible)
+		case .paddle:
+			GenericTopBarContentFactory(viewModel: paddleViewModel, deviceContext: deviceContext).createTopBarContent(isSidebarVisible: $isSidebarVisible)
+		case .myBids:
+			GenericTopBarContentFactory(viewModel: myBidsViewModel, deviceContext: deviceContext).createTopBarContent(isSidebarVisible: $isSidebarVisible)
+		case .manager:
+			GenericTopBarContentFactory(viewModel: managerViewModel, deviceContext: deviceContext).createTopBarContent(isSidebarVisible: $isSidebarVisible)
+		case .logout:
+			GenericTopBarContentFactory(viewModel: logOutViewModel, deviceContext: deviceContext).createTopBarContent(isSidebarVisible: $isSidebarVisible)
+		}
 	}
 }
