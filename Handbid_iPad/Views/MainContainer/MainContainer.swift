@@ -26,38 +26,49 @@ struct MainContainer<T: PageProtocol>: View {
 			TopBar(content: topBarContent(for: selectedView))
 			GeometryReader { geometry in
 				if deviceContext.isPhone {
-					ZStack(alignment: .leading) {
-						MainContainerViewBuilder(selectedView: selectedView)
-							.frame(width: geometry.size.width)
-							.clipShape(TopLeftRoundedCorner(radius: 40, corners: .topLeft))
-							.zIndex(0)
-							.edgesIgnoringSafeArea(.bottom)
-
-						if isSidebarVisible {
-							Sidebar(selectedView: $selectedView)
-								.frame(width: 90)
-								.transition(.move(edge: .leading).combined(with: .opacity))
-								.animation(.easeInOut(duration: 0.5), value: isSidebarVisible)
-								.zIndex(1)
-						}
-					}
+					phoneView(geometry: geometry)
 				}
 				else {
-					HStack(spacing: 0) {
-						if isSidebarVisible {
-							Sidebar(selectedView: $selectedView)
-								.frame(width: 90)
-								.transition(.move(edge: .leading))
-								.animation(.easeInOut(duration: 0.5), value: isSidebarVisible)
-						}
-						MainContainerViewBuilder(selectedView: selectedView)
-							.frame(width: isSidebarVisible ? geometry.size.width - 90 : geometry.size.width)
-							.clipShape(TopLeftRoundedCorner(radius: 40, corners: .topLeft))
-							.edgesIgnoringSafeArea(.bottom)
-					}
+					tabletView(geometry: geometry)
 				}
 			}
 		}
+	}
+
+	@ViewBuilder
+	private func phoneView(geometry: GeometryProxy) -> some View {
+		ZStack(alignment: .leading) {
+			mainContainer(geometry: geometry)
+
+			if isSidebarVisible {
+				sidebar(geometry: geometry)
+			}
+		}
+	}
+
+	@ViewBuilder
+	private func tabletView(geometry: GeometryProxy) -> some View {
+		HStack(spacing: 0) {
+			if isSidebarVisible {
+				sidebar(geometry: geometry)
+			}
+			mainContainer(geometry: geometry)
+		}
+	}
+
+	private func mainContainer(geometry: GeometryProxy) -> some View {
+		MainContainerViewBuilder(selectedView: selectedView)
+			.frame(width: deviceContext.isPhone || !isSidebarVisible ? geometry.size.width : geometry.size.width - 90)
+			.clipShape(TopLeftRoundedCorner(radius: 40, corners: .topLeft))
+			.edgesIgnoringSafeArea(.bottom)
+	}
+
+	private func sidebar(geometry _: GeometryProxy) -> some View {
+		Sidebar(selectedView: $selectedView)
+			.frame(width: 90)
+			.transition(.move(edge: .leading).combined(with: .opacity))
+			.animation(.easeInOut(duration: 0.5), value: isSidebarVisible)
+			.zIndex(1)
 	}
 
 	private func topBarContent(for _: MainContainerTypeView) -> TopBarContent {
