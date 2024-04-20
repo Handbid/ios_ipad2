@@ -21,9 +21,9 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 
 	var actions: [TopBarAction] {
 		[
-			TopBarAction(icon: "loupeIcon", action: searchData),
-			TopBarAction(icon: "filtersIcon", action: filterData),
-			TopBarAction(icon: "refreshIcon", action: refreshData),
+			TopBarAction(icon: "loupeIcon", title: nil, action: searchData),
+			TopBarAction(icon: "filtersIcon", title: nil, action: filterData),
+			TopBarAction(icon: "refreshIcon", title: nil, action: refreshData),
 		]
 	}
 

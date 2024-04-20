@@ -51,6 +51,12 @@ struct GenericTopBarContent<ViewModel: ViewModelTopBarProtocol>: TopBarContent {
 	private func createActionButton(for action: TopBarAction) -> AnyView {
 		Button(action: action.action) {
 			Image(action.icon).scaledToFit().frame(width: 30).foregroundColor(.primary)
+			if let title = action.title {
+				Text(title)
+					.lineLimit(1)
+					.font(.caption)
+					.bold()
+			}
 		}.eraseToAnyView()
 	}
 }

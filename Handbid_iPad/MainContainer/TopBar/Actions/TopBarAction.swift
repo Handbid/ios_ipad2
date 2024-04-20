@@ -2,5 +2,6 @@
 
 struct TopBarAction {
 	let icon: String
+	let title: String?
 	let action: () -> Void
 }

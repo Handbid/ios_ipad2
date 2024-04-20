@@ -18,7 +18,11 @@ class ManagerViewModel: ObservableObject, ViewModelTopBarProtocol {
 		)
 	}
 
-	var actions: [TopBarAction] { [] }
+	var actions: [TopBarAction] {
+		[
+			TopBarAction(icon: "allAuctionsIcon", title: "All auctions", action: searchData),
+		]
+	}
 
 	func searchData() {}
 	func refreshData() {}
