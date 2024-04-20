@@ -25,26 +25,37 @@ struct MainContainer<T: PageProtocol>: View {
 		VStack(spacing: 0) {
 			TopBar(content: topBarContent(for: selectedView))
 			GeometryReader { geometry in
-				ZStack(alignment: .leading) {
-					MainContainerViewBuilder(selectedView: selectedView)
-						.frame(width: geometry.size.width)
-						.clipShape(TopLeftRoundedCorner(radius: 40, corners: .topLeft))
-						.zIndex(0)
-						.edgesIgnoringSafeArea(.bottom)
+				if deviceContext.isPhone {
+					ZStack(alignment: .leading) {
+						MainContainerViewBuilder(selectedView: selectedView)
+							.frame(width: geometry.size.width)
+							.clipShape(TopLeftRoundedCorner(radius: 40, corners: .topLeft))
+							.zIndex(0)
+							.edgesIgnoringSafeArea(.bottom)
 
-					if isSidebarVisible {
-						Sidebar(selectedView: $selectedView)
-							.frame(width: 90)
-							.transition(.move(edge: .leading).combined(with: .opacity))
-							.animation(.easeInOut(duration: 0.5), value: isSidebarVisible)
-							.zIndex(1)
+						if isSidebarVisible {
+							Sidebar(selectedView: $selectedView)
+								.frame(width: 90)
+								.transition(.move(edge: .leading).combined(with: .opacity))
+								.animation(.easeInOut(duration: 0.5), value: isSidebarVisible)
+								.zIndex(1)
+						}
 					}
 				}
-			}
-		}
-		.onChange(of: deviceContext.isPhone) { _, isNewValue in
-			if isNewValue {
-				isSidebarVisible = false
+				else {
+					HStack(spacing: 0) {
+						if isSidebarVisible {
+							Sidebar(selectedView: $selectedView)
+								.frame(width: 90)
+								.transition(.move(edge: .leading))
+								.animation(.easeInOut(duration: 0.5), value: isSidebarVisible)
+						}
+						MainContainerViewBuilder(selectedView: selectedView)
+							.frame(width: isSidebarVisible ? geometry.size.width - 90 : geometry.size.width)
+							.clipShape(TopLeftRoundedCorner(radius: 40, corners: .topLeft))
+							.edgesIgnoringSafeArea(.bottom)
+					}
+				}
 			}
 		}
 	}
