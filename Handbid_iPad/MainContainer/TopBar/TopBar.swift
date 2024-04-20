@@ -9,13 +9,27 @@ struct TopBar: View {
 
 	var body: some View {
 		HStack {
-			ForEach(Array(content.leftViews.enumerated()), id: \.offset) { _, view in view }
-			content.centerView
-			// .frame(width: UIScreen.main.bounds.width * centerViewWidthRatio)
+			HStack {
+				ForEach(Array(content.leftViews.enumerated()), id: \.offset) { _, view in
+					view
+				}
+			}
+			.frame(width: 90)
+			.frame(maxHeight: .infinity)
+			.clipped()
 			Spacer()
-			ForEach(Array(content.rightViews.enumerated()), id: \.offset) { _, view in view }
+			content.centerView
+			Spacer()
+
+			HStack {
+				ForEach(Array(content.rightViews.enumerated()), id: \.offset) { _, view in view }
+			}
+			.frame(width: 120)
+			.frame(maxHeight: .infinity)
+			.clipped()
+			.padding(.trailing, 10)
 		}
-		.padding([.vertical, .leading, .trailing], 10)
+		.padding([.vertical, .leading, .trailing], 0)
 		.frame(height: TopBar.barHeight)
 		.background(Color(UIColor.systemBackground))
 		.foregroundColor(Color(UIColor.label))

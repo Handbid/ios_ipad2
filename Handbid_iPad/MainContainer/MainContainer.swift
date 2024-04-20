@@ -5,17 +5,16 @@ import SwiftUI
 
 struct MainContainer<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
+	@State private var isSidebarVisible: Bool = DeviceConfigurator.isSidebarAlwaysVisible
+	@State private var selectedView: MainContainerTypeView = .auction
+	@StateObject private var deviceContext = DeviceContext()
 	@StateObject private var authManager = AuthManager()
 
-	@State private var selectedView: MainContainerTypeView = .auction
-	@State private var isSidebarVisible: Bool = DeviceConfigurator.isSidebarAlwaysVisible
-	@StateObject private var deviceContext = DeviceContext()
-
-	let auctionViewModel: AuctionViewModel
-	var paddleViewModel: PaddleViewModel
-	let myBidsViewModel: MyBidsViewModel
-	let managerViewModel: ManagerViewModel
-	let logOutViewModel: LogOutViewModel
+	private let auctionViewModel: AuctionViewModel
+	private let paddleViewModel: PaddleViewModel
+	private let myBidsViewModel: MyBidsViewModel
+	private let managerViewModel: ManagerViewModel
+	private let logOutViewModel: LogOutViewModel
 
 	init() {
 		(self.auctionViewModel, self.paddleViewModel, self.myBidsViewModel, self.managerViewModel, self.logOutViewModel) = ViewModelFactory.createAllViewModels()
@@ -59,7 +58,7 @@ struct MainContainer<T: PageProtocol>: View {
 	private func mainContainer(geometry: GeometryProxy) -> some View {
 		MainContainerViewBuilder(selectedView: selectedView)
 			.frame(width: deviceContext.isPhone || !isSidebarVisible ? geometry.size.width : geometry.size.width - 90)
-			.clipShape(TopLeftRoundedCorner(radius: 40, corners: .topLeft))
+			.clipShape(RoundedCornerView(radius: 40, corners: .topLeft))
 			.edgesIgnoringSafeArea(.bottom)
 	}
 
@@ -73,15 +72,5 @@ struct MainContainer<T: PageProtocol>: View {
 
 	private func topBarContent(for _: MainContainerTypeView) -> TopBarContent {
 		GenericTopBarContentFactory(viewModel: auctionViewModel, deviceContext: deviceContext).createTopBarContent(isSidebarVisible: $isSidebarVisible)
-	}
-}
-
-struct TopLeftRoundedCorner: Shape {
-	var radius: CGFloat
-	var corners: UIRectCorner
-
-	func path(in rect: CGRect) -> Path {
-		let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-		return Path(path.cgPath)
 	}
 }
