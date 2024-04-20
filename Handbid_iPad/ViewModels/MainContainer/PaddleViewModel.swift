@@ -3,9 +3,9 @@
 import SwiftUI
 
 class PaddleViewModel: ObservableObject, ViewModelTopBarProtocol {
-	@Published var title = "Paddle Number"
-	@Published var paddleNumber = "Paddle #102"
 	@ObservedObject var dataService: DataServiceWrapper
+	@Published var title = "Paddle Number"
+	var actions: [TopBarAction] { [] }
 
 	init(dataService: DataServiceWrapper) {
 		self.dataService = dataService
@@ -16,11 +16,5 @@ class PaddleViewModel: ObservableObject, ViewModelTopBarProtocol {
 			type: .title,
 			title: title
 		)
-	}
-
-	var actions: [TopBarAction] { [] }
-
-	private func addPaddle() {
-		print("Add paddle")
 	}
 }

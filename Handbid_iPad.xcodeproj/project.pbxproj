@@ -82,6 +82,8 @@
 		8CAFD93A2BBD90F700C7D763 /* KeyboardResponsiveModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFD9392BBD90F700C7D763 /* KeyboardResponsiveModifier.swift */; };
 		8CB8C6AC2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB8C6AB2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift */; };
 		8CBDAAC82BC432470010908F /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBDAAC72BC432470010908F /* DispatchQueue.swift */; };
+		8CC6BEE62BD43757007C999F /* AuctionTopBarCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC6BEE52BD43757007C999F /* AuctionTopBarCenterView.swift */; };
+		8CC6BEE92BD439A9007C999F /* DataFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC6BEE82BD439A9007C999F /* DataFormatter.swift */; };
 		8CD107F32BD11EB800E83261 /* TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD107F22BD11EB800E83261 /* TopBar.swift */; };
 		8CD107F52BD11EEA00E83261 /* TopBarContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD107F42BD11EEA00E83261 /* TopBarContent.swift */; };
 		8CD107F82BD11F2300E83261 /* TopBarActionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD107F72BD11F2300E83261 /* TopBarActionProvider.swift */; };
@@ -228,6 +230,8 @@
 		8CAFD9392BBD90F700C7D763 /* KeyboardResponsiveModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponsiveModifier.swift; sourceTree = "<group>"; };
 		8CB8C6AB2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinatorTest.swift; sourceTree = "<group>"; };
 		8CBDAAC72BC432470010908F /* DispatchQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueue.swift; sourceTree = "<group>"; };
+		8CC6BEE52BD43757007C999F /* AuctionTopBarCenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionTopBarCenterView.swift; sourceTree = "<group>"; };
+		8CC6BEE82BD439A9007C999F /* DataFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFormatter.swift; sourceTree = "<group>"; };
 		8CD107F22BD11EB800E83261 /* TopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBar.swift; sourceTree = "<group>"; };
 		8CD107F42BD11EEA00E83261 /* TopBarContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarContent.swift; sourceTree = "<group>"; };
 		8CD107F72BD11F2300E83261 /* TopBarActionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarActionProvider.swift; sourceTree = "<group>"; };
@@ -498,6 +502,7 @@
 			isa = PBXGroup;
 			children = (
 				8C4B7B7E2BB379440043B892 /* AuthManager.swift */,
+				8CC6BEE82BD439A9007C999F /* DataFormatter.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -749,6 +754,7 @@
 			isa = PBXGroup;
 			children = (
 				8CD1082A2BD1261800E83261 /* ContentView.swift */,
+				8CC6BEE52BD43757007C999F /* AuctionTopBarCenterView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -897,7 +903,7 @@
 			);
 			mainGroup = 8C1E00A12BA823C80094FAA7;
 			packageReferences = (
-				8CEA29092BB3517E005E3B33 /* XCLocalSwiftPackageReference "NetworkService" */,
+				8CEA29092BB3517E005E3B33 /* XCLocalSwiftPackageReference "Frameworks/NetworkService" */,
 			);
 			productRefGroup = 8C1E00A12BA823C80094FAA7;
 			projectDirPath = "";
@@ -1140,6 +1146,7 @@
 				8C9FA4442BD282B00041F28E /* MyBidsView.swift in Sources */,
 				8C4B7BB72BB9C1080043B892 /* TextSecuredStyles.swift in Sources */,
 				8CABF5BD2BB9C60900A34870 /* PasswordResetConfirmationView.swift in Sources */,
+				8CC6BEE92BD439A9007C999F /* DataFormatter.swift in Sources */,
 				8CABF5BB2BB9C5F400A34870 /* ForgotPasswordView.swift in Sources */,
 				8CABF5CC2BB9CF0300A34870 /* ChooseEnvironmentView.swift in Sources */,
 				8C4B7BB52BB9BEDC0043B892 /* CustomStyledViewSecuredField.swift in Sources */,
@@ -1152,6 +1159,7 @@
 				8CD1082B2BD1261800E83261 /* ContentView.swift in Sources */,
 				8CD108202BD124EA00E83261 /* DataServiceFactory.swift in Sources */,
 				8C4B7B9B2BB7026D0043B892 /* TextStyleConfiguration.swift in Sources */,
+				8CC6BEE62BD43757007C999F /* AuctionTopBarCenterView.swift in Sources */,
 				8CABF5C82BB9C81100A34870 /* BackgroundContainerImage.swift in Sources */,
 				CE0CEE812BBED0B4004A27FD /* ResetPasswordModel.swift in Sources */,
 				8CD107FA2BD11F3400E83261 /* TopBarAction.swift in Sources */,
@@ -1220,6 +1228,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1250,6 +1260,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1367,6 +1379,9 @@
 				PRODUCT_MODULE_NAME = Handbid_iPad;
 				PRODUCT_NAME = Handbid_iPad;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = Release;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Handbid_iPad/Bridging-Header/Handbid-iPad-Bridging-Header.h";
@@ -1508,6 +1523,9 @@
 				PRODUCT_MODULE_NAME = Handbid_iPad;
 				PRODUCT_NAME = Handbid_iPad;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = Debug;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Handbid_iPad/Bridging-Header/Handbid-iPad-Bridging-Header.h";
@@ -1582,7 +1600,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		8CEA29092BB3517E005E3B33 /* XCLocalSwiftPackageReference "NetworkService" */ = {
+		8CEA29092BB3517E005E3B33 /* XCLocalSwiftPackageReference "Frameworks/NetworkService" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Frameworks/NetworkService;
 		};

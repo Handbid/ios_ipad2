@@ -4,9 +4,8 @@ import SwiftUI
 
 class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 	@ObservedObject var dataService: DataServiceWrapper
-
 	@Published var title = "Auction Details"
-	@Published var auctionDate = "Next Auction: Tomorrow"
+	@Published var auctionStatus = "Open"
 
 	init(dataService: DataServiceWrapper) {
 		self.dataService = dataService
@@ -14,8 +13,11 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 
 	var centerViewData: TopBarCenterViewData {
 		TopBarCenterViewData(
-			type: .title,
-			title: title
+			type: .custom,
+			customView: AnyView(AuctionTopBarCenterView(title: title,
+			                                            status: auctionStatus,
+			                                            date: 1_678_608_000,
+			                                            countItems: 20))
 		)
 	}
 

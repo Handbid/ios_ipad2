@@ -4,8 +4,8 @@ import SwiftUI
 
 class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
 	@ObservedObject var dataService: DataServiceWrapper
-
 	@Published var title = "My Bids"
+	var actions: [TopBarAction] { [] }
 
 	init(dataService: DataServiceWrapper) {
 		self.dataService = dataService
@@ -17,10 +17,4 @@ class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
 			title: title
 		)
 	}
-
-	var actions: [TopBarAction] { [] }
-
-	func searchData() {}
-	func refreshData() {}
-	func filterData() {}
 }

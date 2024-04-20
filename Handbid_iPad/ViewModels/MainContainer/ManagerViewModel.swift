@@ -4,7 +4,6 @@ import SwiftUI
 
 class ManagerViewModel: ObservableObject, ViewModelTopBarProtocol {
 	@ObservedObject var dataService: DataServiceWrapper
-
 	@Published var title = "Manager Details"
 
 	init(dataService: DataServiceWrapper) {
@@ -20,11 +19,9 @@ class ManagerViewModel: ObservableObject, ViewModelTopBarProtocol {
 
 	var actions: [TopBarAction] {
 		[
-			TopBarAction(icon: "allAuctionsIcon", title: "All auctions", action: searchData),
+			TopBarAction(icon: "allAuctionsIcon", title: "All auctions", action: allAuctions),
 		]
 	}
 
-	func searchData() {}
-	func refreshData() {}
-	func filterData() {}
+	func allAuctions() {}
 }
