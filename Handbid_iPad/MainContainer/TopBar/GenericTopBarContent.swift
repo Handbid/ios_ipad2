@@ -37,6 +37,7 @@ struct GenericTopBarContent<ViewModel: ViewModelTopBarProtocol>: TopBarContent {
 		case .title:
 			Text(viewModel.centerViewData.title ?? "")
 				.bold()
+				.lineLimit(1)
 				.eraseToAnyView()
 		case .image:
 			viewModel.centerViewData.image

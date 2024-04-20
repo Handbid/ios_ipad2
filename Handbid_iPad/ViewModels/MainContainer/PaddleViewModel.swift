@@ -3,7 +3,7 @@
 import SwiftUI
 
 class PaddleViewModel: ObservableObject, ViewModelTopBarProtocol {
-	@Published var title = "Paddle Information"
+	@Published var title = "Paddle Number"
 	@Published var paddleNumber = "Paddle #102"
 	@ObservedObject var dataService: DataServiceWrapper
 
