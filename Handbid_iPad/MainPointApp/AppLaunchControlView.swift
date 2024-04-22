@@ -1,11 +1,14 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
+import Combine
 import SwiftUI
 
 struct AppLaunchControlView: View {
 	@EnvironmentObject var authManager: AuthManagerMainActor
 	@State private var isValidToken = false
 	@State private var isLoading = true
+	let viewFactory = AnyViewMainContainerFactory(wrappedFactory: MainContainerViewFactory())
+	let dataServiceWrapper = DataServiceFactory.getService()
 
 	var body: some View {
 		ZStack {
@@ -18,7 +21,9 @@ struct AppLaunchControlView: View {
 			}
 			else {
 				if isValidToken {
-					EmptyAuctionView<RegistrationPage>()
+					MainContainer<RegistrationPage>(selectedView: .auction)
+						.environmentObject(viewFactory)
+						.environmentObject(dataServiceWrapper)
 				}
 				else {
 					RootPageView(page: RegistrationPage.getStarted)

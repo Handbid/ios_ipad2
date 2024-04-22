@@ -2,6 +2,11 @@
 "global_label_error" = "Error";
 "global_label_unknownError" = "Unknown error";
 "login_label_incorrectCredentials" = "Incorrect email or password";
+"menuBar_label_auction" = "Auction";
+"menuBar_label_logout" = "Logout";
+"menuBar_label_manager" = "Manager";
+"menuBar_label_myBids" = "My Bids";
+"menuBar_label_paddle" = "Paddle";
 "registration_btn_aboutHandbid" = "About Handbid";
 "registration_btn_changePassword" = "Change Password";
 "registration_btn_confirm" = "Confirm";
@@ -23,3 +28,4 @@
 "registration_label_resetPassword" = "Reset Password";
 "registration_label_selectEnvironment" = "Select Environment";
 "registration_label_welcomeHandbid" = "Welcome to \nHandbid App";
+"topBar_btn_allAuction" = "All auctions";
