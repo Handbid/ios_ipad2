@@ -12,7 +12,7 @@ struct Sidebar: View {
 				isSelected: selectedView == .auction,
 				iconName: "auctionSidebarIcon",
 				showLockIcon: false,
-				text: "Auction"
+				text: LocalizedStringKey("menuBar_label_auction")
 			) {
 				selectedView = .auction
 			}
@@ -21,7 +21,7 @@ struct Sidebar: View {
 				isSelected: selectedView == .paddle,
 				iconName: "paddleSidebarIcon",
 				showLockIcon: false,
-				text: "Paddle"
+				text: LocalizedStringKey("menuBar_label_paddle")
 			) {
 				selectedView = .paddle
 			}
@@ -30,7 +30,7 @@ struct Sidebar: View {
 				isSelected: selectedView == .myBids,
 				iconName: "bidSidebarIcon",
 				showLockIcon: false,
-				text: "My Bids"
+				text: LocalizedStringKey("menuBar_label_myBids")
 			) {
 				selectedView = .myBids
 			}
@@ -39,7 +39,7 @@ struct Sidebar: View {
 				isSelected: selectedView == .manager,
 				iconName: "settingsSidebarIcon",
 				showLockIcon: true,
-				text: "Manager"
+				text: LocalizedStringKey("menuBar_label_manager")
 			) {
 				selectedView = .manager
 			}
@@ -50,7 +50,7 @@ struct Sidebar: View {
 				isSelected: selectedView == .logout,
 				iconName: "logoutSidebarIcon",
 				showLockIcon: false,
-				text: "Logout"
+				text: LocalizedStringKey("menuBar_label_logout")
 			) {
 				selectedView = .logout
 			}

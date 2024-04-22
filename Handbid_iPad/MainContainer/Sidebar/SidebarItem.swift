@@ -6,7 +6,7 @@ struct SidebarItem: View {
 	let isSelected: Bool
 	let iconName: String
 	let showLockIcon: Bool
-	let text: String
+	let text: LocalizedStringKey
 	let action: () -> Void
 
 	var body: some View {

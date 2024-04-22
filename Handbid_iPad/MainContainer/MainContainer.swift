@@ -6,7 +6,7 @@ import SwiftUI
 struct MainContainer<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@State private var isSidebarVisible: Bool = DeviceConfigurator.isSidebarAlwaysVisible
-	@State private var selectedView: MainContainerTypeView = .auction
+	@State private var selectedView: MainContainerTypeView
 	@StateObject private var deviceContext = DeviceContext()
 	@StateObject private var authManager = AuthManager()
 
@@ -16,8 +16,9 @@ struct MainContainer<T: PageProtocol>: View {
 	private let managerViewModel: ManagerViewModel
 	private let logOutViewModel: LogOutViewModel
 
-	init() {
-		(self.auctionViewModel, self.paddleViewModel, self.myBidsViewModel, self.managerViewModel, self.logOutViewModel) = ViewModelFactory.createAllViewModels()
+	init(selectedView: MainContainerTypeView) {
+		self.selectedView = selectedView
+		(self.auctionViewModel, self.paddleViewModel, self.myBidsViewModel, self.managerViewModel, self.logOutViewModel) = ViewModelFactory.createAllViewModelsForMainContainer()
 	}
 
 	var body: some View {

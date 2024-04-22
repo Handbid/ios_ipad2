@@ -2,6 +2,11 @@
 "global_label_error" = "L\'erreur";
 "global_label_unknownError" = "Erreur inconnue";
 "login_label_incorrectCredentials" = "Courriel ou mot de passe incorrect";
+"menuBar_label_auction" = "Auction";
+"menuBar_label_logout" = "Logout";
+"menuBar_label_manager" = "Manager";
+"menuBar_label_myBids" = "My Bids";
+"menuBar_label_paddle" = "Paddle";
 "registration_btn_aboutHandbid" = "À propos de Handbid";
 "registration_btn_changePassword" = "Changer le mot de passe";
 "registration_btn_confirm" = "Confirmer";
@@ -23,3 +28,4 @@
 "registration_label_resetPassword" = "réinitialiser le mot de passe";
 "registration_label_selectEnvironment" = "Sélectionnez l\'environnement";
 "registration_label_welcomeHandbid" = "Bienvenue sur l\'application \nHandbid";
+"topBar_btn_allAuction" = "All auctions";

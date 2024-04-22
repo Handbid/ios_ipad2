@@ -19,7 +19,7 @@ class ManagerViewModel: ObservableObject, ViewModelTopBarProtocol {
 
 	var actions: [TopBarAction] {
 		[
-			TopBarAction(icon: "allAuctionsIcon", title: "All auctions", action: allAuctions),
+			TopBarAction(icon: "allAuctionsIcon", title: LocalizedStringKey("topBar_btn_allAuction"), action: allAuctions),
 		]
 	}
 
