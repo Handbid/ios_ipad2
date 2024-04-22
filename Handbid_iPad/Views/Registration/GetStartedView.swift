@@ -6,9 +6,14 @@ import SwiftUI
 
 struct GetStartedView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
-	@ObservedObject private var viewModel = GetStartedViewModel(repository: RegisterRepositoryImpl(NetworkingClient()))
+	@ObservedObject private var viewModel: GetStartedViewModel
 	@State private var contentLoaded = false
 	@State private var isBlurred = false
+	let inspection = Inspection<Self>()
+
+	init(viewModel: GetStartedViewModel) {
+		self.viewModel = viewModel
+	}
 
 	var body: some View {
 		ZStack {
@@ -22,6 +27,9 @@ struct GetStartedView<T: PageProtocol>: View {
 				contentLoaded = true
 			}
 			isBlurred = false
+		}
+		.onReceive(inspection.notice) {
+			inspection.visit(self, $0)
 		}
 		.ignoresSafeArea(.keyboard, edges: .bottom)
 	}

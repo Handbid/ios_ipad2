@@ -23,6 +23,7 @@ end
 target 'Handbid_iPadTests' do
 platform :ios, '17.0'  
     available_pods
+    pod 'ViewInspector'
 end
 
 
