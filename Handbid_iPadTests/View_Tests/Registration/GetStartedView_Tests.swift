@@ -6,29 +6,30 @@ import ViewInspector
 import XCTest
 
 final class GetStartedViewTests: XCTestCase {
-	var view: GetStartedView<RegistrationPage>!
-	var mockViewModel: MockGetStartedViewModel!
-	var coordinator: Coordinator<RegistrationPage, Any?>!
+	private var view: GetStartedView<RegistrationPage>!
+	private var sut: AnyView!
+	private var mockViewModel: MockGetStartedViewModel!
+	private var coordinator: Coordinator<RegistrationPage, Any?>!
 
 	override func setUp() {
 		super.setUp()
 		coordinator = Coordinator<RegistrationPage, Any?>(viewBuilder: { _ in AnyView(EmptyView()) })
 		mockViewModel = MockGetStartedViewModel()
 		view = GetStartedView(viewModel: mockViewModel)
+		sut = AnyView(view.environmentObject(coordinator))
 	}
 
 	override func tearDown() {
 		coordinator = nil
 		mockViewModel = nil
 		view = nil
+		sut = nil
 		super.tearDown()
 	}
 
 	private func buttonClickScenario(accessibilityId: String,
 	                                 expectation: XCTestExpectation)
 	{
-		let sut = view.environmentObject(coordinator)
-
 		var inspectionError: Error? = nil
 
 		ViewHosting.host(view: sut)
@@ -47,7 +48,6 @@ final class GetStartedViewTests: XCTestCase {
 
 	func testInitialContent() {
 		var inspectionError: Error? = nil
-		let sut = view.environmentObject(coordinator)
 		ViewHosting.host(view: sut)
 		do {
 			_ = try sut.inspect()
@@ -69,8 +69,6 @@ final class GetStartedViewTests: XCTestCase {
 	}
 
 	func testLongPressOnLogoMovesToChangeEnv() {
-		let sut = view.environmentObject(coordinator)
-
 		var inspectionError: Error? = nil
 		let expChangeEnv = view.inspection
 			.inspect(onReceive: coordinator.$navigationStack) { _ in

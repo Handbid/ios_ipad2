@@ -6,27 +6,29 @@ import ViewInspector
 import XCTest
 
 final class LogInViewTests: XCTestCase {
-	var view: LogInView<RegistrationPage>!
-	var coordinator: Coordinator<RegistrationPage, Any?>!
-	var mockViewModel: MockLogInViewModel!
+	private var view: LogInView<RegistrationPage>!
+	private var sut: AnyView!
+	private var coordinator: Coordinator<RegistrationPage, Any?>!
+	private var mockViewModel: MockLogInViewModel!
 
 	override func setUp() {
 		super.setUp()
 		coordinator = Coordinator<RegistrationPage, Any?>(viewBuilder: { _ in AnyView(EmptyView()) })
 		mockViewModel = MockLogInViewModel()
 		view = LogInView(viewModel: mockViewModel)
+		sut = AnyView(view.environmentObject(coordinator))
 	}
 
 	override func tearDown() {
 		coordinator = nil
 		mockViewModel = nil
 		view = nil
+		sut = nil
 		super.tearDown()
 	}
 
 	func testInitialContent() {
 		var inspectionError: Error? = nil
-		let sut = view.environmentObject(coordinator)
 		ViewHosting.host(view: sut)
 		do {
 			_ = try sut.inspect()
@@ -53,7 +55,6 @@ final class LogInViewTests: XCTestCase {
 
 	func testLogInCalledOnButtonClick() {
 		var inspectionError: Error? = nil
-		let sut = view.environmentObject(coordinator)
 
 		let exp = view.inspection.inspect(onReceive: mockViewModel.$logInCalled) { _ in
 			XCTAssert(self.mockViewModel.logInCalled)
@@ -76,7 +77,6 @@ final class LogInViewTests: XCTestCase {
 
 	func testPressingForgotPasswordButtonMovesToForgotPassword() {
 		var inspectionError: Error? = nil
-		let sut = view.environmentObject(coordinator)
 
 		let exp = view.inspection.inspect(onReceive: coordinator.$navigationStack) { _ in
 			XCTAssert(self.coordinator.navigationStack.count == 1 &&
@@ -99,10 +99,8 @@ final class LogInViewTests: XCTestCase {
 	}
 
 	func testAlertShowingWhenFieldsInViewModelChange() {
-		let sut = view.environmentObject(coordinator)
-
 		let exp = view.inspection.inspect(onReceive: mockViewModel.$showError) { _ in
-			let alert = try sut.inspect().zStack().alert()
+			let alert = try self.sut.inspect().find(ViewType.ZStack.self).alert()
 			XCTAssertEqual(try alert.message().text().string(), "test")
 			try alert.actions().button().tap()
 		}
@@ -120,10 +118,8 @@ final class LogInViewTests: XCTestCase {
 	}
 
 	func testErrorShownWhenFormInvalid() {
-		let sut = view.environmentObject(coordinator)
-
 		let exp = view.inspection.inspect(onReceive: mockViewModel.$isFormValid) { _ in
-			let error = try sut.inspect()
+			let error = try self.sut.inspect()
 				.find(viewWithAccessibilityIdentifier: "registration_label_loginError").text()
 			XCTAssertEqual(try error.string(), "test")
 		}

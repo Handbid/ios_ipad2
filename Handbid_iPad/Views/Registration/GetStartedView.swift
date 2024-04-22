@@ -11,11 +11,7 @@ struct GetStartedView<T: PageProtocol>: View {
 	@State private var isBlurred = false
 	let inspection = Inspection<Self>()
 
-	init(viewModel: GetStartedViewModel = GetStartedViewModel(repository:
-		RegisterRepositoryImpl(
-			NetworkingClient()
-		))
-	) {
+	init(viewModel: GetStartedViewModel) {
 		self.viewModel = viewModel
 	}
 

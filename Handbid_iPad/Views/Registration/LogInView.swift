@@ -10,9 +10,7 @@ struct LogInView<T: PageProtocol>: View {
 	@FocusState var focusedField: Field?
 	let inspection = Inspection<Self>()
 
-	init(viewModel: LogInViewModel = LogInViewModel(repository: RegisterRepositoryImpl(NetworkingClient()),
-	                                                authManager: AuthManager()))
-	{
+	init(viewModel: LogInViewModel) {
 		self.viewModel = viewModel
 	}
 

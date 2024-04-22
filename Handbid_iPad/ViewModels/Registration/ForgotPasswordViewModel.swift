@@ -10,7 +10,7 @@ class ForgotPasswordViewModel: ObservableObject {
 	@Published var isFormValid = true
 	@Published var email: String = ""
 	@Published var errorMessage: String = ""
-	@Published var requestStatus: RequestStatus = .noResult
+	@Published var requestStatus: NetworkingError.Status?
 
 	init(repository: ResetPasswordRepository) {
 		self.repository = repository
@@ -32,14 +32,16 @@ class ForgotPasswordViewModel: ObservableObject {
 				case .finished:
 					break
 				case let .failure(error):
-					self.requestStatus = .failed
-					self.errorMessage = "\(error)"
+					if let netError = error as? NetworkingError {
+						self.requestStatus = netError.status
+						self.errorMessage = "\(error)"
+					}
 				}
 			}, receiveValue: { response in
 				print(response)
-				self.requestStatus = response.success == true ? .successful : .failed
+				self.requestStatus = response.success == true ? .ok : .badRequest
 
-				if self.requestStatus == .failed {
+				if self.requestStatus == .badRequest {
 					self.errorMessage = response.message ?? String(localized: LocalizedStringResource("global_label_unknownError"))
 				}
 			}).store(in: &cancellables)
@@ -48,8 +50,4 @@ class ForgotPasswordViewModel: ObservableObject {
 	func resetErrorMessage() {
 		errorMessage = ""
 	}
-}
-
-enum RequestStatus {
-	case noResult, successful, failed
 }

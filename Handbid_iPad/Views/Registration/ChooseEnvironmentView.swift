@@ -9,7 +9,7 @@ struct ChooseEnvironmentView<T: PageProtocol>: View {
 	@State private var isBlurred = false
 	var inspection = Inspection<Self>()
 
-	init(viewModel: ChooseEnvironmentViewModel = ChooseEnvironmentViewModel()) {
+	init(viewModel: ChooseEnvironmentViewModel) {
 		self.viewModel = viewModel
 	}
 

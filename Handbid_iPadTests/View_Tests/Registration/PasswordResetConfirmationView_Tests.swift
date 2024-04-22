@@ -7,23 +7,25 @@ import XCTest
 
 final class PasswordResetConfirmationViewTests: XCTestCase {
 	private var view: PasswordResetConfirmationView<RegistrationPage>!
+	private var sut: AnyView!
 	private var coordinator: Coordinator<RegistrationPage, Any?>!
 
 	override func setUp() {
 		super.setUp()
 		coordinator = Coordinator { _ in AnyView(EmptyView()) }
 		view = PasswordResetConfirmationView()
+		sut = AnyView(view.environmentObject(coordinator))
 	}
 
 	override func tearDown() {
 		coordinator = nil
 		view = nil
+		sut = nil
 		super.tearDown()
 	}
 
 	func testInitialContent() {
 		var inspectionError: Error? = nil
-		let sut = view.environmentObject(coordinator)
 
 		ViewHosting.host(view: sut)
 
@@ -44,8 +46,6 @@ final class PasswordResetConfirmationViewTests: XCTestCase {
 
 	func testButtonClearingNavigationStack() {
 		coordinator.navigationStack.append(.resetPasswordConfirmation)
-
-		let sut = view.environmentObject(coordinator)
 
 		let expBeforeTap = view.inspection.inspect { view in
 			XCTAssertFalse(self.coordinator.navigationStack.isEmpty)

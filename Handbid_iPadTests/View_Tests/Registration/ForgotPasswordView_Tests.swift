@@ -6,26 +6,29 @@ import ViewInspector
 import XCTest
 
 final class ForgotPasswordViewTests: XCTestCase {
-	var view: ForgotPasswordView<RegistrationPage>!
-	var coordinator: Coordinator<RegistrationPage, Any?>!
-	var mockViewModel: MockForgotPasswordViewModel!
+	private var view: ForgotPasswordView<RegistrationPage>!
+	private var sut: AnyView!
+	private var coordinator: Coordinator<RegistrationPage, Any?>!
+	private var mockViewModel: MockForgotPasswordViewModel!
 
 	override func setUp() {
 		super.setUp()
 		coordinator = Coordinator { _ in AnyView(EmptyView()) }
 		mockViewModel = MockForgotPasswordViewModel()
 		view = ForgotPasswordView(viewModel: mockViewModel)
+		sut = AnyView(view.environmentObject(coordinator))
 	}
 
-	override func tearDownWithError() throws {
+	override func tearDown() {
 		coordinator = nil
 		mockViewModel = nil
 		view = nil
+		sut = nil
+		super.tearDown()
 	}
 
 	func testInitialContent() {
 		var inspectionError: Error? = nil
-		let sut = view.environmentObject(coordinator)
 
 		ViewHosting.host(view: sut)
 		mockViewModel.errorMessage = "test"
@@ -47,8 +50,6 @@ final class ForgotPasswordViewTests: XCTestCase {
 	}
 
 	func testOnSuccessfulRequestMovesToConfirmation() {
-		let sut = view.environmentObject(coordinator)
-
 		let exp = view.inspection.inspect(onReceive: coordinator.$navigationStack) { _ in
 			let stack = self.coordinator.navigationStack
 			XCTAssert(stack.count == 1 && stack[0] == .resetPasswordConfirmation)
@@ -56,14 +57,12 @@ final class ForgotPasswordViewTests: XCTestCase {
 
 		ViewHosting.host(view: sut)
 
-		mockViewModel.requestStatus = .successful
+		mockViewModel.requestStatus = .ok
 
 		wait(for: [exp], timeout: 1)
 	}
 
 	func testErrorDisplayedOnFailedRequest() {
-		let sut = view.environmentObject(coordinator)
-
 		mockViewModel.errorMessage = "error"
 
 		let exp = view.inspection.inspect(onReceive: mockViewModel.$requestStatus) { v in
@@ -74,14 +73,12 @@ final class ForgotPasswordViewTests: XCTestCase {
 
 		XCTAssertThrowsError(try sut.inspect().find(text: mockViewModel.errorMessage))
 
-		mockViewModel.requestStatus = .failed
+		mockViewModel.requestStatus = .badRequest
 
 		wait(for: [exp], timeout: 1)
 	}
 
 	func testErrorDisplayedOnInvalidForm() {
-		let sut = view.environmentObject(coordinator)
-
 		mockViewModel.errorMessage = "error"
 
 		let exp = view.inspection.inspect(onReceive: mockViewModel.$isFormValid) { v in
@@ -98,8 +95,6 @@ final class ForgotPasswordViewTests: XCTestCase {
 	}
 
 	func testRequestResetInvokedOnButtonClick() {
-		let sut = view.environmentObject(coordinator)
-
 		let expClick = view.inspection.inspect { v in
 			let button = try v.find(
 				viewWithAccessibilityIdentifier: "registration_btn_confirm"

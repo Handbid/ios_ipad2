@@ -10,7 +10,7 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 	@FocusState private var focusedField: Field?
 	var inspection = Inspection<Self>()
 
-	init(viewModel: ForgotPasswordViewModel = ForgotPasswordViewModel(repository: ResetPasswordRepositoryImpl(NetworkingClient()))) {
+	init(viewModel: ForgotPasswordViewModel) {
 		self.viewModel = viewModel
 	}
 
@@ -27,7 +27,7 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 		}
 		.onReceive(viewModel.$requestStatus) { value in
 			switch value {
-			case .successful:
+			case .ok:
 				coordinator.push(RegistrationPage.resetPasswordConfirmation as! T)
 				fallthrough
 			default:
@@ -76,7 +76,7 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 
 	private func getErrorMessage() -> some View {
 		VStack(spacing: 10) {
-			if !viewModel.isFormValid || viewModel.requestStatus == .failed {
+			if !viewModel.isFormValid || viewModel.requestStatus?.rawValue ?? 0 >= 400 {
 				GeometryReader { geometry in
 					Text(viewModel.errorMessage)
 						.applyTextStyle(style: .error)
