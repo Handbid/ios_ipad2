@@ -6,6 +6,7 @@ import ViewInspector
 import XCTest
 
 final class ForgotPasswordViewTests: XCTestCase {
+	var view: ForgotPasswordView<RegistrationPage>!
 	var coordinator: Coordinator<RegistrationPage, Any?>!
 	var mockViewModel: MockForgotPasswordViewModel!
 
@@ -13,17 +14,18 @@ final class ForgotPasswordViewTests: XCTestCase {
 		super.setUp()
 		coordinator = Coordinator { _ in AnyView(EmptyView()) }
 		mockViewModel = MockForgotPasswordViewModel()
+		view = ForgotPasswordView(viewModel: mockViewModel)
 	}
 
 	override func tearDownWithError() throws {
 		coordinator = nil
 		mockViewModel = nil
+		view = nil
 	}
 
 	func testInitialContent() {
 		var inspectionError: Error? = nil
-		let sut = ForgotPasswordView<RegistrationPage>(viewModel: mockViewModel)
-			.environmentObject(coordinator)
+		let sut = view.environmentObject(coordinator)
 
 		ViewHosting.host(view: sut)
 		mockViewModel.errorMessage = "test"
@@ -45,7 +47,6 @@ final class ForgotPasswordViewTests: XCTestCase {
 	}
 
 	func testOnSuccessfulRequestMovesToConfirmation() {
-		let view = ForgotPasswordView<RegistrationPage>(viewModel: mockViewModel)
 		let sut = view.environmentObject(coordinator)
 
 		let exp = view.inspection.inspect(onReceive: coordinator.$navigationStack) { _ in
@@ -61,7 +62,6 @@ final class ForgotPasswordViewTests: XCTestCase {
 	}
 
 	func testErrorDisplayedOnFailedRequest() {
-		let view = ForgotPasswordView<RegistrationPage>(viewModel: mockViewModel)
 		let sut = view.environmentObject(coordinator)
 
 		mockViewModel.errorMessage = "error"
@@ -80,7 +80,6 @@ final class ForgotPasswordViewTests: XCTestCase {
 	}
 
 	func testErrorDisplayedOnInvalidForm() {
-		let view = ForgotPasswordView<RegistrationPage>(viewModel: mockViewModel)
 		let sut = view.environmentObject(coordinator)
 
 		mockViewModel.errorMessage = "error"
@@ -99,7 +98,6 @@ final class ForgotPasswordViewTests: XCTestCase {
 	}
 
 	func testRequestResetInvokedOnButtonClick() {
-		let view = ForgotPasswordView<RegistrationPage>(viewModel: mockViewModel)
 		let sut = view.environmentObject(coordinator)
 
 		let expClick = view.inspection.inspect { v in

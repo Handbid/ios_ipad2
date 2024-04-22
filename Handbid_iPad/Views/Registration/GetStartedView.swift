@@ -6,14 +6,16 @@ import SwiftUI
 
 struct GetStartedView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
-	@ObservedObject private var viewModel = GetStartedViewModel(repository: RegisterRepositoryImpl(NetworkingClient()))
+	@ObservedObject private var viewModel: GetStartedViewModel
 	@State private var contentLoaded = false
 	@State private var isBlurred = false
 	let inspection = Inspection<Self>()
 
-	init() {}
-
-	init(viewModel: GetStartedViewModel) {
+	init(viewModel: GetStartedViewModel = GetStartedViewModel(repository:
+		RegisterRepositoryImpl(
+			NetworkingClient()
+		))
+	) {
 		self.viewModel = viewModel
 	}
 

@@ -5,7 +5,7 @@ import SwiftUI
 
 struct ChooseEnvironmentView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
-	@ObservedObject private var viewModel = ChooseEnvironmentViewModel()
+	@ObservedObject private var viewModel: ChooseEnvironmentViewModel
 	@State private var isBlurred = false
 	var inspection = Inspection<Self>()
 

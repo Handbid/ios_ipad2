@@ -5,6 +5,10 @@
 class MockForgotPasswordViewModel: ForgotPasswordViewModel {
 	@Published var requestResetPasswordCalled = false
 
+	init() {
+		super.init(repository: MockResetPasswordRepository())
+	}
+
 	override func validateEmail() {
 		isFormValid = true
 	}

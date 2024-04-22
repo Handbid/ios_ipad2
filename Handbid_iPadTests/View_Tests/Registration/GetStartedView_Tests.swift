@@ -6,20 +6,25 @@ import ViewInspector
 import XCTest
 
 final class GetStartedViewTests: XCTestCase {
+	var view: GetStartedView<RegistrationPage>!
+	var mockViewModel: MockGetStartedViewModel!
 	var coordinator: Coordinator<RegistrationPage, Any?>!
 
 	override func setUp() {
 		super.setUp()
 		coordinator = Coordinator<RegistrationPage, Any?>(viewBuilder: { _ in AnyView(EmptyView()) })
+		mockViewModel = MockGetStartedViewModel()
+		view = GetStartedView(viewModel: mockViewModel)
 	}
 
 	override func tearDown() {
 		coordinator = nil
+		mockViewModel = nil
+		view = nil
 		super.tearDown()
 	}
 
-	private func buttonClickScenario(view: GetStartedView<RegistrationPage>,
-	                                 accessibilityId: String,
+	private func buttonClickScenario(accessibilityId: String,
 	                                 expectation: XCTestExpectation)
 	{
 		let sut = view.environmentObject(coordinator)
@@ -42,7 +47,7 @@ final class GetStartedViewTests: XCTestCase {
 
 	func testInitialContent() {
 		var inspectionError: Error? = nil
-		let sut = GetStartedView<RegistrationPage>().environmentObject(coordinator)
+		let sut = view.environmentObject(coordinator)
 		ViewHosting.host(view: sut)
 		do {
 			_ = try sut.inspect()
@@ -64,7 +69,6 @@ final class GetStartedViewTests: XCTestCase {
 	}
 
 	func testLongPressOnLogoMovesToChangeEnv() {
-		let view = GetStartedView<RegistrationPage>()
 		let sut = view.environmentObject(coordinator)
 
 		var inspectionError: Error? = nil
@@ -89,44 +93,33 @@ final class GetStartedViewTests: XCTestCase {
 	}
 
 	func testPressingLoginButtonMovesToLogin() {
-		let view = GetStartedView<RegistrationPage>()
-
 		let expectation = view.inspection
 			.inspect(onReceive: coordinator.$navigationStack) { _ in
 				let stack = self.coordinator.navigationStack
 				XCTAssert(stack.count == 1 && stack[0] == RegistrationPage.logIn)
 			}
 
-		buttonClickScenario(view: view,
-		                    accessibilityId: "registration_btn_login",
+		buttonClickScenario(accessibilityId: "registration_btn_login",
 		                    expectation: expectation)
 	}
 
 	func testPressingDemoVersionButtonLogsAnonimously() {
-		let mockViewModel = MockGetStartedViewModel()
-		let view = GetStartedView<RegistrationPage>(viewModel: mockViewModel)
-
 		let expectation = view.inspection
 			.inspect(onReceive: mockViewModel.$loggedInAnonymously) { _ in
-				XCTAssert(mockViewModel.loggedInAnonymously)
+				XCTAssert(self.mockViewModel.loggedInAnonymously)
 			}
 
-		buttonClickScenario(view: view,
-		                    accessibilityId: "registration_btn_demoVersion",
+		buttonClickScenario(accessibilityId: "registration_btn_demoVersion",
 		                    expectation: expectation)
 	}
 
 	func testPressingAboutButtonOpensHandbidWebsite() {
-		let mockViewModel = MockGetStartedViewModel()
-		let view = GetStartedView<RegistrationPage>(viewModel: mockViewModel)
-
 		let expectation = view.inspection
 			.inspect(onReceive: mockViewModel.$handbidWebsiteOpened) { _ in
-				XCTAssert(mockViewModel.handbidWebsiteOpened)
+				XCTAssert(self.mockViewModel.handbidWebsiteOpened)
 			}
 
-		buttonClickScenario(view: view,
-		                    accessibilityId: "registration_btn_aboutHandbid",
+		buttonClickScenario(accessibilityId: "registration_btn_aboutHandbid",
 		                    expectation: expectation)
 	}
 }

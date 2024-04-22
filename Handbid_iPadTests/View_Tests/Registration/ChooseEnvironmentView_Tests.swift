@@ -7,6 +7,7 @@ import ViewInspector
 import XCTest
 
 final class ChooseEnvironmentViewTests: XCTestCase {
+	var view: ChooseEnvironmentView<RegistrationPage>!
 	var coordinator: Coordinator<RegistrationPage, Any?>!
 	var mockViewModel: MockChooseEnvironmentViewModel!
 
@@ -14,17 +15,18 @@ final class ChooseEnvironmentViewTests: XCTestCase {
 		super.setUp()
 		coordinator = Coordinator<RegistrationPage, Any?>(viewBuilder: { _ in AnyView(EmptyView()) })
 		mockViewModel = MockChooseEnvironmentViewModel()
+		view = ChooseEnvironmentView(viewModel: mockViewModel)
 	}
 
 	override func tearDown() {
 		coordinator = nil
 		mockViewModel = nil
+		view = nil
 		super.tearDown()
 	}
 
 	func testInitialContent() throws {
 		var inspectionError: Error? = nil
-		let view = ChooseEnvironmentView<RegistrationPage>(viewModel: mockViewModel)
 		let sut = view.environmentObject(coordinator)
 
 		ViewHosting.host(view: sut)
@@ -57,7 +59,6 @@ final class ChooseEnvironmentViewTests: XCTestCase {
 
 	func testEnvironmentIsSavedOnClickingButton() {
 		var inspectionError: Error? = nil
-		let view = ChooseEnvironmentView<RegistrationPage>(viewModel: mockViewModel)
 		let sut = view.environmentObject(coordinator)
 
 		let exp = view.inspection.inspect(onReceive: mockViewModel.$saveEnvironmentCalled) { _ in

@@ -6,6 +6,7 @@ import ViewInspector
 import XCTest
 
 final class LogInViewTests: XCTestCase {
+	var view: LogInView<RegistrationPage>!
 	var coordinator: Coordinator<RegistrationPage, Any?>!
 	var mockViewModel: MockLogInViewModel!
 
@@ -13,17 +14,19 @@ final class LogInViewTests: XCTestCase {
 		super.setUp()
 		coordinator = Coordinator<RegistrationPage, Any?>(viewBuilder: { _ in AnyView(EmptyView()) })
 		mockViewModel = MockLogInViewModel()
+		view = LogInView(viewModel: mockViewModel)
 	}
 
 	override func tearDown() {
 		coordinator = nil
 		mockViewModel = nil
+		view = nil
 		super.tearDown()
 	}
 
 	func testInitialContent() {
 		var inspectionError: Error? = nil
-		let sut = LogInView<RegistrationPage>(viewModel: mockViewModel).environmentObject(coordinator)
+		let sut = view.environmentObject(coordinator)
 		ViewHosting.host(view: sut)
 		do {
 			_ = try sut.inspect()
@@ -50,7 +53,6 @@ final class LogInViewTests: XCTestCase {
 
 	func testLogInCalledOnButtonClick() {
 		var inspectionError: Error? = nil
-		let view = LogInView<RegistrationPage>(viewModel: mockViewModel)
 		let sut = view.environmentObject(coordinator)
 
 		let exp = view.inspection.inspect(onReceive: mockViewModel.$logInCalled) { _ in
@@ -74,7 +76,6 @@ final class LogInViewTests: XCTestCase {
 
 	func testPressingForgotPasswordButtonMovesToForgotPassword() {
 		var inspectionError: Error? = nil
-		let view = LogInView<RegistrationPage>(viewModel: mockViewModel)
 		let sut = view.environmentObject(coordinator)
 
 		let exp = view.inspection.inspect(onReceive: coordinator.$navigationStack) { _ in
@@ -98,7 +99,6 @@ final class LogInViewTests: XCTestCase {
 	}
 
 	func testAlertShowingWhenFieldsInViewModelChange() {
-		let view = LogInView<RegistrationPage>(viewModel: mockViewModel)
 		let sut = view.environmentObject(coordinator)
 
 		let exp = view.inspection.inspect(onReceive: mockViewModel.$showError) { _ in
@@ -120,7 +120,6 @@ final class LogInViewTests: XCTestCase {
 	}
 
 	func testErrorShownWhenFormInvalid() {
-		let view = LogInView<RegistrationPage>(viewModel: mockViewModel)
 		let sut = view.environmentObject(coordinator)
 
 		let exp = view.inspection.inspect(onReceive: mockViewModel.$isFormValid) { _ in
