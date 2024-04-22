@@ -5,9 +5,14 @@ import SwiftUI
 
 struct ForgotPasswordView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
-	@ObservedObject private var viewModel = ForgotPasswordViewModel(repository: ResetPasswordRepositoryImpl(NetworkingClient()))
+	@ObservedObject private var viewModel: ForgotPasswordViewModel
 	@State private var isBlurred = false
 	@FocusState private var focusedField: Field?
+	var inspection = Inspection<Self>()
+
+	init(viewModel: ForgotPasswordViewModel) {
+		self.viewModel = viewModel
+	}
 
 	var body: some View {
 		ZStack {
@@ -20,14 +25,20 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 			isBlurred = false
 			viewModel.resetErrorMessage()
 		}
-		.onReceive(viewModel.$isSuccessfulRequest) { value in
-			isBlurred = false
-			if value {
+		.onReceive(viewModel.$requestStatus) { value in
+			switch value {
+			case .ok:
 				coordinator.push(RegistrationPage.resetPasswordConfirmation as! T)
+				fallthrough
+			default:
+				isBlurred = false
 			}
 		}
 		.onTapGesture {
 			hideKeyboard()
+		}
+		.onReceive(inspection.notice) {
+			inspection.visit(self, $0)
 		}
 		.keyboardResponsive()
 		.backButtonNavigation(style: .registration)
@@ -65,7 +76,7 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 
 	private func getErrorMessage() -> some View {
 		VStack(spacing: 10) {
-			if !viewModel.isFormValid || !viewModel.isSuccessfulRequest {
+			if !viewModel.isFormValid || viewModel.requestStatus?.rawValue ?? 0 >= 400 {
 				GeometryReader { geometry in
 					Text(viewModel.errorMessage)
 						.applyTextStyle(style: .error)

@@ -1,6 +1,7 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
 import Combine
+import Foundation
 import NetworkService
 
 class ForgotPasswordViewModel: ObservableObject {
@@ -9,7 +10,7 @@ class ForgotPasswordViewModel: ObservableObject {
 	@Published var isFormValid = true
 	@Published var email: String = ""
 	@Published var errorMessage: String = ""
-	@Published var isSuccessfulRequest = false
+	@Published var requestStatus: NetworkingError.Status?
 
 	init(repository: ResetPasswordRepository) {
 		self.repository = repository
@@ -31,13 +32,16 @@ class ForgotPasswordViewModel: ObservableObject {
 				case .finished:
 					break
 				case let .failure(error):
-					self.errorMessage = "\(error)"
+					if let netError = error as? NetworkingError {
+						self.requestStatus = netError.status
+						self.errorMessage = "\(error)"
+					}
 				}
 			}, receiveValue: { response in
 				print(response)
-				self.isSuccessfulRequest = response.success ?? false
+				self.requestStatus = response.success == true ? .ok : .badRequest
 
-				if !self.isSuccessfulRequest {
+				if self.requestStatus == .badRequest {
 					self.errorMessage = response.message ?? String(localized: LocalizedStringResource("global_label_unknownError"))
 				}
 			}).store(in: &cancellables)

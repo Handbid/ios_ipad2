@@ -5,8 +5,13 @@ import SwiftUI
 
 struct ChooseEnvironmentView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
-	@ObservedObject private var viewModel = ChooseEnvironmentViewModel()
+	@ObservedObject private var viewModel: ChooseEnvironmentViewModel
 	@State private var isBlurred = false
+	var inspection = Inspection<Self>()
+
+	init(viewModel: ChooseEnvironmentViewModel) {
+		self.viewModel = viewModel
+	}
 
 	var body: some View {
 		ZStack {
@@ -17,6 +22,9 @@ struct ChooseEnvironmentView<T: PageProtocol>: View {
 		}
 		.background {
 			backgroundView(for: .color(.accentViolet))
+		}
+		.onReceive(inspection.notice) {
+			inspection.visit(self, $0)
 		}
 		.backButtonNavigation(style: .registration)
 		.ignoresSafeArea(.keyboard, edges: .bottom)

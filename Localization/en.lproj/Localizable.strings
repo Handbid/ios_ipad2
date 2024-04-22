@@ -1,4 +1,5 @@
 "global_btn_ok" = "Ok";
+"global_label_error" = "Error";
 "global_label_unknownError" = "Unknown error";
 "login_label_incorrectCredentials" = "Incorrect email or password";
 "registration_btn_aboutHandbid" = "About Handbid";

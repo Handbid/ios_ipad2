@@ -16,8 +16,10 @@ class ResetPasswordRepositoryImpl: ResetPasswordRepository, NetworkingService {
 	}
 
 	func resetPassword(email: String) -> AnyPublisher<ResetPasswordModel, Error> {
-		get(ApiEndpoints.resetPassword, params: ["identifier": email,
-		                                         "whitelabelId": AppInfoProvider.whitelabelId])
+		let params: Params = ["identifier": email,
+		                      "whitelabelId": AppInfoProvider.whitelabelId]
+
+		return get(ApiEndpoints.resetPassword, params: params)
 			.tryMap { try ResetPasswordModel.decode($0) }
 			.receive(on: RunLoop.main)
 			.eraseToAnyPublisher()
