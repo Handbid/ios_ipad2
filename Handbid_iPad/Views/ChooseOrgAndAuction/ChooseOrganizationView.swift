@@ -8,7 +8,6 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 	@ObservedObject private var viewModel: ChooseOrganizationViewModel
 	@State private var isBlurred = false
 	@FocusState var focusedField: Field?
-
 	var inspection = Inspection<Self>()
 
 	init(viewModel: ChooseOrganizationViewModel) {

@@ -23,7 +23,7 @@ struct MainContainer<T: PageProtocol>: View {
 
 	var body: some View {
 		VStack(spacing: 0) {
-			TopBar(content: topBarContent(for: selectedView))
+			TopBar(content: topBarContent(for: selectedView), barHeight: 60)
 			GeometryReader { geometry in
 				if deviceContext.isPhone {
 					phoneView(geometry: geometry)

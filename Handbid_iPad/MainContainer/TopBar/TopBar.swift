@@ -4,7 +4,12 @@ import SwiftUI
 
 struct TopBar: View {
 	var content: TopBarContent
-	static let barHeight: CGFloat = 60
+	let barHeight: CGFloat
+
+	init(content: TopBarContent, barHeight: CGFloat) {
+		self.content = content
+		self.barHeight = barHeight
+	}
 
 	var body: some View {
 		HStack {
@@ -12,7 +17,7 @@ struct TopBar: View {
 			CenteredView(view: content.centerView)
 			rightViews
 		}
-		.frame(height: TopBar.barHeight)
+		.frame(height: barHeight)
 		.background(Color(UIColor.systemBackground))
 		.foregroundColor(Color(UIColor.label))
 	}
