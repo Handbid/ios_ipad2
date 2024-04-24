@@ -4,6 +4,7 @@ import SwiftUI
 
 struct GenericTopBarContent<ViewModel: ViewModelTopBarProtocol>: TopBarContent {
 	@Binding var isSidebarVisible: Bool
+	var logoIsVisible: Bool? = true
 	var viewModel: ViewModel
 	var logo: Image?
 
@@ -28,7 +29,9 @@ struct GenericTopBarContent<ViewModel: ViewModelTopBarProtocol>: TopBarContent {
 
 	private func createMenuButton() -> AnyView {
 		Button(action: { isSidebarVisible.toggle() }) {
-			Image("menuIcon").foregroundColor(.primary)
+			if logoIsVisible == true {
+				Image("menuIcon").foregroundColor(.primary)
+			}
 		}.eraseToAnyView()
 	}
 

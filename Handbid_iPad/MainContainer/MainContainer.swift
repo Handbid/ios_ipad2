@@ -7,8 +7,8 @@ struct MainContainer<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@State private var isSidebarVisible: Bool = DeviceConfigurator.isSidebarAlwaysVisible
 	@State private var selectedView: MainContainerTypeView
-	@StateObject private var deviceContext = DeviceContext()
 	@StateObject private var authManager = AuthManager()
+	private var deviceContext = DeviceContext()
 
 	private let auctionViewModel: AuctionViewModel
 	private let paddleViewModel: PaddleViewModel

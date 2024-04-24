@@ -1,19 +1,26 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
 import Combine
-import NetworkService
+import SwiftUI
 
-class ChooseAuctionViewModel: ObservableObject {
+class ChooseAuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 	private var cancellables = Set<AnyCancellable>()
-	@Published var email: String = ""
-	@Published var environmentOptions: [AppEnvironmentType] = [.prod, .d1, .d2, .d3, .qa]
-	@Published var selectedOption: AppEnvironmentType?
 
-	init() {
-		self.selectedOption = AppEnvironmentType.currentState
+	var centerViewData: TopBarCenterViewData {
+		TopBarCenterViewData(
+			type: .custom,
+			customView: AnyView(SelectAuctionTopBarCenterView(title: "org name",
+			                                                  countAuctions: 10))
+		)
 	}
 
-	func saveEnvironment() {
-		EnvironmentManager.setEnvironment(for: selectedOption ?? .prod)
+	var actions: [TopBarAction] {
+		[
+			TopBarAction(icon: "closeIcon", title: nil, action: closeView),
+		]
+	}
+
+	func closeView() {
+		print("close")
 	}
 }

@@ -70,6 +70,8 @@
 		8C9FA4552BD8DF680041F28E /* ChooseAuctionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA4542BD8DF680041F28E /* ChooseAuctionView.swift */; };
 		8C9FA4582BD8DFAB0041F28E /* ChooseOrganizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA4572BD8DFAB0041F28E /* ChooseOrganizationViewModel.swift */; };
 		8C9FA45A2BD8DFBA0041F28E /* ChooseAuctionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA4592BD8DFBA0041F28E /* ChooseAuctionViewModel.swift */; };
+		8C9FA45C2BD93BF90041F28E /* SelectAuctionContainerTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA45B2BD93BF90041F28E /* SelectAuctionContainerTypeView.swift */; };
+		8C9FA45E2BD93DFB0041F28E /* SelectAuctionTopBarCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA45D2BD93DFB0041F28E /* SelectAuctionTopBarCenterView.swift */; };
 		8CABF5BB2BB9C5F400A34870 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5BA2BB9C5F400A34870 /* ForgotPasswordView.swift */; };
 		8CABF5BD2BB9C60900A34870 /* PasswordResetConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5BC2BB9C60900A34870 /* PasswordResetConfirmationView.swift */; };
 		8CABF5C32BB9C64E00A34870 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5C22BB9C64E00A34870 /* ForgotPasswordViewModel.swift */; };
@@ -232,6 +234,8 @@
 		8C9FA4542BD8DF680041F28E /* ChooseAuctionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAuctionView.swift; sourceTree = "<group>"; };
 		8C9FA4572BD8DFAB0041F28E /* ChooseOrganizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseOrganizationViewModel.swift; sourceTree = "<group>"; };
 		8C9FA4592BD8DFBA0041F28E /* ChooseAuctionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAuctionViewModel.swift; sourceTree = "<group>"; };
+		8C9FA45B2BD93BF90041F28E /* SelectAuctionContainerTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAuctionContainerTypeView.swift; sourceTree = "<group>"; };
+		8C9FA45D2BD93DFB0041F28E /* SelectAuctionTopBarCenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAuctionTopBarCenterView.swift; sourceTree = "<group>"; };
 		8CA455A02BBAAC7300634B5B /* Handbid_iPad.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Handbid_iPad.entitlements; sourceTree = "<group>"; };
 		8CABF5BA2BB9C5F400A34870 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		8CABF5BC2BB9C60900A34870 /* PasswordResetConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetConfirmationView.swift; sourceTree = "<group>"; };
@@ -712,6 +716,7 @@
 				8C3D3C062BBB85CC002A5CFC /* MainContainer.swift */,
 				8CD108002BD11FCC00E83261 /* MainContainerTypeView.swift */,
 				8CD1082C2BD128A600E83261 /* MainContainerViewBuilder.swift */,
+				8C9FA45B2BD93BF90041F28E /* SelectAuctionContainerTypeView.swift */,
 				8CD108292BD1260C00E83261 /* Content */,
 				8CD108212BD1250A00E83261 /* DataService */,
 				8CD107F12BD11E4E00E83261 /* Factory */,
@@ -808,6 +813,7 @@
 			children = (
 				8CD1082A2BD1261800E83261 /* ContentView.swift */,
 				8CC6BEE52BD43757007C999F /* AuctionTopBarCenterView.swift */,
+				8C9FA45D2BD93DFB0041F28E /* SelectAuctionTopBarCenterView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1245,6 +1251,7 @@
 				8C4B7BAB2BB892F20043B892 /* CustomStyledViewText.swift in Sources */,
 				8CD1081C2BD1243800E83261 /* GenericTopBarContent.swift in Sources */,
 				8C8BEC2E2BA975DE0083D904 /* GetStartedView.swift in Sources */,
+				8C9FA45E2BD93DFB0041F28E /* SelectAuctionTopBarCenterView.swift in Sources */,
 				8C9FA45A2BD8DFBA0041F28E /* ChooseAuctionViewModel.swift in Sources */,
 				8C4B7B892BB6FCEA0043B892 /* ButtonStyleConfiguration.swift in Sources */,
 				8C9FA4582BD8DFAB0041F28E /* ChooseOrganizationViewModel.swift in Sources */,
@@ -1272,6 +1279,7 @@
 				8C4B7B832BB47DD30043B892 /* StartupProgressAnimationView.swift in Sources */,
 				8C0007D32BAC976700AAEBA0 /* AppInfoProvider.swift in Sources */,
 				8CD1082B2BD1261800E83261 /* ContentView.swift in Sources */,
+				8C9FA45C2BD93BF90041F28E /* SelectAuctionContainerTypeView.swift in Sources */,
 				8CD108202BD124EA00E83261 /* DataServiceFactory.swift in Sources */,
 				8C4B7B9B2BB7026D0043B892 /* TextStyleConfiguration.swift in Sources */,
 				8CC6BEE62BD43757007C999F /* AuctionTopBarCenterView.swift in Sources */,

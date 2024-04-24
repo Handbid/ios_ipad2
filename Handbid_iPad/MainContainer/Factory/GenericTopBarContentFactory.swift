@@ -5,7 +5,7 @@ import SwiftUI
 
 struct GenericTopBarContentFactory<ViewModel: ViewModelTopBarProtocol>: TopBarContentFactory {
 	var viewModel: ViewModel
-	@ObservedObject var deviceContext: DeviceContext
+	var deviceContext: DeviceContext
 
 	init(viewModel: ViewModel, deviceContext: DeviceContext) {
 		self.viewModel = viewModel
@@ -19,5 +19,9 @@ struct GenericTopBarContentFactory<ViewModel: ViewModelTopBarProtocol>: TopBarCo
 		else {
 			GenericTopBarContent(isSidebarVisible: .constant(true), viewModel: viewModel, logo: Image("menuLogoIcon"))
 		}
+	}
+
+	func createTopBarContentWithoutLogo() -> TopBarContent {
+		GenericTopBarContent(isSidebarVisible: .constant(true), logoIsVisible: false, viewModel: viewModel)
 	}
 }
