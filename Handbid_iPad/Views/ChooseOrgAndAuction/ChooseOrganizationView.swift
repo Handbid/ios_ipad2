@@ -22,7 +22,7 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 			isBlurred = false
 		}
 		.background {
-			backgroundView(for: .color(.accentViolet))
+			backgroundView(for: .color(.accentViolet.opacity(0.7)))
 		}
 		.onTapGesture {
 			hideKeyboard()
@@ -53,19 +53,17 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 	}
 
 	private func getListView() -> some View {
-		List {
-			Section(header:
-				FormField(fieldType: .searchBar,
-				          labelKey: LocalizedStringKey("chooseOrg_label_searchByName"),
-				          hintKey: LocalizedStringKey("chooseOrg_label_searchByName"),
-				          fieldValue: $viewModel.searchOrganization,
-				          focusedField: _focusedField)
-					.fixedSize(horizontal: false, vertical: true)
-					.padding(.bottom, 10))
-			{
+		VStack(spacing: 0) {
+			FormField(fieldType: .searchBar,
+			          labelKey: LocalizedStringKey("chooseOrg_label_searchByName"),
+			          hintKey: LocalizedStringKey("chooseOrg_label_searchByName"),
+			          fieldValue: $viewModel.searchOrganization,
+			          focusedField: _focusedField)
+				.padding([.leading, .trailing], 30)
+			List {
 				ForEach(viewModel.environmentOptions, id: \.self) { option in
 					Button(action: {
-						// selectOption(option)
+						// selectOption(option) would be implemented here
 					}) {
 						HStack {
 							Text(option.rawValue)
@@ -75,18 +73,23 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 								Image(systemName: "checkmark.circle.fill")
 									.foregroundColor(.accentColor)
 							}
-							else {
-								Image(systemName: "circle")
-							}
 						}
+						.padding([.leading, .trailing], 10)
+						.frame(height: 50)
+						.overlay(
+							RoundedRectangle(cornerRadius: 10)
+								.stroke(option == viewModel.selectedOption ? Color.accentColor : Color.accentGrayBorder,
+								        lineWidth: option == viewModel.selectedOption ? 2 : 1)
+						)
 					}
-					.buttonStyle(PlainButtonStyle())
 				}
+				.listRowSeparator(.hidden)
+				.listRowBackground(Color.white)
 			}
-			.listRowBackground(Color.gray.opacity(0.2))
+			.scrollIndicators(.hidden)
+			.scrollContentBackground(.hidden)
+			.frame(height: CGFloat(5 * 60))
 		}
-		.scrollContentBackground(.hidden)
-		.frame(height: CGFloat(5 * 60))
 	}
 
 	private func getButtons() -> some View {
