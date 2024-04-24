@@ -66,6 +66,10 @@
 		8C9FA44C2BD29C8B0041F28E /* DeviceConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA44B2BD29C8B0041F28E /* DeviceConfigurator.swift */; };
 		8C9FA44E2BD29CAB0041F28E /* DeviceContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA44D2BD29CAB0041F28E /* DeviceContext.swift */; };
 		8C9FA4502BD3AD060041F28E /* RoundedCornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA44F2BD3AD060041F28E /* RoundedCornerView.swift */; };
+		8C9FA4532BD8DF590041F28E /* ChooseOrganizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA4522BD8DF590041F28E /* ChooseOrganizationView.swift */; };
+		8C9FA4552BD8DF680041F28E /* ChooseAuctionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA4542BD8DF680041F28E /* ChooseAuctionView.swift */; };
+		8C9FA4582BD8DFAB0041F28E /* ChooseOrganizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA4572BD8DFAB0041F28E /* ChooseOrganizationViewModel.swift */; };
+		8C9FA45A2BD8DFBA0041F28E /* ChooseAuctionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA4592BD8DFBA0041F28E /* ChooseAuctionViewModel.swift */; };
 		8CABF5BB2BB9C5F400A34870 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5BA2BB9C5F400A34870 /* ForgotPasswordView.swift */; };
 		8CABF5BD2BB9C60900A34870 /* PasswordResetConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5BC2BB9C60900A34870 /* PasswordResetConfirmationView.swift */; };
 		8CABF5C32BB9C64E00A34870 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5C22BB9C64E00A34870 /* ForgotPasswordViewModel.swift */; };
@@ -224,6 +228,10 @@
 		8C9FA44B2BD29C8B0041F28E /* DeviceConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceConfigurator.swift; sourceTree = "<group>"; };
 		8C9FA44D2BD29CAB0041F28E /* DeviceContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceContext.swift; sourceTree = "<group>"; };
 		8C9FA44F2BD3AD060041F28E /* RoundedCornerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerView.swift; sourceTree = "<group>"; };
+		8C9FA4522BD8DF590041F28E /* ChooseOrganizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseOrganizationView.swift; sourceTree = "<group>"; };
+		8C9FA4542BD8DF680041F28E /* ChooseAuctionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAuctionView.swift; sourceTree = "<group>"; };
+		8C9FA4572BD8DFAB0041F28E /* ChooseOrganizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseOrganizationViewModel.swift; sourceTree = "<group>"; };
+		8C9FA4592BD8DFBA0041F28E /* ChooseAuctionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAuctionViewModel.swift; sourceTree = "<group>"; };
 		8CA455A02BBAAC7300634B5B /* Handbid_iPad.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Handbid_iPad.entitlements; sourceTree = "<group>"; };
 		8CABF5BA2BB9C5F400A34870 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		8CABF5BC2BB9C60900A34870 /* PasswordResetConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetConfirmationView.swift; sourceTree = "<group>"; };
@@ -506,6 +514,7 @@
 		8C1E00E22BA825820094FAA7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8C9FA4512BD8DF090041F28E /* ChooseOrgAndAuction */,
 				8C3D3C052BBB85B8002A5CFC /* MainContainer */,
 				CE7DF82D2BADFD0700FF7694 /* Helpers */,
 				8C8BEC2C2BA975C30083D904 /* Registration */,
@@ -516,6 +525,7 @@
 		8C1E00E32BA825860094FAA7 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				8C9FA4562BD8DF980041F28E /* ChooseOrgAndAuction */,
 				8CD108112BD1232F00E83261 /* MainContainer */,
 				8C8BEC2B2BA975B70083D904 /* Registration */,
 			);
@@ -647,6 +657,24 @@
 				8CABF5BC2BB9C60900A34870 /* PasswordResetConfirmationView.swift */,
 			);
 			path = Registration;
+			sourceTree = "<group>";
+		};
+		8C9FA4512BD8DF090041F28E /* ChooseOrgAndAuction */ = {
+			isa = PBXGroup;
+			children = (
+				8C9FA4542BD8DF680041F28E /* ChooseAuctionView.swift */,
+				8C9FA4522BD8DF590041F28E /* ChooseOrganizationView.swift */,
+			);
+			path = ChooseOrgAndAuction;
+			sourceTree = "<group>";
+		};
+		8C9FA4562BD8DF980041F28E /* ChooseOrgAndAuction */ = {
+			isa = PBXGroup;
+			children = (
+				8C9FA4592BD8DFBA0041F28E /* ChooseAuctionViewModel.swift */,
+				8C9FA4572BD8DFAB0041F28E /* ChooseOrganizationViewModel.swift */,
+			);
+			path = ChooseOrgAndAuction;
 			sourceTree = "<group>";
 		};
 		8CABF5C62BB9C80400A34870 /* Background */ = {
@@ -1162,6 +1190,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C9FA4532BD8DF590041F28E /* ChooseOrganizationView.swift in Sources */,
 				8CD108232BD1251900E83261 /* DataServiceWrapper.swift in Sources */,
 				8C9FA43C2BD256430041F28E /* SidebarItem.swift in Sources */,
 				8C3D3C042BBB7F09002A5CFC /* MainAppCoordinator.swift in Sources */,
@@ -1216,7 +1245,9 @@
 				8C4B7BAB2BB892F20043B892 /* CustomStyledViewText.swift in Sources */,
 				8CD1081C2BD1243800E83261 /* GenericTopBarContent.swift in Sources */,
 				8C8BEC2E2BA975DE0083D904 /* GetStartedView.swift in Sources */,
+				8C9FA45A2BD8DFBA0041F28E /* ChooseAuctionViewModel.swift in Sources */,
 				8C4B7B892BB6FCEA0043B892 /* ButtonStyleConfiguration.swift in Sources */,
+				8C9FA4582BD8DFAB0041F28E /* ChooseOrganizationViewModel.swift in Sources */,
 				8C4B7BA22BB88FFB0043B892 /* ButtonStyles.swift in Sources */,
 				8CABF5DC2BB9F37700A34870 /* RegistrationBackButton.swift in Sources */,
 				8CABF5D02BB9E11300A34870 /* ResponsiveView.swift in Sources */,
@@ -1252,6 +1283,7 @@
 				8C8BEC642BA9ADE20083D904 /* AppLaunchControlView.swift in Sources */,
 				8CABF5DA2BB9F35A00A34870 /* NavigationBackButtonModifier.swift in Sources */,
 				CE34FB3F2BB1963300701D2A /* OverlayInternalView.swift in Sources */,
+				8C9FA4552BD8DF680041F28E /* ChooseAuctionView.swift in Sources */,
 				8CD107F82BD11F2300E83261 /* TopBarActionProvider.swift in Sources */,
 				8C0007B22BAC733900AAEBA0 /* ArrowParsable.swift in Sources */,
 			);

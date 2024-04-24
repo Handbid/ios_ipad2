@@ -4,7 +4,7 @@ import Foundation
 import SwiftUI
 
 enum Field: Hashable {
-	case email, password
+	case email, password, searchBar
 }
 
 struct FormField: View {
@@ -15,6 +15,7 @@ struct FormField: View {
 	@Binding var fieldValue: String
 	@FocusState var focusedField: Field?
 	@State var isPasswordShown = false
+	@State private var isEditing = false
 
 	var body: some View {
 		switch fieldType {
@@ -60,6 +61,35 @@ struct FormField: View {
 						isPasswordShown = !isPasswordShown
 					}
 			}
+		case .searchBar:
+			TextField(hintKey, text: $fieldValue, onEditingChanged: { isEditing in
+				self.isEditing = isEditing
+			})
+			.applyTextFieldStyle(style: .searchBar)
+			.keyboardType(.alphabet)
+			.textCase(nil)
+			.textContentType(.organizationName)
+			.focused($focusedField, equals: .searchBar)
+			.id(Field.searchBar)
+			.overlay(
+				Group {
+					if fieldValue.isEmpty, !isEditing {
+						Image(systemName: "magnifyingglass")
+							.foregroundColor(.black)
+							.imageScale(.large)
+					}
+					else if !fieldValue.isEmpty {
+						Button(action: {
+							fieldValue = ""
+						}) {
+							Image(systemName: "multiply.circle.fill")
+								.foregroundColor(.gray)
+						}
+					}
+				}
+				.padding(.trailing, 12),
+				alignment: .trailing
+			)
 		}
 	}
 }

@@ -20,10 +20,11 @@ struct AppLaunchControlView: View {
 				}
 			}
 			else {
-				if isValidToken {
-					MainContainer<RegistrationPage>(selectedView: .auction)
-						.environmentObject(viewFactory)
-						.environmentObject(dataServiceWrapper)
+				if !isValidToken {
+					ChooseOrganizationView<RegistrationPage>(viewModel: ChooseOrganizationViewModel())
+//					MainContainer<RegistrationPage>(selectedView: .auction)
+//						.environmentObject(viewFactory)
+//						.environmentObject(dataServiceWrapper)
 				}
 				else {
 					RootPageView(page: RegistrationPage.getStarted)
