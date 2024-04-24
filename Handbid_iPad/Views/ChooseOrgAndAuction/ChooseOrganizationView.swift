@@ -1,5 +1,6 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
+import NetworkService
 import SwiftUI
 
 struct ChooseOrganizationView<T: PageProtocol>: View {
@@ -61,9 +62,9 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 			          focusedField: _focusedField)
 				.padding([.leading, .trailing], 30)
 			List {
-				ForEach(viewModel.environmentOptions, id: \.self) { option in
+				ForEach(viewModel.filteredOptions, id: \.self) { option in
 					Button(action: {
-						// selectOption(option) would be implemented here
+						selectOption(option)
 					}) {
 						HStack {
 							Text(option.rawValue)
@@ -76,11 +77,15 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 						}
 						.padding([.leading, .trailing], 10)
 						.frame(height: 50)
+						.contentShape(Rectangle())
 						.overlay(
 							RoundedRectangle(cornerRadius: 10)
 								.stroke(option == viewModel.selectedOption ? Color.accentColor : Color.accentGrayBorder,
 								        lineWidth: option == viewModel.selectedOption ? 2 : 1)
 						)
+						.onTapGesture {
+							selectOption(option)
+						}
 					}
 				}
 				.listRowSeparator(.hidden)
@@ -95,7 +100,7 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 	private func getButtons() -> some View {
 		VStack(spacing: 10) {
 			Button<Text>.styled(config: .secondaryButtonStyle, action: {
-				viewModel.saveEnvironment()
+				// viewModel.saveEnvironment()
 			}) {
 				Text(LocalizedStringKey("chooseOrg_btn_selectOrg"))
 					.textCase(.uppercase)
@@ -107,7 +112,7 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 		viewModel.selectedOption = nil
 	}
 
-	//    private func selectOption(_ option: AppEnvironmentType) {
-	//        viewModel.selectedOption = option
-	//    }
+	func selectOption(_ option: AppEnvironmentType) {
+		viewModel.selectedOption = option
+	}
 }
