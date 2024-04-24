@@ -45,13 +45,22 @@ struct AuctionItemView: View {
 					.foregroundColor(.gray)
 			}
 
-			AsyncImage(url: auction.imageUrl) { image in
-				image.resizable()
-			} placeholder: {
-				Image(systemName: "photo.on.rectangle.angled").resizable()
+			AsyncImage(url: auction.imageUrl) { phase in
+				switch phase {
+				case .empty:
+					ProgressView()
+				case let .success(image):
+					image.resizable().aspectRatio(contentMode: .fill)
+				case .failure:
+					Image(systemName: "photo.on.rectangle.angled") // Default image on failure
+						.resizable()
+						.aspectRatio(contentMode: .fit)
+						.padding()
+				@unknown default:
+					EmptyView()
+				}
 			}
-			.scaledToFit()
-			.cornerRadius(10)
+			.frame(height: 200) // Set a fixed height for the image within the cell
 
 			Text(auction.name)
 				.bold()
@@ -60,9 +69,10 @@ struct AuctionItemView: View {
 			Text("Ends on \(auction.endDate)")
 		}
 		.padding()
+		.frame(width: 307, height: 370)
 		.background(Color.white)
 		.cornerRadius(10)
-		.shadow(color: Color.gray.opacity(0.5), radius: 10, x: 0, y: 4)
+		.shadow(radius: 5)
 	}
 }
 
@@ -99,6 +109,8 @@ struct AuctionButtonView: View {
 struct ChooseAuctionView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@ObservedObject private var viewModel: ChooseAuctionViewModel
+	//    @Environment(\.deviceOrientation) private var deviceOrientation // Custom environment value if needed
+
 	@State private var selectedView: SelectAuctionContainerTypeView
 	@State private var isBlurred = false
 	private var deviceContext = DeviceContext()
@@ -109,39 +121,47 @@ struct ChooseAuctionView<T: PageProtocol>: View {
 		self.selectedView = selectedView
 	}
 
-	let columns = [
-		GridItem(.flexible()),
-		GridItem(.flexible()),
-		GridItem(.flexible()),
-	]
+	private let cellWidth: CGFloat = 307
+	private let cellHeight: CGFloat = 370
 
 	var body: some View {
-		VStack(spacing: 0) {
-			TopBar(content: topBarContent(for: selectedView), barHeight: 60)
+		GeometryReader { geometry in
+			let columns = createGridItems(width: geometry.size.width, targetWidth: cellWidth)
 
-			ScrollView(.horizontal, showsIndicators: false) {
-				HStack(spacing: 10) {
-					ForEach(AuctionState.allCases, id: \.self) { state in
-						AuctionButtonView(viewModel: viewModel.buttonViewModels[state]!, auctionState: state) {
-							viewModel.filterAuctions() // This will re-filter the auctions based on the latest selections
+			VStack(spacing: 0) {
+				TopBar(content: topBarContent(for: selectedView), barHeight: 60)
+					.frame(height: 60)
+
+				ScrollView(.horizontal, showsIndicators: false) {
+					HStack(spacing: 10) {
+						ForEach(AuctionState.allCases, id: \.self) { state in
+							AuctionButtonView(viewModel: viewModel.buttonViewModels[state]!, auctionState: state) {
+								viewModel.filterAuctions()
+							}
 						}
 					}
+					.padding(.horizontal)
+					.padding(.bottom, 10)
 				}
-				.padding()
-			}
 
-			ScrollView {
-				LazyVGrid(columns: columns, spacing: 20) {
-					ForEach(viewModel.filteredAuctions, id: \.id) { auction in
-						AuctionItemView(auction: auction)
+				ScrollView {
+					LazyVGrid(columns: columns, spacing: 20) {
+						ForEach(viewModel.filteredAuctions, id: \.id) { auction in
+							AuctionItemView(auction: auction)
+								.frame(width: cellWidth, height: cellHeight)
+						}
 					}
+					.padding()
 				}
-				.padding()
-			}
 
-			Spacer()
+				Spacer()
+			}
 		}
-		.background(.white)
+	}
+
+	private func createGridItems(width: CGFloat, targetWidth: CGFloat) -> [GridItem] {
+		let numberOfColumns = max(Int(width / targetWidth), 1)
+		return Array(repeating: GridItem(.fixed(targetWidth), spacing: 20), count: numberOfColumns)
 	}
 
 	private func topBarContent(for viewType: SelectAuctionContainerTypeView) -> TopBarContent {
