@@ -2,6 +2,48 @@
 
 import SwiftUI
 
+enum AuctionState: String, CaseIterable {
+	case open, presale, preview, closed, reconciled, all
+
+	var color: Color {
+		switch self {
+		case .open, .all: Color.green
+		case .presale: Color.pink
+		case .preview: Color.orange
+		case .closed: Color.red
+		case .reconciled: Color.blue
+		}
+	}
+}
+
+class AuctionButtonViewModel: ObservableObject {
+	@Published var isSelected: Bool = false
+}
+
+struct AuctionButtonView: View {
+	@ObservedObject var viewModel: AuctionButtonViewModel
+	let auctionState: AuctionState
+
+	var body: some View {
+		Button(action: {
+			viewModel.isSelected.toggle()
+		}) {
+			HStack {
+				Circle()
+					.fill(auctionState.color)
+					.frame(width: 40, height: 40)
+					.overlay(
+						Image(systemName: "checkmark")
+							.foregroundColor(viewModel.isSelected ? .white : .clear)
+					)
+				Text(auctionState.rawValue.capitalized)
+					.font(.caption)
+					.foregroundColor(.black)
+			}
+		}
+	}
+}
+
 struct ChooseAuctionView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@ObservedObject private var viewModel: ChooseAuctionViewModel
@@ -9,24 +51,6 @@ struct ChooseAuctionView<T: PageProtocol>: View {
 	@State private var isBlurred = false
 	private var deviceContext = DeviceContext()
 	var inspection = Inspection<Self>()
-
-	@State private var isSelected: [String: Bool] = [
-		"open": false,
-		"presale": false,
-		"preview": false,
-		"closed": false,
-		"reconciled": false,
-		"all": false,
-	]
-
-	// Define custom colors using RGB
-	let customColors = [
-		"green": Color(red: 0.0, green: 0.5, blue: 0.0),
-		"pink": Color(red: 1.0, green: 0.75, blue: 0.8),
-		"orange": Color(red: 1.0, green: 0.55, blue: 0.0),
-		"red": Color(red: 1.0, green: 0.0, blue: 0.0),
-		"blue": Color(red: 0.0, green: 0.0, blue: 1.0),
-	]
 
 	init(viewModel: ChooseAuctionViewModel, selectedView: SelectAuctionContainerTypeView) {
 		self.viewModel = viewModel
@@ -37,67 +61,16 @@ struct ChooseAuctionView<T: PageProtocol>: View {
 		VStack(spacing: 0) {
 			TopBar(content: topBarContent(for: selectedView), barHeight: 60)
 
-			// Adding horizontal button list under the TopBar
-			ScrollView(.horizontal, showsIndicators: false) {
-				HStack(spacing: 10) {
-					ForEach(isSelected.sorted(by: { $0.key < $1.key }), id: \.key) { item in
-						Button(action: {
-							isSelected[item.key]!.toggle()
-						}) {
-							iconView(color: customColors[iconColor(name: item.key)]!, isSelected: isSelected[item.key]!, label: item.key.capitalized)
-						}
-					}
+			HStack(spacing: 10) {
+				ForEach(AuctionState.allCases, id: \.self) { state in
+					AuctionButtonView(viewModel: viewModel.buttonViewModels[state]!, auctionState: state)
 				}
-				.padding()
 			}
+			.padding()
 
 			Spacer()
 		}
-		.background(Color.red)
-	}
-
-	private func iconView(color: Color, isSelected: Bool, label: String) -> some View {
-		HStack {
-			Circle()
-				.fill(color)
-				.frame(width: 40, height: 40)
-				.overlay(
-					Image(systemName: "checkmark")
-						.foregroundColor(isSelected ? .white : .clear)
-				)
-			Text(label)
-				.font(.caption)
-				.foregroundColor(.black)
-		}
-	}
-
-	private func iconView(color: Color, isSelected: Bool) -> some View {
-		VStack {
-			Circle()
-				.fill(color)
-				.frame(width: 40, height: 40)
-				.overlay(
-					Image(systemName: "checkmark")
-						.foregroundColor(isSelected ? .white : .clear)
-				)
-		}
-	}
-
-	private func iconColor(name: String) -> String {
-		switch name {
-		case "open", "all":
-			"green"
-		case "presale":
-			"pink"
-		case "preview":
-			"orange"
-		case "closed":
-			"red"
-		case "reconciled":
-			"blue"
-		default:
-			"green"
-		}
+		.background(Color.gray)
 	}
 
 	private func topBarContent(for viewType: SelectAuctionContainerTypeView) -> TopBarContent {

@@ -5,6 +5,7 @@ import SwiftUI
 
 class ChooseAuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 	private var cancellables = Set<AnyCancellable>()
+	var buttonViewModels: [AuctionState: AuctionButtonViewModel] = AuctionState.allCases.reduce(into: [:]) { $0[$1] = AuctionButtonViewModel() }
 
 	var centerViewData: TopBarCenterViewData {
 		TopBarCenterViewData(
