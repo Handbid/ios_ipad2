@@ -14,6 +14,10 @@ enum AuctionState: String, CaseIterable {
 		case .reconciled: Color.blue
 		}
 	}
+
+	static func color(for status: String) -> Color {
+		AuctionState(rawValue: status)?.color ?? Color.gray
+	}
 }
 
 struct AuctionItem {
@@ -30,49 +34,83 @@ struct AuctionItemView: View {
 	let auction: AuctionItem
 
 	var body: some View {
-		VStack(alignment: .leading, spacing: 10) {
-			HStack {
-				Label("\(auction.itemCount)", systemImage: "number")
-					.padding(5)
-					.background(Color.blue)
-					.cornerRadius(10)
-					.foregroundColor(.white)
+		VStack(alignment: .center, spacing: 10) {
+			VStack {
+				HStack {
+					Text("\(auction.itemCount) Items")
+						.padding(10)
+						.background(Color.black)
+						.foregroundColor(.white)
+						.bold()
+						.cornerRadius(15)
+						.frame(height: 30)
 
-				Spacer()
+					Spacer()
 
-				Text(auction.status)
-					.italic()
-					.foregroundColor(.gray)
+					Text(auction.status.uppercased())
+						.bold()
+						.foregroundColor(AuctionState.color(for: auction.status))
+				}
+				.padding([.leading, .trailing], 10)
 			}
+			.frame(height: 50)
+
+			Spacer(minLength: 0)
 
 			AsyncImage(url: auction.imageUrl) { phase in
 				switch phase {
 				case .empty:
 					ProgressView()
+						.progressViewStyle(CircularProgressViewStyle())
+						.scaleEffect(1.5)
+						.frame(maxWidth: .infinity, maxHeight: .infinity)
 				case let .success(image):
-					image.resizable().aspectRatio(contentMode: .fill)
-				case .failure:
-					Image(systemName: "photo.on.rectangle.angled") // Default image on failure
-						.resizable()
+					image.resizable()
 						.aspectRatio(contentMode: .fit)
+						.frame(width: 150, height: 150, alignment: .center)
+				case .failure:
+					Image(systemName: "photo")
+						.resizable()
+						.scaledToFit()
+						.foregroundColor(.gray)
+						.frame(width: 150, height: 150, alignment: .center)
 						.padding()
 				@unknown default:
 					EmptyView()
 				}
 			}
-			.frame(height: 200) // Set a fixed height for the image within the cell
+			.frame(height: 150)
 
-			Text(auction.name)
-				.bold()
+			VStack(spacing: 5) {
+				Text(auction.name)
+					.font(.headline)
+					.bold()
+					.lineLimit(3)
+					.truncationMode(.tail)
 
-			Text(auction.address)
-			Text("Ends on \(auction.endDate)")
+				Text(auction.address)
+					.font(.subheadline)
+					.foregroundColor(Color.gray)
+					.bold()
+					.lineLimit(2)
+					.truncationMode(.tail)
+
+				HStack {
+					Image(systemName: "clock")
+					Text("\(auction.endDate)")
+						.font(.caption)
+						.foregroundColor(Color.gray)
+				}
+			}
+			.frame(height: 100)
+
+			Spacer(minLength: 0)
 		}
 		.padding()
 		.frame(width: 307, height: 370)
 		.background(Color.white)
-		.cornerRadius(10)
-		.shadow(radius: 5)
+		.cornerRadius(40)
+		.shadow(color: Color.accentGrayBorder.opacity(0.6), radius: 10, x: 0, y: 2)
 	}
 }
 
@@ -83,17 +121,18 @@ class AuctionButtonViewModel: ObservableObject {
 struct AuctionButtonView: View {
 	@ObservedObject var viewModel: AuctionButtonViewModel
 	let auctionState: AuctionState
-	var onSelectionChanged: () -> Void // Callback when the selection changes
+	var onSelectionChanged: () -> Void
 
 	var body: some View {
 		Button(action: {
 			viewModel.isSelected.toggle()
-			onSelectionChanged() // Notify the view model to filter auctions
+			onSelectionChanged()
 		}) {
 			HStack {
 				Circle()
-					.fill(auctionState.color)
-					.frame(width: 40, height: 40)
+					.strokeBorder(Color.gray, lineWidth: viewModel.isSelected ? 0 : 1)
+					.background(Circle().fill(viewModel.isSelected ? auctionState.color : Color.white))
+					.frame(width: 30, height: 30) // Reduced icon size
 					.overlay(
 						Image(systemName: "checkmark")
 							.foregroundColor(viewModel.isSelected ? .white : .clear)
@@ -130,7 +169,6 @@ struct ChooseAuctionView<T: PageProtocol>: View {
 
 			VStack(spacing: 0) {
 				TopBar(content: topBarContent(for: selectedView), barHeight: 60)
-					.frame(height: 60)
 
 				ScrollView(.horizontal, showsIndicators: false) {
 					HStack(spacing: 10) {
