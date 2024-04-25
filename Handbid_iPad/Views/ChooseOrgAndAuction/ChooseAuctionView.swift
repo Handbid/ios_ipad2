@@ -183,17 +183,31 @@ struct ChooseAuctionView<T: PageProtocol>: View {
 			VStack(spacing: 0) {
 				TopBar(content: topBarContent(for: selectedView), barHeight: 60)
 
-				ScrollView(.horizontal, showsIndicators: false) {
-					HStack(spacing: 10) {
-						ForEach(AuctionState.allCases, id: \.self) { state in
-							AuctionButtonView(viewModel: viewModel.buttonViewModels[state]!, auctionState: state) {
-								viewModel.filterAuctions()
+				GeometryReader { geometry in
+					ScrollView(.horizontal, showsIndicators: false) {
+						HStack(alignment: .center) {
+							HStack(spacing: 10) {
+								ForEach(AuctionState.allCases.dropLast(), id: \.self) { state in
+									AuctionButtonView(viewModel: viewModel.buttonViewModels[state]!, auctionState: state) {
+										viewModel.filterAuctions()
+									}
+								}
+							}
+							Spacer()
+							HStack(spacing: 10) {
+								if let lastState = AuctionState.allCases.last {
+									AuctionButtonView(viewModel: viewModel.buttonViewModels[lastState]!, auctionState: lastState) {
+										viewModel.filterAuctions()
+									}
+								}
 							}
 						}
+						.padding([.leading, .trailing], 40)
+						.frame(minWidth: geometry.size.width, alignment: .leading)
+						.frame(height: 50)
 					}
-					.padding(.horizontal)
-					.padding(.bottom, 10)
 				}
+				.frame(height: 50)
 
 				ScrollView {
 					LazyVGrid(columns: columns, spacing: 20) {
