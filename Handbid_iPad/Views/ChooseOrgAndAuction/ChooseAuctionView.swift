@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-enum AuctionState: String, CaseIterable {
+enum AuctionStateStatuses: String, CaseIterable {
 	case open, presale, preview, closed, reconciled, all
 
 	func color(for scheme: ColorScheme) -> Color {
@@ -21,11 +21,11 @@ enum AuctionState: String, CaseIterable {
 	}
 
 	static func color(for status: String, in scheme: ColorScheme) -> Color {
-		(AuctionState(rawValue: status)?.color(for: scheme) ?? Color.gray)
+		(AuctionStateStatuses(rawValue: status)?.color(for: scheme) ?? Color.gray)
 	}
 }
 
-struct AuctionItem {
+struct AuctionModel {
 	let id: UUID = .init()
 	let name: String
 	let address: String
@@ -35,9 +35,9 @@ struct AuctionItem {
 	let imageUrl: URL?
 }
 
-struct AuctionItemView: View {
+struct AuctionCollectionCellView: View {
 	@Environment(\.colorScheme) var colorScheme
-	let auction: AuctionItem
+	let auction: AuctionModel
 
 	var body: some View {
 		VStack(alignment: .center, spacing: 10) {
@@ -55,7 +55,7 @@ struct AuctionItemView: View {
 
 					Text(auction.status.uppercased())
 						.bold()
-						.foregroundColor(AuctionState.color(for: auction.status, in: colorScheme))
+						.foregroundColor(AuctionStateStatuses.color(for: auction.status, in: colorScheme))
 				}
 				.padding([.leading, .trailing], 10)
 			}
@@ -132,7 +132,7 @@ class AuctionButtonViewModel: ObservableObject {
 struct AuctionButtonView: View {
 	@Environment(\.colorScheme) var colorScheme
 	@ObservedObject var viewModel: AuctionButtonViewModel
-	let auctionState: AuctionState
+	let auctionState: AuctionStateStatuses
 	var onSelectionChanged: () -> Void
 
 	var body: some View {
@@ -187,7 +187,7 @@ struct ChooseAuctionView<T: PageProtocol>: View {
 					ScrollView(.horizontal, showsIndicators: false) {
 						HStack(alignment: .center) {
 							HStack(spacing: 10) {
-								ForEach(AuctionState.allCases.dropLast(), id: \.self) { state in
+								ForEach(AuctionStateStatuses.allCases.dropLast(), id: \.self) { state in
 									AuctionButtonView(viewModel: viewModel.buttonViewModels[state]!, auctionState: state) {
 										viewModel.filterAuctions()
 									}
@@ -195,7 +195,7 @@ struct ChooseAuctionView<T: PageProtocol>: View {
 							}
 							Spacer()
 							HStack(spacing: 10) {
-								if let lastState = AuctionState.allCases.last {
+								if let lastState = AuctionStateStatuses.allCases.last {
 									AuctionButtonView(viewModel: viewModel.buttonViewModels[lastState]!, auctionState: lastState) {
 										viewModel.filterAuctions()
 									}
@@ -212,7 +212,7 @@ struct ChooseAuctionView<T: PageProtocol>: View {
 				ScrollView {
 					LazyVGrid(columns: columns, spacing: 20) {
 						ForEach(viewModel.filteredAuctions, id: \.id) { auction in
-							AuctionItemView(auction: auction)
+							AuctionCollectionCellView(auction: auction)
 								.frame(width: cellWidth, height: cellHeight)
 						}
 					}
