@@ -11,4 +11,13 @@ extension DispatchQueue {
 			}
 		}
 	}
+
+	func asyncAfterSeconds(seconds: Int, execute work: @escaping () -> Void) {
+		asyncAfter(
+			deadline: DispatchTime.now()
+				.advanced(by: DispatchTimeInterval.seconds(seconds)))
+		{
+			work()
+		}
+	}
 }
