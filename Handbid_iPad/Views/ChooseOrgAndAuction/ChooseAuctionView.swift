@@ -5,18 +5,23 @@ import SwiftUI
 enum AuctionState: String, CaseIterable {
 	case open, presale, preview, closed, reconciled, all
 
-	var color: Color {
+	func color(for scheme: ColorScheme) -> Color {
 		switch self {
-		case .open, .all: Color.green
-		case .presale: Color.pink
-		case .preview: Color.orange
-		case .closed: Color.red
-		case .reconciled: Color.blue
+		case .open, .all:
+			scheme == .dark ? .green : .green
+		case .presale:
+			scheme == .dark ? .purple : .pink
+		case .preview:
+			scheme == .dark ? .yellow : .orange
+		case .closed:
+			scheme == .dark ? .orange : .red
+		case .reconciled:
+			scheme == .dark ? .blue : .blue
 		}
 	}
 
-	static func color(for status: String) -> Color {
-		AuctionState(rawValue: status)?.color ?? Color.gray
+	static func color(for status: String, in scheme: ColorScheme) -> Color {
+		(AuctionState(rawValue: status)?.color(for: scheme) ?? Color.gray)
 	}
 }
 
@@ -31,6 +36,7 @@ struct AuctionItem {
 }
 
 struct AuctionItemView: View {
+	@Environment(\.colorScheme) var colorScheme
 	let auction: AuctionItem
 
 	var body: some View {
@@ -39,8 +45,8 @@ struct AuctionItemView: View {
 				HStack {
 					Text("\(auction.itemCount) Items")
 						.padding(10)
-						.background(Color.black)
-						.foregroundColor(.white)
+						.background(colorScheme == .dark ? Color.white : Color.black)
+						.foregroundColor(colorScheme == .dark ? .black : .white)
 						.bold()
 						.cornerRadius(15)
 						.frame(height: 30)
@@ -49,7 +55,7 @@ struct AuctionItemView: View {
 
 					Text(auction.status.uppercased())
 						.bold()
-						.foregroundColor(AuctionState.color(for: auction.status))
+						.foregroundColor(AuctionState.color(for: auction.status, in: colorScheme))
 				}
 				.padding([.leading, .trailing], 10)
 			}
@@ -72,7 +78,7 @@ struct AuctionItemView: View {
 					Image(systemName: "photo")
 						.resizable()
 						.scaledToFit()
-						.foregroundColor(.gray)
+						.foregroundColor(colorScheme == .dark ? .white : .gray)
 						.frame(width: 150, height: 150, alignment: .center)
 						.padding()
 				@unknown default:
@@ -81,34 +87,39 @@ struct AuctionItemView: View {
 			}
 			.frame(height: 150)
 
-			VStack(spacing: 5) {
+			VStack(spacing: 10) {
 				Text(auction.name)
 					.font(.headline)
 					.bold()
 					.lineLimit(3)
+					.multilineTextAlignment(.center)
 					.truncationMode(.tail)
 
 				Text(auction.address)
 					.font(.subheadline)
-					.foregroundColor(Color.gray)
+					.foregroundColor(colorScheme == .dark ? .white : Color.gray)
 					.bold()
 					.lineLimit(2)
+					.multilineTextAlignment(.center)
 					.truncationMode(.tail)
 
 				HStack {
+					Spacer()
 					Image(systemName: "clock")
 					Text("\(auction.endDate)")
 						.font(.caption)
-						.foregroundColor(Color.gray)
+						.foregroundColor(colorScheme == .dark ? .white : Color.gray)
+					Spacer()
 				}
 			}
 			.frame(height: 100)
+			.frame(maxWidth: .infinity)
 
 			Spacer(minLength: 0)
 		}
 		.padding()
 		.frame(width: 307, height: 370)
-		.background(Color.white)
+		.background(colorScheme == .dark ? Color.black : Color.white)
 		.cornerRadius(40)
 		.shadow(color: Color.accentGrayBorder.opacity(0.6), radius: 10, x: 0, y: 2)
 	}
@@ -119,6 +130,7 @@ class AuctionButtonViewModel: ObservableObject {
 }
 
 struct AuctionButtonView: View {
+	@Environment(\.colorScheme) var colorScheme
 	@ObservedObject var viewModel: AuctionButtonViewModel
 	let auctionState: AuctionState
 	var onSelectionChanged: () -> Void
@@ -131,15 +143,17 @@ struct AuctionButtonView: View {
 			HStack {
 				Circle()
 					.strokeBorder(Color.gray, lineWidth: viewModel.isSelected ? 0 : 1)
-					.background(Circle().fill(viewModel.isSelected ? auctionState.color : Color.white))
-					.frame(width: 30, height: 30) // Reduced icon size
+					.background(
+						Circle().fill(viewModel.isSelected ? auctionState.color(for: colorScheme) : Color.white)
+					)
+					.frame(width: 30, height: 30)
 					.overlay(
 						Image(systemName: "checkmark")
 							.foregroundColor(viewModel.isSelected ? .white : .clear)
 					)
 				Text(auctionState.rawValue.capitalized)
 					.font(.caption)
-					.foregroundColor(.black)
+					.foregroundColor(colorScheme == .dark ? .white : .black)
 			}
 		}
 	}
@@ -148,7 +162,6 @@ struct AuctionButtonView: View {
 struct ChooseAuctionView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@ObservedObject private var viewModel: ChooseAuctionViewModel
-	//    @Environment(\.deviceOrientation) private var deviceOrientation // Custom environment value if needed
 
 	@State private var selectedView: SelectAuctionContainerTypeView
 	@State private var isBlurred = false
