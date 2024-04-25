@@ -48,7 +48,7 @@ struct AuctionItemView: View {
 						.background(colorScheme == .dark ? Color.white : Color.black)
 						.foregroundColor(colorScheme == .dark ? .black : .white)
 						.bold()
-						.cornerRadius(15)
+						.cornerRadius(30)
 						.frame(height: 30)
 
 					Spacer()

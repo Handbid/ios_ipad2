@@ -6,6 +6,7 @@ import SwiftUI
 struct ChooseOrganizationView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@ObservedObject private var viewModel: ChooseOrganizationViewModel
+	@Environment(\.colorScheme) var colorScheme
 	@State private var isBlurred = false
 	@FocusState var focusedField: Field?
 	var inspection = Inspection<Self>()
@@ -22,7 +23,7 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 			isBlurred = false
 		}
 		.background {
-			backgroundView(for: .color(.accentViolet.opacity(0.7)))
+			backgroundView(for: .color(colorScheme == .dark ? Color.black.opacity(0.7) : Color.accentViolet.opacity(0.7)))
 		}
 		.onTapGesture {
 			hideKeyboard()
@@ -67,7 +68,7 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 					}) {
 						HStack {
 							Text(option.rawValue)
-								.foregroundColor(.primary)
+								.foregroundColor(colorScheme == .dark ? Color.black : Color.black)
 							Spacer()
 							if let selectedOption = viewModel.selectedOption, selectedOption == option {
 								Image(systemName: "checkmark.circle.fill")

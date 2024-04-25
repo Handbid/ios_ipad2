@@ -16,6 +16,7 @@ struct FormField: View {
 	@FocusState var focusedField: Field?
 	@State var isPasswordShown = false
 	@State private var isEditing = false
+	@Environment(\.colorScheme) var colorScheme
 
 	var body: some View {
 		switch fieldType {
@@ -62,34 +63,41 @@ struct FormField: View {
 					}
 			}
 		case .searchBar:
-			TextField(hintKey, text: $fieldValue, onEditingChanged: { isEditing in
-				self.isEditing = isEditing
-			})
-			.applyTextFieldStyle(style: .searchBar)
-			.keyboardType(.alphabet)
-			.textCase(nil)
-			.textContentType(.organizationName)
-			.focused($focusedField, equals: .searchBar)
-			.id(Field.searchBar)
-			.overlay(
-				Group {
-					if fieldValue.isEmpty, !isEditing {
-						Image(systemName: "magnifyingglass")
-							.foregroundColor(.black)
-							.imageScale(.large)
-					}
-					else if !fieldValue.isEmpty {
-						Button(action: {
-							fieldValue = ""
-						}) {
-							Image(systemName: "multiply.circle.fill")
-								.foregroundColor(.gray)
+			ZStack(alignment: .leading) {
+				if fieldValue.isEmpty {
+					Text(hintKey)
+						.foregroundColor(colorScheme == .dark ? .gray : .secondary)
+						.applyTextStyle(style: .formHeader)
+				}
+				TextField("", text: $fieldValue, onEditingChanged: { isEditing in
+					self.isEditing = isEditing
+				})
+				.applyTextFieldStyle(style: .searchBar)
+				.keyboardType(.alphabet)
+				.textCase(nil)
+				.textContentType(.organizationName)
+				.focused($focusedField, equals: .searchBar)
+				.id(Field.searchBar)
+				.overlay(
+					Group {
+						if fieldValue.isEmpty, !isEditing {
+							Image(systemName: "magnifyingglass")
+								.foregroundColor(.black)
+								.imageScale(.large)
+						}
+						if !fieldValue.isEmpty {
+							Button(action: {
+								fieldValue = ""
+							}) {
+								Image(systemName: "multiply.circle.fill")
+									.foregroundColor(colorScheme == .dark ? .gray : .secondary)
+							}
 						}
 					}
-				}
-				.padding(.trailing, 12),
-				alignment: .trailing
-			)
+					.padding(.trailing, 12),
+					alignment: .trailing
+				)
+			}
 		}
 	}
 }
