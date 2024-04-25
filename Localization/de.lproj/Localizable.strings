@@ -1,3 +1,6 @@
+"chooseOrg_btn_selectOrg" = "Select Organization";
+"chooseOrg_label_searchByName" = "Search by name";
+"chooseOrg_label_selectOrganization" = "Select organization";
 "global_btn_ok" = "Ok";
 "global_label_error" = "Fehler";
 "global_label_unknownError" = "Unbekannter Fehler";

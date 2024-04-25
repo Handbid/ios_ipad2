@@ -5,6 +5,9 @@ PODS:
   - RecaptchaEnterprise (18.5.0-beta02):
     - RecaptchaInterop (~> 100.0.0)
   - RecaptchaInterop (100.0.0)
+  - Socket.IO-Client-Swift (16.1.0):
+    - Starscream (~> 4.0.6)
+  - Starscream (4.0.8)
   - SwiftFormat/CLI (0.53.5)
   - ViewInspector (0.9.10)
 
@@ -14,6 +17,7 @@ DEPENDENCIES:
   - ProgressIndicatorView (~> 1.0.0)
   - RecaptchaEnterprise (= 18.5.0-beta02)
   - RecaptchaInterop
+  - Socket.IO-Client-Swift (~> 16.1.0)
   - SwiftFormat/CLI
   - ViewInspector
 
@@ -24,6 +28,8 @@ SPEC REPOS:
     - ProgressIndicatorView
     - RecaptchaEnterprise
     - RecaptchaInterop
+    - Socket.IO-Client-Swift
+    - Starscream
     - SwiftFormat
     - ViewInspector
 
@@ -33,9 +39,11 @@ SPEC CHECKSUMS:
   ProgressIndicatorView: f37b4bdc70132ab6398da55c674c72d86d757f0e
   RecaptchaEnterprise: c4dfc2641f917e4447a2d1eb34e7750aff181deb
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
+  Socket.IO-Client-Swift: ee4b8f80a3db18dd7f32b266ddf273310609443c
+  Starscream: 19b5533ddb925208db698f0ac508a100b884a1b9
   SwiftFormat: 57d49d9a63f4249c625b1e623fb9fde0c30cae9d
   ViewInspector: 36573675ac86c191f7540fe3161cfb4f8f8a32b6
 
-PODFILE CHECKSUM: daf25cddb10eaf03805c998e21b0ef72fc942bb8
+PODFILE CHECKSUM: a41f9b21ee9a06fefb1d7ffcaa09493aae9a0358
 
 COCOAPODS: 1.15.2
