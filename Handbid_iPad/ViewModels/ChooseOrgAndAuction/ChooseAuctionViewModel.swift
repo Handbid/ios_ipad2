@@ -4,15 +4,64 @@ import Combine
 import SwiftUI
 
 class ChooseAuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
-	private var cancellables = Set<AnyCancellable>()
-	var buttonViewModels: [AuctionState: AuctionButtonViewModel] = AuctionState.allCases.reduce(into: [:]) { $0[$1] = AuctionButtonViewModel() }
 	@Published var auctions: [AuctionItem] = []
 	@Published var filteredAuctions: [AuctionItem] = []
+	var buttonViewModels: [AuctionState: AuctionButtonViewModel] = AuctionState.allCases.reduce(into: [:]) { $0[$1] = AuctionButtonViewModel() }
+	private var cancellables = Set<AnyCancellable>()
 
 	init() {
 		loadExampleAuctions()
-		buttonViewModels[.all]?.isSelected = true // Initially select 'all'
+		setupInitialSelection()
+		setupButtonBindings()
+	}
+
+	private func setupInitialSelection() {
+		buttonViewModels[.all]?.isSelected = true
 		filterAuctions()
+	}
+
+	private func setupButtonBindings() {
+		for (state, viewModel) in buttonViewModels {
+			viewModel.$isSelected
+				.dropFirst()
+				.sink(receiveValue: { [weak self] isSelected in
+					self?.handleStateChange(for: state, isSelected: isSelected)
+				})
+				.store(in: &cancellables)
+		}
+	}
+
+	private func handleStateChange(for state: AuctionState, isSelected: Bool) {
+		DispatchQueue.main.async { [weak self] in
+			guard let self else { return }
+			if state == .all {
+				if isSelected {
+					buttonViewModels.forEach { if $0.key != .all { $0.value.isSelected = false } }
+				}
+			}
+			else {
+				if isSelected, buttonViewModels[.all]?.isSelected == true {
+					buttonViewModels[.all]?.isSelected = false
+				}
+				else if buttonViewModels.filter({ $0.key != .all }).allSatisfy(\.value.isSelected) {
+					buttonViewModels.forEach { $0.value.isSelected = false }
+					buttonViewModels[.all]?.isSelected = true
+				}
+			}
+			filterAuctions()
+		}
+	}
+
+	func filterAuctions() {
+		let selectedStates = buttonViewModels.filter { $1.isSelected }.map(\.key)
+		if selectedStates.contains(.all) {
+			filteredAuctions = auctions.sorted { $0.name.localizedCompare($1.name) == .orderedAscending }
+		}
+		else {
+			filteredAuctions = auctions.filter { auction in
+				selectedStates.contains(where: { $0.rawValue == auction.status })
+			}.sorted { $0.name.localizedCompare($1.name) == .orderedAscending }
+		}
 	}
 
 	var centerViewData: TopBarCenterViewData {
@@ -31,18 +80,6 @@ class ChooseAuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 
 	func closeView() {
 		print("close")
-	}
-
-	func filterAuctions() {
-		let selectedStates = buttonViewModels.filter { $1.isSelected }.map(\.key.rawValue)
-
-		// Show all auctions if no specific filter is selected or if 'all' is selected
-		if selectedStates.isEmpty || selectedStates.contains("all") {
-			filteredAuctions = auctions
-		}
-		else {
-			filteredAuctions = auctions.filter { selectedStates.contains($0.status) }
-		}
 	}
 
 	private func loadExampleAuctions() {
