@@ -33,11 +33,23 @@ struct MainAppCoordinator: App {
 		}
 	}
 
+	@StateObject var mainContainerCoordinator = Coordinator<MainContainerPage, Any?> { page in
+		switch page {
+		case .chooseOrganization:
+			AnyView(ChooseOrganizationView<MainContainerPage>(viewModel: ChooseOrganizationViewModel()))
+		case .chooseAuction:
+			AnyView(ChooseAuctionView<MainContainerPage>(viewModel: ChooseAuctionViewModel(), selectedView: .selectAuction))
+		case .mainContainer:
+			AnyView(MainContainer<MainContainerPage>(selectedView: .auction))
+		}
+	}
+
 	var body: some Scene {
 		WindowGroup {
 			AppLaunchControlView()
 				.environmentObject(AuthManagerMainActor())
 				.environmentObject(registrationCoordinator)
+				.environmentObject(mainContainerCoordinator)
 		}
 	}
 }

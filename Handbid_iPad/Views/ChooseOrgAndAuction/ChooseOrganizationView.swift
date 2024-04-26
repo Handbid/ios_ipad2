@@ -7,6 +7,7 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@ObservedObject private var viewModel: ChooseOrganizationViewModel
 	@Environment(\.colorScheme) var colorScheme
+	@State private var contentLoaded = false
 	@State private var isBlurred = false
 	@FocusState var focusedField: Field?
 	var inspection = Inspection<Self>()
@@ -17,10 +18,13 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 
 	var body: some View {
 		ZStack {
-			content
+			if contentLoaded { content } else { content }
 		}
 		.onAppear {
 			isBlurred = false
+			DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+				contentLoaded = true
+			}
 		}
 		.background {
 			backgroundView(for: .color(colorScheme == .dark ? Color.black.opacity(0.7) : Color.accentViolet.opacity(0.7)))
@@ -32,6 +36,7 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 			inspection.visit(self, $0)
 		}
 		.keyboardResponsive()
+		.navigationBarBackButtonHidden()
 		.ignoresSafeArea(.keyboard, edges: .bottom)
 	}
 
@@ -100,7 +105,8 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 	private func getButtons() -> some View {
 		VStack(spacing: 10) {
 			Button<Text>.styled(config: .secondaryButtonStyle, action: {
-				// viewModel.saveEnvironment()
+				isBlurred = true
+				coordinator.push(MainContainerPage.chooseAuction as! T)
 			}) {
 				Text(LocalizedStringKey("chooseOrg_btn_selectOrg"))
 					.textCase(.uppercase)

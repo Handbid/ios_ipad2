@@ -5,18 +5,18 @@ import SwiftUI
 enum AuctionStateStatuses: String, CaseIterable {
 	case open, presale, preview, closed, reconciled, all
 
-	func color(for scheme: ColorScheme) -> Color {
+	func color(for _: ColorScheme) -> Color {
 		switch self {
 		case .open, .all:
-			scheme == .dark ? .green : .green
+			Color(hex: "39C436")
 		case .presale:
-			scheme == .dark ? .purple : .pink
+			Color(hex: "E2296C")
 		case .preview:
-			scheme == .dark ? .yellow : .orange
+			Color(hex: "FEB62B")
 		case .closed:
-			scheme == .dark ? .orange : .red
+			Color(hex: "E1E6E8")
 		case .reconciled:
-			scheme == .dark ? .blue : .blue
+			Color(hex: "1672B3")
 		}
 	}
 
@@ -222,6 +222,7 @@ struct ChooseAuctionView<T: PageProtocol>: View {
 				Spacer()
 			}
 		}
+		.navigationBarBackButtonHidden()
 	}
 
 	private func createGridItems(width: CGFloat, targetWidth: CGFloat) -> [GridItem] {
