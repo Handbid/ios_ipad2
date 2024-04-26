@@ -97,6 +97,12 @@ class HandbidEventDelegate: EventDelegate {
 		logger?.log("joining channel: \(command)")
 	}
 
+	private func leaveChannel(client: WebSocketClient, channelGuid guid: String) {
+		let command = "5:1+:/client:{\"name\":\"room_leave\",\"args\":[\"\(guid)_v2\"]}"
+		client.write(string: command)
+		logger?.log("leaving channel: \(command)")
+	}
+
 	func registerToUserChannel(client: WebSocketClient) {
 		if let guid = userGuid {
 			registerToChannel(client: client, channelGuid: guid)
@@ -106,6 +112,18 @@ class HandbidEventDelegate: EventDelegate {
 	func registerToAuctionChannel(client: WebSocketClient) {
 		if let guid = auctionGuid {
 			registerToChannel(client: client, channelGuid: guid)
+		}
+	}
+
+	func leaveUserChannel(client: WebSocketClient) {
+		if let guid = userGuid {
+			leaveChannel(client: client, channelGuid: guid)
+		}
+	}
+
+	func leaveAuctionChannel(client: WebSocketClient) {
+		if let guid = auctionGuid {
+			leaveChannel(client: client, channelGuid: guid)
 		}
 	}
 }

@@ -128,6 +128,10 @@
 		CE7DF82F2BADFD1900FF7694 /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DF82E2BADFD1900FF7694 /* PinView.swift */; };
 		CE96F7DF2BDA91DF00BCF74E /* HandbidEventDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96F7DE2BDA91DF00BCF74E /* HandbidEventDelegate.swift */; };
 		CE9D80EC2BDBA51D00D57A1A /* EventDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D80EB2BDBA51D00D57A1A /* EventDelegate.swift */; };
+		CE9D80EF2BDC0FC400D57A1A /* WebSocketProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D80EE2BDC0FC400D57A1A /* WebSocketProcessor.swift */; };
+		CE9D80F12BDC104500D57A1A /* Processor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D80F02BDC104500D57A1A /* Processor.swift */; };
+		CE9D80F32BDC128100D57A1A /* ProcessorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D80F22BDC128100D57A1A /* ProcessorFactory.swift */; };
+		CE9D80F52BDC134E00D57A1A /* UserProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D80F42BDC134E00D57A1A /* UserProcessor.swift */; };
 		CE9E2D0E2BC845D70008FD8A /* Inspection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9E2D0D2BC845D70008FD8A /* Inspection.swift */; };
 		CE9E2D112BC846140008FD8A /* InspectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9E2D102BC846140008FD8A /* InspectionExtension.swift */; };
 		CEAB750D2BD12B65000AFB46 /* ForgotPasswordView_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB750C2BD12B65000AFB46 /* ForgotPasswordView_Tests.swift */; };
@@ -294,6 +298,10 @@
 		CE7DF82E2BADFD1900FF7694 /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		CE96F7DE2BDA91DF00BCF74E /* HandbidEventDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandbidEventDelegate.swift; sourceTree = "<group>"; };
 		CE9D80EB2BDBA51D00D57A1A /* EventDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDelegate.swift; sourceTree = "<group>"; };
+		CE9D80EE2BDC0FC400D57A1A /* WebSocketProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketProcessor.swift; sourceTree = "<group>"; };
+		CE9D80F02BDC104500D57A1A /* Processor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Processor.swift; sourceTree = "<group>"; };
+		CE9D80F22BDC128100D57A1A /* ProcessorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessorFactory.swift; sourceTree = "<group>"; };
+		CE9D80F42BDC134E00D57A1A /* UserProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProcessor.swift; sourceTree = "<group>"; };
 		CE9E2D0D2BC845D70008FD8A /* Inspection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inspection.swift; sourceTree = "<group>"; };
 		CE9E2D102BC846140008FD8A /* InspectionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionExtension.swift; sourceTree = "<group>"; };
 		CEAB750C2BD12B65000AFB46 /* ForgotPasswordView_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView_Tests.swift; sourceTree = "<group>"; };
@@ -820,6 +828,7 @@
 		CE5127F12BD82B2000AE29A5 /* WebSocket */ = {
 			isa = PBXGroup;
 			children = (
+				CE9D80ED2BDC0FA600D57A1A /* Processors */,
 				CE5127F22BD82B4300AE29A5 /* WebSocketManager.swift */,
 				CE5127F42BD82E7B00AE29A5 /* EnvironmentManagerExt.swift */,
 				CEDC95052BD9298F00EB997C /* WebSocketURLFactory.swift */,
@@ -858,6 +867,17 @@
 				CE7DF82E2BADFD1900FF7694 /* PinView.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		CE9D80ED2BDC0FA600D57A1A /* Processors */ = {
+			isa = PBXGroup;
+			children = (
+				CE9D80EE2BDC0FC400D57A1A /* WebSocketProcessor.swift */,
+				CE9D80F02BDC104500D57A1A /* Processor.swift */,
+				CE9D80F22BDC128100D57A1A /* ProcessorFactory.swift */,
+				CE9D80F42BDC134E00D57A1A /* UserProcessor.swift */,
+			);
+			path = Processors;
 			sourceTree = "<group>";
 		};
 		CE9E2D092BC83A940008FD8A /* Registration */ = {
@@ -1279,6 +1299,7 @@
 				8C8BEC662BA9B7DD0083D904 /* PageProtocol.swift in Sources */,
 				8CD1081E2BD124AE00E83261 /* AnyViewMainContainerFactory.swift in Sources */,
 				8CFE2CC72BBE84DF00AF60F1 /* NotificationName.swift in Sources */,
+				CE9D80F52BDC134E00D57A1A /* UserProcessor.swift in Sources */,
 				8C9FA4422BD27FF20041F28E /* LogOutViewModel.swift in Sources */,
 				8C4B7BAD2BB8942D0043B892 /* TextFieldStyles.swift in Sources */,
 				8CD108102BD122E000E83261 /* PaddleView.swift in Sources */,
@@ -1288,6 +1309,7 @@
 				8CD108282BD125DC00E83261 /* AuctionDataService.swift in Sources */,
 				8C8BEC3A2BA977F00083D904 /* Coordinator.swift in Sources */,
 				CE9D80EC2BDBA51D00D57A1A /* EventDelegate.swift in Sources */,
+				CE9D80F12BDC104500D57A1A /* Processor.swift in Sources */,
 				8C9FA44E2BD29CAB0041F28E /* DeviceContext.swift in Sources */,
 				8C1E01012BA85E630094FAA7 /* AppDelegate.swift in Sources */,
 				8C4B7B872BB6DCC80043B892 /* AuthModel.swift in Sources */,
@@ -1301,6 +1323,7 @@
 				8C8BEC2E2BA975DE0083D904 /* GetStartedView.swift in Sources */,
 				8C4B7B892BB6FCEA0043B892 /* ButtonStyleConfiguration.swift in Sources */,
 				8C4B7BA22BB88FFB0043B892 /* ButtonStyles.swift in Sources */,
+				CE9D80F32BDC128100D57A1A /* ProcessorFactory.swift in Sources */,
 				8CABF5DC2BB9F37700A34870 /* RegistrationBackButton.swift in Sources */,
 				8CABF5D02BB9E11300A34870 /* ResponsiveView.swift in Sources */,
 				8C8BEC322BA976030083D904 /* GetStartedViewModel.swift in Sources */,
@@ -1330,6 +1353,7 @@
 				8C4B7B9B2BB7026D0043B892 /* TextStyleConfiguration.swift in Sources */,
 				8CC6BEE62BD43757007C999F /* AuctionTopBarCenterView.swift in Sources */,
 				8CABF5C82BB9C81100A34870 /* BackgroundContainerImage.swift in Sources */,
+				CE9D80EF2BDC0FC400D57A1A /* WebSocketProcessor.swift in Sources */,
 				CE0CEE812BBED0B4004A27FD /* ResetPasswordModel.swift in Sources */,
 				8CD107FA2BD11F3400E83261 /* TopBarAction.swift in Sources */,
 				8C4B7B8B2BB6FD030043B892 /* CustomStyledViewButton.swift in Sources */,

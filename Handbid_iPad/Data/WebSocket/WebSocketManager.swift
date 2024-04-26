@@ -26,4 +26,15 @@ class WebSocketManager {
 			print(error)
 		}
 	}
+
+	static func stopSocket() {
+		if let client = socket {
+			delegate?.leaveAuctionChannel(client: client)
+			delegate?.leaveUserChannel(client: client)
+			client.disconnect()
+		}
+
+		delegate = nil
+		socket = nil
+	}
 }
