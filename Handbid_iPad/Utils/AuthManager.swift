@@ -10,6 +10,7 @@ struct TokenUser: Codable {
 	let validUntil: Date
 	let id: UUID
 	let value: String
+	let guid: String
 
 	// MARK: Checks if the token is still valid based on the current date.
 
@@ -68,6 +69,9 @@ class AuthManager: ObservableObject {
 					}
 
 					let token = try JSONDecoder().decode(TokenUser.self, from: tokenData)
+					DispatchQueue.main.sync {
+						self.currentToken = token
+					}
 					continuation.resume(returning: token.isValid)
 				}
 				catch {
@@ -85,7 +89,7 @@ class AuthManager: ObservableObject {
 		}
 
 		let expirationInterval = TimeInterval(auth.expiresIn ?? 0)
-		currentToken = TokenUser(validUntil: Date().addingTimeInterval(expirationInterval), id: UUID(), value: accessToken)
+		currentToken = TokenUser(validUntil: Date().addingTimeInterval(expirationInterval), id: UUID(), value: accessToken, guid: auth.guid!)
 		saveTokenToKeychain(currentToken!)
 		return true
 	}
@@ -127,9 +131,9 @@ class AuthManager: ObservableObject {
 
 	// MARK: Refreshes the user's token using the provided authentication model.
 
-	private func refreshTokenWithAuth(auth _: AuthModel) async throws -> TokenUser {
+	private func refreshTokenWithAuth(auth: AuthModel) async throws -> TokenUser {
 		let tokenExpiresAt = Date().addingTimeInterval(3600) // 1 hour
-		let newToken = TokenUser(validUntil: tokenExpiresAt, id: UUID(), value: "AuthDataUser")
+		let newToken = TokenUser(validUntil: tokenExpiresAt, id: UUID(), value: "AuthDataUser", guid: auth.guid!)
 
 		guard newToken.isValid else {
 			throw AuthError.invalidToken

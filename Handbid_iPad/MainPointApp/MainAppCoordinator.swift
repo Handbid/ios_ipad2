@@ -36,7 +36,7 @@ struct MainAppCoordinator: App {
 	var body: some Scene {
 		WindowGroup {
 			AppLaunchControlView()
-				.environmentObject(AuthManagerMainActor())
+				.environmentObject(AuthManagerMainActor() as AuthManager)
 				.environmentObject(registrationCoordinator)
 		}
 	}

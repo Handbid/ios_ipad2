@@ -4,7 +4,7 @@ import Combine
 import SwiftUI
 
 struct AppLaunchControlView: View {
-	@EnvironmentObject var authManager: AuthManagerMainActor
+	@EnvironmentObject var authManager: AuthManager
 	@State private var isValidToken = false
 	@State private var isLoading = true
 	let viewFactory = AnyViewMainContainerFactory(wrappedFactory: MainContainerViewFactory())

@@ -5,7 +5,7 @@ import Starscream
 
 class WebSocketManager {
 	static var socket: WebSocket?
-	static var delegate: WebSocketDelegate?
+	static var delegate: EventDelegate?
 
 	static func startSocket(urlFactory: WebSocketURLFactory, token: TokenUser?) {
 		do {
@@ -16,7 +16,8 @@ class WebSocketManager {
 
 			socket = WebSocket(request: urlRequest)
 
-			delegate = EventDelegate()
+			delegate = HandbidEventDelegate()
+			delegate?.userGuid = token?.guid
 			socket?.delegate = delegate
 
 			socket?.connect()
