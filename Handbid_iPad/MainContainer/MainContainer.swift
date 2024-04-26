@@ -33,6 +33,7 @@ struct MainContainer<T: PageProtocol>: View {
 				}
 			}
 		}
+		.navigationBarBackButtonHidden()
 	}
 
 	@ViewBuilder
