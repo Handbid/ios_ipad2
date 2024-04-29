@@ -3,7 +3,3 @@
 enum RegistrationPage: String, PageProtocol, Hashable {
 	case getStarted, logIn, chooseEnvironment, forgotPassword, resetPasswordConfirmation
 }
-
-enum MainContainerPage: String, PageProtocol, Hashable {
-	case chooseOrganization, chooseAuction, mainContainer
-}

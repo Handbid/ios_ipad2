@@ -45,6 +45,12 @@
 		8C4B7BB12BB8944C0043B892 /* TextStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7BB02BB8944C0043B892 /* TextStyles.swift */; };
 		8C4B7BB52BB9BEDC0043B892 /* CustomStyledViewSecuredField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7BB42BB9BEDC0043B892 /* CustomStyledViewSecuredField.swift */; };
 		8C4B7BB72BB9C1080043B892 /* TextSecuredStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4B7BB62BB9C1080043B892 /* TextSecuredStyles.swift */; };
+		8C4BFB492BDFAB8F00B47154 /* MainContainerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4BFB482BDFAB8F00B47154 /* MainContainerPage.swift */; };
+		8C4BFB4B2BDFAD2100B47154 /* AuctionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4BFB4A2BDFAD2100B47154 /* AuctionModel.swift */; };
+		8C4BFB4E2BDFAD7F00B47154 /* AuctionCollectionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4BFB4D2BDFAD7F00B47154 /* AuctionCollectionCellView.swift */; };
+		8C4BFB502BDFADAE00B47154 /* AuctionStateStatuses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4BFB4F2BDFADAE00B47154 /* AuctionStateStatuses.swift */; };
+		8C4BFB522BDFAE0800B47154 /* AuctionFilterButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4BFB512BDFAE0800B47154 /* AuctionFilterButtonView.swift */; };
+		8C4BFB542BDFAE2000B47154 /* AuctionFilterButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4BFB532BDFAE2000B47154 /* AuctionFilterButtonViewModel.swift */; };
 		8C8BEC2E2BA975DE0083D904 /* GetStartedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC2D2BA975DE0083D904 /* GetStartedView.swift */; };
 		8C8BEC302BA975F10083D904 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC2F2BA975F10083D904 /* LogInView.swift */; };
 		8C8BEC322BA976030083D904 /* GetStartedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC312BA976030083D904 /* GetStartedViewModel.swift */; };
@@ -209,6 +215,12 @@
 		8C4B7BB02BB8944C0043B892 /* TextStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyles.swift; sourceTree = "<group>"; };
 		8C4B7BB42BB9BEDC0043B892 /* CustomStyledViewSecuredField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyledViewSecuredField.swift; sourceTree = "<group>"; };
 		8C4B7BB62BB9C1080043B892 /* TextSecuredStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextSecuredStyles.swift; sourceTree = "<group>"; };
+		8C4BFB482BDFAB8F00B47154 /* MainContainerPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerPage.swift; sourceTree = "<group>"; };
+		8C4BFB4A2BDFAD2100B47154 /* AuctionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionModel.swift; sourceTree = "<group>"; };
+		8C4BFB4D2BDFAD7F00B47154 /* AuctionCollectionCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionCollectionCellView.swift; sourceTree = "<group>"; };
+		8C4BFB4F2BDFADAE00B47154 /* AuctionStateStatuses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionStateStatuses.swift; sourceTree = "<group>"; };
+		8C4BFB512BDFAE0800B47154 /* AuctionFilterButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionFilterButtonView.swift; sourceTree = "<group>"; };
+		8C4BFB532BDFAE2000B47154 /* AuctionFilterButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionFilterButtonViewModel.swift; sourceTree = "<group>"; };
 		8C8BEC2D2BA975DE0083D904 /* GetStartedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedView.swift; sourceTree = "<group>"; };
 		8C8BEC2F2BA975F10083D904 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		8C8BEC312BA976030083D904 /* GetStartedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewModel.swift; sourceTree = "<group>"; };
@@ -469,6 +481,7 @@
 				8C8BEC392BA977F00083D904 /* Coordinator.swift */,
 				8C8BEC652BA9B7DD0083D904 /* PageProtocol.swift */,
 				8C8BEC372BA977AC0083D904 /* RegistrationPage.swift */,
+				8C4BFB482BDFAB8F00B47154 /* MainContainerPage.swift */,
 				8C8BEC352BA977560083D904 /* RootPageView.swift */,
 			);
 			path = Coordinator;
@@ -509,6 +522,7 @@
 			isa = PBXGroup;
 			children = (
 				8C0007BE2BAC764700AAEBA0 /* AppVersionModel.swift */,
+				8C4BFB4A2BDFAD2100B47154 /* AuctionModel.swift */,
 				8C4B7B862BB6DCC80043B892 /* AuthModel.swift */,
 				CE0CEE802BBED0B4004A27FD /* ResetPasswordModel.swift */,
 			);
@@ -640,6 +654,17 @@
 			path = Text;
 			sourceTree = "<group>";
 		};
+		8C4BFB4C2BDFAD6C00B47154 /* Auction */ = {
+			isa = PBXGroup;
+			children = (
+				8C4BFB4D2BDFAD7F00B47154 /* AuctionCollectionCellView.swift */,
+				8C4BFB4F2BDFADAE00B47154 /* AuctionStateStatuses.swift */,
+				8C4BFB512BDFAE0800B47154 /* AuctionFilterButtonView.swift */,
+				8C4BFB532BDFAE2000B47154 /* AuctionFilterButtonViewModel.swift */,
+			);
+			path = Auction;
+			sourceTree = "<group>";
+		};
 		8C8BEC2B2BA975B70083D904 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
@@ -666,6 +691,7 @@
 		8C9FA4512BD8DF090041F28E /* ChooseOrgAndAuction */ = {
 			isa = PBXGroup;
 			children = (
+				8C4BFB4C2BDFAD6C00B47154 /* Auction */,
 				8C9FA4542BD8DF680041F28E /* ChooseAuctionView.swift */,
 				8C9FA4522BD8DF590041F28E /* ChooseOrganizationView.swift */,
 			);
@@ -1210,6 +1236,7 @@
 				CEE2BB292BB5D1070033556D /* ApiConstants.swift in Sources */,
 				8CABF5CA2BB9CEF900A34870 /* ChooseEnvironmentViewModel.swift in Sources */,
 				8CD1080E2BD122CC00E83261 /* AuctionView.swift in Sources */,
+				8C4BFB542BDFAE2000B47154 /* AuctionFilterButtonViewModel.swift in Sources */,
 				8CABF5C32BB9C64E00A34870 /* ForgotPasswordViewModel.swift in Sources */,
 				8CBDAAC82BC432470010908F /* DispatchQueue.swift in Sources */,
 				8CABF5D22BB9E16900A34870 /* CustomFontSize.swift in Sources */,
@@ -1225,6 +1252,7 @@
 				CE073ED82BB42D710079F342 /* View.swift in Sources */,
 				CE7DF82F2BADFD1900FF7694 /* PinView.swift in Sources */,
 				8CD108052BD120DB00E83261 /* MainContainerProtocolFactory.swift in Sources */,
+				8C4BFB4B2BDFAD2100B47154 /* AuctionModel.swift in Sources */,
 				CE073EE42BB4809C0079F342 /* FormField.swift in Sources */,
 				8CD108012BD11FCC00E83261 /* MainContainerTypeView.swift in Sources */,
 				8CD108252BD1255500E83261 /* DataService.swift in Sources */,
@@ -1232,6 +1260,7 @@
 				8C8BEC662BA9B7DD0083D904 /* PageProtocol.swift in Sources */,
 				8CD1081E2BD124AE00E83261 /* AnyViewMainContainerFactory.swift in Sources */,
 				8CFE2CC72BBE84DF00AF60F1 /* NotificationName.swift in Sources */,
+				8C4BFB502BDFADAE00B47154 /* AuctionStateStatuses.swift in Sources */,
 				8C9FA4422BD27FF20041F28E /* LogOutViewModel.swift in Sources */,
 				8C4B7BAD2BB8942D0043B892 /* TextFieldStyles.swift in Sources */,
 				8CD108102BD122E000E83261 /* PaddleView.swift in Sources */,
@@ -1239,7 +1268,9 @@
 				8C9FA4462BD282B90041F28E /* ManagerView.swift in Sources */,
 				8CD107F52BD11EEA00E83261 /* TopBarContent.swift in Sources */,
 				8CD108282BD125DC00E83261 /* AuctionDataService.swift in Sources */,
+				8C4BFB4E2BDFAD7F00B47154 /* AuctionCollectionCellView.swift in Sources */,
 				8C8BEC3A2BA977F00083D904 /* Coordinator.swift in Sources */,
+				8C4BFB522BDFAE0800B47154 /* AuctionFilterButtonView.swift in Sources */,
 				8C9FA44E2BD29CAB0041F28E /* DeviceContext.swift in Sources */,
 				8C1E01012BA85E630094FAA7 /* AppDelegate.swift in Sources */,
 				8C4B7B872BB6DCC80043B892 /* AuthModel.swift in Sources */,
@@ -1292,6 +1323,7 @@
 				8CABF5DA2BB9F35A00A34870 /* NavigationBackButtonModifier.swift in Sources */,
 				CE34FB3F2BB1963300701D2A /* OverlayInternalView.swift in Sources */,
 				8C9FA4552BD8DF680041F28E /* ChooseAuctionView.swift in Sources */,
+				8C4BFB492BDFAB8F00B47154 /* MainContainerPage.swift in Sources */,
 				8CD107F82BD11F2300E83261 /* TopBarActionProvider.swift in Sources */,
 				8C0007B22BAC733900AAEBA0 /* ArrowParsable.swift in Sources */,
 			);
@@ -1464,7 +1496,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_HEADERS_RUN_UNIFDEF = NO;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 35JZN6VPM3;
 				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;
@@ -1610,7 +1642,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_HEADERS_RUN_UNIFDEF = NO;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 35JZN6VPM3;
 				ENABLE_BITCODE = NO;
 				ENABLE_PREVIEWS = YES;

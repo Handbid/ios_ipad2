@@ -2,171 +2,6 @@
 
 import SwiftUI
 
-enum AuctionStateStatuses: String, CaseIterable {
-	case open, presale, preview, closed, reconciled, all
-
-	func color(for _: ColorScheme) -> Color {
-		switch self {
-		case .open, .all:
-			Color(hex: "39C436")
-		case .presale:
-			Color(hex: "E2296C")
-		case .preview:
-			Color(hex: "FEB62B")
-		case .closed:
-			Color(hex: "E1E6E8")
-		case .reconciled:
-			Color(hex: "1672B3")
-		}
-	}
-
-	static func color(for status: String, in scheme: ColorScheme) -> Color {
-		(AuctionStateStatuses(rawValue: status)?.color(for: scheme) ?? Color.gray)
-	}
-}
-
-struct AuctionModel {
-	let id: UUID = .init()
-	let name: String
-	let address: String
-	let endDate: String
-	let itemCount: Int
-	let status: String
-	let imageUrl: URL?
-}
-
-struct AuctionCollectionCellView<T: PageProtocol>: View {
-	@EnvironmentObject var coordinator: Coordinator<T, Any?>
-	@Environment(\.colorScheme) var colorScheme
-	let auction: AuctionModel
-
-	var body: some View {
-		Button(action: {
-			coordinator.push(MainContainerPage.mainContainer as! T)
-		}) {
-			VStack(alignment: .center, spacing: 10) {
-				VStack {
-					HStack {
-						Text("\(auction.itemCount) Items")
-							.padding(10)
-							.background(colorScheme == .dark ? Color.white : Color.black)
-							.foregroundColor(colorScheme == .dark ? .black : .white)
-							.bold()
-							.cornerRadius(30)
-							.frame(height: 30)
-
-						Spacer()
-
-						Text(auction.status.uppercased())
-							.bold()
-							.foregroundColor(AuctionStateStatuses.color(for: auction.status, in: colorScheme))
-					}
-					.padding([.leading, .trailing], 10)
-				}
-				.frame(height: 50)
-
-				Spacer(minLength: 0)
-
-				AsyncImage(url: auction.imageUrl) { phase in
-					switch phase {
-					case .empty:
-						ProgressView()
-							.progressViewStyle(CircularProgressViewStyle())
-							.scaleEffect(1.5)
-							.frame(maxWidth: .infinity, maxHeight: .infinity)
-					case let .success(image):
-						image.resizable()
-							.aspectRatio(contentMode: .fit)
-							.frame(width: 150, height: 150, alignment: .center)
-					case .failure:
-						Image(systemName: "photo")
-							.resizable()
-							.scaledToFit()
-							.foregroundColor(colorScheme == .dark ? .white : .gray)
-							.frame(width: 150, height: 150, alignment: .center)
-							.padding()
-					@unknown default:
-						EmptyView()
-					}
-				}
-				.frame(height: 150)
-
-				VStack(spacing: 10) {
-					Text(auction.name)
-						.font(.headline)
-						.bold()
-						.lineLimit(3)
-						.multilineTextAlignment(.center)
-						.truncationMode(.tail)
-						.foregroundColor(colorScheme == .dark ? .white : .black)
-
-					Text(auction.address)
-						.font(.subheadline)
-						.bold()
-						.lineLimit(2)
-						.multilineTextAlignment(.center)
-						.truncationMode(.tail)
-						.foregroundColor(colorScheme == .dark ? .white : .black)
-
-					HStack {
-						Spacer()
-						Image(systemName: "clock")
-							.foregroundColor(colorScheme == .dark ? .white : .black)
-						Text("\(auction.endDate)")
-							.font(.caption)
-							.foregroundColor(colorScheme == .dark ? .white : .black)
-						Spacer()
-					}
-				}
-				.frame(height: 100)
-				.frame(maxWidth: .infinity)
-
-				Spacer(minLength: 0)
-			}
-			.padding()
-			.frame(width: 307, height: 370)
-			.background(colorScheme == .dark ? Color.black : Color.white)
-			.cornerRadius(40)
-			.shadow(color: Color.accentGrayBorder.opacity(0.6), radius: 10, x: 0, y: 2)
-		}
-		.accentColor(colorScheme == .dark ? .white : .black)
-	}
-}
-
-class AuctionButtonViewModel: ObservableObject {
-	@Published var isSelected: Bool = false
-}
-
-struct AuctionButtonView: View {
-	@Environment(\.colorScheme) var colorScheme
-	@ObservedObject var viewModel: AuctionButtonViewModel
-	let auctionState: AuctionStateStatuses
-	var onSelectionChanged: () -> Void
-
-	var body: some View {
-		Button(action: {
-			viewModel.isSelected.toggle()
-			onSelectionChanged()
-		}) {
-			HStack {
-				Circle()
-					.strokeBorder(Color.gray, lineWidth: viewModel.isSelected ? 0 : 1)
-					.background(
-						Circle().fill(viewModel.isSelected ? auctionState.color(for: colorScheme) : Color.white)
-					)
-					.frame(width: 30, height: 30)
-					.overlay(
-						Image(systemName: "checkmark")
-							.foregroundColor(viewModel.isSelected ? .white : .clear)
-					)
-				Text(auctionState.rawValue.capitalized)
-					.font(.caption)
-					.foregroundColor(colorScheme == .dark ? .white : .black)
-			}
-		}
-	}
-}
-
 struct ChooseAuctionView<T: PageProtocol>: View {
 	@ObservedObject private var viewModel: ChooseAuctionViewModel
 	@State private var selectedView: SelectAuctionContainerTypeView
@@ -194,7 +29,7 @@ struct ChooseAuctionView<T: PageProtocol>: View {
 						HStack(alignment: .center) {
 							HStack(spacing: 10) {
 								ForEach(AuctionStateStatuses.allCases.dropLast(), id: \.self) { state in
-									AuctionButtonView(viewModel: viewModel.buttonViewModels[state]!, auctionState: state) {
+									AuctionFilterButtonView(viewModel: viewModel.buttonViewModels[state]!, auctionState: state) {
 										viewModel.filterAuctions()
 									}
 								}
@@ -202,7 +37,7 @@ struct ChooseAuctionView<T: PageProtocol>: View {
 							Spacer()
 							HStack(spacing: 10) {
 								if let lastState = AuctionStateStatuses.allCases.last {
-									AuctionButtonView(viewModel: viewModel.buttonViewModels[lastState]!, auctionState: lastState) {
+									AuctionFilterButtonView(viewModel: viewModel.buttonViewModels[lastState]!, auctionState: lastState) {
 										viewModel.filterAuctions()
 									}
 								}
