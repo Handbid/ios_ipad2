@@ -1,5 +1,6 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
+import Combine
 import SwiftUI
 
 class ManagerViewModel: ObservableObject, ViewModelTopBarProtocol {

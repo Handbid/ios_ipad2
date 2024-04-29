@@ -3,10 +3,11 @@
 import SwiftUI
 
 struct ChooseAuctionView<T: PageProtocol>: View {
-	@ObservedObject private var viewModel: ChooseAuctionViewModel
+	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@State private var selectedView: SelectAuctionContainerTypeView
-	@State private var isBlurred = false
+	@ObservedObject private var viewModel: ChooseAuctionViewModel
 	private var deviceContext = DeviceContext()
+	@State private var isBlurred = false
 	var inspection = Inspection<Self>()
 
 	init(viewModel: ChooseAuctionViewModel, selectedView: SelectAuctionContainerTypeView) {
@@ -61,6 +62,11 @@ struct ChooseAuctionView<T: PageProtocol>: View {
 				}
 
 				Spacer()
+			}
+		}
+		.onChange(of: $viewModel.backToPreviewViewPressed.wrappedValue) { _, newValue in
+			if newValue {
+				coordinator.popToRoot()
 			}
 		}
 		.navigationBarBackButtonHidden()

@@ -4,9 +4,10 @@ import Combine
 import SwiftUI
 
 class ChooseAuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
-	@Published var auctions: [AuctionModel] = []
-	@Published var filteredAuctions: [AuctionModel] = []
 	var buttonViewModels: [AuctionStateStatuses: AuctionFilterButtonViewModel] = AuctionStateStatuses.allCases.reduce(into: [:]) { $0[$1] = AuctionFilterButtonViewModel() }
+	@Published var filteredAuctions: [AuctionModel] = []
+	@Published var auctions: [AuctionModel] = []
+	@Published var backToPreviewViewPressed: Bool = false
 	private var cancellables = Set<AnyCancellable>()
 
 	init() {
@@ -79,7 +80,7 @@ class ChooseAuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 	}
 
 	func closeView() {
-		print("close")
+		backToPreviewViewPressed.toggle()
 	}
 
 	private func loadExampleAuctions() {
