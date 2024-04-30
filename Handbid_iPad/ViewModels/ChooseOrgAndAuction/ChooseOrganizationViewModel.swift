@@ -15,10 +15,10 @@ class ChooseOrganizationViewModel: ObservableObject {
 		self.repository = repository
 		self.selectedOption = AppEnvironmentType.currentState
 		setupSubscriptions()
-		requestPasswordReset()
+		fetchOrganizations()
 	}
 
-	func requestPasswordReset() {
+	func fetchOrganizations() {
 		repository.fetchUserOrganization()
 			.sink(receiveCompletion: { completion in
 				switch completion {
@@ -27,17 +27,11 @@ class ChooseOrganizationViewModel: ObservableObject {
 				case let .failure(error):
 					if let netError = error as? NetworkingError {
 						print(netError)
-						//                        self.requestStatus = netError.status
-						//                        self.errorMessage = "\(error)"
 					}
 				}
 			}, receiveValue: { response in
 				print(response)
-				// self.requestStatus = response.success == true ? .ok : .badRequest
 
-				//                if self.requestStatus == .badRequest {
-				//                    self.errorMessage = response.message ?? String(localized: LocalizedStringResource("global_label_unknownError"))
-				//                }
 			}).store(in: &cancellables)
 	}
 

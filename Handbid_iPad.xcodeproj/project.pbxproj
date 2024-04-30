@@ -53,6 +53,12 @@
 		8C4BFB522BDFAE0800B47154 /* AuctionFilterButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4BFB512BDFAE0800B47154 /* AuctionFilterButtonView.swift */; };
 		8C4BFB542BDFAE2000B47154 /* AuctionFilterButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4BFB532BDFAE2000B47154 /* AuctionFilterButtonViewModel.swift */; };
 		8C4BFB562BE0E2AD00B47154 /* ChooseOrganizationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4BFB552BE0E2AD00B47154 /* ChooseOrganizationRepository.swift */; };
+		8C4BFB5B2BE113B000B47154 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4BFB5A2BE113B000B47154 /* UserModel.swift */; };
+		8C4BFB5D2BE113E000B47154 /* OrganizationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4BFB5C2BE113E000B47154 /* OrganizationModel.swift */; };
+		8C4BFB5F2BE1141A00B47154 /* AddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4BFB5E2BE1141A00B47154 /* AddressModel.swift */; };
+		8C4BFB612BE1144000B47154 /* CreditCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4BFB602BE1144000B47154 /* CreditCardModel.swift */; };
+		8C4BFB632BE1147900B47154 /* OrganizationAddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4BFB622BE1147900B47154 /* OrganizationAddressModel.swift */; };
+		8C4BFB652BE114B000B47154 /* OrganizationImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4BFB642BE114B000B47154 /* OrganizationImageModel.swift */; };
 		8C8BEC2E2BA975DE0083D904 /* GetStartedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC2D2BA975DE0083D904 /* GetStartedView.swift */; };
 		8C8BEC302BA975F10083D904 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC2F2BA975F10083D904 /* LogInView.swift */; };
 		8C8BEC322BA976030083D904 /* GetStartedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC312BA976030083D904 /* GetStartedViewModel.swift */; };
@@ -222,6 +228,12 @@
 		8C4BFB512BDFAE0800B47154 /* AuctionFilterButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionFilterButtonView.swift; sourceTree = "<group>"; };
 		8C4BFB532BDFAE2000B47154 /* AuctionFilterButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionFilterButtonViewModel.swift; sourceTree = "<group>"; };
 		8C4BFB552BE0E2AD00B47154 /* ChooseOrganizationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseOrganizationRepository.swift; sourceTree = "<group>"; };
+		8C4BFB5A2BE113B000B47154 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		8C4BFB5C2BE113E000B47154 /* OrganizationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationModel.swift; sourceTree = "<group>"; };
+		8C4BFB5E2BE1141A00B47154 /* AddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressModel.swift; sourceTree = "<group>"; };
+		8C4BFB602BE1144000B47154 /* CreditCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardModel.swift; sourceTree = "<group>"; };
+		8C4BFB622BE1147900B47154 /* OrganizationAddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationAddressModel.swift; sourceTree = "<group>"; };
+		8C4BFB642BE114B000B47154 /* OrganizationImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationImageModel.swift; sourceTree = "<group>"; };
 		8C8BEC2D2BA975DE0083D904 /* GetStartedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedView.swift; sourceTree = "<group>"; };
 		8C8BEC2F2BA975F10083D904 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		8C8BEC312BA976030083D904 /* GetStartedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewModel.swift; sourceTree = "<group>"; };
@@ -523,10 +535,16 @@
 		8C1E00DF2BA825500094FAA7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8C4BFB5E2BE1141A00B47154 /* AddressModel.swift */,
 				8C0007BE2BAC764700AAEBA0 /* AppVersionModel.swift */,
 				8C4BFB4A2BDFAD2100B47154 /* AuctionModel.swift */,
 				8C4B7B862BB6DCC80043B892 /* AuthModel.swift */,
+				8C4BFB602BE1144000B47154 /* CreditCardModel.swift */,
+				8C4BFB622BE1147900B47154 /* OrganizationAddressModel.swift */,
+				8C4BFB642BE114B000B47154 /* OrganizationImageModel.swift */,
+				8C4BFB5C2BE113E000B47154 /* OrganizationModel.swift */,
 				CE0CEE802BBED0B4004A27FD /* ResetPasswordModel.swift */,
+				8C4BFB5A2BE113B000B47154 /* UserModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1039,7 +1057,7 @@
 			);
 			mainGroup = 8C1E00A12BA823C80094FAA7;
 			packageReferences = (
-				8CEA29092BB3517E005E3B33 /* XCLocalSwiftPackageReference "NetworkService" */,
+				8CEA29092BB3517E005E3B33 /* XCLocalSwiftPackageReference "Frameworks/NetworkService" */,
 			);
 			productRefGroup = 8C1E00A12BA823C80094FAA7;
 			projectDirPath = "";
@@ -1108,7 +1126,7 @@
 		};
 		8C1E00E92BA827D10094FAA7 /* Fetch localization */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
+			buildActionMask = 8;
 			files = (
 			);
 			inputFileListPaths = (
@@ -1120,7 +1138,7 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "\"$SRCROOT/Extras/localization_ios.sh\"\n";
 			showEnvVarsInLog = 0;
@@ -1252,6 +1270,7 @@
 				8C9FA43A2BD157790041F28E /* GenericTopBarContentFactory.swift in Sources */,
 				8C9FA4402BD27FE80041F28E /* ManagerViewModel.swift in Sources */,
 				8C8BEC302BA975F10083D904 /* LogInView.swift in Sources */,
+				8C4BFB5D2BE113E000B47154 /* OrganizationModel.swift in Sources */,
 				CE073ED82BB42D710079F342 /* View.swift in Sources */,
 				CE7DF82F2BADFD1900FF7694 /* PinView.swift in Sources */,
 				8CD108052BD120DB00E83261 /* MainContainerProtocolFactory.swift in Sources */,
@@ -1277,6 +1296,7 @@
 				8C4BFB522BDFAE0800B47154 /* AuctionFilterButtonView.swift in Sources */,
 				8C9FA44E2BD29CAB0041F28E /* DeviceContext.swift in Sources */,
 				8C1E01012BA85E630094FAA7 /* AppDelegate.swift in Sources */,
+				8C4BFB5B2BE113B000B47154 /* UserModel.swift in Sources */,
 				8C4B7B872BB6DCC80043B892 /* AuthModel.swift in Sources */,
 				8CD107FF2BD11F9500E83261 /* Sidebar.swift in Sources */,
 				8C9FA4502BD3AD060041F28E /* RoundedCornerView.swift in Sources */,
@@ -1291,6 +1311,7 @@
 				8C4B7B892BB6FCEA0043B892 /* ButtonStyleConfiguration.swift in Sources */,
 				8C9FA4582BD8DFAB0041F28E /* ChooseOrganizationViewModel.swift in Sources */,
 				8C4B7BA22BB88FFB0043B892 /* ButtonStyles.swift in Sources */,
+				8C4BFB5F2BE1141A00B47154 /* AddressModel.swift in Sources */,
 				8CABF5DC2BB9F37700A34870 /* RegistrationBackButton.swift in Sources */,
 				8CABF5D02BB9E11300A34870 /* ResponsiveView.swift in Sources */,
 				8C8BEC322BA976030083D904 /* GetStartedViewModel.swift in Sources */,
@@ -1310,9 +1331,11 @@
 				CE0CEE7F2BBEB39F004A27FD /* ResetPasswordRepository.swift in Sources */,
 				8CD1082D2BD128A600E83261 /* MainContainerViewBuilder.swift in Sources */,
 				8C9FA44A2BD29C540041F28E /* ViewModelFactory.swift in Sources */,
+				8C4BFB612BE1144000B47154 /* CreditCardModel.swift in Sources */,
 				CEEC46132BBD8DE900C685BF /* AnyPublisher.swift in Sources */,
 				8C4B7B832BB47DD30043B892 /* StartupProgressAnimationView.swift in Sources */,
 				8C0007D32BAC976700AAEBA0 /* AppInfoProvider.swift in Sources */,
+				8C4BFB652BE114B000B47154 /* OrganizationImageModel.swift in Sources */,
 				8CD1082B2BD1261800E83261 /* ContentView.swift in Sources */,
 				8C9FA45C2BD93BF90041F28E /* SelectAuctionContainerTypeView.swift in Sources */,
 				8CD108202BD124EA00E83261 /* DataServiceFactory.swift in Sources */,
@@ -1330,6 +1353,7 @@
 				8C4BFB492BDFAB8F00B47154 /* MainContainerPage.swift in Sources */,
 				8CD107F82BD11F2300E83261 /* TopBarActionProvider.swift in Sources */,
 				8C0007B22BAC733900AAEBA0 /* ArrowParsable.swift in Sources */,
+				8C4BFB632BE1147900B47154 /* OrganizationAddressModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1760,7 +1784,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		8CEA29092BB3517E005E3B33 /* XCLocalSwiftPackageReference "NetworkService" */ = {
+		8CEA29092BB3517E005E3B33 /* XCLocalSwiftPackageReference "Frameworks/NetworkService" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Frameworks/NetworkService;
 		};
