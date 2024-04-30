@@ -69,13 +69,13 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 			List {
 				ForEach(viewModel.filteredOrganizations, id: \.id) { organization in
 					Button(action: {
-						viewModel.selectedOrganization = organization
+						selectOption(organization)
 					}) {
 						HStack {
 							Text(organization.name ?? "Unknown")
 								.foregroundColor(colorScheme == .dark ? Color.black : Color.black)
 							Spacer()
-							if viewModel.selectedOrganization?.id == organization.id {
+							if let selectedOption = viewModel.selectedOrganization?.id, selectedOption == organization.id {
 								Image(systemName: "checkmark.circle.fill")
 									.foregroundColor(.accentColor)
 							}
@@ -85,8 +85,11 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 						.contentShape(Rectangle())
 						.overlay(
 							RoundedRectangle(cornerRadius: 10)
-								.stroke(organization.id == viewModel.selectedOrganization?.id ? Color.accentColor : Color.gray, lineWidth: 2)
+								.stroke(organization.id == viewModel.selectedOrganization?.id ? Color.accentColor : Color.gray, lineWidth: organization.id == viewModel.selectedOrganization?.id ? 2 : 1)
 						)
+						.onTapGesture {
+							selectOption(organization)
+						}
 					}
 				}
 				.listRowSeparator(.hidden)
@@ -111,10 +114,10 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 	}
 
 	private func deselectAllOptions() {
-		viewModel.selectedOption = nil
+		viewModel.selectedOrganization = nil
 	}
 
 	func selectOption(_ option: OrganizationModel) {
-	        viewModel.selectedOption = option
+		viewModel.selectedOrganization = (viewModel.selectedOrganization?.id == option.id) ? nil : option
 	}
 }
