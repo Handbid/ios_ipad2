@@ -6,6 +6,7 @@ import SwiftUI
 struct ChooseOrganizationView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@ObservedObject private var viewModel: ChooseOrganizationViewModel
+	@State private var isButtonDisabled = true
 	@Environment(\.colorScheme) var colorScheme
 	@State private var contentLoaded = false
 	@State private var isBlurred = false
@@ -67,15 +68,15 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 			          focusedField: _focusedField)
 				.padding([.leading, .trailing], 30)
 			List {
-				ForEach(viewModel.filteredOptions, id: \.self) { option in
+				ForEach(viewModel.filteredOrganizations, id: \.id) { organization in
 					Button(action: {
-						selectOption(option)
+						selectOption(organization)
 					}) {
 						HStack {
-							Text(option.rawValue)
+							Text(organization.name ?? "Unknown")
 								.foregroundColor(colorScheme == .dark ? Color.black : Color.black)
 							Spacer()
-							if let selectedOption = viewModel.selectedOption, selectedOption == option {
+							if let selectedOption = viewModel.selectedOrganization?.id, selectedOption == organization.id {
 								Image(systemName: "checkmark.circle.fill")
 									.foregroundColor(.accentColor)
 							}
@@ -85,11 +86,10 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 						.contentShape(Rectangle())
 						.overlay(
 							RoundedRectangle(cornerRadius: 10)
-								.stroke(option == viewModel.selectedOption ? Color.accentColor : Color.accentGrayBorder,
-								        lineWidth: option == viewModel.selectedOption ? 2 : 1)
+								.stroke(organization.id == viewModel.selectedOrganization?.id ? Color.accentColor : Color.gray, lineWidth: organization.id == viewModel.selectedOrganization?.id ? 2 : 1)
 						)
 						.onTapGesture {
-							selectOption(option)
+							selectOption(organization)
 						}
 					}
 				}
@@ -104,21 +104,23 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 
 	private func getButtons() -> some View {
 		VStack(spacing: 10) {
-			Button<Text>.styled(config: .secondaryButtonStyle, action: {
+			Button<Text>.styled(config: .secondaryButtonStyle, isDisabled: $isButtonDisabled, action: {
 				isBlurred = true
 				coordinator.push(MainContainerPage.chooseAuction as! T)
 			}) {
 				Text(LocalizedStringKey("chooseOrg_btn_selectOrg"))
 					.textCase(.uppercase)
 			}.accessibilityIdentifier("chooseOrg_btn_selectOrg")
+				.disabled(viewModel.selectedOrganization == nil)
 		}
 	}
 
 	private func deselectAllOptions() {
-		viewModel.selectedOption = nil
+		viewModel.selectedOrganization = nil
 	}
 
-	func selectOption(_ option: AppEnvironmentType) {
-		viewModel.selectedOption = option
+	func selectOption(_ option: OrganizationModel) {
+		viewModel.selectedOrganization = (viewModel.selectedOrganization?.id == option.id) ? nil : option
+		isButtonDisabled = viewModel.selectedOrganization == nil
 	}
 }

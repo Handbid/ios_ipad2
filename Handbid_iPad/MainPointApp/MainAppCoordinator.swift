@@ -36,7 +36,7 @@ struct MainAppCoordinator: App {
 	@StateObject var mainContainerCoordinator = Coordinator<MainContainerPage, Any?> { page in
 		switch page {
 		case .chooseOrganization:
-			AnyView(ChooseOrganizationView<MainContainerPage>(viewModel: ChooseOrganizationViewModel()))
+			AnyView(ChooseOrganizationView<MainContainerPage>(viewModel: ChooseOrganizationViewModel(repository: ChooseOrganizationRepositoryImpl(NetworkingClient()))))
 		case .chooseAuction:
 			AnyView(ChooseAuctionView<MainContainerPage>(viewModel: ChooseAuctionViewModel(), selectedView: .selectAuction))
 		case .mainContainer:

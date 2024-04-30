@@ -26,17 +26,20 @@ struct CustomStyledViewButton<ContentLabel>: View where ContentLabel: View {
 	let action: () -> Void
 	let config: ButtonStyles
 	let label: () -> ContentLabel
+	@Binding var isDisabled: Bool
 
 	var body: some View {
 		Button(action: action) {
 			label()
 				.contentShape(Rectangle())
-				.modifier(ButtonStyleModifier(config: config.configuration))
+				.modifier(ButtonStyleModifier(config: isDisabled ? config.disabledConfiguration : config.configuration))
 		}
+		.disabled(isDisabled)
 	}
 }
 
 extension Button {
-	static func styled<ContentLabel>(config: ButtonStyles, action: @escaping () -> Void, @ViewBuilder label: @escaping () -> ContentLabel) ->
-		CustomStyledViewButton<ContentLabel> where ContentLabel: View { CustomStyledViewButton(action: action, config: config, label: label) }
+	static func styled<ContentLabel>(config: ButtonStyles, isDisabled: Binding<Bool> = .constant(false), action: @escaping () -> Void, @ViewBuilder label: @escaping () -> ContentLabel) -> CustomStyledViewButton<ContentLabel> where ContentLabel: View {
+		CustomStyledViewButton(action: action, config: config, label: label, isDisabled: isDisabled)
+	}
 }
