@@ -14,7 +14,7 @@ struct OrganizationModel: Decodable, NetworkingJSONDecodable {
 	var contactName: String?
 	var email: String?
 	var website: String?
-	var isPublic: Bool?
+	var isPublic: Int?
 	var totalAuctions: Int?
 	var activeAuctions: Int?
 	var logo: String?
@@ -27,7 +27,14 @@ struct OrganizationModel: Decodable, NetworkingJSONDecodable {
 	var businessType: String?
 	var classification: String?
 	var provinceCode: String?
-	var organizationAddress: OrganizationAddressModel?
+	var organizationAddressStreet1: String?
+	var organizationAddressStreet2: String?
+	var organizationAddressCity: String?
+	var organizationAddressPostalCode: String?
+	var organizationAddressProvince: String?
+	var organizationAddressCountry: String?
+	var organizationAddressProvinceId: Int?
+	var organizationAddressCountryId: Int?
 	var organizationImages: [OrganizationImageModel]?
 }
 
@@ -56,7 +63,14 @@ extension OrganizationModel: ArrowParsable {
 		businessType <-- json["businessType"]
 		classification <-- json["classification"]
 		provinceCode <-- json["provinceCode"]
-		organizationAddress <-- json["organizationAddress"]
+		organizationAddressStreet1 <-- json["organizationAddressStreet1"]
+		organizationAddressStreet2 <-- json["organizationAddressStreet2"]
+		organizationAddressCity <-- json["organizationAddressCity"]
+		organizationAddressPostalCode <-- json["organizationAddressPostalCode"]
+		organizationAddressProvince <-- json["organizationAddressProvince"]
+		organizationAddressCountry <-- json["organizationAddressCountry"]
+		organizationAddressProvinceId <-- json["organizationAddressProvinceId"]
+		organizationAddressCountryId <-- json["organizationAddressCountryId"]
 		organizationImages <-- json["organizationImages"]
 	}
 }

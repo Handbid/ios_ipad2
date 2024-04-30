@@ -27,7 +27,7 @@ struct UserModel: Decodable, NetworkingJSONDecodable {
 	var currency: String?
 	var timeZone: String?
 	var imageUrl: String?
-	var organization: OrganizationModel?
+	var organization: [OrganizationModel]?
 	var creditCards: [CreditCardModel]?
 	var isCheckinAgent: Bool?
 	var canCloseAuction: Bool?
@@ -56,15 +56,24 @@ extension UserModel: ArrowParsable {
 		shippingAddress <-- json["shippingAddress"]
 		userAddressCountryId <-- json["userAddressCountryId"]
 		countryCode <-- json["countryCode"]
-		addresses <-- json["addresses"]
 		currency <-- json["currency"]
 		timeZone <-- json["timeZone"]
 		imageUrl <-- json["imageUrl"]
-		organization <-- json["organization"]
-		creditCards <-- json["creditCards"]
 		isCheckinAgent <-- json["isCheckinAgent"]
 		canCloseAuction <-- json["canCloseAuction"]
 		canSendBroadcast <-- json["canSendBroadcast"]
 		canManageItems <-- json["canManageItems"]
+
+		organization = (json["organization"]?.collection ?? [json["organization"]].compactMap { $0 }).map { jsonItem in
+			var org = OrganizationModel()
+			org.deserialize(jsonItem)
+			return org
+		}
+
+		creditCards = (json["creditCards"]?.collection ?? [json["creditCards"]].compactMap { $0 }).map { jsonItem in
+			var card = CreditCardModel()
+			card.deserialize(jsonItem)
+			return card
+		}
 	}
 }

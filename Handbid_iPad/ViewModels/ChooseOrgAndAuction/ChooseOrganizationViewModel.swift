@@ -7,19 +7,19 @@ class ChooseOrganizationViewModel: ObservableObject {
 	private var cancellables = Set<AnyCancellable>()
 	private var repository: ChooseOrganizationRepository
 	@Published var searchOrganization: String = ""
-	@Published var environmentOptions: [AppEnvironmentType] = [.prod, .d1, .d2, .d3, .qa]
-	@Published var filteredOptions: [AppEnvironmentType] = []
-	@Published var selectedOption: AppEnvironmentType?
+	@Published var organizations: [OrganizationModel] = []
+	@Published var filteredOrganizations: [OrganizationModel] = []
+	@Published var selectedOrganization: OrganizationModel?
 
 	init(repository: ChooseOrganizationRepository) {
 		self.repository = repository
-		self.selectedOption = AppEnvironmentType.currentState
 		setupSubscriptions()
 		fetchOrganizations()
 	}
 
 	func fetchOrganizations() {
 		repository.fetchUserOrganization()
+			.receive(on: DispatchQueue.main)
 			.sink(receiveCompletion: { completion in
 				switch completion {
 				case .finished:
@@ -29,28 +29,35 @@ class ChooseOrganizationViewModel: ObservableObject {
 						print(netError)
 					}
 				}
-			}, receiveValue: { response in
-				print(response)
-
-			}).store(in: &cancellables)
-	}
-
-	func setupSubscriptions() {
-		$searchOrganization
-			.receive(on: RunLoop.main)
-			.map { [unowned self] searchText in
-				filterOptions(with: searchText)
-			}
-			.assign(to: \.filteredOptions, on: self)
+			}, receiveValue: { user in
+				guard let orgs = user.organization else { return }
+				self.organizations = orgs
+				self.filteredOrganizations = orgs
+			})
 			.store(in: &cancellables)
 	}
 
-	private func filterOptions(with searchText: String) -> [AppEnvironmentType] {
+	private func setupSubscriptions() {
+		$searchOrganization
+			.receive(on: RunLoop.main)
+			.map { [unowned self] searchText in
+				filterOrganizations(with: searchText)
+			}
+			.assign(to: \.filteredOrganizations, on: self)
+			.store(in: &cancellables)
+	}
+
+	private func filterOrganizations(with searchText: String) -> [OrganizationModel] {
 		if searchText.isEmpty {
-			environmentOptions
+			organizations
 		}
 		else {
-			environmentOptions.filter { $0.rawValue.lowercased().contains(searchText.lowercased()) }
+			organizations.filter {
+				if let name = $0.name {
+					return name.lowercased().contains(searchText.lowercased())
+				}
+				return false
+			}
 		}
 	}
 }

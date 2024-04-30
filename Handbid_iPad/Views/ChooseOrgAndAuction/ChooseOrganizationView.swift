@@ -67,15 +67,15 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 			          focusedField: _focusedField)
 				.padding([.leading, .trailing], 30)
 			List {
-				ForEach(viewModel.filteredOptions, id: \.self) { option in
+				ForEach(viewModel.filteredOrganizations, id: \.id) { organization in
 					Button(action: {
-						selectOption(option)
+						viewModel.selectedOrganization = organization
 					}) {
 						HStack {
-							Text(option.rawValue)
+							Text(organization.name ?? "Unknown")
 								.foregroundColor(colorScheme == .dark ? Color.black : Color.black)
 							Spacer()
-							if let selectedOption = viewModel.selectedOption, selectedOption == option {
+							if viewModel.selectedOrganization?.id == organization.id {
 								Image(systemName: "checkmark.circle.fill")
 									.foregroundColor(.accentColor)
 							}
@@ -85,12 +85,8 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 						.contentShape(Rectangle())
 						.overlay(
 							RoundedRectangle(cornerRadius: 10)
-								.stroke(option == viewModel.selectedOption ? Color.accentColor : Color.accentGrayBorder,
-								        lineWidth: option == viewModel.selectedOption ? 2 : 1)
+								.stroke(organization.id == viewModel.selectedOrganization?.id ? Color.accentColor : Color.gray, lineWidth: 2)
 						)
-						.onTapGesture {
-							selectOption(option)
-						}
 					}
 				}
 				.listRowSeparator(.hidden)
@@ -118,7 +114,7 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 		viewModel.selectedOption = nil
 	}
 
-	func selectOption(_ option: AppEnvironmentType) {
-		viewModel.selectedOption = option
+	func selectOption(_ option: OrganizationModel) {
+	        viewModel.selectedOption = option
 	}
 }
