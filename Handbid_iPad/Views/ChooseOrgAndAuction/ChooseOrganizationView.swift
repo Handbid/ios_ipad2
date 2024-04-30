@@ -6,6 +6,7 @@ import SwiftUI
 struct ChooseOrganizationView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@ObservedObject private var viewModel: ChooseOrganizationViewModel
+	@State private var isButtonDisabled = true
 	@Environment(\.colorScheme) var colorScheme
 	@State private var contentLoaded = false
 	@State private var isBlurred = false
@@ -103,13 +104,14 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 
 	private func getButtons() -> some View {
 		VStack(spacing: 10) {
-			Button<Text>.styled(config: .secondaryButtonStyle, action: {
+			Button<Text>.styled(config: .secondaryButtonStyle, isDisabled: $isButtonDisabled, action: {
 				isBlurred = true
 				coordinator.push(MainContainerPage.chooseAuction as! T)
 			}) {
 				Text(LocalizedStringKey("chooseOrg_btn_selectOrg"))
 					.textCase(.uppercase)
 			}.accessibilityIdentifier("chooseOrg_btn_selectOrg")
+				.disabled(viewModel.selectedOrganization == nil)
 		}
 	}
 
@@ -119,5 +121,6 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 
 	func selectOption(_ option: OrganizationModel) {
 		viewModel.selectedOrganization = (viewModel.selectedOrganization?.id == option.id) ? nil : option
+		isButtonDisabled = viewModel.selectedOrganization == nil
 	}
 }

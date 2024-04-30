@@ -19,7 +19,8 @@ enum ButtonStyles {
 				backgroundColor: Color(hex: "#000000"),
 				foregroundColor: Color(hex: "#FFFFFF"),
 				cornerRadius: 40,
-				font: .system(size: 16, weight: .semibold)
+				font: .system(size: 16, weight: .semibold),
+				disabledColor: Color(hex: "#000000").opacity(0.5)
 			)
 		case .thirdButtonStyle:
 			ButtonStyleConfiguration(
@@ -35,5 +36,11 @@ enum ButtonStyles {
 				font: .system(size: 13, weight: .semibold)
 			)
 		}
+	}
+
+	var disabledConfiguration: ButtonStyleConfiguration {
+		var config = configuration
+		config.backgroundColor = config.disabledColor ?? .clear
+		return config
 	}
 }
