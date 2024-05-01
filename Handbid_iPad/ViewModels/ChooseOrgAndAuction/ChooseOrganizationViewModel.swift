@@ -18,7 +18,7 @@ class ChooseOrganizationViewModel: ObservableObject {
 	}
 
 	func fetchOrganizations() {
-		repository.fetchUserOrganization()
+		repository.fetchUserOrganizations()
 			.receive(on: DispatchQueue.main)
 			.sink(receiveCompletion: { completion in
 				switch completion {

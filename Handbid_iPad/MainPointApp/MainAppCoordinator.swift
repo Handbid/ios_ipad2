@@ -38,7 +38,7 @@ struct MainAppCoordinator: App {
 		case .chooseOrganization:
 			AnyView(ChooseOrganizationView<MainContainerPage>(viewModel: ChooseOrganizationViewModel(repository: ChooseOrganizationRepositoryImpl(NetworkingClient()))))
 		case .chooseAuction:
-			AnyView(ChooseAuctionView<MainContainerPage>(viewModel: ChooseAuctionViewModel(), selectedView: .selectAuction))
+			AnyView(ChooseAuctionView<MainContainerPage>(viewModel: ChooseAuctionViewModel(repository: ChooseAuctionRepositoryImpl(NetworkingClient())), selectedView: .selectAuction))
 		case .mainContainer:
 			AnyView(MainContainer<MainContainerPage>(selectedView: .auction))
 		}

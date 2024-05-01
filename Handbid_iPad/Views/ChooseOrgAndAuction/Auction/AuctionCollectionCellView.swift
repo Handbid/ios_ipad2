@@ -14,7 +14,7 @@ struct AuctionCollectionCellView<T: PageProtocol>: View {
 			VStack(alignment: .center, spacing: 10) {
 				VStack {
 					HStack {
-						Text("\(auction.itemCount) Items")
+						Text("10 Items")
 							.padding(10)
 							.background(colorScheme == .dark ? Color.white : Color.black)
 							.foregroundColor(colorScheme == .dark ? .black : .white)
@@ -24,9 +24,9 @@ struct AuctionCollectionCellView<T: PageProtocol>: View {
 
 						Spacer()
 
-						Text(auction.status.uppercased())
+						Text(auction.status!.uppercased())
 							.bold()
-							.foregroundColor(AuctionStateStatuses.color(for: auction.status, in: colorScheme))
+							.foregroundColor(AuctionStateStatuses.color(for: auction.status!, in: colorScheme))
 					}
 					.padding([.leading, .trailing], 10)
 				}
@@ -34,7 +34,7 @@ struct AuctionCollectionCellView<T: PageProtocol>: View {
 
 				Spacer(minLength: 0)
 
-				AsyncImage(url: auction.imageUrl) { phase in
+				AsyncImage(url: URL(string: auction.imageUrl!)) { phase in
 					switch phase {
 					case .empty:
 						ProgressView()
@@ -45,6 +45,7 @@ struct AuctionCollectionCellView<T: PageProtocol>: View {
 						image.resizable()
 							.aspectRatio(contentMode: .fit)
 							.frame(width: 150, height: 150, alignment: .center)
+							.cornerRadius(10)
 					case .failure:
 						Image(systemName: "photo")
 							.resizable()
@@ -59,7 +60,7 @@ struct AuctionCollectionCellView<T: PageProtocol>: View {
 				.frame(height: 150)
 
 				VStack(spacing: 10) {
-					Text(auction.name)
+					Text(auction.name!)
 						.font(.headline)
 						.bold()
 						.lineLimit(3)
@@ -67,7 +68,7 @@ struct AuctionCollectionCellView<T: PageProtocol>: View {
 						.truncationMode(.tail)
 						.foregroundColor(colorScheme == .dark ? .white : .black)
 
-					Text(auction.address)
+					Text(auction.auctionAddressStreet1!)
 						.font(.subheadline)
 						.bold()
 						.lineLimit(2)
@@ -79,7 +80,7 @@ struct AuctionCollectionCellView<T: PageProtocol>: View {
 						Spacer()
 						Image(systemName: "clock")
 							.foregroundColor(colorScheme == .dark ? .white : .black)
-						Text("\(auction.endDate)")
+						Text("time")
 							.font(.caption)
 							.foregroundColor(colorScheme == .dark ? .white : .black)
 						Spacer()
