@@ -14,10 +14,14 @@ class ChooseOrganizationViewModel: ObservableObject {
 	init(repository: ChooseOrganizationRepository) {
 		self.repository = repository
 		setupSubscriptions()
+	}
+
+	func fetchOrganizationsIfNeeded() {
+		guard organizations.isEmpty else { return }
 		fetchOrganizations()
 	}
 
-	func fetchOrganizations() {
+	private func fetchOrganizations() {
 		repository.fetchUserOrganizations()
 			.receive(on: DispatchQueue.main)
 			.sink(receiveCompletion: { completion in

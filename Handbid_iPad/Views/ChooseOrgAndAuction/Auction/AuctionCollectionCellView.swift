@@ -14,17 +14,20 @@ struct AuctionCollectionCellView<T: PageProtocol>: View {
 			VStack(alignment: .center, spacing: 10) {
 				VStack {
 					HStack {
-						Text("10 Items")
-							.padding(10)
-							.background(colorScheme == .dark ? Color.white : Color.black)
-							.foregroundColor(colorScheme == .dark ? .black : .white)
-							.bold()
-							.cornerRadius(30)
-							.frame(height: 30)
+						HStack(spacing: 5) {
+							Text("\(auction.totalItems ?? 0) ")
+							Text(LocalizedStringKey("auction_label_items"))
+						}
+						.padding(10)
+						.background(colorScheme == .dark ? Color.white : Color.black)
+						.foregroundColor(colorScheme == .dark ? .black : .white)
+						.bold()
+						.cornerRadius(30)
+						.frame(height: 30)
 
 						Spacer()
 
-						Text(auction.status!.uppercased())
+						Text(auction.status?.uppercased() ?? "")
 							.bold()
 							.foregroundColor(AuctionStateStatuses.color(for: auction.status!, in: colorScheme))
 					}
@@ -34,7 +37,7 @@ struct AuctionCollectionCellView<T: PageProtocol>: View {
 
 				Spacer(minLength: 0)
 
-				AsyncImage(url: URL(string: auction.imageUrl!)) { phase in
+				AsyncImage(url: URL(string: auction.imageUrl ?? "")) { phase in
 					switch phase {
 					case .empty:
 						ProgressView()
@@ -60,7 +63,7 @@ struct AuctionCollectionCellView<T: PageProtocol>: View {
 				.frame(height: 150)
 
 				VStack(spacing: 10) {
-					Text(auction.name!)
+					Text(auction.name ?? "")
 						.font(.headline)
 						.bold()
 						.lineLimit(3)
@@ -68,7 +71,7 @@ struct AuctionCollectionCellView<T: PageProtocol>: View {
 						.truncationMode(.tail)
 						.foregroundColor(colorScheme == .dark ? .white : .black)
 
-					Text(auction.auctionAddressStreet1!)
+					Text(auction.auctionAddressStreet1 ?? "")
 						.font(.subheadline)
 						.bold()
 						.lineLimit(2)
@@ -80,7 +83,7 @@ struct AuctionCollectionCellView<T: PageProtocol>: View {
 						Spacer()
 						Image(systemName: "clock")
 							.foregroundColor(colorScheme == .dark ? .white : .black)
-						Text("time")
+						Text(convertTimestampToDate(timestamp: TimeInterval(auction.endTime ?? 0)))
 							.font(.caption)
 							.foregroundColor(colorScheme == .dark ? .white : .black)
 						Spacer()

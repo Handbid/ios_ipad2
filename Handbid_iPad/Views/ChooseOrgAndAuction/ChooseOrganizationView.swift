@@ -26,6 +26,7 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 			DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
 				contentLoaded = true
 			}
+			viewModel.fetchOrganizationsIfNeeded()
 		}
 		.background {
 			backgroundView(for: .color(colorScheme == .dark ? Color.black.opacity(0.7) : Color.accentViolet.opacity(0.7)))
