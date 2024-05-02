@@ -107,7 +107,7 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 		VStack(spacing: 10) {
 			Button<Text>.styled(config: .secondaryButtonStyle, isDisabled: $isButtonDisabled, action: {
 				isBlurred = true
-				coordinator.push(MainContainerPage.chooseAuction as! T)
+				coordinator.push(MainContainerPage.chooseAuction as! T, with: viewModel.selectedOrganization)
 			}) {
 				Text(LocalizedStringKey("chooseOrg_btn_selectOrg"))
 					.textCase(.uppercase)

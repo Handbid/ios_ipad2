@@ -9,6 +9,7 @@ class ChooseAuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 	var buttonViewModels: [AuctionStateStatuses: AuctionFilterButtonViewModel] = AuctionStateStatuses.allCases.reduce(into: [:]) { $0[$1] = AuctionFilterButtonViewModel() }
 	@Published var filteredAuctions: [AuctionModel] = []
 	@Published var auctions: [AuctionModel] = []
+	@Published var organization: OrganizationModel = .init()
 	@Published var backToPreviewViewPressed: Bool = false
 	private var cancellables = Set<AnyCancellable>()
 
