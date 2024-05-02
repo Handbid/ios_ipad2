@@ -26,7 +26,7 @@ class ChooseAuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 	}
 
 	func fetchUserAuctions() {
-		repository.fetchUserAuctions()
+		repository.fetchUserAuctions(status: [.open, .closed, .presale, .preview, .reconciled])
 			.receive(on: DispatchQueue.main)
 			.sink(receiveCompletion: { completion in
 				switch completion {

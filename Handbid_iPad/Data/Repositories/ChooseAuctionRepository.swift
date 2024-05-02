@@ -7,7 +7,7 @@ import NetworkService
 
 protocol ChooseAuctionRepository {
 	// func fetchUserAuctionInventory(auctionId: Int) -> AnyPublisher<AuctionModel, Error>
-	func fetchUserAuctions() -> AnyPublisher<[AuctionModel], Error>
+	func fetchUserAuctions(status: [AuctionStateStatuses]) -> AnyPublisher<[AuctionModel], Error>
 }
 
 class ChooseAuctionRepositoryImpl: ChooseAuctionRepository, NetworkingService {
@@ -25,8 +25,9 @@ class ChooseAuctionRepositoryImpl: ChooseAuctionRepository, NetworkingService {
 			.eraseToAnyPublisher()
 	}
 
-	func fetchUserAuctions() -> AnyPublisher<[AuctionModel], Error> {
-		get(ApiEndpoints.getAuctionsUser, params: ["agent": "bidpad"])
+	func fetchUserAuctions(status: [AuctionStateStatuses]) -> AnyPublisher<[AuctionModel], Error> {
+		let statusString = status.map(\.rawValue).joined(separator: ",")
+		return get(ApiEndpoints.getAuctionsUser, params: ["agent": "bidpad", "status": statusString])
 			.tryMap { try AuctionModel.decodeArray($0) }
 			.receive(on: DispatchQueue.global(qos: .background))
 			.eraseToAnyPublisher()
