@@ -18,6 +18,7 @@ public enum EnvironmentManager {
 		if !defaults.synchronize() {
 			print("Error: Unable to synchronize UserDefaults.")
 		}
+		resetNetworkClient()
 	}
 
 	public static func setEnvironment(for environment: AppEnvironmentType) {
@@ -86,5 +87,9 @@ public enum EnvironmentManager {
 		}
 
 		return .prod
+	}
+
+	private static func resetNetworkClient() {
+		NetworkingClient.shared = NetworkingClient(baseURL: getCurrentBaseURL())
 	}
 }

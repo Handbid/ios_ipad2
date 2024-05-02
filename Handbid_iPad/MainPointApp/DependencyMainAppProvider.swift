@@ -5,7 +5,10 @@ import NetworkService
 class DependencyMainAppProvider {
 	static let shared = DependencyMainAppProvider()
 
-	let networkClient = NetworkingClient()
+	var networkClient: NetworkingClient {
+		NetworkingClient.shared
+	}
+
 	let authManager = AuthManager()
 
 	private init() {}

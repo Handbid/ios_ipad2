@@ -1,5 +1,6 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
+import NetworkService
 import SwiftUI
 
 @main
@@ -22,7 +23,7 @@ struct MainAppCoordinator: App {
 				let viewModel = LogInViewModel(repository: repository, authManager: deps.authManager)
 				return AnyView(LogInView<RegistrationPage>(viewModel: viewModel))
 			case .chooseEnvironment:
-				return AnyView(ChooseEnvironmentView<RegistrationPage>(viewModel: ChooseEnvironmentViewModel()))
+				return AnyView(ChooseEnvironmentView<RegistrationPage>(viewModel: ChooseEnvironmentViewModel(deps.networkClient)))
 			case .forgotPassword:
 				let repository = ResetPasswordRepositoryImpl(deps.networkClient)
 				let viewModel = ForgotPasswordViewModel(repository: repository)
