@@ -7,8 +7,8 @@ struct MainContainer<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@State private var isSidebarVisible: Bool = DeviceConfigurator.isSidebarAlwaysVisible
 	@State private var selectedView: MainContainerTypeView
-	@StateObject private var deviceContext = DeviceContext()
 	@StateObject private var authManager = AuthManager()
+	private var deviceContext = DeviceContext()
 
 	private let auctionViewModel: AuctionViewModel
 	private let paddleViewModel: PaddleViewModel
@@ -23,7 +23,7 @@ struct MainContainer<T: PageProtocol>: View {
 
 	var body: some View {
 		VStack(spacing: 0) {
-			TopBar(content: topBarContent(for: selectedView))
+			TopBar(content: topBarContent(for: selectedView), barHeight: 60)
 			GeometryReader { geometry in
 				if deviceContext.isPhone {
 					phoneView(geometry: geometry)
@@ -33,6 +33,7 @@ struct MainContainer<T: PageProtocol>: View {
 				}
 			}
 		}
+		.navigationBarBackButtonHidden()
 	}
 
 	@ViewBuilder

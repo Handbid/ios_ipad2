@@ -7,8 +7,7 @@ struct AuctionTopBarCenterView: View {
 	var status: String
 	var date: TimeInterval
 	var countItems: Int
-
-	@ObservedObject var deviceContext = DeviceContext()
+	var deviceContext = DeviceContext()
 
 	var body: some View {
 		VStack(alignment: .center, spacing: 2) {

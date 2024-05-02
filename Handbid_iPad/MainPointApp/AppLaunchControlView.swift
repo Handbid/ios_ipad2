@@ -21,7 +21,7 @@ struct AppLaunchControlView: View {
 			}
 			else {
 				if isValidToken {
-					MainContainer<RegistrationPage>(selectedView: .auction)
+					RootPageView(page: MainContainerPage.chooseOrganization)
 						.environmentObject(viewFactory)
 						.environmentObject(dataServiceWrapper)
 				}

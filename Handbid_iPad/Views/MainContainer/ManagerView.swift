@@ -1,8 +1,9 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
+import Combine
 import SwiftUI
 
-struct ManagerView: ContentView {
+struct ManagerView: View {
 	@ObservedObject var viewModel: ManagerViewModel
 
 	init(viewModel: ManagerViewModel) {
