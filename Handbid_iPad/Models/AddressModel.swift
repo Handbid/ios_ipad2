@@ -5,7 +5,10 @@ import NetworkService
 
 struct AddressModel: Decodable, NetworkingJSONDecodable {
 	var street: String?
+	var street1: String?
+	var street2: String?
 	var city: String?
+	var province: String?
 	var state: String?
 	var postalCode: String?
 	var country: String?
@@ -14,7 +17,10 @@ struct AddressModel: Decodable, NetworkingJSONDecodable {
 extension AddressModel: ArrowParsable {
 	mutating func deserialize(_ json: JSON) {
 		street <-- json["street"]
+		street1 <-- json["street1"]
+		street2 <-- json["street2"]
 		city <-- json["city"]
+		province <-- json["province"]
 		state <-- json["state"]
 		postalCode <-- json["postalCode"]
 		country <-- json["country"]

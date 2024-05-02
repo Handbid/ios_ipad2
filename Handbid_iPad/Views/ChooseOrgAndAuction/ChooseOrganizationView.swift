@@ -26,6 +26,7 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 			DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
 				contentLoaded = true
 			}
+			viewModel.fetchOrganizationsIfNeeded()
 		}
 		.background {
 			backgroundView(for: .color(colorScheme == .dark ? Color.black.opacity(0.7) : Color.accentViolet.opacity(0.7)))
@@ -106,7 +107,7 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 		VStack(spacing: 10) {
 			Button<Text>.styled(config: .secondaryButtonStyle, isDisabled: $isButtonDisabled, action: {
 				isBlurred = true
-				coordinator.push(MainContainerPage.chooseAuction as! T)
+				coordinator.push(MainContainerPage.chooseAuction as! T, with: viewModel.selectedOrganization)
 			}) {
 				Text(LocalizedStringKey("chooseOrg_btn_selectOrg"))
 					.textCase(.uppercase)

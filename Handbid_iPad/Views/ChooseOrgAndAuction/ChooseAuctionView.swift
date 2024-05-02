@@ -19,6 +19,7 @@ struct ChooseAuctionView<T: PageProtocol>: View {
 	private let cellHeight: CGFloat = 370
 
 	var body: some View {
+		var model = coordinator.model as? OrganizationModel
 		GeometryReader { geometry in
 			let columns = createGridItems(width: geometry.size.width, targetWidth: cellWidth)
 
