@@ -3,7 +3,7 @@
 import Combine
 import SwiftUI
 
-struct GenericTopBarContentFactory<ViewModel: ViewModelTopBarProtocol>: TopBarContentFactory {
+struct GenericTopBarContentFactory<ViewModel: ViewModelTopBarProtocol> {
 	var viewModel: ViewModel
 	var deviceContext: DeviceContext
 
@@ -12,16 +12,11 @@ struct GenericTopBarContentFactory<ViewModel: ViewModelTopBarProtocol>: TopBarCo
 		self.deviceContext = deviceContext
 	}
 
-	func createTopBarContent(isSidebarVisible: Binding<Bool>) -> TopBarContent {
-		if deviceContext.isPhone {
-			GenericTopBarContent(isSidebarVisible: isSidebarVisible, viewModel: viewModel)
-		}
-		else {
-			GenericTopBarContent(isSidebarVisible: .constant(true), viewModel: viewModel, logo: Image("menuLogoIcon"))
-		}
+	func createTopBarContent(isSidebarVisible: Binding<Bool>) -> some View {
+		GenericTopBarContent(isSidebarVisible: isSidebarVisible, logoIsVisible: false, viewModel: viewModel)
 	}
 
-	func createTopBarContentWithoutLogo() -> TopBarContent {
+	func createTopBarContentWithoutLogo() -> some View {
 		GenericTopBarContent(isSidebarVisible: .constant(true), logoIsVisible: false, viewModel: viewModel)
 	}
 }

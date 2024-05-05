@@ -19,13 +19,11 @@ struct ChooseAuctionView<T: PageProtocol>: View {
 	private let cellHeight: CGFloat = 370
 
 	var body: some View {
-		var model = coordinator.model as? OrganizationModel
 		GeometryReader { geometry in
 			let columns = createGridItems(width: geometry.size.width, targetWidth: cellWidth)
 
 			VStack(spacing: 0) {
-				TopBar(content: topBarContent(for: selectedView), barHeight: 60)
-
+				topBarContent(for: selectedView)
 				GeometryReader { geometry in
 					ScrollView(.horizontal, showsIndicators: false) {
 						HStack(alignment: .center) {
@@ -65,6 +63,9 @@ struct ChooseAuctionView<T: PageProtocol>: View {
 				Spacer()
 			}
 		}
+		.onAppear {
+			viewModel.organization = coordinator.model as? OrganizationModel
+		}
 		.onChange(of: $viewModel.backToPreviewViewPressed.wrappedValue) { _, newValue in
 			if newValue {
 				coordinator.popToRoot()
@@ -78,7 +79,7 @@ struct ChooseAuctionView<T: PageProtocol>: View {
 		return Array(repeating: GridItem(.fixed(targetWidth), spacing: 20), count: numberOfColumns)
 	}
 
-	private func topBarContent(for viewType: SelectAuctionContainerTypeView) -> TopBarContent {
+	private func topBarContent(for viewType: SelectAuctionContainerTypeView) -> some View {
 		switch viewType {
 		case .selectAuction:
 			GenericTopBarContentFactory(viewModel: viewModel, deviceContext: deviceContext).createTopBarContentWithoutLogo()
