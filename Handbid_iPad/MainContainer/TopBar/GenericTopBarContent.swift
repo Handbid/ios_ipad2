@@ -2,11 +2,35 @@
 
 import SwiftUI
 
-struct GenericTopBarContent<ViewModel: ViewModelTopBarProtocol>: TopBarContent {
+struct GenericTopBarContent<ViewModel: ViewModelTopBarProtocol>: View {
 	@Binding var isSidebarVisible: Bool
 	var logoIsVisible: Bool? = true
-	var viewModel: ViewModel
+	@ObservedObject var viewModel: ViewModel
 	var logo: Image?
+
+	var body: some View { // This is necessary for conforming to View
+		HStack {
+			ForEach(leftViews.indices, id: \.self) { index in
+				leftViews[index]
+			}
+
+			Spacer()
+
+			centerView
+
+			Spacer()
+
+			HStack {
+				ForEach(rightViews.indices, id: \.self) { index in
+					rightViews[index]
+				}
+			}
+		}
+		.padding()
+		.frame(height: 60) // or any appropriate height
+		.background(Color(.systemBackground)) // appropriate background color
+		.foregroundColor(.primary)
+	}
 
 	var leftViews: [AnyView] {
 		if let logo {

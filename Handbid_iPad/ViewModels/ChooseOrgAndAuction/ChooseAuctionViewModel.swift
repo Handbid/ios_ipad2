@@ -9,12 +9,24 @@ class ChooseAuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 	var buttonViewModels: [AuctionStateStatuses: AuctionFilterButtonViewModel] = AuctionStateStatuses.allCases.reduce(into: [:]) { $0[$1] = AuctionFilterButtonViewModel() }
 	@Published var filteredAuctions: [AuctionModel] = []
 	@Published var auctions: [AuctionModel] = []
-	@Published var organization: OrganizationModel = .init()
+	@Published var organization: OrganizationModel? {
+		didSet {
+			updateCenterViewData()
+		}
+	}
+
+	@Published var centerViewData: TopBarCenterViewData
 	@Published var backToPreviewViewPressed: Bool = false
 	private var cancellables = Set<AnyCancellable>()
 
-	init(repository: ChooseAuctionRepository) {
+	init(repository: ChooseAuctionRepository, organization: OrganizationModel? = nil) {
 		self.repository = repository
+		self.organization = organization
+		self.centerViewData = TopBarCenterViewData(
+			type: .custom,
+			customView: AnyView(SelectAuctionTopBarCenterView(title: organization?.name ?? "",
+			                                                  countAuctions: organization?.totalAuctions ?? 0))
+		)
 		setupInitialSelection()
 		setupButtonBindings()
 		fetchUserAuctions()
@@ -87,11 +99,11 @@ class ChooseAuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 		}
 	}
 
-	var centerViewData: TopBarCenterViewData {
-		TopBarCenterViewData(
+	func updateCenterViewData() {
+		centerViewData = TopBarCenterViewData(
 			type: .custom,
-			customView: AnyView(SelectAuctionTopBarCenterView(title: "org name",
-			                                                  countAuctions: 10))
+			customView: AnyView(SelectAuctionTopBarCenterView(title: organization?.name ?? "",
+			                                                  countAuctions: organization?.totalAuctions ?? 0))
 		)
 	}
 

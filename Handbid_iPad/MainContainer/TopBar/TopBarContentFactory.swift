@@ -10,6 +10,6 @@ protocol TopBarContentFactory {
 
 extension TopBarContentFactory {
 	func createTopBarContent(isSidebarVisible: Binding<Bool>) -> TopBarContent {
-		GenericTopBarContent(isSidebarVisible: isSidebarVisible, viewModel: viewModel)
+		GenericTopBarContent(isSidebarVisible: isSidebarVisible, viewModel: viewModel) as! TopBarContent
 	}
 }
