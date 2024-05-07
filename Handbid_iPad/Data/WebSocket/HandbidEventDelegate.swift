@@ -77,7 +77,54 @@ class HandbidEventDelegate: EventDelegate {
 			registerToUserChannel(client: client)
 			registerToAuctionChannel(client: client)
 		default:
-			logger?.log("received: \(message)")
+			parseEvent(message: message)
+		}
+	}
+
+	private func parseEvent(message: String) {
+		let regex = /client:\d+\+\[.*.\d+\]/
+		if (try? regex.firstMatch(in: message)) != nil {
+			logger?.log("Ignoring message: \(message)")
+		}
+		else {
+			if let jsonString = message[message.firstIndex(of: "{")!...].data(using: .utf8) {
+				do {
+					let json = try JSONSerialization
+						.jsonObject(with: jsonString) as! [String: Any]
+
+					if json.keys.contains(where: { $0 == "name" }),
+					   json.keys.contains(where: { $0 == "args" })
+					{
+						let name = json["name"]! as! String
+						let data = name.split(separator: ":")
+
+						if data.count >= 3 {
+							let room = data[1]
+							let eventId = String(data[2])
+
+							if !room.isEmpty, !eventId.isEmpty {
+								if eventId == "system" {
+									logger?.log("Ignoring node of type system: \(name)")
+								}
+								else {
+									let argsData = (json["args"]! as! String).data(using: .utf8)!
+									let args = try JSONSerialization.jsonObject(with: argsData) as? [Data] ?? []
+									if let eventType = Processor(rawValue: eventId) {
+										let processor = ProcessorFactory(type: eventType).build()
+										processor.process(data: args[0])
+									}
+									else {
+										logger?.log("Ignoring event of type \(eventId)")
+									}
+								}
+							}
+						}
+					}
+				}
+				catch {
+					logger?.error("\(error.localizedDescription)")
+				}
+			}
 		}
 	}
 
