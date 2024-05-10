@@ -2,13 +2,14 @@
 
 import Arrow
 import NetworkService
+import SwiftData
 
 struct OrganizationModel: Decodable, NetworkingJSONDecodable {
-	var id: Int?
+	@Attribute(.unique) var id: Int?
 	var organizationGuid: String?
 	var key: String?
 	var name: String?
-	var description: String?
+	var organizationDescription: String?
 	var organizationPhone: String?
 	var ein: String?
 	var contactName: String?
@@ -39,12 +40,52 @@ struct OrganizationModel: Decodable, NetworkingJSONDecodable {
 }
 
 extension OrganizationModel: ArrowParsable {
+	enum CodingKeys: String, CodingKey {
+		case id, organizationGuid, key, name, organizationDescription = "description", organizationPhone, ein, contactName, email, website, isPublic, totalAuctions, activeAuctions, logo, banner, socialFacebook, socialGoogle, socialTwitter, socialPinterest, socialLinkedin, businessType, classification, provinceCode, organizationAddressStreet1, organizationAddressStreet2, organizationAddressCity, organizationAddressPostalCode, organizationAddressProvince, organizationAddressCountry, organizationAddressProvinceId, organizationAddressCountryId, organizationImages
+	}
+
+//	init(from decoder: Decoder) throws {
+//		let container = try decoder.container(keyedBy: CodingKeys.self)
+//		self.id = try container.decodeIfPresent(Int.self, forKey: .id)
+//		self.organizationGuid = try container.decodeIfPresent(String.self, forKey: .organizationGuid)
+//		self.key = try container.decodeIfPresent(String.self, forKey: .key)
+//		self.name = try container.decodeIfPresent(String.self, forKey: .name)
+//		self.organizationDescription = try container.decodeIfPresent(String.self, forKey: .organizationDescription)
+//		self.organizationPhone = try container.decodeIfPresent(String.self, forKey: .organizationPhone)
+//		self.ein = try container.decodeIfPresent(String.self, forKey: .ein)
+//		self.contactName = try container.decodeIfPresent(String.self, forKey: .contactName)
+//		self.email = try container.decodeIfPresent(String.self, forKey: .email)
+//		self.website = try container.decodeIfPresent(String.self, forKey: .website)
+//		self.isPublic = try container.decodeIfPresent(Int.self, forKey: .isPublic)
+//		self.totalAuctions = try container.decodeIfPresent(Int.self, forKey: .totalAuctions)
+//		self.activeAuctions = try container.decodeIfPresent(Int.self, forKey: .activeAuctions)
+//		self.logo = try container.decodeIfPresent(String.self, forKey: .logo)
+//		self.banner = try container.decodeIfPresent(String.self, forKey: .banner)
+//		self.socialFacebook = try container.decodeIfPresent(String.self, forKey: .socialFacebook)
+//		self.socialGoogle = try container.decodeIfPresent(String.self, forKey: .socialGoogle)
+//		self.socialTwitter = try container.decodeIfPresent(String.self, forKey: .socialTwitter)
+//		self.socialPinterest = try container.decodeIfPresent(String.self, forKey: .socialPinterest)
+//		self.socialLinkedin = try container.decodeIfPresent(String.self, forKey: .socialLinkedin)
+//		self.businessType = try container.decodeIfPresent(String.self, forKey: .businessType)
+//		self.classification = try container.decodeIfPresent(String.self, forKey: .classification)
+//		self.provinceCode = try container.decodeIfPresent(String.self, forKey: .provinceCode)
+//		self.organizationAddressStreet1 = try container.decodeIfPresent(String.self, forKey: .organizationAddressStreet1)
+//		self.organizationAddressStreet2 = try container.decodeIfPresent(String.self, forKey: .organizationAddressStreet2)
+//		self.organizationAddressCity = try container.decodeIfPresent(String.self, forKey: .organizationAddressCity)
+//		self.organizationAddressPostalCode = try container.decodeIfPresent(String.self, forKey: .organizationAddressPostalCode)
+//		self.organizationAddressProvince = try container.decodeIfPresent(String.self, forKey: .organizationAddressProvince)
+//		self.organizationAddressCountry = try container.decodeIfPresent(String.self, forKey: .organizationAddressCountry)
+//		self.organizationAddressProvinceId = try container.decodeIfPresent(Int.self, forKey: .organizationAddressProvinceId)
+//		self.organizationAddressCountryId = try container.decodeIfPresent(Int.self, forKey: .organizationAddressCountryId)
+//		self.organizationImages = try container.decodeIfPresent([OrganizationImageModel].self, forKey: .organizationImages)
+//	}
+
 	mutating func deserialize(_ json: JSON) {
 		id <-- json["id"]
 		organizationGuid <-- json["organizationGuid"]
 		key <-- json["key"]
 		name <-- json["name"]
-		description <-- json["description"]
+		organizationDescription <-- json["description"]
 		organizationPhone <-- json["organizationPhone"]
 		ein <-- json["ein"]
 		contactName <-- json["contactName"]
