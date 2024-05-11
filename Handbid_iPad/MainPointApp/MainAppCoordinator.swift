@@ -49,13 +49,13 @@ struct MainAppCoordinator: App {
 		})
 	}
 
-
 	var body: some Scene {
 		WindowGroup {
 			AppLaunchControlView()
 				.environmentObject(AuthManagerMainActor())
 				.environmentObject(registrationCoordinator)
 				.environmentObject(mainContainerCoordinator)
+                .environment(\.appServices, AppServices.shared)
 		}
 	}
 }
