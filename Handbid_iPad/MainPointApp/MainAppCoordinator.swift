@@ -49,6 +49,7 @@ struct MainAppCoordinator: App {
 		})
 	}
 
+
 	var body: some Scene {
 		WindowGroup {
 			AppLaunchControlView()
