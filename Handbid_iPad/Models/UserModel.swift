@@ -2,9 +2,10 @@
 
 import Arrow
 import NetworkService
+import SwiftData
 
-struct UserModel: Decodable, NetworkingJSONDecodable {
-	var id: Int?
+struct UserModel: Identifiable, Codable, NetworkingJSONDecodable {
+	@Attribute(.unique) var id: UUID
 	var pin: Int?
 	var usersGuid: String?
 	var stripeId: String?
@@ -36,6 +37,10 @@ struct UserModel: Decodable, NetworkingJSONDecodable {
 }
 
 extension UserModel: ArrowParsable {
+	init() {
+		self.id = UUID()
+	}
+
 	mutating func deserialize(_ json: JSON) {
 		id <-- json["id"]
 		pin <-- json["pin"]
@@ -75,5 +80,10 @@ extension UserModel: ArrowParsable {
 			card.deserialize(jsonItem)
 			return card
 		}
+	}
+
+	func encode(to encoder: Encoder) throws {
+		var container = encoder.container(keyedBy: CodingKeys.self)
+		try container.encode(id, forKey: .id)
 	}
 }

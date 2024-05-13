@@ -10,6 +10,7 @@ class ChooseOrganizationViewModel: ObservableObject {
 	@Published var organizations: [OrganizationModel] = []
 	@Published var filteredOrganizations: [OrganizationModel] = []
 	@Published var selectedOrganization: OrganizationModel?
+	// private let modelContext: ModelContext
 
 	init(repository: ChooseOrganizationRepository) {
 		self.repository = repository
@@ -23,40 +24,29 @@ class ChooseOrganizationViewModel: ObservableObject {
 
 	private func fetchOrganizations() {
 		repository.fetchUserOrganizations()
-			.receive(on: DispatchQueue.main)
 			.sink(receiveCompletion: { completion in
 				switch completion {
 				case .finished:
 					break
 				case let .failure(error):
-					if let netError = error as? NetworkingError {
-						print(netError)
-					}
+					print("Error fetching organizations: \(error)")
 				}
-			}, receiveValue: { user in
-				guard let orgs = user.organization else { return }
-				self.organizations = orgs
-				self.filteredOrganizations = self.filterOrganizations(with: self.searchOrganization)
+			}, receiveValue: { [weak self] user in
+				self?.organizations = user.organization ?? []
+				self?.filteredOrganizations = self?.filterOrganizations(with: self?.searchOrganization ?? "") ?? []
 			})
 			.store(in: &cancellables)
 	}
 
 	private func filterOrganizations(with searchText: String) -> [OrganizationModel] {
-		if searchText.isEmpty {
-			organizations
-		}
-		else {
-			organizations.filter { $0.name?.localizedCaseInsensitiveContains(searchText) == true }
-		}
+		searchText.isEmpty ? organizations : organizations.filter { $0.name?.localizedCaseInsensitiveContains(searchText) == true }
 	}
 
 	private func setupSubscriptions() {
 		$searchOrganization
 			.debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
 			.removeDuplicates()
-			.map { [unowned self] searchText in
-				filterOrganizations(with: searchText)
-			}
+			.map(filterOrganizations)
 			.assign(to: \.filteredOrganizations, on: self)
 			.store(in: &cancellables)
 	}
