@@ -36,18 +36,8 @@ class ChooseOrganizationViewModel: ObservableObject {
 			}, receiveValue: { user in
 				guard let orgs = user.organization else { return }
 				self.organizations = orgs
-				self.filteredOrganizations = orgs
+				self.filteredOrganizations = self.filterOrganizations(with: self.searchOrganization)
 			})
-			.store(in: &cancellables)
-	}
-
-	private func setupSubscriptions() {
-		$searchOrganization
-			.receive(on: RunLoop.main)
-			.map { [unowned self] searchText in
-				filterOrganizations(with: searchText)
-			}
-			.assign(to: \.filteredOrganizations, on: self)
 			.store(in: &cancellables)
 	}
 
@@ -56,12 +46,18 @@ class ChooseOrganizationViewModel: ObservableObject {
 			organizations
 		}
 		else {
-			organizations.filter {
-				if let name = $0.name {
-					return name.lowercased().contains(searchText.lowercased())
-				}
-				return false
-			}
+			organizations.filter { $0.name?.localizedCaseInsensitiveContains(searchText) == true }
 		}
+	}
+
+	private func setupSubscriptions() {
+		$searchOrganization
+			.debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
+			.removeDuplicates()
+			.map { [unowned self] searchText in
+				filterOrganizations(with: searchText)
+			}
+			.assign(to: \.filteredOrganizations, on: self)
+			.store(in: &cancellables)
 	}
 }

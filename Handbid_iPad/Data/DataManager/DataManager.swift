@@ -42,35 +42,32 @@ class ModelContext {
 	}
 }
 
-class AppServices {
-	static let shared = AppServices()
-
-	// Initialize all your data managers here
+class ServicesData {
+	static let shared = ServicesData()
 	let otherModelDataManager: DataManager<OtherModel> = AppDependencyContainer.shared.myModelDataManager
 
-	// Add more data managers as your model grows
-	// let anotherModelDataManager: DataManager<AnotherModel> = AppDependencyContainer.shared.anotherModelDataManager
-	// Continue adding managers...
+    let auctionModelDataManager: DataManager<OtherModel> = AppDependencyContainer.shared.myModelDataManager
 
-	// You could even automate this if all data managers are derived from a common base or interface
 }
 
 extension EnvironmentValues {
-	var appServices: AppServices {
+	var appServices: ServicesData {
 		get { self[AppServicesKey.self] }
 		set { self[AppServicesKey.self] = newValue }
 	}
 }
 
 private struct AppServicesKey: EnvironmentKey {
-	static let defaultValue: AppServices = .shared // Default to shared instance for simplicity
+	static let defaultValue: ServicesData = .shared
 }
 
 class AppDependencyContainer {
-	static let shared = AppDependencyContainer() // Singleton for easy global access
+	static let shared = AppDependencyContainer()
+	//let modelDataStore: InMemoryDataStore<OtherModel> = .init()
+    lazy var myModelDataManager: DataManager<OtherModel> = DataManager(dataStore: AnyDataStore(InMemoryDataStore<OtherModel>.init()))
 
-	let modelDataStore: InMemoryDataStore<OtherModel> = .init()
-	lazy var myModelDataManager: DataManager<OtherModel> = DataManager(dataStore: AnyDataStore(modelDataStore))
+    lazy var auctionModelDataManager: DataManager<AuctionModel> = DataManager(dataStore: AnyDataStore(InMemoryDataStore<AuctionModel>.init()))
+
 }
 
 class ModelContainer {

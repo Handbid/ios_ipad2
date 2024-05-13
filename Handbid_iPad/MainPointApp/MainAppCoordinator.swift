@@ -55,7 +55,7 @@ struct MainAppCoordinator: App {
 				.environmentObject(AuthManagerMainActor())
 				.environmentObject(registrationCoordinator)
 				.environmentObject(mainContainerCoordinator)
-                .environment(\.appServices, AppServices.shared)
+				.environment(\.appServices, ServicesData.shared)
 		}
 	}
 }

@@ -6,8 +6,7 @@ import SwiftUI
 struct ChooseOrganizationView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@ObservedObject private var viewModel: ChooseOrganizationViewModel
-    @Environment(\.appServices) var services: AppServices
-    @Environment(\.colorScheme) var colorScheme
+	@Environment(\.colorScheme) var colorScheme
 	@State private var isButtonDisabled = true
 	@State private var contentLoaded = false
 	@State private var isBlurred = false
