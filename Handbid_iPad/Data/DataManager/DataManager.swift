@@ -5,12 +5,6 @@ import Foundation
 import SwiftData
 import SwiftUI
 
-// Define a dummy OtherModel
-struct OtherModel: Identifiable, Codable {
-	var id: UUID // Make sure ID is non-optional UUID
-	// Additional properties
-}
-
 class ModelContext {
 	private var container: ModelContainer
 	var autosaveEnabled: Bool = true
@@ -42,32 +36,27 @@ class ModelContext {
 	}
 }
 
-class ServicesData {
-	static let shared = ServicesData()
-	let otherModelDataManager: DataManager<OtherModel> = AppDependencyContainer.shared.myModelDataManager
-
-    let auctionModelDataManager: DataManager<OtherModel> = AppDependencyContainer.shared.myModelDataManager
-
+class ServicesDataManager {
+	static let shared = ServicesDataManager()
+	let auctionModelDataManager: DataManager<AuctionModel> = DependencyServiceDataContainer.shared.auctionModelDataManager
+	let organizationModelDataManager: DataManager<OrganizationModel> = DependencyServiceDataContainer.shared.organizationModelDataManager
 }
 
 extension EnvironmentValues {
-	var appServices: ServicesData {
+	var appServices: ServicesDataManager {
 		get { self[AppServicesKey.self] }
 		set { self[AppServicesKey.self] = newValue }
 	}
 }
 
 private struct AppServicesKey: EnvironmentKey {
-	static let defaultValue: ServicesData = .shared
+	static let defaultValue: ServicesDataManager = .shared
 }
 
-class AppDependencyContainer {
-	static let shared = AppDependencyContainer()
-	//let modelDataStore: InMemoryDataStore<OtherModel> = .init()
-    lazy var myModelDataManager: DataManager<OtherModel> = DataManager(dataStore: AnyDataStore(InMemoryDataStore<OtherModel>.init()))
-
-    lazy var auctionModelDataManager: DataManager<AuctionModel> = DataManager(dataStore: AnyDataStore(InMemoryDataStore<AuctionModel>.init()))
-
+class DependencyServiceDataContainer {
+	static let shared = DependencyServiceDataContainer()
+	lazy var auctionModelDataManager: DataManager<AuctionModel> = DataManager(dataStore: AnyDataStore(InMemoryDataStore<AuctionModel>.init()))
+	lazy var organizationModelDataManager: DataManager<OrganizationModel> = DataManager(dataStore: AnyDataStore(InMemoryDataStore<OrganizationModel>.init()))
 }
 
 class ModelContainer {

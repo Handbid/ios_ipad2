@@ -4,8 +4,8 @@ import Arrow
 import NetworkService
 import SwiftData
 
-struct AuctionModel: Decodable, NetworkingJSONDecodable {
-	@Attribute(.unique) var id: Int?
+struct AuctionModel: Identifiable, Codable, NetworkingJSONDecodable {
+	@Attribute(.unique) var id: UUID
 	var key: String?
 	var imageUrl: String?
 	var auctionGuid: String?
@@ -122,6 +122,10 @@ struct AuctionModel: Decodable, NetworkingJSONDecodable {
 }
 
 extension AuctionModel: ArrowParsable {
+	init() {
+		self.id = UUID()
+	}
+
 	enum CodingKeys: String, CodingKey {
 		case id, key, imageUrl, auctionGuid, name, status, timeZone, startTime, endTime, hasExtendedBidding,
 		     extendedBiddingTimeoutInMinutes, requireCreditCard, spendingThreshold, auctionDescription = "description",
@@ -140,133 +144,6 @@ extension AuctionModel: ArrowParsable {
 		     organizationEmail, onSiteCustomLabel, offSiteCustomLabel, templateCustomTerms, landingPage, socialImage, donationTicketImage,
 		     enableLandingPage, isPrivateEvent, organizationName, auctionAddressStreet1, auctionAddressStreet2, auctionAddressPostalCode,
 		     auctionAddressCity, auctionAddressProvince, count
-	}
-
-	init(from decoder: Decoder) throws {
-		let container = try decoder.container(keyedBy: CodingKeys.self)
-		self.id = try container.decodeIfPresent(Int.self, forKey: .id)
-		self.key = try container.decodeIfPresent(String.self, forKey: .key)
-		self.imageUrl = try container.decodeIfPresent(String.self, forKey: .imageUrl)
-		self.auctionGuid = try container.decodeIfPresent(String.self, forKey: .auctionGuid)
-		self.name = try container.decodeIfPresent(String.self, forKey: .name)
-		self.status = try container.decodeIfPresent(String.self, forKey: .status)
-		self.timeZone = try container.decodeIfPresent(String.self, forKey: .timeZone)
-		self.startTime = try container.decodeIfPresent(Int.self, forKey: .startTime)
-		self.endTime = try container.decodeIfPresent(Int.self, forKey: .endTime)
-		self.hasExtendedBidding = try container.decodeIfPresent(Bool.self, forKey: .hasExtendedBidding)
-		self.extendedBiddingTimeoutInMinutes = try container.decodeIfPresent(Int.self, forKey: .extendedBiddingTimeoutInMinutes)
-		self.requireCreditCard = try container.decodeIfPresent(Bool.self, forKey: .requireCreditCard)
-		self.spendingThreshold = try container.decodeIfPresent(Double.self, forKey: .spendingThreshold)
-		self.auctionDescription = try container.decodeIfPresent(String.self, forKey: .auctionDescription)
-		self.auctionMessage = try container.decodeIfPresent(String.self, forKey: .auctionMessage)
-		self.currentPaddleNumber = try container.decodeIfPresent(String.self, forKey: .currentPaddleNumber)
-		self.timerStartTime = try container.decodeIfPresent(Int.self, forKey: .timerStartTime)
-		self.timerEndTime = try container.decodeIfPresent(Int.self, forKey: .timerEndTime)
-		self.timerRemaining = try container.decodeIfPresent(Int.self, forKey: .timerRemaining)
-		self.currencyCode = try container.decodeIfPresent(String.self, forKey: .currencyCode)
-		self.currencySymbol = try container.decodeIfPresent(String.self, forKey: .currencySymbol)
-		self.totalBidders = try container.decodeIfPresent(Int.self, forKey: .totalBidders)
-		self.totalItems = try container.decodeIfPresent(Int.self, forKey: .totalItems)
-		self.enableTicketSales = try container.decodeIfPresent(Bool.self, forKey: .enableTicketSales)
-		self.organization = try container.decodeIfPresent([OrganizationModel].self, forKey: .organization)
-		self.categories = try container.decodeIfPresent([CategoryModel].self, forKey: .categories)
-		self.vanityAddress = try container.decodeIfPresent(String.self, forKey: .vanityAddress)
-		self.auctionAddress = try container.decodeIfPresent([AddressModel].self, forKey: .auctionAddress)
-		self.enableCreditCardSupport = try container.decodeIfPresent(Bool.self, forKey: .enableCreditCardSupport)
-		self.enableCustomDonations = try container.decodeIfPresent(Bool.self, forKey: .enableCustomDonations)
-		self.enableDoubleDonation = try container.decodeIfPresent(Bool.self, forKey: .enableDoubleDonation)
-		self.about = try container.decodeIfPresent([AboutModel].self, forKey: .about)
-		self.taxRate = try container.decodeIfPresent(Double.self, forKey: .taxRate)
-		self.taxLabel = try container.decodeIfPresent(String.self, forKey: .taxLabel)
-		self.lat = try container.decodeIfPresent(String.self, forKey: .lat)
-		self.lng = try container.decodeIfPresent(String.self, forKey: .lng)
-		self.itemsSort = try container.decodeIfPresent(Int.self, forKey: .itemsSort)
-		self.attire = try container.decodeIfPresent(String.self, forKey: .attire)
-		self.gatewayId = try container.decodeIfPresent(Int.self, forKey: .gatewayId)
-		self.extraGateways = try container.decodeIfPresent([Int].self, forKey: .extraGateways)
-		self.requireTicketsToRegister = try container.decodeIfPresent(Bool.self, forKey: .requireTicketsToRegister)
-		self.requireTicketForOwners = try container.decodeIfPresent(Bool.self, forKey: .requireTicketForOwners)
-		self.maxPaddleNumber = try container.decodeIfPresent(Int.self, forKey: .maxPaddleNumber)
-		self.hasPuzzle = try container.decodeIfPresent(Bool.self, forKey: .hasPuzzle)
-		self.applicationFee = try container.decodeIfPresent(Double.self, forKey: .applicationFee)
-		self.amexFee = try container.decodeIfPresent(Double.self, forKey: .amexFee)
-		self.txnFee = try container.decodeIfPresent(Double.self, forKey: .txnFee)
-		self.isFundraiser = try container.decodeIfPresent(Bool.self, forKey: .isFundraiser)
-		self.isPrivate = try container.decodeIfPresent(Bool.self, forKey: .isPrivate)
-		self.isVirtual = try container.decodeIfPresent(Bool.self, forKey: .isVirtual)
-		self.allowTeamCreation = try container.decodeIfPresent(Bool.self, forKey: .allowTeamCreation)
-		self.goal = try container.decodeIfPresent(Double.self, forKey: .goal)
-		self.showGoals = try container.decodeIfPresent(Bool.self, forKey: .showGoals)
-		self.eventRevenue = try container.decodeIfPresent(Double.self, forKey: .eventRevenue)
-		self.donationLevels = try container.decodeIfPresent([Double].self, forKey: .donationLevels)
-		self.enableMinimumDonationAmount = try container.decodeIfPresent(Bool.self, forKey: .enableMinimumDonationAmount)
-		self.minimumDonationAmount = try container.decodeIfPresent(Double.self, forKey: .minimumDonationAmount)
-		self.donationTax = try container.decodeIfPresent(String.self, forKey: .donationTax)
-		self.enableOfflineDonations = try container.decodeIfPresent(Bool.self, forKey: .enableOfflineDonations)
-		self.offlineDonationsUpdateThermometer = try container.decodeIfPresent(Bool.self, forKey: .offlineDonationsUpdateThermometer)
-		self.bigDonationsNotifications = try container.decodeIfPresent(Bool.self, forKey: .bigDonationsNotifications)
-		self.bigDonationsAmount = try container.decodeIfPresent(Double.self, forKey: .bigDonationsAmount)
-		self.defaultPageGoal = try container.decodeIfPresent(Double.self, forKey: .defaultPageGoal)
-		self.enablePromptPurchaseCoverCC = try container.decodeIfPresent(Bool.self, forKey: .enablePromptPurchaseCoverCC)
-		self.enablePromptPurchaseCoverCCByDefault = try container.decodeIfPresent(Bool.self, forKey: .enablePromptPurchaseCoverCCByDefault)
-		self.allowPledgeDonations = try container.decodeIfPresent(Bool.self, forKey: .allowPledgeDonations)
-		self.allowRecurringDonations = try container.decodeIfPresent(Bool.self, forKey: .allowRecurringDonations)
-		self.enableCustomPaddles = try container.decodeIfPresent(Bool.self, forKey: .enableCustomPaddles)
-		self.paddleAutoAssignStartingNumber = try container.decodeIfPresent(Int.self, forKey: .paddleAutoAssignStartingNumber)
-		self.streamStatus = try container.decodeIfPresent(String.self, forKey: .streamStatus)
-		self.streamProvider = try container.decodeIfPresent(String.self, forKey: .streamProvider)
-		self.streamDateStart = try container.decodeIfPresent(Int.self, forKey: .streamDateStart)
-		self.streamDateCompleted = try container.decodeIfPresent(Int.self, forKey: .streamDateCompleted)
-		self.streamUrl = try container.decodeIfPresent(String.self, forKey: .streamUrl)
-		self.streamSponsorText = try container.decodeIfPresent(String.self, forKey: .streamSponsorText)
-		self.streamSponsorImage = try container.decodeIfPresent(String.self, forKey: .streamSponsorImage)
-		self.goalAppeal = try container.decodeIfPresent(Double.self, forKey: .goalAppeal)
-		self.goalTicket = try container.decodeIfPresent(Double.self, forKey: .goalTicket)
-		self.revenueAppeal = try container.decodeIfPresent(Double.self, forKey: .revenueAppeal)
-		self.revenueTicket = try container.decodeIfPresent(Double.self, forKey: .revenueTicket)
-		self.bidderAddItems = try container.decodeIfPresent(Bool.self, forKey: .bidderAddItems)
-		self.requireTicketToBid = try container.decodeIfPresent(Bool.self, forKey: .requireTicketToBid)
-		self.isNonAuctionEvent = try container.decodeIfPresent(Bool.self, forKey: .isNonAuctionEvent)
-		self.promotedDonationBlock = try container.decodeIfPresent(Bool.self, forKey: .promotedDonationBlock)
-		self.allowMonthlyDonations = try container.decodeIfPresent(Bool.self, forKey: .allowMonthlyDonations)
-		self.allowQuarterlyDonations = try container.decodeIfPresent(Bool.self, forKey: .allowQuarterlyDonations)
-		self.allowAnnuallyDonations = try container.decodeIfPresent(Bool.self, forKey: .allowAnnuallyDonations)
-		self.defaultDonationFrequency = try container.decodeIfPresent(Int.self, forKey: .defaultDonationFrequency)
-		self.minDonationDurationAllowed = try container.decodeIfPresent(Int.self, forKey: .minDonationDurationAllowed)
-		self.maxDonationDurationAllowed = try container.decodeIfPresent(Int.self, forKey: .maxDonationDurationAllowed)
-		self.enableChat = try container.decodeIfPresent(Bool.self, forKey: .enableChat)
-		self.bidder = try container.decodeIfPresent(BidderModel.self, forKey: .bidder)
-		self.tickets = try container.decodeIfPresent([TicketModel].self, forKey: .tickets)
-		self.puzzles = try container.decodeIfPresent([PuzzleModel].self, forKey: .puzzles)
-		self.promotedItem = try container.decodeIfPresent([PromotedItemModel].self, forKey: .promotedItem)
-		self.promotedPoll = try container.decodeIfPresent([PromotedPollModel].self, forKey: .promotedPoll)
-		self.facebookPixel = try container.decodeIfPresent(String.self, forKey: .facebookPixel)
-		self.dtdPublicKey = try container.decodeIfPresent(String.self, forKey: .dtdPublicKey)
-		self.organizationEmail = try container.decodeIfPresent(String.self, forKey: .organizationEmail)
-		self.onSiteCustomLabel = try container.decodeIfPresent(String.self, forKey: .onSiteCustomLabel)
-		self.offSiteCustomLabel = try container.decodeIfPresent(String.self, forKey: .offSiteCustomLabel)
-		self.templateCustomTerms = try container.decodeIfPresent(String.self, forKey: .templateCustomTerms)
-		self.socialImage = try container.decodeIfPresent(String.self, forKey: .socialImage)
-		self.donationTicketImage = try container.decodeIfPresent(String.self, forKey: .donationTicketImage)
-		self.enableLandingPage = try container.decodeIfPresent(Bool.self, forKey: .enableLandingPage)
-		self.isPrivateEvent = try container.decodeIfPresent(Bool.self, forKey: .isPrivateEvent)
-		self.bidder = try container.decodeIfPresent(BidderModel.self, forKey: .bidder)
-		self.organizationName = try container.decodeIfPresent(String.self, forKey: .organizationName)
-		self.auctionAddressStreet1 = try container.decodeIfPresent(String.self, forKey: .auctionAddressStreet1)
-		self.auctionAddressStreet2 = try container.decodeIfPresent(String.self, forKey: .auctionAddressStreet2)
-		self.auctionAddressPostalCode = try container.decodeIfPresent(String.self, forKey: .auctionAddressPostalCode)
-		self.auctionAddressCity = try container.decodeIfPresent(String.self, forKey: .auctionAddressCity)
-		self.auctionAddressProvince = try container.decodeIfPresent(String.self, forKey: .auctionAddressProvince)
-		self.count = try container.decodeIfPresent(Int.self, forKey: .count)
-		self.landingPage = try container.decodeIfPresent([LandingPageModel].self, forKey: .landingPage)
-		self.auctionAddress = try container.decodeIfPresent([AddressModel].self, forKey: .auctionAddress)
-		self.about = try container.decodeIfPresent([AboutModel].self, forKey: .about)
-		self.tickets = try container.decodeIfPresent([TicketModel].self, forKey: .tickets)
-		self.puzzles = try container.decodeIfPresent([PuzzleModel].self, forKey: .puzzles)
-		self.promotedItem = try container.decodeIfPresent([PromotedItemModel].self, forKey: .promotedItem)
-		self.promotedPoll = try container.decodeIfPresent([PromotedPollModel].self, forKey: .promotedPoll)
-		self.organization = try container.decodeIfPresent([OrganizationModel].self, forKey: .organization)
-		self.categories = try container.decodeIfPresent([CategoryModel].self, forKey: .categories)
 	}
 
 	mutating func deserialize(_ json: JSON) {
@@ -431,5 +308,10 @@ extension AuctionModel: ArrowParsable {
 			categories.deserialize(jsonItem)
 			return categories
 		}
+	}
+
+	func encode(to encoder: Encoder) throws {
+		var container = encoder.container(keyedBy: CodingKeys.self)
+		try container.encode(id, forKey: .id)
 	}
 }
