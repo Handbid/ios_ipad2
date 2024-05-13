@@ -17,29 +17,31 @@ class ModelContext {
 		container.fetch(id: id)
 	}
 
-	func save(_ item: some Identifiable & Codable) throws {
+	func save(_ entity: some Identifiable & Codable) throws {
 		if autosaveEnabled {
-			try container.save(item)
+			try container.save(entity)
 		}
 	}
 
-	func update(_ item: some Identifiable & Codable) throws {
+	func update(_ entity: some Identifiable & Codable) throws {
 		if autosaveEnabled {
-			try container.update(item)
+			try container.update(entity)
 		}
 	}
 
-	func delete(item: some Identifiable & Codable) throws {
+	func delete(_ entity: some Identifiable & Codable) throws {
 		if autosaveEnabled {
-			try container.delete(item)
+			try container.delete(entity: entity)
 		}
 	}
 }
 
+// MARK: - Services Data Manager for Models
+
 class ServicesDataManager {
 	static let shared = ServicesDataManager()
-	let auctionModelDataManager: DataManager<AuctionModel> = DependencyServiceDataContainer.shared.auctionModelDataManager
-	let organizationModelDataManager: DataManager<OrganizationModel> = DependencyServiceDataContainer.shared.organizationModelDataManager
+	let auctionDataManager: DataManager<AuctionModel> = DependencyServiceDataContainer.shared.auctionDataManager
+	let organizationDataManager: DataManager<OrganizationModel> = DependencyServiceDataContainer.shared.organizationDataManager
 }
 
 extension EnvironmentValues {
@@ -53,50 +55,54 @@ private struct AppServicesKey: EnvironmentKey {
 	static let defaultValue: ServicesDataManager = .shared
 }
 
+// MARK: - Dependency Service Data Container for Data Managers
+
 class DependencyServiceDataContainer {
 	static let shared = DependencyServiceDataContainer()
-	lazy var auctionModelDataManager: DataManager<AuctionModel> = DataManager(dataStore: AnyDataStore(InMemoryDataStore<AuctionModel>.init()))
-	lazy var organizationModelDataManager: DataManager<OrganizationModel> = DataManager(dataStore: AnyDataStore(InMemoryDataStore<OrganizationModel>.init()))
+	lazy var auctionDataManager: DataManager<AuctionModel> = DataManager(dataStore: AnyDataStore(InMemoryDataStore<AuctionModel>.init()))
+	lazy var organizationDataManager: DataManager<OrganizationModel> = DataManager(dataStore: AnyDataStore(InMemoryDataStore<OrganizationModel>.init()))
 }
 
+// MARK: - Model Container Handling Generic Entity Operations
+
 class ModelContainer {
-	private var items: [UUID: Any] = [:]
+	private var entities: [UUID: Any] = [:]
 
 	func fetch<T: Identifiable & Codable>(id: UUID) -> T? {
-		items[id] as? T
+		entities[id] as? T
 	}
 
-	func save(_ item: some Identifiable & Codable) throws {
-		guard let id = item.id as? UUID else {
-			throw NSError(domain: "ModelContainerError", code: 1, userInfo: [NSLocalizedDescriptionKey: "Invalid ID for item."])
+	func save(_ entity: some Identifiable & Codable) throws {
+		guard let id = entity.id as? UUID else {
+			throw NSError(domain: "ModelContainerError", code: 1, userInfo: [NSLocalizedDescriptionKey: "Invalid ID for entity."])
 		}
-		items[id] = item
+		entities[id] = entity
 	}
 
-	func delete(_ item: some Identifiable & Codable) throws {
-		guard let id = item.id as? UUID else {
-			throw NSError(domain: "ModelContainerError", code: 2, userInfo: [NSLocalizedDescriptionKey: "Invalid ID for item."])
+	func delete(entity: some Identifiable & Codable) throws {
+		guard let id = entity.id as? UUID else {
+			throw NSError(domain: "ModelContainerError", code: 2, userInfo: [NSLocalizedDescriptionKey: "Invalid ID for entity."])
 		}
-		items.removeValue(forKey: id)
+		entities.removeValue(forKey: id)
 	}
 
 	func loadAll<T: Identifiable & Codable>() -> [T] {
-		items.values.compactMap { $0 as? T }
+		entities.values.compactMap { $0 as? T }
 	}
 
-	func update(_ item: some Identifiable & Codable) throws {
-		guard let id = item.id as? UUID else {
-			throw NSError(domain: "ModelContainerError", code: 3, userInfo: [NSLocalizedDescriptionKey: "Invalid ID for item during update."])
+	func update(_ entity: some Identifiable & Codable) throws {
+		guard let id = entity.id as? UUID else {
+			throw NSError(domain: "ModelContainerError", code: 3, userInfo: [NSLocalizedDescriptionKey: "Invalid ID for entity during update."])
 		}
-		guard items.keys.contains(id) else {
-			throw NSError(domain: "ModelContainerError", code: 4, userInfo: [NSLocalizedDescriptionKey: "Item not found for update."])
+		guard entities.keys.contains(id) else {
+			throw NSError(domain: "ModelContainerError", code: 4, userInfo: [NSLocalizedDescriptionKey: "Entity not found for update."])
 		}
-		items[id] = item
+		entities[id] = entity
 	}
 
 	func filter<T: Identifiable & Codable>(_ predicate: NSPredicate) -> [T] {
-		let allItems = items.values.compactMap { $0 as? T }
-		return (allItems as NSArray).filtered(using: predicate) as! [T]
+		let allEntities = entities.values.compactMap { $0 as? T }
+		return (allEntities as NSArray).filtered(using: predicate) as! [T]
 	}
 
 	func execute<T: Identifiable & Codable>(query: Query<T>) -> [T] {
@@ -114,22 +120,22 @@ class ModelContainer {
 // MARK: - Data Store Protocol
 
 protocol DataStore {
-	associatedtype T: Identifiable & Codable where T.ID == UUID // Ensures that the ID must be a UUID
-	var updates: AnyPublisher<T, Never> { get }
-	func load(completion: @escaping (Result<[T], Error>) -> Void)
-	func save(item: T, completion: @escaping (Result<Void, Error>) -> Void)
-	func update(item: T, completion: @escaping (Result<Void, Error>) -> Void)
-	func delete(itemId: UUID, completion: @escaping (Result<Void, Error>) -> Void)
+	associatedtype Entity: Identifiable & Codable where Entity.ID == UUID
+	var updates: AnyPublisher<Entity, Never> { get }
+	func load(completion: @escaping (Result<[Entity], Error>) -> Void)
+	func save(entity: Entity, completion: @escaping (Result<Void, Error>) -> Void)
+	func update(entity: Entity, completion: @escaping (Result<Void, Error>) -> Void)
+	func delete(entityId: UUID, completion: @escaping (Result<Void, Error>) -> Void)
 }
 
-class AnyDataStore<T: Identifiable & Codable>: DataStore where T.ID == UUID {
-	private var innerLoad: (@escaping (Result<[T], Error>) -> Void) -> Void
-	private var innerSave: (T, @escaping (Result<Void, Error>) -> Void) -> Void
-	private var innerUpdate: (T, @escaping (Result<Void, Error>) -> Void) -> Void
+class AnyDataStore<Entity: Identifiable & Codable>: DataStore where Entity.ID == UUID {
+	private var innerLoad: (@escaping (Result<[Entity], Error>) -> Void) -> Void
+	private var innerSave: (Entity, @escaping (Result<Void, Error>) -> Void) -> Void
+	private var innerUpdate: (Entity, @escaping (Result<Void, Error>) -> Void) -> Void
 	private var innerDelete: (UUID, @escaping (Result<Void, Error>) -> Void) -> Void
-	var updates: AnyPublisher<T, Never>
+	var updates: AnyPublisher<Entity, Never>
 
-	init<Store: DataStore>(_ store: Store) where Store.T == T {
+	init<Store: DataStore>(_ store: Store) where Store.Entity == Entity {
 		self.innerLoad = store.load
 		self.innerSave = store.save
 		self.innerUpdate = store.update
@@ -137,106 +143,106 @@ class AnyDataStore<T: Identifiable & Codable>: DataStore where T.ID == UUID {
 		self.updates = store.updates
 	}
 
-	func load(completion: @escaping (Result<[T], Error>) -> Void) {
+	func load(completion: @escaping (Result<[Entity], Error>) -> Void) {
 		innerLoad(completion)
 	}
 
-	func save(item: T, completion: @escaping (Result<Void, Error>) -> Void) {
-		innerSave(item, completion)
+	func save(entity: Entity, completion: @escaping (Result<Void, Error>) -> Void) {
+		innerSave(entity, completion)
 	}
 
-	func update(item: T, completion: @escaping (Result<Void, Error>) -> Void) {
-		innerUpdate(item, completion)
+	func update(entity: Entity, completion: @escaping (Result<Void, Error>) -> Void) {
+		innerUpdate(entity, completion)
 	}
 
-	func delete(itemId: UUID, completion: @escaping (Result<Void, Error>) -> Void) {
-		innerDelete(itemId, completion)
+	func delete(entityId: UUID, completion: @escaping (Result<Void, Error>) -> Void) {
+		innerDelete(entityId, completion)
 	}
 }
 
 // MARK: - In-Memory Data Store
 
-class InMemoryDataStore<T: Identifiable & Codable>: DataStore where T.ID == UUID {
-	private var items: [UUID: T] = [:]
-	private let updateSubject = PassthroughSubject<T, Never>()
+class InMemoryDataStore<Entity: Identifiable & Codable>: DataStore where Entity.ID == UUID {
+	private var entities: [UUID: Entity] = [:]
+	private let updateSubject = PassthroughSubject<Entity, Never>()
 
-	var updates: AnyPublisher<T, Never> {
+	var updates: AnyPublisher<Entity, Never> {
 		updateSubject.eraseToAnyPublisher()
 	}
 
-	func load(completion: @escaping (Result<[T], Error>) -> Void) {
-		completion(.success(Array(items.values)))
+	func load(completion: @escaping (Result<[Entity], Error>) -> Void) {
+		completion(.success(Array(entities.values)))
 	}
 
-	func save(item: T, completion: @escaping (Result<Void, Error>) -> Void) {
-		items[item.id] = item
-		updateSubject.send(item)
+	func save(entity: Entity, completion: @escaping (Result<Void, Error>) -> Void) {
+		entities[entity.id] = entity
+		updateSubject.send(entity)
 		completion(.success(()))
 	}
 
-	func update(item: T, completion: @escaping (Result<Void, Error>) -> Void) {
-		if let _ = items.updateValue(item, forKey: item.id) {
-			updateSubject.send(item)
+	func update(entity: Entity, completion: @escaping (Result<Void, Error>) -> Void) {
+		if let _ = entities.updateValue(entity, forKey: entity.id) {
+			updateSubject.send(entity)
 			completion(.success(()))
 		}
 		else {
-			completion(.failure(NSError(domain: "UpdateError", code: 1, userInfo: [NSLocalizedDescriptionKey: "Item not found"])))
+			completion(.failure(NSError(domain: "UpdateError", code: 1, userInfo: [NSLocalizedDescriptionKey: "Entity not found"])))
 		}
 	}
 
-	func delete(itemId: UUID, completion: @escaping (Result<Void, Error>) -> Void) {
-		if let _ = items.removeValue(forKey: itemId) {
+	func delete(entityId: UUID, completion: @escaping (Result<Void, Error>) -> Void) {
+		if let _ = entities.removeValue(forKey: entityId) {
 			completion(.success(()))
 		}
 		else {
-			completion(.failure(NSError(domain: "DeleteError", code: 1, userInfo: [NSLocalizedDescriptionKey: "Item not found"])))
+			completion(.failure(NSError(domain: "DeleteError", code: 1, userInfo: [NSLocalizedDescriptionKey: "Entity not found"])))
 		}
 	}
 }
 
 // MARK: - Repository Implementation
 
-class DataManager<T: Identifiable & Codable>: ObservableObject where T.ID == UUID {
-	@Published var items: [T] = []
+class DataManager<Entity: Identifiable & Codable>: ObservableObject where Entity.ID == UUID {
+	@Published var entities: [Entity] = []
 	private var cancellables: Set<AnyCancellable> = []
-	private var dataStore: AnyDataStore<T>
+	private var dataStore: AnyDataStore<Entity>
 
-	init(dataStore: AnyDataStore<T>) {
+	init(dataStore: AnyDataStore<Entity>) {
 		self.dataStore = dataStore
 		dataStore.updates
 			.receive(on: DispatchQueue.main)
-			.sink(receiveValue: { [weak self] item in
-				if let index = self?.items.firstIndex(where: { $0.id == item.id }) {
-					self?.items[index] = item
+			.sink(receiveValue: { [weak self] entity in
+				if let index = self?.entities.firstIndex(where: { $0.id == entity.id }) {
+					self?.entities[index] = entity
 				}
 				else {
-					self?.items.append(item)
+					self?.entities.append(entity)
 				}
 			})
 			.store(in: &cancellables)
 
-		loadItems()
+		loadEntities()
 	}
 
-	func loadItems() {
+	func loadEntities() {
 		dataStore.load { [weak self] result in
 			DispatchQueue.main.async {
 				switch result {
-				case let .success(items):
-					self?.items = items
+				case let .success(entities):
+					self?.entities = entities
 				case let .failure(error):
-					print("Error loading items: \(error)")
+					print("Error loading entities: \(error)")
 				}
 			}
 		}
 	}
 
-	func saveItem(_ item: T) {
-		dataStore.save(item: item) { result in
+	func saveEntity(_ entity: Entity) {
+		dataStore.save(entity: entity) { result in
 			DispatchQueue.main.async {
 				switch result {
 				case .success:
-					print("Item saved successfully")
+					print("Entity saved successfully")
 				case let .failure(error):
 					print("Save error: \(error)")
 				}
@@ -244,12 +250,12 @@ class DataManager<T: Identifiable & Codable>: ObservableObject where T.ID == UUI
 		}
 	}
 
-	func updateItem(_ item: T) {
-		dataStore.update(item: item) { result in
+	func updateEntity(_ entity: Entity) {
+		dataStore.update(entity: entity) { result in
 			DispatchQueue.main.async {
 				switch result {
 				case .success:
-					print("Item updated successfully")
+					print("Entity updated successfully")
 				case let .failure(error):
 					print("Update error: \(error)")
 				}
@@ -257,13 +263,13 @@ class DataManager<T: Identifiable & Codable>: ObservableObject where T.ID == UUI
 		}
 	}
 
-	func deleteItem(withId id: UUID) {
-		dataStore.delete(itemId: id) { [weak self] result in
+	func deleteEntity(withId id: UUID) {
+		dataStore.delete(entityId: id) { [weak self] result in
 			DispatchQueue.main.async {
 				switch result {
 				case .success():
-					self?.items.removeAll { $0.id == id }
-					print("Item deleted successfully")
+					self?.entities.removeAll { $0.id == id }
+					print("Entity deleted successfully")
 				case let .failure(error):
 					print("Delete error: \(error)")
 				}
