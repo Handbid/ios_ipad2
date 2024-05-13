@@ -13,43 +13,31 @@ class ModelContext {
 		self.container = container
 	}
 
-	func model<T: Identifiable & Codable>(for id: String) -> T? {
+	func model<T: Identifiable & Codable>(for id: String) -> T? where T.ID == String {
 		container.fetch(id: id)
 	}
 
-	func save(_ entity: some Identifiable & Codable) throws {
+	func save<T: Identifiable & Codable>(_ entity: T) throws where T.ID == String {
 		if autosaveEnabled {
-			// try container.save(entity)
-			saveOrUpdateUser(entity)
+			try container.save(entity)
 		}
 	}
 
-	func update(_ entity: some Identifiable & Codable) throws {
+	func update<T: Identifiable & Codable>(_ entity: T) throws where T.ID == String {
 		if autosaveEnabled {
 			try container.update(entity)
-			saveOrUpdateUser(entity)
 		}
 	}
 
-	func delete(_ entity: some Identifiable & Codable) throws {
+	func delete<T: Identifiable & Codable>(_ entity: T) throws where T.ID == String {
 		if autosaveEnabled {
 			try container.delete(entity: entity)
-			try removeFromPermanentStorage(entity)
 		}
 	}
+}
 
-	func saveOrUpdateUser(_ entity: some Identifiable & Codable) {
-		do {
-			var entityToSave = entity
-			// Only proceed if we have a valid ID
-			try saveToPermanentStorage(&entityToSave)
-		}
-		catch {
-			print("Failed to save or update user: \(error)")
-		}
-	}
-
-	private func saveToPermanentStorage<T: Codable & Identifiable>(_ entity: inout T) throws {
+class PersistenceManager {
+	func saveToPermanentStorage<T: Codable & Identifiable>(_ entity: inout T) throws {
 		let fileURL = getDocumentsDirectory().appendingPathComponent("\(T.self)_\(entity.id).json")
 		let encoder = JSONEncoder()
 		let fileManager = FileManager.default
@@ -77,7 +65,7 @@ class ModelContext {
 		}
 	}
 
-	func mergeEntities<T: Codable>(from oldEntity: inout T, into newEntity: inout T) {
+	private func mergeEntities<T: Codable>(from oldEntity: inout T, into newEntity: inout T) {
 		let decoder = JSONDecoder()
 		let encoder = JSONEncoder()
 
@@ -107,7 +95,7 @@ class ModelContext {
 		}
 	}
 
-	private func removeFromPermanentStorage<T: Identifiable & Codable>(_ entity: T) throws {
+	func removeFromPermanentStorage<T: Identifiable & Codable>(_ entity: T) throws {
 		let fileURL = getDocumentsDirectory().appendingPathComponent("\(T.self)_\(entity.id).json")
 		let fileManager = FileManager.default
 		if fileManager.fileExists(atPath: fileURL.path) {
@@ -162,41 +150,32 @@ class DependencyServiceDataContainer {
 class ModelContainer {
 	private var entities: [String: Any] = [:]
 
-	func fetch<T: Identifiable & Codable>(id: String) -> T? {
+	func fetch<T: Identifiable & Codable>(id: String) -> T? where T.ID == String {
 		entities[id] as? T
 	}
 
-	func save(_ entity: some Identifiable & Codable) throws {
-		guard let id = (entity as? UserModel)?.usersGuid else {
-			throw NSError(domain: "ModelContainerError", code: 1, userInfo: [NSLocalizedDescriptionKey: "Invalid ID for entity."])
-		}
-		entities[id] = entity
+	func save<T: Identifiable & Codable>(_ entity: T) throws where T.ID == String {
+		entities[entity.id] = entity
 	}
 
-	func update(_ entity: some Identifiable & Codable) throws {
-		guard let id = (entity as? UserModel)?.usersGuid else {
-			throw NSError(domain: "ModelContainerError", code: 3, userInfo: [NSLocalizedDescriptionKey: "Invalid ID for entity during update."])
-		}
-		entities[id] = entity
+	func update<T: Identifiable & Codable>(_ entity: T) throws where T.ID == String {
+		entities[entity.id] = entity
 	}
 
-	func delete(entity: some Identifiable & Codable) throws {
-		guard let id = (entity as? UserModel)?.usersGuid else {
-			throw NSError(domain: "ModelContainerError", code: 2, userInfo: [NSLocalizedDescriptionKey: "Invalid ID for entity."])
-		}
-		entities.removeValue(forKey: id)
+	func delete<T: Identifiable & Codable>(entity: T) throws where T.ID == String {
+		entities.removeValue(forKey: entity.id)
 	}
 
-	func loadAll<T: Identifiable & Codable>() -> [T] {
+	func loadAll<T: Identifiable & Codable>() -> [T] where T.ID == String {
 		entities.values.compactMap { $0 as? T }
 	}
 
-	func filter<T: Identifiable & Codable>(_ predicate: NSPredicate) -> [T] {
+	func filter<T: Identifiable & Codable>(_ predicate: NSPredicate) -> [T] where T.ID == String {
 		let allEntities = entities.values.compactMap { $0 as? T }
 		return (allEntities as NSArray).filtered(using: predicate) as! [T]
 	}
 
-	func execute<T: Identifiable & Codable>(query: Query<T>) -> [T] {
+	func execute<T: Identifiable & Codable>(query: Query<T>) -> [T] where T.ID == String {
 		var result = loadAll() as [T]
 		if let predicate = query.predicate {
 			result = filter(predicate)
@@ -211,7 +190,7 @@ class ModelContainer {
 // MARK: - Data Store Protocol
 
 protocol DataStore {
-	associatedtype Entity: Identifiable & Codable where Entity.ID == String
+	associatedtype Entity: Identifiable & Codable
 	var updates: AnyPublisher<Entity, Never> { get }
 	func load(completion: @escaping (Result<[Entity], Error>) -> Void)
 	func save(entity: Entity, completion: @escaping (Result<Void, Error>) -> Void)
@@ -219,7 +198,7 @@ protocol DataStore {
 	func delete(entityId: String, completion: @escaping (Result<Void, Error>) -> Void)
 }
 
-class AnyDataStore<Entity: Identifiable & Codable>: DataStore where Entity.ID == String {
+class AnyDataStore<Entity: Identifiable & Codable>: DataStore {
 	private var innerLoad: (@escaping (Result<[Entity], Error>) -> Void) -> Void
 	private var innerSave: (Entity, @escaping (Result<Void, Error>) -> Void) -> Void
 	private var innerUpdate: (Entity, @escaping (Result<Void, Error>) -> Void) -> Void
@@ -250,8 +229,6 @@ class AnyDataStore<Entity: Identifiable & Codable>: DataStore where Entity.ID ==
 		innerDelete(entityId, completion)
 	}
 }
-
-// MARK: - In-Memory Data Store
 
 class InMemoryDataStore<Entity: Identifiable & Codable>: DataStore where Entity.ID == String {
 	private var entities: [String: Entity] = [:]
@@ -355,15 +332,16 @@ class DataManager<Entity: Identifiable & Codable> where Entity.ID == String {
 	}
 
 	func deleteEntity(withId id: String) {
-		dataStore.delete(entityId: id) { [weak self] result in DispatchQueue.main.async {
-			switch result {
-			case .success():
-				self?.entities.removeAll { $0.id == id }
-				print("Entity deleted successfully")
-			case let .failure(error):
-				print("Delete error: \(error)")
+		dataStore.delete(entityId: id) { [weak self] result in
+			DispatchQueue.main.async {
+				switch result {
+				case .success:
+					self?.entities.removeAll { $0.id == id }
+					print("Entity deleted successfully")
+				case let .failure(error):
+					print("Delete error: \(error)")
+				}
 			}
-		}
 		}
 	}
 }
