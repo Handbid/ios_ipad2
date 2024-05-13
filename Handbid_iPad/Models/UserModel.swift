@@ -5,7 +5,8 @@ import NetworkService
 import SwiftData
 
 struct UserModel: Identifiable, Codable, NetworkingJSONDecodable {
-	@Attribute(.unique) var id: UUID
+	var id: String
+	var identity: Int?
 	var pin: Int?
 	var usersGuid: String?
 	var stripeId: String?
@@ -38,11 +39,12 @@ struct UserModel: Identifiable, Codable, NetworkingJSONDecodable {
 
 extension UserModel: ArrowParsable {
 	init() {
-		self.id = UUID()
+		self.id = String()
 	}
 
 	mutating func deserialize(_ json: JSON) {
-		id <-- json["id"]
+		id <-- json["usersGuid"]
+		identity <-- json["id"]
 		pin <-- json["pin"]
 		usersGuid <-- json["usersGuid"]
 		stripeId <-- json["stripeId"]
@@ -85,5 +87,34 @@ extension UserModel: ArrowParsable {
 	func encode(to encoder: Encoder) throws {
 		var container = encoder.container(keyedBy: CodingKeys.self)
 		try container.encode(id, forKey: .id)
+		try container.encodeIfPresent(identity, forKey: .identity)
+		try container.encodeIfPresent(pin, forKey: .pin)
+		try container.encodeIfPresent(usersGuid, forKey: .usersGuid)
+		try container.encodeIfPresent(stripeId, forKey: .stripeId)
+		try container.encodeIfPresent(name, forKey: .name)
+		try container.encodeIfPresent(alias, forKey: .alias)
+		try container.encodeIfPresent(currentPaddleNumber, forKey: .currentPaddleNumber)
+		try container.encodeIfPresent(currentPlacement, forKey: .currentPlacement)
+		try container.encodeIfPresent(placementLabel, forKey: .placementLabel)
+		try container.encodeIfPresent(firstName, forKey: .firstName)
+		try container.encodeIfPresent(lastName, forKey: .lastName)
+		try container.encodeIfPresent(email, forKey: .email)
+		try container.encodeIfPresent(requestDataUpdate, forKey: .requestDataUpdate)
+		try container.encodeIfPresent(userPhone, forKey: .userPhone)
+		try container.encodeIfPresent(userCellPhone, forKey: .userCellPhone)
+		try container.encodeIfPresent(isPrivate, forKey: .isPrivate)
+		try container.encodeIfPresent(shippingAddress, forKey: .shippingAddress)
+		try container.encodeIfPresent(userAddressCountryId, forKey: .userAddressCountryId)
+		try container.encodeIfPresent(countryCode, forKey: .countryCode)
+		// try container.encode(addresses, forKey: .addresses)
+		try container.encodeIfPresent(currency, forKey: .currency)
+		try container.encodeIfPresent(timeZone, forKey: .timeZone)
+		try container.encodeIfPresent(imageUrl, forKey: .imageUrl)
+		try container.encodeIfPresent(organization, forKey: .organization)
+		// try container.encode(creditCards, forKey: .creditCards)
+		try container.encodeIfPresent(isCheckinAgent, forKey: .isCheckinAgent)
+		try container.encodeIfPresent(canCloseAuction, forKey: .canCloseAuction)
+		try container.encodeIfPresent(canSendBroadcast, forKey: .canSendBroadcast)
+		try container.encodeIfPresent(canManageItems, forKey: .canManageItems)
 	}
 }
