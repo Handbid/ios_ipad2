@@ -111,7 +111,6 @@ extension UserModel: ArrowParsable {
 		try container.encodeIfPresent(timeZone, forKey: .timeZone)
 		try container.encodeIfPresent(imageUrl, forKey: .imageUrl)
 		try container.encodeIfPresent(organization, forKey: .organization)
-		// try container.encode(creditCards, forKey: .creditCards)
 		try container.encodeIfPresent(isCheckinAgent, forKey: .isCheckinAgent)
 		try container.encodeIfPresent(canCloseAuction, forKey: .canCloseAuction)
 		try container.encodeIfPresent(canSendBroadcast, forKey: .canSendBroadcast)

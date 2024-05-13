@@ -37,66 +37,111 @@ class ModelContext {
 }
 
 class PersistenceManager {
-	func saveToPermanentStorage<T: Codable & Identifiable>(_ entity: inout T) throws {
-		let fileURL = getDocumentsDirectory().appendingPathComponent("\(T.self)_\(entity.id).json")
+	func saveToPermanentStorage<T: Codable & Identifiable>(_ entity: T) throws where T.ID == String {
+		let fileURL = getDocumentsDirectory().appendingPathComponent("\(String(describing: T.self))_\(entity.id).json")
 		let encoder = JSONEncoder()
+		let decoder = JSONDecoder()
 		let fileManager = FileManager.default
 
-		do {
-			if fileManager.fileExists(atPath: fileURL.path) {
+		if fileManager.fileExists(atPath: fileURL.path) {
+			do {
 				let existingData = try Data(contentsOf: fileURL)
-				let decoder = JSONDecoder()
+				var existingEntity = try decoder.decode(T.self, from: existingData)
 
-				// Decoding with `var` to allow modification
-				if var existingEntity = try? decoder.decode(T.self, from: existingData) {
-					mergeEntities(from: &existingEntity, into: &entity)
+				let changes = mergeEntities(from: &existingEntity, into: entity)
+
+				if changes.isEmpty {
+					print("No changes detected, not writing to file.")
 				}
 				else {
-					print("Failed to decode existing entity.")
+					let newData = try encoder.encode(existingEntity)
+					try newData.write(to: fileURL, options: [.atomicWrite])
+					print("Data written to file: \(fileURL.path)")
+					print("Updated fields: \(changes)")
+					print("Updated entity: \(existingEntity)")
 				}
 			}
-
-			let data = try encoder.encode(entity)
-			try data.write(to: fileURL, options: [.atomicWrite])
+			catch {
+				print("Error reading existing data or merging entities: \(error)")
+				throw error
+			}
 		}
-		catch {
-			print("Error during save to permanent storage: \(error)")
-			throw error
+		else {
+			do {
+				let newData = try encoder.encode(entity)
+				try newData.write(to: fileURL, options: [.atomicWrite])
+				print("Data written to file: \(fileURL.path)")
+				print("New entity: \(entity)")
+			}
+			catch {
+				print("Error writing new data to file: \(error)")
+				throw error
+			}
 		}
 	}
 
-	private func mergeEntities<T: Codable>(from oldEntity: inout T, into newEntity: inout T) {
-		let decoder = JSONDecoder()
+	private func mergeEntities<T: Codable>(from oldEntity: inout T, into newEntity: T) -> [String: Any] {
 		let encoder = JSONEncoder()
 
 		do {
-			// Encode entities to Data and then to dictionaries
 			let fromData = try encoder.encode(oldEntity)
 			let intoData = try encoder.encode(newEntity)
 			var fromDict = try JSONSerialization.jsonObject(with: fromData, options: []) as? [String: Any] ?? [:]
 			let intoDict = try JSONSerialization.jsonObject(with: intoData, options: []) as? [String: Any] ?? [:]
 
-			// Iterate over the new entity dictionary and update the old entity dictionary
-			for (key, value) in intoDict {
-				// Only update if the new value is not nil (as represented by NSNull in JSON)
-				if !(value is NSNull) {
-					fromDict[key] = value
+			var changes: [String: Any] = [:]
+
+			for (key, newValue) in intoDict {
+				if let oldValue = fromDict[key], !compareValues(oldValue, newValue) {
+					changes[key] = newValue
+					fromDict[key] = newValue
+				}
+				else if fromDict[key] == nil {
+					changes[key] = newValue
+					fromDict[key] = newValue
 				}
 			}
 
-			// Encode the merged dictionary back to Data and then decode into the old entity type
-			let mergedData = try JSONSerialization.data(withJSONObject: fromDict, options: [])
-			newEntity = try decoder.decode(T.self, from: mergedData)
-			print("Succes update data")
+			if !changes.isEmpty {
+				let mergedData = try JSONSerialization.data(withJSONObject: fromDict, options: [])
+				oldEntity = try JSONDecoder().decode(T.self, from: mergedData)
+				print("Updated fields: \(changes)")
+			}
+
+			return changes
 		}
 		catch {
-			// Handle or log any errors during the merge process
 			print("Error during entity merge: \(error)")
+			return [:]
 		}
 	}
 
-	func removeFromPermanentStorage<T: Identifiable & Codable>(_ entity: T) throws {
-		let fileURL = getDocumentsDirectory().appendingPathComponent("\(T.self)_\(entity.id).json")
+	private func compareValues(_ oldValue: Any, _ newValue: Any) -> Bool {
+		if let oldArray = oldValue as? [Any], let newArray = newValue as? [Any] {
+			oldArray.elementsEqual(newArray, by: { compareValues($0, $1) })
+		}
+		else if let oldDict = oldValue as? [String: Any], let newDict = newValue as? [String: Any] {
+			dictionariesEqual(oldDict, newDict)
+		}
+		else {
+			"\(oldValue)" == "\(newValue)"
+		}
+	}
+
+	private func dictionariesEqual(_ lhs: [String: Any], _ rhs: [String: Any]) -> Bool {
+		guard lhs.count == rhs.count else { return false }
+
+		for (key, lhsValue) in lhs {
+			guard let rhsValue = rhs[key] else { return false }
+			if !compareValues(lhsValue, rhsValue) {
+				return false
+			}
+		}
+		return true
+	}
+
+	func removeFromPermanentStorage<T: Identifiable & Codable>(_ entity: T) throws where T.ID == String {
+		let fileURL = getDocumentsDirectory().appendingPathComponent("\(String(describing: T.self))_\(entity.id).json")
 		let fileManager = FileManager.default
 		if fileManager.fileExists(atPath: fileURL.path) {
 			do {
@@ -109,10 +154,21 @@ class PersistenceManager {
 	}
 
 	private func getDocumentsDirectory() -> URL {
-		let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-		return paths[0]
+		FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
 	}
 }
+
+// extension NSObject {
+//	func setValue(_ value: Any?, forKey key: String) {
+//		let mirror = Mirror(reflecting: self)
+//		guard let child = mirror.children.first(where: { $0.label == key }) else {
+//			return
+//		}
+//		if let v = value, !(v is NSNull) {
+//			setValue(v, forKey: key)
+//		}
+//	}
+// }
 
 // MARK: - Services Data Manager for Models
 
@@ -149,6 +205,7 @@ class DependencyServiceDataContainer {
 
 class ModelContainer {
 	private var entities: [String: Any] = [:]
+	private let persistenceManager = PersistenceManager()
 
 	func fetch<T: Identifiable & Codable>(id: String) -> T? where T.ID == String {
 		entities[id] as? T
@@ -156,14 +213,17 @@ class ModelContainer {
 
 	func save<T: Identifiable & Codable>(_ entity: T) throws where T.ID == String {
 		entities[entity.id] = entity
+		try persistenceManager.saveToPermanentStorage(entity)
 	}
 
 	func update<T: Identifiable & Codable>(_ entity: T) throws where T.ID == String {
 		entities[entity.id] = entity
+		try persistenceManager.saveToPermanentStorage(entity)
 	}
 
 	func delete<T: Identifiable & Codable>(entity: T) throws where T.ID == String {
 		entities.removeValue(forKey: entity.id)
+		try persistenceManager.removeFromPermanentStorage(entity)
 	}
 
 	func loadAll<T: Identifiable & Codable>() -> [T] where T.ID == String {

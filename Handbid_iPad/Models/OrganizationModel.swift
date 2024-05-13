@@ -5,7 +5,8 @@ import NetworkService
 import SwiftData
 
 struct OrganizationModel: Identifiable, Codable, NetworkingJSONDecodable {
-	@Attribute(.unique) var id: UUID
+	var id: String
+	var identity: Int?
 	var organizationGuid: String?
 	var key: String?
 	var name: String?
@@ -41,7 +42,7 @@ struct OrganizationModel: Identifiable, Codable, NetworkingJSONDecodable {
 
 extension OrganizationModel: ArrowParsable {
 	init() {
-		self.id = UUID()
+		self.id = String()
 	}
 
 	enum CodingKeys: String, CodingKey {
@@ -49,7 +50,8 @@ extension OrganizationModel: ArrowParsable {
 	}
 
 	mutating func deserialize(_ json: JSON) {
-		id <-- json["id"]
+		id <-- json["organizationGuid"]
+		identity <-- json["id"]
 		organizationGuid <-- json["organizationGuid"]
 		key <-- json["key"]
 		name <-- json["name"]
