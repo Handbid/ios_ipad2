@@ -29,7 +29,7 @@ class ChooseOrganizationRepositoryImpl: ChooseOrganizationRepository, Networking
 			.eraseToAnyPublisher()
 	}
 
-	private func saveOrUpdateUser(user: UserModel) {
+	private func saveOrUpdateUser(user _: UserModel) {
 		do {
 			try modelContext.save(user)
 		}

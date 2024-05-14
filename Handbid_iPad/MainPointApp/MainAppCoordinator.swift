@@ -7,18 +7,26 @@ import SwiftUI
 struct MainAppCoordinator: App {
 	@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
-	@StateObject var registrationCoordinator: Coordinator<RegistrationPage, Any?>
-	@StateObject var mainContainerCoordinator: Coordinator<MainContainerPage, Any?>
+	@StateObject private var registrationCoordinator: Coordinator<RegistrationPage, Any?>
+	@StateObject private var mainContainerCoordinator: Coordinator<MainContainerPage, Any?>
 
-	let modelContainer: ModelContainer
-	let modelContext: ModelContext
+	private let modelContainer: ModelContainer
+	private let modelContext: ModelContext
 
 	init() {
 		let deps = DependencyMainAppProvider.shared
 		self.modelContainer = ModelContainer()
 		self.modelContext = ModelContext(modelContainer)
 
-		let registrationCoordinator = Coordinator<RegistrationPage, Any?> { page in
+		let registrationCoordinator = MainAppCoordinator.createRegistrationCoordinator(deps: deps)
+		let mainContainerCoordinator = MainAppCoordinator.createMainContainerCoordinator(deps: deps, modelContext: modelContext)
+
+		_registrationCoordinator = StateObject(wrappedValue: registrationCoordinator)
+		_mainContainerCoordinator = StateObject(wrappedValue: mainContainerCoordinator)
+	}
+
+	static func createRegistrationCoordinator(deps: DependencyMainAppProvider) -> Coordinator<RegistrationPage, Any?> {
+		Coordinator<RegistrationPage, Any?> { page in
 			switch page {
 			case .getStarted:
 				let repository = RegisterRepositoryImpl(deps.networkClient)
@@ -38,9 +46,10 @@ struct MainAppCoordinator: App {
 				return AnyView(PasswordResetConfirmationView<RegistrationPage>())
 			}
 		}
-		_registrationCoordinator = StateObject(wrappedValue: registrationCoordinator)
+	}
 
-		let mainContainerCoordinator = Coordinator<MainContainerPage, Any?> { [modelContext] page in
+	static func createMainContainerCoordinator(deps: DependencyMainAppProvider, modelContext: ModelContext) -> Coordinator<MainContainerPage, Any?> {
+		Coordinator<MainContainerPage, Any?> { page in
 			switch page {
 			case .chooseOrganization:
 				let repository = ChooseOrganizationRepositoryImpl(deps.networkClient, modelContext: modelContext)
@@ -54,7 +63,6 @@ struct MainAppCoordinator: App {
 				return AnyView(MainContainer<MainContainerPage>(selectedView: .auction))
 			}
 		}
-		_mainContainerCoordinator = StateObject(wrappedValue: mainContainerCoordinator)
 	}
 
 	var body: some Scene {

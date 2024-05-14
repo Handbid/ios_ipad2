@@ -9,6 +9,7 @@ class ModelContext {
 	private var container: ModelContainer
 	var autosaveEnabled: Bool = true
 	private let updateSubject = PassthroughSubject<Void, Never>()
+	private let ioQueue = DispatchQueue(label: "ioQueue", attributes: .concurrent)
 
 	var updates: AnyPublisher<Void, Never> {
 		updateSubject.eraseToAnyPublisher()
@@ -24,22 +25,49 @@ class ModelContext {
 
 	func save<T: Identifiable & Codable>(_ entity: T) throws where T.ID == String {
 		if autosaveEnabled {
-			try container.save(entity)
-			notifyUpdates()
+			ioQueue.async(flags: .barrier) {
+				do {
+					try self.container.save(entity)
+					DispatchQueue.main.async {
+						self.notifyUpdates()
+					}
+				}
+				catch {
+					print("Save error: \(error)")
+				}
+			}
 		}
 	}
 
 	func update<T: Identifiable & Codable>(_ entity: T) throws where T.ID == String {
 		if autosaveEnabled {
-			try container.update(entity)
-			notifyUpdates()
+			ioQueue.async(flags: .barrier) {
+				do {
+					try self.container.update(entity)
+					DispatchQueue.main.async {
+						self.notifyUpdates()
+					}
+				}
+				catch {
+					print("Update error: \(error)")
+				}
+			}
 		}
 	}
 
 	func delete<T: Identifiable & Codable>(_ entity: T) throws where T.ID == String {
 		if autosaveEnabled {
-			try container.delete(entity: entity)
-			notifyUpdates()
+			ioQueue.async(flags: .barrier) {
+				do {
+					try self.container.delete(entity: entity)
+					DispatchQueue.main.async {
+						self.notifyUpdates()
+					}
+				}
+				catch {
+					print("Delete error: \(error)")
+				}
+			}
 		}
 	}
 
@@ -49,45 +77,47 @@ class ModelContext {
 }
 
 class PersistenceManager {
+	private let ioQueue = DispatchQueue(label: "ioQueue", attributes: .concurrent)
+
 	func saveToPermanentStorage<T: Codable & Identifiable>(_ entity: T) throws where T.ID == String {
-		let fileURL = getDocumentsDirectory().appendingPathComponent("\(String(describing: T.self))_\(entity.id).json")
-		let encoder = JSONEncoder()
-		let decoder = JSONDecoder()
-		let fileManager = FileManager.default
+		ioQueue.async(flags: .barrier) {
+			let fileURL = self.getDocumentsDirectory().appendingPathComponent("\(String(describing: T.self))_\(entity.id).json")
+			let encoder = JSONEncoder()
+			let decoder = JSONDecoder()
+			let fileManager = FileManager.default
 
-		if fileManager.fileExists(atPath: fileURL.path) {
-			do {
-				let existingData = try Data(contentsOf: fileURL)
-				var existingEntity = try decoder.decode(T.self, from: existingData)
+			if fileManager.fileExists(atPath: fileURL.path) {
+				do {
+					let existingData = try Data(contentsOf: fileURL)
+					var existingEntity = try decoder.decode(T.self, from: existingData)
 
-				let changes = mergeEntities(from: &existingEntity, into: entity)
+					let changes = self.mergeEntities(from: &existingEntity, into: entity)
 
-				if changes.isEmpty {
-					print("No changes detected, not writing to file.")
+					if changes.isEmpty {
+						print("No changes detected, not writing to file.")
+					}
+					else {
+						let newData = try encoder.encode(existingEntity)
+						try newData.write(to: fileURL, options: [.atomicWrite])
+						print("Data written to file: \(fileURL.path)")
+						print("Updated fields: \(changes)")
+						print("Updated entity: \(existingEntity)")
+					}
 				}
-				else {
-					let newData = try encoder.encode(existingEntity)
+				catch {
+					print("Error reading existing data or merging entities: \(error)")
+				}
+			}
+			else {
+				do {
+					let newData = try encoder.encode(entity)
 					try newData.write(to: fileURL, options: [.atomicWrite])
 					print("Data written to file: \(fileURL.path)")
-					print("Updated fields: \(changes)")
-					print("Updated entity: \(existingEntity)")
+					print("New entity: \(entity)")
 				}
-			}
-			catch {
-				print("Error reading existing data or merging entities: \(error)")
-				throw error
-			}
-		}
-		else {
-			do {
-				let newData = try encoder.encode(entity)
-				try newData.write(to: fileURL, options: [.atomicWrite])
-				print("Data written to file: \(fileURL.path)")
-				print("New entity: \(entity)")
-			}
-			catch {
-				print("Error writing new data to file: \(error)")
-				throw error
+				catch {
+					print("Error writing new data to file: \(error)")
+				}
 			}
 		}
 	}
@@ -153,14 +183,16 @@ class PersistenceManager {
 	}
 
 	func removeFromPermanentStorage<T: Identifiable & Codable>(_ entity: T) throws where T.ID == String {
-		let fileURL = getDocumentsDirectory().appendingPathComponent("\(String(describing: T.self))_\(entity.id).json")
-		let fileManager = FileManager.default
-		if fileManager.fileExists(atPath: fileURL.path) {
-			do {
-				try fileManager.removeItem(at: fileURL)
-			}
-			catch {
-				throw error
+		ioQueue.async(flags: .barrier) {
+			let fileURL = self.getDocumentsDirectory().appendingPathComponent("\(String(describing: T.self))_\(entity.id).json")
+			let fileManager = FileManager.default
+			if fileManager.fileExists(atPath: fileURL.path) {
+				do {
+					try fileManager.removeItem(at: fileURL)
+				}
+				catch {
+					print("Error removing file: \(error)")
+				}
 			}
 		}
 	}
@@ -169,15 +201,22 @@ class PersistenceManager {
 		FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
 	}
 
-    func deleteAllData() throws {
-        let fileManager = FileManager.default
-        let documentsDirectory = getDocumentsDirectory()
-        let files = try fileManager.contentsOfDirectory(atPath: documentsDirectory.path)
-        for file in files {
-            let fileURL = documentsDirectory.appendingPathComponent(file)
-            try fileManager.removeItem(at: fileURL)
-        }
-    }
+	func deleteAllData() throws {
+		ioQueue.async(flags: .barrier) {
+			let fileManager = FileManager.default
+			let documentsDirectory = self.getDocumentsDirectory()
+			do {
+				let files = try fileManager.contentsOfDirectory(atPath: documentsDirectory.path)
+				for file in files {
+					let fileURL = documentsDirectory.appendingPathComponent(file)
+					try fileManager.removeItem(at: fileURL)
+				}
+			}
+			catch {
+				print("Error deleting all data: \(error)")
+			}
+		}
+	}
 }
 
 // MARK: - Services Data Manager for Models
@@ -225,44 +264,74 @@ class DependencyServiceDataContainer {
 class ModelContainer {
 	private var entities: [String: Any] = [:]
 	private let persistenceManager = PersistenceManager()
+	private let ioQueue = DispatchQueue(label: "ioQueue", attributes: .concurrent)
 
 	func fetch<T: Identifiable & Codable>(id: String) -> T? where T.ID == String {
-		entities[id] as? T
+		ioQueue.sync {
+			entities[id] as? T
+		}
 	}
 
 	func save<T: Identifiable & Codable>(_ entity: T) throws where T.ID == String {
-		entities[entity.id] = entity
-		try persistenceManager.saveToPermanentStorage(entity)
+		ioQueue.async(flags: .barrier) {
+			self.entities[entity.id] = entity
+			do {
+				try self.persistenceManager.saveToPermanentStorage(entity)
+			}
+			catch {
+				print("Save error: \(error)")
+			}
+		}
 	}
 
 	func update<T: Identifiable & Codable>(_ entity: T) throws where T.ID == String {
-		entities[entity.id] = entity
-		try persistenceManager.saveToPermanentStorage(entity)
+		ioQueue.async(flags: .barrier) {
+			self.entities[entity.id] = entity
+			do {
+				try self.persistenceManager.saveToPermanentStorage(entity)
+			}
+			catch {
+				print("Update error: \(error)")
+			}
+		}
 	}
 
 	func delete<T: Identifiable & Codable>(entity: T) throws where T.ID == String {
-		entities.removeValue(forKey: entity.id)
-		try persistenceManager.removeFromPermanentStorage(entity)
+		ioQueue.async(flags: .barrier) {
+			self.entities.removeValue(forKey: entity.id)
+			do {
+				try self.persistenceManager.removeFromPermanentStorage(entity)
+			}
+			catch {
+				print("Delete error: \(error)")
+			}
+		}
 	}
 
 	func loadAll<T: Identifiable & Codable>() -> [T] where T.ID == String {
-		entities.values.compactMap { $0 as? T }
+		ioQueue.sync {
+			entities.values.compactMap { $0 as? T }
+		}
 	}
 
 	func filter<T: Identifiable & Codable>(_ predicate: NSPredicate) -> [T] where T.ID == String {
-		let allEntities = entities.values.compactMap { $0 as? T }
-		return (allEntities as NSArray).filtered(using: predicate) as! [T]
+		ioQueue.sync {
+			let allEntities = entities.values.compactMap { $0 as? T }
+			return (allEntities as NSArray).filtered(using: predicate) as! [T]
+		}
 	}
 
 	func execute<T: Identifiable & Codable>(query: Query<T>) -> [T] where T.ID == String {
-		var result = loadAll() as [T]
-		if let predicate = query.predicate {
-			result = filter(predicate)
+		ioQueue.sync {
+			var result = loadAll() as [T]
+			if let predicate = query.predicate {
+				result = filter(predicate)
+			}
+			if let sortDescriptors = query.sortDescriptors {
+				result = (result as NSArray).sortedArray(using: sortDescriptors) as! [T]
+			}
+			return result
 		}
-		if let sortDescriptors = query.sortDescriptors {
-			result = (result as NSArray).sortedArray(using: sortDescriptors) as! [T]
-		}
-		return result
 	}
 }
 
@@ -489,7 +558,7 @@ struct Query<T: Codable & Identifiable> {
 	}
 
 	// Factory method to apply custom expressions to the query.
-	static func custom(_ expressions: [CustomExpression<T>]) -> Query {
+	static func custom(_ expressions: [CustomExpression<T>]?) -> Query {
 		Query(customExpressions: expressions)
 	}
 }
