@@ -10,11 +10,13 @@ class ChooseOrganizationViewModel: ObservableObject {
 	@Published var organizations: [OrganizationModel] = []
 	@Published var filteredOrganizations: [OrganizationModel] = []
 	@Published var selectedOrganization: OrganizationModel?
-	// private let modelContext: ModelContext
+	private let modelContext: ModelContext
 
-	init(repository: ChooseOrganizationRepository) {
+	init(repository: ChooseOrganizationRepository, modelContext: ModelContext) {
 		self.repository = repository
+		self.modelContext = modelContext
 		setupSubscriptions()
+		fetchOrganizationsIfNeeded()
 	}
 
 	func fetchOrganizationsIfNeeded() {
@@ -48,6 +50,13 @@ class ChooseOrganizationViewModel: ObservableObject {
 			.removeDuplicates()
 			.map(filterOrganizations)
 			.assign(to: \.filteredOrganizations, on: self)
+			.store(in: &cancellables)
+
+		modelContext.updates
+			.receive(on: DispatchQueue.main)
+			.sink { [weak self] _ in
+				self?.fetchOrganizationsIfNeeded()
+			}
 			.store(in: &cancellables)
 	}
 }

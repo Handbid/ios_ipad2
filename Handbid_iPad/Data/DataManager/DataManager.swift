@@ -8,6 +8,11 @@ import SwiftUI
 class ModelContext {
 	private var container: ModelContainer
 	var autosaveEnabled: Bool = true
+	private let updateSubject = PassthroughSubject<Void, Never>()
+
+	var updates: AnyPublisher<Void, Never> {
+		updateSubject.eraseToAnyPublisher()
+	}
 
 	init(_ container: ModelContainer) {
 		self.container = container
@@ -20,19 +25,26 @@ class ModelContext {
 	func save<T: Identifiable & Codable>(_ entity: T) throws where T.ID == String {
 		if autosaveEnabled {
 			try container.save(entity)
+			notifyUpdates()
 		}
 	}
 
 	func update<T: Identifiable & Codable>(_ entity: T) throws where T.ID == String {
 		if autosaveEnabled {
 			try container.update(entity)
+			notifyUpdates()
 		}
 	}
 
 	func delete<T: Identifiable & Codable>(_ entity: T) throws where T.ID == String {
 		if autosaveEnabled {
 			try container.delete(entity: entity)
+			notifyUpdates()
 		}
+	}
+
+	private func notifyUpdates() {
+		updateSubject.send(())
 	}
 }
 
@@ -156,6 +168,16 @@ class PersistenceManager {
 	private func getDocumentsDirectory() -> URL {
 		FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
 	}
+
+    func deleteAllData() throws {
+        let fileManager = FileManager.default
+        let documentsDirectory = getDocumentsDirectory()
+        let files = try fileManager.contentsOfDirectory(atPath: documentsDirectory.path)
+        for file in files {
+            let fileURL = documentsDirectory.appendingPathComponent(file)
+            try fileManager.removeItem(at: fileURL)
+        }
+    }
 }
 
 // MARK: - Services Data Manager for Models
@@ -169,6 +191,10 @@ class ServicesDataManager {
 	}
 }
 
+private struct AppServicesKey: EnvironmentKey {
+	static let defaultValue: ServicesDataManager = .init()
+}
+
 extension EnvironmentValues {
 	var appServices: ServicesDataManager {
 		get { self[AppServicesKey.self] }
@@ -176,8 +202,15 @@ extension EnvironmentValues {
 	}
 }
 
-private struct AppServicesKey: EnvironmentKey {
-	static let defaultValue: ServicesDataManager = .init()
+private struct ModelContextKey: EnvironmentKey {
+	static let defaultValue: ModelContext? = nil
+}
+
+extension EnvironmentValues {
+	var modelContext: ModelContext? {
+		get { self[ModelContextKey.self] }
+		set { self[ModelContextKey.self] = newValue }
+	}
 }
 
 // MARK: - Dependency Service Data Container for Data Managers

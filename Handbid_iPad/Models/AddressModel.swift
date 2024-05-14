@@ -3,7 +3,7 @@
 import Arrow
 import NetworkService
 
-struct AddressModel: Decodable, NetworkingJSONDecodable {
+struct AddressModel: Codable, NetworkingJSONDecodable {
 	var street: String?
 	var street1: String?
 	var street2: String?

@@ -10,14 +10,12 @@ protocol ChooseOrganizationRepository {
 
 class ChooseOrganizationRepositoryImpl: ChooseOrganizationRepository, NetworkingService {
 	var network: NetworkService.NetworkingClient
+	let modelContext: ModelContext
 	@Published var user: UserModel = .init()
 
-	let modelContainer = ModelContainer()
-	let modelContext: ModelContext
-
-	init(_ network: NetworkService.NetworkingClient) {
+	init(_ network: NetworkService.NetworkingClient, modelContext: ModelContext) {
 		self.network = network
-		self.modelContext = ModelContext(modelContainer)
+		self.modelContext = modelContext
 	}
 
 	func fetchUserOrganizations() -> AnyPublisher<UserModel, Error> {
@@ -31,7 +29,7 @@ class ChooseOrganizationRepositoryImpl: ChooseOrganizationRepository, Networking
 			.eraseToAnyPublisher()
 	}
 
-	func saveOrUpdateUser(user: UserModel) {
+	private func saveOrUpdateUser(user: UserModel) {
 		do {
 			try modelContext.save(user)
 		}

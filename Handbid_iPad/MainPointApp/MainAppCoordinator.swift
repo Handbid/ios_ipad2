@@ -10,9 +10,15 @@ struct MainAppCoordinator: App {
 	@StateObject var registrationCoordinator: Coordinator<RegistrationPage, Any?>
 	@StateObject var mainContainerCoordinator: Coordinator<MainContainerPage, Any?>
 
+	let modelContainer: ModelContainer
+	let modelContext: ModelContext
+
 	init() {
 		let deps = DependencyMainAppProvider.shared
-		_registrationCoordinator = StateObject(wrappedValue: Coordinator<RegistrationPage, Any?> { page in
+		self.modelContainer = ModelContainer()
+		self.modelContext = ModelContext(modelContainer)
+
+		let registrationCoordinator = Coordinator<RegistrationPage, Any?> { page in
 			switch page {
 			case .getStarted:
 				let repository = RegisterRepositoryImpl(deps.networkClient)
@@ -31,13 +37,14 @@ struct MainAppCoordinator: App {
 			case .resetPasswordConfirmation:
 				return AnyView(PasswordResetConfirmationView<RegistrationPage>())
 			}
-		})
+		}
+		_registrationCoordinator = StateObject(wrappedValue: registrationCoordinator)
 
-		_mainContainerCoordinator = StateObject(wrappedValue: Coordinator<MainContainerPage, Any?> { page in
+		let mainContainerCoordinator = Coordinator<MainContainerPage, Any?> { [modelContext] page in
 			switch page {
 			case .chooseOrganization:
-				let repository = ChooseOrganizationRepositoryImpl(deps.networkClient)
-				let viewModel = ChooseOrganizationViewModel(repository: repository)
+				let repository = ChooseOrganizationRepositoryImpl(deps.networkClient, modelContext: modelContext)
+				let viewModel = ChooseOrganizationViewModel(repository: repository, modelContext: modelContext)
 				return AnyView(ChooseOrganizationView<MainContainerPage>(viewModel: viewModel))
 			case .chooseAuction:
 				let repository = ChooseAuctionRepositoryImpl(deps.networkClient)
@@ -46,7 +53,8 @@ struct MainAppCoordinator: App {
 			case .mainContainer:
 				return AnyView(MainContainer<MainContainerPage>(selectedView: .auction))
 			}
-		})
+		}
+		_mainContainerCoordinator = StateObject(wrappedValue: mainContainerCoordinator)
 	}
 
 	var body: some Scene {
@@ -56,6 +64,7 @@ struct MainAppCoordinator: App {
 				.environmentObject(registrationCoordinator)
 				.environmentObject(mainContainerCoordinator)
 				.environment(\.appServices, ServicesDataManager.shared)
+				.environment(\.modelContext, modelContext)
 		}
 	}
 }

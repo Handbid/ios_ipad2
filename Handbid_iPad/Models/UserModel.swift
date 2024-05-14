@@ -86,7 +86,7 @@ extension UserModel: ArrowParsable {
 
 	func encode(to encoder: Encoder) throws {
 		var container = encoder.container(keyedBy: CodingKeys.self)
-		try container.encode(id, forKey: .id)
+		try container.encodeIfPresent(id, forKey: .id)
 		try container.encodeIfPresent(identity, forKey: .identity)
 		try container.encodeIfPresent(pin, forKey: .pin)
 		try container.encodeIfPresent(usersGuid, forKey: .usersGuid)
@@ -106,11 +106,12 @@ extension UserModel: ArrowParsable {
 		try container.encodeIfPresent(shippingAddress, forKey: .shippingAddress)
 		try container.encodeIfPresent(userAddressCountryId, forKey: .userAddressCountryId)
 		try container.encodeIfPresent(countryCode, forKey: .countryCode)
-		// try container.encode(addresses, forKey: .addresses)
+		try container.encodeIfPresent(addresses, forKey: .addresses)
 		try container.encodeIfPresent(currency, forKey: .currency)
 		try container.encodeIfPresent(timeZone, forKey: .timeZone)
 		try container.encodeIfPresent(imageUrl, forKey: .imageUrl)
 		try container.encodeIfPresent(organization, forKey: .organization)
+		try container.encodeIfPresent(creditCards, forKey: .creditCards)
 		try container.encodeIfPresent(isCheckinAgent, forKey: .isCheckinAgent)
 		try container.encodeIfPresent(canCloseAuction, forKey: .canCloseAuction)
 		try container.encodeIfPresent(canSendBroadcast, forKey: .canSendBroadcast)
