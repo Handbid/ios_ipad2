@@ -158,24 +158,10 @@ class PersistenceManager {
 	}
 }
 
-// extension NSObject {
-//	func setValue(_ value: Any?, forKey key: String) {
-//		let mirror = Mirror(reflecting: self)
-//		guard let child = mirror.children.first(where: { $0.label == key }) else {
-//			return
-//		}
-//		if let v = value, !(v is NSNull) {
-//			setValue(v, forKey: key)
-//		}
-//	}
-// }
-
 // MARK: - Services Data Manager for Models
 
 class ServicesDataManager {
 	static let shared = ServicesDataManager()
-	//    let auctionDataManager: DataManager<AuctionModel>
-	//    let organizationDataManager: DataManager<OrganizationModel>
 	let userDataManager: DataManager<UserModel>
 
 	init() {

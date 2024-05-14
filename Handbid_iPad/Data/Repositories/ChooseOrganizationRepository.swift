@@ -34,7 +34,6 @@ class ChooseOrganizationRepositoryImpl: ChooseOrganizationRepository, Networking
 	func saveOrUpdateUser(user: UserModel) {
 		do {
 			try modelContext.save(user)
-			print("Saved successfully")
 		}
 		catch {
 			print("Failed to save user: \(error)")
