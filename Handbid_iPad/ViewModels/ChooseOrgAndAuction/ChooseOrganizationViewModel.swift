@@ -1,11 +1,13 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
 import Combine
+import Foundation
 import NetworkService
 
 class ChooseOrganizationViewModel: ObservableObject {
 	private var cancellables = Set<AnyCancellable>()
 	private let repository: ChooseOrganizationRepository
+	private let dataStore: DataStore
 
 	@Published var organizations: [OrganizationModel] = []
 	@Published var filteredOrganizations: [OrganizationModel] = []
@@ -16,8 +18,9 @@ class ChooseOrganizationViewModel: ObservableObject {
 		}
 	}
 
-	init(repository: ChooseOrganizationRepository) {
+	init(repository: ChooseOrganizationRepository, dataStore: DataStore) {
 		self.repository = repository
+		self.dataStore = dataStore
 		setupSearchOrganizationSubscriber()
 	}
 
@@ -54,6 +57,7 @@ class ChooseOrganizationViewModel: ObservableObject {
 
 	private func handleOrganizationsReceived(_ user: UserModel) {
 		organizations = user.organization ?? []
+		dataStore.upsert(.user, model: user, allowCreation: true)
 		filterOrganizations()
 	}
 }

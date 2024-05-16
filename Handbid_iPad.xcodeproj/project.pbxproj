@@ -654,8 +654,8 @@
 			isa = PBXGroup;
 			children = (
 				8C8BEC632BA9ADE20083D904 /* AppLaunchControlView.swift */,
-				8C1E00AD2BA823C80094FAA7 /* MainAppCoordinator.swift */,
 				8C4BFB802BE2208E00B47154 /* DependencyMainAppProvider.swift */,
+				8C1E00AD2BA823C80094FAA7 /* MainAppCoordinator.swift */,
 				8C4B7B822BB47DD30043B892 /* StartupProgressAnimationView.swift */,
 			);
 			path = MainPointApp;

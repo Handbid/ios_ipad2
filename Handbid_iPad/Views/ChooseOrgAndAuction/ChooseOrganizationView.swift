@@ -7,6 +7,7 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@ObservedObject private var viewModel: ChooseOrganizationViewModel
 	@Environment(\.colorScheme) var colorScheme
+	@Environment(\.dataStore) var dataStore
 	@State private var isButtonDisabled = true
 	@State private var contentLoaded = false
 	@State private var isBlurred = false

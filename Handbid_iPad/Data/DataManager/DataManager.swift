@@ -5,11 +5,102 @@ import Foundation
 import SwiftData
 import SwiftUI
 
+enum ModelType {
+	case user
+
+	func isModelType(_ type: (some Any).Type) -> Bool {
+		switch self {
+		case .user:
+			type == UserModel.self
+		}
+	}
+}
+
+final class DataStore: ObservableObject {
+	static let shared = DataStore()
+
+	private(set) var models: [ModelType: AnyObject] = [:]
+	private var modelsSubject = PassthroughSubject<Void, Never>()
+	private let dataStoreQueue = DispatchQueue(label: "dataStoreQueue", attributes: .concurrent)
+
+	private init() {}
+
+	var modelsPublisher: AnyPublisher<Void, Never> {
+		modelsSubject.eraseToAnyPublisher()
+	}
+
+	func upsert<T: Identifiable & Codable>(_ modelType: ModelType, model: T, allowCreation: Bool = true) {
+		guard modelType.isModelType(T.self) else {
+			print("Error: Model type mismatch.")
+			return
+		}
+
+		dataStoreQueue.async(flags: .barrier) {
+			if let existingObject = self.models[modelType] as? T {
+				let updatedObject = self.merge(existingObject, with: model)
+				self.setObject(updatedObject, for: modelType)
+			}
+			else if allowCreation {
+				self.setObject(model, for: modelType)
+			}
+			else {
+				print("Object of type \(modelType) does not exist and creation is not allowed.")
+			}
+		}
+	}
+
+	private func merge<T: Identifiable & Codable>(_ oldObject: T, with newObject: T) -> T {
+		let newMirror = Mirror(reflecting: newObject)
+
+		let updatedObject = (oldObject as AnyObject).mutableCopy() as! T
+
+		for (key, newValue) in newMirror.children {
+			if let key {
+				let selector = Selector("\(key)")
+
+				if (updatedObject as AnyObject).responds(to: selector) {
+					(updatedObject as AnyObject).setValue(newValue, forKey: key)
+				}
+			}
+		}
+
+		return updatedObject
+	}
+
+	private func setObject(_ object: some Identifiable & Codable, for modelType: ModelType) {
+		dataStoreQueue.async(flags: .barrier) {
+			self.models[modelType] = object as AnyObject
+			DispatchQueue.main.async {
+				self.modelsSubject.send()
+			}
+		}
+	}
+
+	func getObject<T: Identifiable & Codable>(for modelType: ModelType, as _: T.Type) -> T? {
+		var result: T?
+		dataStoreQueue.sync {
+			result = self.models[modelType] as? T
+		}
+		return result
+	}
+}
+
+private struct DataStoreKey: EnvironmentKey {
+	static let defaultValue: DataStore = .shared
+}
+
+extension EnvironmentValues {
+	var dataStore: DataStore {
+		get { self[DataStoreKey.self] }
+		set { self[DataStoreKey.self] = newValue }
+	}
+}
+
 class ModelContext {
 	private var container: ModelContainer
 	var autosaveEnabled: Bool = true
 	private let updateSubject = PassthroughSubject<Void, Never>()
-	private let ioQueue = DispatchQueue(label: "ioQueue", attributes: .concurrent)
+	private let ioQueue = DispatchQueue(label: "modelContextQueue", attributes: .concurrent)
 
 	var updates: AnyPublisher<Void, Never> {
 		updateSubject.eraseToAnyPublisher()
@@ -337,7 +428,7 @@ class ModelContainer {
 
 // MARK: - Data Store Protocol
 
-protocol DataStore {
+protocol DataStoreProtocool {
 	associatedtype Entity: Identifiable & Codable
 	var updates: AnyPublisher<Entity, Never> { get }
 	func load(completion: @escaping (Result<[Entity], Error>) -> Void)
@@ -346,14 +437,14 @@ protocol DataStore {
 	func delete(entityId: String, completion: @escaping (Result<Void, Error>) -> Void)
 }
 
-class AnyDataStore<Entity: Identifiable & Codable>: DataStore {
+class AnyDataStore<Entity: Identifiable & Codable>: DataStoreProtocool {
 	private var innerLoad: (@escaping (Result<[Entity], Error>) -> Void) -> Void
 	private var innerSave: (Entity, @escaping (Result<Void, Error>) -> Void) -> Void
 	private var innerUpdate: (Entity, @escaping (Result<Void, Error>) -> Void) -> Void
 	private var innerDelete: (String, @escaping (Result<Void, Error>) -> Void) -> Void
 	var updates: AnyPublisher<Entity, Never>
 
-	init<Store: DataStore>(_ store: Store) where Store.Entity == Entity {
+	init<Store: DataStoreProtocool>(_ store: Store) where Store.Entity == Entity {
 		self.innerLoad = store.load
 		self.innerSave = store.save
 		self.innerUpdate = store.update
@@ -378,7 +469,7 @@ class AnyDataStore<Entity: Identifiable & Codable>: DataStore {
 	}
 }
 
-class InMemoryDataStore<Entity: Identifiable & Codable>: DataStore where Entity.ID == String {
+class InMemoryDataStore<Entity: Identifiable & Codable>: DataStoreProtocool where Entity.ID == String {
 	private var entities: [String: Entity] = [:]
 	private let updateSubject = PassthroughSubject<Entity, Never>()
 

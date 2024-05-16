@@ -7,6 +7,7 @@ import SwiftUI
 class ChooseAuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 	private let repository: ChooseAuctionRepository
 	private var cancellables = Set<AnyCancellable>()
+	private let dataStore: DataStore
 
 	@Published var filteredAuctions: [AuctionModel] = []
 	@Published var auctions: [AuctionModel] = []
@@ -20,9 +21,10 @@ class ChooseAuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 
 	var buttonViewModels: [AuctionStateStatuses: AuctionFilterButtonViewModel]
 
-	init(repository: ChooseAuctionRepository, organization: OrganizationModel? = nil) {
+	init(repository: ChooseAuctionRepository, organization: OrganizationModel? = nil, dataStore: DataStore) {
 		self.repository = repository
 		self.organization = organization
+		self.dataStore = dataStore
 		self.buttonViewModels = AuctionStateStatuses.allCases.reduce(into: [:]) { $0[$1] = AuctionFilterButtonViewModel() }
 		self.centerViewData = TopBarCenterViewData(type: .custom, customView: AnyView(EmptyView()))
 
