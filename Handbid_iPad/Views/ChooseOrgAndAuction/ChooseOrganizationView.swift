@@ -6,8 +6,8 @@ import SwiftUI
 struct ChooseOrganizationView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@ObservedObject private var viewModel: ChooseOrganizationViewModel
-	@State private var isButtonDisabled = true
 	@Environment(\.colorScheme) var colorScheme
+	@State private var isButtonDisabled = true
 	@State private var contentLoaded = false
 	@State private var isBlurred = false
 	@FocusState private var focusedField: Field?
@@ -19,7 +19,7 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 
 	var body: some View {
 		ZStack {
-			if contentLoaded { content } else { content }
+			if contentLoaded { contentView } else { contentView }
 		}
 		.onAppear {
 			isBlurred = false
@@ -42,86 +42,113 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 		.ignoresSafeArea(.keyboard, edges: .bottom)
 	}
 
-	private var content: some View {
+	private var contentView: some View {
 		OverlayInternalView(cornerRadius: 40) {
 			VStack {
-				getHeaderText()
-				getListView()
-				getButtons()
+				headerText
+				listView
+				buttons
 			}
 			.blur(radius: isBlurred ? 10 : 0)
 			.padding()
 		}
 	}
 
-	private func getHeaderText() -> some View {
+	private var headerText: some View {
 		Text(LocalizedStringKey("chooseOrg_label_selectOrganization"))
 			.applyTextStyle(style: .body)
 			.accessibilityIdentifier("chooseOrg_label_selectOrganization")
 	}
 
-	private func getListView() -> some View {
+	private var listView: some View {
 		VStack(spacing: 0) {
-			FormField(fieldType: .searchBar,
-			          labelKey: LocalizedStringKey("chooseOrg_label_searchByName"),
-			          hintKey: LocalizedStringKey("chooseOrg_label_searchByName"),
-			          fieldValue: $viewModel.searchOrganization,
-			          focusedField: _focusedField)
-				.padding([.leading, .trailing], 30)
-			List {
-				ForEach(viewModel.filteredOrganizations, id: \.identity) { organization in
-					Button(action: {
-						selectOption(organization)
-					}) {
-						HStack {
-							Text(organization.name ?? "Unknown")
-								.foregroundColor(colorScheme == .dark ? Color.black : Color.black)
-							Spacer()
-							if let selectedOption = viewModel.selectedOrganization?.identity, selectedOption == organization.identity {
-								Image(systemName: "checkmark.circle.fill")
-									.foregroundColor(.accentColor)
-							}
-						}
-						.padding([.leading, .trailing], 10)
-						.frame(height: 50)
-						.contentShape(Rectangle())
-						.overlay(
-							RoundedRectangle(cornerRadius: 10)
-								.stroke(organization.identity == viewModel.selectedOrganization?.identity ? Color.accentColor : Color.gray, lineWidth: organization.identity == viewModel.selectedOrganization?.identity ? 2 : 1)
-						)
-						.onTapGesture {
-							selectOption(organization)
-						}
-					}
-				}
-				.listRowSeparator(.hidden)
-				.listRowBackground(Color.white)
+			searchBar
+			organizationList
+		}
+	}
+
+	private var searchBar: some View {
+		FormField(
+			fieldType: .searchBar,
+			labelKey: LocalizedStringKey("chooseOrg_label_searchByName"),
+			hintKey: LocalizedStringKey("chooseOrg_label_searchByName"),
+			fieldValue: $viewModel.searchOrganization,
+			focusedField: _focusedField
+		)
+		.padding([.leading, .trailing], 30)
+	}
+
+	private var organizationList: some View {
+		List {
+			ForEach(viewModel.filteredOrganizations, id: \.identity) { organization in
+				OrganizationRow(
+					organization: organization,
+					isSelected: viewModel.selectedOrganization?.identity == organization.identity,
+					colorScheme: colorScheme,
+					selectAction: selectOption
+				)
 			}
-			.scrollIndicators(.hidden)
-			.scrollContentBackground(.hidden)
-			.frame(height: CGFloat(5 * 60))
+			.listRowSeparator(.hidden)
+			.listRowBackground(Color.white)
 		}
+		.scrollIndicators(.hidden)
+		.scrollContentBackground(.hidden)
+		.frame(height: CGFloat(5 * 60))
 	}
 
-	private func getButtons() -> some View {
+	private var buttons: some View {
 		VStack(spacing: 10) {
-			Button<Text>.styled(config: .secondaryButtonStyle, isDisabled: $isButtonDisabled, action: {
-				isBlurred = true
-				coordinator.push(MainContainerPage.chooseAuction as! T, with: viewModel.selectedOrganization)
-			}) {
-				Text(LocalizedStringKey("chooseOrg_btn_selectOrg"))
-					.textCase(.uppercase)
-			}.accessibilityIdentifier("chooseOrg_btn_selectOrg")
-				.disabled(viewModel.selectedOrganization == nil)
+			selectOrganizationButton
 		}
 	}
 
-	private func deselectAllOptions() {
-		viewModel.selectedOrganization = nil
+	private var selectOrganizationButton: some View {
+		Button<Text>.styled(config: .secondaryButtonStyle, isDisabled: $isButtonDisabled, action: {
+			isBlurred = true
+			coordinator.push(MainContainerPage.chooseAuction as! T, with: viewModel.selectedOrganization)
+		}) {
+			Text(LocalizedStringKey("chooseOrg_btn_selectOrg"))
+				.textCase(.uppercase)
+		}
+		.accessibilityIdentifier("chooseOrg_btn_selectOrg")
+		.disabled(viewModel.selectedOrganization == nil)
 	}
 
-	func selectOption(_ option: OrganizationModel) {
+	private func selectOption(_ option: OrganizationModel) {
 		viewModel.selectedOrganization = (viewModel.selectedOrganization?.identity == option.identity) ? nil : option
 		isButtonDisabled = viewModel.selectedOrganization == nil
+	}
+}
+
+struct OrganizationRow: View {
+	let organization: OrganizationModel
+	let isSelected: Bool
+	let colorScheme: ColorScheme
+	let selectAction: (OrganizationModel) -> Void
+
+	var body: some View {
+		Button(action: {
+			selectAction(organization)
+		}) {
+			HStack {
+				Text(organization.name ?? "Unknown")
+					.foregroundColor(colorScheme == .dark ? Color.black : Color.black)
+				Spacer()
+				if isSelected {
+					Image(systemName: "checkmark.circle.fill")
+						.foregroundColor(.accentColor)
+				}
+			}
+			.padding([.leading, .trailing], 10)
+			.frame(height: 50)
+			.contentShape(Rectangle())
+			.overlay(
+				RoundedRectangle(cornerRadius: 10)
+					.stroke(isSelected ? Color.accentColor : Color.gray, lineWidth: isSelected ? 2 : 1)
+			)
+		}
+		.onTapGesture {
+			selectAction(organization)
+		}
 	}
 }

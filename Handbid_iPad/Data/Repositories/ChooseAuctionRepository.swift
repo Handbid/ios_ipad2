@@ -11,7 +11,6 @@ protocol ChooseAuctionRepository {
 }
 
 class ChooseAuctionRepositoryImpl: ChooseAuctionRepository, NetworkingService {
-
 	var network: NetworkService.NetworkingClient
 
 	init(_ network: NetworkService.NetworkingClient) {

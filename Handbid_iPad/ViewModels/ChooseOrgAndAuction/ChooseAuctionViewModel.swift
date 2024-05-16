@@ -5,27 +5,28 @@ import NetworkService
 import SwiftUI
 
 class ChooseAuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
-	private var repository: ChooseAuctionRepository
-    private var cancellables = Set<AnyCancellable>()
-	var buttonViewModels: [AuctionStateStatuses: AuctionFilterButtonViewModel] = AuctionStateStatuses.allCases.reduce(into: [:]) { $0[$1] = AuctionFilterButtonViewModel() }
+	private let repository: ChooseAuctionRepository
+	private var cancellables = Set<AnyCancellable>()
+
 	@Published var filteredAuctions: [AuctionModel] = []
 	@Published var auctions: [AuctionModel] = []
-    @Published var centerViewData: TopBarCenterViewData
-    @Published var backToPreviewViewPressed: Bool = false
+	@Published var centerViewData: TopBarCenterViewData
+	@Published var backToPreviewViewPressed: Bool = false
 	@Published var organization: OrganizationModel? {
 		didSet {
 			updateCenterViewData()
 		}
 	}
 
+	var buttonViewModels: [AuctionStateStatuses: AuctionFilterButtonViewModel]
+
 	init(repository: ChooseAuctionRepository, organization: OrganizationModel? = nil) {
 		self.repository = repository
 		self.organization = organization
-		self.centerViewData = TopBarCenterViewData(
-			type: .custom,
-			customView: AnyView(SelectAuctionTopBarCenterView(title: organization?.name ?? "",
-			                                                  countAuctions: organization?.totalAuctions ?? 0))
-		)
+		self.buttonViewModels = AuctionStateStatuses.allCases.reduce(into: [:]) { $0[$1] = AuctionFilterButtonViewModel() }
+		self.centerViewData = TopBarCenterViewData(type: .custom, customView: AnyView(EmptyView()))
+
+		self.centerViewData = createCenterViewData()
 		setupInitialSelection()
 		setupButtonBindings()
 	}
@@ -41,21 +42,9 @@ class ChooseAuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 	}
 
 	private func fetchUserAuctions() {
-		repository.fetchUserAuctions(status: [.open, .closed, .presale, .preview, .reconciled])
+		repository.fetchUserAuctions(status: AuctionStateStatuses.allCases)
 			.receive(on: DispatchQueue.main)
-			.sink(receiveCompletion: { completion in
-				switch completion {
-				case .finished:
-					break
-				case let .failure(error):
-					if let netError = error as? NetworkingError {
-						print(netError)
-					}
-				}
-			}, receiveValue: { auctions in
-				self.auctions = auctions
-				self.filteredAuctions = auctions
-			})
+			.sink(receiveCompletion: handleCompletion, receiveValue: handleAuctionsReceived)
 			.store(in: &cancellables)
 	}
 
@@ -63,9 +52,9 @@ class ChooseAuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 		for (state, viewModel) in buttonViewModels {
 			viewModel.$isSelected
 				.dropFirst()
-				.sink(receiveValue: { [weak self] isSelected in
+				.sink { [weak self] isSelected in
 					self?.handleStateChange(for: state, isSelected: isSelected)
-				})
+				}
 				.store(in: &cancellables)
 		}
 	}
@@ -73,21 +62,25 @@ class ChooseAuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 	private func handleStateChange(for state: AuctionStateStatuses, isSelected: Bool) {
 		DispatchQueue.main.async { [weak self] in
 			guard let self else { return }
-			if state == .all {
-				if isSelected {
-					buttonViewModels.forEach { if $0.key != .all { $0.value.isSelected = false } }
-				}
-			}
-			else {
-				if isSelected, buttonViewModels[.all]?.isSelected == true {
-					buttonViewModels[.all]?.isSelected = false
-				}
-				else if buttonViewModels.filter({ $0.key != .all }).allSatisfy(\.value.isSelected) {
-					buttonViewModels.forEach { $0.value.isSelected = false }
-					buttonViewModels[.all]?.isSelected = true
-				}
-			}
+			updateButtonSelection(for: state, isSelected: isSelected)
 			filterAuctions()
+		}
+	}
+
+	private func updateButtonSelection(for state: AuctionStateStatuses, isSelected: Bool) {
+		if state == .all {
+			if isSelected {
+				buttonViewModels.forEach { if $0.key != .all { $0.value.isSelected = false } }
+			}
+		}
+		else {
+			if isSelected, buttonViewModels[.all]?.isSelected == true {
+				buttonViewModels[.all]?.isSelected = false
+			}
+			else if buttonViewModels.filter({ $0.key != .all }).allSatisfy(\.value.isSelected) {
+				buttonViewModels.forEach { $0.value.isSelected = false }
+				buttonViewModels[.all]?.isSelected = true
+			}
 		}
 	}
 
@@ -96,18 +89,32 @@ class ChooseAuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 		let includeAll = selectedStates.contains(.all)
 		filteredAuctions = auctions.filter { auction in
 			auction.name != nil && (includeAll || (auction.status != nil && selectedStates.contains { $0.rawValue == auction.status }))
-		}.sorted { first, second in
-			guard let firstName = first.name, let secondName = second.name else { return false }
-			return firstName.localizedCompare(secondName) == .orderedAscending
-		}
+		}.sorted(by: { $0.name?.localizedCompare($1.name ?? "") == .orderedAscending })
 	}
 
 	func updateCenterViewData() {
-		centerViewData = TopBarCenterViewData(
+		centerViewData = createCenterViewData()
+	}
+
+	private func createCenterViewData() -> TopBarCenterViewData {
+		TopBarCenterViewData(
 			type: .custom,
-			customView: AnyView(SelectAuctionTopBarCenterView(title: organization?.name ?? "",
-			                                                  countAuctions: organization?.totalAuctions ?? 0))
+			customView: AnyView(SelectAuctionTopBarCenterView(
+				title: organization?.name ?? "",
+				countAuctions: organization?.totalAuctions ?? 0
+			))
 		)
+	}
+
+	private func handleCompletion(_ completion: Subscribers.Completion<Error>) {
+		if case let .failure(error) = completion, let netError = error as? NetworkingError {
+			print(netError)
+		}
+	}
+
+	private func handleAuctionsReceived(_ auctions: [AuctionModel]) {
+		self.auctions = auctions
+		filteredAuctions = auctions
 	}
 
 	var actions: [TopBarAction] {

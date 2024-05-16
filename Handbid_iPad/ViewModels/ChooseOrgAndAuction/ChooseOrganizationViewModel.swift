@@ -5,10 +5,11 @@ import NetworkService
 
 class ChooseOrganizationViewModel: ObservableObject {
 	private var cancellables = Set<AnyCancellable>()
-	private var repository: ChooseOrganizationRepository
-    @Published var organizations: [OrganizationModel] = []
-    @Published var filteredOrganizations: [OrganizationModel] = []
-    @Published var selectedOrganization: OrganizationModel?
+	private let repository: ChooseOrganizationRepository
+
+	@Published var organizations: [OrganizationModel] = []
+	@Published var filteredOrganizations: [OrganizationModel] = []
+	@Published var selectedOrganization: OrganizationModel?
 	@Published var searchOrganization: String = "" {
 		didSet {
 			filterOrganizations()
@@ -28,19 +29,7 @@ class ChooseOrganizationViewModel: ObservableObject {
 	private func fetchOrganizations() {
 		repository.fetchUserOrganizations()
 			.receive(on: DispatchQueue.main)
-			.sink(receiveCompletion: { completion in
-				switch completion {
-				case .finished:
-					break
-				case let .failure(error):
-					if let netError = error as? NetworkingError {
-						print(netError)
-					}
-				}
-			}, receiveValue: { [weak self] user in
-				self?.organizations = user.organization ?? []
-				self?.filterOrganizations()
-			})
+			.sink(receiveCompletion: handleCompletion, receiveValue: handleOrganizationsReceived)
 			.store(in: &cancellables)
 	}
 
@@ -55,5 +44,16 @@ class ChooseOrganizationViewModel: ObservableObject {
 				self?.filterOrganizations()
 			}
 			.store(in: &cancellables)
+	}
+
+	private func handleCompletion(_ completion: Subscribers.Completion<Error>) {
+		if case let .failure(error) = completion, let netError = error as? NetworkingError {
+			print(netError)
+		}
+	}
+
+	private func handleOrganizationsReceived(_ user: UserModel) {
+		organizations = user.organization ?? []
+		filterOrganizations()
 	}
 }
