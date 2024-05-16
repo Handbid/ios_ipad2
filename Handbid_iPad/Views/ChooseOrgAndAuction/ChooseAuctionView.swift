@@ -65,6 +65,7 @@ struct ChooseAuctionView<T: PageProtocol>: View {
 		}
 		.onAppear {
 			viewModel.organization = coordinator.model as? OrganizationModel
+			viewModel.fetchAuctionsIfNeeded()
 		}
 		.onChange(of: $viewModel.backToPreviewViewPressed.wrappedValue) { _, newValue in
 			if newValue {

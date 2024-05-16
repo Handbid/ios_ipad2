@@ -7,17 +7,76 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "CE66B9B7-9E96-4CFC-8EF0-CAA6F8B6101D"
-            shouldBeEnabled = "Yes"
+            uuid = "09C06F5B-3F7C-4FFF-861B-48BD7469B7DA"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Handbid_iPad/MainPointApp/MainAppCoordinator.swift"
+            filePath = "Handbid_iPad/Views/ChooseOrgAndAuction/Auction/AuctionCollectionCellView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
-            landmarkName = "init()"
-            landmarkType = "7">
+            startingLineNumber = "124"
+            endingLineNumber = "124">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "87CB2EC1-529E-445A-B140-0D63FB7ED59C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Handbid_iPad/Views/ChooseOrgAndAuction/Auction/AuctionCollectionCellView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "120"
+            endingLineNumber = "120">
+            <Locations>
+               <Location
+                  uuid = "87CB2EC1-529E-445A-B140-0D63FB7ED59C - f379a8fe0d452036"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Handbid_iPad.AuctionRepositoryImpl.__allocating_init(network: NetworkService.NetworkingClient) -&gt; Handbid_iPad.AuctionRepositoryImpl"
+                  moduleName = "Handbid_iPad"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kuba/Desktop/Handbid-iPad/Handbid_iPad/Views/ChooseOrgAndAuction/Auction/AuctionCollectionCellView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "120"
+                  endingLineNumber = "120"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  uuid = "87CB2EC1-529E-445A-B140-0D63FB7ED59C - 3d80615df2e60b13"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Handbid_iPad.AuctionRepositoryImpl.init(network: NetworkService.NetworkingClient) -&gt; Handbid_iPad.AuctionRepositoryImpl"
+                  moduleName = "Handbid_iPad"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kuba/Desktop/Handbid-iPad/Handbid_iPad/Views/ChooseOrgAndAuction/Auction/AuctionCollectionCellView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "120"
+                  endingLineNumber = "120"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  uuid = "87CB2EC1-529E-445A-B140-0D63FB7ED59C - 18ac8a08c57de2d3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Handbid_iPad.AuctionModel) -&gt; &lt;&lt;opaque return type of SwiftUI.View.frame(width: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, height: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;Handbid_iPad.AuctionModel&gt;, Swift.Optional&lt;Swift.Int&gt;, &lt;&lt;opaque return type of SwiftUI.View.frame(width: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, height: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0&gt; in closure #2 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of Handbid_iPad.ChooseAuctionView.topBarContent(for: Handbid_iPad.SelectAuctionContainerTypeView) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.frame(width: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, height: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0, SwiftUI.ScrollView&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;, SwiftUI.Spacer)&gt; in closure #1 (SwiftUI.GeometryProxy) -&gt; SwiftUI.VStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of Handbid_iPad.ChooseAuctionView.topBarContent(for: Handbid_iPad.SelectAuctionContainerTypeView) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.frame(width: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, height: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0, SwiftUI.ScrollView&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;, SwiftUI.Spacer)&gt;&gt; in Handbid_iPad.ChooseAuctionView.body.getter : some"
+                  moduleName = "Handbid_iPad"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kuba/Desktop/Handbid-iPad/Handbid_iPad/Views/ChooseOrgAndAuction/Auction/AuctionCollectionCellView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "120"
+                  endingLineNumber = "120"
+                  offsetFromSymbolStart = "216">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

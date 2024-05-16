@@ -6,18 +6,17 @@ import SwiftUI
 
 class ChooseAuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 	private var repository: ChooseAuctionRepository
+    private var cancellables = Set<AnyCancellable>()
 	var buttonViewModels: [AuctionStateStatuses: AuctionFilterButtonViewModel] = AuctionStateStatuses.allCases.reduce(into: [:]) { $0[$1] = AuctionFilterButtonViewModel() }
 	@Published var filteredAuctions: [AuctionModel] = []
 	@Published var auctions: [AuctionModel] = []
+    @Published var centerViewData: TopBarCenterViewData
+    @Published var backToPreviewViewPressed: Bool = false
 	@Published var organization: OrganizationModel? {
 		didSet {
 			updateCenterViewData()
 		}
 	}
-
-	@Published var centerViewData: TopBarCenterViewData
-	@Published var backToPreviewViewPressed: Bool = false
-	private var cancellables = Set<AnyCancellable>()
 
 	init(repository: ChooseAuctionRepository, organization: OrganizationModel? = nil) {
 		self.repository = repository
@@ -29,6 +28,10 @@ class ChooseAuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 		)
 		setupInitialSelection()
 		setupButtonBindings()
+	}
+
+	func fetchAuctionsIfNeeded() {
+		guard auctions.isEmpty else { return }
 		fetchUserAuctions()
 	}
 
@@ -37,7 +40,7 @@ class ChooseAuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 		filterAuctions()
 	}
 
-	func fetchUserAuctions() {
+	private func fetchUserAuctions() {
 		repository.fetchUserAuctions(status: [.open, .closed, .presale, .preview, .reconciled])
 			.receive(on: DispatchQueue.main)
 			.sink(receiveCompletion: { completion in

@@ -5,7 +5,8 @@ import NetworkService
 import SwiftData
 
 struct AuctionModel: Identifiable, Codable, NetworkingJSONDecodable {
-	@Attribute(.unique) var id: UUID
+	var id: String
+	var identity: Int?
 	var key: String?
 	var imageUrl: String?
 	var auctionGuid: String?
@@ -123,7 +124,7 @@ struct AuctionModel: Identifiable, Codable, NetworkingJSONDecodable {
 
 extension AuctionModel: ArrowParsable {
 	init() {
-		self.id = UUID()
+		self.id = String()
 	}
 
 	enum CodingKeys: String, CodingKey {
@@ -147,7 +148,8 @@ extension AuctionModel: ArrowParsable {
 	}
 
 	mutating func deserialize(_ json: JSON) {
-		id <-- json["id"]
+		id <-- json["auctionGuid"]
+		identity <-- json["id"]
 		key <-- json["key"]
 		imageUrl <-- json["imageUrl"]
 		auctionGuid <-- json["auctionGuid"]

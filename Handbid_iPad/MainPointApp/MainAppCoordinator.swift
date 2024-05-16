@@ -53,7 +53,7 @@ struct MainAppCoordinator: App {
 			switch page {
 			case .chooseOrganization:
 				let repository = ChooseOrganizationRepositoryImpl(deps.networkClient, modelContext: modelContext)
-				let viewModel = ChooseOrganizationViewModel(repository: repository, modelContext: modelContext)
+				let viewModel = ChooseOrganizationViewModel(repository: repository)
 				return AnyView(ChooseOrganizationView<MainContainerPage>(viewModel: viewModel))
 			case .chooseAuction:
 				let repository = ChooseAuctionRepositoryImpl(deps.networkClient)

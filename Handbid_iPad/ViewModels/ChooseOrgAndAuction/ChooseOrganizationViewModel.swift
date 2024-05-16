@@ -6,17 +6,18 @@ import NetworkService
 class ChooseOrganizationViewModel: ObservableObject {
 	private var cancellables = Set<AnyCancellable>()
 	private var repository: ChooseOrganizationRepository
-	@Published var searchOrganization: String = ""
-	@Published var organizations: [OrganizationModel] = []
-	@Published var filteredOrganizations: [OrganizationModel] = []
-	@Published var selectedOrganization: OrganizationModel?
-	private let modelContext: ModelContext
+    @Published var organizations: [OrganizationModel] = []
+    @Published var filteredOrganizations: [OrganizationModel] = []
+    @Published var selectedOrganization: OrganizationModel?
+	@Published var searchOrganization: String = "" {
+		didSet {
+			filterOrganizations()
+		}
+	}
 
-	init(repository: ChooseOrganizationRepository, modelContext: ModelContext) {
+	init(repository: ChooseOrganizationRepository) {
 		self.repository = repository
-		self.modelContext = modelContext
-		setupSubscriptions()
-		fetchOrganizationsIfNeeded()
+		setupSearchOrganizationSubscriber()
 	}
 
 	func fetchOrganizationsIfNeeded() {
@@ -26,36 +27,32 @@ class ChooseOrganizationViewModel: ObservableObject {
 
 	private func fetchOrganizations() {
 		repository.fetchUserOrganizations()
+			.receive(on: DispatchQueue.main)
 			.sink(receiveCompletion: { completion in
 				switch completion {
 				case .finished:
 					break
 				case let .failure(error):
-					print("Error fetching organizations: \(error)")
+					if let netError = error as? NetworkingError {
+						print(netError)
+					}
 				}
 			}, receiveValue: { [weak self] user in
 				self?.organizations = user.organization ?? []
-				self?.filteredOrganizations = self?.filterOrganizations(with: self?.searchOrganization ?? "") ?? []
+				self?.filterOrganizations()
 			})
 			.store(in: &cancellables)
 	}
 
-	private func filterOrganizations(with searchText: String) -> [OrganizationModel] {
-		searchText.isEmpty ? organizations : organizations.filter { $0.name?.localizedCaseInsensitiveContains(searchText) == true }
+	private func filterOrganizations() {
+		filteredOrganizations = searchOrganization.isEmpty ? organizations : organizations.filter { $0.name?.localizedCaseInsensitiveContains(searchOrganization) == true }
 	}
 
-	private func setupSubscriptions() {
+	private func setupSearchOrganizationSubscriber() {
 		$searchOrganization
-			.debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
-			.removeDuplicates()
-			.map(filterOrganizations)
-			.assign(to: \.filteredOrganizations, on: self)
-			.store(in: &cancellables)
-
-		modelContext.updates
-			.receive(on: DispatchQueue.main)
+			.debounce(for: .milliseconds(300), scheduler: RunLoop.main)
 			.sink { [weak self] _ in
-				self?.fetchOrganizationsIfNeeded()
+				self?.filterOrganizations()
 			}
 			.store(in: &cancellables)
 	}
