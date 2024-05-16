@@ -8,6 +8,7 @@ import SwiftUI
 enum ModelType {
 	case user
 
+	// Checks if the model type matches the given type
 	func isModelType(_ type: (some Any).Type) -> Bool {
 		switch self {
 		case .user:
@@ -25,10 +26,12 @@ final class DataStore: ObservableObject {
 
 	private init() {}
 
+	// Publishes changes in models
 	var modelsPublisher: AnyPublisher<Void, Never> {
 		modelsSubject.eraseToAnyPublisher()
 	}
 
+	// Method to update or add a model (upsert)
 	func upsert<T: Identifiable & Codable>(_ modelType: ModelType, model: T, allowCreation: Bool = true) {
 		guard modelType.isModelType(T.self) else {
 			print("Error: Model type mismatch.")
@@ -49,15 +52,14 @@ final class DataStore: ObservableObject {
 		}
 	}
 
+	// Function to merge an existing object with new data
 	private func merge<T: Identifiable & Codable>(_ oldObject: T, with newObject: T) -> T {
 		let newMirror = Mirror(reflecting: newObject)
-
 		let updatedObject = (oldObject as AnyObject).mutableCopy() as! T
 
 		for (key, newValue) in newMirror.children {
 			if let key {
 				let selector = Selector("\(key)")
-
 				if (updatedObject as AnyObject).responds(to: selector) {
 					(updatedObject as AnyObject).setValue(newValue, forKey: key)
 				}
@@ -67,6 +69,7 @@ final class DataStore: ObservableObject {
 		return updatedObject
 	}
 
+	// Function to set an object in the data store
 	private func setObject(_ object: some Identifiable & Codable, for modelType: ModelType) {
 		dataStoreQueue.async(flags: .barrier) {
 			self.models[modelType] = object as AnyObject
@@ -76,6 +79,7 @@ final class DataStore: ObservableObject {
 		}
 	}
 
+	// Function to get an object from the data store
 	func getObject<T: Identifiable & Codable>(for modelType: ModelType, as _: T.Type) -> T? {
 		var result: T?
 		dataStoreQueue.sync {
