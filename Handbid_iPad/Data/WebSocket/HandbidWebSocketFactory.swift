@@ -1,14 +1,27 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
+import Foundation
 import NetworkService
 
 class HandbidWebSocketFactory: WebSocketURLFactory {
-	func getSocketURL() throws -> URL {
-		let responseString = try String(contentsOf: getSocketHandshakeURL(), encoding: .utf8)
-		let delimeter = responseString.firstIndex(of: ":")!
-		let sessionId = responseString[..<delimeter]
+	private let responseProvider: HandshakeResponseProvider
 
-		return URL(string: "\(getSocketHandshakeURL())/\(sessionId)")!
+	init(responseProvider: HandshakeResponseProvider = DefaultHandshakeResponseProvider()) {
+		self.responseProvider = responseProvider
+	}
+
+	func getSocketURL() throws -> URL {
+		let responseString = try responseProvider.getHandshakeResponse(from: getSocketHandshakeURL())
+		let delimeter = responseString.firstIndex(of: ":")
+
+		if let index = delimeter {
+			let sessionId = responseString[..<index]
+
+			return URL(string: "\(getSocketHandshakeURL())/\(sessionId)")!
+		}
+		else {
+			throw URLError(.badServerResponse)
+		}
 	}
 
 	private func getSocketHandshakeURL() -> URL {

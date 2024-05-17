@@ -134,6 +134,9 @@
 		CE9D80F52BDC134E00D57A1A /* UserProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D80F42BDC134E00D57A1A /* UserProcessor.swift */; };
 		CE9E2D0E2BC845D70008FD8A /* Inspection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9E2D0D2BC845D70008FD8A /* Inspection.swift */; };
 		CE9E2D112BC846140008FD8A /* InspectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9E2D102BC846140008FD8A /* InspectionExtension.swift */; };
+		CEA44C3D2BF753F40020B99D /* HandbidWebSocketFactory_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA44C3C2BF753F40020B99D /* HandbidWebSocketFactory_Tests.swift */; };
+		CEA44C3F2BF7562B0020B99D /* HandshakeResponseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA44C3E2BF7562B0020B99D /* HandshakeResponseProvider.swift */; };
+		CEA44C432BF759DF0020B99D /* MockHandshakeResponseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA44C422BF759DF0020B99D /* MockHandshakeResponseProvider.swift */; };
 		CEAB750D2BD12B65000AFB46 /* ForgotPasswordView_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB750C2BD12B65000AFB46 /* ForgotPasswordView_Tests.swift */; };
 		CEAB750F2BD12BEE000AFB46 /* MockForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB750E2BD12BEE000AFB46 /* MockForgotPasswordViewModel.swift */; };
 		CEAB75112BD165D5000AFB46 /* PasswordResetConfirmationView_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB75102BD165D5000AFB46 /* PasswordResetConfirmationView_Tests.swift */; };
@@ -304,6 +307,9 @@
 		CE9D80F42BDC134E00D57A1A /* UserProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProcessor.swift; sourceTree = "<group>"; };
 		CE9E2D0D2BC845D70008FD8A /* Inspection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inspection.swift; sourceTree = "<group>"; };
 		CE9E2D102BC846140008FD8A /* InspectionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionExtension.swift; sourceTree = "<group>"; };
+		CEA44C3C2BF753F40020B99D /* HandbidWebSocketFactory_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandbidWebSocketFactory_Tests.swift; sourceTree = "<group>"; };
+		CEA44C3E2BF7562B0020B99D /* HandshakeResponseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandshakeResponseProvider.swift; sourceTree = "<group>"; };
+		CEA44C422BF759DF0020B99D /* MockHandshakeResponseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHandshakeResponseProvider.swift; sourceTree = "<group>"; };
 		CEAB750C2BD12B65000AFB46 /* ForgotPasswordView_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView_Tests.swift; sourceTree = "<group>"; };
 		CEAB750E2BD12BEE000AFB46 /* MockForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		CEAB75102BD165D5000AFB46 /* PasswordResetConfirmationView_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetConfirmationView_Tests.swift; sourceTree = "<group>"; };
@@ -398,6 +404,7 @@
 		8C1CC5312BC3D77100AF80F4 /* Handbid_iPadTests */ = {
 			isa = PBXGroup;
 			children = (
+				CEA44C3A2BF74F000020B99D /* Data_Tests */,
 				CE9E2D0F2BC846010008FD8A /* Extensions */,
 				CE6F8DBB2BCEC67B009DBE7E /* Mocks */,
 				CE22793C2BC6903600F4430F /* View_Tests */,
@@ -835,6 +842,7 @@
 				CEDC95072BD92A6500EB997C /* HandbidWebSocketFactory.swift */,
 				CE96F7DE2BDA91DF00BCF74E /* HandbidEventDelegate.swift */,
 				CE9D80EB2BDBA51D00D57A1A /* EventDelegate.swift */,
+				CEA44C3E2BF7562B0020B99D /* HandshakeResponseProvider.swift */,
 			);
 			path = WebSocket;
 			sourceTree = "<group>";
@@ -842,6 +850,7 @@
 		CE6F8DBB2BCEC67B009DBE7E /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				CEA44C402BF759C00020B99D /* Data */,
 				CE6F8DBC2BCEC69E009DBE7E /* ViewModels */,
 				8C1CC51E2BC2480D00AF80F4 /* Repository */,
 			);
@@ -898,6 +907,38 @@
 				CE9E2D102BC846140008FD8A /* InspectionExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CEA44C3A2BF74F000020B99D /* Data_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				CEA44C3B2BF74F0D0020B99D /* WebSocket */,
+			);
+			path = Data_Tests;
+			sourceTree = "<group>";
+		};
+		CEA44C3B2BF74F0D0020B99D /* WebSocket */ = {
+			isa = PBXGroup;
+			children = (
+				CEA44C3C2BF753F40020B99D /* HandbidWebSocketFactory_Tests.swift */,
+			);
+			path = WebSocket;
+			sourceTree = "<group>";
+		};
+		CEA44C402BF759C00020B99D /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				CEA44C412BF759C70020B99D /* WebSocket */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		CEA44C412BF759C70020B99D /* WebSocket */ = {
+			isa = PBXGroup;
+			children = (
+				CEA44C422BF759DF0020B99D /* MockHandshakeResponseProvider.swift */,
+			);
+			path = WebSocket;
 			sourceTree = "<group>";
 		};
 		CEE2BB242BB5BB310033556D /* Data */ = {
@@ -1234,6 +1275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEAB75112BD165D5000AFB46 /* PasswordResetConfirmationView_Tests.swift in Sources */,
+				CEA44C432BF759DF0020B99D /* MockHandshakeResponseProvider.swift in Sources */,
 				CE6F8DC22BCEE513009DBE7E /* MockLogInViewModel.swift in Sources */,
 				8C1B67702BC83F92006B61F6 /* MockForgotPassword.swift in Sources */,
 				8C1B676E2BC834F3006B61F6 /* ResetPasswordModel_Test.swift in Sources */,
@@ -1245,6 +1287,7 @@
 				CE22793E2BC691CC00F4430F /* GetStartedView_Tests.swift in Sources */,
 				8C1CC53E2BC3D8AE00AF80F4 /* MockRegisterRepository.swift in Sources */,
 				8C1CC5402BC3D8B600AF80F4 /* ChooseEnvironmentViewModel_Tests.swift in Sources */,
+				CEA44C3D2BF753F40020B99D /* HandbidWebSocketFactory_Tests.swift in Sources */,
 				8C1CC53A2BC3D85300AF80F4 /* AppVersionModel_Test.swift in Sources */,
 				CE6F8DBE2BCEC6BE009DBE7E /* MockGetStartedViewModel.swift in Sources */,
 				8C1CC53B2BC3D89200AF80F4 /* GetStartedViewModel_Tests.swift in Sources */,
@@ -1304,6 +1347,7 @@
 				8C4B7BAD2BB8942D0043B892 /* TextFieldStyles.swift in Sources */,
 				8CD108102BD122E000E83261 /* PaddleView.swift in Sources */,
 				8CABF5CE2BB9D89900A34870 /* TypographyStyle.swift in Sources */,
+				CEA44C3F2BF7562B0020B99D /* HandshakeResponseProvider.swift in Sources */,
 				8C9FA4462BD282B90041F28E /* ManagerView.swift in Sources */,
 				8CD107F52BD11EEA00E83261 /* TopBarContent.swift in Sources */,
 				8CD108282BD125DC00E83261 /* AuctionDataService.swift in Sources */,
@@ -1415,6 +1459,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 35JZN6VPM3;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				MARKETING_VERSION = 1.0;
@@ -1440,6 +1485,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 35JZN6VPM3;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
