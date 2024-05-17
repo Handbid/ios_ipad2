@@ -2,20 +2,6 @@
 
 import Combine
 import Foundation
-import SwiftData
-import SwiftUI
-
-enum ModelTypeData {
-	case user
-
-	// Checks if the model type matches the given type
-	func isModelType(_ type: (some Any).Type) -> Bool {
-		switch self {
-		case .user:
-			type == UserModel.self
-		}
-	}
-}
 
 class DataManager<Entity: Identifiable & Codable> where Entity.ID == String {
 	@Published var entities: [Entity] = []
