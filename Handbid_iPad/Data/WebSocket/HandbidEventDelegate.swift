@@ -8,12 +8,12 @@ class HandbidEventDelegate: EventDelegate {
 
 	var auctionGuid: String?
 
-	private static let heartbeatMessage = "2::"
-	private static let connectedMessage = "1::"
-	private static let registerMessage = "1::/client"
+	static let heartbeatMessage = "2::"
+	static let connectedMessage = "1::"
+	static let registerMessage = "1::/client"
 
 	private var logger: Logger?
-	private var isClosing = false
+	var isClosing = false
 
 	#if Debug
 		init() {
@@ -61,9 +61,11 @@ class HandbidEventDelegate: EventDelegate {
 	}
 
 	private func reconnectSocket(client: WebSocketClient) {
+		isClosing = true
 		client.disconnect()
 		DispatchQueue.global().asyncAfterSeconds(seconds: 5) {
 			client.connect()
+			self.isClosing = false
 		}
 	}
 

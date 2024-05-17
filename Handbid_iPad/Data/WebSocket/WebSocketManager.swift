@@ -31,6 +31,7 @@ class WebSocketManager {
 		if let client = socket {
 			delegate?.leaveAuctionChannel(client: client)
 			delegate?.leaveUserChannel(client: client)
+			delegate?.isClosing = true
 			client.disconnect()
 		}
 

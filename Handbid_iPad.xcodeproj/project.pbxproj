@@ -116,6 +116,8 @@
 		CE1E7BBC2BD0286D00BD3DD1 /* ChooseEnvironmentView_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1E7BBB2BD0286D00BD3DD1 /* ChooseEnvironmentView_Tests.swift */; };
 		CE1E7BBE2BD028B600BD3DD1 /* MockChooseEnvironmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1E7BBD2BD028B600BD3DD1 /* MockChooseEnvironmentViewModel.swift */; };
 		CE22793E2BC691CC00F4430F /* GetStartedView_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE22793D2BC691CC00F4430F /* GetStartedView_Tests.swift */; };
+		CE295CDE2BF781540060B701 /* MockWebSocketClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE295CDD2BF781540060B701 /* MockWebSocketClient.swift */; };
+		CE295CE02BF78DA60060B701 /* HandbidEventDelegate_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE295CDF2BF78DA60060B701 /* HandbidEventDelegate_Tests.swift */; };
 		CE34FB3F2BB1963300701D2A /* OverlayInternalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE34FB3E2BB1963300701D2A /* OverlayInternalView.swift */; };
 		CE5127F32BD82B4300AE29A5 /* WebSocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5127F22BD82B4300AE29A5 /* WebSocketManager.swift */; };
 		CE5127F52BD82E7B00AE29A5 /* EnvironmentManagerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5127F42BD82E7B00AE29A5 /* EnvironmentManagerExt.swift */; };
@@ -291,6 +293,8 @@
 		CE1E7BBB2BD0286D00BD3DD1 /* ChooseEnvironmentView_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseEnvironmentView_Tests.swift; sourceTree = "<group>"; };
 		CE1E7BBD2BD028B600BD3DD1 /* MockChooseEnvironmentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockChooseEnvironmentViewModel.swift; sourceTree = "<group>"; };
 		CE22793D2BC691CC00F4430F /* GetStartedView_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedView_Tests.swift; sourceTree = "<group>"; };
+		CE295CDD2BF781540060B701 /* MockWebSocketClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWebSocketClient.swift; sourceTree = "<group>"; };
+		CE295CDF2BF78DA60060B701 /* HandbidEventDelegate_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandbidEventDelegate_Tests.swift; sourceTree = "<group>"; };
 		CE34FB3E2BB1963300701D2A /* OverlayInternalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayInternalView.swift; sourceTree = "<group>"; };
 		CE5127F22BD82B4300AE29A5 /* WebSocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketManager.swift; sourceTree = "<group>"; };
 		CE5127F42BD82E7B00AE29A5 /* EnvironmentManagerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentManagerExt.swift; sourceTree = "<group>"; };
@@ -921,6 +925,7 @@
 			isa = PBXGroup;
 			children = (
 				CEA44C3C2BF753F40020B99D /* HandbidWebSocketFactory_Tests.swift */,
+				CE295CDF2BF78DA60060B701 /* HandbidEventDelegate_Tests.swift */,
 			);
 			path = WebSocket;
 			sourceTree = "<group>";
@@ -937,6 +942,7 @@
 			isa = PBXGroup;
 			children = (
 				CEA44C422BF759DF0020B99D /* MockHandshakeResponseProvider.swift */,
+				CE295CDD2BF781540060B701 /* MockWebSocketClient.swift */,
 			);
 			path = WebSocket;
 			sourceTree = "<group>";
@@ -1282,6 +1288,7 @@
 				8C1CC53D2BC3D8AC00AF80F4 /* MockChooseEnvironment.swift in Sources */,
 				8C1CC53C2BC3D89C00AF80F4 /* MockLogInAnonymously.swift in Sources */,
 				8C1B67722BC83FAE006B61F6 /* ForgotPasswordViewModel_Tests.swift in Sources */,
+				CE295CE02BF78DA60060B701 /* HandbidEventDelegate_Tests.swift in Sources */,
 				8C1CC5392BC3D84F00AF80F4 /* AuthModel_Test.swift in Sources */,
 				CEAB750D2BD12B65000AFB46 /* ForgotPasswordView_Tests.swift in Sources */,
 				CE22793E2BC691CC00F4430F /* GetStartedView_Tests.swift in Sources */,
@@ -1294,6 +1301,7 @@
 				CE1E7BBE2BD028B600BD3DD1 /* MockChooseEnvironmentViewModel.swift in Sources */,
 				CE6F8DC02BCECC3D009DBE7E /* LogInView_Tests.swift in Sources */,
 				CE9E2D112BC846140008FD8A /* InspectionExtension.swift in Sources */,
+				CE295CDE2BF781540060B701 /* MockWebSocketClient.swift in Sources */,
 				CEAB750F2BD12BEE000AFB46 /* MockForgotPasswordViewModel.swift in Sources */,
 				8C1CC5412BC3D8B800AF80F4 /* LogInViewModel_Tests.swift in Sources */,
 				CE1E7BBC2BD0286D00BD3DD1 /* ChooseEnvironmentView_Tests.swift in Sources */,
