@@ -7,111 +7,20 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "09C06F5B-3F7C-4FFF-861B-48BD7469B7DA"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Handbid_iPad/Views/ChooseOrgAndAuction/Auction/AuctionCollectionCellView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "87CB2EC1-529E-445A-B140-0D63FB7ED59C"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Handbid_iPad/Views/ChooseOrgAndAuction/Auction/AuctionCollectionCellView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120">
-            <Locations>
-               <Location
-                  uuid = "87CB2EC1-529E-445A-B140-0D63FB7ED59C - f379a8fe0d452036"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Handbid_iPad.AuctionRepositoryImpl.__allocating_init(network: NetworkService.NetworkingClient) -&gt; Handbid_iPad.AuctionRepositoryImpl"
-                  moduleName = "Handbid_iPad"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kuba/Desktop/Handbid-iPad/Handbid_iPad/Views/ChooseOrgAndAuction/Auction/AuctionCollectionCellView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "120"
-                  endingLineNumber = "120"
-                  offsetFromSymbolStart = "56">
-               </Location>
-               <Location
-                  uuid = "87CB2EC1-529E-445A-B140-0D63FB7ED59C - 3d80615df2e60b13"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Handbid_iPad.AuctionRepositoryImpl.init(network: NetworkService.NetworkingClient) -&gt; Handbid_iPad.AuctionRepositoryImpl"
-                  moduleName = "Handbid_iPad"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kuba/Desktop/Handbid-iPad/Handbid_iPad/Views/ChooseOrgAndAuction/Auction/AuctionCollectionCellView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "120"
-                  endingLineNumber = "120"
-                  offsetFromSymbolStart = "36">
-               </Location>
-               <Location
-                  uuid = "87CB2EC1-529E-445A-B140-0D63FB7ED59C - 18ac8a08c57de2d3"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Handbid_iPad.AuctionModel) -&gt; &lt;&lt;opaque return type of SwiftUI.View.frame(width: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, height: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;Handbid_iPad.AuctionModel&gt;, Swift.Optional&lt;Swift.Int&gt;, &lt;&lt;opaque return type of SwiftUI.View.frame(width: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, height: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0&gt; in closure #2 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of Handbid_iPad.ChooseAuctionView.topBarContent(for: Handbid_iPad.SelectAuctionContainerTypeView) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.frame(width: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, height: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0, SwiftUI.ScrollView&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;, SwiftUI.Spacer)&gt; in closure #1 (SwiftUI.GeometryProxy) -&gt; SwiftUI.VStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of Handbid_iPad.ChooseAuctionView.topBarContent(for: Handbid_iPad.SelectAuctionContainerTypeView) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.frame(width: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, height: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0, SwiftUI.ScrollView&lt;&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0&gt;, SwiftUI.Spacer)&gt;&gt; in Handbid_iPad.ChooseAuctionView.body.getter : some"
-                  moduleName = "Handbid_iPad"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kuba/Desktop/Handbid-iPad/Handbid_iPad/Views/ChooseOrgAndAuction/Auction/AuctionCollectionCellView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "120"
-                  endingLineNumber = "120"
-                  offsetFromSymbolStart = "216">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "85B06F88-9C9F-43CE-9E5C-1C22355E9C99"
+            uuid = "429AB2FB-5B99-426D-8782-73D8405564D0"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Handbid_iPad/ViewModels/ChooseOrgAndAuction/ChooseOrganizationViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "handleOrganizationsReceived(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F944B7C7-90DE-4387-AD38-6FC574E6239C"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Handbid_iPad/ViewModels/ChooseOrgAndAuction/ChooseOrganizationViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
             landmarkName = "handleOrganizationsReceived(_:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "F944B7C7-90DE-4387-AD38-6FC574E6239C - 5ea9dc4344c79239"
+                  uuid = "429AB2FB-5B99-426D-8782-73D8405564D0 - 5ea9dc4344c78c0e"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -121,12 +30,12 @@
                   urlString = "file:///Users/kuba/Desktop/ios_ipad2/Handbid_iPad/ViewModels/ChooseOrgAndAuction/ChooseOrganizationViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "60"
-                  endingLineNumber = "60"
-                  offsetFromSymbolStart = "308">
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "2504">
                </Location>
                <Location
-                  uuid = "F944B7C7-90DE-4387-AD38-6FC574E6239C - 5ea9dc4344c79239"
+                  uuid = "429AB2FB-5B99-426D-8782-73D8405564D0 - 5ea9dc4344c78c0e"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -136,75 +45,12 @@
                   urlString = "file:///Users/kuba/Desktop/ios_ipad2/Handbid_iPad/ViewModels/ChooseOrgAndAuction/ChooseOrganizationViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "60"
-                  endingLineNumber = "60"
-                  offsetFromSymbolStart = "196">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F98BF867-25E0-423E-B917-44A83FA5EA80"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Handbid_iPad/ViewModels/ChooseOrgAndAuction/ChooseOrganizationViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "filterOrganizations()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "F98BF867-25E0-423E-B917-44A83FA5EA80 - d4e8e3d9ee1cce0e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Handbid_iPad.ChooseOrganizationViewModel.searchOrganization.setter : Swift.String"
-                  moduleName = "Handbid_iPad"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kuba/Desktop/ios_ipad2/Handbid_iPad/ViewModels/ChooseOrgAndAuction/ChooseOrganizationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "136">
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "1996">
                </Location>
                <Location
-                  uuid = "F98BF867-25E0-423E-B917-44A83FA5EA80 - 71d6838bf31aec22"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Handbid_iPad.ChooseOrganizationViewModel.searchOrganization.modify : Swift.String with unmangled suffix &quot;.resume.0&quot;"
-                  moduleName = "Handbid_iPad"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kuba/Desktop/ios_ipad2/Handbid_iPad/ViewModels/ChooseOrgAndAuction/ChooseOrganizationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "148">
-               </Location>
-               <Location
-                  uuid = "F98BF867-25E0-423E-B917-44A83FA5EA80 - ce1b85bdee36f8bb"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.String) -&gt; () in Handbid_iPad.ChooseOrganizationViewModel.setupSearchOrganizationSubscriber() -&gt; ()"
-                  moduleName = "Handbid_iPad"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kuba/Desktop/ios_ipad2/Handbid_iPad/ViewModels/ChooseOrgAndAuction/ChooseOrganizationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "92">
-               </Location>
-               <Location
-                  uuid = "F98BF867-25E0-423E-B917-44A83FA5EA80 - 5ea9dc4344c79755"
+                  uuid = "429AB2FB-5B99-426D-8782-73D8405564D0 - 5ea9dc4344c78c0e"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -214,24 +60,9 @@
                   urlString = "file:///Users/kuba/Desktop/ios_ipad2/Handbid_iPad/ViewModels/ChooseOrgAndAuction/ChooseOrganizationViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "1588">
-               </Location>
-               <Location
-                  uuid = "F98BF867-25E0-423E-B917-44A83FA5EA80 - 973da6016b9630b7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "function signature specialization &lt;Arg[0] = Owned To Guaranteed, Arg[1] = Owned To Guaranteed&gt; of function signature specialization &lt;Arg[0] = [Closure Propagated : closure #1 (Handbid_iPad.OrganizationModel) -&gt; Swift.Bool in Handbid_iPad.ChooseOrganizationViewModel.(filterOrganizations in _1353A6635C6642ADFD8D587B8EAB83F8)() -&gt; (), Argument Types : [Handbid_iPad.ChooseOrganizationViewModel]&gt; of generic specialization &lt;Swift.Array&lt;Handbid_iPad.OrganizationModel&gt;&gt; of Swift._ArrayProtocol.filter((&#x3c4;_0_0.Element) throws -&gt; Swift.Bool) throws -&gt; Swift.Array&lt;&#x3c4;_0_0.Element&gt;"
-                  moduleName = "Handbid_iPad"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kuba/Desktop/ios_ipad2/Handbid_iPad/ViewModels/ChooseOrgAndAuction/ChooseOrganizationViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "244">
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "2004">
                </Location>
             </Locations>
          </BreakpointContent>
