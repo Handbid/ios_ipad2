@@ -3,6 +3,14 @@
 import Combine
 import Foundation
 
+protocol HasIdentity {
+	var identity: Int { get }
+}
+
+protocol HasNestedModels {
+	var nestedModels: [AnyObject] { get set }
+}
+
 final class DataStore: ObservableObject {
 	static let shared = DataStore()
 
@@ -29,7 +37,7 @@ final class DataStore: ObservableObject {
 		return updatedModel
 	}
 
-	func upsertModel<T: Codable>(_ modelType: ModelTypeData, model: T?, allowCreation: Bool) {
+	func upsertModel<T: Codable>(_ modelType: ModelTypeData, model: T?, allowCreation: Bool, shouldMerge: Bool = false) {
 		guard modelType.isModelType(T.self) else {
 			print("Error: Model type mismatch.")
 			return
@@ -37,7 +45,7 @@ final class DataStore: ObservableObject {
 
 		if let model {
 			if let existingModel = storedModels[modelType] as? T {
-				let updatedModel = mergeModels(existingModel, with: model)
+				let updatedModel: T = shouldMerge ? mergeModels(existingModel, with: model) : model
 				saveModel(updatedModel, for: modelType)
 			}
 			else if allowCreation {
@@ -61,6 +69,35 @@ final class DataStore: ObservableObject {
 
 	func clearAllModels() {
 		storedModels.removeAll()
+		modelsPublisherSubject.send()
+	}
+
+	private func findNestedModel<T: Codable & HasIdentity>(_ modelType: ModelTypeData, identity: Int) -> T? {
+		guard let parentModel = storedModels[modelType] as? HasNestedModels else { return nil }
+		return parentModel.nestedModels.first { ($0 as? T)?.identity == identity } as? T
+	}
+
+	func upsertNestedModel<T: Codable & HasIdentity>(_ modelType: ModelTypeData, nestedModel: T, identity: Int, allowAddition: Bool, shouldMerge: Bool = false) {
+		guard var parentModel = storedModels[modelType] as? HasNestedModels else {
+			print("Error: Parent model type mismatch or not found.")
+			return
+		}
+
+		if let existingNestedModel: T = findNestedModel(modelType, identity: identity) {
+			let updatedNestedModel = shouldMerge ? mergeModels(existingNestedModel, with: nestedModel) : nestedModel
+			if let index = parentModel.nestedModels.firstIndex(where: { ($0 as? HasIdentity)?.identity == identity }) {
+				parentModel.nestedModels[index] = updatedNestedModel as AnyObject
+			}
+		}
+		else if allowAddition {
+			parentModel.nestedModels.append(nestedModel as AnyObject)
+		}
+		else {
+			print("Nested model with identity \(identity) does not exist and addition is not allowed.")
+			return
+		}
+
+		storedModels[modelType] = parentModel as AnyObject
 		modelsPublisherSubject.send()
 	}
 }

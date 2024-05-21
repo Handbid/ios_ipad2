@@ -60,111 +60,174 @@ enum ModelType {
 }
 ```
 
-## DataStore
 
-The `DataStore` class is a singleton that manages different models in memory and publishes updates to subscribers. It provides methods for inserting, updating, and retrieving models.
+# DataStore
 
-### Initialization
+`DataStore` is a class that manages the storage and manipulation of data models within the application. The class is a singleton and implements the observer pattern using Combine, allowing subscription to changes in the stored models.
 
-The `DataStore` is initialized as a singleton instance to ensure there is only one instance managing the data.
+## Protocol `HasIdentity`
+
+The `HasIdentity` protocol requires a model to have an `identity` property of type `Int`, which uniquely identifies the model.
 
 ```swift
-final class DataStore: ObservableObject {
-    static let shared = DataStore()
-    private(set) var models: [ModelType: AnyObject] = [:]
-    private var modelsSubject = PassthroughSubject<Void, Never>()
-    private let dataStoreQueue = DispatchQueue(label: "dataStoreQueue", attributes: .concurrent)
-
-    private init() {}
+protocol HasIdentity {
+    var identity: Int { get }
 }
 ```
 
-### Publishing Changes
+## Protocol `HasNestedModels`
 
-The `modelsPublisher` property allows subscribers to listen for changes in the models.
+The `HasNestedModels` protocol requires a model to have a `nestedModels` property, which is an array of nested models.
 
 ```swift
-var modelsPublisher: AnyPublisher<Void, Never> {
-    modelsSubject.eraseToAnyPublisher()
+protocol HasNestedModels {
+    var nestedModels: [AnyObject] { get set }
 }
 ```
 
-### Upsert Method
+## Class `DataStore`
 
-The `upsert` method updates or inserts a model. It ensures type safety by checking if the model type matches the expected type.
+`DataStore` is a final singleton class that manages the storage of models. This class provides methods for adding, updating, deleting, and fetching models and nested models.
+
+### Properties
+
+- `storedModels`: A private property that stores models as a dictionary, where the key is `ModelTypeData` and the value is any object.
+- `modelsPublisherSubject`: A private property of type `PassthroughSubject` used to publish model changes.
+- `modelsPublisher`: A public property that returns an `AnyPublisher`, which can be subscribed to for receiving model changes.
+
+### Methods
+
+#### `fetchModel`
+
+Fetches a model of a specified type.
 
 ```swift
-func upsert<T: Identifiable & Codable>(_ modelType: ModelType, model: T, allowCreation: Bool = true) {
-    guard modelType.isModelType(T.self) else {
-        print("Error: Model type mismatch.")
-        return
-    }
+func fetchModel<T: Codable>(ofType modelType: ModelTypeData, as _: T.Type) -> T?
+```
 
-    dataStoreQueue.async(flags: .barrier) {
-        if let existingObject = self.models[modelType] as? T {
-            let updatedObject = self.merge(existingObject, with: model)
-            self.setObject(updatedObject, for: modelType)
-        } else if allowCreation {
-            self.setObject(model, for: modelType)
-        } else {
-            print("Object of type \(modelType) does not exist and creation is not allowed.")
-        }
-    }
+**Parameters:**
+- `modelType`: The type of the model to fetch.
+- `T.Type`: The expected type of the model.
+
+**Returns:** The fetched model of type `T`, or `nil` if the model does not exist.
+
+#### `upsertModel`
+
+Adds or updates a model.
+
+```swift
+func upsertModel<T: Codable>(_ modelType: ModelTypeData, model: T?, allowCreation: Bool, shouldMerge: Bool = false)
+```
+
+**Parameters:**
+- `modelType`: The type of the model to add or update.
+- `model`: The model to add or update.
+- `allowCreation`: Whether the creation of the model is allowed if it does not exist.
+- `shouldMerge`: Whether to merge the new data with the existing model data.
+
+#### `clearModel`
+
+Removes a model of a specified type.
+
+```swift
+func clearModel(ofType modelType: ModelTypeData)
+```
+
+**Parameters:**
+- `modelType`: The type of the model to remove.
+
+#### `clearAllModels`
+
+Removes all stored models.
+
+```swift
+func clearAllModels()
+```
+
+#### `findNestedModel`
+
+Finds a nested model by its identity.
+
+```swift
+private func findNestedModel<T: Codable & HasIdentity>(_ modelType: ModelTypeData, identity: Int) -> T?
+```
+
+**Parameters:**
+- `modelType`: The type of the parent model.
+- `identity`: The identity of the nested model to find.
+
+**Returns:** The nested model of type `T`, or `nil` if it does not exist.
+
+#### `upsertNestedModel`
+
+Adds or updates a nested model within a parent model.
+
+```swift
+func upsertNestedModel<T: Codable & HasIdentity>(_ modelType: ModelTypeData, nestedModel: T, identity: Int, allowAddition: Bool, shouldMerge: Bool = false)
+```
+
+**Parameters:**
+- `modelType`: The type of the parent model.
+- `nestedModel`: The nested model to add or update.
+- `identity`: The identity of the nested model.
+- `allowAddition`: Whether the addition of the nested model is allowed if it does not exist.
+- `shouldMerge`: Whether to merge the new data with the existing nested model data.
+
+## Example Usage
+
+### Define Models
+
+```swift
+struct UserModel: Codable, HasIdentity, HasNestedModels {
+    var identity: Int
+    var name: String
+    var nestedModels: [AnyObject] = []
 }
 ```
 
-### Merge Method
-
-The `merge` method combines an existing object with new data.
+### Store and Update Models
 
 ```swift
-private func merge<T: Identifiable & Codable>(_ oldObject: T, with newObject: T) -> T {
-    let newMirror = Mirror(reflecting: newObject)
-    let updatedObject = (oldObject as AnyObject).mutableCopy() as! T
+let user = UserModel(identity: 1, name: "John Doe")
+DataStore.shared.upsertModel(.user, model: user, allowCreation: true)
 
-    for (key, newValue) in newMirror.children {
-        if let key {
-            let selector = Selector("\(key)")
-            if (updatedObject as AnyObject).responds(to: selector) {
-                (updatedObject as AnyObject).setValue(newValue, forKey: key)
-            }
-        }
-    }
-
-    return updatedObject
+if let fetchedUser: UserModel = DataStore.shared.fetchModel(ofType: .user, as: UserModel.self) {
+    print("Fetched user: \(fetchedUser.name)")
 }
+
+let updatedUser = UserModel(identity: 1, name: "Jane Doe")
+DataStore.shared.upsertModel(.user, model: updatedUser, allowCreation: true, shouldMerge: true)
 ```
 
-### Set Object Method
-
-The `setObject` method sets an object in the data store.
+### Add or Update Nested Models
 
 ```swift
-private func setObject(_ object: some Identifiable & Codable, for modelType: ModelType) {
-    dataStoreQueue.async(flags: .barrier) {
-        self.models[modelType] = object as AnyObject
-        DispatchQueue.main.async {
-            self.modelsSubject.send()
-        }
-    }
+struct NestedModel: Codable, HasIdentity {
+    var identity: Int
+    var info: String
 }
+
+let nestedModel = NestedModel(identity: 1, info: "Nested Info")
+DataStore.shared.upsertNestedModel(.user, nestedModel: nestedModel, identity: nestedModel.identity, allowAddition: true)
+
+if let fetchedNestedModel: NestedModel = DataStore.shared.findNestedModel(.user, identity: 1) {
+    print("Fetched nested model: \(fetchedNestedModel.info)")
+}
+
+let updatedNestedModel = NestedModel(identity: 1, info: "Updated Nested Info")
+DataStore.shared.upsertNestedModel(.user, nestedModel: updatedNestedModel, identity: updatedNestedModel.identity, allowAddition: true, shouldMerge: true)
 ```
 
-### Get Object Method
-
-The `getObject` method retrieves an object from the data store.
+### Clear Models
 
 ```swift
-func getObject<T: Identifiable & Codable>(for modelType: ModelType, as _: T.Type) -> T? {
-    var result: T?
-    dataStoreQueue.sync {
-        result = self.models[modelType] as? T
-    }
-    return result
-}
+DataStore.shared.clearModel(ofType: .user)
+DataStore.shared.clearAllModels()
 ```
 
-## ModelContext
+
+
+# ModelContext
 
 The `ModelContext` class handles model-specific operations and manages autosaving.
 
