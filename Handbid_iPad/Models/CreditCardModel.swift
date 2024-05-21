@@ -3,7 +3,7 @@
 import Arrow
 import NetworkService
 
-struct CreditCardModel: Decodable, NetworkingJSONDecodable {
+struct CreditCardModel: Codable, NetworkingJSONDecodable {
 	var id: Int?
 	var creditCardsGuid: String?
 	var creditCardHandle: String?

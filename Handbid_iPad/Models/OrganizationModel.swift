@@ -2,13 +2,15 @@
 
 import Arrow
 import NetworkService
+import SwiftData
 
-struct OrganizationModel: Decodable, NetworkingJSONDecodable {
-	var id: Int?
+struct OrganizationModel: Identifiable, Codable, NetworkingJSONDecodable {
+	var id: String
+	var identity: Int?
 	var organizationGuid: String?
 	var key: String?
 	var name: String?
-	var description: String?
+	var organizationDescription: String?
 	var organizationPhone: String?
 	var ein: String?
 	var contactName: String?
@@ -39,12 +41,21 @@ struct OrganizationModel: Decodable, NetworkingJSONDecodable {
 }
 
 extension OrganizationModel: ArrowParsable {
+	init() {
+		self.id = String()
+	}
+
+	enum CodingKeys: String, CodingKey {
+		case id, organizationGuid, key, name, organizationDescription = "description", organizationPhone, ein, contactName, email, website, isPublic, totalAuctions, activeAuctions, logo, banner, socialFacebook, socialGoogle, socialTwitter, socialPinterest, socialLinkedin, businessType, classification, provinceCode, organizationAddressStreet1, organizationAddressStreet2, organizationAddressCity, organizationAddressPostalCode, organizationAddressProvince, organizationAddressCountry, organizationAddressProvinceId, organizationAddressCountryId, organizationImages
+	}
+
 	mutating func deserialize(_ json: JSON) {
-		id <-- json["id"]
+		id <-- json["organizationGuid"]
+		identity <-- json["id"]
 		organizationGuid <-- json["organizationGuid"]
 		key <-- json["key"]
 		name <-- json["name"]
-		description <-- json["description"]
+		organizationDescription <-- json["description"]
 		organizationPhone <-- json["organizationPhone"]
 		ein <-- json["ein"]
 		contactName <-- json["contactName"]
@@ -72,5 +83,10 @@ extension OrganizationModel: ArrowParsable {
 		organizationAddressProvinceId <-- json["organizationAddressProvinceId"]
 		organizationAddressCountryId <-- json["organizationAddressCountryId"]
 		organizationImages <-- json["organizationImages"]
+	}
+
+	func encode(to encoder: Encoder) throws {
+		var container = encoder.container(keyedBy: CodingKeys.self)
+		try container.encode(id, forKey: .id)
 	}
 }

@@ -2,19 +2,11 @@
 
 import Arrow
 import NetworkService
+import SwiftData
 
-struct AuctionModel2 {
-	let id: UUID = .init()
-	let name: String
-	let address: String
-	let endDate: String
-	let itemCount: Int
-	let status: String
-	let imageUrl: URL?
-}
-
-struct AuctionModel: Decodable, NetworkingJSONDecodable {
-	var id: Int?
+struct AuctionModel: Identifiable, Codable, NetworkingJSONDecodable {
+	var id: String
+	var identity: Int?
 	var key: String?
 	var imageUrl: String?
 	var auctionGuid: String?
@@ -27,7 +19,7 @@ struct AuctionModel: Decodable, NetworkingJSONDecodable {
 	var extendedBiddingTimeoutInMinutes: Int?
 	var requireCreditCard: Bool?
 	var spendingThreshold: Double?
-	var description: String?
+	var auctionDescription: String?
 	var auctionMessage: String?
 	var currentPaddleNumber: String?
 	var timerStartTime: Int?
@@ -121,11 +113,9 @@ struct AuctionModel: Decodable, NetworkingJSONDecodable {
 	var donationTicketImage: String?
 	var enableLandingPage: Bool?
 	var isPrivateEvent: Bool?
-
 	var organizationName: String?
 	var auctionAddressStreet1: String?
 	var auctionAddressStreet2: String?
-
 	var auctionAddressPostalCode: String?
 	var auctionAddressCity: String?
 	var auctionAddressProvince: String?
@@ -133,8 +123,33 @@ struct AuctionModel: Decodable, NetworkingJSONDecodable {
 }
 
 extension AuctionModel: ArrowParsable {
+	init() {
+		self.id = String()
+	}
+
+	enum CodingKeys: String, CodingKey {
+		case id, key, imageUrl, auctionGuid, name, status, timeZone, startTime, endTime, hasExtendedBidding,
+		     extendedBiddingTimeoutInMinutes, requireCreditCard, spendingThreshold, auctionDescription = "description",
+		     auctionMessage, currentPaddleNumber, timerStartTime, timerEndTime, timerRemaining, currencyCode, currencySymbol,
+		     totalBidders, totalItems, enableTicketSales, organization, categories, vanityAddress, auctionAddress,
+		     enableCreditCardSupport, enableCustomDonations, enableDoubleDonation, about, taxRate, taxLabel, lat, lng,
+		     itemsSort, attire, gatewayId, extraGateways, requireTicketsToRegister, requireTicketForOwners, maxPaddleNumber,
+		     hasPuzzle, applicationFee, amexFee, txnFee, isFundraiser, isPrivate, isVirtual, allowTeamCreation, goal, showGoals,
+		     eventRevenue, donationLevels, enableMinimumDonationAmount, minimumDonationAmount, donationTax, enableOfflineDonations,
+		     offlineDonationsUpdateThermometer, bigDonationsNotifications, bigDonationsAmount, defaultPageGoal, enablePromptPurchaseCoverCC,
+		     enablePromptPurchaseCoverCCByDefault, allowPledgeDonations, allowRecurringDonations, enableCustomPaddles, paddleAutoAssignStartingNumber,
+		     streamStatus, streamProvider, streamDateStart, streamDateCompleted, streamUrl, streamSponsorText, streamSponsorImage,
+		     goalAppeal, goalTicket, revenueAppeal, revenueTicket, bidderAddItems, requireTicketToBid, isNonAuctionEvent, promotedDonationBlock,
+		     allowMonthlyDonations, allowQuarterlyDonations, allowAnnuallyDonations, defaultDonationFrequency, minDonationDurationAllowed,
+		     maxDonationDurationAllowed, enableChat, bidder, tickets, puzzles, promotedItem, promotedPoll, facebookPixel, dtdPublicKey,
+		     organizationEmail, onSiteCustomLabel, offSiteCustomLabel, templateCustomTerms, landingPage, socialImage, donationTicketImage,
+		     enableLandingPage, isPrivateEvent, organizationName, auctionAddressStreet1, auctionAddressStreet2, auctionAddressPostalCode,
+		     auctionAddressCity, auctionAddressProvince, count
+	}
+
 	mutating func deserialize(_ json: JSON) {
-		id <-- json["id"]
+		id <-- json["auctionGuid"]
+		identity <-- json["id"]
 		key <-- json["key"]
 		imageUrl <-- json["imageUrl"]
 		auctionGuid <-- json["auctionGuid"]
@@ -147,7 +162,7 @@ extension AuctionModel: ArrowParsable {
 		extendedBiddingTimeoutInMinutes <-- json["extendedBiddingTimeoutInMinutes"]
 		requireCreditCard <-- json["requireCreditCard"]
 		spendingThreshold <-- json["spendingThreshold"]
-		description <-- json["description"]
+		auctionDescription <-- json["description"]
 		auctionMessage <-- json["auctionMessage"]
 		currentPaddleNumber <-- json["currentPaddleNumber"]
 		timerStartTime <-- json["timerStartTime"]
@@ -295,5 +310,10 @@ extension AuctionModel: ArrowParsable {
 			categories.deserialize(jsonItem)
 			return categories
 		}
+	}
+
+	func encode(to encoder: Encoder) throws {
+		var container = encoder.container(keyedBy: CodingKeys.self)
+		try container.encode(id, forKey: .id)
 	}
 }

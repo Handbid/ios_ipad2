@@ -24,32 +24,7 @@ struct ChooseAuctionView<T: PageProtocol>: View {
 
 			VStack(spacing: 0) {
 				topBarContent(for: selectedView)
-				GeometryReader { geometry in
-					ScrollView(.horizontal, showsIndicators: false) {
-						HStack(alignment: .center) {
-							HStack(spacing: 10) {
-								ForEach(AuctionStateStatuses.allCases.dropLast(), id: \.self) { state in
-									AuctionFilterButtonView(viewModel: viewModel.buttonViewModels[state]!, auctionState: state) {
-										viewModel.filterAuctions()
-									}
-								}
-							}
-							Spacer()
-							HStack(spacing: 10) {
-								if let lastState = AuctionStateStatuses.allCases.last {
-									AuctionFilterButtonView(viewModel: viewModel.buttonViewModels[lastState]!, auctionState: lastState) {
-										viewModel.filterAuctions()
-									}
-								}
-							}
-						}
-						.padding([.leading, .trailing], 40)
-						.frame(minWidth: geometry.size.width, alignment: .leading)
-						.frame(height: 50)
-					}
-				}
-				.frame(height: 50)
-
+				horizontalScrollView
 				ScrollView {
 					LazyVGrid(columns: columns, spacing: 20) {
 						ForEach(viewModel.filteredAuctions, id: \.id) { auction in
@@ -59,12 +34,12 @@ struct ChooseAuctionView<T: PageProtocol>: View {
 					}
 					.padding()
 				}
-
 				Spacer()
 			}
 		}
 		.onAppear {
 			viewModel.organization = coordinator.model as? OrganizationModel
+			viewModel.fetchAuctionsIfNeeded()
 		}
 		.onChange(of: $viewModel.backToPreviewViewPressed.wrappedValue) { _, newValue in
 			if newValue {
@@ -79,10 +54,46 @@ struct ChooseAuctionView<T: PageProtocol>: View {
 		return Array(repeating: GridItem(.fixed(targetWidth), spacing: 20), count: numberOfColumns)
 	}
 
+	private var horizontalScrollView: some View {
+		GeometryReader { geometry in
+			ScrollView(.horizontal, showsIndicators: false) {
+				HStack(alignment: .center) {
+					AuctionFilterButtonGroup(viewModel: viewModel)
+				}
+				.padding([.leading, .trailing], 40)
+				.frame(minWidth: geometry.size.width, alignment: .leading)
+				.frame(height: 50)
+			}
+		}
+		.frame(height: 50)
+	}
+
 	private func topBarContent(for viewType: SelectAuctionContainerTypeView) -> some View {
 		switch viewType {
 		case .selectAuction:
 			GenericTopBarContentFactory(viewModel: viewModel, deviceContext: deviceContext).createTopBarContentWithoutLogo()
+		}
+	}
+}
+
+struct AuctionFilterButtonGroup: View {
+	@ObservedObject var viewModel: ChooseAuctionViewModel
+
+	var body: some View {
+		HStack(spacing: 10) {
+			ForEach(AuctionStateStatuses.allCases.dropLast(), id: \.self) { state in
+				AuctionFilterButtonView(viewModel: viewModel.buttonViewModels[state]!, auctionState: state) {
+					viewModel.filterAuctions()
+				}
+			}
+		}
+		Spacer()
+		HStack(spacing: 10) {
+			if let lastState = AuctionStateStatuses.allCases.last {
+				AuctionFilterButtonView(viewModel: viewModel.buttonViewModels[lastState]!, auctionState: lastState) {
+					viewModel.filterAuctions()
+				}
+			}
 		}
 	}
 }

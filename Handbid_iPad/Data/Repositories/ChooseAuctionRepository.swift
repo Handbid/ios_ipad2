@@ -21,7 +21,7 @@ class ChooseAuctionRepositoryImpl: ChooseAuctionRepository, NetworkingService {
 		get(ApiEndpoints.auctionInventory, params: ["id": auctionId,
 		                                            "whitelabelId": AppInfoProvider.whitelabelId])
 			.tryMap { try AuctionModel.decode($0) }
-			.receive(on: DispatchQueue.global(qos: .background))
+			.receive(on: DispatchQueue.main)
 			.eraseToAnyPublisher()
 	}
 
