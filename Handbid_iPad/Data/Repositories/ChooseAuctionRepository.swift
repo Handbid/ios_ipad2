@@ -6,7 +6,6 @@ import Foundation
 import NetworkService
 
 protocol ChooseAuctionRepository {
-	// func fetchUserAuctionInventory(auctionId: Int) -> AnyPublisher<AuctionModel, Error>
 	func fetchUserAuctions(status: [AuctionStateStatuses]) -> AnyPublisher<[AuctionModel], Error>
 }
 
@@ -15,14 +14,6 @@ class ChooseAuctionRepositoryImpl: ChooseAuctionRepository, NetworkingService {
 
 	init(_ network: NetworkService.NetworkingClient) {
 		self.network = network
-	}
-
-	func fetchUserAuctionInventory(auctionId: Int) -> AnyPublisher<AuctionModel, Error> {
-		get(ApiEndpoints.auctionInventory, params: ["id": auctionId,
-		                                            "whitelabelId": AppInfoProvider.whitelabelId])
-			.tryMap { try AuctionModel.decode($0) }
-			.receive(on: DispatchQueue.main)
-			.eraseToAnyPublisher()
 	}
 
 	func fetchUserAuctions(status: [AuctionStateStatuses]) -> AnyPublisher<[AuctionModel], Error> {

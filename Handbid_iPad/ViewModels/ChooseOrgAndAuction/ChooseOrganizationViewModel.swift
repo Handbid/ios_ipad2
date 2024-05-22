@@ -58,24 +58,10 @@ class ChooseOrganizationViewModel: ObservableObject {
 	private func handleOrganizationsReceived(_ user: UserModel) {
 		organizations = user.organization ?? []
 		dataStore.upsertModel(.user, model: user, allowCreation: true)
-		dataStore.upsertModel(.user, model: user, allowCreation: true)
-
-		// dataStore.upsertModel(.user, model: user, allowCreation: true)
 
 		let fetchedUser: UserModel? = dataStore.fetchModel(ofType: .user, as: UserModel.self)
 		print("Fetched User: \(String(describing: fetchedUser?.id))")
 
 		filterOrganizations()
-
-//		organizations = user.organization ?? []
-//		dataStore.upsertModel(.user, model: user, allowCreation: true)
-		////		print(user)
-//
-//		let fetchUser = dataStore.fetchModel(ofType: .user, as: UserModel.self)
-//		print(fetchUser)
-//		//        dataStore.upsert(.user, model: user, allowCreation: true)
-//		//        let abc = dataStore.getObject(for: .user, as: UserModel.self)
-//
-//		filterOrganizations()
 	}
 }

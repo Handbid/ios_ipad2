@@ -2,6 +2,7 @@
 
 import Combine
 import Foundation
+import SwiftData
 
 class DataManager<Entity: Identifiable & Codable> where Entity.ID == String {
 	@Published var entities: [Entity] = []

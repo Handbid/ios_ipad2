@@ -2,7 +2,6 @@
 
 import Arrow
 import NetworkService
-import SwiftData
 
 struct OrganizationModel: Identifiable, Codable, NetworkingJSONDecodable {
 	var id: String

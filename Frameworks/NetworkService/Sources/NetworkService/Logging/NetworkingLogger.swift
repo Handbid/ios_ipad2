@@ -21,7 +21,7 @@ class NetworkingLogger {
 		}
 	}
 
-	func log(response: URLResponse, data _: Data) {
+	func log(response: URLResponse, data: Data) {
 		guard logLevel != .off else {
 			return
 		}
@@ -29,7 +29,7 @@ class NetworkingLogger {
 			logStatusCodeAndURL(response)
 		}
 		if logLevel == .debug {
-			// print(String(decoding: data, as: UTF8.self))
+			print(String(decoding: data, as: UTF8.self))
 		}
 	}
 

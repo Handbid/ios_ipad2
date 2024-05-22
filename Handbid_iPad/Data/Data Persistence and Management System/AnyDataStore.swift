@@ -1,6 +1,7 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
 import Combine
+import SwiftData
 
 class AnyDataStore<Entity: Identifiable & Codable>: DataStoreProtocool {
 	private var innerLoad: (@escaping (Result<[Entity], Error>) -> Void) -> Void
