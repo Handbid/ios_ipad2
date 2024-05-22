@@ -4,10 +4,11 @@ import NetworkService
 import Starscream
 
 class WebSocketManager {
-	static var socket: WebSocket?
-	static var delegate: EventDelegate?
+	static let shared = WebSocketManager()
+	var socket: WebSocket?
+	var delegate: EventDelegate?
 
-	static func startSocket(urlFactory: WebSocketURLFactory, token: TokenUser?) {
+	func startSocket(urlFactory: WebSocketURLFactory, token: TokenUser?) {
 		do {
 			let url = try urlFactory.getSocketURL()
 
@@ -16,6 +17,7 @@ class WebSocketManager {
 
 			socket = WebSocket(request: urlRequest)
 
+			initProcessorRegistry()
 			delegate = HandbidEventDelegate()
 			delegate?.userGuid = token?.guid
 			socket?.delegate = delegate
@@ -27,7 +29,7 @@ class WebSocketManager {
 		}
 	}
 
-	static func stopSocket() {
+	func stopSocket() {
 		if let client = socket {
 			delegate?.leaveAuctionChannel(client: client)
 			delegate?.leaveUserChannel(client: client)
@@ -37,5 +39,9 @@ class WebSocketManager {
 
 		delegate = nil
 		socket = nil
+	}
+
+	private func initProcessorRegistry() {
+		ProcessorRegistry.shared.registerProcessor(UserProcessor(), for: .user)
 	}
 }

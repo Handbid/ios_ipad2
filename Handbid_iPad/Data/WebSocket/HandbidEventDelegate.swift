@@ -39,10 +39,6 @@ class HandbidEventDelegate: EventDelegate {
 			logger?.log("received: \(data)")
 			let message = String(data: data, encoding: .utf8) ?? ""
 			handleMessage(message: message, client: client)
-		case .pong:
-			break
-		case .ping:
-			break
 		case let .error(error):
 			logger?.error("Websocket error: \(error.debugDescription)")
 		case let .viabilityChanged(changed):
@@ -55,7 +51,7 @@ class HandbidEventDelegate: EventDelegate {
 			}
 		case .cancelled:
 			reconnectSocket(client: client)
-		case .peerClosed:
+		case .peerClosed, .pong, .ping:
 			break
 		}
 	}
@@ -87,46 +83,55 @@ class HandbidEventDelegate: EventDelegate {
 		let regex = /client:\d+\+\[.*.\d+\]/
 		if (try? regex.firstMatch(in: message)) != nil {
 			logger?.log("Ignoring message: \(message)")
+			return
 		}
-		else {
-			if let jsonString = message[message.firstIndex(of: "{")!...].data(using: .utf8) {
-				do {
-					let json = try JSONSerialization
-						.jsonObject(with: jsonString) as! [String: Any]
 
-					if json.keys.contains(where: { $0 == "name" }),
-					   json.keys.contains(where: { $0 == "args" })
-					{
-						let name = json["name"]! as! String
-						let data = name.split(separator: ":")
+		guard let startIndex = message.firstIndex(of: "{") else {
+			logger?.error("Message does not contain a valid JSON start: \(message)")
+			return
+		}
 
-						if data.count >= 3 {
-							let room = data[1]
-							let eventId = String(data[2])
+		let jsonString = String(message[startIndex...])
+		guard let jsonData = jsonString.data(using: .utf8) else {
+			logger?.error("Failed to encode jsonString to Data")
+			return
+		}
 
-							if !room.isEmpty, !eventId.isEmpty {
-								if eventId == "system" {
-									logger?.log("Ignoring node of type system: \(name)")
-								}
-								else {
-									let argsData = (json["args"]! as! String).data(using: .utf8)!
-									let args = try JSONSerialization.jsonObject(with: argsData) as? [Data] ?? []
-									if let eventType = Processor(rawValue: eventId) {
-										let processor = ProcessorFactory(type: eventType).build()
-										processor.process(data: args[0])
-									}
-									else {
-										logger?.log("Ignoring event of type \(eventId)")
-									}
-								}
-							}
-						}
-					}
-				}
-				catch {
-					logger?.error("\(error.localizedDescription)")
-				}
+		do {
+			guard let json = try JSONSerialization.jsonObject(with: jsonData) as? [String: Any],
+			      let name = json["name"] as? String,
+			      let argsString = json["args"] as? String
+			else {
+				logger?.error("JSON does not contain required keys 'name' or 'args'")
+				return
 			}
+
+			let data = name.split(separator: ":")
+			guard data.count >= 3, !data[1].isEmpty else {
+				logger?.log("Ignoring message due to insufficient data parts or empty room: \(name)")
+				return
+			}
+
+			let eventId = String(data[2])
+			guard eventId != "system" else {
+				logger?.log("Ignoring node of type system: \(name)")
+				return
+			}
+
+			guard let argsData = argsString.data(using: .utf8),
+			      let args = try JSONSerialization.jsonObject(with: argsData) as? [Data],
+			      let eventType = Processor(rawValue: eventId),
+			      args.count > 0
+			else {
+				logger?.log("Ignoring event of type \(eventId) due to processing failure")
+				return
+			}
+
+			let processor = ProcessorRegistry.shared.getProcessor(for: eventType)
+			processor?.process(data: args[0])
+		}
+		catch {
+			logger?.error("Failed to parse JSON: \(error.localizedDescription)")
 		}
 	}
 

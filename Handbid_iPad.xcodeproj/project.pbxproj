@@ -119,6 +119,7 @@
 		CE295CDE2BF781540060B701 /* MockWebSocketClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE295CDD2BF781540060B701 /* MockWebSocketClient.swift */; };
 		CE295CE02BF78DA60060B701 /* HandbidEventDelegate_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE295CDF2BF78DA60060B701 /* HandbidEventDelegate_Tests.swift */; };
 		CE34FB3F2BB1963300701D2A /* OverlayInternalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE34FB3E2BB1963300701D2A /* OverlayInternalView.swift */; };
+		CE3C41F32BFE130B00628D45 /* ProcessorRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3C41F22BFE130B00628D45 /* ProcessorRegistry.swift */; };
 		CE5127F32BD82B4300AE29A5 /* WebSocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5127F22BD82B4300AE29A5 /* WebSocketManager.swift */; };
 		CE5127F52BD82E7B00AE29A5 /* EnvironmentManagerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5127F42BD82E7B00AE29A5 /* EnvironmentManagerExt.swift */; };
 		CE6F8DBE2BCEC6BE009DBE7E /* MockGetStartedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F8DBD2BCEC6BE009DBE7E /* MockGetStartedViewModel.swift */; };
@@ -132,7 +133,6 @@
 		CE9D80EC2BDBA51D00D57A1A /* EventDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D80EB2BDBA51D00D57A1A /* EventDelegate.swift */; };
 		CE9D80EF2BDC0FC400D57A1A /* WebSocketProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D80EE2BDC0FC400D57A1A /* WebSocketProcessor.swift */; };
 		CE9D80F12BDC104500D57A1A /* Processor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D80F02BDC104500D57A1A /* Processor.swift */; };
-		CE9D80F32BDC128100D57A1A /* ProcessorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D80F22BDC128100D57A1A /* ProcessorFactory.swift */; };
 		CE9D80F52BDC134E00D57A1A /* UserProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D80F42BDC134E00D57A1A /* UserProcessor.swift */; };
 		CE9E2D0E2BC845D70008FD8A /* Inspection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9E2D0D2BC845D70008FD8A /* Inspection.swift */; };
 		CE9E2D112BC846140008FD8A /* InspectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9E2D102BC846140008FD8A /* InspectionExtension.swift */; };
@@ -296,6 +296,7 @@
 		CE295CDD2BF781540060B701 /* MockWebSocketClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWebSocketClient.swift; sourceTree = "<group>"; };
 		CE295CDF2BF78DA60060B701 /* HandbidEventDelegate_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandbidEventDelegate_Tests.swift; sourceTree = "<group>"; };
 		CE34FB3E2BB1963300701D2A /* OverlayInternalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayInternalView.swift; sourceTree = "<group>"; };
+		CE3C41F22BFE130B00628D45 /* ProcessorRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessorRegistry.swift; sourceTree = "<group>"; };
 		CE5127F22BD82B4300AE29A5 /* WebSocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketManager.swift; sourceTree = "<group>"; };
 		CE5127F42BD82E7B00AE29A5 /* EnvironmentManagerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentManagerExt.swift; sourceTree = "<group>"; };
 		CE6F8DBD2BCEC6BE009DBE7E /* MockGetStartedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGetStartedViewModel.swift; sourceTree = "<group>"; };
@@ -307,7 +308,6 @@
 		CE9D80EB2BDBA51D00D57A1A /* EventDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDelegate.swift; sourceTree = "<group>"; };
 		CE9D80EE2BDC0FC400D57A1A /* WebSocketProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketProcessor.swift; sourceTree = "<group>"; };
 		CE9D80F02BDC104500D57A1A /* Processor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Processor.swift; sourceTree = "<group>"; };
-		CE9D80F22BDC128100D57A1A /* ProcessorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessorFactory.swift; sourceTree = "<group>"; };
 		CE9D80F42BDC134E00D57A1A /* UserProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProcessor.swift; sourceTree = "<group>"; };
 		CE9E2D0D2BC845D70008FD8A /* Inspection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inspection.swift; sourceTree = "<group>"; };
 		CE9E2D102BC846140008FD8A /* InspectionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionExtension.swift; sourceTree = "<group>"; };
@@ -887,8 +887,8 @@
 			children = (
 				CE9D80EE2BDC0FC400D57A1A /* WebSocketProcessor.swift */,
 				CE9D80F02BDC104500D57A1A /* Processor.swift */,
-				CE9D80F22BDC128100D57A1A /* ProcessorFactory.swift */,
 				CE9D80F42BDC134E00D57A1A /* UserProcessor.swift */,
+				CE3C41F22BFE130B00628D45 /* ProcessorRegistry.swift */,
 			);
 			path = Processors;
 			sourceTree = "<group>";
@@ -1364,6 +1364,7 @@
 				CE9D80F12BDC104500D57A1A /* Processor.swift in Sources */,
 				8C9FA44E2BD29CAB0041F28E /* DeviceContext.swift in Sources */,
 				8C1E01012BA85E630094FAA7 /* AppDelegate.swift in Sources */,
+				CE3C41F32BFE130B00628D45 /* ProcessorRegistry.swift in Sources */,
 				8C4B7B872BB6DCC80043B892 /* AuthModel.swift in Sources */,
 				8CD107FF2BD11F9500E83261 /* Sidebar.swift in Sources */,
 				8C9FA4502BD3AD060041F28E /* RoundedCornerView.swift in Sources */,
@@ -1375,7 +1376,6 @@
 				8C8BEC2E2BA975DE0083D904 /* GetStartedView.swift in Sources */,
 				8C4B7B892BB6FCEA0043B892 /* ButtonStyleConfiguration.swift in Sources */,
 				8C4B7BA22BB88FFB0043B892 /* ButtonStyles.swift in Sources */,
-				CE9D80F32BDC128100D57A1A /* ProcessorFactory.swift in Sources */,
 				8CABF5DC2BB9F37700A34870 /* RegistrationBackButton.swift in Sources */,
 				8CABF5D02BB9E11300A34870 /* ResponsiveView.swift in Sources */,
 				8C8BEC322BA976030083D904 /* GetStartedViewModel.swift in Sources */,

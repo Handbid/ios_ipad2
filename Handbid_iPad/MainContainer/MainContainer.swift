@@ -35,8 +35,8 @@ struct MainContainer<T: PageProtocol>: View {
 		}
 		.onAppear {
 			DispatchQueue.global().async {
-				WebSocketManager.startSocket(urlFactory: HandbidWebSocketFactory(),
-				                             token: authManager.currentToken)
+				WebSocketManager.shared.startSocket(urlFactory: HandbidWebSocketFactory(),
+				                                    token: authManager.currentToken)
 			}
 		}
 	}
