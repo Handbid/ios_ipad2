@@ -1,9 +1,6 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
 import Combine
-import Foundation
-import SwiftData
-import SwiftUI
 
 protocol SwiftDataManagerProtocol {
 	func create<T: Codable & Identifiable>(_ item: T, modelType: ModelTypeData) throws where T.ID == String
@@ -63,15 +60,4 @@ class SwiftDataManager: SwiftDataManagerProtocol {
 
 extension SwiftDataManager {
 	static let shared = SwiftDataManager(database: SwiftDataDatabase())
-}
-
-struct SwiftDataManagerKey: EnvironmentKey {
-	static let defaultValue: SwiftDataManager = .shared
-}
-
-extension EnvironmentValues {
-	var swiftDataManager: SwiftDataManager {
-		get { self[SwiftDataManagerKey.self] }
-		set { self[SwiftDataManagerKey.self] = newValue }
-	}
 }

@@ -17,6 +17,7 @@
 		8C0725BA2BF6332600522F8C /* ModelTypeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0725B92BF6332600522F8C /* ModelTypeData.swift */; };
 		8C19678A2BFE132C009360A0 /* SwifDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1967892BFE132C009360A0 /* SwifDataManager.swift */; };
 		8C19678D2BFE135B009360A0 /* SwiftDataDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C19678C2BFE135B009360A0 /* SwiftDataDatabase.swift */; };
+		8C19678F2BFF54E2009360A0 /* SwiftDataManagerKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C19678E2BFF54E2009360A0 /* SwiftDataManagerKey.swift */; };
 		8C1B676E2BC834F3006B61F6 /* ResetPasswordModel_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1B676D2BC834F3006B61F6 /* ResetPasswordModel_Test.swift */; };
 		8C1B67702BC83F92006B61F6 /* MockForgotPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1B676F2BC83F92006B61F6 /* MockForgotPassword.swift */; };
 		8C1B67722BC83FAE006B61F6 /* ForgotPasswordViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1B67712BC83FAE006B61F6 /* ForgotPasswordViewModel_Tests.swift */; };
@@ -202,6 +203,7 @@
 		8C0725B92BF6332600522F8C /* ModelTypeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTypeData.swift; sourceTree = "<group>"; };
 		8C1967892BFE132C009360A0 /* SwifDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwifDataManager.swift; sourceTree = "<group>"; };
 		8C19678C2BFE135B009360A0 /* SwiftDataDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataDatabase.swift; sourceTree = "<group>"; };
+		8C19678E2BFF54E2009360A0 /* SwiftDataManagerKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataManagerKey.swift; sourceTree = "<group>"; };
 		8C1B676D2BC834F3006B61F6 /* ResetPasswordModel_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordModel_Test.swift; sourceTree = "<group>"; };
 		8C1B676F2BC83F92006B61F6 /* MockForgotPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockForgotPassword.swift; sourceTree = "<group>"; };
 		8C1B67712BC83FAE006B61F6 /* ForgotPasswordViewModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel_Tests.swift; sourceTree = "<group>"; };
@@ -414,6 +416,7 @@
 				8C0725942BF61D7700522F8C /* DataPersistenceAndManagement.md */,
 				8C0725B92BF6332600522F8C /* ModelTypeData.swift */,
 				8C1967892BFE132C009360A0 /* SwifDataManager.swift */,
+				8C19678E2BFF54E2009360A0 /* SwiftDataManagerKey.swift */,
 				8C19678C2BFE135B009360A0 /* SwiftDataDatabase.swift */,
 			);
 			path = "Data Persistence and Management System";
@@ -1320,6 +1323,7 @@
 				8CABF5D42BB9E17C00A34870 /* CustomDimensValues.swift in Sources */,
 				8CD107F32BD11EB800E83261 /* TopBar.swift in Sources */,
 				CEE2BB292BB5D1070033556D /* ApiConstants.swift in Sources */,
+				8C19678F2BFF54E2009360A0 /* SwiftDataManagerKey.swift in Sources */,
 				8CABF5CA2BB9CEF900A34870 /* ChooseEnvironmentViewModel.swift in Sources */,
 				8CD1080E2BD122CC00E83261 /* AuctionView.swift in Sources */,
 				8C4BFB542BDFAE2000B47154 /* AuctionFilterButtonViewModel.swift in Sources */,

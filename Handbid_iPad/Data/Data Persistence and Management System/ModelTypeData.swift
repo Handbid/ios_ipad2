@@ -1,9 +1,5 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
-import Combine
-import Foundation
-import SwiftData
-
 enum ModelTypeData {
 	case user, auction
 
