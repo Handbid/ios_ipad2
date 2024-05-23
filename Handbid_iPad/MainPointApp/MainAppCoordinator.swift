@@ -14,15 +14,17 @@ struct MainAppCoordinator: App {
 	private let modelContainer: ModelContainer
 	private let modelContext: ModelContext
 	private let dataStore: DataStore
+	private let swiftDataManager: SwiftDataManager
 
 	init() {
 		let deps = DependencyMainAppProvider.shared
 		self.modelContainer = ModelContainer()
 		self.modelContext = ModelContext(modelContainer)
 		self.dataStore = DataStore.shared
+		self.swiftDataManager = SwiftDataManager.shared
 
 		let registrationCoordinator = MainAppCoordinator.createRegistrationCoordinator(deps: deps)
-		let mainContainerCoordinator = MainAppCoordinator.createMainContainerCoordinator(deps: deps, modelContext: modelContext, dataStore: dataStore)
+		let mainContainerCoordinator = MainAppCoordinator.createMainContainerCoordinator(deps: deps, modelContext: modelContext, dataStore: dataStore, swiftDataStore: swiftDataManager)
 
 		_registrationCoordinator = StateObject(wrappedValue: registrationCoordinator)
 		_mainContainerCoordinator = StateObject(wrappedValue: mainContainerCoordinator)
@@ -51,12 +53,12 @@ struct MainAppCoordinator: App {
 		}
 	}
 
-	static func createMainContainerCoordinator(deps: DependencyMainAppProvider, modelContext: ModelContext, dataStore: DataStore) -> Coordinator<MainContainerPage, Any?> {
+	static func createMainContainerCoordinator(deps: DependencyMainAppProvider, modelContext: ModelContext, dataStore: DataStore, swiftDataStore: SwiftDataManager) -> Coordinator<MainContainerPage, Any?> {
 		Coordinator<MainContainerPage, Any?> { page in
 			switch page {
 			case .chooseOrganization:
 				let repository = ChooseOrganizationRepositoryImpl(deps.networkClient, modelContext: modelContext)
-				let viewModel = ChooseOrganizationViewModel(repository: repository, dataStore: dataStore)
+				let viewModel = ChooseOrganizationViewModel(repository: repository, dataStore: dataStore, swiftDataStore: swiftDataStore)
 				return AnyView(ChooseOrganizationView<MainContainerPage>(viewModel: viewModel))
 			case .chooseAuction:
 				let repository = ChooseAuctionRepositoryImpl(deps.networkClient)
@@ -77,6 +79,7 @@ struct MainAppCoordinator: App {
 				.environment(\.appServices, ServicesDataManager.shared)
 				.environment(\.modelContext, modelContext)
 				.environment(\.dataStore, dataStore)
+				.environment(\.swiftDataManager, swiftDataManager)
 		}
 	}
 }

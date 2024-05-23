@@ -1,6 +1,7 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
 import Combine
+import Foundation
 import SwiftData
 
 class SwiftDataDatabase {
@@ -21,8 +22,28 @@ class SwiftDataDatabase {
 			}
 	}
 
+	func fetchOne<T: Codable & Identifiable>(_: T.Type, modelType: ModelTypeData, id: String) throws -> T? {
+		let key = modelTypeKey(modelType, id: id)
+		if let data = storage[key] {
+			return try JSONDecoder().decode(T.self, from: data)
+		}
+		return nil
+	}
+
 	func update<T: Codable & Identifiable>(_ item: T, modelType: ModelTypeData) throws where T.ID == String {
-		try save(item, modelType: modelType)
+		let key = modelTypeKey(modelType, id: item.id)
+		if let existingData = storage[key] {
+			let newData = try JSONEncoder().encode(item)
+
+			if newData != existingData {
+                print(newData)
+				storage[key] = newData
+			}
+		}
+		else {
+			let data = try JSONEncoder().encode(item)
+			storage[key] = data
+		}
 	}
 
 	func delete<T: Codable & Identifiable>(_ item: T, modelType: ModelTypeData) throws where T.ID == String {

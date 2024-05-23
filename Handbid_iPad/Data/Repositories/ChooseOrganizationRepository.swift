@@ -23,17 +23,7 @@ class ChooseOrganizationRepositoryImpl: ChooseOrganizationRepository, Networking
 			.receive(on: DispatchQueue.main)
 			.handleEvents(receiveOutput: { [weak self] user in
 				self?.user = user
-				self?.saveOrUpdateUser(user: user)
 			})
 			.eraseToAnyPublisher()
-	}
-
-	private func saveOrUpdateUser(user _: UserModel) {
-		do {
-			try modelContext.save(user)
-		}
-		catch {
-			print("Failed to save user: \(error)")
-		}
 	}
 }

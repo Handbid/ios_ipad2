@@ -8,6 +8,7 @@ class ChooseOrganizationViewModel: ObservableObject {
 	private var cancellables = Set<AnyCancellable>()
 	private let repository: ChooseOrganizationRepository
 	private let dataStore: DataStore
+	private let swiftDataStore: SwiftDataManager
 
 	@Published var organizations: [OrganizationModel] = []
 	@Published var filteredOrganizations: [OrganizationModel] = []
@@ -18,9 +19,10 @@ class ChooseOrganizationViewModel: ObservableObject {
 		}
 	}
 
-	init(repository: ChooseOrganizationRepository, dataStore: DataStore) {
+	init(repository: ChooseOrganizationRepository, dataStore: DataStore, swiftDataStore: SwiftDataManager) {
 		self.repository = repository
 		self.dataStore = dataStore
+		self.swiftDataStore = swiftDataStore
 		setupSearchOrganizationSubscriber()
 	}
 
@@ -61,6 +63,20 @@ class ChooseOrganizationViewModel: ObservableObject {
 
 		let fetchedUser: UserModel? = dataStore.fetchModel(ofType: .user, as: UserModel.self)
 		print("Fetched User: \(String(describing: fetchedUser?.id))")
+
+		do {
+			try? swiftDataStore.create(user, modelType: .user)
+		}
+
+		let user2: UserModel? = try? swiftDataStore.fetchOne(UserModel.self, modelType: .user)
+		print(user2?.identity)
+
+		do {
+			try? swiftDataStore.update(user, nestedUpdate: true, modelType: .user)
+
+			let user2: UserModel? = try? swiftDataStore.fetchOne(UserModel.self, modelType: .user)
+			print(user2?.identity)
+		}
 
 		filterOrganizations()
 	}
