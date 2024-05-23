@@ -6,6 +6,7 @@ import SwiftData
 
 class SwiftDataDatabase {
 	private var storage: [String: Data] = [:]
+    private var dataCache = [String: Int]()
 
 	func save<T: Codable & Identifiable>(_ item: T, modelType: ModelTypeData) throws where T.ID == String {
 		let key = modelTypeKey(modelType, id: item.id)
@@ -32,17 +33,22 @@ class SwiftDataDatabase {
 
 	func update<T: Codable & Identifiable>(_ item: T, modelType: ModelTypeData) throws where T.ID == String {
 		let key = modelTypeKey(modelType, id: item.id)
-		if let existingData = storage[key] {
-			let newData = try JSONEncoder().encode(item)
+		let encoder = JSONEncoder()
+		encoder.outputFormatting = .sortedKeys
 
-			if newData != existingData {
-                print(newData)
-				storage[key] = newData
+		let newData = try encoder.encode(item)
+		let newHash = newData.hashValue
+
+		if let existingHash = dataCache[key] {
+			if existingHash == newHash {
+				return
 			}
+			storage[key] = newData
+			dataCache[key] = newHash
 		}
 		else {
-			let data = try JSONEncoder().encode(item)
-			storage[key] = data
+			storage[key] = newData
+			dataCache[key] = newHash
 		}
 	}
 
