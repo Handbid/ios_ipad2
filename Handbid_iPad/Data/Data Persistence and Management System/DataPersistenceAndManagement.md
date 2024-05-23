@@ -78,6 +78,18 @@ do {
 }
 ```
 
+#### Deleting all Entry
+
+To delete a user:
+
+```swift
+do {
+    try DataManager.shared.deleteAll(of: UserModel.self, from: .user)
+} catch {
+    print("Failed to delete user: \(error)")
+}
+```
+
 #### Reacting to Data Changes
 
 To observe changes in the data:

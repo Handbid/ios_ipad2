@@ -3,12 +3,12 @@
 import SwiftUI
 
 struct DataManagerEnvironmentKey: EnvironmentKey {
-    static let defaultValue: DataManager = .shared
+	static let defaultValue: DataManager = .shared
 }
 
 extension EnvironmentValues {
-    var dataManager: DataManager {
-        get { self[DataManagerEnvironmentKey.self] }
-        set { self[DataManagerEnvironmentKey.self] = newValue }
-    }
+	var dataManager: DataManager {
+		get { self[DataManagerEnvironmentKey.self] }
+		set { self[DataManagerEnvironmentKey.self] = newValue }
+	}
 }

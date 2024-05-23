@@ -32,7 +32,7 @@ class ChooseAuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 		setupInitialSelection()
 		setupButtonBindings()
 
-        let user2: UserModel? = try? dataManager.fetchSingle(of: UserModel.self, from: .user)
+		let user2: UserModel? = try? dataManager.fetchSingle(of: UserModel.self, from: .user)
 		print(user2?.identity)
 	}
 

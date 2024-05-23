@@ -20,7 +20,7 @@ class ChooseOrganizationViewModel: ObservableObject {
 
 	init(repository: ChooseOrganizationRepository, dataManager: DataManager) {
 		self.repository = repository
-		self.swiftDataStore = swiftDataStore
+		self.dataManager = dataManager
 		setupSearchOrganizationSubscriber()
 	}
 
@@ -59,18 +59,20 @@ class ChooseOrganizationViewModel: ObservableObject {
 		organizations = user.organization ?? []
 
 		do {
-            try? dataManager.create(user, in: .user)
+			try? dataManager.create(user, in: .user)
 		}
 
-        let user2: UserModel? = try? dataManager.fetchSingle(of: UserModel.self, from: .user)
+		let user2: UserModel? = try? dataManager.fetchSingle(of: UserModel.self, from: .user)
 		print(user2?.identity)
 
 		do {
-            try? dataManager.update(user, withNestedUpdates: true, in: .user)
+			try? dataManager.update(user, withNestedUpdates: true, in: .user)
 
-            let user2: UserModel? = try? dataManager.fetchSingle(of: UserModel.self, from: .user)
+			let user2: UserModel? = try? dataManager.fetchSingle(of: UserModel.self, from: .user)
 			print(user2?.identity)
 		}
+
+		try? dataManager.deleteAll(of: UserModel.self, from: .user)
 
 		filterOrganizations()
 	}
