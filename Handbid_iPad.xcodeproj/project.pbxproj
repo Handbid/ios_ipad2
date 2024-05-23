@@ -31,6 +31,8 @@
 		8C0725B52BF62DF900522F8C /* ModelContextKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0725B42BF62DF900522F8C /* ModelContextKey.swift */; };
 		8C0725B72BF62E3F00522F8C /* ServicesDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0725B62BF62E3F00522F8C /* ServicesDataManager.swift */; };
 		8C0725BA2BF6332600522F8C /* ModelTypeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0725B92BF6332600522F8C /* ModelTypeData.swift */; };
+		8C19678A2BFE132C009360A0 /* SwifDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1967892BFE132C009360A0 /* SwifDataManager.swift */; };
+		8C19678D2BFE135B009360A0 /* SwiftDataDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C19678C2BFE135B009360A0 /* SwiftDataDatabase.swift */; };
 		8C1B676E2BC834F3006B61F6 /* ResetPasswordModel_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1B676D2BC834F3006B61F6 /* ResetPasswordModel_Test.swift */; };
 		8C1B67702BC83F92006B61F6 /* MockForgotPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1B676F2BC83F92006B61F6 /* MockForgotPassword.swift */; };
 		8C1B67722BC83FAE006B61F6 /* ForgotPasswordViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1B67712BC83FAE006B61F6 /* ForgotPasswordViewModel_Tests.swift */; };
@@ -231,6 +233,8 @@
 		8C0725B42BF62DF900522F8C /* ModelContextKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelContextKey.swift; sourceTree = "<group>"; };
 		8C0725B62BF62E3F00522F8C /* ServicesDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesDataManager.swift; sourceTree = "<group>"; };
 		8C0725B92BF6332600522F8C /* ModelTypeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTypeData.swift; sourceTree = "<group>"; };
+		8C1967892BFE132C009360A0 /* SwifDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwifDataManager.swift; sourceTree = "<group>"; };
+		8C19678C2BFE135B009360A0 /* SwiftDataDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataDatabase.swift; sourceTree = "<group>"; };
 		8C1B676D2BC834F3006B61F6 /* ResetPasswordModel_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordModel_Test.swift; sourceTree = "<group>"; };
 		8C1B676F2BC83F92006B61F6 /* MockForgotPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockForgotPassword.swift; sourceTree = "<group>"; };
 		8C1B67712BC83FAE006B61F6 /* ForgotPasswordViewModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel_Tests.swift; sourceTree = "<group>"; };
@@ -467,6 +471,15 @@
 				8C0725B62BF62E3F00522F8C /* ServicesDataManager.swift */,
 			);
 			path = Dependency;
+			sourceTree = "<group>";
+		};
+		8C19678B2BFE134A009360A0 /* SwiftData */ = {
+			isa = PBXGroup;
+			children = (
+				8C1967892BFE132C009360A0 /* SwifDataManager.swift */,
+				8C19678C2BFE135B009360A0 /* SwiftDataDatabase.swift */,
+			);
+			path = SwiftData;
 			sourceTree = "<group>";
 		};
 		8C1CC5162BC2480D00AF80F4 /* Model_Tests */ = {
@@ -1068,6 +1081,7 @@
 			isa = PBXGroup;
 			children = (
 				CEE2BB282BB5D1070033556D /* ApiConstants.swift */,
+				8C19678B2BFE134A009360A0 /* SwiftData */,
 				8C4F20262BEE80B5005B7AAB /* Data Persistence and Management System */,
 				CEE2BB252BB5BB7A0033556D /* Repositories */,
 			);
@@ -1188,7 +1202,7 @@
 			);
 			mainGroup = 8C1E00A12BA823C80094FAA7;
 			packageReferences = (
-				8CEA29092BB3517E005E3B33 /* XCLocalSwiftPackageReference "NetworkService" */,
+				8CEA29092BB3517E005E3B33 /* XCLocalSwiftPackageReference "Frameworks/NetworkService" */,
 			);
 			productRefGroup = 8C1E00A12BA823C80094FAA7;
 			projectDirPath = "";
@@ -1446,6 +1460,7 @@
 				8C9FA44E2BD29CAB0041F28E /* DeviceContext.swift in Sources */,
 				8C1E01012BA85E630094FAA7 /* AppDelegate.swift in Sources */,
 				8C4BFB5B2BE113B000B47154 /* UserModel.swift in Sources */,
+				8C19678D2BFE135B009360A0 /* SwiftDataDatabase.swift in Sources */,
 				8C4B7B872BB6DCC80043B892 /* AuthModel.swift in Sources */,
 				8CD107FF2BD11F9500E83261 /* Sidebar.swift in Sources */,
 				8C9FA4502BD3AD060041F28E /* RoundedCornerView.swift in Sources */,
@@ -1469,6 +1484,7 @@
 				8C4BFB772BE189B400B47154 /* PromotedPollModel.swift in Sources */,
 				8C4BFB812BE2208E00B47154 /* DependencyMainAppProvider.swift in Sources */,
 				8C9FA43E2BD27FDF0041F28E /* MyBidsViewModel.swift in Sources */,
+				8C19678A2BFE132C009360A0 /* SwifDataManager.swift in Sources */,
 				8CD108162BD1237D00E83261 /* PaddleViewModel.swift in Sources */,
 				8C4B7B852BB47E9C0043B892 /* Color.swift in Sources */,
 				8CD108072BD1216C00E83261 /* MainContainerViewFactory.swift in Sources */,
@@ -1948,7 +1964,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		8CEA29092BB3517E005E3B33 /* XCLocalSwiftPackageReference "NetworkService" */ = {
+		8CEA29092BB3517E005E3B33 /* XCLocalSwiftPackageReference "Frameworks/NetworkService" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Frameworks/NetworkService;
 		};
