@@ -1,5 +1,7 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
+import SwiftData
+
 class DatabaseService {
 	private var storage: [String: Data] = [:]
 	private var dataCache = [String: Int]()
