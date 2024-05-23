@@ -18,21 +18,21 @@ class ChooseAuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 		}
 	}
 
-	private let swiftDataStore: SwiftDataManager
+	private let dataManager: DataManager
 
 	var buttonViewModels: [AuctionStateStatuses: AuctionFilterButtonViewModel]
 
-	init(repository: ChooseAuctionRepository, organization: OrganizationModel? = nil, swiftDataStore: SwiftDataManager) {
+	init(repository: ChooseAuctionRepository, organization: OrganizationModel? = nil, dataManager: DataManager) {
 		self.repository = repository
 		self.organization = organization
-		self.swiftDataStore = swiftDataStore
+		self.dataManager = dataManager
 		self.buttonViewModels = AuctionStateStatuses.allCases.reduce(into: [:]) { $0[$1] = AuctionFilterButtonViewModel() }
 		self.centerViewData = TopBarCenterViewData(type: .custom, customView: AnyView(EmptyView()))
 		self.centerViewData = createCenterViewData()
 		setupInitialSelection()
 		setupButtonBindings()
 
-		let user2: UserModel? = try? swiftDataStore.fetchOne(UserModel.self, modelType: .user)
+        let user2: UserModel? = try? dataManager.fetchSingle(of: UserModel.self, from: .user)
 		print(user2?.identity)
 	}
 

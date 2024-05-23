@@ -10,15 +10,14 @@ struct MainAppCoordinator: App {
 
 	@StateObject private var registrationCoordinator: Coordinator<RegistrationPage, Any?>
 	@StateObject private var mainContainerCoordinator: Coordinator<MainContainerPage, Any?>
-
-	private let swiftDataManager: SwiftDataManager
+	private let dataManager: DataManager
 
 	init() {
 		let deps = DependencyMainAppProvider.shared
-		self.swiftDataManager = SwiftDataManager.shared
+		self.dataManager = DataManager.shared
 
 		let registrationCoordinator = MainAppCoordinator.createRegistrationCoordinator(deps: deps)
-		let mainContainerCoordinator = MainAppCoordinator.createMainContainerCoordinator(deps: deps, swiftDataStore: swiftDataManager)
+		let mainContainerCoordinator = MainAppCoordinator.createMainContainerCoordinator(deps: deps, dataManager: dataManager)
 
 		_registrationCoordinator = StateObject(wrappedValue: registrationCoordinator)
 		_mainContainerCoordinator = StateObject(wrappedValue: mainContainerCoordinator)
@@ -47,16 +46,16 @@ struct MainAppCoordinator: App {
 		}
 	}
 
-	static func createMainContainerCoordinator(deps: DependencyMainAppProvider, swiftDataStore: SwiftDataManager) -> Coordinator<MainContainerPage, Any?> {
+	static func createMainContainerCoordinator(deps: DependencyMainAppProvider, dataManager: DataManager) -> Coordinator<MainContainerPage, Any?> {
 		Coordinator<MainContainerPage, Any?> { page in
 			switch page {
 			case .chooseOrganization:
 				let repository = ChooseOrganizationRepositoryImpl(deps.networkClient)
-				let viewModel = ChooseOrganizationViewModel(repository: repository, swiftDataStore: swiftDataStore)
+				let viewModel = ChooseOrganizationViewModel(repository: repository, dataManager: dataManager)
 				return AnyView(ChooseOrganizationView<MainContainerPage>(viewModel: viewModel))
 			case .chooseAuction:
 				let repository = ChooseAuctionRepositoryImpl(deps.networkClient)
-				let viewModel = ChooseAuctionViewModel(repository: repository, swiftDataStore: swiftDataStore)
+				let viewModel = ChooseAuctionViewModel(repository: repository, dataManager: dataManager)
 				return AnyView(ChooseAuctionView<MainContainerPage>(viewModel: viewModel, selectedView: .selectAuction))
 			case .mainContainer:
 				return AnyView(MainContainer<MainContainerPage>(selectedView: .auction))
@@ -70,7 +69,7 @@ struct MainAppCoordinator: App {
 				.environmentObject(AuthManagerMainActor())
 				.environmentObject(registrationCoordinator)
 				.environmentObject(mainContainerCoordinator)
-				.environment(\.swiftDataManager, swiftDataManager)
+				.environment(\.dataManager, dataManager)
 		}
 	}
 }

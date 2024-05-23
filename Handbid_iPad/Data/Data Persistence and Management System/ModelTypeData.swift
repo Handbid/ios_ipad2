@@ -1,6 +1,6 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
-enum ModelTypeData {
+enum ModelType {
 	case user, auction
 
 	func isModelType(_ type: (some Any).Type) -> Bool {

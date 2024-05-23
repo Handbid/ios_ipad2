@@ -15,9 +15,9 @@
 		8C0007D32BAC976700AAEBA0 /* AppInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0007C22BAC820500AAEBA0 /* AppInfoProvider.swift */; };
 		8C0725952BF61D7700522F8C /* DataPersistenceAndManagement.md in Resources */ = {isa = PBXBuildFile; fileRef = 8C0725942BF61D7700522F8C /* DataPersistenceAndManagement.md */; };
 		8C0725BA2BF6332600522F8C /* ModelTypeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0725B92BF6332600522F8C /* ModelTypeData.swift */; };
-		8C19678A2BFE132C009360A0 /* SwifDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1967892BFE132C009360A0 /* SwifDataManager.swift */; };
-		8C19678D2BFE135B009360A0 /* SwiftDataDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C19678C2BFE135B009360A0 /* SwiftDataDatabase.swift */; };
-		8C19678F2BFF54E2009360A0 /* SwiftDataManagerKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C19678E2BFF54E2009360A0 /* SwiftDataManagerKey.swift */; };
+		8C19678A2BFE132C009360A0 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1967892BFE132C009360A0 /* DataManager.swift */; };
+		8C19678D2BFE135B009360A0 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C19678C2BFE135B009360A0 /* DatabaseService.swift */; };
+		8C19678F2BFF54E2009360A0 /* DataManagerEnvironmentKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C19678E2BFF54E2009360A0 /* DataManagerEnvironmentKey.swift */; };
 		8C1B676E2BC834F3006B61F6 /* ResetPasswordModel_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1B676D2BC834F3006B61F6 /* ResetPasswordModel_Test.swift */; };
 		8C1B67702BC83F92006B61F6 /* MockForgotPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1B676F2BC83F92006B61F6 /* MockForgotPassword.swift */; };
 		8C1B67722BC83FAE006B61F6 /* ForgotPasswordViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1B67712BC83FAE006B61F6 /* ForgotPasswordViewModel_Tests.swift */; };
@@ -201,9 +201,9 @@
 		8C0007D12BAC8FBD00AAEBA0 /* Handbid-iPad-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Handbid-iPad-Bridging-Header.h"; sourceTree = "<group>"; };
 		8C0725942BF61D7700522F8C /* DataPersistenceAndManagement.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DataPersistenceAndManagement.md; sourceTree = "<group>"; };
 		8C0725B92BF6332600522F8C /* ModelTypeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTypeData.swift; sourceTree = "<group>"; };
-		8C1967892BFE132C009360A0 /* SwifDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwifDataManager.swift; sourceTree = "<group>"; };
-		8C19678C2BFE135B009360A0 /* SwiftDataDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataDatabase.swift; sourceTree = "<group>"; };
-		8C19678E2BFF54E2009360A0 /* SwiftDataManagerKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataManagerKey.swift; sourceTree = "<group>"; };
+		8C1967892BFE132C009360A0 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		8C19678C2BFE135B009360A0 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
+		8C19678E2BFF54E2009360A0 /* DataManagerEnvironmentKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerEnvironmentKey.swift; sourceTree = "<group>"; };
 		8C1B676D2BC834F3006B61F6 /* ResetPasswordModel_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordModel_Test.swift; sourceTree = "<group>"; };
 		8C1B676F2BC83F92006B61F6 /* MockForgotPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockForgotPassword.swift; sourceTree = "<group>"; };
 		8C1B67712BC83FAE006B61F6 /* ForgotPasswordViewModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel_Tests.swift; sourceTree = "<group>"; };
@@ -414,10 +414,10 @@
 			isa = PBXGroup;
 			children = (
 				8C0725942BF61D7700522F8C /* DataPersistenceAndManagement.md */,
+				8C19678C2BFE135B009360A0 /* DatabaseService.swift */,
+				8C1967892BFE132C009360A0 /* DataManager.swift */,
+				8C19678E2BFF54E2009360A0 /* DataManagerEnvironmentKey.swift */,
 				8C0725B92BF6332600522F8C /* ModelTypeData.swift */,
-				8C1967892BFE132C009360A0 /* SwifDataManager.swift */,
-				8C19678E2BFF54E2009360A0 /* SwiftDataManagerKey.swift */,
-				8C19678C2BFE135B009360A0 /* SwiftDataDatabase.swift */,
 			);
 			path = "Data Persistence and Management System";
 			sourceTree = "<group>";
@@ -1323,7 +1323,7 @@
 				8CABF5D42BB9E17C00A34870 /* CustomDimensValues.swift in Sources */,
 				8CD107F32BD11EB800E83261 /* TopBar.swift in Sources */,
 				CEE2BB292BB5D1070033556D /* ApiConstants.swift in Sources */,
-				8C19678F2BFF54E2009360A0 /* SwiftDataManagerKey.swift in Sources */,
+				8C19678F2BFF54E2009360A0 /* DataManagerEnvironmentKey.swift in Sources */,
 				8CABF5CA2BB9CEF900A34870 /* ChooseEnvironmentViewModel.swift in Sources */,
 				8CD1080E2BD122CC00E83261 /* AuctionView.swift in Sources */,
 				8C4BFB542BDFAE2000B47154 /* AuctionFilterButtonViewModel.swift in Sources */,
@@ -1370,7 +1370,7 @@
 				8C9FA44E2BD29CAB0041F28E /* DeviceContext.swift in Sources */,
 				8C1E01012BA85E630094FAA7 /* AppDelegate.swift in Sources */,
 				8C4BFB5B2BE113B000B47154 /* UserModel.swift in Sources */,
-				8C19678D2BFE135B009360A0 /* SwiftDataDatabase.swift in Sources */,
+				8C19678D2BFE135B009360A0 /* DatabaseService.swift in Sources */,
 				8C4B7B872BB6DCC80043B892 /* AuthModel.swift in Sources */,
 				8CD107FF2BD11F9500E83261 /* Sidebar.swift in Sources */,
 				8C9FA4502BD3AD060041F28E /* RoundedCornerView.swift in Sources */,
@@ -1392,7 +1392,7 @@
 				8C4BFB772BE189B400B47154 /* PromotedPollModel.swift in Sources */,
 				8C4BFB812BE2208E00B47154 /* DependencyMainAppProvider.swift in Sources */,
 				8C9FA43E2BD27FDF0041F28E /* MyBidsViewModel.swift in Sources */,
-				8C19678A2BFE132C009360A0 /* SwifDataManager.swift in Sources */,
+				8C19678A2BFE132C009360A0 /* DataManager.swift in Sources */,
 				8CD108162BD1237D00E83261 /* PaddleViewModel.swift in Sources */,
 				8C4B7B852BB47E9C0043B892 /* Color.swift in Sources */,
 				8CD108072BD1216C00E83261 /* MainContainerViewFactory.swift in Sources */,
