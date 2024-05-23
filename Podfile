@@ -12,6 +12,7 @@ pod 'ProgressIndicatorView', '~> 1.0.0'
 pod 'SwiftFormat/CLI'
 pod "RecaptchaEnterprise", "18.5.0-beta02"
 pod 'RecaptchaInterop', :modular_headers => true
+pod 'Starscream', '~> 4.0.8'
 
 end
 
