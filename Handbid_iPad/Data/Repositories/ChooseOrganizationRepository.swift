@@ -9,12 +9,10 @@ protocol ChooseOrganizationRepository {
 
 class ChooseOrganizationRepositoryImpl: ChooseOrganizationRepository, NetworkingService {
 	var network: NetworkService.NetworkingClient
-	let modelContext: ModelContext
 	@Published var user: UserModel = .init()
 
-	init(_ network: NetworkService.NetworkingClient, modelContext: ModelContext) {
+	init(_ network: NetworkService.NetworkingClient) {
 		self.network = network
-		self.modelContext = modelContext
 	}
 
 	func fetchUserOrganizations() -> AnyPublisher<UserModel, Error> {

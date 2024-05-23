@@ -6,7 +6,7 @@ import SwiftData
 
 class SwiftDataDatabase {
 	private var storage: [String: Data] = [:]
-    private var dataCache = [String: Int]()
+	private var dataCache = [String: Int]()
 
 	func save<T: Codable & Identifiable>(_ item: T, modelType: ModelTypeData) throws where T.ID == String {
 		let key = modelTypeKey(modelType, id: item.id)

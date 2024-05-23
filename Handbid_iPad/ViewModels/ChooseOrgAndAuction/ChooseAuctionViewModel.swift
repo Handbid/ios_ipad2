@@ -7,7 +7,6 @@ import SwiftUI
 class ChooseAuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 	private let repository: ChooseAuctionRepository
 	private var cancellables = Set<AnyCancellable>()
-	private let dataStore: DataStore
 
 	@Published var filteredAuctions: [AuctionModel] = []
 	@Published var auctions: [AuctionModel] = []
@@ -19,18 +18,22 @@ class ChooseAuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 		}
 	}
 
+	private let swiftDataStore: SwiftDataManager
+
 	var buttonViewModels: [AuctionStateStatuses: AuctionFilterButtonViewModel]
 
-	init(repository: ChooseAuctionRepository, organization: OrganizationModel? = nil, dataStore: DataStore) {
+	init(repository: ChooseAuctionRepository, organization: OrganizationModel? = nil, swiftDataStore: SwiftDataManager) {
 		self.repository = repository
 		self.organization = organization
-		self.dataStore = dataStore
+		self.swiftDataStore = swiftDataStore
 		self.buttonViewModels = AuctionStateStatuses.allCases.reduce(into: [:]) { $0[$1] = AuctionFilterButtonViewModel() }
 		self.centerViewData = TopBarCenterViewData(type: .custom, customView: AnyView(EmptyView()))
-
 		self.centerViewData = createCenterViewData()
 		setupInitialSelection()
 		setupButtonBindings()
+
+		let user2: UserModel? = try? swiftDataStore.fetchOne(UserModel.self, modelType: .user)
+		print(user2?.identity)
 	}
 
 	func fetchAuctionsIfNeeded() {
