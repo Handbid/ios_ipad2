@@ -7,7 +7,7 @@ import NetworkService
 class ChooseOrganizationViewModel: ObservableObject {
 	private var cancellables = Set<AnyCancellable>()
 	private let repository: ChooseOrganizationRepository
-	private let dataStore: DataStore
+	private let dataManager: DataManager
 
 	@Published var organizations: [OrganizationModel] = []
 	@Published var filteredOrganizations: [OrganizationModel] = []
@@ -18,9 +18,9 @@ class ChooseOrganizationViewModel: ObservableObject {
 		}
 	}
 
-	init(repository: ChooseOrganizationRepository, dataStore: DataStore) {
+	init(repository: ChooseOrganizationRepository, dataManager: DataManager) {
 		self.repository = repository
-		self.dataStore = dataStore
+		self.dataManager = dataManager
 		setupSearchOrganizationSubscriber()
 	}
 
@@ -57,10 +57,22 @@ class ChooseOrganizationViewModel: ObservableObject {
 
 	private func handleOrganizationsReceived(_ user: UserModel) {
 		organizations = user.organization ?? []
-		dataStore.upsertModel(.user, model: user, allowCreation: true)
 
-		let fetchedUser: UserModel? = dataStore.fetchModel(ofType: .user, as: UserModel.self)
-		print("Fetched User: \(String(describing: fetchedUser?.id))")
+		do {
+			try? dataManager.create(user, in: .user)
+		}
+
+		let user2: UserModel? = try? dataManager.fetchSingle(of: UserModel.self, from: .user)
+		print(user2?.identity)
+
+		do {
+			try? dataManager.update(user, withNestedUpdates: true, in: .user)
+
+			let user2: UserModel? = try? dataManager.fetchSingle(of: UserModel.self, from: .user)
+			print(user2?.identity)
+		}
+
+		try? dataManager.deleteAll(of: UserModel.self, from: .user)
 
 		filterOrganizations()
 	}

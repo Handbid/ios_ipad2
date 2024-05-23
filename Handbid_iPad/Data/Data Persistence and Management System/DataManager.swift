@@ -1,81 +1,74 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
 import Combine
-import Foundation
-import SwiftData
 
-class DataManager<Entity: Identifiable & Codable> where Entity.ID == String {
-	@Published var entities: [Entity] = []
-	private var dataStore: AnyDataStore<Entity>
-	private var cancellables: Set<AnyCancellable> = []
+protocol DataManagementService {
+	func create<T: Codable & Identifiable>(_ item: T, in model: ModelType) throws where T.ID == String
+	func fetchAll<T: Codable & Identifiable>(of type: T.Type, from model: ModelType) throws -> [T] where T.ID == String
+	func fetchSingle<T: Codable & Identifiable>(of type: T.Type, from model: ModelType) throws -> T? where T.ID == String
+	func update<T: Codable & Identifiable>(_ item: T, withNestedUpdates allowNested: Bool, in model: ModelType) throws where T.ID == String
+	func delete<T: Codable & Identifiable>(_ item: T, from model: ModelType) throws where T.ID == String
+	func deleteAll<T: Codable & Identifiable>(of type: T.Type, from model: ModelType) throws where T.ID == String
+	var onDataChanged: AnyPublisher<Void, Never> { get }
+}
 
-	init(dataStore: AnyDataStore<Entity>) {
-		self.dataStore = dataStore
-		dataStore.updates
-			.receive(on: DispatchQueue.main)
-			.sink(receiveValue: { [weak self] entity in
-				if let index = self?.entities.firstIndex(where: { $0.id == entity.id }) {
-					self?.entities[index] = entity
-				}
-				else {
-					self?.entities.append(entity)
-				}
-			})
-			.store(in: &cancellables)
+class DataManager: DataManagementService {
+	private var database: DatabaseService
+	private var changeNotifier = PassthroughSubject<Void, Never>()
 
-		loadEntities()
+	var onDataChanged: AnyPublisher<Void, Never> {
+		changeNotifier.eraseToAnyPublisher()
 	}
 
-	func loadEntities() {
-		dataStore.load { [weak self] result in
-			DispatchQueue.main.async {
-				switch result {
-				case let .success(entities):
-					self?.entities = entities
-				case let .failure(error):
-					print("Error loading entities: \(error)")
-				}
+	init(database: DatabaseService) {
+		self.database = database
+	}
+
+	func create<T: Codable & Identifiable>(_ item: T, in model: ModelType) throws where T.ID == String {
+		try database.save(item, modelType: model)
+		changeNotifier.send()
+	}
+
+	func fetchAll<T: Codable & Identifiable>(of type: T.Type, from model: ModelType) throws -> [T] where T.ID == String {
+		try database.fetchAll(type, modelType: model)
+	}
+
+	func fetchSingle<T: Codable & Identifiable>(of type: T.Type, from model: ModelType) throws -> T? where T.ID == String {
+		let items = try fetchAll(of: type, from: model)
+		return items.first
+	}
+
+	func update<T: Codable & Identifiable>(_ item: T, withNestedUpdates allowNested: Bool, in model: ModelType) throws where T.ID == String {
+		if allowNested {
+			if try database.fetchOne(T.self, modelType: model, id: item.id) == nil {
+				try database.save(item, modelType: model)
+			}
+			else {
+				try database.update(item, modelType: model)
 			}
 		}
+		else {
+			try database.update(item, modelType: model)
+		}
+		changeNotifier.send()
 	}
 
-	func saveEntity(_ entity: Entity) {
-		dataStore.save(entity: entity) { result in
-			DispatchQueue.main.async {
-				switch result {
-				case .success:
-					print("Entity saved successfully")
-				case let .failure(error):
-					print("Save error: \(error)")
-				}
-			}
-		}
+	func delete<T: Codable & Identifiable>(_ item: T, from model: ModelType) throws where T.ID == String {
+		try database.delete(item, modelType: model)
+		changeNotifier.send()
 	}
 
-	func updateEntity(_ entity: Entity) {
-		dataStore.update(entity: entity) { result in
-			DispatchQueue.main.async {
-				switch result {
-				case .success:
-					print("Entity updated successfully")
-				case let .failure(error):
-					print("Update error: \(error)")
-				}
-			}
+	func deleteAll<T>(of type: T.Type, from model: ModelType) throws where T: Decodable, T: Encodable, T: Identifiable, T.ID == String {
+		let items = try fetchAll(of: type, from: model)
+		for item in items {
+			try delete(item, from: model)
 		}
+		changeNotifier.send()
 	}
+}
 
-	func deleteEntity(withId id: String) {
-		dataStore.delete(entityId: id) { [weak self] result in
-			DispatchQueue.main.async {
-				switch result {
-				case .success:
-					self?.entities.removeAll { $0.id == id }
-					print("Entity deleted successfully")
-				case let .failure(error):
-					print("Delete error: \(error)")
-				}
-			}
-		}
-	}
+// MARK: - Singleton Accessor Extension
+
+extension DataManager {
+	static let shared = DataManager(database: DatabaseService())
 }

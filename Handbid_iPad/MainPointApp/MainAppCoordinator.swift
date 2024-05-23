@@ -10,19 +10,14 @@ struct MainAppCoordinator: App {
 
 	@StateObject private var registrationCoordinator: Coordinator<RegistrationPage, Any?>
 	@StateObject private var mainContainerCoordinator: Coordinator<MainContainerPage, Any?>
-
-	private let modelContainer: ModelContainer
-	private let modelContext: ModelContext
-	private let dataStore: DataStore
+	private let dataManager: DataManager
 
 	init() {
 		let deps = DependencyMainAppProvider.shared
-		self.modelContainer = ModelContainer()
-		self.modelContext = ModelContext(modelContainer)
-		self.dataStore = DataStore.shared
+		self.dataManager = DataManager.shared
 
 		let registrationCoordinator = MainAppCoordinator.createRegistrationCoordinator(deps: deps)
-		let mainContainerCoordinator = MainAppCoordinator.createMainContainerCoordinator(deps: deps, modelContext: modelContext, dataStore: dataStore)
+		let mainContainerCoordinator = MainAppCoordinator.createMainContainerCoordinator(deps: deps, dataManager: dataManager)
 
 		_registrationCoordinator = StateObject(wrappedValue: registrationCoordinator)
 		_mainContainerCoordinator = StateObject(wrappedValue: mainContainerCoordinator)
@@ -51,16 +46,16 @@ struct MainAppCoordinator: App {
 		}
 	}
 
-	static func createMainContainerCoordinator(deps: DependencyMainAppProvider, modelContext: ModelContext, dataStore: DataStore) -> Coordinator<MainContainerPage, Any?> {
+	static func createMainContainerCoordinator(deps: DependencyMainAppProvider, dataManager: DataManager) -> Coordinator<MainContainerPage, Any?> {
 		Coordinator<MainContainerPage, Any?> { page in
 			switch page {
 			case .chooseOrganization:
-				let repository = ChooseOrganizationRepositoryImpl(deps.networkClient, modelContext: modelContext)
-				let viewModel = ChooseOrganizationViewModel(repository: repository, dataStore: dataStore)
+				let repository = ChooseOrganizationRepositoryImpl(deps.networkClient)
+				let viewModel = ChooseOrganizationViewModel(repository: repository, dataManager: dataManager)
 				return AnyView(ChooseOrganizationView<MainContainerPage>(viewModel: viewModel))
 			case .chooseAuction:
 				let repository = ChooseAuctionRepositoryImpl(deps.networkClient)
-				let viewModel = ChooseAuctionViewModel(repository: repository, dataStore: dataStore)
+				let viewModel = ChooseAuctionViewModel(repository: repository, dataManager: dataManager)
 				return AnyView(ChooseAuctionView<MainContainerPage>(viewModel: viewModel, selectedView: .selectAuction))
 			case .mainContainer:
 				return AnyView(MainContainer<MainContainerPage>(selectedView: .auction))
@@ -74,9 +69,7 @@ struct MainAppCoordinator: App {
 				.environmentObject(AuthManagerMainActor())
 				.environmentObject(registrationCoordinator)
 				.environmentObject(mainContainerCoordinator)
-				.environment(\.appServices, ServicesDataManager.shared)
-				.environment(\.modelContext, modelContext)
-				.environment(\.dataStore, dataStore)
+				.environment(\.dataManager, dataManager)
 		}
 	}
 }

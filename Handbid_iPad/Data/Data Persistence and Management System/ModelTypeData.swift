@@ -1,14 +1,14 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
-import Foundation
-
-enum ModelTypeData {
-	case user
+enum ModelType {
+	case user, auction
 
 	func isModelType(_ type: (some Any).Type) -> Bool {
 		switch self {
 		case .user:
 			type == UserModel.self
+		case .auction:
+			type == AuctionModel.self
 		}
 	}
 }
