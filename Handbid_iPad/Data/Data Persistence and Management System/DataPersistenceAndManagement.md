@@ -97,6 +97,26 @@ To observe changes in the data:
 ```swift
 let cancellable = DataManager.shared.onDataChanged.sink {
     print("Data has changed!")
+<<<<<<< HEAD
+}
+```
+
+### Integrating with SwiftUI
+
+To use `DataManager` within SwiftUI, you can access it through the environment:
+
+```swift
+struct ContentView: View {
+    @Environment(\.dataManager) var dataManager
+
+    var body: some View {
+        Text("Data Manager is ready.")
+            .onAppear {
+                // Use dataManager as needed
+            }
+    }
+=======
+>>>>>>> feature/swiftData
 }
 ```
 
@@ -116,3 +136,5 @@ struct ContentView: View {
     }
 }
 ```
+
+This documentation should help developers understand and utilize the provided system effectively for managing data models within a SwiftUI application.
