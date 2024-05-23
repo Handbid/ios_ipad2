@@ -116,5 +116,3 @@ struct ContentView: View {
     }
 }
 ```
-
-This documentation should help developers understand and utilize the provided system effectively for managing data models within a SwiftUI application.
