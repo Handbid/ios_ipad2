@@ -1,4 +1,5 @@
 {
+  "originHash" : "8cb75e6acb7b79b0c1871943a86937c2cdaab7bb60ed2b045e3dd9aa380e6cfa",
   "pins" : [
     {
       "identity" : "keychainaccess",
@@ -10,5 +11,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
