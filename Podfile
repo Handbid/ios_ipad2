@@ -3,16 +3,19 @@
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '17.0'
 #use_frameworks!
+use_modular_headers!
 inhibit_all_warnings!
 
 def available_pods
-pod 'Arrow'
-pod 'ProgressIndicatorView', '~> 1.0.0'
-pod 'SwiftFormat/CLI'
-pod "RecaptchaEnterprise", "18.5.0-beta02"
-pod 'RecaptchaInterop', :modular_headers => true
-pod 'Starscream', '~> 4.0.8'
-
+  pod 'Arrow'
+  pod 'FirebaseAnalytics'
+  pod 'FirebaseCrashlytics'
+  pod 'FirebasePerformance'
+  pod 'ProgressIndicatorView', '~> 1.0.0'
+  pod 'RecaptchaEnterprise', '18.5.0-beta02'
+  pod 'RecaptchaInterop'
+  pod 'Starscream', '~> 4.0.8'
+  pod 'SwiftFormat/CLI'
 end
 
 target 'Handbid_iPad' do

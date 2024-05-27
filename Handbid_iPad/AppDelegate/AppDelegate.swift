@@ -1,11 +1,16 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
+import FirebaseAnalytics
+import FirebaseCore
+import FirebaseCrashlytics
+import FirebasePerformance
 import NetworkService
 import SwiftUI
 
 class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
 	func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
-		true
+		FirebaseApp.configure()
+		return true
 	}
 
 	func application(_: UIApplication, open url: URL,
