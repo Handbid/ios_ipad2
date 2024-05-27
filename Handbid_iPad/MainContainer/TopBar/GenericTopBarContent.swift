@@ -2,10 +2,35 @@
 
 import SwiftUI
 
-struct GenericTopBarContent<ViewModel: ViewModelTopBarProtocol>: TopBarContent {
+struct GenericTopBarContent<ViewModel: ViewModelTopBarProtocol>: View {
 	@Binding var isSidebarVisible: Bool
-	var viewModel: ViewModel
+	var logoIsVisible: Bool? = true
+	@ObservedObject var viewModel: ViewModel
 	var logo: Image?
+
+	var body: some View { // This is necessary for conforming to View
+		HStack {
+			ForEach(leftViews.indices, id: \.self) { index in
+				leftViews[index]
+			}
+
+			Spacer()
+
+			centerView
+
+			Spacer()
+
+			HStack {
+				ForEach(rightViews.indices, id: \.self) { index in
+					rightViews[index]
+				}
+			}
+		}
+		.padding()
+		.frame(height: 60) // or any appropriate height
+		.background(Color(.systemBackground)) // appropriate background color
+		.foregroundColor(.primary)
+	}
 
 	var leftViews: [AnyView] {
 		if let logo {
@@ -28,7 +53,9 @@ struct GenericTopBarContent<ViewModel: ViewModelTopBarProtocol>: TopBarContent {
 
 	private func createMenuButton() -> AnyView {
 		Button(action: { isSidebarVisible.toggle() }) {
-			Image("menuIcon").foregroundColor(.primary)
+			if logoIsVisible == true {
+				Image("menuIcon").foregroundColor(.primary)
+			}
 		}.eraseToAnyView()
 	}
 

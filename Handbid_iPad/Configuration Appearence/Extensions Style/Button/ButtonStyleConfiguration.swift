@@ -15,7 +15,7 @@ struct ButtonStyleConfiguration {
 	var padding: EdgeInsets
 	var spacing: CGFloat
 	var icon: Image?
-	var disabledStyle: ButtonDisabledStyle
+	var disabledColor: Color?
 	var hoverEffect: HoverEffect
 	var accessibilityLabel: String?
 
@@ -32,7 +32,7 @@ struct ButtonStyleConfiguration {
 		padding: EdgeInsets = .init(),
 		spacing: CGFloat = 0,
 		icon: Image? = nil,
-		disabledStyle: ButtonDisabledStyle = .defaultStyle,
+		disabledColor: Color? = nil,
 		hoverEffect: HoverEffect = .automatic,
 		accessibilityLabel: String? = nil
 	) {
@@ -48,13 +48,8 @@ struct ButtonStyleConfiguration {
 		self.padding = padding
 		self.spacing = spacing
 		self.icon = icon
-		self.disabledStyle = disabledStyle
+		self.disabledColor = disabledColor
 		self.hoverEffect = hoverEffect
 		self.accessibilityLabel = accessibilityLabel
 	}
-}
-
-enum ButtonDisabledStyle: Equatable {
-	case custom(Color)
-	case defaultStyle
 }
