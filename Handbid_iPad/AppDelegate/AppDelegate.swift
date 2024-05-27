@@ -10,6 +10,10 @@ import SwiftUI
 class AppDelegate: UIResponder, UIApplicationDelegate, ObservableObject {
 	func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
 		FirebaseApp.configure()
+		Crashlytics.crashlytics()
+		Performance.sharedInstance().isInstrumentationEnabled = true
+		Performance.sharedInstance().isDataCollectionEnabled = true
+		Analytics.setAnalyticsCollectionEnabled(true)
 		return true
 	}
 
