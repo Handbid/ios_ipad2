@@ -3,6 +3,13 @@
 import Combine
 import Foundation
 
+public extension NetworkingClient {
+	static var shared: NetworkingClient = {
+		let client = NetworkingClient()
+		return client
+	}()
+}
+
 public class NetworkingClient {
 	public var defaultCollectionParsingKeyPath: String?
 	let baseURL: String

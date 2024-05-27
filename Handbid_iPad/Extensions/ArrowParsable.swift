@@ -11,4 +11,19 @@ public extension ArrowParsable where Self: NetworkingJSONDecodable {
 		}
 		return t
 	}
+
+	static func decodeArray(_ jsonArray: Any) throws -> [Self] {
+		guard let array = jsonArray as? [Any] else {
+			throw NSError(domain: "DecodingError", code: 1001, userInfo: [NSLocalizedDescriptionKey: "Invalid JSON format for array decoding."])
+		}
+
+		return array.compactMap { item in
+			guard let arrowJSON = JSON(item) else {
+				return nil
+			}
+			var instance = Self()
+			instance.deserialize(arrowJSON)
+			return instance
+		}
+	}
 }

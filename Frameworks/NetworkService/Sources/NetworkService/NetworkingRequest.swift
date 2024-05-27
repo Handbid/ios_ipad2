@@ -2,8 +2,29 @@
 
 import Combine
 import Foundation
+import KeychainAccess
 
 public typealias NetworkRequestRetrier = (_ request: URLRequest, _ error: Error) -> AnyPublisher<Void, Error>?
+
+extension NetworkingRequest {
+	func retrieveTokenValueFromKeychain() -> String? {
+		let keychain = Keychain(service: Bundle.main.bundleIdentifier ?? "")
+		do {
+			guard let tokenData = try keychain.getData("AuthDataUser") else {
+				return nil
+			}
+
+			let json = try JSONSerialization.jsonObject(with: tokenData, options: []) as? [String: Any]
+			guard let value = json?["value"] as? String else {
+				return nil
+			}
+			return value
+		}
+		catch {
+			return nil
+		}
+	}
+}
 
 public class NetworkingRequest: NSObject, URLSessionTaskDelegate {
 	var parameterEncoding = ParameterEncoding.urlEncoded
@@ -166,6 +187,8 @@ public class NetworkingRequest: NSObject, URLSessionTaskDelegate {
 
 	func buildURLRequest() -> URLRequest? {
 		var urlString = baseURL + route
+		var token = retrieveTokenValueFromKeychain()
+
 		if httpMethod == .get {
 			urlString = getURLWithParams()
 		}
@@ -174,6 +197,10 @@ public class NetworkingRequest: NSObject, URLSessionTaskDelegate {
 			return nil
 		}
 		var request = URLRequest(url: url)
+
+		if let token, !token.isEmpty {
+			request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+		}
 
 		if httpMethod != .get, multipartData == nil {
 			switch parameterEncoding {
