@@ -36,7 +36,7 @@
 		8C1CF2872C05D05300733B1E /* ProgressIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 8C1CF2862C05D05300733B1E /* ProgressIndicatorView */; };
 		8C1CF28A2C05D07800733B1E /* RecaptchaEnterprise in Frameworks */ = {isa = PBXBuildFile; productRef = 8C1CF2892C05D07800733B1E /* RecaptchaEnterprise */; };
 		8C1CF28D2C05D0AF00733B1E /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = 8C1CF28C2C05D0AF00733B1E /* Starscream */; };
-		8C1CF2902C05D14C00733B1E /* SwiftFormat in Frameworks */ = {isa = PBXBuildFile; productRef = 8C1CF28F2C05D14C00733B1E /* SwiftFormat */; };
+		8C1CF2AC2C05DD9A00733B1E /* swift-format in Frameworks */ = {isa = PBXBuildFile; productRef = 8C1CF2AB2C05DD9A00733B1E /* swift-format */; };
 		8C1E00B22BA823C90094FAA7 /* iPadAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00B12BA823C90094FAA7 /* iPadAssets.xcassets */; };
 		8C1E00F62BA82A130094FAA7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00EF2BA82A130094FAA7 /* Localizable.strings */; };
 		8C1E01012BA85E630094FAA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E01002BA85E630094FAA7 /* AppDelegate.swift */; };
@@ -410,8 +410,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C1CF2AC2C05DD9A00733B1E /* swift-format in Frameworks */,
 				8C1CF2802C05D03600733B1E /* FirebaseAnalyticsSwift in Frameworks */,
-				8C1CF2902C05D14C00733B1E /* SwiftFormat in Frameworks */,
 				8C38CD1E2C0517DF00EFA4DE /* CoreTelephony.framework in Frameworks */,
 				8CEA290B2BB3517E005E3B33 /* NetworkService in Frameworks */,
 				8C1CF28D2C05D0AF00733B1E /* Starscream in Frameworks */,
@@ -1123,7 +1123,7 @@
 				8C1CF2862C05D05300733B1E /* ProgressIndicatorView */,
 				8C1CF2892C05D07800733B1E /* RecaptchaEnterprise */,
 				8C1CF28C2C05D0AF00733B1E /* Starscream */,
-				8C1CF28F2C05D14C00733B1E /* SwiftFormat */,
+				8C1CF2AB2C05DD9A00733B1E /* swift-format */,
 			);
 			productName = Handbid_iPad;
 			productReference = 8CFCCFB92BA8B3C600CF6C33 /* Handbid_iPad.app */;
@@ -1186,13 +1186,13 @@
 			);
 			mainGroup = 8C1E00A12BA823C80094FAA7;
 			packageReferences = (
-				8CEA29092BB3517E005E3B33 /* XCLocalSwiftPackageReference "NetworkService" */,
+				8CEA29092BB3517E005E3B33 /* XCLocalSwiftPackageReference "Frameworks/NetworkService" */,
 				8C1CF27B2C05CFE400733B1E /* XCRemoteSwiftPackageReference "Arrow" */,
 				8C1CF27E2C05D03600733B1E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				8C1CF2852C05D05300733B1E /* XCRemoteSwiftPackageReference "ProgressIndicatorView" */,
 				8C1CF2882C05D07800733B1E /* XCRemoteSwiftPackageReference "recaptcha-enterprise-mobile-sdk" */,
 				8C1CF28B2C05D0AF00733B1E /* XCRemoteSwiftPackageReference "Starscream" */,
-				8C1CF28E2C05D14C00733B1E /* XCRemoteSwiftPackageReference "SwiftFormat" */,
+				8C1CF2AA2C05DD9A00733B1E /* XCRemoteSwiftPackageReference "swift-format" */,
 			);
 			productRefGroup = 8C1E00A12BA823C80094FAA7;
 			projectDirPath = "";
@@ -1275,12 +1275,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" \"$SRCROOT\" --config .swiftformat --swiftversion 5.9\n";
+			shellScript = "if which swift-format >/dev/null; then\n    swift-format -m format -i -r ${PROJECT_DIR}\nelse\n";
 			showEnvVarsInLog = 0;
 		};
 		8C79B4312C050AAB005D4AAB /* Upload dSym */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputFileListPaths = (
@@ -1297,9 +1297,9 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
+			shellScript = "\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1676,7 +1676,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				ONLY_ACTIVE_ARCH = NO;
-				OTHER_SWIFT_FLAGS = "$(inherited) -D -Xcc -DHANDBID_IPAD";
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -DHANDBID_IPAD";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Handbid-iPad";
 				PRODUCT_MODULE_NAME = Handbid_iPad;
 				PRODUCT_NAME = Handbid_iPad;
@@ -1815,7 +1815,7 @@
 				"LIBRARY_SEARCH_PATHS[sdk=iphoneos*]" = "$(inherited)";
 				"LIBRARY_SEARCH_PATHS[sdk=iphonesimulator*]" = "$(inherited)";
 				MARKETING_VERSION = 1.0;
-				OTHER_SWIFT_FLAGS = "$(inherited) -D -Xcc -DHANDBID_IPAD";
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -DHANDBID_IPAD";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Handbid-iPad";
 				PRODUCT_MODULE_NAME = Handbid_iPad;
 				PRODUCT_NAME = Handbid_iPad;
@@ -1896,7 +1896,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		8CEA29092BB3517E005E3B33 /* XCLocalSwiftPackageReference "NetworkService" */ = {
+		8CEA29092BB3517E005E3B33 /* XCLocalSwiftPackageReference "Frameworks/NetworkService" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Frameworks/NetworkService;
 		};
@@ -1943,12 +1943,12 @@
 				version = 4.0.8;
 			};
 		};
-		8C1CF28E2C05D14C00733B1E /* XCRemoteSwiftPackageReference "SwiftFormat" */ = {
+		8C1CF2AA2C05DD9A00733B1E /* XCRemoteSwiftPackageReference "swift-format" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/nicklockwood/SwiftFormat";
+			repositoryURL = "https://github.com/apple/swift-format.git";
 			requirement = {
 				kind = exactVersion;
-				version = 0.53.10;
+				version = 510.1.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1989,10 +1989,10 @@
 			package = 8C1CF28B2C05D0AF00733B1E /* XCRemoteSwiftPackageReference "Starscream" */;
 			productName = Starscream;
 		};
-		8C1CF28F2C05D14C00733B1E /* SwiftFormat */ = {
+		8C1CF2AB2C05DD9A00733B1E /* swift-format */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8C1CF28E2C05D14C00733B1E /* XCRemoteSwiftPackageReference "SwiftFormat" */;
-			productName = SwiftFormat;
+			package = 8C1CF2AA2C05DD9A00733B1E /* XCRemoteSwiftPackageReference "swift-format" */;
+			productName = "swift-format";
 		};
 		8CEA290A2BB3517E005E3B33 /* NetworkService */ = {
 			isa = XCSwiftPackageProductDependency;
