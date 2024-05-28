@@ -4,6 +4,6 @@ import UIKit
 
 enum DeviceConfigurator {
 	static var isSidebarAlwaysVisible: Bool {
-                UIDevice.current.userInterfaceIdiom == .pad
+		UIDevice.current.userInterfaceIdiom == .pad
 	}
 }
