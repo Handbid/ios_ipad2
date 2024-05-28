@@ -2,6 +2,7 @@
 
 import Combine
 import NetworkService
+import UIKit
 
 class GetStartedViewModel: ObservableObject {
 	private var cancellables = Set<AnyCancellable>()
