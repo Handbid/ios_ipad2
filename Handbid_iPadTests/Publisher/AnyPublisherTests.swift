@@ -35,4 +35,22 @@ class AnyPublisherTests: XCTestCase {
 			XCTAssertEqual(error as NSError, testError)
 		}
 	}
+
+	func testAsyncNoValue() async throws {
+		let subject = PassthroughSubject<String, Error>()
+		let publisher = subject.eraseToAnyPublisher()
+
+		Task {
+			subject.send(completion: .finished)
+		}
+
+		do {
+			_ = try await publisher.async()
+			XCTFail("Expected to throw")
+		}
+		catch {
+			XCTAssertEqual((error as NSError).code, 2)
+			XCTAssertEqual((error as NSError).localizedDescription, "No value received before completion")
+		}
+	}
 }

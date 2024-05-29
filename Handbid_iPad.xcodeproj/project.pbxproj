@@ -274,6 +274,7 @@
 		8C3AA3F62C0717A600110288 /* OrganizationAddressModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationAddressModelTests.swift; sourceTree = "<group>"; };
 		8C3AA3F82C07188100110288 /* ChooseOrganizationRepositoryImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseOrganizationRepositoryImplTests.swift; sourceTree = "<group>"; };
 		8C3AA3FA2C07199100110288 /* AuctionCollectionCellViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionCollectionCellViewTests.swift; sourceTree = "<group>"; };
+		8C3AA3FC2C072EB600110288 /* Handbid_iPadTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Handbid_iPadTests.xctestplan; sourceTree = "<group>"; };
 		8C3D3C002BBA1E33002A5CFC /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		8C3D3C062BBB85CC002A5CFC /* MainContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainer.swift; sourceTree = "<group>"; };
 		8C4B7B7E2BB379440043B892 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
@@ -557,6 +558,7 @@
 		8C1E00A12BA823C80094FAA7 = {
 			isa = PBXGroup;
 			children = (
+				8C3AA3FC2C072EB600110288 /* Handbid_iPadTests.xctestplan */,
 				8CFCCFB92BA8B3C600CF6C33 /* Handbid_iPad.app */,
 				8C1CF27A2C05CF8300733B1E /* ci_scripts */,
 				8C1E00AC2BA823C80094FAA7 /* Handbid_iPad */,

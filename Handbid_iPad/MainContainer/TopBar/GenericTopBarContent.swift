@@ -8,7 +8,7 @@ struct GenericTopBarContent<ViewModel: ViewModelTopBarProtocol>: View {
 	@ObservedObject var viewModel: ViewModel
 	var logo: Image?
 
-	var body: some View { // This is necessary for conforming to View
+	var body: some View {
 		HStack {
 			ForEach(leftViews.indices, id: \.self) { index in
 				leftViews[index]
@@ -27,8 +27,8 @@ struct GenericTopBarContent<ViewModel: ViewModelTopBarProtocol>: View {
 			}
 		}
 		.padding()
-		.frame(height: 60) // or any appropriate height
-		.background(Color(.systemBackground)) // appropriate background color
+		.frame(height: 60)
+		.background(Color(.systemBackground))
 		.foregroundColor(.primary)
 	}
 
