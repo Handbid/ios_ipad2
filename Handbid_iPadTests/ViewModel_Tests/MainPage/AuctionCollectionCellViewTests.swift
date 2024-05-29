@@ -33,60 +33,33 @@ final class AuctionCollectionCellViewTests: XCTestCase {
 
 	func testAuctionCollectionCellViewDisplaysCorrectData() throws {
 		ViewHosting.host(view: sut)
+		try verifyText(sut, identifier: "auctionNameLabel", expected: "Auction Name")
+		try verifyTextContains(sut, identifier: "auctionItemsLabel", position: 0, expected: "10")
+		try verifyText(sut, identifier: "auctionStatusLabel", expected: "ACTIVE")
+		try verifyExists(sut, identifier: "auctionImage")
+		try verifyText(sut, identifier: "auctionAddressLabel", expected: "123 Street")
+		try verifyEndTime(sut, identifier: "auctionEndTimeLabel", position: 2, timestamp: auction.endTime)
+	}
 
-		do {
-			let nameLabel = try sut.inspect().find(viewWithAccessibilityIdentifier: "auctionNameLabel").text().string()
-			XCTAssertEqual(nameLabel, "Auction Name")
-		}
-		catch {
-			XCTFail("Failed to find auction name label: \(error)")
-		}
+	private func verifyText(_ view: AnyView, identifier: String, expected: String) throws {
+		let text = try view.inspect().find(viewWithAccessibilityIdentifier: identifier).text().string()
+		XCTAssertEqual(text, expected)
+	}
 
-		do {
-			let itemsLabelHStack = try sut.inspect().find(viewWithAccessibilityIdentifier: "auctionItemsLabel").hStack()
-			let itemsText1 = try itemsLabelHStack.text(0).string()
-			let itemsText2 = try itemsLabelHStack.text(1).string()
-			XCTAssertTrue(itemsText1.contains("10"))
-		}
-		catch {
-			XCTFail("Failed to find auction items label: \(error)")
-		}
+	private func verifyTextContains(_ view: AnyView, identifier: String, position: Int, expected: String) throws {
+		let hStack = try view.inspect().find(viewWithAccessibilityIdentifier: identifier).hStack()
+		let text = try hStack.text(position).string()
+		XCTAssertTrue(text.contains(expected))
+	}
 
-		// Test auction status label
-		do {
-			let statusLabel = try sut.inspect().find(viewWithAccessibilityIdentifier: "auctionStatusLabel").text().string()
-			XCTAssertEqual(statusLabel, "ACTIVE")
-		}
-		catch {
-			XCTFail("Failed to find auction status label: \(error)")
-		}
+	private func verifyExists(_ view: AnyView, identifier: String) throws {
+		let _ = try view.inspect().find(viewWithAccessibilityIdentifier: identifier)
+		XCTAssertTrue(true)
+	}
 
-		// Test auction image (success case)
-		do {
-			let image = try sut.inspect().find(viewWithAccessibilityIdentifier: "auctionImage")
-			XCTAssertNotNil(image)
-		}
-		catch {
-			XCTFail("Failed to find auction image: \(error)")
-		}
-
-		// Test auction address label
-		do {
-			let addressLabel = try sut.inspect().find(viewWithAccessibilityIdentifier: "auctionAddressLabel").text().string()
-			XCTAssertEqual(addressLabel, "123 Street")
-		}
-		catch {
-			XCTFail("Failed to find auction address label: \(error)")
-		}
-
-		// Test auction end time label
-		do {
-			let endTimeLabelHStack = try sut.inspect().find(viewWithAccessibilityIdentifier: "auctionEndTimeLabel").hStack()
-			let endTimeText = try endTimeLabelHStack.text(2).string() // Skip the spacers and clock icon
-			XCTAssertEqual(endTimeText, convertTimestampToDate(timestamp: TimeInterval(auction.endTime ?? 0)))
-		}
-		catch {
-			XCTFail("Failed to find auction end time label: \(error)")
-		}
+	private func verifyEndTime(_ view: AnyView, identifier: String, position: Int, timestamp: Int?) throws {
+		let hStack = try view.inspect().find(viewWithAccessibilityIdentifier: identifier).hStack()
+		let text = try hStack.text(position).string()
+		XCTAssertEqual(text, convertTimestampToDate(timestamp: TimeInterval(timestamp ?? 0)))
 	}
 }
