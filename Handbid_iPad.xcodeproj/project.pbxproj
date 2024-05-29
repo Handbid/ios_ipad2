@@ -52,6 +52,10 @@
 		8C3AA3ED2C07155800110288 /* StringExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AA3EC2C07155800110288 /* StringExtensionsTests.swift */; };
 		8C3AA3F02C07159F00110288 /* SelectAuctionTopBarCenterViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AA3EF2C07159F00110288 /* SelectAuctionTopBarCenterViewTests.swift */; };
 		8C3AA3F32C0715ED00110288 /* PinViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AA3F22C0715ED00110288 /* PinViewTests.swift */; };
+		8C3AA3F52C07177500110288 /* TopBarContentFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AA3F42C07177500110288 /* TopBarContentFactoryTests.swift */; };
+		8C3AA3F72C0717A600110288 /* OrganizationAddressModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AA3F62C0717A600110288 /* OrganizationAddressModelTests.swift */; };
+		8C3AA3F92C07188100110288 /* ChooseOrganizationRepositoryImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AA3F82C07188100110288 /* ChooseOrganizationRepositoryImplTests.swift */; };
+		8C3AA3FB2C07199100110288 /* AuctionCollectionCellViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AA3FA2C07199100110288 /* AuctionCollectionCellViewTests.swift */; };
 		8C3D3C012BBA1E33002A5CFC /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3D3C002BBA1E33002A5CFC /* String.swift */; };
 		8C3D3C042BBB7F09002A5CFC /* MainAppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E00AD2BA823C80094FAA7 /* MainAppCoordinator.swift */; };
 		8C3D3C072BBB85CC002A5CFC /* MainContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3D3C062BBB85CC002A5CFC /* MainContainer.swift */; };
@@ -266,6 +270,10 @@
 		8C3AA3EC2C07155800110288 /* StringExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionsTests.swift; sourceTree = "<group>"; };
 		8C3AA3EF2C07159F00110288 /* SelectAuctionTopBarCenterViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAuctionTopBarCenterViewTests.swift; sourceTree = "<group>"; };
 		8C3AA3F22C0715ED00110288 /* PinViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinViewTests.swift; sourceTree = "<group>"; };
+		8C3AA3F42C07177500110288 /* TopBarContentFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarContentFactoryTests.swift; sourceTree = "<group>"; };
+		8C3AA3F62C0717A600110288 /* OrganizationAddressModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationAddressModelTests.swift; sourceTree = "<group>"; };
+		8C3AA3F82C07188100110288 /* ChooseOrganizationRepositoryImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseOrganizationRepositoryImplTests.swift; sourceTree = "<group>"; };
+		8C3AA3FA2C07199100110288 /* AuctionCollectionCellViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionCollectionCellViewTests.swift; sourceTree = "<group>"; };
 		8C3D3C002BBA1E33002A5CFC /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		8C3D3C062BBB85CC002A5CFC /* MainContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainer.swift; sourceTree = "<group>"; };
 		8C4B7B7E2BB379440043B892 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
@@ -481,6 +489,7 @@
 			isa = PBXGroup;
 			children = (
 				8C1CC5182BC2480D00AF80F4 /* AppVersionModel_Test.swift */,
+				8C3AA3F62C0717A600110288 /* OrganizationAddressModelTests.swift */,
 				8C1CC5172BC2480D00AF80F4 /* AuthModel_Test.swift */,
 				8C1B676D2BC834F3006B61F6 /* ResetPasswordModel_Test.swift */,
 			);
@@ -515,6 +524,7 @@
 				8C1B676F2BC83F92006B61F6 /* MockForgotPassword.swift */,
 				8C1CC5212BC2480D00AF80F4 /* MockLogInAnonymously.swift */,
 				8C1CC5202BC2480D00AF80F4 /* MockRegisterRepository.swift */,
+				8C3AA3F82C07188100110288 /* ChooseOrganizationRepositoryImplTests.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -770,6 +780,7 @@
 			isa = PBXGroup;
 			children = (
 				8C3AA3E62C0714F200110288 /* MyBidsViewModelTests.swift */,
+				8C3AA3FA2C07199100110288 /* AuctionCollectionCellViewTests.swift */,
 			);
 			path = MainPage;
 			sourceTree = "<group>";
@@ -794,6 +805,7 @@
 			isa = PBXGroup;
 			children = (
 				8C3AA3EF2C07159F00110288 /* SelectAuctionTopBarCenterViewTests.swift */,
+				8C3AA3F42C07177500110288 /* TopBarContentFactoryTests.swift */,
 			);
 			path = MainPage;
 			sourceTree = "<group>";
@@ -1403,9 +1415,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEAB75112BD165D5000AFB46 /* PasswordResetConfirmationView_Tests.swift in Sources */,
+				8C3AA3F92C07188100110288 /* ChooseOrganizationRepositoryImplTests.swift in Sources */,
 				CE6F8DC22BCEE513009DBE7E /* MockLogInViewModel.swift in Sources */,
 				8C3AA3E72C0714F200110288 /* MyBidsViewModelTests.swift in Sources */,
+				8C3AA3FB2C07199100110288 /* AuctionCollectionCellViewTests.swift in Sources */,
 				8C1B67702BC83F92006B61F6 /* MockForgotPassword.swift in Sources */,
+				8C3AA3F52C07177500110288 /* TopBarContentFactoryTests.swift in Sources */,
 				8C1B676E2BC834F3006B61F6 /* ResetPasswordModel_Test.swift in Sources */,
 				8C1CC53D2BC3D8AC00AF80F4 /* MockChooseEnvironment.swift in Sources */,
 				8C1CC53C2BC3D89C00AF80F4 /* MockLogInAnonymously.swift in Sources */,
@@ -1415,6 +1430,7 @@
 				CE22793E2BC691CC00F4430F /* GetStartedView_Tests.swift in Sources */,
 				8C1CC53E2BC3D8AE00AF80F4 /* MockRegisterRepository.swift in Sources */,
 				8C3AA3E42C0714B000110288 /* AnyPublisherTests.swift in Sources */,
+				8C3AA3F72C0717A600110288 /* OrganizationAddressModelTests.swift in Sources */,
 				8C1CC5402BC3D8B600AF80F4 /* ChooseEnvironmentViewModel_Tests.swift in Sources */,
 				8C1CC53A2BC3D85300AF80F4 /* AppVersionModel_Test.swift in Sources */,
 				8C3AA3EA2C07152E00110288 /* AuctionDataServiceTests.swift in Sources */,
