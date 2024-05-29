@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1520"
+   LastUpgradeVersion = "1540"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
-      buildImplicitDependencies = "YES">
+      buildImplicitDependencies = "YES"
+      buildArchitectures = "Automatic">
    </BuildAction>
    <TestAction
       buildConfiguration = "Debug"
@@ -14,13 +15,14 @@
       shouldAutocreateTestPlan = "YES">
       <Testables>
          <TestableReference
-            skipped = "NO">
+            skipped = "NO"
+            parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "NetworkServiceTests"
-               BuildableName = "NetworkServiceTests"
-               BlueprintName = "NetworkServiceTests"
-               ReferencedContainer = "container:">
+               BlueprintIdentifier = "8C1CC52F2BC3D77100AF80F4"
+               BuildableName = "Handbid_iPadTests.xctest"
+               BlueprintName = "Handbid_iPadTests"
+               ReferencedContainer = "container:Handbid_iPad.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>

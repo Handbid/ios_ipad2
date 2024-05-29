@@ -9,7 +9,7 @@ class ChooseEnvironmentViewModel_Tests: XCTestCase {
 
 	override func setUp() {
 		super.setUp()
-		viewModel = ChooseEnvironmentViewModel()
+		viewModel = ChooseEnvironmentViewModel(NetworkingClient())
 	}
 
 	override func tearDown() {
