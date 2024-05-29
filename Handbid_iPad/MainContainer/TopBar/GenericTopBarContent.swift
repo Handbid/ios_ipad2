@@ -4,8 +4,9 @@ import SwiftUI
 
 struct GenericTopBarContent<ViewModel: ViewModelTopBarProtocol>: View {
 	@Binding var isSidebarVisible: Bool
-	var logoIsVisible: Bool? = true
 	@ObservedObject var viewModel: ViewModel
+	var inspection = Inspection<Self>()
+	var logoIsVisible: Bool? = true
 	var logo: Image?
 
 	var body: some View {
@@ -17,6 +18,8 @@ struct GenericTopBarContent<ViewModel: ViewModelTopBarProtocol>: View {
 			Spacer()
 
 			centerView
+				.accessibilityElement(children: .combine)
+				.accessibilityLabel("Center View")
 
 			Spacer()
 
@@ -30,11 +33,15 @@ struct GenericTopBarContent<ViewModel: ViewModelTopBarProtocol>: View {
 		.frame(height: 60)
 		.background(Color(.systemBackground))
 		.foregroundColor(.primary)
+		.onReceive(inspection.notice) {
+			inspection.visit(self, $0)
+		}
 	}
 
 	var leftViews: [AnyView] {
 		if let logo {
-			[AnyView(logo.foregroundColor(.primary))]
+			[AnyView(logo.foregroundColor(.primary)
+					.accessibilityLabel("Logo"))]
 		}
 		else {
 			[createMenuButton()]
@@ -54,9 +61,13 @@ struct GenericTopBarContent<ViewModel: ViewModelTopBarProtocol>: View {
 	private func createMenuButton() -> AnyView {
 		Button(action: { isSidebarVisible.toggle() }) {
 			if logoIsVisible == true {
-				Image("menuIcon").foregroundColor(.primary)
+				Image("menuIcon")
+					.foregroundColor(.primary)
+					.accessibilityLabel("Menu Button")
 			}
-		}.eraseToAnyView()
+		}
+		.accessibility(label: Text("Menu Button"))
+		.eraseToAnyView()
 	}
 
 	private func createCenterView() -> AnyView {
@@ -65,25 +76,33 @@ struct GenericTopBarContent<ViewModel: ViewModelTopBarProtocol>: View {
 			Text(viewModel.centerViewData.title ?? "")
 				.bold()
 				.lineLimit(1)
+				.accessibilityLabel(viewModel.centerViewData.title ?? "Title")
 				.eraseToAnyView()
 		case .image:
-			viewModel.centerViewData.image
+			viewModel.centerViewData.image?
 				.foregroundColor(.primary)
-				.eraseToAnyView()
+				.accessibilityLabel("Center Image")
+				.eraseToAnyView() ?? EmptyView().eraseToAnyView()
 		case .custom:
-			viewModel.centerViewData.customView ?? EmptyView().eraseToAnyView()
+			viewModel.centerViewData.customView?
+				.accessibilityLabel("Custom Center View")
+				.eraseToAnyView() ?? EmptyView().eraseToAnyView()
 		}
 	}
 
 	private func createActionButton(for action: TopBarAction) -> AnyView {
 		Button(action: action.action) {
 			Image(action.icon).scaledToFit().frame(width: 30).foregroundColor(.primary)
+				.accessibilityLabel(action.title ?? LocalizedStringKey(action.icon))
 			if let title = action.title {
 				Text(title)
 					.lineLimit(1)
 					.font(.caption)
 					.bold()
+					.accessibilityHidden(true)
 			}
-		}.eraseToAnyView()
+		}
+		.accessibility(label: Text(action.title ?? LocalizedStringKey(action.icon)))
+		.eraseToAnyView()
 	}
 }

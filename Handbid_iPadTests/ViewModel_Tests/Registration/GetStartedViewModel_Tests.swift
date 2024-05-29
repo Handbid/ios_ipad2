@@ -32,6 +32,6 @@ final class GetStartedViewModel_Tests: XCTestCase {
 			openedURL = url
 		}
 
-		XCTAssertNil(openedURL, "Opened URL should not be nil")
+		XCTAssertNotNil(openedURL, "Opened URL should not be nil")
 	}
 }
