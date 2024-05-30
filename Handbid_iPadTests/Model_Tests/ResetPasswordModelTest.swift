@@ -4,7 +4,7 @@ import Arrow
 @testable import Handbid_iPad
 import XCTest
 
-final class ResetPasswordModel_Test: XCTestCase {
+final class ResetPasswordModelTest: XCTestCase {
 	func testResetPasswordModelDeserialization() {
 		let jsonString = """
 		{
