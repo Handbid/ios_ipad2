@@ -65,6 +65,13 @@
 		8C3AA40C2C07EF0600110288 /* CategoryModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AA40B2C07EF0600110288 /* CategoryModelTests.swift */; };
 		8C3AA40E2C08707F00110288 /* AboutModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AA40D2C08707F00110288 /* AboutModelTests.swift */; };
 		8C3AA4102C08727700110288 /* BannerModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AA40F2C08727700110288 /* BannerModelTests.swift */; };
+		8C3AA4122C08738500110288 /* AddressModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AA4112C08738500110288 /* AddressModelTests.swift */; };
+		8C3AA4142C0873A200110288 /* AuctionModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AA4132C0873A200110288 /* AuctionModelTests.swift */; };
+		8C3AA4162C08741000110288 /* AuthModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AA4152C08741000110288 /* AuthModelTests.swift */; };
+		8C3AA4182C08742800110288 /* BidderModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AA4172C08742800110288 /* BidderModelTests.swift */; };
+		8C3AA41A2C0874BE00110288 /* OrganizationModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AA4192C0874BE00110288 /* OrganizationModelTests.swift */; };
+		8C3AA41C2C0874E200110288 /* CreditCardModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AA41B2C0874E200110288 /* CreditCardModelTests.swift */; };
+		8C3AA41E2C08752900110288 /* OrganizationImageModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AA41D2C08752900110288 /* OrganizationImageModelTests.swift */; };
 		8C3D3C012BBA1E33002A5CFC /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3D3C002BBA1E33002A5CFC /* String.swift */; };
 		8C3D3C042BBB7F09002A5CFC /* MainAppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E00AD2BA823C80094FAA7 /* MainAppCoordinator.swift */; };
 		8C3D3C072BBB85CC002A5CFC /* MainContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3D3C062BBB85CC002A5CFC /* MainContainer.swift */; };
@@ -293,6 +300,13 @@
 		8C3AA40B2C07EF0600110288 /* CategoryModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModelTests.swift; sourceTree = "<group>"; };
 		8C3AA40D2C08707F00110288 /* AboutModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutModelTests.swift; sourceTree = "<group>"; };
 		8C3AA40F2C08727700110288 /* BannerModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModelTests.swift; sourceTree = "<group>"; };
+		8C3AA4112C08738500110288 /* AddressModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressModelTests.swift; sourceTree = "<group>"; };
+		8C3AA4132C0873A200110288 /* AuctionModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionModelTests.swift; sourceTree = "<group>"; };
+		8C3AA4152C08741000110288 /* AuthModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModelTests.swift; sourceTree = "<group>"; };
+		8C3AA4172C08742800110288 /* BidderModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidderModelTests.swift; sourceTree = "<group>"; };
+		8C3AA4192C0874BE00110288 /* OrganizationModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationModelTests.swift; sourceTree = "<group>"; };
+		8C3AA41B2C0874E200110288 /* CreditCardModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardModelTests.swift; sourceTree = "<group>"; };
+		8C3AA41D2C08752900110288 /* OrganizationImageModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationImageModelTests.swift; sourceTree = "<group>"; };
 		8C3D3C002BBA1E33002A5CFC /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		8C3D3C062BBB85CC002A5CFC /* MainContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainer.swift; sourceTree = "<group>"; };
 		8C4B7B7E2BB379440043B892 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
@@ -504,18 +518,25 @@
 			path = "Data Persistence and Management System";
 			sourceTree = "<group>";
 		};
-		8C1CC5162BC2480D00AF80F4 /* Model_Tests */ = {
+		8C1CC5162BC2480D00AF80F4 /* ModelTests */ = {
 			isa = PBXGroup;
 			children = (
-				8C1CC5182BC2480D00AF80F4 /* AppVersionModelTest.swift */,
 				8C3AA40D2C08707F00110288 /* AboutModelTests.swift */,
-				8C3AA40F2C08727700110288 /* BannerModelTests.swift */,
-				8C3AA40B2C07EF0600110288 /* CategoryModelTests.swift */,
-				8C3AA3F62C0717A600110288 /* OrganizationAddressModelTests.swift */,
+				8C3AA4112C08738500110288 /* AddressModelTests.swift */,
+				8C1CC5182BC2480D00AF80F4 /* AppVersionModelTest.swift */,
+				8C3AA4132C0873A200110288 /* AuctionModelTests.swift */,
 				8C1CC5172BC2480D00AF80F4 /* AuthModelTest.swift */,
+				8C3AA4152C08741000110288 /* AuthModelTests.swift */,
+				8C3AA40F2C08727700110288 /* BannerModelTests.swift */,
+				8C3AA4172C08742800110288 /* BidderModelTests.swift */,
+				8C3AA40B2C07EF0600110288 /* CategoryModelTests.swift */,
+				8C3AA41B2C0874E200110288 /* CreditCardModelTests.swift */,
+				8C3AA3F62C0717A600110288 /* OrganizationAddressModelTests.swift */,
+				8C3AA41D2C08752900110288 /* OrganizationImageModelTests.swift */,
+				8C3AA4192C0874BE00110288 /* OrganizationModelTests.swift */,
 				8C1B676D2BC834F3006B61F6 /* ResetPasswordModelTest.swift */,
 			);
-			path = Model_Tests;
+			path = ModelTests;
 			sourceTree = "<group>";
 		};
 		8C1CC5192BC2480D00AF80F4 /* ViewModel_Tests */ = {
@@ -558,7 +579,7 @@
 				8C3AA3E82C07151F00110288 /* DataSerivce */,
 				CE9E2D0F2BC846010008FD8A /* Extensions */,
 				CE6F8DBB2BCEC67B009DBE7E /* Mocks */,
-				8C1CC5162BC2480D00AF80F4 /* Model_Tests */,
+				8C1CC5162BC2480D00AF80F4 /* ModelTests */,
 				8C3AA3E22C07149B00110288 /* Publisher */,
 				CE22793C2BC6903600F4430F /* View_Tests */,
 				8C1CC5192BC2480D00AF80F4 /* ViewModel_Tests */,
@@ -1460,17 +1481,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEAB75112BD165D5000AFB46 /* PasswordResetConfirmationView_Tests.swift in Sources */,
+				8C3AA41E2C08752900110288 /* OrganizationImageModelTests.swift in Sources */,
+				8C3AA4142C0873A200110288 /* AuctionModelTests.swift in Sources */,
 				8C3AA3F92C07188100110288 /* ChooseOrganizationRepositoryImplTests.swift in Sources */,
 				CE6F8DC22BCEE513009DBE7E /* MockLogInViewModel.swift in Sources */,
 				8C3AA3E72C0714F200110288 /* MyBidsViewModelTests.swift in Sources */,
 				8C3AA40A2C07EA7B00110288 /* MainContainerViewBuilderTests.swift in Sources */,
 				8C3AA3FB2C07199100110288 /* AuctionCollectionCellViewTests.swift in Sources */,
 				8C3AA4032C0799B000110288 /* SidebarItemTests.swift in Sources */,
+				8C3AA4162C08741000110288 /* AuthModelTests.swift in Sources */,
+				8C3AA4122C08738500110288 /* AddressModelTests.swift in Sources */,
 				8C1B67702BC83F92006B61F6 /* MockForgotPassword.swift in Sources */,
 				8C3AA3F52C07177500110288 /* TopBarContentFactoryTests.swift in Sources */,
 				8C1B676E2BC834F3006B61F6 /* ResetPasswordModelTest.swift in Sources */,
 				8C1CC53D2BC3D8AC00AF80F4 /* MockChooseEnvironment.swift in Sources */,
+				8C3AA41C2C0874E200110288 /* CreditCardModelTests.swift in Sources */,
 				8C3AA4052C07E7B000110288 /* AuctionViewModelTests.swift in Sources */,
+				8C3AA4182C08742800110288 /* BidderModelTests.swift in Sources */,
 				8C1CC53C2BC3D89C00AF80F4 /* MockLogInAnonymously.swift in Sources */,
 				8C3AA4102C08727700110288 /* BannerModelTests.swift in Sources */,
 				8C1B67722BC83FAE006B61F6 /* ForgotPasswordViewModel_Tests.swift in Sources */,
@@ -1486,6 +1513,7 @@
 				8C3AA3EA2C07152E00110288 /* AuctionDataServiceTests.swift in Sources */,
 				8C3AA3E12C0710F800110288 /* TypographyStyleTests.swift in Sources */,
 				8C3AA3F02C07159F00110288 /* SelectAuctionTopBarCenterViewTests.swift in Sources */,
+				8C3AA41A2C0874BE00110288 /* OrganizationModelTests.swift in Sources */,
 				8C3AA4012C07999800110288 /* SidebarTests.swift in Sources */,
 				CE6F8DBE2BCEC6BE009DBE7E /* MockGetStartedViewModel.swift in Sources */,
 				8C3AA3FE2C07319700110288 /* GenericTopBarContentTests.swift in Sources */,
