@@ -145,6 +145,8 @@
 		8C8BEC3A2BA977F00083D904 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC392BA977F00083D904 /* Coordinator.swift */; };
 		8C8BEC642BA9ADE20083D904 /* AppLaunchControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC632BA9ADE20083D904 /* AppLaunchControlView.swift */; };
 		8C8BEC662BA9B7DD0083D904 /* PageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC652BA9B7DD0083D904 /* PageProtocol.swift */; };
+		8C9BC3172C088681004F3DFF /* MockDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC3162C088681004F3DFF /* MockDataService.swift */; };
+		8C9BC3192C08869D004F3DFF /* PaddleViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC3182C08869D004F3DFF /* PaddleViewModelTests.swift */; };
 		8C9FA43A2BD157790041F28E /* GenericTopBarContentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA4392BD157790041F28E /* GenericTopBarContentFactory.swift */; };
 		8C9FA43C2BD256430041F28E /* SidebarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA43B2BD256430041F28E /* SidebarItem.swift */; };
 		8C9FA43E2BD27FDF0041F28E /* MyBidsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA43D2BD27FDF0041F28E /* MyBidsViewModel.swift */; };
@@ -386,6 +388,8 @@
 		8C8BEC392BA977F00083D904 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		8C8BEC632BA9ADE20083D904 /* AppLaunchControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLaunchControlView.swift; sourceTree = "<group>"; };
 		8C8BEC652BA9B7DD0083D904 /* PageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageProtocol.swift; sourceTree = "<group>"; };
+		8C9BC3162C088681004F3DFF /* MockDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataService.swift; sourceTree = "<group>"; };
+		8C9BC3182C08869D004F3DFF /* PaddleViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddleViewModelTests.swift; sourceTree = "<group>"; };
 		8C9FA4392BD157790041F28E /* GenericTopBarContentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTopBarContentFactory.swift; sourceTree = "<group>"; };
 		8C9FA43B2BD256430041F28E /* SidebarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItem.swift; sourceTree = "<group>"; };
 		8C9FA43D2BD27FDF0041F28E /* MyBidsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBidsViewModel.swift; sourceTree = "<group>"; };
@@ -846,6 +850,7 @@
 			children = (
 				8C3AA3E62C0714F200110288 /* MyBidsViewModelTests.swift */,
 				8C3AA3FA2C07199100110288 /* AuctionCollectionCellViewTests.swift */,
+				8C9BC3182C08869D004F3DFF /* PaddleViewModelTests.swift */,
 				8C3AA4042C07E7B000110288 /* AuctionViewModelTests.swift */,
 			);
 			path = MainPage;
@@ -1022,6 +1027,14 @@
 			path = Registration;
 			sourceTree = "<group>";
 		};
+		8C9BC3152C088675004F3DFF /* MainPage */ = {
+			isa = PBXGroup;
+			children = (
+				8C9BC3162C088681004F3DFF /* MockDataService.swift */,
+			);
+			path = MainPage;
+			sourceTree = "<group>";
+		};
 		8C9FA4512BD8DF090041F28E /* ChooseOrgAndAuction */ = {
 			isa = PBXGroup;
 			children = (
@@ -1191,6 +1204,7 @@
 		CE6F8DBB2BCEC67B009DBE7E /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				8C9BC3152C088675004F3DFF /* MainPage */,
 				8C3AA4062C07EA4000110288 /* Protocols */,
 				CE6F8DBC2BCEC69E009DBE7E /* ViewModels */,
 				8C1CC51E2BC2480D00AF80F4 /* Repository */,
@@ -1533,6 +1547,7 @@
 				8C3AA3E42C0714B000110288 /* AnyPublisherTests.swift in Sources */,
 				8C3AA3F72C0717A600110288 /* OrganizationAddressModelTests.swift in Sources */,
 				8C1CC5402BC3D8B600AF80F4 /* ChooseEnvironmentViewModel_Tests.swift in Sources */,
+				8C9BC3172C088681004F3DFF /* MockDataService.swift in Sources */,
 				8C3AA40C2C07EF0600110288 /* CategoryModelTests.swift in Sources */,
 				8C3AA4222C087A6E00110288 /* LandingPageModelTests.swift in Sources */,
 				8C1CC53A2BC3D85300AF80F4 /* AppVersionModelTest.swift in Sources */,
@@ -1542,6 +1557,7 @@
 				8C3AA3F02C07159F00110288 /* SelectAuctionTopBarCenterViewTests.swift in Sources */,
 				8C3AA41A2C0874BE00110288 /* OrganizationModelTests.swift in Sources */,
 				8C3AA4012C07999800110288 /* SidebarTests.swift in Sources */,
+				8C9BC3192C08869D004F3DFF /* PaddleViewModelTests.swift in Sources */,
 				CE6F8DBE2BCEC6BE009DBE7E /* MockGetStartedViewModel.swift in Sources */,
 				8C3AA3FE2C07319700110288 /* GenericTopBarContentTests.swift in Sources */,
 				8C3AA3ED2C07155800110288 /* StringExtensionsTests.swift in Sources */,
