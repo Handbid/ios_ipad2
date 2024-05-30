@@ -77,6 +77,8 @@
 		8C3AA4242C087A8800110288 /* TicketModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AA4232C087A8800110288 /* TicketModelTests.swift */; };
 		8C3AA4262C087AA300110288 /* ItemModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AA4252C087AA300110288 /* ItemModelTests.swift */; };
 		8C3AA4282C087ABA00110288 /* UserModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AA4272C087ABA00110288 /* UserModelTests.swift */; };
+		8C3AA42A2C087FC100110288 /* PuzzleModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AA4292C087FC100110288 /* PuzzleModelTests.swift */; };
+		8C3AA42C2C08808F00110288 /* ChemicalElementsModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AA42B2C08808F00110288 /* ChemicalElementsModelTests.swift */; };
 		8C3D3C012BBA1E33002A5CFC /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3D3C002BBA1E33002A5CFC /* String.swift */; };
 		8C3D3C042BBB7F09002A5CFC /* MainAppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1E00AD2BA823C80094FAA7 /* MainAppCoordinator.swift */; };
 		8C3D3C072BBB85CC002A5CFC /* MainContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3D3C062BBB85CC002A5CFC /* MainContainer.swift */; };
@@ -117,7 +119,7 @@
 		8C4BFB752BE1895A00B47154 /* PromotedItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4BFB742BE1895A00B47154 /* PromotedItemModel.swift */; };
 		8C4BFB772BE189B400B47154 /* PromotedPollModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4BFB762BE189B400B47154 /* PromotedPollModel.swift */; };
 		8C4BFB792BE189DA00B47154 /* LandingPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4BFB782BE189DA00B47154 /* LandingPageModel.swift */; };
-		8C4BFB7B2BE189FF00B47154 /* Prop65.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4BFB7A2BE189FF00B47154 /* Prop65.swift */; };
+		8C4BFB7B2BE189FF00B47154 /* ChemicalElementsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4BFB7A2BE189FF00B47154 /* ChemicalElementsModel.swift */; };
 		8C4BFB7D2BE18A6900B47154 /* AboutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4BFB7C2BE18A6900B47154 /* AboutModel.swift */; };
 		8C4BFB7F2BE18AED00B47154 /* BannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4BFB7E2BE18AED00B47154 /* BannerModel.swift */; };
 		8C4BFB812BE2208E00B47154 /* DependencyMainAppProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4BFB802BE2208E00B47154 /* DependencyMainAppProvider.swift */; };
@@ -317,6 +319,8 @@
 		8C3AA4232C087A8800110288 /* TicketModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketModelTests.swift; sourceTree = "<group>"; };
 		8C3AA4252C087AA300110288 /* ItemModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModelTests.swift; sourceTree = "<group>"; };
 		8C3AA4272C087ABA00110288 /* UserModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModelTests.swift; sourceTree = "<group>"; };
+		8C3AA4292C087FC100110288 /* PuzzleModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleModelTests.swift; sourceTree = "<group>"; };
+		8C3AA42B2C08808F00110288 /* ChemicalElementsModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChemicalElementsModelTests.swift; sourceTree = "<group>"; };
 		8C3D3C002BBA1E33002A5CFC /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		8C3D3C062BBB85CC002A5CFC /* MainContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainer.swift; sourceTree = "<group>"; };
 		8C4B7B7E2BB379440043B892 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
@@ -356,7 +360,7 @@
 		8C4BFB742BE1895A00B47154 /* PromotedItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotedItemModel.swift; sourceTree = "<group>"; };
 		8C4BFB762BE189B400B47154 /* PromotedPollModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotedPollModel.swift; sourceTree = "<group>"; };
 		8C4BFB782BE189DA00B47154 /* LandingPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageModel.swift; sourceTree = "<group>"; };
-		8C4BFB7A2BE189FF00B47154 /* Prop65.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prop65.swift; sourceTree = "<group>"; };
+		8C4BFB7A2BE189FF00B47154 /* ChemicalElementsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChemicalElementsModel.swift; sourceTree = "<group>"; };
 		8C4BFB7C2BE18A6900B47154 /* AboutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutModel.swift; sourceTree = "<group>"; };
 		8C4BFB7E2BE18AED00B47154 /* BannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModel.swift; sourceTree = "<group>"; };
 		8C4BFB802BE2208E00B47154 /* DependencyMainAppProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyMainAppProvider.swift; sourceTree = "<group>"; };
@@ -540,16 +544,18 @@
 				8C3AA40F2C08727700110288 /* BannerModelTests.swift */,
 				8C3AA4172C08742800110288 /* BidderModelTests.swift */,
 				8C3AA40B2C07EF0600110288 /* CategoryModelTests.swift */,
+				8C3AA42B2C08808F00110288 /* ChemicalElementsModelTests.swift */,
 				8C3AA41B2C0874E200110288 /* CreditCardModelTests.swift */,
-				8C3AA4212C087A6E00110288 /* LandingPageModelTests.swift */,
 				8C3AA4252C087AA300110288 /* ItemModelTests.swift */,
+				8C3AA4212C087A6E00110288 /* LandingPageModelTests.swift */,
 				8C3AA3F62C0717A600110288 /* OrganizationAddressModelTests.swift */,
 				8C3AA41D2C08752900110288 /* OrganizationImageModelTests.swift */,
 				8C3AA4192C0874BE00110288 /* OrganizationModelTests.swift */,
-				8C1B676D2BC834F3006B61F6 /* ResetPasswordModelTest.swift */,
 				8C3AA41F2C087A5100110288 /* PromotedItemModelTests.swift */,
-				8C3AA4272C087ABA00110288 /* UserModelTests.swift */,
+				8C3AA4292C087FC100110288 /* PuzzleModelTests.swift */,
+				8C1B676D2BC834F3006B61F6 /* ResetPasswordModelTest.swift */,
 				8C3AA4232C087A8800110288 /* TicketModelTests.swift */,
+				8C3AA4272C087ABA00110288 /* UserModelTests.swift */,
 			);
 			path = ModelTests;
 			sourceTree = "<group>";
@@ -741,7 +747,7 @@
 				8C4BFB5C2BE113E000B47154 /* OrganizationModel.swift */,
 				8C4BFB742BE1895A00B47154 /* PromotedItemModel.swift */,
 				8C4BFB762BE189B400B47154 /* PromotedPollModel.swift */,
-				8C4BFB7A2BE189FF00B47154 /* Prop65.swift */,
+				8C4BFB7A2BE189FF00B47154 /* ChemicalElementsModel.swift */,
 				8C4BFB722BE188DE00B47154 /* PuzzleModel.swift */,
 				CE0CEE802BBED0B4004A27FD /* ResetPasswordModel.swift */,
 				8C4BFB702BE1887F00B47154 /* TicketModel.swift */,
@@ -1522,6 +1528,7 @@
 				8C1CC5392BC3D84F00AF80F4 /* AuthModelTest.swift in Sources */,
 				CEAB750D2BD12B65000AFB46 /* ForgotPasswordView_Tests.swift in Sources */,
 				CE22793E2BC691CC00F4430F /* GetStartedView_Tests.swift in Sources */,
+				8C3AA42A2C087FC100110288 /* PuzzleModelTests.swift in Sources */,
 				8C1CC53E2BC3D8AE00AF80F4 /* MockRegisterRepository.swift in Sources */,
 				8C3AA3E42C0714B000110288 /* AnyPublisherTests.swift in Sources */,
 				8C3AA3F72C0717A600110288 /* OrganizationAddressModelTests.swift in Sources */,
@@ -1530,6 +1537,7 @@
 				8C3AA4222C087A6E00110288 /* LandingPageModelTests.swift in Sources */,
 				8C1CC53A2BC3D85300AF80F4 /* AppVersionModelTest.swift in Sources */,
 				8C3AA3EA2C07152E00110288 /* AuctionDataServiceTests.swift in Sources */,
+				8C3AA42C2C08808F00110288 /* ChemicalElementsModelTests.swift in Sources */,
 				8C3AA3E12C0710F800110288 /* TypographyStyleTests.swift in Sources */,
 				8C3AA3F02C07159F00110288 /* SelectAuctionTopBarCenterViewTests.swift in Sources */,
 				8C3AA41A2C0874BE00110288 /* OrganizationModelTests.swift in Sources */,
@@ -1611,7 +1619,7 @@
 				8C4B7BAD2BB8942D0043B892 /* TextFieldStyles.swift in Sources */,
 				8CD108102BD122E000E83261 /* PaddleView.swift in Sources */,
 				8C4BFB562BE0E2AD00B47154 /* ChooseOrganizationRepository.swift in Sources */,
-				8C4BFB7B2BE189FF00B47154 /* Prop65.swift in Sources */,
+				8C4BFB7B2BE189FF00B47154 /* ChemicalElementsModel.swift in Sources */,
 				8CABF5CE2BB9D89900A34870 /* TypographyStyle.swift in Sources */,
 				8C9FA4462BD282B90041F28E /* ManagerView.swift in Sources */,
 				8CD107F52BD11EEA00E83261 /* TopBarContent.swift in Sources */,

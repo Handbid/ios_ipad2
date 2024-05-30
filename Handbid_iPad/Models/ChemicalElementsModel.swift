@@ -3,7 +3,7 @@
 import Arrow
 import NetworkService
 
-struct Prop65: Decodable, NetworkingJSONDecodable {
+struct ChemicalElementsModel: Decodable, NetworkingJSONDecodable {
 	var lead: Bool?
 	var mercury: Bool?
 	var nickel: Bool?
@@ -12,7 +12,7 @@ struct Prop65: Decodable, NetworkingJSONDecodable {
 	var chromium: Bool?
 }
 
-extension Prop65: ArrowParsable {
+extension ChemicalElementsModel: ArrowParsable {
 	mutating func deserialize(_ json: JSON) {
 		lead <-- json["lead"]
 		mercury <-- json["mercury"]
