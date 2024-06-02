@@ -140,3 +140,9 @@ class OrganizationModelTests: XCTestCase {
 		XCTAssertNil(organizationModel.organizationImages)
 	}
 }
+
+extension OrganizationModel {
+	static func mockOrganization() -> OrganizationModel {
+		OrganizationModel(id: "12345", name: "Test Organization", totalAuctions: 10)
+	}
+}

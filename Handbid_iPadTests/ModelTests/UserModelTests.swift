@@ -199,3 +199,9 @@ class UserModelTests: XCTestCase {
 		XCTAssertTrue(userModel.creditCards?.isEmpty ?? true)
 	}
 }
+
+extension UserModel {
+	static func mockUser() -> UserModel {
+		UserModel(id: "224466", name: "Name")
+	}
+}

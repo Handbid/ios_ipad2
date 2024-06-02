@@ -150,6 +150,15 @@
 		8C9BC31B2C08982C004F3DFF /* AuctionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC31A2C08982C004F3DFF /* AuctionViewTests.swift */; };
 		8C9BC31F2C089B0C004F3DFF /* MockWebSocketURLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC31E2C089B0C004F3DFF /* MockWebSocketURLFactory.swift */; };
 		8C9BC3212C089DDC004F3DFF /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = 8C9BC3202C089DDC004F3DFF /* Starscream */; };
+		8C9BC3242C0C80E2004F3DFF /* ChooseAuctionViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC3232C0C80E2004F3DFF /* ChooseAuctionViewModelTests.swift */; };
+		8C9BC3272C0C903E004F3DFF /* DataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC3262C0C903E004F3DFF /* DataManagerMock.swift */; };
+		8C9BC3292C0C9064004F3DFF /* DatabaseServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC3282C0C9064004F3DFF /* DatabaseServiceMock.swift */; };
+		8C9BC32B2C0C90DD004F3DFF /* ChooseAuctionRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC32A2C0C90DD004F3DFF /* ChooseAuctionRepositoryMock.swift */; };
+		8C9BC32D2C0C9192004F3DFF /* MockWebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC32C2C0C9192004F3DFF /* MockWebSocket.swift */; };
+		8C9BC32F2C0C91C0004F3DFF /* WebSocketManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC32E2C0C91C0004F3DFF /* WebSocketManagerTests.swift */; };
+		8C9BC3312C0C9202004F3DFF /* MockHandshakeResponseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC3302C0C9202004F3DFF /* MockHandshakeResponseProvider.swift */; };
+		8C9BC3332C0C9224004F3DFF /* HandbidWebSocketFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC3322C0C9224004F3DFF /* HandbidWebSocketFactoryTests.swift */; };
+		8C9BC3362C0C9249004F3DFF /* HandbidEventDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC3352C0C9249004F3DFF /* HandbidEventDelegateTests.swift */; };
 		8C9FA43A2BD157790041F28E /* GenericTopBarContentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA4392BD157790041F28E /* GenericTopBarContentFactory.swift */; };
 		8C9FA43C2BD256430041F28E /* SidebarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA43B2BD256430041F28E /* SidebarItem.swift */; };
 		8C9FA43E2BD27FDF0041F28E /* MyBidsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA43D2BD27FDF0041F28E /* MyBidsViewModel.swift */; };
@@ -395,6 +404,15 @@
 		8C9BC3182C08869D004F3DFF /* PaddleViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddleViewModelTests.swift; sourceTree = "<group>"; };
 		8C9BC31A2C08982C004F3DFF /* AuctionViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionViewTests.swift; sourceTree = "<group>"; };
 		8C9BC31E2C089B0C004F3DFF /* MockWebSocketURLFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWebSocketURLFactory.swift; sourceTree = "<group>"; };
+		8C9BC3232C0C80E2004F3DFF /* ChooseAuctionViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAuctionViewModelTests.swift; sourceTree = "<group>"; };
+		8C9BC3262C0C903E004F3DFF /* DataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerMock.swift; sourceTree = "<group>"; };
+		8C9BC3282C0C9064004F3DFF /* DatabaseServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseServiceMock.swift; sourceTree = "<group>"; };
+		8C9BC32A2C0C90DD004F3DFF /* ChooseAuctionRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAuctionRepositoryMock.swift; sourceTree = "<group>"; };
+		8C9BC32C2C0C9192004F3DFF /* MockWebSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWebSocket.swift; sourceTree = "<group>"; };
+		8C9BC32E2C0C91C0004F3DFF /* WebSocketManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketManagerTests.swift; sourceTree = "<group>"; };
+		8C9BC3302C0C9202004F3DFF /* MockHandshakeResponseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHandshakeResponseProvider.swift; sourceTree = "<group>"; };
+		8C9BC3322C0C9224004F3DFF /* HandbidWebSocketFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandbidWebSocketFactoryTests.swift; sourceTree = "<group>"; };
+		8C9BC3352C0C9249004F3DFF /* HandbidEventDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandbidEventDelegateTests.swift; sourceTree = "<group>"; };
 		8C9FA4392BD157790041F28E /* GenericTopBarContentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTopBarContentFactory.swift; sourceTree = "<group>"; };
 		8C9FA43B2BD256430041F28E /* SidebarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItem.swift; sourceTree = "<group>"; };
 		8C9FA43D2BD27FDF0041F28E /* MyBidsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBidsViewModel.swift; sourceTree = "<group>"; };
@@ -608,7 +626,7 @@
 			children = (
 				8C9BC31C2C089AF7004F3DFF /* Data */,
 				8C3AA3DF2C070D1600110288 /* Configuration Appearence */,
-				8C3AA3E82C07151F00110288 /* DataSerivce */,
+				8C3AA3E82C07151F00110288 /* DataService */,
 				CE9E2D0F2BC846010008FD8A /* Extensions */,
 				CE6F8DBB2BCEC67B009DBE7E /* Mocks */,
 				8C1CC5162BC2480D00AF80F4 /* ModelTests */,
@@ -858,18 +876,19 @@
 				8C3AA3E62C0714F200110288 /* MyBidsViewModelTests.swift */,
 				8C9BC31A2C08982C004F3DFF /* AuctionViewTests.swift */,
 				8C3AA3FA2C07199100110288 /* AuctionCollectionCellViewTests.swift */,
+				8C9BC3232C0C80E2004F3DFF /* ChooseAuctionViewModelTests.swift */,
 				8C9BC3182C08869D004F3DFF /* PaddleViewModelTests.swift */,
 				8C3AA4042C07E7B000110288 /* AuctionViewModelTests.swift */,
 			);
 			path = MainPage;
 			sourceTree = "<group>";
 		};
-		8C3AA3E82C07151F00110288 /* DataSerivce */ = {
+		8C3AA3E82C07151F00110288 /* DataService */ = {
 			isa = PBXGroup;
 			children = (
 				8C3AA3EB2C07153C00110288 /* MainPage */,
 			);
-			path = DataSerivce;
+			path = DataService;
 			sourceTree = "<group>";
 		};
 		8C3AA3EB2C07153C00110288 /* MainPage */ = {
@@ -1039,6 +1058,7 @@
 			isa = PBXGroup;
 			children = (
 				8C9BC3162C088681004F3DFF /* MockDataService.swift */,
+				8C9BC32A2C0C90DD004F3DFF /* ChooseAuctionRepositoryMock.swift */,
 			);
 			path = MainPage;
 			sourceTree = "<group>";
@@ -1046,6 +1066,7 @@
 		8C9BC31C2C089AF7004F3DFF /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				8C9BC3252C0C9034004F3DFF /* DataManager */,
 				8C9BC31D2C089AFB004F3DFF /* WebSocket */,
 			);
 			path = Data;
@@ -1054,9 +1075,23 @@
 		8C9BC31D2C089AFB004F3DFF /* WebSocket */ = {
 			isa = PBXGroup;
 			children = (
+				8C9BC3352C0C9249004F3DFF /* HandbidEventDelegateTests.swift */,
+				8C9BC3322C0C9224004F3DFF /* HandbidWebSocketFactoryTests.swift */,
+				8C9BC3302C0C9202004F3DFF /* MockHandshakeResponseProvider.swift */,
+				8C9BC32C2C0C9192004F3DFF /* MockWebSocket.swift */,
 				8C9BC31E2C089B0C004F3DFF /* MockWebSocketURLFactory.swift */,
+				8C9BC32E2C0C91C0004F3DFF /* WebSocketManagerTests.swift */,
 			);
 			path = WebSocket;
+			sourceTree = "<group>";
+		};
+		8C9BC3252C0C9034004F3DFF /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				8C9BC3262C0C903E004F3DFF /* DataManagerMock.swift */,
+				8C9BC3282C0C9064004F3DFF /* DatabaseServiceMock.swift */,
+			);
+			path = DataManager;
 			sourceTree = "<group>";
 		};
 		8C9FA4512BD8DF090041F28E /* ChooseOrgAndAuction */ = {
@@ -1540,6 +1575,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C9BC3242C0C80E2004F3DFF /* ChooseAuctionViewModelTests.swift in Sources */,
+				8C9BC3272C0C903E004F3DFF /* DataManagerMock.swift in Sources */,
 				CEAB75112BD165D5000AFB46 /* PasswordResetConfirmationView_Tests.swift in Sources */,
 				8C3AA4262C087AA300110288 /* ItemModelTests.swift in Sources */,
 				8C3AA4242C087A8800110288 /* TicketModelTests.swift in Sources */,
@@ -1561,15 +1598,18 @@
 				8C3AA4052C07E7B000110288 /* AuctionViewModelTests.swift in Sources */,
 				8C3AA4182C08742800110288 /* BidderModelTests.swift in Sources */,
 				8C1CC53C2BC3D89C00AF80F4 /* MockLogInAnonymously.swift in Sources */,
+				8C9BC3362C0C9249004F3DFF /* HandbidEventDelegateTests.swift in Sources */,
 				8C3AA4102C08727700110288 /* BannerModelTests.swift in Sources */,
 				8C3AA4282C087ABA00110288 /* UserModelTests.swift in Sources */,
 				8C1B67722BC83FAE006B61F6 /* ForgotPasswordViewModel_Tests.swift in Sources */,
 				8C1CC5392BC3D84F00AF80F4 /* AuthModelTest.swift in Sources */,
 				CEAB750D2BD12B65000AFB46 /* ForgotPasswordView_Tests.swift in Sources */,
 				CE22793E2BC691CC00F4430F /* GetStartedView_Tests.swift in Sources */,
+				8C9BC3292C0C9064004F3DFF /* DatabaseServiceMock.swift in Sources */,
 				8C3AA42A2C087FC100110288 /* PuzzleModelTests.swift in Sources */,
 				8C1CC53E2BC3D8AE00AF80F4 /* MockRegisterRepository.swift in Sources */,
 				8C3AA3E42C0714B000110288 /* AnyPublisherTests.swift in Sources */,
+				8C9BC3332C0C9224004F3DFF /* HandbidWebSocketFactoryTests.swift in Sources */,
 				8C3AA3F72C0717A600110288 /* OrganizationAddressModelTests.swift in Sources */,
 				8C1CC5402BC3D8B600AF80F4 /* ChooseEnvironmentViewModel_Tests.swift in Sources */,
 				8C9BC3172C088681004F3DFF /* MockDataService.swift in Sources */,
@@ -1583,8 +1623,10 @@
 				8C3AA41A2C0874BE00110288 /* OrganizationModelTests.swift in Sources */,
 				8C3AA4012C07999800110288 /* SidebarTests.swift in Sources */,
 				8C9BC3192C08869D004F3DFF /* PaddleViewModelTests.swift in Sources */,
+				8C9BC32B2C0C90DD004F3DFF /* ChooseAuctionRepositoryMock.swift in Sources */,
 				CE6F8DBE2BCEC6BE009DBE7E /* MockGetStartedViewModel.swift in Sources */,
 				8C9BC31F2C089B0C004F3DFF /* MockWebSocketURLFactory.swift in Sources */,
+				8C9BC32F2C0C91C0004F3DFF /* WebSocketManagerTests.swift in Sources */,
 				8C3AA3FE2C07319700110288 /* GenericTopBarContentTests.swift in Sources */,
 				8C3AA3ED2C07155800110288 /* StringExtensionsTests.swift in Sources */,
 				8C1CC53B2BC3D89200AF80F4 /* GetStartedViewModel_Tests.swift in Sources */,
@@ -1596,10 +1638,12 @@
 				8C1CC5412BC3D8B800AF80F4 /* LogInViewModel_Tests.swift in Sources */,
 				8C3AA3F32C0715ED00110288 /* PinViewTests.swift in Sources */,
 				CE1E7BBC2BD0286D00BD3DD1 /* ChooseEnvironmentView_Tests.swift in Sources */,
+				8C9BC32D2C0C9192004F3DFF /* MockWebSocket.swift in Sources */,
 				8C3AA40E2C08707F00110288 /* AboutModelTests.swift in Sources */,
 				8C1CC53F2BC3D8B000AF80F4 /* MockAuthManager.swift in Sources */,
 				8C3AA4202C087A5100110288 /* PromotedItemModelTests.swift in Sources */,
 				8C3AA4082C07EA4E00110288 /* MockMainContainerProtocolFactory.swift in Sources */,
+				8C9BC3312C0C9202004F3DFF /* MockHandshakeResponseProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

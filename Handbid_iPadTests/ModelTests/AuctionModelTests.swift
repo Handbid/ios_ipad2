@@ -101,3 +101,9 @@ class AuctionModelTests: XCTestCase {
 		XCTAssertNil(auctionModel.goal)
 	}
 }
+
+extension AuctionModel {
+	static func mockAuction() -> AuctionModel {
+		AuctionModel(id: "12345", name: "Test Auction", status: "open")
+	}
+}
