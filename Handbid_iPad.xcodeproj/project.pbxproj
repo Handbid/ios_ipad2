@@ -159,6 +159,7 @@
 		8C9BC3312C0C9202004F3DFF /* MockHandshakeResponseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC3302C0C9202004F3DFF /* MockHandshakeResponseProvider.swift */; };
 		8C9BC3332C0C9224004F3DFF /* HandbidWebSocketFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC3322C0C9224004F3DFF /* HandbidWebSocketFactoryTests.swift */; };
 		8C9BC3362C0C9249004F3DFF /* HandbidEventDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC3352C0C9249004F3DFF /* HandbidEventDelegateTests.swift */; };
+		8C9BC3382C0C94C0004F3DFF /* ChooseAuctionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC3372C0C94C0004F3DFF /* ChooseAuctionViewTests.swift */; };
 		8C9FA43A2BD157790041F28E /* GenericTopBarContentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA4392BD157790041F28E /* GenericTopBarContentFactory.swift */; };
 		8C9FA43C2BD256430041F28E /* SidebarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA43B2BD256430041F28E /* SidebarItem.swift */; };
 		8C9FA43E2BD27FDF0041F28E /* MyBidsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA43D2BD27FDF0041F28E /* MyBidsViewModel.swift */; };
@@ -413,6 +414,7 @@
 		8C9BC3302C0C9202004F3DFF /* MockHandshakeResponseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHandshakeResponseProvider.swift; sourceTree = "<group>"; };
 		8C9BC3322C0C9224004F3DFF /* HandbidWebSocketFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandbidWebSocketFactoryTests.swift; sourceTree = "<group>"; };
 		8C9BC3352C0C9249004F3DFF /* HandbidEventDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandbidEventDelegateTests.swift; sourceTree = "<group>"; };
+		8C9BC3372C0C94C0004F3DFF /* ChooseAuctionViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAuctionViewTests.swift; sourceTree = "<group>"; };
 		8C9FA4392BD157790041F28E /* GenericTopBarContentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTopBarContentFactory.swift; sourceTree = "<group>"; };
 		8C9FA43B2BD256430041F28E /* SidebarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItem.swift; sourceTree = "<group>"; };
 		8C9FA43D2BD27FDF0041F28E /* MyBidsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBidsViewModel.swift; sourceTree = "<group>"; };
@@ -904,6 +906,7 @@
 			children = (
 				8C3AA3FF2C07994D00110288 /* Sidebar */,
 				8C3AA3EF2C07159F00110288 /* SelectAuctionTopBarCenterViewTests.swift */,
+				8C9BC3372C0C94C0004F3DFF /* ChooseAuctionViewTests.swift */,
 				8C3AA3F42C07177500110288 /* TopBarContentFactoryTests.swift */,
 				8C3AA4092C07EA7B00110288 /* MainContainerViewBuilderTests.swift */,
 				8C3AA3FD2C07319700110288 /* GenericTopBarContentTests.swift */,
@@ -1580,6 +1583,7 @@
 				CEAB75112BD165D5000AFB46 /* PasswordResetConfirmationView_Tests.swift in Sources */,
 				8C3AA4262C087AA300110288 /* ItemModelTests.swift in Sources */,
 				8C3AA4242C087A8800110288 /* TicketModelTests.swift in Sources */,
+				8C9BC3382C0C94C0004F3DFF /* ChooseAuctionViewTests.swift in Sources */,
 				8C3AA41E2C08752900110288 /* OrganizationImageModelTests.swift in Sources */,
 				8C3AA4142C0873A200110288 /* AuctionModelTests.swift in Sources */,
 				8C3AA3F92C07188100110288 /* ChooseOrganizationRepositoryImplTests.swift in Sources */,

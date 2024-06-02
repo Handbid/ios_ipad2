@@ -24,16 +24,20 @@ struct ChooseAuctionView<T: PageProtocol>: View {
 
 			VStack(spacing: 0) {
 				topBarContent(for: selectedView)
+					.accessibilityIdentifier("TopBarContent")
 				horizontalScrollView
+					.accessibilityIdentifier("HorizontalScrollView")
 				ScrollView {
 					LazyVGrid(columns: columns, spacing: 20) {
 						ForEach(viewModel.filteredAuctions, id: \.id) { auction in
 							AuctionCollectionCellView<MainContainerPage>(auction: auction)
 								.frame(width: cellWidth, height: cellHeight)
+								.accessibilityIdentifier("AuctionCollectionCellView_\(auction.id)")
 						}
 					}
 					.padding()
 				}
+				.accessibilityIdentifier("AuctionScrollView")
 				Spacer()
 			}
 		}
@@ -85,6 +89,7 @@ struct AuctionFilterButtonGroup: View {
 				AuctionFilterButtonView(viewModel: viewModel.buttonViewModels[state]!, auctionState: state) {
 					viewModel.filterAuctions()
 				}
+				.accessibilityIdentifier("FilterButton_\(state.rawValue)")
 			}
 		}
 		Spacer()
@@ -93,6 +98,7 @@ struct AuctionFilterButtonGroup: View {
 				AuctionFilterButtonView(viewModel: viewModel.buttonViewModels[lastState]!, auctionState: lastState) {
 					viewModel.filterAuctions()
 				}
+				.accessibilityIdentifier("FilterButton_\(lastState.rawValue)")
 			}
 		}
 	}
