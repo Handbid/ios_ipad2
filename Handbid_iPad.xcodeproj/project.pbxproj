@@ -163,6 +163,7 @@
 		8C9BC33C2C0CA422004F3DFF /* DataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC33B2C0CA422004F3DFF /* DataManagerTests.swift */; };
 		8C9BC33E2C0CA4BF004F3DFF /* DatabaseServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC33D2C0CA4BF004F3DFF /* DatabaseServiceTests.swift */; };
 		8C9BC3402C0CB67F004F3DFF /* AutoEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC33F2C0CB67F004F3DFF /* AutoEncodable.swift */; };
+		8C9BC3422C0CB8D5004F3DFF /* MainContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC3412C0CB8D5004F3DFF /* MainContainerTests.swift */; };
 		8C9FA43A2BD157790041F28E /* GenericTopBarContentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA4392BD157790041F28E /* GenericTopBarContentFactory.swift */; };
 		8C9FA43C2BD256430041F28E /* SidebarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA43B2BD256430041F28E /* SidebarItem.swift */; };
 		8C9FA43E2BD27FDF0041F28E /* MyBidsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA43D2BD27FDF0041F28E /* MyBidsViewModel.swift */; };
@@ -421,6 +422,7 @@
 		8C9BC33B2C0CA422004F3DFF /* DataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerTests.swift; sourceTree = "<group>"; };
 		8C9BC33D2C0CA4BF004F3DFF /* DatabaseServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseServiceTests.swift; sourceTree = "<group>"; };
 		8C9BC33F2C0CB67F004F3DFF /* AutoEncodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoEncodable.swift; sourceTree = "<group>"; };
+		8C9BC3412C0CB8D5004F3DFF /* MainContainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerTests.swift; sourceTree = "<group>"; };
 		8C9FA4392BD157790041F28E /* GenericTopBarContentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTopBarContentFactory.swift; sourceTree = "<group>"; };
 		8C9FA43B2BD256430041F28E /* SidebarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItem.swift; sourceTree = "<group>"; };
 		8C9FA43D2BD27FDF0041F28E /* MyBidsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBidsViewModel.swift; sourceTree = "<group>"; };
@@ -911,6 +913,7 @@
 			isa = PBXGroup;
 			children = (
 				8C9BC3392C0C9EAA004F3DFF /* MainContainerViewFactoryTests.swift */,
+				8C9BC3412C0CB8D5004F3DFF /* MainContainerTests.swift */,
 				8C9BC3372C0C94C0004F3DFF /* ChooseAuctionViewTests.swift */,
 				8C3AA3FD2C07319700110288 /* GenericTopBarContentTests.swift */,
 				8C3AA4092C07EA7B00110288 /* MainContainerViewBuilderTests.swift */,
@@ -1629,6 +1632,7 @@
 				8C3AA3F72C0717A600110288 /* OrganizationAddressModelTests.swift in Sources */,
 				8C1CC5402BC3D8B600AF80F4 /* ChooseEnvironmentViewModel_Tests.swift in Sources */,
 				8C9BC3172C088681004F3DFF /* MockDataService.swift in Sources */,
+				8C9BC3422C0CB8D5004F3DFF /* MainContainerTests.swift in Sources */,
 				8C3AA40C2C07EF0600110288 /* CategoryModelTests.swift in Sources */,
 				8C3AA4222C087A6E00110288 /* LandingPageModelTests.swift in Sources */,
 				8C1CC53A2BC3D85300AF80F4 /* AppVersionModelTest.swift in Sources */,

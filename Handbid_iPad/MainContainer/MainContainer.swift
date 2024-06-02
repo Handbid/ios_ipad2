@@ -6,8 +6,8 @@ import SwiftUI
 struct MainContainer<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@State private var isSidebarVisible: Bool = DeviceConfigurator.isSidebarAlwaysVisible
-	@State private var selectedView: MainContainerTypeView
-	@StateObject private var deviceContext = DeviceContext()
+	@State var selectedView: MainContainerTypeView
+	@StateObject var deviceContext = DeviceContext()
 	@EnvironmentObject private var authManager: AuthManager
 
 	private let auctionViewModel: AuctionViewModel
@@ -24,12 +24,15 @@ struct MainContainer<T: PageProtocol>: View {
 	var body: some View {
 		VStack(spacing: 0) {
 			topBarContent(for: selectedView)
+				.accessibility(identifier: "topBar")
 			GeometryReader { geometry in
 				if deviceContext.isPhone {
 					phoneView(geometry: geometry)
+						.accessibility(identifier: "phoneView")
 				}
 				else {
 					tabletView(geometry: geometry)
+						.accessibility(identifier: "tabletView")
 				}
 			}
 		}
@@ -46,9 +49,11 @@ struct MainContainer<T: PageProtocol>: View {
 	private func phoneView(geometry: GeometryProxy) -> some View {
 		ZStack(alignment: .leading) {
 			mainContainer(geometry: geometry)
+				.accessibility(identifier: "mainContainer")
 
 			if isSidebarVisible {
 				sidebar(geometry: geometry)
+					.accessibility(identifier: "sidebar")
 			}
 		}
 	}
@@ -58,8 +63,10 @@ struct MainContainer<T: PageProtocol>: View {
 		HStack(spacing: 0) {
 			if isSidebarVisible {
 				sidebar(geometry: geometry)
+					.accessibility(identifier: "sidebar")
 			}
 			mainContainer(geometry: geometry)
+				.accessibility(identifier: "mainContainer")
 		}
 	}
 

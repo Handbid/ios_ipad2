@@ -13,7 +13,7 @@ struct GenericTopBarContentFactory<ViewModel: ViewModelTopBarProtocol> {
 	}
 
 	func createTopBarContent(isSidebarVisible: Binding<Bool>) -> some View {
-		GenericTopBarContent(isSidebarVisible: isSidebarVisible, viewModel: viewModel, logoIsVisible: false)
+		GenericTopBarContent(isSidebarVisible: isSidebarVisible, viewModel: viewModel, logoIsVisible: !deviceContext.isPad)
 	}
 
 	func createTopBarContentWithoutLogo() -> some View {
