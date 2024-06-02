@@ -41,7 +41,7 @@ class WebSocketManager {
 		socket = nil
 	}
 
-	private func initProcessorRegistry() {
+	func initProcessorRegistry() {
 		ProcessorRegistry.shared.registerProcessor(UserProcessor(), for: .user)
 	}
 }

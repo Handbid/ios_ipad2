@@ -147,6 +147,9 @@
 		8C8BEC662BA9B7DD0083D904 /* PageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC652BA9B7DD0083D904 /* PageProtocol.swift */; };
 		8C9BC3172C088681004F3DFF /* MockDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC3162C088681004F3DFF /* MockDataService.swift */; };
 		8C9BC3192C08869D004F3DFF /* PaddleViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC3182C08869D004F3DFF /* PaddleViewModelTests.swift */; };
+		8C9BC31B2C08982C004F3DFF /* AuctionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC31A2C08982C004F3DFF /* AuctionViewTests.swift */; };
+		8C9BC31F2C089B0C004F3DFF /* MockWebSocketURLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC31E2C089B0C004F3DFF /* MockWebSocketURLFactory.swift */; };
+		8C9BC3212C089DDC004F3DFF /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = 8C9BC3202C089DDC004F3DFF /* Starscream */; };
 		8C9FA43A2BD157790041F28E /* GenericTopBarContentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA4392BD157790041F28E /* GenericTopBarContentFactory.swift */; };
 		8C9FA43C2BD256430041F28E /* SidebarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA43B2BD256430041F28E /* SidebarItem.swift */; };
 		8C9FA43E2BD27FDF0041F28E /* MyBidsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA43D2BD27FDF0041F28E /* MyBidsViewModel.swift */; };
@@ -390,6 +393,8 @@
 		8C8BEC652BA9B7DD0083D904 /* PageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageProtocol.swift; sourceTree = "<group>"; };
 		8C9BC3162C088681004F3DFF /* MockDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataService.swift; sourceTree = "<group>"; };
 		8C9BC3182C08869D004F3DFF /* PaddleViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddleViewModelTests.swift; sourceTree = "<group>"; };
+		8C9BC31A2C08982C004F3DFF /* AuctionViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionViewTests.swift; sourceTree = "<group>"; };
+		8C9BC31E2C089B0C004F3DFF /* MockWebSocketURLFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWebSocketURLFactory.swift; sourceTree = "<group>"; };
 		8C9FA4392BD157790041F28E /* GenericTopBarContentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTopBarContentFactory.swift; sourceTree = "<group>"; };
 		8C9FA43B2BD256430041F28E /* SidebarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItem.swift; sourceTree = "<group>"; };
 		8C9FA43D2BD27FDF0041F28E /* MyBidsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBidsViewModel.swift; sourceTree = "<group>"; };
@@ -481,6 +486,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C3AA3DA2C06A71100110288 /* ViewInspector in Frameworks */,
+				8C9BC3212C089DDC004F3DFF /* Starscream in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -600,6 +606,7 @@
 		8C1CC5312BC3D77100AF80F4 /* Handbid_iPadTests */ = {
 			isa = PBXGroup;
 			children = (
+				8C9BC31C2C089AF7004F3DFF /* Data */,
 				8C3AA3DF2C070D1600110288 /* Configuration Appearence */,
 				8C3AA3E82C07151F00110288 /* DataSerivce */,
 				CE9E2D0F2BC846010008FD8A /* Extensions */,
@@ -849,6 +856,7 @@
 			isa = PBXGroup;
 			children = (
 				8C3AA3E62C0714F200110288 /* MyBidsViewModelTests.swift */,
+				8C9BC31A2C08982C004F3DFF /* AuctionViewTests.swift */,
 				8C3AA3FA2C07199100110288 /* AuctionCollectionCellViewTests.swift */,
 				8C9BC3182C08869D004F3DFF /* PaddleViewModelTests.swift */,
 				8C3AA4042C07E7B000110288 /* AuctionViewModelTests.swift */,
@@ -1033,6 +1041,22 @@
 				8C9BC3162C088681004F3DFF /* MockDataService.swift */,
 			);
 			path = MainPage;
+			sourceTree = "<group>";
+		};
+		8C9BC31C2C089AF7004F3DFF /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				8C9BC31D2C089AFB004F3DFF /* WebSocket */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		8C9BC31D2C089AFB004F3DFF /* WebSocket */ = {
+			isa = PBXGroup;
+			children = (
+				8C9BC31E2C089B0C004F3DFF /* MockWebSocketURLFactory.swift */,
+			);
+			path = WebSocket;
 			sourceTree = "<group>";
 		};
 		8C9FA4512BD8DF090041F28E /* ChooseOrgAndAuction */ = {
@@ -1294,6 +1318,7 @@
 			name = Handbid_iPadTests;
 			packageProductDependencies = (
 				8C3AA3D92C06A71100110288 /* ViewInspector */,
+				8C9BC3202C089DDC004F3DFF /* Starscream */,
 			);
 			productName = Handbid_iPadTests;
 			productReference = 8C1CC5302BC3D77100AF80F4 /* Handbid_iPadTests.xctest */;
@@ -1559,12 +1584,14 @@
 				8C3AA4012C07999800110288 /* SidebarTests.swift in Sources */,
 				8C9BC3192C08869D004F3DFF /* PaddleViewModelTests.swift in Sources */,
 				CE6F8DBE2BCEC6BE009DBE7E /* MockGetStartedViewModel.swift in Sources */,
+				8C9BC31F2C089B0C004F3DFF /* MockWebSocketURLFactory.swift in Sources */,
 				8C3AA3FE2C07319700110288 /* GenericTopBarContentTests.swift in Sources */,
 				8C3AA3ED2C07155800110288 /* StringExtensionsTests.swift in Sources */,
 				8C1CC53B2BC3D89200AF80F4 /* GetStartedViewModel_Tests.swift in Sources */,
 				CE1E7BBE2BD028B600BD3DD1 /* MockChooseEnvironmentViewModel.swift in Sources */,
 				CE6F8DC02BCECC3D009DBE7E /* LogInView_Tests.swift in Sources */,
 				CE9E2D112BC846140008FD8A /* InspectionExtension.swift in Sources */,
+				8C9BC31B2C08982C004F3DFF /* AuctionViewTests.swift in Sources */,
 				CEAB750F2BD12BEE000AFB46 /* MockForgotPasswordViewModel.swift in Sources */,
 				8C1CC5412BC3D8B800AF80F4 /* LogInViewModel_Tests.swift in Sources */,
 				8C3AA3F32C0715ED00110288 /* PinViewTests.swift in Sources */,
@@ -2263,6 +2290,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8C1CF27E2C05D03600733B1E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebasePerformance;
+		};
+		8C9BC3202C089DDC004F3DFF /* Starscream */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8C1CF28B2C05D0AF00733B1E /* XCRemoteSwiftPackageReference "Starscream" */;
+			productName = Starscream;
 		};
 		8CEA290A2BB3517E005E3B33 /* NetworkService */ = {
 			isa = XCSwiftPackageProductDependency;
