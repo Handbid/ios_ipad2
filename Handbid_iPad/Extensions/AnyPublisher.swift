@@ -7,9 +7,11 @@ extension AnyPublisher {
 		try await withCheckedThrowingContinuation { continuation in
 			var cancellable: AnyCancellable?
 			var receivedValue = false
+			var isContinued = false
 
 			cancellable = sink(receiveCompletion: { result in
-				if !receivedValue {
+				if !receivedValue, !isContinued {
+					isContinued = true
 					switch result {
 					case .finished:
 						continuation.resume(throwing: NSError(domain: "", code: 2, userInfo: [NSLocalizedDescriptionKey: "No value received before completion"]))
@@ -19,9 +21,12 @@ extension AnyPublisher {
 				}
 				cancellable?.cancel()
 			}, receiveValue: { value in
-				receivedValue = true
-				continuation.resume(returning: value)
-				cancellable?.cancel()
+				if !isContinued {
+					receivedValue = true
+					isContinued = true
+					continuation.resume(returning: value)
+					cancellable?.cancel()
+				}
 			})
 		}
 	}

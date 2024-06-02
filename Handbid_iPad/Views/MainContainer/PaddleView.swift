@@ -12,6 +12,8 @@ struct PaddleView: ContentView {
 	var body: some View {
 		VStack {
 			Text(viewModel.title)
+				.accessibility(label: Text("Paddle Title"))
+				.accessibility(identifier: "paddleTitle")
 		}
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		.background(Color.accentGrayBackground)

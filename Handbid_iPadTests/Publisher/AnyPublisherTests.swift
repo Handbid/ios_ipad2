@@ -10,6 +10,7 @@ class AnyPublisherTests: XCTestCase {
 		let publisher = subject.eraseToAnyPublisher()
 
 		Task {
+			try? await Task.sleep(nanoseconds: 100_000_000)
 			subject.send("Test")
 			subject.send(completion: .finished)
 		}
@@ -24,6 +25,7 @@ class AnyPublisherTests: XCTestCase {
 		let testError = NSError(domain: "", code: 1, userInfo: nil)
 
 		Task {
+			try? await Task.sleep(nanoseconds: 100_000_000)
 			subject.send(completion: .failure(testError))
 		}
 
@@ -41,6 +43,7 @@ class AnyPublisherTests: XCTestCase {
 		let publisher = subject.eraseToAnyPublisher()
 
 		Task {
+			try? await Task.sleep(nanoseconds: 100_000_000)
 			subject.send(completion: .finished)
 		}
 

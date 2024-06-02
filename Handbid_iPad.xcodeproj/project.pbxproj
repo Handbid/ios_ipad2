@@ -147,7 +147,6 @@
 		8C8BEC662BA9B7DD0083D904 /* PageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC652BA9B7DD0083D904 /* PageProtocol.swift */; };
 		8C9BC3172C088681004F3DFF /* MockDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC3162C088681004F3DFF /* MockDataService.swift */; };
 		8C9BC3192C08869D004F3DFF /* PaddleViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC3182C08869D004F3DFF /* PaddleViewModelTests.swift */; };
-		8C9BC31B2C08982C004F3DFF /* AuctionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC31A2C08982C004F3DFF /* AuctionViewTests.swift */; };
 		8C9BC31F2C089B0C004F3DFF /* MockWebSocketURLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC31E2C089B0C004F3DFF /* MockWebSocketURLFactory.swift */; };
 		8C9BC3212C089DDC004F3DFF /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = 8C9BC3202C089DDC004F3DFF /* Starscream */; };
 		8C9BC3242C0C80E2004F3DFF /* ChooseAuctionViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC3232C0C80E2004F3DFF /* ChooseAuctionViewModelTests.swift */; };
@@ -160,6 +159,10 @@
 		8C9BC3332C0C9224004F3DFF /* HandbidWebSocketFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC3322C0C9224004F3DFF /* HandbidWebSocketFactoryTests.swift */; };
 		8C9BC3362C0C9249004F3DFF /* HandbidEventDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC3352C0C9249004F3DFF /* HandbidEventDelegateTests.swift */; };
 		8C9BC3382C0C94C0004F3DFF /* ChooseAuctionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC3372C0C94C0004F3DFF /* ChooseAuctionViewTests.swift */; };
+		8C9BC33A2C0C9EAA004F3DFF /* MainContainerViewFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC3392C0C9EAA004F3DFF /* MainContainerViewFactoryTests.swift */; };
+		8C9BC33C2C0CA422004F3DFF /* DataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC33B2C0CA422004F3DFF /* DataManagerTests.swift */; };
+		8C9BC33E2C0CA4BF004F3DFF /* DatabaseServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC33D2C0CA4BF004F3DFF /* DatabaseServiceTests.swift */; };
+		8C9BC3402C0CB67F004F3DFF /* AutoEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC33F2C0CB67F004F3DFF /* AutoEncodable.swift */; };
 		8C9FA43A2BD157790041F28E /* GenericTopBarContentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA4392BD157790041F28E /* GenericTopBarContentFactory.swift */; };
 		8C9FA43C2BD256430041F28E /* SidebarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA43B2BD256430041F28E /* SidebarItem.swift */; };
 		8C9FA43E2BD27FDF0041F28E /* MyBidsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA43D2BD27FDF0041F28E /* MyBidsViewModel.swift */; };
@@ -403,7 +406,6 @@
 		8C8BEC652BA9B7DD0083D904 /* PageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageProtocol.swift; sourceTree = "<group>"; };
 		8C9BC3162C088681004F3DFF /* MockDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataService.swift; sourceTree = "<group>"; };
 		8C9BC3182C08869D004F3DFF /* PaddleViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddleViewModelTests.swift; sourceTree = "<group>"; };
-		8C9BC31A2C08982C004F3DFF /* AuctionViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionViewTests.swift; sourceTree = "<group>"; };
 		8C9BC31E2C089B0C004F3DFF /* MockWebSocketURLFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWebSocketURLFactory.swift; sourceTree = "<group>"; };
 		8C9BC3232C0C80E2004F3DFF /* ChooseAuctionViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAuctionViewModelTests.swift; sourceTree = "<group>"; };
 		8C9BC3262C0C903E004F3DFF /* DataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerMock.swift; sourceTree = "<group>"; };
@@ -415,6 +417,10 @@
 		8C9BC3322C0C9224004F3DFF /* HandbidWebSocketFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandbidWebSocketFactoryTests.swift; sourceTree = "<group>"; };
 		8C9BC3352C0C9249004F3DFF /* HandbidEventDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandbidEventDelegateTests.swift; sourceTree = "<group>"; };
 		8C9BC3372C0C94C0004F3DFF /* ChooseAuctionViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAuctionViewTests.swift; sourceTree = "<group>"; };
+		8C9BC3392C0C9EAA004F3DFF /* MainContainerViewFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerViewFactoryTests.swift; sourceTree = "<group>"; };
+		8C9BC33B2C0CA422004F3DFF /* DataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerTests.swift; sourceTree = "<group>"; };
+		8C9BC33D2C0CA4BF004F3DFF /* DatabaseServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseServiceTests.swift; sourceTree = "<group>"; };
+		8C9BC33F2C0CB67F004F3DFF /* AutoEncodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoEncodable.swift; sourceTree = "<group>"; };
 		8C9FA4392BD157790041F28E /* GenericTopBarContentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTopBarContentFactory.swift; sourceTree = "<group>"; };
 		8C9FA43B2BD256430041F28E /* SidebarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItem.swift; sourceTree = "<group>"; };
 		8C9FA43D2BD27FDF0041F28E /* MyBidsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBidsViewModel.swift; sourceTree = "<group>"; };
@@ -731,6 +737,7 @@
 			isa = PBXGroup;
 			children = (
 				8C0007952BAC733900AAEBA0 /* ArrowParsable.swift */,
+				8C9BC33F2C0CB67F004F3DFF /* AutoEncodable.swift */,
 				8CBDAAC72BC432470010908F /* DispatchQueue.swift */,
 				CE073ED72BB42D710079F342 /* View.swift */,
 				8C4B7B842BB47E9C0043B892 /* Color.swift */,
@@ -876,7 +883,6 @@
 			isa = PBXGroup;
 			children = (
 				8C3AA3E62C0714F200110288 /* MyBidsViewModelTests.swift */,
-				8C9BC31A2C08982C004F3DFF /* AuctionViewTests.swift */,
 				8C3AA3FA2C07199100110288 /* AuctionCollectionCellViewTests.swift */,
 				8C9BC3232C0C80E2004F3DFF /* ChooseAuctionViewModelTests.swift */,
 				8C9BC3182C08869D004F3DFF /* PaddleViewModelTests.swift */,
@@ -904,12 +910,13 @@
 		8C3AA3EE2C07159500110288 /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
-				8C3AA3FF2C07994D00110288 /* Sidebar */,
-				8C3AA3EF2C07159F00110288 /* SelectAuctionTopBarCenterViewTests.swift */,
+				8C9BC3392C0C9EAA004F3DFF /* MainContainerViewFactoryTests.swift */,
 				8C9BC3372C0C94C0004F3DFF /* ChooseAuctionViewTests.swift */,
-				8C3AA3F42C07177500110288 /* TopBarContentFactoryTests.swift */,
-				8C3AA4092C07EA7B00110288 /* MainContainerViewBuilderTests.swift */,
 				8C3AA3FD2C07319700110288 /* GenericTopBarContentTests.swift */,
+				8C3AA4092C07EA7B00110288 /* MainContainerViewBuilderTests.swift */,
+				8C3AA3EF2C07159F00110288 /* SelectAuctionTopBarCenterViewTests.swift */,
+				8C3AA3F42C07177500110288 /* TopBarContentFactoryTests.swift */,
+				8C3AA3FF2C07994D00110288 /* Sidebar */,
 			);
 			path = MainPage;
 			sourceTree = "<group>";
@@ -1092,6 +1099,8 @@
 			isa = PBXGroup;
 			children = (
 				8C9BC3262C0C903E004F3DFF /* DataManagerMock.swift */,
+				8C9BC33B2C0CA422004F3DFF /* DataManagerTests.swift */,
+				8C9BC33D2C0CA4BF004F3DFF /* DatabaseServiceTests.swift */,
 				8C9BC3282C0C9064004F3DFF /* DatabaseServiceMock.swift */,
 			);
 			path = DataManager;
@@ -1592,6 +1601,7 @@
 				8C3AA40A2C07EA7B00110288 /* MainContainerViewBuilderTests.swift in Sources */,
 				8C3AA3FB2C07199100110288 /* AuctionCollectionCellViewTests.swift in Sources */,
 				8C3AA4032C0799B000110288 /* SidebarItemTests.swift in Sources */,
+				8C9BC33E2C0CA4BF004F3DFF /* DatabaseServiceTests.swift in Sources */,
 				8C3AA4162C08741000110288 /* AuthModelTests.swift in Sources */,
 				8C3AA4122C08738500110288 /* AddressModelTests.swift in Sources */,
 				8C1B67702BC83F92006B61F6 /* MockForgotPassword.swift in Sources */,
@@ -1612,8 +1622,10 @@
 				8C9BC3292C0C9064004F3DFF /* DatabaseServiceMock.swift in Sources */,
 				8C3AA42A2C087FC100110288 /* PuzzleModelTests.swift in Sources */,
 				8C1CC53E2BC3D8AE00AF80F4 /* MockRegisterRepository.swift in Sources */,
+				8C9BC33A2C0C9EAA004F3DFF /* MainContainerViewFactoryTests.swift in Sources */,
 				8C3AA3E42C0714B000110288 /* AnyPublisherTests.swift in Sources */,
 				8C9BC3332C0C9224004F3DFF /* HandbidWebSocketFactoryTests.swift in Sources */,
+				8C9BC33C2C0CA422004F3DFF /* DataManagerTests.swift in Sources */,
 				8C3AA3F72C0717A600110288 /* OrganizationAddressModelTests.swift in Sources */,
 				8C1CC5402BC3D8B600AF80F4 /* ChooseEnvironmentViewModel_Tests.swift in Sources */,
 				8C9BC3172C088681004F3DFF /* MockDataService.swift in Sources */,
@@ -1637,7 +1649,6 @@
 				CE1E7BBE2BD028B600BD3DD1 /* MockChooseEnvironmentViewModel.swift in Sources */,
 				CE6F8DC02BCECC3D009DBE7E /* LogInView_Tests.swift in Sources */,
 				CE9E2D112BC846140008FD8A /* InspectionExtension.swift in Sources */,
-				8C9BC31B2C08982C004F3DFF /* AuctionViewTests.swift in Sources */,
 				CEAB750F2BD12BEE000AFB46 /* MockForgotPasswordViewModel.swift in Sources */,
 				8C1CC5412BC3D8B800AF80F4 /* LogInViewModel_Tests.swift in Sources */,
 				8C3AA3F32C0715ED00110288 /* PinViewTests.swift in Sources */,
@@ -1744,6 +1755,7 @@
 				8CABF5DC2BB9F37700A34870 /* RegistrationBackButton.swift in Sources */,
 				8CABF5D02BB9E11300A34870 /* ResponsiveView.swift in Sources */,
 				8C8BEC322BA976030083D904 /* GetStartedViewModel.swift in Sources */,
+				8C9BC3402C0CB67F004F3DFF /* AutoEncodable.swift in Sources */,
 				8C4BFB772BE189B400B47154 /* PromotedPollModel.swift in Sources */,
 				8C79B4262C040D84005D4AAB /* WebSocketManager.swift in Sources */,
 				8C4BFB812BE2208E00B47154 /* DependencyMainAppProvider.swift in Sources */,

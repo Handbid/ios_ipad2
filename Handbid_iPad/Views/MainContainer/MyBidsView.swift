@@ -12,6 +12,8 @@ struct MyBidsView: ContentView {
 	var body: some View {
 		VStack {
 			Text(viewModel.title)
+				.accessibility(label: Text("My Bids Title"))
+				.accessibility(identifier: "myBidsTitle")
 		}
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		.background(Color.accentGrayBackground)

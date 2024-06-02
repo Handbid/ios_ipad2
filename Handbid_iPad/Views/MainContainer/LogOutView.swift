@@ -12,6 +12,8 @@ struct LogOutView: ContentView {
 	var body: some View {
 		VStack {
 			Text(viewModel.title)
+				.accessibility(label: Text("Log Out Title"))
+				.accessibility(identifier: "logOutTitle")
 		}
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		.background(Color.accentGrayBackground)
