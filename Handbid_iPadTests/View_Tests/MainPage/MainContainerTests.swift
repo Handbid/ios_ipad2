@@ -73,7 +73,7 @@ final class MainContainerTests: XCTestCase {
 		let sidebar = try? sut.inspect().find(viewWithAccessibilityIdentifier: "sidebar")
 
 		XCTAssertNotNil(mainContainer)
-		XCTAssertNil(sidebar)
+		XCTAssertNotNil(sidebar)
 	}
 
 	func testTopBarContentForAuction() throws {

@@ -24,7 +24,7 @@ struct ChooseAuctionView<T: PageProtocol>: View {
 
 			VStack(spacing: 0) {
 				topBarContent(for: selectedView)
-					.accessibilityIdentifier("TopBarContent")
+					.accessibilityIdentifier("TopBarContentProtocol")
 				horizontalScrollView
 					.accessibilityIdentifier("HorizontalScrollView")
 				ScrollView {

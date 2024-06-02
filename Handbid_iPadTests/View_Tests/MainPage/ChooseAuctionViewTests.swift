@@ -36,7 +36,7 @@ final class ChooseAuctionViewTests: XCTestCase {
 
 		ViewHosting.host(view: sut)
 		do {
-			_ = try sut.inspect().find(viewWithAccessibilityIdentifier: "TopBarContent")
+			_ = try sut.inspect().find(viewWithAccessibilityIdentifier: "TopBarContentProtocol")
 			_ = try sut.inspect().find(viewWithAccessibilityIdentifier: "HorizontalScrollView")
 			_ = try sut.inspect().find(viewWithAccessibilityIdentifier: "AuctionScrollView")
 		}

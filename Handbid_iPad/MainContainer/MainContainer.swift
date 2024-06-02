@@ -5,7 +5,7 @@ import SwiftUI
 
 struct MainContainer<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
-	@State private var isSidebarVisible: Bool = DeviceConfigurator.isSidebarAlwaysVisible
+	@State var isSidebarVisible: Bool = DeviceConfigurator.isSidebarAlwaysVisible
 	@State var selectedView: MainContainerTypeView
 	@StateObject var deviceContext = DeviceContext()
 	@EnvironmentObject private var authManager: AuthManager

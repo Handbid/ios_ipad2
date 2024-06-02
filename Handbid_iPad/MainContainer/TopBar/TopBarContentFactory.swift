@@ -2,16 +2,16 @@
 
 import SwiftUI
 
-extension GenericTopBarContent: TopBarContent {}
+extension GenericTopBarContent: TopBarContentProtocol {}
 
 protocol TopBarContentFactory {
 	associatedtype ViewModelType: ViewModelTopBarProtocol
 	var viewModel: ViewModelType { get }
-	func createTopBarContent(isSidebarVisible: Binding<Bool>) -> any TopBarContent
+	func createTopBarContent(isSidebarVisible: Binding<Bool>) -> any TopBarContentProtocol
 }
 
 extension TopBarContentFactory {
-	func createTopBarContent(isSidebarVisible: Binding<Bool>) -> any TopBarContent {
+	func createTopBarContent(isSidebarVisible: Binding<Bool>) -> any TopBarContentProtocol {
 		GenericTopBarContent(isSidebarVisible: isSidebarVisible, viewModel: viewModel)
 	}
 }
