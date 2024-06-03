@@ -1,22 +1,24 @@
+// Copyright (c) 2024 by Handbid. All rights reserved.
+
 //// Copyright (c) 2024 by Handbid. All rights reserved.
 //
-//@testable import Handbid_iPad
-//import SwiftUI
-//import ViewInspector
-//import XCTest
+// @testable import Handbid_iPad
+// import SwiftUI
+// import ViewInspector
+// import XCTest
 //
 //// Mock implementation for TopBarContentProtocol
-//struct MockTopBarContent: TopBarContentProtocol {
+// struct MockTopBarContent: TopBarContentProtocol {
 //	var leftViews: [AnyView]
 //	var centerView: AnyView
 //	var rightViews: [AnyView]
-//}
+// }
 //
 //// Extend TopBar to be inspectable
-//extension TopBar: Inspectable {}
-//extension CenteredView: Inspectable {}
+// extension TopBar: Inspectable {}
+// extension CenteredView: Inspectable {}
 //
-//final class TopBarTests: XCTestCase {
+// final class TopBarTests: XCTestCase {
 //	func testTopBarLayout() throws {
 //		let leftView = AnyView(Text("Left"))
 //		let centerView = AnyView(Text("Center"))
@@ -97,13 +99,13 @@
 //		let centerViewInspection = try inspectedTopBar.hStack().view(CenteredView<AnyView>.self, 1)
 //		XCTAssertEqual(try centerViewInspection.hStack().text(1).string(), "Center")
 //	}
-//}
+// }
 //
 //// PreferenceKey to get the size of a view
-//struct SizePreferenceKey: PreferenceKey {
+// struct SizePreferenceKey: PreferenceKey {
 //	typealias Value = CGSize
 //	static var defaultValue: CGSize = .zero
 //	static func reduce(value: inout CGSize, nextValue: () -> CGSize) {
 //		value = nextValue()
 //	}
-//}
+// }

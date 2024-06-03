@@ -39,7 +39,7 @@ class WebSocketManagerTests: XCTestCase {
 	func testStartSocketWithInvalidURL() {
 		mockURLFactory.error = URLError(.badURL)
 		webSocketManager.startSocket(urlFactory: mockURLFactory, token: mockToken)
-		XCTAssertNil(webSocketManager.socket)
+		XCTAssertNil(webSocketManager.socket, "Socket should be nil when URL is invalid")
 	}
 
 	func testStopSocket() {

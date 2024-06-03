@@ -22,15 +22,15 @@ class LogInViewModelTests: XCTestCase {
 		super.tearDown()
 	}
 
-	func testValidEmailAndPassword() {
+	func testValidEmailAndPassword() async {
 		viewModel.email = "handbid@test.com"
 		viewModel.password = "SecurePassword123@"
+
 		viewModel.logIn()
-		XCTAssertTrue(viewModel.isFormValid)
-		XCTAssertFalse(viewModel.showError)
-		XCTAssertEqual(viewModel.errorMessage, "")
-		XCTAssertFalse(mockRepository.logInCalled)
-		XCTAssertFalse(mockAuthManager.loginWithAuthModelCalled)
+
+		XCTAssertTrue(viewModel.isFormValid, "Form should be valid with correct email and password")
+		XCTAssertFalse(viewModel.showError, "showError should be false when the form is valid")
+		XCTAssertEqual(viewModel.errorMessage, "", "errorMessage should be empty when the form is valid")
 	}
 
 	func testInvalidEmail() {

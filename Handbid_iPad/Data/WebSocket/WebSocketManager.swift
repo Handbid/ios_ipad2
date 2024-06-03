@@ -26,6 +26,7 @@ class WebSocketManager {
 		}
 		catch {
 			print(error)
+			socket = nil
 		}
 	}
 
