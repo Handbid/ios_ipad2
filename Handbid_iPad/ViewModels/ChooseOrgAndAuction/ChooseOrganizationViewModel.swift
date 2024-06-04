@@ -62,14 +62,8 @@ class ChooseOrganizationViewModel: ObservableObject {
 			try? dataManager.create(user, in: .user)
 		}
 
-		// let user2: UserModel? = try? dataManager.fetchSingle(of: UserModel.self, from: .user)
-		// print(user2?.identity)
-
 		do {
 			try? dataManager.update(user, withNestedUpdates: true, in: .user)
-
-			// let user2: UserModel? = try? dataManager.fetchSingle(of: UserModel.self, from: .user)
-			// print(user2?.identity)
 		}
 
 		try? dataManager.deleteAll(of: UserModel.self, from: .user)

@@ -31,9 +31,6 @@ class ChooseAuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 		self.centerViewData = createCenterViewData()
 		setupInitialSelection()
 		setupButtonBindings()
-
-		// let user2: UserModel? = try? dataManager.fetchSingle(of: UserModel.self, from: .user)
-		// print(user2?.identity)
 	}
 
 	func fetchAuctionsIfNeeded() {
