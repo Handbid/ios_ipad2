@@ -52,6 +52,7 @@ class LogInViewModel: ObservableObject, LogInViewModelProtocol {
 				print(authResponse)
 			}
 			catch {
+				print(error)
 				DispatchQueue.safeMainAsync {
 					self.errorMessage = NSLocalizedString("login_label_incorrectCredentials", comment: "Incorrect email or password")
 					self.showError = true

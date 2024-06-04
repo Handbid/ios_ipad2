@@ -233,6 +233,7 @@
 		CE0CEE812BBED0B4004A27FD /* ResetPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CEE802BBED0B4004A27FD /* ResetPasswordModel.swift */; };
 		CE1E7BBC2BD0286D00BD3DD1 /* ChooseEnvironmentView_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1E7BBB2BD0286D00BD3DD1 /* ChooseEnvironmentView_Tests.swift */; };
 		CE1E7BBE2BD028B600BD3DD1 /* MockChooseEnvironmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1E7BBD2BD028B600BD3DD1 /* MockChooseEnvironmentViewModel.swift */; };
+		CE2022B72C0F0D120009415D /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2022B62C0F0D120009415D /* ItemView.swift */; };
 		CE22793E2BC691CC00F4430F /* GetStartedView_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE22793D2BC691CC00F4430F /* GetStartedView_Tests.swift */; };
 		CE34FB3F2BB1963300701D2A /* OverlayInternalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE34FB3E2BB1963300701D2A /* OverlayInternalView.swift */; };
 		CE6F8DBE2BCEC6BE009DBE7E /* MockGetStartedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F8DBD2BCEC6BE009DBE7E /* MockGetStartedViewModel.swift */; };
@@ -497,6 +498,7 @@
 		CE0CEE802BBED0B4004A27FD /* ResetPasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordModel.swift; sourceTree = "<group>"; };
 		CE1E7BBB2BD0286D00BD3DD1 /* ChooseEnvironmentView_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseEnvironmentView_Tests.swift; sourceTree = "<group>"; };
 		CE1E7BBD2BD028B600BD3DD1 /* MockChooseEnvironmentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockChooseEnvironmentViewModel.swift; sourceTree = "<group>"; };
+		CE2022B62C0F0D120009415D /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		CE22793D2BC691CC00F4430F /* GetStartedView_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedView_Tests.swift; sourceTree = "<group>"; };
 		CE34FB3E2BB1963300701D2A /* OverlayInternalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayInternalView.swift; sourceTree = "<group>"; };
 		CE6F8DBD2BCEC6BE009DBE7E /* MockGetStartedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGetStartedViewModel.swift; sourceTree = "<group>"; };
@@ -960,7 +962,7 @@
 		8C3D3C052BBB85B8002A5CFC /* MainContainer */ = {
 			isa = PBXGroup;
 			children = (
-				8CD1080D2BD122CC00E83261 /* AuctionView.swift */,
+				CE2022B52C0F0CF50009415D /* Auction */,
 				8C9FA4472BD282C30041F28E /* LogOutView.swift */,
 				8C9FA4452BD282B90041F28E /* ManagerView.swift */,
 				8C9FA4432BD282B00041F28E /* MyBidsView.swift */,
@@ -1274,6 +1276,15 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		CE2022B52C0F0CF50009415D /* Auction */ = {
+			isa = PBXGroup;
+			children = (
+				8CD1080D2BD122CC00E83261 /* AuctionView.swift */,
+				CE2022B62C0F0D120009415D /* ItemView.swift */,
+			);
+			path = Auction;
+			sourceTree = "<group>";
+		};
 		CE22793C2BC6903600F4430F /* View_Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1532,7 +1543,8 @@
 /* Begin PBXShellScriptBuildPhase section */
 		8C1E00E92BA827D10094FAA7 /* Fetch localization */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			alwaysOutOfDate = 1;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -1544,7 +1556,7 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"$SRCROOT/Extras/localization_ios.sh\"\n";
 			showEnvVarsInLog = 0;
@@ -1811,6 +1823,7 @@
 				8CC6BEE62BD43757007C999F /* AuctionTopBarCenterView.swift in Sources */,
 				8CABF5C82BB9C81100A34870 /* BackgroundContainerImage.swift in Sources */,
 				CE0CEE812BBED0B4004A27FD /* ResetPasswordModel.swift in Sources */,
+				CE2022B72C0F0D120009415D /* ItemView.swift in Sources */,
 				8CD107FA2BD11F3400E83261 /* TopBarAction.swift in Sources */,
 				8C4B7B8B2BB6FD030043B892 /* CustomStyledViewButton.swift in Sources */,
 				8CD108032BD1208100E83261 /* TopBarContentFactory.swift in Sources */,

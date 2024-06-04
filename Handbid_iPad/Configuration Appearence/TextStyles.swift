@@ -3,7 +3,7 @@
 import SwiftUI
 
 enum TextLabelStyles {
-	case headerTitle, body, formHeader, error, searchBar
+	case headerTitle, body, formHeader, error, searchBar, subheader, accentBody
 
 	var configuration: TextStyleConfiguration {
 		switch self {
@@ -49,6 +49,19 @@ enum TextLabelStyles {
 				borderWidthValue: 1,
 				roundedCornerRadius: 30
 			)
+		case .subheader:
+			TextStyleConfiguration(
+				fontStyle: TypographyStyle.subheader.asFont(),
+				fontWeightStyle: .bold,
+				textAlignment: .leading,
+				alignment: .leading,
+				defaultTextColor: .black
+			)
+		case .accentBody:
+			TextStyleConfiguration(
+				fontStyle: .body,
+				defaultTextColor: .accent
+			)
 		}
 	}
 
@@ -59,6 +72,8 @@ enum TextLabelStyles {
 		case .error: TextLabelStyles.error.configuration
 		case .formHeader: TextLabelStyles.formHeader.configuration
 		case .searchBar: TextLabelStyles.searchBar.configuration
+		case .subheader: TextLabelStyles.subheader.configuration
+		case .accentBody: TextLabelStyles.accentBody.configuration
 		}
 	}
 }
