@@ -10,6 +10,7 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 	@State private var isButtonDisabled = true
 	@State private var contentLoaded = false
 	@State private var isBlurred = false
+	@State private var isLoading = true
 	@FocusState private var focusedField: Field?
 	var inspection = Inspection<Self>()
 
@@ -33,6 +34,9 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 		}
 		.onTapGesture {
 			hideKeyboard()
+		}
+		.onReceive(viewModel.$isLoading) { loading in
+			isLoading = loading
 		}
 		.onReceive(inspection.notice) {
 			inspection.visit(self, $0)
@@ -63,7 +67,9 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 	private var listView: some View {
 		VStack(spacing: 0) {
 			searchBar
-			organizationList
+			LoadingOverlay(isLoading: $isLoading, backgroundColor: .clear, opactity: 1.0) {
+				organizationList
+			}
 		}
 	}
 
