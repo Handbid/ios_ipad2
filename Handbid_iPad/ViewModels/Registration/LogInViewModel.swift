@@ -71,6 +71,7 @@ class LogInViewModel: ObservableObject, LogInViewModelProtocol {
 			}
 			else {
 				print("Login failed")
+				self.showError = true
 			}
 		}
 	}
