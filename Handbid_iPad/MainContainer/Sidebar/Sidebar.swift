@@ -16,6 +16,10 @@ struct Sidebar: View {
 			) {
 				selectedView = .auction
 			}
+			.accessibilityElement(children: .combine)
+			.accessibilityLabel("Auction")
+			.accessibility(addTraits: .isButton)
+			.accessibility(value: selectedView == .auction ? Text("Selected") : Text(""))
 
 			SidebarItem(
 				isSelected: selectedView == .paddle,
@@ -25,6 +29,10 @@ struct Sidebar: View {
 			) {
 				selectedView = .paddle
 			}
+			.accessibilityElement(children: .combine)
+			.accessibilityLabel("Paddle")
+			.accessibility(addTraits: .isButton)
+			.accessibility(value: selectedView == .paddle ? Text("Selected") : Text(""))
 
 			SidebarItem(
 				isSelected: selectedView == .myBids,
@@ -34,6 +42,10 @@ struct Sidebar: View {
 			) {
 				selectedView = .myBids
 			}
+			.accessibilityElement(children: .combine)
+			.accessibilityLabel("My Bids")
+			.accessibility(addTraits: .isButton)
+			.accessibility(value: selectedView == .myBids ? Text("Selected") : Text(""))
 
 			SidebarItem(
 				isSelected: selectedView == .manager,
@@ -43,6 +55,10 @@ struct Sidebar: View {
 			) {
 				selectedView = .manager
 			}
+			.accessibilityElement(children: .combine)
+			.accessibilityLabel("Manager")
+			.accessibility(addTraits: .isButton)
+			.accessibility(value: selectedView == .manager ? Text("Selected") : Text(""))
 
 			Spacer()
 
@@ -54,6 +70,10 @@ struct Sidebar: View {
 			) {
 				selectedView = .logout
 			}
+			.accessibilityElement(children: .combine)
+			.accessibilityLabel("Logout")
+			.accessibility(addTraits: .isButton)
+			.accessibility(value: selectedView == .logout ? Text("Selected") : Text(""))
 		}
 		.padding(10)
 		.background(Color(UIColor.systemBackground))

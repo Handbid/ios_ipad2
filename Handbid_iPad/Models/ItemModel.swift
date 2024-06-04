@@ -73,7 +73,7 @@ struct ItemModel: Decodable, NetworkingJSONDecodable {
 	var isPassed: Bool?
 	var hideFromPurchases: Bool?
 	var customFieldValues: [String]?
-	// var safety: Prop65?
+	// var safety: ChemicalElementsModel?
 	var customQuantitiesThreshold: [Int]?
 	var quantityParticipants: Int?
 	var isEditablePriorToSale: Bool?

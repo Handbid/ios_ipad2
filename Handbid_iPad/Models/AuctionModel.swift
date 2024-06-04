@@ -4,7 +4,7 @@ import Arrow
 import NetworkService
 import SwiftData
 
-struct AuctionModel: Identifiable, Codable, NetworkingJSONDecodable {
+struct AuctionModel: Identifiable, Codable, NetworkingJSONDecodable, AutoEncodable {
 	var id: String
 	var identity: Int?
 	var key: String?
@@ -310,10 +310,5 @@ extension AuctionModel: ArrowParsable {
 			categories.deserialize(jsonItem)
 			return categories
 		}
-	}
-
-	func encode(to encoder: Encoder) throws {
-		var container = encoder.container(keyedBy: CodingKeys.self)
-		try container.encode(id, forKey: .id)
 	}
 }

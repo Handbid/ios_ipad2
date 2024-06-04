@@ -1,0 +1,30 @@
+{
+  "configurations" : [
+    {
+      "id" : "68328315-5785-40F6-8323-E113ADFD9124",
+      "name" : "Test Scheme Action",
+      "options" : {
+        "environmentVariableEntries" : [
+          {
+            "key" : "IDEPreferLogStreaming",
+            "value" : "YES"
+          }
+        ]
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Handbid_iPad.xcodeproj",
+        "identifier" : "8C1CC52F2BC3D77100AF80F4",
+        "name" : "Handbid_iPadTests"
+      }
+    }
+  ],
+  "version" : 1
+}

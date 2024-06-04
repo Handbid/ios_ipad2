@@ -13,6 +13,8 @@ struct ManagerView: View {
 	var body: some View {
 		VStack {
 			Text(viewModel.title)
+				.accessibility(label: Text("Manager Title"))
+				.accessibility(identifier: "managerTitle")
 		}
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		.background(Color.accentGrayBackground)

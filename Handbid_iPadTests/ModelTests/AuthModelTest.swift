@@ -4,7 +4,7 @@ import Arrow
 @testable import Handbid_iPad
 import XCTest
 
-final class AuthModel_Test: XCTestCase {
+final class AuthModelTest: XCTestCase {
 	func testAuthModelDeserialization() {
 		let jsonString = """
 		{

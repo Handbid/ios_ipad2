@@ -4,7 +4,7 @@ import Arrow
 @testable import Handbid_iPad
 import XCTest
 
-final class AppVersionModel_Test: XCTestCase {
+final class AppVersionModelTest: XCTestCase {
 	func testAppVersionModelDeserialization() throws {
 		let jsonString = """
 		{

@@ -4,11 +4,7 @@ import Foundation
 
 enum AppInfoProvider {
 	static var appName: String {
-		#if HANDBID_IPAD
-			return "handbid"
-		#else
-			return "default"
-		#endif
+		"handbid"
 	}
 
 	static var os: String {
@@ -16,35 +12,19 @@ enum AppInfoProvider {
 	}
 
 	static var whitelabelId: Int {
-		#if HANDBID_IPAD
-			return 1
-		#else
-			return 0
-		#endif
+		1
 	}
 
 	static var authClientSecret: String {
-		#if HANDBID_IPAD
-			return "secret_0bde28331a40673eaa324375"
-		#else
-			return ""
-		#endif
+		"secret_0bde28331a40673eaa324375"
 	}
 
 	static var captchaKey: String {
-		#if HANDBID_IPAD
-			return "6LdU5KkpAAAAANZD-3GdFspTDdqhjg6z29dE9zsR"
-		#else
-			return ""
-		#endif
+		"6LdU5KkpAAAAANZD-3GdFspTDdqhjg6z29dE9zsR"
 	}
 
 	static var aboutHandbidLink: String {
-		#if HANDBID_IPAD
-			return "https://www.handbid.com/about-us/"
-		#else
-			return ""
-		#endif
+		"https://www.handbid.com/about-us/"
 	}
 
 	static var bundleIdentifier: String {

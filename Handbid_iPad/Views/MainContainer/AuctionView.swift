@@ -12,6 +12,8 @@ struct AuctionView: ContentView {
 	var body: some View {
 		VStack {
 			Text(viewModel.title)
+				.accessibility(label: Text("Auction Title"))
+				.accessibility(identifier: "auctionTitle")
 		}
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		.background(Color.accentGrayBackground)

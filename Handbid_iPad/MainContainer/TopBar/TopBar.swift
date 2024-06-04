@@ -3,29 +3,36 @@
 import SwiftUI
 
 struct TopBar: View {
-	var content: TopBarContent
+	var content: TopBarContentProtocol
 	let barHeight: CGFloat
 
-	init(content: TopBarContent, barHeight: CGFloat) {
+	init(content: TopBarContentProtocol, barHeight: CGFloat) {
 		self.content = content
 		self.barHeight = barHeight
 	}
 
 	var body: some View {
 		HStack {
-			leftViews
+			leftViews.accessibilityElement(children: .contain)
+				.accessibility(identifier: "LeftViews")
 			CenteredView(view: content.centerView)
-			rightViews
+				.accessibility(identifier: "CenterView")
+			rightViews.accessibilityElement(children: .contain)
+				.accessibility(identifier: "RightViews")
 		}
 		.frame(height: barHeight)
 		.background(Color(UIColor.systemBackground))
 		.foregroundColor(Color(UIColor.label))
+		.accessibilityElement(children: .contain)
+		.accessibility(identifier: "TopBar")
 	}
 
 	private var leftViews: some View {
 		HStack {
 			ForEach(Array(content.leftViews.enumerated()), id: \.offset) { _, view in
 				view
+					.accessibilityElement(children: .contain)
+					.accessibility(identifier: "LeftView\(view)")
 			}
 		}
 		.frame(width: 90)
@@ -37,6 +44,8 @@ struct TopBar: View {
 		HStack {
 			ForEach(Array(content.rightViews.enumerated()), id: \.offset) { _, view in
 				view
+					.accessibilityElement(children: .contain)
+					.accessibility(identifier: "RightView\(view)")
 			}
 		}
 		.frame(width: 120)
@@ -55,5 +64,7 @@ struct CenteredView<Content: View>: View {
 			view
 			Spacer()
 		}
+		.accessibilityElement(children: .contain)
+		.accessibility(identifier: "CenteredView")
 	}
 }

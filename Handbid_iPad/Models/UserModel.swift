@@ -70,6 +70,12 @@ extension UserModel: ArrowParsable {
 		canSendBroadcast <-- json["canSendBroadcast"]
 		canManageItems <-- json["canManageItems"]
 
+		addresses = (json["addresses"]?.collection ?? [json["addresses"]].compactMap { $0 }).map { jsonItem in
+			var address = AddressModel()
+			address.deserialize(jsonItem)
+			return address
+		}
+
 		organization = (json["organization"]?.collection ?? [json["organization"]].compactMap { $0 }).map { jsonItem in
 			var org = OrganizationModel()
 			org.deserialize(jsonItem)

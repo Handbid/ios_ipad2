@@ -15,7 +15,7 @@ final class ChooseEnvironmentViewTests: XCTestCase {
 	override func setUp() {
 		super.setUp()
 		coordinator = Coordinator<RegistrationPage, Any?>(viewBuilder: { _ in AnyView(EmptyView()) })
-		mockViewModel = MockChooseEnvironmentViewModel()
+		mockViewModel = MockChooseEnvironmentViewModel(NetworkingClient())
 		view = ChooseEnvironmentView(viewModel: mockViewModel)
 		sut = AnyView(view.environmentObject(coordinator))
 	}

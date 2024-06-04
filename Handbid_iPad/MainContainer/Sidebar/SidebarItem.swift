@@ -30,6 +30,7 @@ struct SidebarItem: View {
 						.foregroundColor(isSelected ? .white : .primary)
 						.rotationEffect(isSelected ? .degrees(360) : .degrees(0))
 						.animation(.easeInOut, value: isSelected)
+						.accessibilityLabel(iconName)
 
 					if showLockIcon {
 						Image("lockSidebarIcon")
@@ -39,15 +40,20 @@ struct SidebarItem: View {
 							.foregroundColor(isSelected ? .white : .primary)
 							.offset(x: 18, y: 16)
 							.animation(.easeInOut, value: isSelected)
+							.accessibilityLabel("lockSidebarIcon")
 					}
 				}
 				Text(text)
 					.font(.system(size: 11, weight: .regular))
 					.foregroundColor(.primary)
 					.lineLimit(1)
+					.accessibilityLabel(text)
 			}
 			.padding(10)
 		}
+		.accessibilityElement(children: .combine)
+		.accessibility(addTraits: .isButton)
+		.accessibility(value: isSelected ? Text("Selected") : Text(""))
 		.background(Color.clear)
 		.scaleEffect(isSelected ? 1.1 : 1)
 		.animation(.spring(), value: isSelected)

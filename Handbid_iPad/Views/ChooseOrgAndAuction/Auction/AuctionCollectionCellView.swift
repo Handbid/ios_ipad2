@@ -4,10 +4,14 @@ import SwiftUI
 
 struct AuctionCollectionCellView<T: PageProtocol>: View {
 	@EnvironmentObject var coordinator: Coordinator<T, Any?>
-	@Environment(\.colorScheme) var colorScheme
+	@Environment(\.colorScheme) private var defaultColorScheme
+	var colorScheme: ColorScheme? = nil
 	let auction: AuctionModel
+	var inspection = Inspection<Self>()
 
 	var body: some View {
+		let colorScheme = colorScheme ?? defaultColorScheme
+
 		Button(action: {
 			coordinator.push(MainContainerPage.mainContainer as! T)
 		}) {
@@ -24,12 +28,14 @@ struct AuctionCollectionCellView<T: PageProtocol>: View {
 						.bold()
 						.cornerRadius(30)
 						.frame(height: 30)
+						.accessibilityIdentifier("auctionItemsLabel")
 
 						Spacer()
 
 						Text(auction.status?.uppercased() ?? "")
 							.bold()
 							.foregroundColor(AuctionStateStatuses.color(for: auction.status!, in: colorScheme))
+							.accessibilityIdentifier("auctionStatusLabel")
 					}
 					.padding([.leading, .trailing], 10)
 				}
@@ -44,11 +50,13 @@ struct AuctionCollectionCellView<T: PageProtocol>: View {
 							.progressViewStyle(CircularProgressViewStyle())
 							.scaleEffect(1.5)
 							.frame(maxWidth: .infinity, maxHeight: .infinity)
+							.accessibilityIdentifier("auctionImageEmpty")
 					case let .success(image):
 						image.resizable()
 							.aspectRatio(contentMode: .fit)
 							.frame(width: 150, height: 150, alignment: .center)
 							.cornerRadius(10)
+							.accessibilityIdentifier("auctionImage")
 					case .failure:
 						Image(systemName: "photo")
 							.resizable()
@@ -56,6 +64,7 @@ struct AuctionCollectionCellView<T: PageProtocol>: View {
 							.foregroundColor(colorScheme == .dark ? .white : .gray)
 							.frame(width: 150, height: 150, alignment: .center)
 							.padding()
+							.accessibilityIdentifier("auctionImageError")
 					@unknown default:
 						EmptyView()
 					}
@@ -70,6 +79,7 @@ struct AuctionCollectionCellView<T: PageProtocol>: View {
 						.multilineTextAlignment(.center)
 						.truncationMode(.tail)
 						.foregroundColor(colorScheme == .dark ? .white : .black)
+						.accessibilityIdentifier("auctionNameLabel")
 
 					Text(auction.auctionAddressStreet1 ?? "")
 						.font(.subheadline)
@@ -78,6 +88,7 @@ struct AuctionCollectionCellView<T: PageProtocol>: View {
 						.multilineTextAlignment(.center)
 						.truncationMode(.tail)
 						.foregroundColor(colorScheme == .dark ? .white : .black)
+						.accessibilityIdentifier("auctionAddressLabel")
 
 					HStack {
 						Spacer()
@@ -88,6 +99,7 @@ struct AuctionCollectionCellView<T: PageProtocol>: View {
 							.foregroundColor(colorScheme == .dark ? .white : .black)
 						Spacer()
 					}
+					.accessibilityIdentifier("auctionEndTimeLabel")
 				}
 				.frame(height: 100)
 				.frame(maxWidth: .infinity)
@@ -101,5 +113,9 @@ struct AuctionCollectionCellView<T: PageProtocol>: View {
 			.shadow(color: Color.accentGrayBorder.opacity(0.6), radius: 10, x: 0, y: 2)
 		}
 		.accentColor(colorScheme == .dark ? .white : .black)
+		.accessibilityIdentifier("auctionCellButton")
+		.onReceive(inspection.notice) {
+			inspection.visit(self, $0)
+		}
 	}
 }

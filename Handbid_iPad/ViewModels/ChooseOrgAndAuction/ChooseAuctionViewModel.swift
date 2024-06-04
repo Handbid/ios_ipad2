@@ -31,9 +31,6 @@ class ChooseAuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 		self.centerViewData = createCenterViewData()
 		setupInitialSelection()
 		setupButtonBindings()
-
-		let user2: UserModel? = try? dataManager.fetchSingle(of: UserModel.self, from: .user)
-		print(user2?.identity)
 	}
 
 	func fetchAuctionsIfNeeded() {
@@ -53,7 +50,7 @@ class ChooseAuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 			.store(in: &cancellables)
 	}
 
-	private func setupButtonBindings() {
+	func setupButtonBindings() {
 		for (state, viewModel) in buttonViewModels {
 			viewModel.$isSelected
 				.dropFirst()
@@ -64,7 +61,7 @@ class ChooseAuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 		}
 	}
 
-	private func handleStateChange(for state: AuctionStateStatuses, isSelected: Bool) {
+	func handleStateChange(for state: AuctionStateStatuses, isSelected: Bool) {
 		DispatchQueue.main.async { [weak self] in
 			guard let self else { return }
 			updateButtonSelection(for: state, isSelected: isSelected)
@@ -111,13 +108,13 @@ class ChooseAuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 		)
 	}
 
-	private func handleCompletion(_ completion: Subscribers.Completion<Error>) {
+	func handleCompletion(_ completion: Subscribers.Completion<Error>) {
 		if case let .failure(error) = completion, let netError = error as? NetworkingError {
 			print(netError)
 		}
 	}
 
-	private func handleAuctionsReceived(_ auctions: [AuctionModel]) {
+	func handleAuctionsReceived(_ auctions: [AuctionModel]) {
 		self.auctions = auctions
 		filteredAuctions = auctions
 	}

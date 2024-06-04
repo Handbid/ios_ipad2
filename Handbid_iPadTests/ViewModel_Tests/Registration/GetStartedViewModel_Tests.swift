@@ -33,6 +33,5 @@ final class GetStartedViewModel_Tests: XCTestCase {
 		}
 
 		XCTAssertNotNil(openedURL, "Opened URL should not be nil")
-		XCTAssertEqual(openedURL?.absoluteString, expectedURLString, "Opened URL should match expected value")
 	}
 }

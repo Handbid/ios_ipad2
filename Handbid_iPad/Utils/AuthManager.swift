@@ -6,7 +6,15 @@ import SwiftUI
 
 // MARK: - Represents a user's authentication token.
 
-struct TokenUser: Codable {
+protocol TokenUserProtocol {
+	var validUntil: Date { get }
+	var id: UUID { get }
+	var value: String { get }
+	var guid: String { get }
+	var isValid: Bool { get }
+}
+
+struct TokenUser: Codable, TokenUserProtocol {
 	let validUntil: Date
 	let id: UUID
 	let value: String
