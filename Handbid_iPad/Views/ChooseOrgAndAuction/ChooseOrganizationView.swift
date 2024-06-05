@@ -67,7 +67,7 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 	private var listView: some View {
 		VStack(spacing: 0) {
 			searchBar
-			LoadingOverlay(isLoading: $isLoading, backgroundColor: .clear, opactity: 1.0) {
+			LoadingOverlay(isLoading: $isLoading, backgroundColor: .clear, opacity: 1.0) {
 				organizationList
 			}
 		}

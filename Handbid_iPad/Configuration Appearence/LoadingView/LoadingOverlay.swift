@@ -6,23 +6,12 @@ struct LoadingOverlay<Content: View>: View {
 	@Binding var isLoading: Bool
 	let content: Content
 	var backgroundColor: Color = .black
-	var opactity: Double = 0.5
+	var opacity: Double = 0.5
 
-	init(isLoading: Binding<Bool>,
-	     backgroundColor: Color? = .black,
-	     opactity: Double? = 0.5,
-	     @ViewBuilder content: () -> Content)
-	{
+	init(isLoading: Binding<Bool>, backgroundColor: Color = .black, opacity: Double = 0.5, @ViewBuilder content: () -> Content) {
 		self._isLoading = isLoading
-
-		if let bgColor = backgroundColor {
-			self.backgroundColor = bgColor
-		}
-
-		if let opacity = opactity {
-			self.opactity = opacity
-		}
-
+		self.backgroundColor = backgroundColor
+		self.opacity = opacity
 		self.content = content()
 	}
 
@@ -30,9 +19,11 @@ struct LoadingOverlay<Content: View>: View {
 		ZStack {
 			content
 			if isLoading {
-				backgroundColor.opacity(opactity).edgesIgnoringSafeArea(.all)
+				backgroundColor.opacity(opacity).edgesIgnoringSafeArea(.all)
 					.overlay(
 						LoadingView(isVisible: $isLoading)
+							.accessibilityElement(children: .combine)
+							.accessibilityLabel("Loading overlay")
 					)
 					.allowsHitTesting(true)
 			}

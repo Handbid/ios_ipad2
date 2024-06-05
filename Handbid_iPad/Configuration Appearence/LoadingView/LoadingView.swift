@@ -16,6 +16,9 @@ struct LoadingView: View {
 					.onAppear {
 						startLoadingAnimation()
 					}
+					.accessibilityElement()
+					.accessibilityLabel("Loading")
+					.accessibilityValue("\(Int(progress * 100)) percent complete")
 			}
 		}
 	}
