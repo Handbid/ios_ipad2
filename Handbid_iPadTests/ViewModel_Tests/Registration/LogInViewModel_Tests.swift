@@ -101,6 +101,29 @@ class LogInViewModelTests: XCTestCase {
 		waitForExpectations(timeout: 1.0, handler: nil)
 	}
 
+	func testLoginSuccessAndAuthManagerSuccessButSaveDataFails() {
+		let expectation = expectation(description: "Login and save data fails")
+
+		viewModel.email = "handbid@test.com"
+		viewModel.password = "SecurePassword123@"
+		mockAuthManager.shouldReturnSuccess = true
+
+		Task {
+			viewModel.logIn()
+			try await Task.sleep(nanoseconds: 200_000_000)
+			XCTAssertTrue(self.viewModel.isFormValid)
+			XCTAssertFalse(self.viewModel.showError)
+
+			mockAuthManager.shouldReturnSuccess = false
+			viewModel.logIn()
+			try await Task.sleep(nanoseconds: 200_000_000)
+			XCTAssertTrue(self.viewModel.showError)
+			expectation.fulfill()
+		}
+
+		waitForExpectations(timeout: 2.0, handler: nil)
+	}
+
 	func testResetErrorMessage() {
 		viewModel.errorMessage = "Test error"
 		viewModel.showError = true
