@@ -10,7 +10,7 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 		CategoryModel(id: 1, name: "Test", auctionId: 1,
 		              items: [
 		              	ItemModel(id: 1, name: "Test Item", categoryName: "Test",
-		              	          isDirectPurchaseItem: false, isTicket: false, isPuzzle: false,
+		              	          isDirectPurchaseItem: true, isTicket: false, isPuzzle: false,
 		              	          isAppeal: false, currentPrice: 20.0, itemCode: "123"),
 		              ]),
 	]

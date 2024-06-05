@@ -6,6 +6,8 @@
 "global_btn_ok" = "好";
 "global_label_error" = "错误";
 "global_label_unknownError" = "未知错误";
+"item_label_forSale" = "待售";
+"item_label_live" = "现场";
 "item_label_numberOfBids" = "%i 项投标";
 "login_label_incorrectCredentials" = "电子邮件或密码错误";
 "menuBar_label_auction" = "Auction";

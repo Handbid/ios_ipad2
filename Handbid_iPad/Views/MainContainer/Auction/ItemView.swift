@@ -7,12 +7,17 @@ struct ItemView: View {
 	var item: ItemModel
 
 	var body: some View {
-		ZStack {
+		ZStack(alignment: .topTrailing) {
 			RoundedRectangle(cornerRadius: 40.0)
 				.foregroundStyle(colorScheme == .dark ? .black : .white)
 				.shadow(color: Color.accentGrayBorder.opacity(0.6), radius: 10, x: 0, y: 2)
 
 			itemContent
+
+			if item.isLive == true || item.isDirectPurchaseItem == true {
+				itemBadge
+					.padding([.trailing, .top], 20)
+			}
 		}
 		.frame(width: 307)
 		.padding()
@@ -28,6 +33,7 @@ struct ItemView: View {
 				case let .success(image):
 					image.resizable()
 						.aspectRatio(contentMode: .fit)
+						.scaledToFill()
 						.frame(width: 255, height: 187, alignment: .center)
 						.cornerRadius(32)
 				case .failure:
@@ -45,12 +51,12 @@ struct ItemView: View {
 
 			HStack {
 				Text(item.categoryName ?? "NaN")
-					.applyTextStyle(style: .body)
+					.applyTextStyle(style: .leadingLabel)
 
 				Divider()
 
 				Text("#\(item.itemCode ?? "NaN")")
-					.applyTextStyle(style: .body)
+					.applyTextStyle(style: .leadingLabel)
 
 				if !item.isDirectPurchaseItem!, !item.isAppeal!, !item.isTicket! {
 					Divider()
@@ -64,12 +70,29 @@ struct ItemView: View {
 
 				Spacer()
 			}
+			.frame(height: 20)
 
 			Text(item.name ?? "NaN")
-				.applyTextStyle(style: .subheader)
+				.applyTextStyle(style: .titleLeading)
 
-			Text(String(format: "$%.2f", item.currentPrice ?? -1))
+			Text(item.currentPrice ?? -1, format: .currency(code: "USD"))
+				.applyTextStyle(style: .subheader)
 		}
 		.padding()
+	}
+
+	private var itemBadge: some View {
+		Text(String(localized: item.isLive == true ? "item_label_live" :
+				item.isDirectPurchaseItem == true ? "item_label_forSale" : ""))
+			.textCase(.uppercase)
+			.foregroundStyle(.white)
+			.padding()
+			.frame(height: 24)
+			.background {
+				RoundedRectangle(cornerRadius: 30.0)
+					.foregroundStyle(item.isLive == true ? .statusSuccess :
+						item.isDirectPurchaseItem == true ? .accent : .black
+					)
+			}
 	}
 }

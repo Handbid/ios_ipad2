@@ -6,6 +6,8 @@
 "global_btn_ok" = "Ok";
 "global_label_error" = "Error";
 "global_label_unknownError" = "Unknown error";
+"item_label_forSale" = "For Sale";
+"item_label_live" = "Live";
 "item_label_numberOfBids" = "%i bids";
 "login_label_incorrectCredentials" = "Incorrect email or password";
 "menuBar_label_auction" = "Auction";
