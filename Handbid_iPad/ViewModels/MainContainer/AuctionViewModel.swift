@@ -1,8 +1,10 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
+import Combine
 import SwiftUI
 
 class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
+	var eventPublisher = PassthroughSubject<MainContainerChangeViewEvents, Never>()
 	@ObservedObject var dataService: DataServiceWrapper
 	@Published var title = "Auction Details"
 	@Published var auctionStatus = "Open"
@@ -37,7 +39,10 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 		]
 	}
 
-	func searchData() {}
+	func searchData() {
+		eventPublisher.send(MainContainerChangeViewEvents.search)
+	}
+
 	func refreshData() {}
 	func filterData() {
 		dataService.fetchData { result in

@@ -4,6 +4,7 @@ import Combine
 import SwiftUI
 
 class ManagerViewModel: ObservableObject, ViewModelTopBarProtocol {
+	var eventPublisher = PassthroughSubject<MainContainerChangeViewEvents, Never>()
 	@ObservedObject var dataService: DataServiceWrapper
 	@Published var title = "Manager Details"
 
@@ -24,5 +25,7 @@ class ManagerViewModel: ObservableObject, ViewModelTopBarProtocol {
 		]
 	}
 
-	func allAuctions() {}
+	func allAuctions() {
+		eventPublisher.send(MainContainerChangeViewEvents.allAuctions)
+	}
 }
