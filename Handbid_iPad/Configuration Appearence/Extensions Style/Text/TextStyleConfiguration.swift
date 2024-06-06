@@ -25,6 +25,7 @@ struct TextStyleConfiguration {
 	var autoCorrectionDisabled: Bool
 	var fixedSizeHorizontal: Bool
 	var fixedSizeVertical: Bool
+	var takeMaxWidth: Bool
 
 	init(
 		fontStyle: Font = .system(size: 16),
@@ -48,7 +49,8 @@ struct TextStyleConfiguration {
 		borderStyle: BorderType = .solid,
 		autoCorrectionDisabled: Bool = false,
 		fixedSizeHorizontal: Bool = false,
-		fixedSizeVertical: Bool = true
+		fixedSizeVertical: Bool = true,
+		takeMaxWidth: Bool = true
 	) {
 		self.fontStyle = fontStyle
 		self.fontWeightStyle = fontWeightStyle
@@ -72,6 +74,7 @@ struct TextStyleConfiguration {
 		self.autoCorrectionDisabled = autoCorrectionDisabled
 		self.fixedSizeHorizontal = fixedSizeHorizontal
 		self.fixedSizeVertical = fixedSizeVertical
+		self.takeMaxWidth = takeMaxWidth
 	}
 
 	enum BorderType {

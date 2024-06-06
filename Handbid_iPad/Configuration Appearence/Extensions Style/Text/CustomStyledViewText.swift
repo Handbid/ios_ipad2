@@ -24,7 +24,7 @@ extension Text {
 			.fixedSize(horizontal: style.fixedSizeHorizontal, vertical: style.fixedSizeVertical)
 			.disabled(style.autoCorrectionDisabled)
 			.textContentType(style.isSecure ? .password : .none)
-			.frame(maxWidth: .infinity, alignment: style.alignment)
+			.frame(maxWidth: style.takeMaxWidth ? .infinity : nil, alignment: style.alignment)
 		textField
 	}
 }

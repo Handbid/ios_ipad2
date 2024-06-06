@@ -1,10 +1,14 @@
 "auction_label_items" = "Items";
+"auction_label_noItems" = "Il n\'y a pas encore d\'articles.";
 "chooseOrg_btn_selectOrg" = "Select Organization";
 "chooseOrg_label_searchByName" = "Search by name";
 "chooseOrg_label_selectOrganization" = "Select organization";
 "global_btn_ok" = "Ok";
 "global_label_error" = "L\'erreur";
 "global_label_unknownError" = "Erreur inconnue";
+"item_label_forSale" = "A vendre";
+"item_label_live" = "En direct";
+"item_label_numberOfBids" = "%i offres";
 "login_label_incorrectCredentials" = "Courriel ou mot de passe incorrect";
 "menuBar_label_auction" = "Auction";
 "menuBar_label_logout" = "Logout";

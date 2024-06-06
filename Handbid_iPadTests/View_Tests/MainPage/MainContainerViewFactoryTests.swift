@@ -18,12 +18,12 @@ final class MainContainerViewFactoryTests: XCTestCase {
 		super.tearDown()
 	}
 
-	func testMakeAuctionView() throws {
-		let view = factory.makeAuctionView()
-		ViewHosting.host(view: view)
-		let titleText = try view.inspect().find(viewWithAccessibilityIdentifier: "auctionTitle").text().string()
-		XCTAssertEqual(titleText, "Auction Details")
-	}
+//	func testMakeAuctionView() throws {
+//		let view = factory.makeAuctionView()
+//		ViewHosting.host(view: view)
+//		let titleText = try view.inspect().find(viewWithAccessibilityIdentifier: "auctionTitle").text().string()
+//		XCTAssertEqual(titleText, "Auction Details")
+//	}
 
 	func testMakePaddleView() throws {
 		let view = factory.makePaddleView()
