@@ -53,11 +53,6 @@ struct ChooseAuctionView<T: PageProtocol>: View {
 		.navigationBarBackButtonHidden()
 	}
 
-	private func createGridItems(width: CGFloat, targetWidth: CGFloat) -> [GridItem] {
-		let numberOfColumns = max(Int(width / targetWidth), 1)
-		return Array(repeating: GridItem(.fixed(targetWidth), spacing: 20), count: numberOfColumns)
-	}
-
 	private var horizontalScrollView: some View {
 		GeometryReader { geometry in
 			ScrollView(.horizontal, showsIndicators: false) {

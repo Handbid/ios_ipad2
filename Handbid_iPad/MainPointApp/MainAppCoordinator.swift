@@ -61,7 +61,7 @@ struct MainAppCoordinator: App {
 			case .mainContainer:
 				return AnyView(MainContainer<MainContainerPage>(selectedView: .auction))
 			case .searchItems:
-				return AnyView(SearchItemsView<MainContainerPage>(searchItemsViewModel: SearchItemsViewModel()))
+				return AnyView(SearchItemsView<MainContainerPage>(viewModel: SearchItemsViewModel()))
 			}
 		}
 	}
