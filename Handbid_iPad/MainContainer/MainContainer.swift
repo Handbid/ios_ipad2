@@ -16,11 +16,10 @@ struct MainContainer<T: PageProtocol>: View {
 	private let myBidsViewModel: MyBidsViewModel
 	private let managerViewModel: ManagerViewModel
 	private let logOutViewModel: LogOutViewModel
-	private let searchItemsViewModel: SearchItemViewModel
 
 	init(selectedView: MainContainerTypeView) {
 		self.selectedView = selectedView
-		(self.auctionViewModel, self.paddleViewModel, self.myBidsViewModel, self.managerViewModel, self.logOutViewModel, self.searchItemsViewModel) = ViewModelFactory.createAllViewModelsForMainContainer()
+		(self.auctionViewModel, self.paddleViewModel, self.myBidsViewModel, self.managerViewModel, self.logOutViewModel) = ViewModelFactory.createAllViewModelsForMainContainer()
 	}
 
 	var body: some View {
@@ -104,7 +103,8 @@ struct MainContainer<T: PageProtocol>: View {
 
 	private func handleViewModelEvent(_ event: MainContainerChangeViewEvents) {
 		switch event {
-		case .search:
+		case .searchItems:
+			// selectedView = .logout
 			coordinator.push(MainContainerPage.searchItems as! T)
 		case .allAuctions:
 			coordinator.popToRoot()
@@ -123,8 +123,6 @@ struct MainContainer<T: PageProtocol>: View {
 			AnyView(GenericTopBarContentFactory(viewModel: managerViewModel, deviceContext: deviceContext).createTopBarContent(isSidebarVisible: $isSidebarVisible))
 		case .logout:
 			AnyView(GenericTopBarContentFactory(viewModel: logOutViewModel, deviceContext: deviceContext).createTopBarContent(isSidebarVisible: $isSidebarVisible))
-		case .searchItems:
-			AnyView(GenericTopBarContentFactory(viewModel: searchItemsViewModel, deviceContext: deviceContext).createTopBarContent(isSidebarVisible: .constant(false)))
 		}
 	}
 }

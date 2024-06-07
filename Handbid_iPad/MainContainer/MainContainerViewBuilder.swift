@@ -19,8 +19,6 @@ struct MainContainerViewBuilder: View {
 			viewFactory.makeManagerView()
 		case .logout:
 			viewFactory.makeLogOutView()
-		case .searchItems:
-			viewFactory.makeSearchItemsView()
 		}
 	}
 }

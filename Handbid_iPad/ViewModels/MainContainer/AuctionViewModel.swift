@@ -40,7 +40,7 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 	}
 
 	func searchData() {
-		eventPublisher.send(MainContainerChangeViewEvents.search)
+		eventPublisher.send(MainContainerChangeViewEvents.searchItems)
 	}
 
 	func refreshData() {}
