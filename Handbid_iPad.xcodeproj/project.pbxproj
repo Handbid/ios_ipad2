@@ -248,6 +248,7 @@
 		CEAB750D2BD12B65000AFB46 /* ForgotPasswordView_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB750C2BD12B65000AFB46 /* ForgotPasswordView_Tests.swift */; };
 		CEAB750F2BD12BEE000AFB46 /* MockForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB750E2BD12BEE000AFB46 /* MockForgotPasswordViewModel.swift */; };
 		CEAB75112BD165D5000AFB46 /* PasswordResetConfirmationView_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB75102BD165D5000AFB46 /* PasswordResetConfirmationView_Tests.swift */; };
+		CEAE0D0F2C1330C700822A62 /* AuctionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE0D0E2C1330C700822A62 /* AuctionRepository.swift */; };
 		CEE2BB272BB5BBB10033556D /* RegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2BB262BB5BBB10033556D /* RegisterRepository.swift */; };
 		CEE2BB292BB5D1070033556D /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2BB282BB5D1070033556D /* ApiConstants.swift */; };
 		CEEC46132BBD8DE900C685BF /* AnyPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEC46122BBD8DE900C685BF /* AnyPublisher.swift */; };
@@ -511,6 +512,7 @@
 		CEAB750C2BD12B65000AFB46 /* ForgotPasswordView_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView_Tests.swift; sourceTree = "<group>"; };
 		CEAB750E2BD12BEE000AFB46 /* MockForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		CEAB75102BD165D5000AFB46 /* PasswordResetConfirmationView_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetConfirmationView_Tests.swift; sourceTree = "<group>"; };
+		CEAE0D0E2C1330C700822A62 /* AuctionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionRepository.swift; sourceTree = "<group>"; };
 		CEE2BB262BB5BBB10033556D /* RegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRepository.swift; sourceTree = "<group>"; };
 		CEE2BB282BB5D1070033556D /* ApiConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConstants.swift; sourceTree = "<group>"; };
 		CEEC46122BBD8DE900C685BF /* AnyPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyPublisher.swift; sourceTree = "<group>"; };
@@ -1365,6 +1367,7 @@
 				8C4BFB552BE0E2AD00B47154 /* ChooseOrganizationRepository.swift */,
 				CEE2BB262BB5BBB10033556D /* RegisterRepository.swift */,
 				CE0CEE7E2BBEB39F004A27FD /* ResetPasswordRepository.swift */,
+				CEAE0D0E2C1330C700822A62 /* AuctionRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -1781,6 +1784,7 @@
 				8C9FA4582BD8DFAB0041F28E /* ChooseOrganizationViewModel.swift in Sources */,
 				8C4B7BA22BB88FFB0043B892 /* ButtonStyles.swift in Sources */,
 				8C4BFB5F2BE1141A00B47154 /* AddressModel.swift in Sources */,
+				CEAE0D0F2C1330C700822A62 /* AuctionRepository.swift in Sources */,
 				8CABF5DC2BB9F37700A34870 /* RegistrationBackButton.swift in Sources */,
 				8CABF5D02BB9E11300A34870 /* ResponsiveView.swift in Sources */,
 				8C8BEC322BA976030083D904 /* GetStartedViewModel.swift in Sources */,

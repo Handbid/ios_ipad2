@@ -21,6 +21,9 @@ struct AuctionView: ContentView {
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		.background(.containerBackground)
 		.edgesIgnoringSafeArea(.all)
+		.onAppear {
+			viewModel.refreshData()
+		}
 	}
 
 	private var noItemsView: some View {
@@ -48,8 +51,10 @@ struct AuctionView: ContentView {
 
 	private var categoriesList: some View {
 		ScrollView(.vertical) {
-			ForEach(viewModel.categories, id: \.id) { category in
-				createCategoryView(for: category)
+			LazyVStack {
+				ForEach(viewModel.categories, id: \.id) { category in
+					createCategoryView(for: category)
+				}
 			}
 		}
 	}
@@ -61,8 +66,10 @@ struct AuctionView: ContentView {
 				.padding()
 
 			ScrollView(.horizontal) {
-				ForEach(category.items ?? [], id: \.id) { item in
-					ItemView(item: item)
+				LazyHStack {
+					ForEach(category.items ?? [], id: \.id) { item in
+						ItemView(item: item)
+					}.padding()
 				}
 			}
 			.defaultScrollAnchor(.leading)
