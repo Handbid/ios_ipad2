@@ -8,10 +8,12 @@ protocol MainContainerProtocolFactory {
 	associatedtype MyBidsViewType: View
 	associatedtype ManagerViewType: View
 	associatedtype LogOutViewType: View
+	associatedtype SearchViewViewType: View
 
 	func makeAuctionView() -> AuctionViewType
 	func makePaddleView() -> PaddleViewType
 	func makeMyBidsView() -> MyBidsViewType
 	func makeManagerView() -> ManagerViewType
 	func makeLogOutView() -> LogOutViewType
+	func makeSearchItemsView() -> SearchViewViewType
 }

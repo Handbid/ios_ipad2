@@ -32,4 +32,10 @@ struct MainContainerViewFactory: MainContainerProtocolFactory {
 		let viewModel = LogOutViewModel(dataService: service)
 		return AnyView(LogOutView(viewModel: viewModel))
 	}
+
+	func makeSearchItemsView() -> AnyView {
+		let service = DataServiceFactory.getService()
+		let viewModel = SearchItemViewModel(dataService: service)
+		return AnyView(SearchItemView<MainContainerPage>(viewModel: viewModel))
+	}
 }

@@ -8,6 +8,7 @@ class AnyViewMainContainerFactory: ObservableObject {
 	private let myBidsView: () -> AnyView
 	private let managerView: () -> AnyView
 	private let logOutView: () -> AnyView
+	private let searchItemsView: () -> AnyView
 
 	init<VF: MainContainerProtocolFactory>(wrappedFactory: VF) where VF.AuctionViewType == AnyView, VF.PaddleViewType == AnyView {
 		self.auctionView = { AnyView(wrappedFactory.makeAuctionView()) }
@@ -15,6 +16,7 @@ class AnyViewMainContainerFactory: ObservableObject {
 		self.myBidsView = { AnyView(wrappedFactory.makeMyBidsView()) }
 		self.managerView = { AnyView(wrappedFactory.makeManagerView()) }
 		self.logOutView = { AnyView(wrappedFactory.makeLogOutView()) }
+		self.searchItemsView = { AnyView(wrappedFactory.makeSearchItemsView()) }
 	}
 
 	func makeAuctionView() -> AnyView {
@@ -35,5 +37,9 @@ class AnyViewMainContainerFactory: ObservableObject {
 
 	func makeLogOutView() -> AnyView {
 		logOutView()
+	}
+
+	func makeSearchItemsView() -> AnyView {
+		searchItemsView()
 	}
 }

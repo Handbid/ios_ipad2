@@ -149,6 +149,8 @@
 		8C9159B92C0CC8BF005C9D11 /* ResetPasswordRepositoryImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9159B82C0CC8BF005C9D11 /* ResetPasswordRepositoryImplTests.swift */; };
 		8C9159BB2C0CD6D1005C9D11 /* TopBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9159BA2C0CD6D1005C9D11 /* TopBarTests.swift */; };
 		8C9159CE2C127036005C9D11 /* MainContainerChangeViewEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9159CD2C127036005C9D11 /* MainContainerChangeViewEvents.swift */; };
+		8C9159D12C12749D005C9D11 /* SearchItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9159D02C12749D005C9D11 /* SearchItemViewModel.swift */; };
+		8C9159D52C12758B005C9D11 /* SearchItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9159D42C12758B005C9D11 /* SearchItemView.swift */; };
 		8C9BC3172C088681004F3DFF /* MockDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC3162C088681004F3DFF /* MockDataService.swift */; };
 		8C9BC3192C08869D004F3DFF /* PaddleViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC3182C08869D004F3DFF /* PaddleViewModelTests.swift */; };
 		8C9BC31F2C089B0C004F3DFF /* MockWebSocketURLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC31E2C089B0C004F3DFF /* MockWebSocketURLFactory.swift */; };
@@ -414,6 +416,8 @@
 		8C9159B82C0CC8BF005C9D11 /* ResetPasswordRepositoryImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordRepositoryImplTests.swift; sourceTree = "<group>"; };
 		8C9159BA2C0CD6D1005C9D11 /* TopBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarTests.swift; sourceTree = "<group>"; };
 		8C9159CD2C127036005C9D11 /* MainContainerChangeViewEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerChangeViewEvents.swift; sourceTree = "<group>"; };
+		8C9159D02C12749D005C9D11 /* SearchItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemViewModel.swift; sourceTree = "<group>"; };
+		8C9159D42C12758B005C9D11 /* SearchItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemView.swift; sourceTree = "<group>"; };
 		8C9BC3162C088681004F3DFF /* MockDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataService.swift; sourceTree = "<group>"; };
 		8C9BC3182C08869D004F3DFF /* PaddleViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddleViewModelTests.swift; sourceTree = "<group>"; };
 		8C9BC31E2C089B0C004F3DFF /* MockWebSocketURLFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWebSocketURLFactory.swift; sourceTree = "<group>"; };
@@ -811,9 +815,10 @@
 			isa = PBXGroup;
 			children = (
 				8C9FA4512BD8DF090041F28E /* ChooseOrgAndAuction */,
-				8C3D3C052BBB85B8002A5CFC /* MainContainer */,
 				CE7DF82D2BADFD0700FF7694 /* Helpers */,
+				8C3D3C052BBB85B8002A5CFC /* MainContainer */,
 				8C8BEC2C2BA975C30083D904 /* Registration */,
+				8C9159D32C12755C005C9D11 /* TopBarMainContainer */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -824,6 +829,7 @@
 				8C9FA4562BD8DF980041F28E /* ChooseOrgAndAuction */,
 				8CD108112BD1232F00E83261 /* MainContainer */,
 				8C8BEC2B2BA975B70083D904 /* Registration */,
+				8C9159D22C1274C0005C9D11 /* TopBarMainContainer */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1077,6 +1083,22 @@
 				8CABF5BC2BB9C60900A34870 /* PasswordResetConfirmationView.swift */,
 			);
 			path = Registration;
+			sourceTree = "<group>";
+		};
+		8C9159D22C1274C0005C9D11 /* TopBarMainContainer */ = {
+			isa = PBXGroup;
+			children = (
+				8C9159D02C12749D005C9D11 /* SearchItemViewModel.swift */,
+			);
+			path = TopBarMainContainer;
+			sourceTree = "<group>";
+		};
+		8C9159D32C12755C005C9D11 /* TopBarMainContainer */ = {
+			isa = PBXGroup;
+			children = (
+				8C9159D42C12758B005C9D11 /* SearchItemView.swift */,
+			);
+			path = TopBarMainContainer;
 			sourceTree = "<group>";
 		};
 		8C9BC3152C088675004F3DFF /* MainPage */ = {
@@ -1799,12 +1821,14 @@
 				8C4B7B852BB47E9C0043B892 /* Color.swift in Sources */,
 				8CD108072BD1216C00E83261 /* MainContainerViewFactory.swift in Sources */,
 				8C8BEC382BA977AC0083D904 /* RegistrationPage.swift in Sources */,
+				8C9159D12C12749D005C9D11 /* SearchItemViewModel.swift in Sources */,
 				8C4BFB6B2BE1852800B47154 /* ItemModel.swift in Sources */,
 				8C9FA4442BD282B00041F28E /* MyBidsView.swift in Sources */,
 				8C4B7BB72BB9C1080043B892 /* TextSecuredStyles.swift in Sources */,
 				8CABF5BD2BB9C60900A34870 /* PasswordResetConfirmationView.swift in Sources */,
 				8CC6BEE92BD439A9007C999F /* DataFormatter.swift in Sources */,
 				8CABF5BB2BB9C5F400A34870 /* ForgotPasswordView.swift in Sources */,
+				8C9159D52C12758B005C9D11 /* SearchItemView.swift in Sources */,
 				CE9E2D0E2BC845D70008FD8A /* Inspection.swift in Sources */,
 				8C4BFB7F2BE18AED00B47154 /* BannerModel.swift in Sources */,
 				8CABF5CC2BB9CF0300A34870 /* ChooseEnvironmentView.swift in Sources */,
