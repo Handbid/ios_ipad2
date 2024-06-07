@@ -36,4 +36,5 @@
 "registration_label_resetPassword" = "重设密码";
 "registration_label_selectEnvironment" = "选择环境";
 "registration_label_welcomeHandbid" = "欢迎使用\nHandbid 应用程序";
+"search_item_label" = "Search Item";
 "topBar_btn_allAuction" = "All auctions";
