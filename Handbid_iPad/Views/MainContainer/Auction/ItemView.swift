@@ -9,8 +9,8 @@ struct ItemView: View {
 	var body: some View {
 		ZStack(alignment: .topTrailing) {
 			RoundedRectangle(cornerRadius: 40.0)
-				.foregroundStyle(colorScheme == .dark ? .black : .white)
-				.shadow(color: Color.accentGrayBorder.opacity(0.6), radius: 10, x: 0, y: 2)
+				.foregroundStyle(.itemBackground)
+				.shadow(color: .itemShadow, radius: 10, x: 0, y: 2)
 
 			itemContent
 
@@ -58,7 +58,7 @@ struct ItemView: View {
 				Text("#\(item.itemCode ?? "NaN")")
 					.applyTextStyle(style: .leadingLabel)
 
-				if !item.isDirectPurchaseItem!, !item.isAppeal!, !item.isTicket! {
+				if item.isDirectPurchaseItem == false, item.isAppeal == false, item.isTicket == false {
 					Divider()
 
 					let format = String(localized: "item_label_numberOfBids")

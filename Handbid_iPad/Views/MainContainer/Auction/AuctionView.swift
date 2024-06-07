@@ -19,7 +19,7 @@ struct AuctionView: ContentView {
 			}
 		}
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
-		.background(Color.accentGrayBackground)
+		.background(.containerBackground)
 		.edgesIgnoringSafeArea(.all)
 	}
 
@@ -40,9 +40,7 @@ struct AuctionView: ContentView {
 			.padding()
 
 			Text(LocalizedStringKey("auction_label_noItems"))
-				.font(.system(size: 11, weight: .regular))
-				.foregroundColor(.primary)
-				.lineLimit(1)
+				.applyTextStyle(style: .body)
 
 			Spacer()
 		}
