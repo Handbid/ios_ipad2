@@ -30,7 +30,7 @@ class LogInViewModelTests: XCTestCase {
 
 		Task {
 			viewModel.logIn()
-			try await Task.sleep(nanoseconds: 200_000_000)
+			try await Task.sleep(for: .seconds(0.2))
 			XCTAssertTrue(self.viewModel.isFormValid, "Form should be valid with correct email and password")
 			XCTAssertFalse(self.viewModel.showError, "showError should be false when the form is valid")
 			XCTAssertEqual(self.viewModel.errorMessage, "", "errorMessage should be empty when the form is valid")
@@ -73,7 +73,7 @@ class LogInViewModelTests: XCTestCase {
 
 		Task {
 			viewModel.logIn()
-			try await Task.sleep(nanoseconds: 200_000_000)
+			try await Task.sleep(for: .seconds(0.2))
 			XCTAssertTrue(self.viewModel.showError)
 			XCTAssertEqual(self.viewModel.errorMessage, NSLocalizedString("login_label_incorrectCredentials", comment: "Incorrect email or password"))
 			expectation.fulfill()
@@ -91,7 +91,7 @@ class LogInViewModelTests: XCTestCase {
 
 		Task {
 			viewModel.logIn()
-			try await Task.sleep(nanoseconds: 200_000_000)
+			try await Task.sleep(for: .seconds(0.2))
 			XCTAssertTrue(self.viewModel.isFormValid)
 			XCTAssertTrue(self.viewModel.showError)
 			XCTAssertEqual(self.viewModel.errorMessage, "")
@@ -110,13 +110,13 @@ class LogInViewModelTests: XCTestCase {
 
 		Task {
 			viewModel.logIn()
-			try await Task.sleep(nanoseconds: 200_000_000)
+			try await Task.sleep(for: .seconds(0.2))
 			XCTAssertTrue(self.viewModel.isFormValid)
 			XCTAssertFalse(self.viewModel.showError)
 
 			mockAuthManager.shouldReturnSuccess = false
 			viewModel.logIn()
-			try await Task.sleep(nanoseconds: 200_000_000)
+			try await Task.sleep(for: .seconds(0.2))
 			XCTAssertTrue(self.viewModel.showError)
 			expectation.fulfill()
 		}
