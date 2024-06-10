@@ -36,4 +36,5 @@
 "registration_label_resetPassword" = "Reset Password";
 "registration_label_selectEnvironment" = "Select Environment";
 "registration_label_welcomeHandbid" = "Welcome to \nHandbid App";
+"search_item_label" = "Search Item";
 "topBar_btn_allAuction" = "All auctions";
