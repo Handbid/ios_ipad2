@@ -76,7 +76,6 @@ struct GetStartedView<T: PageProtocol>: View {
 			}.accessibilityIdentifier("registration_btn_login")
 
 			Button<Text>.styled(config: .secondaryButtonStyle, action: {
-				fatalError()
 				viewModel.logInAnonymously()
 			}) {
 				Text(LocalizedStringKey("registration_btn_demoVersion"))
