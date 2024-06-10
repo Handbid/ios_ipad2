@@ -18,13 +18,18 @@ struct SearchItemsView<T: PageProtocol>: View {
 				topBarContent(for: .searchItems)
 					.accessibility(identifier: "topBar")
 					.frame(height: 150)
-				LazyVGrid(columns: columns, spacing: 20) {
-					ForEach(viewModel.filteredItems, id: \.id) { _ in
-						//                        AuctionCollectionCellView<MainContainerPage>(auction: auction)
-						//                            .frame(width: cellWidth, height: cellHeight)
-						//                            .accessibilityIdentifier("AuctionCollectionCellView_\(auction.id)")
+				ScrollView {
+					LazyVGrid(columns: columns, spacing: 20) {
+						ForEach(viewModel.filteredItems, id: \.id) { item in
+							ItemView(item: item)
+								.frame(width: cellWidth, height: cellHeight)
+								.accessibilityIdentifier("ItemsCollectionCellView")
+						}
 					}
+					.padding()
 				}
+				.accessibilityIdentifier("ItemsScrollView")
+				Spacer()
 			}
 		}
 		.navigationBarBackButtonHidden()
