@@ -7,6 +7,7 @@ struct SearchItemsView<T: PageProtocol>: View {
 	@ObservedObject var viewModel: SearchItemsViewModel
 	@StateObject var deviceContext = DeviceContext()
 	@FocusState private var focusedField: Field?
+	var inspection = Inspection<Self>()
 
 	private let cellWidth: CGFloat = 307
 	private let cellHeight: CGFloat = 370
@@ -31,6 +32,9 @@ struct SearchItemsView<T: PageProtocol>: View {
 				.accessibilityIdentifier("ItemsScrollView")
 				Spacer()
 			}
+		}
+		.onReceive(inspection.notice) {
+			inspection.visit(self, $0)
 		}
 		.navigationBarBackButtonHidden()
 	}
