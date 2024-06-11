@@ -292,3 +292,360 @@ extension AuctionModel: ArrowParsable {
 		}
 	}
 }
+
+extension AuctionModel {
+	enum AuctionModelFields: String {
+		case id
+		case identity
+		case key
+		case imageUrl
+		case auctionGuid
+		case name
+		case status
+		case timeZone
+		case startTime
+		case endTime
+		case hasExtendedBidding
+		case extendedBiddingTimeoutInMinutes
+		case requireCreditCard
+		case spendingThreshold
+		case auctionDescription
+		case auctionMessage
+		case currentPaddleNumber
+		case timerStartTime
+		case timerEndTime
+		case timerRemaining
+		case currencyCode
+		case currencySymbol
+		case totalBidders
+		case totalItems
+		case enableTicketSales
+		case organization
+		case categories
+		case vanityAddress
+		case auctionAddress
+		case enableCreditCardSupport
+		case enableCustomDonations
+		case enableDoubleDonation
+		case about
+		case taxRate
+		case taxLabel
+		case lat
+		case lng
+		case itemsSort
+		case attire
+		case gatewayId
+		case extraGateways
+		case requireTicketsToRegister
+		case requireTicketForOwners
+		case maxPaddleNumber
+		case hasPuzzle
+		case applicationFee
+		case amexFee
+		case txnFee
+		case isFundraiser
+		case isPrivate
+		case isVirtual
+		case allowTeamCreation
+		case goal
+		case showGoals
+		case eventRevenue
+		case donationLevels
+		case enableMinimumDonationAmount
+		case minimumDonationAmount
+		case donationTax
+		case enableOfflineDonations
+		case offlineDonationsUpdateThermometer
+		case bigDonationsNotifications
+		case bigDonationsAmount
+		case defaultPageGoal
+		case enablePromptPurchaseCoverCC
+		case enablePromptPurchaseCoverCCByDefault
+		case allowPledgeDonations
+		case allowRecurringDonations
+		case enableCustomPaddles
+		case paddleAutoAssignStartingNumber
+		case streamStatus
+		case streamProvider
+		case streamDateStart
+		case streamDateCompleted
+		case streamUrl
+		case streamSponsorText
+		case streamSponsorImage
+		case goalAppeal
+		case goalTicket
+		case revenueAppeal
+		case revenueTicket
+		case bidderAddItems
+		case requireTicketToBid
+		case isNonAuctionEvent
+		case promotedDonationBlock
+		case allowMonthlyDonations
+		case allowQuarterlyDonations
+		case allowAnnuallyDonations
+		case defaultDonationFrequency
+		case minDonationDurationAllowed
+		case maxDonationDurationAllowed
+		case enableChat
+		case bidder
+		case tickets
+		case puzzles
+		case promotedItem
+		case promotedPoll
+		case facebookPixel
+		case dtdPublicKey
+		case organizationEmail
+		case onSiteCustomLabel
+		case offSiteCustomLabel
+		case templateCustomTerms
+		case landingPage
+		case socialImage
+		case donationTicketImage
+		case enableLandingPage
+		case isPrivateEvent
+		case organizationName
+		case auctionAddressStreet1
+		case auctionAddressStreet2
+		case auctionAddressPostalCode
+		case auctionAddressCity
+		case auctionAddressProvince
+		case count
+	}
+
+	mutating func merge(with model: AuctionModel, fields: [AuctionModelFields]) {
+		for field in fields {
+			switch field {
+			case .id:
+				id = model.id
+			case .identity:
+				identity = model.identity
+			case .key:
+				key = model.key
+			case .imageUrl:
+				imageUrl = model.imageUrl
+			case .auctionGuid:
+				auctionGuid = model.auctionGuid
+			case .name:
+				name = model.name
+			case .status:
+				status = model.status
+			case .timeZone:
+				timeZone = model.timeZone
+			case .startTime:
+				startTime = model.startTime
+			case .endTime:
+				endTime = model.endTime
+			case .hasExtendedBidding:
+				hasExtendedBidding = model.hasExtendedBidding
+			case .extendedBiddingTimeoutInMinutes:
+				extendedBiddingTimeoutInMinutes = model.extendedBiddingTimeoutInMinutes
+			case .requireCreditCard:
+				requireCreditCard = model.requireCreditCard
+			case .spendingThreshold:
+				spendingThreshold = model.spendingThreshold
+			case .auctionDescription:
+				auctionDescription = model.auctionDescription
+			case .auctionMessage:
+				auctionMessage = model.auctionMessage
+			case .currentPaddleNumber:
+				currentPaddleNumber = model.currentPaddleNumber
+			case .timerStartTime:
+				timerStartTime = model.timerStartTime
+			case .timerEndTime:
+				timerEndTime = model.timerEndTime
+			case .timerRemaining:
+				timerRemaining = model.timerRemaining
+			case .currencyCode:
+				currencyCode = model.currencyCode
+			case .currencySymbol:
+				currencySymbol = model.currencySymbol
+			case .totalBidders:
+				totalBidders = model.totalBidders
+			case .totalItems:
+				totalItems = model.totalItems
+			case .enableTicketSales:
+				enableTicketSales = model.enableTicketSales
+			case .organization:
+				organization = model.organization
+			case .categories:
+				categories = model.categories
+			case .vanityAddress:
+				vanityAddress = model.vanityAddress
+			case .auctionAddress:
+				auctionAddress = model.auctionAddress
+			case .enableCreditCardSupport:
+				enableCreditCardSupport = model.enableCreditCardSupport
+			case .enableCustomDonations:
+				enableCustomDonations = model.enableCustomDonations
+			case .enableDoubleDonation:
+				enableDoubleDonation = model.enableDoubleDonation
+			case .about:
+				about = model.about
+			case .taxRate:
+				taxRate = model.taxRate
+			case .taxLabel:
+				taxLabel = model.taxLabel
+			case .lat:
+				lat = model.lat
+			case .lng:
+				lng = model.lng
+			case .itemsSort:
+				itemsSort = model.itemsSort
+			case .attire:
+				attire = model.attire
+			case .gatewayId:
+				gatewayId = model.gatewayId
+			case .extraGateways:
+				extraGateways = model.extraGateways
+			case .requireTicketsToRegister:
+				requireTicketsToRegister = model.requireTicketsToRegister
+			case .requireTicketForOwners:
+				requireTicketForOwners = model.requireTicketForOwners
+			case .maxPaddleNumber:
+				maxPaddleNumber = model.maxPaddleNumber
+			case .hasPuzzle:
+				hasPuzzle = model.hasPuzzle
+			case .applicationFee:
+				applicationFee = model.applicationFee
+			case .amexFee:
+				amexFee = model.amexFee
+			case .txnFee:
+				txnFee = model.txnFee
+			case .isFundraiser:
+				isFundraiser = model.isFundraiser
+			case .isPrivate:
+				isPrivate = model.isPrivate
+			case .isVirtual:
+				isVirtual = model.isVirtual
+			case .allowTeamCreation:
+				allowTeamCreation = model.allowTeamCreation
+			case .goal:
+				goal = model.goal
+			case .showGoals:
+				showGoals = model.showGoals
+			case .eventRevenue:
+				eventRevenue = model.eventRevenue
+			case .donationLevels:
+				donationLevels = model.donationLevels
+			case .enableMinimumDonationAmount:
+				enableMinimumDonationAmount = model.enableMinimumDonationAmount
+			case .minimumDonationAmount:
+				minimumDonationAmount = model.minimumDonationAmount
+			case .donationTax:
+				donationTax = model.donationTax
+			case .enableOfflineDonations:
+				enableOfflineDonations = model.enableOfflineDonations
+			case .offlineDonationsUpdateThermometer:
+				offlineDonationsUpdateThermometer = model.offlineDonationsUpdateThermometer
+			case .bigDonationsNotifications:
+				bigDonationsNotifications = model.bigDonationsNotifications
+			case .bigDonationsAmount:
+				bigDonationsAmount = model.bigDonationsAmount
+			case .defaultPageGoal:
+				defaultPageGoal = model.defaultPageGoal
+			case .enablePromptPurchaseCoverCC:
+				enablePromptPurchaseCoverCC = model.enablePromptPurchaseCoverCC
+			case .enablePromptPurchaseCoverCCByDefault:
+				enablePromptPurchaseCoverCCByDefault = model.enablePromptPurchaseCoverCCByDefault
+			case .allowPledgeDonations:
+				allowPledgeDonations = model.allowPledgeDonations
+			case .allowRecurringDonations:
+				allowRecurringDonations = model.allowRecurringDonations
+			case .enableCustomPaddles:
+				enableCustomPaddles = model.enableCustomPaddles
+			case .paddleAutoAssignStartingNumber:
+				paddleAutoAssignStartingNumber = model.paddleAutoAssignStartingNumber
+			case .streamStatus:
+				streamStatus = model.streamStatus
+			case .streamProvider:
+				streamProvider = model.streamProvider
+			case .streamDateStart:
+				streamDateStart = model.streamDateStart
+			case .streamDateCompleted:
+				streamDateCompleted = model.streamDateCompleted
+			case .streamUrl:
+				streamUrl = model.streamUrl
+			case .streamSponsorText:
+				streamSponsorText = model.streamSponsorText
+			case .streamSponsorImage:
+				streamSponsorImage = model.streamSponsorImage
+			case .goalAppeal:
+				goalAppeal = model.goalAppeal
+			case .goalTicket:
+				goalTicket = model.goalTicket
+			case .revenueAppeal:
+				revenueAppeal = model.revenueAppeal
+			case .revenueTicket:
+				revenueTicket = model.revenueTicket
+			case .bidderAddItems:
+				bidderAddItems = model.bidderAddItems
+			case .requireTicketToBid:
+				requireTicketToBid = model.requireTicketToBid
+			case .isNonAuctionEvent:
+				isNonAuctionEvent = model.isNonAuctionEvent
+			case .promotedDonationBlock:
+				promotedDonationBlock = model.promotedDonationBlock
+			case .allowMonthlyDonations:
+				allowMonthlyDonations = model.allowMonthlyDonations
+			case .allowQuarterlyDonations:
+				allowQuarterlyDonations = model.allowQuarterlyDonations
+			case .allowAnnuallyDonations:
+				allowAnnuallyDonations = model.allowAnnuallyDonations
+			case .defaultDonationFrequency:
+				defaultDonationFrequency = model.defaultDonationFrequency
+			case .minDonationDurationAllowed:
+				minDonationDurationAllowed = model.minDonationDurationAllowed
+			case .maxDonationDurationAllowed:
+				maxDonationDurationAllowed = model.maxDonationDurationAllowed
+			case .enableChat:
+				enableChat = model.enableChat
+			case .bidder:
+				bidder = model.bidder
+			case .tickets:
+				tickets = model.tickets
+			case .puzzles:
+				puzzles = model.puzzles
+			case .promotedItem:
+				promotedItem = model.promotedItem
+			case .promotedPoll:
+				promotedPoll = model.promotedPoll
+			case .facebookPixel:
+				facebookPixel = model.facebookPixel
+			case .dtdPublicKey:
+				dtdPublicKey = model.dtdPublicKey
+			case .organizationEmail:
+				organizationEmail = model.organizationEmail
+			case .onSiteCustomLabel:
+				onSiteCustomLabel = model.onSiteCustomLabel
+			case .offSiteCustomLabel:
+				offSiteCustomLabel = model.offSiteCustomLabel
+			case .templateCustomTerms:
+				templateCustomTerms = model.templateCustomTerms
+			case .landingPage:
+				landingPage = model.landingPage
+			case .socialImage:
+				socialImage = model.socialImage
+			case .donationTicketImage:
+				donationTicketImage = model.donationTicketImage
+			case .enableLandingPage:
+				enableLandingPage = model.enableLandingPage
+			case .isPrivateEvent:
+				isPrivateEvent = model.isPrivateEvent
+			case .organizationName:
+				organizationName = model.organizationName
+			case .auctionAddressStreet1:
+				auctionAddressStreet1 = model.auctionAddressStreet1
+			case .auctionAddressStreet2:
+				auctionAddressStreet2 = model.auctionAddressStreet2
+			case .auctionAddressPostalCode:
+				auctionAddressPostalCode = model.auctionAddressPostalCode
+			case .auctionAddressCity:
+				auctionAddressCity = model.auctionAddressCity
+			case .auctionAddressProvince:
+				auctionAddressProvince = model.auctionAddressProvince
+			case .count:
+				count = model.count
+			}
+		}
+	}
+}

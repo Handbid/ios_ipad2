@@ -25,11 +25,13 @@ struct ItemView: View {
 
 	private var itemContent: some View {
 		VStack {
-			AsyncImage(url: URL(string: item.imageUrl ?? "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png")) { phase in
+			AsyncImage(url: URL(string: item.imageUrl ?? "")) { phase in
 				switch phase {
 				case .empty:
 					ProgressView()
 						.progressViewStyle(CircularProgressViewStyle())
+						.scaledToFit()
+						.frame(width: 255, height: 187, alignment: .center)
 				case let .success(image):
 					image.resizable()
 						.aspectRatio(contentMode: .fit)

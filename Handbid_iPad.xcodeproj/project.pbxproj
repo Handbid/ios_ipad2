@@ -231,6 +231,8 @@
 		CE073EE42BB4809C0079F342 /* FormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE073EE32BB4809C0079F342 /* FormField.swift */; };
 		CE0CEE7F2BBEB39F004A27FD /* ResetPasswordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CEE7E2BBEB39F004A27FD /* ResetPasswordRepository.swift */; };
 		CE0CEE812BBED0B4004A27FD /* ResetPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0CEE802BBED0B4004A27FD /* ResetPasswordModel.swift */; };
+		CE1791622C18A05D009F09A3 /* AuctionProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1791612C18A05D009F09A3 /* AuctionProcessor.swift */; };
+		CE1791642C18A57B009F09A3 /* WebSocketMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1791632C18A57B009F09A3 /* WebSocketMessageModel.swift */; };
 		CE1E7BBC2BD0286D00BD3DD1 /* ChooseEnvironmentView_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1E7BBB2BD0286D00BD3DD1 /* ChooseEnvironmentView_Tests.swift */; };
 		CE1E7BBE2BD028B600BD3DD1 /* MockChooseEnvironmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1E7BBD2BD028B600BD3DD1 /* MockChooseEnvironmentViewModel.swift */; };
 		CE2022B72C0F0D120009415D /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2022B62C0F0D120009415D /* ItemView.swift */; };
@@ -497,6 +499,8 @@
 		CE073EE32BB4809C0079F342 /* FormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormField.swift; sourceTree = "<group>"; };
 		CE0CEE7E2BBEB39F004A27FD /* ResetPasswordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordRepository.swift; sourceTree = "<group>"; };
 		CE0CEE802BBED0B4004A27FD /* ResetPasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordModel.swift; sourceTree = "<group>"; };
+		CE1791612C18A05D009F09A3 /* AuctionProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionProcessor.swift; sourceTree = "<group>"; };
+		CE1791632C18A57B009F09A3 /* WebSocketMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketMessageModel.swift; sourceTree = "<group>"; };
 		CE1E7BBB2BD0286D00BD3DD1 /* ChooseEnvironmentView_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseEnvironmentView_Tests.swift; sourceTree = "<group>"; };
 		CE1E7BBD2BD028B600BD3DD1 /* MockChooseEnvironmentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockChooseEnvironmentViewModel.swift; sourceTree = "<group>"; };
 		CE2022B62C0F0D120009415D /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
@@ -803,6 +807,7 @@
 				CE0CEE802BBED0B4004A27FD /* ResetPasswordModel.swift */,
 				8C4BFB702BE1887F00B47154 /* TicketModel.swift */,
 				8C4BFB5A2BE113B000B47154 /* UserModel.swift */,
+				CE1791632C18A57B009F09A3 /* WebSocketMessageModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1037,6 +1042,7 @@
 				8C79B4112C040D84005D4AAB /* ProcessorRegistry.swift */,
 				8C79B4122C040D84005D4AAB /* UserProcessor.swift */,
 				8C79B4132C040D84005D4AAB /* WebSocketProcessor.swift */,
+				CE1791612C18A05D009F09A3 /* AuctionProcessor.swift */,
 			);
 			path = Processors;
 			sourceTree = "<group>";
@@ -1718,6 +1724,7 @@
 				8CABF5CA2BB9CEF900A34870 /* ChooseEnvironmentViewModel.swift in Sources */,
 				8CD1080E2BD122CC00E83261 /* AuctionView.swift in Sources */,
 				8C4BFB542BDFAE2000B47154 /* AuctionFilterButtonViewModel.swift in Sources */,
+				CE1791622C18A05D009F09A3 /* AuctionProcessor.swift in Sources */,
 				8CABF5C32BB9C64E00A34870 /* ForgotPasswordViewModel.swift in Sources */,
 				8C79B4232C040D84005D4AAB /* HandbidEventDelegate.swift in Sources */,
 				8CBDAAC82BC432470010908F /* DispatchQueue.swift in Sources */,
@@ -1803,6 +1810,7 @@
 				8C9FA4442BD282B00041F28E /* MyBidsView.swift in Sources */,
 				8C4B7BB72BB9C1080043B892 /* TextSecuredStyles.swift in Sources */,
 				8CABF5BD2BB9C60900A34870 /* PasswordResetConfirmationView.swift in Sources */,
+				CE1791642C18A57B009F09A3 /* WebSocketMessageModel.swift in Sources */,
 				8CC6BEE92BD439A9007C999F /* DataFormatter.swift in Sources */,
 				8CABF5BB2BB9C5F400A34870 /* ForgotPasswordView.swift in Sources */,
 				CE9E2D0E2BC845D70008FD8A /* Inspection.swift in Sources */,
