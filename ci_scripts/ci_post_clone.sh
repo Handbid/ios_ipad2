@@ -4,4 +4,3 @@ defaults write com.apple.dt.Xcode IDESkipPackagePluginFingerprintValidatation -b
 defaults write com.apple.dt.Xcode IDESkipMacroFingerprintValidation -bool YES
 defaults delete com.apple.dt.Xcode IDEPackageOnlyUseVersionsFromResolvedFile
 defaults delete com.apple.dt.Xcode IDEDisableAutomaticPackageResolution
-

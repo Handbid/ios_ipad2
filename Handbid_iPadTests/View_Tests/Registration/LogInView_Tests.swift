@@ -1,6 +1,7 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
 @testable import Handbid_iPad
+import ProgressIndicatorView
 import SwiftUI
 import ViewInspector
 import XCTest
@@ -10,6 +11,7 @@ final class LogInViewTests: XCTestCase {
 	private var sut: AnyView!
 	private var coordinator: Coordinator<RegistrationPage, Any?>!
 	private var mockViewModel: MockLogInViewModel!
+	private var loadingView: LoadingView!
 
 	override func setUp() {
 		super.setUp()
@@ -17,6 +19,7 @@ final class LogInViewTests: XCTestCase {
 		mockViewModel = MockLogInViewModel()
 		view = LogInView(viewModel: mockViewModel)
 		sut = AnyView(view.environmentObject(coordinator))
+		loadingView = LoadingView(isVisible: .constant(true))
 	}
 
 	override func tearDown() {
@@ -24,6 +27,7 @@ final class LogInViewTests: XCTestCase {
 		mockViewModel = nil
 		view = nil
 		sut = nil
+		loadingView = nil
 		super.tearDown()
 	}
 
@@ -99,10 +103,10 @@ final class LogInViewTests: XCTestCase {
 	}
 
 	func testAlertShowingWhenFieldsInViewModelChange() {
-		let exp = view.inspection.inspect(onReceive: mockViewModel.$showError) { _ in
-			let alert = try self.sut.inspect().find(ViewType.ZStack.self).alert()
-			XCTAssertEqual(try alert.message().text().string(), "test")
+		let exp = view.inspection.inspect(onReceive: mockViewModel.$showError) { view in
+			let alert = try view.find(ViewType.Alert.self)
 			try alert.actions().button().tap()
+			XCTAssertEqual(try alert.message().text().string(), "test")
 		}
 
 		let exp2 = view.inspection.inspect(onReceive: mockViewModel.$resetErrorMessageCalled) { _ in
@@ -133,5 +137,23 @@ final class LogInViewTests: XCTestCase {
 		mockViewModel.isFormValid = false
 
 		wait(for: [exp], timeout: 1)
+	}
+
+	func testLoadingViewVisible() {
+		ViewHosting.host(view: AnyView(loadingView))
+		XCTAssertNoThrow(try loadingView.inspect().find(ProgressIndicatorView.self))
+	}
+
+	func testLoadingAnimationTriggered() {
+		ViewHosting.host(view: AnyView(loadingView))
+
+		let exp = expectation(description: "Animation triggered")
+
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+			XCTAssertTrue(self.loadingView.isVisible)
+			exp.fulfill()
+		}
+
+		wait(for: [exp], timeout: 1.0)
 	}
 }

@@ -4,9 +4,10 @@
 
 class MockAuthManager: AuthManager {
 	var loginWithAuthModelCalled = false
+	var shouldReturnSuccess = true
 
 	override func loginWithAuthModel(auth _: AuthModel) async -> Bool {
 		loginWithAuthModelCalled = true
-		return true
+		return shouldReturnSuccess
 	}
 }
