@@ -127,26 +127,6 @@ extension AuctionModel: ArrowParsable {
 		self.id = String()
 	}
 
-	enum CodingKeys: String, CodingKey {
-		case id, key, imageUrl, auctionGuid, name, status, timeZone, startTime, endTime, hasExtendedBidding,
-		     extendedBiddingTimeoutInMinutes, requireCreditCard, spendingThreshold, auctionDescription = "description",
-		     auctionMessage, currentPaddleNumber, timerStartTime, timerEndTime, timerRemaining, currencyCode, currencySymbol,
-		     totalBidders, totalItems, enableTicketSales, organization, categories, vanityAddress, auctionAddress,
-		     enableCreditCardSupport, enableCustomDonations, enableDoubleDonation, about, taxRate, taxLabel, lat, lng,
-		     itemsSort, attire, gatewayId, extraGateways, requireTicketsToRegister, requireTicketForOwners, maxPaddleNumber,
-		     hasPuzzle, applicationFee, amexFee, txnFee, isFundraiser, isPrivate, isVirtual, allowTeamCreation, goal, showGoals,
-		     eventRevenue, donationLevels, enableMinimumDonationAmount, minimumDonationAmount, donationTax, enableOfflineDonations,
-		     offlineDonationsUpdateThermometer, bigDonationsNotifications, bigDonationsAmount, defaultPageGoal, enablePromptPurchaseCoverCC,
-		     enablePromptPurchaseCoverCCByDefault, allowPledgeDonations, allowRecurringDonations, enableCustomPaddles, paddleAutoAssignStartingNumber,
-		     streamStatus, streamProvider, streamDateStart, streamDateCompleted, streamUrl, streamSponsorText, streamSponsorImage,
-		     goalAppeal, goalTicket, revenueAppeal, revenueTicket, bidderAddItems, requireTicketToBid, isNonAuctionEvent, promotedDonationBlock,
-		     allowMonthlyDonations, allowQuarterlyDonations, allowAnnuallyDonations, defaultDonationFrequency, minDonationDurationAllowed,
-		     maxDonationDurationAllowed, enableChat, bidder, tickets, puzzles, promotedItem, promotedPoll, facebookPixel, dtdPublicKey,
-		     organizationEmail, onSiteCustomLabel, offSiteCustomLabel, templateCustomTerms, landingPage, socialImage, donationTicketImage,
-		     enableLandingPage, isPrivateEvent, organizationName, auctionAddressStreet1, auctionAddressStreet2, auctionAddressPostalCode,
-		     auctionAddressCity, auctionAddressProvince, count
-	}
-
 	mutating func deserialize(_ json: JSON) {
 		id <-- json["auctionGuid"]
 		identity <-- json["id"]
@@ -246,7 +226,7 @@ extension AuctionModel: ArrowParsable {
 		donationTicketImage <-- json["donationTicketImage"]
 		enableLandingPage <-- json["enableLandingPage"]
 		isPrivateEvent <-- json["isPrivateEvent"]
-		bidder <-- json["bidder"]
+		// bidder <-- json["bidder"]
 		organizationName <-- json["organizationName"]
 		auctionAddressStreet1 <-- json["auctionAddressStreet1"]
 		auctionAddressStreet2 <-- json["auctionAddressStreet2"]

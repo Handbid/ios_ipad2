@@ -3,8 +3,8 @@
 import Arrow
 import NetworkService
 
-struct BidderModel: Decodable, NetworkingJSONDecodable {
-	var id: Int?
+struct BidderModel: Identifiable, Codable, NetworkingJSONDecodable, AutoEncodable {
+	var id: Int
 	var pin: Int?
 	var usersGuid: String?
 	var stripeId: String?
@@ -36,6 +36,10 @@ struct BidderModel: Decodable, NetworkingJSONDecodable {
 }
 
 extension BidderModel: ArrowParsable {
+	init() {
+		self.id = Int()
+	}
+
 	mutating func deserialize(_ json: JSON) {
 		id <-- json["id"]
 		pin <-- json["pin"]
