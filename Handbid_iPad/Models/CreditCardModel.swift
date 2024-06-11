@@ -3,8 +3,8 @@
 import Arrow
 import NetworkService
 
-struct CreditCardModel: Codable, NetworkingJSONDecodable {
-	var id: Int?
+struct CreditCardModel: Identifiable, Codable, NetworkingJSONDecodable, AutoEncodable {
+	var id: String
 	var creditCardsGuid: String?
 	var creditCardHandle: String?
 	var creditCardToken: String?
@@ -26,6 +26,10 @@ struct CreditCardModel: Codable, NetworkingJSONDecodable {
 }
 
 extension CreditCardModel: ArrowParsable {
+	init() {
+		self.id = String()
+	}
+
 	mutating func deserialize(_ json: JSON) {
 		id <-- json["id"]
 		creditCardsGuid <-- json["creditCardsGuid"]

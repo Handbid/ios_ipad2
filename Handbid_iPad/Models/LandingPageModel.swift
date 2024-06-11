@@ -3,7 +3,7 @@
 import Arrow
 import NetworkService
 
-struct LandingPageModel: Decodable, NetworkingJSONDecodable {
+struct LandingPageModel: Identifiable, Codable, NetworkingJSONDecodable, AutoEncodable {
 	var id: Int?
 	var isPublished: Bool?
 	var loadingGearsUrl: String?

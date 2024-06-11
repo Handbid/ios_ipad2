@@ -3,7 +3,8 @@
 import Arrow
 import NetworkService
 
-struct Banner: Decodable, NetworkingJSONDecodable {
+struct Banner: Identifiable, Codable, NetworkingJSONDecodable, AutoEncodable {
+	var id: Int?
 	var imageUrl: String?
 	var link: String?
 }
