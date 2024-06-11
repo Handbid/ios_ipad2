@@ -6,6 +6,7 @@ struct AuctionCollectionCellView<T: PageProtocol>: View {
 	@EnvironmentObject var coordinator: Coordinator<T, Any?>
 	@Environment(\.colorScheme) private var defaultColorScheme
 	var colorScheme: ColorScheme? = nil
+	let dataManager = DataManager.shared
 	let auction: AuctionModel
 	var inspection = Inspection<Self>()
 
@@ -13,7 +14,13 @@ struct AuctionCollectionCellView<T: PageProtocol>: View {
 		let colorScheme = colorScheme ?? defaultColorScheme
 
 		Button(action: {
-			coordinator.push(MainContainerPage.mainContainer as! T)
+			do {
+				try dataManager.create(auction, in: .auction)
+				coordinator.push(MainContainerPage.mainContainer as! T)
+			}
+			catch {
+				print(error)
+			}
 		}) {
 			VStack(alignment: .center, spacing: 10) {
 				VStack {

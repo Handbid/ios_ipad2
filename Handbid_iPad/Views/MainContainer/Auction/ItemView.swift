@@ -9,8 +9,8 @@ struct ItemView: View {
 	var body: some View {
 		ZStack(alignment: .topTrailing) {
 			RoundedRectangle(cornerRadius: 40.0)
-				.foregroundStyle(colorScheme == .dark ? .black : .white)
-				.shadow(color: Color.accentGrayBorder.opacity(0.6), radius: 10, x: 0, y: 2)
+				.foregroundStyle(.itemBackground)
+				.shadow(color: .itemShadow, radius: 10, x: 0, y: 2)
 
 			itemContent
 
@@ -25,11 +25,13 @@ struct ItemView: View {
 
 	private var itemContent: some View {
 		VStack {
-			AsyncImage(url: URL(string: item.imageUrl ?? "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png")) { phase in
+			AsyncImage(url: URL(string: item.imageUrl ?? "")) { phase in
 				switch phase {
 				case .empty:
 					ProgressView()
 						.progressViewStyle(CircularProgressViewStyle())
+						.scaledToFit()
+						.frame(width: 255, height: 187, alignment: .center)
 				case let .success(image):
 					image.resizable()
 						.aspectRatio(contentMode: .fit)
@@ -58,7 +60,7 @@ struct ItemView: View {
 				Text("#\(item.itemCode ?? "NaN")")
 					.applyTextStyle(style: .leadingLabel)
 
-				if !item.isDirectPurchaseItem!, !item.isAppeal!, !item.isTicket! {
+				if item.isDirectPurchaseItem == false, item.isAppeal == false, item.isTicket == false {
 					Divider()
 
 					let format = String(localized: "item_label_numberOfBids")

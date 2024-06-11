@@ -3,12 +3,17 @@
 import Arrow
 import NetworkService
 
-struct AboutModel: Decodable, NetworkingJSONDecodable {
+struct AboutModel: Identifiable, Codable, NetworkingJSONDecodable, AutoEncodable {
+	var id: String
 	var banner: Banner?
 	var images: [String]?
 }
 
 extension AboutModel: ArrowParsable {
+	init() {
+		self.id = String()
+	}
+
 	mutating func deserialize(_ json: JSON) {
 		banner <-- json["banner"]
 		images <-- json["images"]

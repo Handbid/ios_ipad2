@@ -4,6 +4,7 @@ import SwiftUI
 
 struct AuctionView: ContentView {
 	@ObservedObject var viewModel: AuctionViewModel
+	@State var categories: [CategoryModel] = []
 
 	init(viewModel: AuctionViewModel) {
 		self.viewModel = viewModel
@@ -11,7 +12,7 @@ struct AuctionView: ContentView {
 
 	var body: some View {
 		VStack {
-			if viewModel.categories.isEmpty {
+			if categories.isEmpty {
 				noItemsView
 			}
 			else {
@@ -19,8 +20,14 @@ struct AuctionView: ContentView {
 			}
 		}
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
-		.background(Color.accentGrayBackground)
+		.background(.containerBackground)
 		.edgesIgnoringSafeArea(.all)
+		.onReceive(viewModel.$categories) { categories in
+			self.categories = categories
+		}
+		.onAppear {
+			viewModel.refreshData()
+		}
 	}
 
 	private var noItemsView: some View {
@@ -40,9 +47,7 @@ struct AuctionView: ContentView {
 			.padding()
 
 			Text(LocalizedStringKey("auction_label_noItems"))
-				.font(.system(size: 11, weight: .regular))
-				.foregroundColor(.primary)
-				.lineLimit(1)
+				.applyTextStyle(style: .body)
 
 			Spacer()
 		}
@@ -50,8 +55,10 @@ struct AuctionView: ContentView {
 
 	private var categoriesList: some View {
 		ScrollView(.vertical) {
-			ForEach(viewModel.categories, id: \.id) { category in
-				createCategoryView(for: category)
+			LazyVStack {
+				ForEach(categories, id: \.id) { category in
+					createCategoryView(for: category)
+				}
 			}
 		}
 	}
@@ -63,8 +70,10 @@ struct AuctionView: ContentView {
 				.padding()
 
 			ScrollView(.horizontal) {
-				ForEach(category.items ?? [], id: \.id) { item in
-					ItemView(item: item)
+				LazyHStack {
+					ForEach(category.items ?? [], id: \.id) { item in
+						ItemView(item: item)
+					}.padding()
 				}
 			}
 			.defaultScrollAnchor(.leading)

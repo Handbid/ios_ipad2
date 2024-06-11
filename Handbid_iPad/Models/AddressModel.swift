@@ -3,7 +3,8 @@
 import Arrow
 import NetworkService
 
-struct AddressModel: Codable, NetworkingJSONDecodable {
+struct AddressModel: Identifiable, Codable, NetworkingJSONDecodable, AutoEncodable {
+	var id: String
 	var street: String?
 	var street1: String?
 	var street2: String?
@@ -15,6 +16,10 @@ struct AddressModel: Codable, NetworkingJSONDecodable {
 }
 
 extension AddressModel: ArrowParsable {
+	init() {
+		self.id = String()
+	}
+
 	mutating func deserialize(_ json: JSON) {
 		street <-- json["street"]
 		street1 <-- json["street1"]

@@ -3,7 +3,7 @@
 import Arrow
 import NetworkService
 
-struct OrganizationModel: Identifiable, Codable, NetworkingJSONDecodable {
+struct OrganizationModel: Identifiable, Codable, NetworkingJSONDecodable, AutoEncodable {
 	var id: String
 	var identity: Int?
 	var organizationGuid: String?
@@ -44,10 +44,6 @@ extension OrganizationModel: ArrowParsable {
 		self.id = String()
 	}
 
-	enum CodingKeys: String, CodingKey {
-		case id, organizationGuid, key, name, organizationDescription = "description", organizationPhone, ein, contactName, email, website, isPublic, totalAuctions, activeAuctions, logo, banner, socialFacebook, socialGoogle, socialTwitter, socialPinterest, socialLinkedin, businessType, classification, provinceCode, organizationAddressStreet1, organizationAddressStreet2, organizationAddressCity, organizationAddressPostalCode, organizationAddressProvince, organizationAddressCountry, organizationAddressProvinceId, organizationAddressCountryId, organizationImages
-	}
-
 	mutating func deserialize(_ json: JSON) {
 		id <-- json["organizationGuid"]
 		identity <-- json["id"]
@@ -82,10 +78,5 @@ extension OrganizationModel: ArrowParsable {
 		organizationAddressProvinceId <-- json["organizationAddressProvinceId"]
 		organizationAddressCountryId <-- json["organizationAddressCountryId"]
 		organizationImages <-- json["organizationImages"]
-	}
-
-	func encode(to encoder: Encoder) throws {
-		var container = encoder.container(keyedBy: CodingKeys.self)
-		try container.encode(id, forKey: .id)
 	}
 }

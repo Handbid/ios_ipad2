@@ -5,7 +5,9 @@ import SwiftUI
 struct MainContainerViewFactory: MainContainerProtocolFactory {
 	func makeAuctionView() -> AnyView {
 		let service = DataServiceFactory.getService()
-		let viewModel = AuctionViewModel(dataService: service)
+		let networkClient = DependencyMainAppProvider.shared.networkClient
+		let repository = AuctionRepositoryImpl(network: networkClient)
+		let viewModel = AuctionViewModel(dataService: service, repository: repository)
 		return AnyView(AuctionView(viewModel: viewModel))
 	}
 
