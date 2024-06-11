@@ -2,6 +2,7 @@
 
 import Combine
 @testable import Handbid_iPad
+import NetworkService
 import XCTest
 
 class ForgotPasswordViewModelTests: XCTestCase {
@@ -33,15 +34,60 @@ class ForgotPasswordViewModelTests: XCTestCase {
 		viewModel.validateEmail()
 
 		XCTAssertTrue(viewModel.isFormValid)
-		XCTAssertEqual(viewModel.errorMessage, "Incorrect Email Format")
 	}
 
-	func testRequestPasswordReset() {
+	func testRequestPasswordResetSuccess() {
 		let email = "validemail@example.com"
 		viewModel.email = email
+
+		mockRepository.response = ResetPasswordModel(success: true, message: nil)
+
+		let expectation = XCTestExpectation(description: "Password reset request succeeds")
+
+		viewModel.$requestStatus
+			.dropFirst()
+			.sink { status in
+				XCTAssertEqual(status, .ok)
+				XCTAssertEqual(self.viewModel.errorMessage, "")
+				expectation.fulfill()
+			}
+			.store(in: &cancellables)
+
 		viewModel.requestPasswordReset()
 
 		XCTAssertTrue(mockRepository.resetPasswordCalled)
 		XCTAssertEqual(mockRepository.resetPasswordEmail, email)
+
+		wait(for: [expectation], timeout: 1.0)
+	}
+
+	func testRequestPasswordResetFailure() {
+		let email = "validemail@example.com"
+		viewModel.email = email
+
+		mockRepository.shouldReturnError = true
+
+		let expectation = XCTestExpectation(description: "Password reset request fails")
+
+		viewModel.$requestStatus
+			.dropFirst()
+			.sink { status in
+				XCTAssertEqual(status, .badRequest)
+				expectation.fulfill()
+			}
+			.store(in: &cancellables)
+
+		viewModel.requestPasswordReset()
+
+		XCTAssertTrue(mockRepository.resetPasswordCalled)
+		XCTAssertEqual(mockRepository.resetPasswordEmail, email)
+
+		wait(for: [expectation], timeout: 1.0)
+	}
+
+	func testResetErrorMessage() {
+		viewModel.errorMessage = "Test error"
+		viewModel.resetErrorMessage()
+		XCTAssertEqual(viewModel.errorMessage, "")
 	}
 }

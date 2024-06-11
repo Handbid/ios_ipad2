@@ -6,6 +6,7 @@ import XCTest
 
 class MockRegisterRepository: RegisterRepository {
 	var logInCalled = false
+	var shouldThrowError = false
 
 	func getAppVersion() async throws -> Handbid_iPad.AppVersionModel {
 		let appVersionModel = AppVersionModel(
@@ -25,6 +26,9 @@ class MockRegisterRepository: RegisterRepository {
 
 	func logIn(username _: String, password _: String?, pin _: String?) async throws -> Handbid_iPad.AuthModel {
 		logInCalled = true
+		if shouldThrowError {
+			throw NSError(domain: "", code: -1, userInfo: nil)
+		}
 		return AuthModel(token: "mockToken")
 	}
 }

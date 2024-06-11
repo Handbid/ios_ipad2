@@ -7,18 +7,18 @@ import SwiftUI
 class ChooseAuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 	private let repository: ChooseAuctionRepository
 	private var cancellables = Set<AnyCancellable>()
+	private let dataManager: DataManager
 
 	@Published var filteredAuctions: [AuctionModel] = []
 	@Published var auctions: [AuctionModel] = []
 	@Published var centerViewData: TopBarCenterViewData
 	@Published var backToPreviewViewPressed: Bool = false
+	@Published var isLoading: Bool = false
 	@Published var organization: OrganizationModel? {
 		didSet {
 			updateCenterViewData()
 		}
 	}
-
-	private let dataManager: DataManager
 
 	var buttonViewModels: [AuctionStateStatuses: AuctionFilterButtonViewModel]
 
@@ -44,6 +44,7 @@ class ChooseAuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 	}
 
 	private func fetchUserAuctions() {
+		isLoading = true
 		repository.fetchUserAuctions(status: AuctionStateStatuses.allCases)
 			.receive(on: DispatchQueue.main)
 			.sink(receiveCompletion: handleCompletion, receiveValue: handleAuctionsReceived)
@@ -112,11 +113,13 @@ class ChooseAuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 		if case let .failure(error) = completion, let netError = error as? NetworkingError {
 			print(netError)
 		}
+		isLoading = false
 	}
 
 	func handleAuctionsReceived(_ auctions: [AuctionModel]) {
 		self.auctions = auctions
 		filteredAuctions = auctions
+		isLoading = false
 	}
 
 	var actions: [TopBarAction] {

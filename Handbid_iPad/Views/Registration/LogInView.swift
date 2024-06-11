@@ -7,6 +7,7 @@ struct LogInView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@ObservedObject private var viewModel: LogInViewModel
 	@State private var isBlurred = false
+	@State private var isLoading = false
 	@FocusState var focusedField: Field?
 	let inspection = Inspection<Self>()
 
@@ -15,33 +16,39 @@ struct LogInView<T: PageProtocol>: View {
 	}
 
 	var body: some View {
-		ZStack {
-			content
-		}
-		.background {
-			backgroundView(for: .color(.accentViolet))
-		}.alert(LocalizedStringKey("global_label_error"),
-		        isPresented: $viewModel.showError)
-		{
-			Button(LocalizedStringKey("global_btn_ok")) {
+		LoadingOverlay(isLoading: $isLoading) {
+			ZStack {
+				content
+			}
+			.background {
+				backgroundView(for: .color(.accentViolet))
+			}.alert(LocalizedStringKey("global_label_error"),
+			        isPresented: $viewModel.showError)
+			{
+				Button(LocalizedStringKey("global_btn_ok")) {
+					viewModel.resetErrorMessage()
+				}
+			}
+			message: {
+				Text(viewModel.errorMessage)
+			}.onAppear {
+				isBlurred = false
 				viewModel.resetErrorMessage()
 			}
+			.onTapGesture {
+				hideKeyboard()
+			}
+			.onReceive(viewModel.$showError) { _ in
+				isBlurred = false
+				isLoading = false
+			}
+			.onReceive(inspection.notice) {
+				inspection.visit(self, $0)
+			}
+			.keyboardResponsive()
+			.backButtonNavigation(style: .registration)
+			.ignoresSafeArea(.keyboard, edges: .bottom)
 		}
-		message: {
-			Text(viewModel.errorMessage)
-		}.onAppear {
-			isBlurred = false
-			viewModel.resetErrorMessage()
-		}
-		.onTapGesture {
-			hideKeyboard()
-		}
-		.onReceive(inspection.notice) {
-			inspection.visit(self, $0)
-		}
-		.keyboardResponsive()
-		.backButtonNavigation(style: .registration)
-		.ignoresSafeArea(.keyboard, edges: .bottom)
 	}
 
 	private var content: some View {
@@ -107,6 +114,8 @@ struct LogInView<T: PageProtocol>: View {
 		VStack(spacing: 10) {
 			Button<Text>.styled(config: .secondaryButtonStyle, action: {
 				viewModel.logIn()
+				isBlurred = true
+				isLoading = true
 			}) {
 				Text(LocalizedStringKey("registration_btn_login"))
 					.textCase(.uppercase)
