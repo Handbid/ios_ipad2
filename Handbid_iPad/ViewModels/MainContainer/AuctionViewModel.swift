@@ -5,6 +5,7 @@ import SwiftUI
 
 class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 	private var repository: AuctionRepository
+	private var auctionId: Int = 0
 	@ObservedObject var dataService: DataServiceWrapper
 	@Published var title = "Auction Details"
 	@Published var auctionStatus = "Open"
@@ -18,10 +19,16 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 	]
 
 	private var cancellables = Set<AnyCancellable>()
+	private var dataManager = DataManager.shared
 
 	init(dataService: DataServiceWrapper, repository: AuctionRepository) {
 		self.dataService = dataService
 		self.repository = repository
+		dataManager.onDataChanged.sink {
+			self.updateAuction()
+		}.store(in: &cancellables)
+
+		updateAuction()
 	}
 
 	var centerViewData: TopBarCenterViewData {
@@ -44,7 +51,7 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 
 	func searchData() {}
 	func refreshData() {
-		repository.getAuctionDetails(id: 1)
+		repository.getAuctionDetails(id: auctionId)
 			.sink(receiveCompletion: {
 				switch $0 {
 				case .finished:
@@ -53,9 +60,12 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 					print("Error fetching auction items: \(e)")
 				}
 			}, receiveValue: { auction in
-				self.title = auction.name ?? "Details"
-				self.auctionStatus = auction.status ?? "unknown"
-				self.categories = auction.categories?.filter { $0.items?.isEmpty == false } ?? []
+				do {
+					try self.dataManager.update(auction, withNestedUpdates: true, in: .auction)
+				}
+				catch {
+					print(error)
+				}
 			})
 			.store(in: &cancellables)
 	}
@@ -71,5 +81,23 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 				}
 			}
 		}
+	}
+
+	private func updateAuction() {
+		do {
+			guard let auction = try dataManager.fetchSingle(of: AuctionModel.self, from: .auction)
+			else { return }
+			handleAuctionUpdate(auction: auction)
+		}
+		catch {
+			print(error)
+		}
+	}
+
+	private func handleAuctionUpdate(auction: AuctionModel) {
+		auctionId = auction.identity ?? 0
+		title = auction.name ?? "Details"
+		auctionStatus = auction.status ?? "unknown"
+		categories = auction.categories?.filter { $0.items?.isEmpty == false } ?? []
 	}
 }

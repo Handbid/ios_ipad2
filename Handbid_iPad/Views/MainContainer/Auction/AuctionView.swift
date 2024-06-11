@@ -4,6 +4,7 @@ import SwiftUI
 
 struct AuctionView: ContentView {
 	@ObservedObject var viewModel: AuctionViewModel
+	@State var categories: [CategoryModel] = []
 
 	init(viewModel: AuctionViewModel) {
 		self.viewModel = viewModel
@@ -11,7 +12,7 @@ struct AuctionView: ContentView {
 
 	var body: some View {
 		VStack {
-			if viewModel.categories.isEmpty {
+			if categories.isEmpty {
 				noItemsView
 			}
 			else {
@@ -21,6 +22,9 @@ struct AuctionView: ContentView {
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		.background(.containerBackground)
 		.edgesIgnoringSafeArea(.all)
+		.onReceive(viewModel.$categories) { categories in
+			self.categories = categories
+		}
 		.onAppear {
 			viewModel.refreshData()
 		}
@@ -52,7 +56,7 @@ struct AuctionView: ContentView {
 	private var categoriesList: some View {
 		ScrollView(.vertical) {
 			LazyVStack {
-				ForEach(viewModel.categories, id: \.id) { category in
+				ForEach(categories, id: \.id) { category in
 					createCategoryView(for: category)
 				}
 			}
