@@ -1,5 +1,6 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
+import ProgressIndicatorView
 import SwiftUI
 
 struct AuctionView: View {
@@ -34,7 +35,6 @@ struct AuctionView: View {
 
 			if let selectedItem, showDetailView {
 				Color.black.opacity(0.5)
-					.ignoresSafeArea()
 					.onTapGesture {
 						withAnimation {
 							showDetailView = false
@@ -44,6 +44,7 @@ struct AuctionView: View {
 				ItemDetailView(item: selectedItem, isVisible: $showDetailView)
 					.transition(.move(edge: .bottom))
 					.animation(.easeInOut(duration: 0.4), value: showDetailView)
+					.padding(20)
 			}
 		}
 	}
@@ -111,16 +112,66 @@ struct ItemDetailView: View {
 	var item: ItemModel
 	@Binding var isVisible: Bool
 	@State private var offset: CGFloat = 0
+	@State private var selectedImage: String? = nil
+	@State private var timer: Timer?
+	@State private var remainingTime: Int = 60
+	@State private var progress: CGFloat = 1.0
+	let images: [String] = ["SplashBackground", "LogoLogin", "LogoSplash"]
 
 	var body: some View {
 		GeometryReader { geometry in
-			VStack {
-				Spacer()
+			let isLandscape = geometry.size.width > geometry.size.height
+			let isPad = UIDevice.current.userInterfaceIdiom == .pad
 
-				VStack {
+			VStack {
+				HStack {
+					Spacer()
+					Button(action: {
+						withAnimation {
+							isVisible = false
+						}
+					}) {
+						Image(systemName: "xmark")
+							.foregroundColor(.black)
+							.padding(10)
+							.background(Color(white: 0.9))
+							.clipShape(Circle())
+							.padding([.top, .trailing], 20)
+					}
+				}
+				Spacer()
+				if isPad, isLandscape {
 					HStack {
-						Spacer()
-						Button(action: {
+						ImageGalleryView(selectedImage: $selectedImage, remainingTime: $remainingTime, progress: $progress, images: images, resetTimer: resetTimer)
+//							.frame(width: geometry.size.width / 2)
+						DetailInfoView(isVisible: $isVisible, resetTimer: resetTimer)
+//							.frame(width: geometry.size.width / 2)
+							.background(Color.white)
+					}
+					.padding()
+				}
+				else {
+					VStack {
+						ImageGalleryView(selectedImage: $selectedImage, remainingTime: $remainingTime, progress: $progress, images: images, resetTimer: resetTimer)
+						DetailInfoView(isVisible: $isVisible, resetTimer: resetTimer)
+							.background(Color.white)
+					}
+					.padding(.horizontal, 20)
+				}
+				Spacer()
+			}
+			.background(Color.white)
+			.cornerRadius(20)
+			.offset(y: offset)
+			.gesture(
+				DragGesture()
+					.onChanged { gesture in
+						if gesture.translation.height > 0 {
+							offset = gesture.translation.height
+						}
+					}
+					.onEnded { gesture in
+						if gesture.translation.height > 100 {
 							withAnimation {
 								offset = geometry.size.height
 								DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
@@ -128,55 +179,250 @@ struct ItemDetailView: View {
 									offset = 0
 								}
 							}
-						}) {
-							Image(systemName: "xmark")
-								.padding()
-								.background(Color.gray.opacity(0.7))
-								.clipShape(Circle())
 						}
-						.padding()
+						else {
+							withAnimation {
+								offset = 0
+							}
+						}
+					}
+			)
+			.animation(.easeInOut(duration: 0.4), value: offset)
+			.onAppear {
+				startTimer()
+			}
+			.onDisappear {
+				stopTimer()
+			}
+			.onTapGesture {
+				resetTimer()
+			}
+			.padding(20)
+		}
+	}
+
+	private func startTimer() {
+		stopTimer()
+		remainingTime = 60
+		timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+			if remainingTime > 0 {
+				remainingTime -= 1
+				progress = CGFloat(remainingTime) / 60.0
+			}
+			else {
+				isVisible = false
+			}
+		}
+	}
+
+	private func stopTimer() {
+		timer?.invalidate()
+		timer = nil
+	}
+
+	private func resetTimer() {
+		remainingTime = 60
+		progress = 1.0
+	}
+}
+
+struct ImageGalleryView: View {
+	@Binding var selectedImage: String?
+	@Binding var remainingTime: Int
+	@Binding var progress: CGFloat
+	let images: [String]
+	let resetTimer: () -> Void
+
+	var body: some View {
+		VStack(spacing: 10) {
+			ZStack(alignment: .topTrailing) {
+				Rectangle()
+					.foregroundColor(Color.accentGrayBackground)
+					.aspectRatio(16 / 9, contentMode: .fit)
+					.overlay(
+						Group {
+							if let selectedImage {
+								Image(selectedImage)
+									.resizable()
+									.scaledToFit()
+									.clipped()
+							}
+							else if let firstImage = images.first {
+								Image(firstImage)
+									.resizable()
+									.scaledToFit()
+									.clipped()
+							}
+						}
+					)
+					.cornerRadius(15)
+					.padding([.horizontal, .top])
+					.onTapGesture {
+						resetTimer()
 					}
 
-					Text("Detail View for \(item.name ?? "Item")")
-						.font(.largeTitle)
-						.padding()
-
-
-					Spacer()
-				}
-				.frame(width: geometry.size.width - 20, height: geometry.size.height - 20)
-				.background(Color.white)
-				.cornerRadius(20)
-				.shadow(radius: 20)
-				.offset(y: offset)
-				.gesture(
-					DragGesture()
-						.onChanged { gesture in
-							if gesture.translation.height > 0 {
-								offset = gesture.translation.height
-							}
-						}
-						.onEnded { gesture in
-							if gesture.translation.height > 100 {
-								withAnimation {
-									offset = geometry.size.height
-									DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-										isVisible = false
-										offset = 0
-									}
-								}
-							}
-							else {
-								withAnimation {
-									offset = 0
-								}
-							}
-						}
-				)
-				.animation(.easeInOut(duration: 0.4), value: offset)
-				.padding(10)
+				Text("LIVE")
+					.font(.caption)
+					.fontWeight(.bold)
+					.foregroundColor(.white)
+					.padding(5)
+					.background(Color.green)
+					.cornerRadius(5)
+					.padding([.top, .trailing], 10)
 			}
-			.edgesIgnoringSafeArea(.all)
+
+			ScrollView(.vertical, showsIndicators: false) {
+				LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 15), count: 4), spacing: 15) {
+					ForEach(Array(images.enumerated()), id: \.offset) { _, image in
+						Image(image)
+							.resizable()
+							.scaledToFit()
+							.frame(width: 120.25, height: 87.02)
+							.clipped()
+							.background(Color.accentGrayBackground)
+							.cornerRadius(10)
+							.onTapGesture {
+								selectedImage = image
+								resetTimer()
+							}
+							.overlay(
+								RoundedRectangle(cornerRadius: 10)
+									.stroke(selectedImage == image ? Color.blue : Color.clear, lineWidth: 2)
+							)
+					}
+				}
+				.padding(.horizontal)
+			}
+			.frame(height: 300)
+
+			Spacer()
+
+			HStack {
+				ProgressIndicatorView(isVisible: .constant(true), type: .circle(progress: $progress, lineWidth: 3, strokeColor: .accentViolet, backgroundColor: .accentLightViolet))
+					.frame(width: 14, height: 14)
+				Text("This screen will close in \(remainingTime) seconds.")
+					.foregroundColor(.black)
+					.fontWeight(.light)
+					.padding(.leading, 5)
+				Spacer()
+			}
+			.padding()
+		}
+	}
+}
+
+struct DetailInfoView: View {
+	@Binding var isVisible: Bool
+	let resetTimer: () -> Void
+
+	var body: some View {
+		VStack(alignment: .leading, spacing: 15) {
+			Text("Category Name #123 | 12 BIDS")
+				.font(.headline)
+				.foregroundColor(.gray)
+
+			Text("Item Description - Name and List of Included Items")
+				.font(.title2)
+				.fontWeight(.bold)
+
+			HStack(spacing: 30) {
+				VStack(alignment: .leading) {
+					Text("VALUE")
+						.font(.caption)
+						.foregroundColor(.gray)
+					Text("$5,000.00")
+						.font(.headline)
+				}
+				VStack(alignment: .leading) {
+					Text("INCREMENT")
+						.font(.caption)
+						.foregroundColor(.gray)
+					Text("$100.00")
+						.font(.headline)
+				}
+				VStack(alignment: .leading) {
+					Text("BUY NOW")
+						.font(.caption)
+						.foregroundColor(.gray)
+					Text("$3,200.00")
+						.font(.headline)
+				}
+			}
+
+			Text("Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.")
+				.font(.body)
+				.padding(.vertical)
+				.onTapGesture {
+					resetTimer()
+				}
+
+			Spacer()
+
+			HStack {
+				Button(action: {
+					resetTimer()
+				}) {
+					Text("-")
+						.padding()
+						.frame(width: 40, height: 40)
+						.background(Color(white: 0.9))
+						.cornerRadius(10)
+				}
+				TextField("", text: .constant("$99,99"))
+					.padding()
+					.background(Color(white: 0.9))
+					.cornerRadius(10)
+					.frame(width: 100, height: 40)
+				Button(action: {
+					resetTimer()
+				}) {
+					Text("+")
+						.padding()
+						.frame(width: 40, height: 40)
+						.background(Color(white: 0.9))
+						.cornerRadius(10)
+				}
+				Button(action: {
+					resetTimer()
+				}) {
+					Text("BID NOW")
+						.padding()
+						.frame(maxWidth: .infinity, maxHeight: 40)
+						.background(Color.black)
+						.foregroundColor(.white)
+						.cornerRadius(10)
+				}
+			}
+			.padding(.bottom, 10)
+
+			HStack {
+				Button(action: {
+					resetTimer()
+				}) {
+					Text("SET MAX BID")
+						.padding()
+						.frame(maxWidth: .infinity, maxHeight: 40)
+						.background(Color.purple)
+						.foregroundColor(.white)
+						.cornerRadius(10)
+				}
+
+				Button(action: {
+					resetTimer()
+				}) {
+					Text("BUY NOW")
+						.padding()
+						.frame(maxWidth: .infinity, maxHeight: 40)
+						.background(Color.purple)
+						.foregroundColor(.white)
+						.cornerRadius(10)
+				}
+			}
+		}
+		.padding()
+		.padding(.trailing, 20)
+		.onTapGesture {
+			resetTimer()
 		}
 	}
 }
