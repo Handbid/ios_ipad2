@@ -18,6 +18,8 @@ class ChooseOrganizationViewModel: ObservableObject {
 		}
 	}
 
+	@Published var isLoading: Bool = false
+
 	init(repository: ChooseOrganizationRepository, dataManager: DataManager) {
 		self.repository = repository
 		self.dataManager = dataManager
@@ -26,6 +28,7 @@ class ChooseOrganizationViewModel: ObservableObject {
 
 	func fetchOrganizationsIfNeeded() {
 		guard organizations.isEmpty else { return }
+		isLoading = true
 		fetchOrganizations()
 	}
 
@@ -52,11 +55,16 @@ class ChooseOrganizationViewModel: ObservableObject {
 	private func handleCompletion(_ completion: Subscribers.Completion<Error>) {
 		if case let .failure(error) = completion, let netError = error as? NetworkingError {
 			print(netError)
+			isLoading = false
+		}
+		else {
+			isLoading = false
 		}
 	}
 
 	private func handleOrganizationsReceived(_ user: UserModel) {
 		organizations = user.organization ?? []
+		isLoading = false
 
 		do {
 			try? dataManager.create(user, in: .user)

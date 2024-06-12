@@ -6,8 +6,9 @@ struct ChooseAuctionView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@State private var selectedView: SelectAuctionContainerTypeView
 	@ObservedObject private var viewModel: ChooseAuctionViewModel
-	private var deviceContext = DeviceContext()
+	@State private var isLoading = true
 	@State private var isBlurred = false
+	private var deviceContext = DeviceContext()
 	var inspection = Inspection<Self>()
 
 	init(viewModel: ChooseAuctionViewModel, selectedView: SelectAuctionContainerTypeView) {
@@ -27,19 +28,24 @@ struct ChooseAuctionView<T: PageProtocol>: View {
 					.accessibilityIdentifier("TopBarContentProtocol")
 				horizontalScrollView
 					.accessibilityIdentifier("HorizontalScrollView")
-				ScrollView {
-					LazyVGrid(columns: columns, spacing: 20) {
-						ForEach(viewModel.filteredAuctions, id: \.id) { auction in
-							AuctionCollectionCellView<MainContainerPage>(auction: auction)
-								.frame(width: cellWidth, height: cellHeight)
-								.accessibilityIdentifier("AuctionCollectionCellView_\(auction.id)")
+				LoadingOverlay(isLoading: $isLoading, backgroundColor: .clear, opacity: 1.0) {
+					ScrollView {
+						LazyVGrid(columns: columns, spacing: 20) {
+							ForEach(viewModel.filteredAuctions, id: \.id) { auction in
+								AuctionCollectionCellView<MainContainerPage>(auction: auction)
+									.frame(width: cellWidth, height: cellHeight)
+									.accessibilityIdentifier("AuctionCollectionCellView_\(auction.id)")
+							}
 						}
+						.padding()
 					}
-					.padding()
+					.accessibilityIdentifier("AuctionScrollView")
 				}
-				.accessibilityIdentifier("AuctionScrollView")
 				Spacer()
 			}
+		}
+		.onReceive(viewModel.$isLoading) { loading in
+			isLoading = loading
 		}
 		.onAppear {
 			viewModel.organization = coordinator.model as? OrganizationModel

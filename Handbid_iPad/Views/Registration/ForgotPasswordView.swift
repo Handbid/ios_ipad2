@@ -7,6 +7,7 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@ObservedObject private var viewModel: ForgotPasswordViewModel
 	@State private var isBlurred = false
+	@State private var isLoading = false
 	@FocusState private var focusedField: Field?
 	var inspection = Inspection<Self>()
 
@@ -15,34 +16,37 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 	}
 
 	var body: some View {
-		ZStack {
-			content
-		}
-		.background {
-			backgroundView(for: .color(.accentViolet))
-		}
-		.onAppear {
-			isBlurred = false
-			viewModel.resetErrorMessage()
-		}
-		.onReceive(viewModel.$requestStatus) { value in
-			switch value {
-			case .ok:
-				coordinator.push(RegistrationPage.resetPasswordConfirmation as! T)
-				fallthrough
-			default:
-				isBlurred = false
+		LoadingOverlay(isLoading: $isLoading) {
+			ZStack {
+				content
 			}
+			.background {
+				backgroundView(for: .color(.accentViolet))
+			}
+			.onAppear {
+				isBlurred = false
+				viewModel.resetErrorMessage()
+			}
+			.onReceive(viewModel.$requestStatus) { value in
+				switch value {
+				case .ok:
+					coordinator.push(RegistrationPage.resetPasswordConfirmation as! T)
+					fallthrough
+				default:
+					isBlurred = false
+					isLoading = false
+				}
+			}
+			.onTapGesture {
+				hideKeyboard()
+			}
+			.onReceive(inspection.notice) {
+				inspection.visit(self, $0)
+			}
+			.keyboardResponsive()
+			.backButtonNavigation(style: .registration)
+			.ignoresSafeArea(.keyboard, edges: .bottom)
 		}
-		.onTapGesture {
-			hideKeyboard()
-		}
-		.onReceive(inspection.notice) {
-			inspection.visit(self, $0)
-		}
-		.keyboardResponsive()
-		.backButtonNavigation(style: .registration)
-		.ignoresSafeArea(.keyboard, edges: .bottom)
 	}
 
 	private var content: some View {
@@ -93,6 +97,7 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 				if viewModel.isFormValid {
 					viewModel.requestPasswordReset()
 					isBlurred = true
+					isLoading = true
 				}
 			}) {
 				Text(LocalizedStringKey("registration_btn_confirm"))
