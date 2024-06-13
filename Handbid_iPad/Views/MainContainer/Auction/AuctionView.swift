@@ -117,7 +117,7 @@ struct ItemDetailView: View {
 	@State private var timer: Timer?
 	@State private var remainingTime: Int = 60
 	@State private var progress: CGFloat = 1.0
-	let images: [String] = ["SplashBackground", "LogoLogin", "LogoSplash"]
+	let images: [String] = ["SplashBackground", "LogoLogin", "LogoSplash", "LogoLogin", "LogoSplash"]
 
 	var body: some View {
 		GeometryReader { geometry in
@@ -235,6 +235,9 @@ struct ImageGalleryView: View {
 
 	var body: some View {
 		GeometryReader { geometry in
+			let itemWidth = (geometry.size.width - 50) / 4
+			let itemHeight = itemWidth * 9 / 16
+            
 			VStack(spacing: 10) {
 				ZStack(alignment: .topTrailing) {
 					Rectangle()
@@ -275,20 +278,27 @@ struct ImageGalleryView: View {
 				ScrollView(.vertical, showsIndicators: false) {
 					LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 10), count: 4), spacing: 10) {
 						ForEach(Array(images.enumerated()), id: \.offset) { _, image in
-							Image(image)
-								.resizable()
-								.scaledToFit()
-								.clipped()
-								.background(Color.accentGrayBackground)
-								.cornerRadius(10)
-								.onTapGesture {
-									selectedImage = image
-									resetTimer()
-								}
-								.overlay(
-									RoundedRectangle(cornerRadius: 10)
-										.stroke(selectedImage == image ? Color.blue : Color.clear, lineWidth: 2)
-								)
+							ZStack {
+								Rectangle()
+									.foregroundColor(Color.accentGrayBackground)
+									.aspectRatio(16 / 9, contentMode: .fit)
+
+								Image(image)
+									.resizable()
+									.scaledToFit()
+									.clipped()
+									.background(Color.accentGrayBackground)
+									.frame(width: itemWidth, height: itemHeight)
+									.cornerRadius(10)
+									.onTapGesture {
+										selectedImage = image
+										resetTimer()
+									}
+									.overlay(
+										RoundedRectangle(cornerRadius: 10)
+											.stroke(selectedImage == image ? Color.blue : Color.clear, lineWidth: 2)
+									)
+							}
 						}
 					}
 					.padding(.horizontal)
