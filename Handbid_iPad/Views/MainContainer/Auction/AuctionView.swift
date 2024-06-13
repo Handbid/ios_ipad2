@@ -131,8 +131,20 @@ struct ItemDetailView: View {
 					if isPad, isLandscape {
 						HStack {
 							ImageGalleryView(selectedImage: $selectedImage, remainingTime: $remainingTime, progress: $progress, images: images, resetTimer: resetTimer)
-							DetailInfoView(isVisible: $isVisible, resetTimer: resetTimer)
-								.background(Color.white)
+							VStack(spacing: 0) {
+								ScrollView {
+									DetailInfoView(isVisible: $isVisible, resetTimer: resetTimer)
+										.background(Color.white)
+										.frame(maxHeight: .infinity)
+										.clipped()
+								}
+								.simultaneousGesture(DragGesture().onChanged { _ in resetTimer() })
+								ButtonSectionView(item: item, resetTimer: resetTimer)
+									.background(Color.white)
+									.frame(maxWidth: .infinity)
+									.clipped()
+									.padding()
+							}
 						}
 						.padding(.top, 10)
 					}
@@ -156,7 +168,14 @@ struct ItemDetailView: View {
 								}
 							}
 							ImageGalleryView(selectedImage: $selectedImage, remainingTime: $remainingTime, progress: $progress, images: images, resetTimer: resetTimer)
-							DetailInfoView(isVisible: $isVisible, resetTimer: resetTimer)
+							ScrollView {
+								DetailInfoView(isVisible: $isVisible, resetTimer: resetTimer)
+									.background(Color.white)
+									.frame(maxHeight: .infinity)
+									.clipped()
+							}
+							.simultaneousGesture(DragGesture().onChanged { _ in resetTimer() }) // Reset timer on drag
+							ButtonSectionView(item: item, resetTimer: resetTimer)
 								.background(Color.white)
 						}
 						.padding(.horizontal, 10)
@@ -172,7 +191,7 @@ struct ItemDetailView: View {
 							if gesture.translation.height > 0 {
 								offset = gesture.translation.height
 							}
-							resetTimer() // Reset timer on drag
+							resetTimer()
 						}
 						.onEnded { gesture in
 							if gesture.translation.height > 100 {
@@ -226,7 +245,7 @@ struct ItemDetailView: View {
 			.gesture(
 				TapGesture()
 					.onEnded {
-						resetTimer() // Reset timer on tap anywhere in ZStack
+						resetTimer()
 					}
 			)
 		}
@@ -400,7 +419,55 @@ struct DetailInfoView: View {
 				}
 
 			Spacer()
+		}
+		.padding()
+		.padding(.trailing, 20)
+		.onTapGesture {
+			resetTimer()
+		}
+		.frame(maxHeight: .infinity)
+		.clipped()
+	}
+}
 
+struct ButtonSectionView: View {
+	var item: ItemModel
+	let resetTimer: () -> Void
+
+	var body: some View {
+		VStack {
+		
+			if item.itemType == "forsale" {
+				specialButtons
+			}
+			else {
+				defaultButtons
+			}
+		}
+		.padding()
+		.padding(.trailing, 20)
+		.onTapGesture {
+			resetTimer()
+		}
+	}
+
+	private var specialButtons: some View {
+		VStack {
+			Button(action: {
+				resetTimer()
+			}) {
+				Text("SPECIAL BID")
+					.padding()
+					.frame(maxWidth: .infinity, maxHeight: 40)
+					.background(Color.red)
+					.foregroundColor(.white)
+					.cornerRadius(10)
+			}
+		}
+	}
+
+	private var defaultButtons: some View {
+		VStack {
 			HStack {
 				Button(action: {
 					resetTimer()
@@ -461,11 +528,6 @@ struct DetailInfoView: View {
 						.cornerRadius(10)
 				}
 			}
-		}
-		.padding()
-		.padding(.trailing, 20)
-		.onTapGesture {
-			resetTimer()
 		}
 	}
 }
