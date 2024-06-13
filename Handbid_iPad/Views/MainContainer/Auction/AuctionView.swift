@@ -119,7 +119,7 @@ struct ItemDetailView: View {
 	@State private var timer: Timer?
 	@State private var remainingTime: Int = 60
 	@State private var progress: CGFloat = 1.0
-	let images: [String] = ["SplashBackground", "LogoLogin", "LogoSplash", "LogoLogin", "LogoSplash"]
+	let images: [String] = ["SplashBackground", "LogoLogin"]
 
 	var body: some View {
 		GeometryReader { geometry in
@@ -290,7 +290,7 @@ struct ImageGalleryView: View {
 	var body: some View {
 		GeometryReader { geometry in
 			let itemWidth = (geometry.size.width - 50) / 4
-			let itemHeight = itemWidth * 9 / 16
+			let itemHeight = itemWidth * 9 / 13
 
 			VStack(spacing: 10) {
 				ZStack(alignment: .topTrailing) {
@@ -335,7 +335,8 @@ struct ImageGalleryView: View {
 							ZStack {
 								Rectangle()
 									.foregroundColor(Color.accentGrayBackground)
-									.aspectRatio(16 / 9, contentMode: .fit)
+									.aspectRatio(13 / 9, contentMode: .fit)
+									.cornerRadius(15)
 
 								Image(image)
 									.resizable()
