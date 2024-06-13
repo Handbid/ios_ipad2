@@ -9,14 +9,8 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 	@ObservedObject var dataService: DataServiceWrapper
 	@Published var title = "Auction Details"
 	@Published var auctionStatus = "Open"
-	@Published var categories: [CategoryModel] = [
-		CategoryModel(id: 1, name: "Test", auctionId: 1,
-		              items: [
-		              	ItemModel(id: 1, name: "Test Item", categoryName: "Test",
-		              	          isDirectPurchaseItem: true, isTicket: false, isPuzzle: false,
-		              	          isAppeal: false, currentPrice: 20.0, itemCode: "123"),
-		              ]),
-	]
+	@Published var categories: [CategoryModel] = []
+	@Published var currencyCode: String = "USD"
 
 	private var cancellables = Set<AnyCancellable>()
 	private var dataManager = DataManager.shared
@@ -97,7 +91,8 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 	private func handleAuctionUpdate(auction: AuctionModel) {
 		auctionId = auction.identity ?? 0
 		title = auction.name ?? "Details"
-		auctionStatus = auction.status ?? "unknown"
+		auctionStatus = auction.status?.capitalized ?? "Unknown"
+		currencyCode = auction.currencyCode ?? "USD"
 		categories = auction.categories?.filter { $0.items?.isEmpty == false } ?? []
 	}
 }

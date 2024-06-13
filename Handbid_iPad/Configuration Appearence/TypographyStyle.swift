@@ -26,9 +26,9 @@ enum TypographyStyle {
 		case .headerTitleRegistration:
 			26
 		case .subheader:
-			16
+			24
 		case .small:
-			13
+			16
 		}
 	}
 
@@ -37,9 +37,9 @@ enum TypographyStyle {
 		case .headerTitleRegistration:
 			40
 		case .subheader:
-			16
+			24
 		case .small:
-			13
+			16
 		}
 	}
 
@@ -48,9 +48,9 @@ enum TypographyStyle {
 		case .headerTitleRegistration:
 			40
 		case .subheader:
-			16
+			24
 		case .small:
-			13
+			16
 		}
 	}
 

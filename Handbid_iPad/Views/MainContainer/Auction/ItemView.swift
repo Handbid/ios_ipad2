@@ -5,6 +5,7 @@ import SwiftUI
 struct ItemView: View {
 	@Environment(\.colorScheme) var colorScheme
 	var item: ItemModel
+	var currencyCode: String
 
 	var body: some View {
 		ZStack(alignment: .topTrailing) {
@@ -19,8 +20,8 @@ struct ItemView: View {
 					.padding([.trailing, .top], 20)
 			}
 		}
-		.frame(width: 307)
-		.padding()
+		.frame(width: 337)
+		.padding(.all, 12)
 	}
 
 	private var itemContent: some View {
@@ -31,19 +32,19 @@ struct ItemView: View {
 					ProgressView()
 						.progressViewStyle(CircularProgressViewStyle())
 						.scaledToFit()
-						.frame(width: 255, height: 187, alignment: .center)
+						.frame(height: 187, alignment: .center)
 				case let .success(image):
 					image.resizable()
 						.aspectRatio(contentMode: .fit)
 						.scaledToFill()
-						.frame(width: 255, height: 187, alignment: .center)
+						.frame(height: 187, alignment: .center)
 						.cornerRadius(32)
 				case .failure:
 					Image(systemName: "photo")
 						.resizable()
 						.scaledToFit()
 						.foregroundColor(colorScheme == .dark ? .white : .gray)
-						.frame(width: 255, height: 187, alignment: .center)
+						.frame(height: 187, alignment: .center)
 						.padding()
 				@unknown default:
 					EmptyView()
@@ -57,8 +58,10 @@ struct ItemView: View {
 
 				Divider()
 
-				Text("#\(item.itemCode ?? "NaN")")
-					.applyTextStyle(style: .leadingLabel)
+				if let itemCode = item.itemCode {
+					Text(itemCode.starts(with: "#") ? itemCode : "#\(itemCode)")
+						.applyTextStyle(style: .leadingLabel)
+				}
 
 				if item.isDirectPurchaseItem == false, item.isAppeal == false, item.isTicket == false {
 					Divider()
@@ -73,14 +76,17 @@ struct ItemView: View {
 				Spacer()
 			}
 			.frame(height: 20)
+			.padding(.all, 0)
+			.lineLimit(1)
 
 			Text(item.name ?? "NaN")
 				.applyTextStyle(style: .titleLeading)
 
-			Text(item.currentPrice ?? -1, format: .currency(code: "USD"))
+			Text(item.currentPrice ?? -1, format: .currency(code: currencyCode))
 				.applyTextStyle(style: .subheader)
 		}
-		.padding()
+		.padding(.vertical, 16)
+		.padding(.horizontal, 16)
 	}
 
 	private var itemBadge: some View {

@@ -61,23 +61,23 @@ struct AuctionView: ContentView {
 				}
 			}
 		}
+		.scrollIndicators(.never)
 	}
 
 	private func createCategoryView(for category: CategoryModel) -> AnyView {
 		AnyView(VStack {
 			Text(category.name ?? "nil")
 				.applyTextStyle(style: .subheader)
-				.padding()
 
 			ScrollView(.horizontal) {
 				LazyHStack {
 					ForEach(category.items ?? [], id: \.id) { item in
-						ItemView(item: item)
-					}.padding()
+						ItemView(item: item, currencyCode: viewModel.currencyCode)
+					}
 				}
 			}
+			.scrollIndicators(.never)
 			.defaultScrollAnchor(.leading)
-			.frame(height: 370)
 		})
 	}
 }
