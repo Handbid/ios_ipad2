@@ -138,6 +138,23 @@ struct ItemDetailView: View {
 					}
 					else {
 						VStack {
+							if !isLandscape {
+								HStack {
+									Spacer()
+									Button(action: {
+										withAnimation {
+											isVisible = false
+										}
+									}) {
+										Image(systemName: "xmark")
+											.foregroundColor(.black)
+											.padding(10)
+											.background(Color(white: 0.9))
+											.clipShape(Circle())
+									}
+									.padding([.top, .trailing], 20)
+								}
+							}
 							ImageGalleryView(selectedImage: $selectedImage, remainingTime: $remainingTime, progress: $progress, images: images, resetTimer: resetTimer)
 							DetailInfoView(isVisible: $isVisible, resetTimer: resetTimer)
 								.background(Color.white)
@@ -155,6 +172,7 @@ struct ItemDetailView: View {
 							if gesture.translation.height > 0 {
 								offset = gesture.translation.height
 							}
+							resetTimer() // Reset timer on drag
 						}
 						.onEnded { gesture in
 							if gesture.translation.height > 100 {
@@ -180,30 +198,37 @@ struct ItemDetailView: View {
 				.onDisappear {
 					stopTimer()
 				}
-				.onTapGesture {
-					resetTimer()
-				}
 				.padding(10)
 
 				VStack {
-					HStack {
-						Spacer()
-						Button(action: {
-							withAnimation {
-								isVisible = false
+					if isLandscape {
+						HStack {
+							Spacer()
+							if offset == 0 {
+								Button(action: {
+									withAnimation {
+										isVisible = false
+									}
+								}) {
+									Image(systemName: "xmark")
+										.foregroundColor(.black)
+										.padding(10)
+										.background(Color(white: 0.9))
+										.clipShape(Circle())
+								}
+								.padding([.top, .trailing], 20)
 							}
-						}) {
-							Image(systemName: "xmark")
-								.foregroundColor(.black)
-								.padding(10)
-								.background(Color(white: 0.9))
-								.clipShape(Circle())
 						}
-						.padding([.top, .trailing], 20)
 					}
 					Spacer()
 				}
 			}
+			.gesture(
+				TapGesture()
+					.onEnded {
+						resetTimer() // Reset timer on tap anywhere in ZStack
+					}
+			)
 		}
 		.background(Color.clear)
 	}
@@ -242,7 +267,7 @@ struct ImageGalleryView: View {
 
 	var body: some View {
 		GeometryReader { geometry in
-			let itemWidth = (geometry.size.width - 50) / 4
+			let itemWidth = (geometry.size.width - 50) / CGFloat(images.count)
 			let itemHeight = itemWidth * 9 / 16
 
 			VStack(spacing: 10) {
