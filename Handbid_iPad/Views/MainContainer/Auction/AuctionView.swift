@@ -41,11 +41,13 @@ struct AuctionView: View {
 						}
 					}
 
-				ItemDetailView(item: selectedItem, isVisible: $showDetailView)
-					.transition(.move(edge: .bottom))
-					.animation(.easeInOut(duration: 0.4), value: showDetailView)
-					.padding(10)
-					.background(Color.accentViolet.opacity(0.5))
+				ZStack {
+					ItemDetailView(item: selectedItem, isVisible: $showDetailView)
+						.transition(.move(edge: .bottom))
+						.animation(.easeInOut(duration: 0.4), value: showDetailView)
+						.padding(10)
+						.background(Color.accentViolet.opacity(0.5))
+				}
 			}
 		}
 	}
@@ -124,79 +126,84 @@ struct ItemDetailView: View {
 			let isLandscape = geometry.size.width > geometry.size.height
 			let isPad = UIDevice.current.userInterfaceIdiom == .pad
 
-			VStack {
-				HStack {
-					Spacer()
-					Button(action: {
-						withAnimation {
-							isVisible = false
+			ZStack {
+				VStack(spacing: 10) {
+					if isPad, isLandscape {
+						HStack {
+							ImageGalleryView(selectedImage: $selectedImage, remainingTime: $remainingTime, progress: $progress, images: images, resetTimer: resetTimer)
+							DetailInfoView(isVisible: $isVisible, resetTimer: resetTimer)
+								.background(Color.white)
 						}
-					}) {
-						Image(systemName: "xmark")
-							.foregroundColor(.black)
-							.padding(10)
-							.background(Color(white: 0.9))
-							.clipShape(Circle())
-							.padding([.top, .trailing], 20)
+						.padding(.top, 10)
 					}
-				}
-				Spacer()
-				if isPad, isLandscape {
-					HStack {
-						ImageGalleryView(selectedImage: $selectedImage, remainingTime: $remainingTime, progress: $progress, images: images, resetTimer: resetTimer)
-						DetailInfoView(isVisible: $isVisible, resetTimer: resetTimer)
-							.background(Color.white)
-					}
-					.padding()
-				}
-				else {
-					VStack {
-						ImageGalleryView(selectedImage: $selectedImage, remainingTime: $remainingTime, progress: $progress, images: images, resetTimer: resetTimer)
-						DetailInfoView(isVisible: $isVisible, resetTimer: resetTimer)
-							.background(Color.white)
-					}
-					.padding(.horizontal, 20)
-				}
-				Spacer()
-			}
-			.background(Color.white)
-			.cornerRadius(20)
-			.offset(y: offset)
-			.gesture(
-				DragGesture()
-					.onChanged { gesture in
-						if gesture.translation.height > 0 {
-							offset = gesture.translation.height
+					else {
+						VStack {
+							ImageGalleryView(selectedImage: $selectedImage, remainingTime: $remainingTime, progress: $progress, images: images, resetTimer: resetTimer)
+							DetailInfoView(isVisible: $isVisible, resetTimer: resetTimer)
+								.background(Color.white)
 						}
+						.padding(.horizontal, 10)
+						.padding(.top, 10)
 					}
-					.onEnded { gesture in
-						if gesture.translation.height > 100 {
-							withAnimation {
-								offset = geometry.size.height
-								DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-									isVisible = false
+				}
+				.background(Color.white)
+				.cornerRadius(20)
+				.offset(y: offset)
+				.gesture(
+					DragGesture()
+						.onChanged { gesture in
+							if gesture.translation.height > 0 {
+								offset = gesture.translation.height
+							}
+						}
+						.onEnded { gesture in
+							if gesture.translation.height > 100 {
+								withAnimation {
+									offset = geometry.size.height
+									DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+										isVisible = false
+										offset = 0
+									}
+								}
+							}
+							else {
+								withAnimation {
 									offset = 0
 								}
 							}
 						}
-						else {
+				)
+				.animation(.easeInOut(duration: 0.4), value: offset)
+				.onAppear {
+					startTimer()
+				}
+				.onDisappear {
+					stopTimer()
+				}
+				.onTapGesture {
+					resetTimer()
+				}
+				.padding(10)
+
+				VStack {
+					HStack {
+						Spacer()
+						Button(action: {
 							withAnimation {
-								offset = 0
+								isVisible = false
 							}
+						}) {
+							Image(systemName: "xmark")
+								.foregroundColor(.black)
+								.padding(10)
+								.background(Color(white: 0.9))
+								.clipShape(Circle())
 						}
+						.padding([.top, .trailing], 20)
 					}
-			)
-			.animation(.easeInOut(duration: 0.4), value: offset)
-			.onAppear {
-				startTimer()
+					Spacer()
+				}
 			}
-			.onDisappear {
-				stopTimer()
-			}
-			.onTapGesture {
-				resetTimer()
-			}
-			.padding(10)
 		}
 		.background(Color.clear)
 	}
@@ -237,7 +244,7 @@ struct ImageGalleryView: View {
 		GeometryReader { geometry in
 			let itemWidth = (geometry.size.width - 50) / 4
 			let itemHeight = itemWidth * 9 / 16
-            
+
 			VStack(spacing: 10) {
 				ZStack(alignment: .topTrailing) {
 					Rectangle()
