@@ -5,18 +5,21 @@ import SwiftUI
 struct AuctionView: ContentView {
 	@ObservedObject var viewModel: AuctionViewModel
 	@State var categories: [CategoryModel] = []
+	@State var isLoading = true
 
 	init(viewModel: AuctionViewModel) {
 		self.viewModel = viewModel
 	}
 
 	var body: some View {
-		VStack {
-			if categories.isEmpty {
-				noItemsView
-			}
-			else {
-				categoriesList
+		LoadingOverlay(isLoading: $isLoading) {
+			VStack {
+				if categories.isEmpty, !isLoading {
+					noItemsView
+				}
+				else {
+					categoriesList
+				}
 			}
 		}
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -24,6 +27,9 @@ struct AuctionView: ContentView {
 		.edgesIgnoringSafeArea(.all)
 		.onReceive(viewModel.$categories) { categories in
 			self.categories = categories
+		}
+		.onReceive(viewModel.$isLoading) { loading in
+			isLoading = loading
 		}
 		.onAppear {
 			viewModel.refreshData()
@@ -68,6 +74,7 @@ struct AuctionView: ContentView {
 		AnyView(VStack {
 			Text(category.name ?? "nil")
 				.applyTextStyle(style: .subheader)
+				.padding(.bottom, -10)
 
 			ScrollView(.horizontal) {
 				LazyHStack {

@@ -11,6 +11,7 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 	@Published var auctionStatus = "Open"
 	@Published var categories: [CategoryModel] = []
 	@Published var currencyCode: String = "USD"
+	@Published var isLoading: Bool = true
 
 	private var cancellables = Set<AnyCancellable>()
 	private var dataManager = DataManager.shared
@@ -45,8 +46,11 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 
 	func searchData() {}
 	func refreshData() {
+		isLoading = true
 		repository.getAuctionDetails(id: auctionId)
+			.receive(on: DispatchQueue.main)
 			.sink(receiveCompletion: {
+				self.isLoading = false
 				switch $0 {
 				case .finished:
 					print("Finished fetching auction items")
@@ -54,6 +58,7 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 					print("Error fetching auction items: \(e)")
 				}
 			}, receiveValue: { auction in
+				self.isLoading = false
 				do {
 					try self.dataManager.update(auction, withNestedUpdates: true, in: .auction)
 				}
