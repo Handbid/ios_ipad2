@@ -44,7 +44,8 @@ struct AuctionView: View {
 				ItemDetailView(item: selectedItem, isVisible: $showDetailView)
 					.transition(.move(edge: .bottom))
 					.animation(.easeInOut(duration: 0.4), value: showDetailView)
-					.padding(20)
+					.padding(10)
+					.background(Color.accentViolet.opacity(0.5))
 			}
 		}
 	}
@@ -143,9 +144,7 @@ struct ItemDetailView: View {
 				if isPad, isLandscape {
 					HStack {
 						ImageGalleryView(selectedImage: $selectedImage, remainingTime: $remainingTime, progress: $progress, images: images, resetTimer: resetTimer)
-//							.frame(width: geometry.size.width / 2)
 						DetailInfoView(isVisible: $isVisible, resetTimer: resetTimer)
-//							.frame(width: geometry.size.width / 2)
 							.background(Color.white)
 					}
 					.padding()
@@ -197,8 +196,9 @@ struct ItemDetailView: View {
 			.onTapGesture {
 				resetTimer()
 			}
-			.padding(20)
+			.padding(10)
 		}
+		.background(Color.clear)
 	}
 
 	private func startTimer() {
@@ -234,79 +234,80 @@ struct ImageGalleryView: View {
 	let resetTimer: () -> Void
 
 	var body: some View {
-		VStack(spacing: 10) {
-			ZStack(alignment: .topTrailing) {
-				Rectangle()
-					.foregroundColor(Color.accentGrayBackground)
-					.aspectRatio(16 / 9, contentMode: .fit)
-					.overlay(
-						Group {
-							if let selectedImage {
-								Image(selectedImage)
-									.resizable()
-									.scaledToFit()
-									.clipped()
+		GeometryReader { geometry in
+			VStack(spacing: 10) {
+				ZStack(alignment: .topTrailing) {
+					Rectangle()
+						.foregroundColor(Color.accentGrayBackground)
+						.overlay(
+							Group {
+								if let selectedImage {
+									Image(selectedImage)
+										.resizable()
+										.scaledToFit()
+										.clipped()
+								}
+								else if let firstImage = images.first {
+									Image(firstImage)
+										.resizable()
+										.scaledToFit()
+										.clipped()
+								}
 							}
-							else if let firstImage = images.first {
-								Image(firstImage)
-									.resizable()
-									.scaledToFit()
-									.clipped()
-							}
+						)
+						.cornerRadius(15)
+						.padding([.horizontal, .top])
+						.onTapGesture {
+							resetTimer()
 						}
-					)
-					.cornerRadius(15)
-					.padding([.horizontal, .top])
-					.onTapGesture {
-						resetTimer()
-					}
 
-				Text("LIVE")
-					.font(.caption)
-					.fontWeight(.bold)
-					.foregroundColor(.white)
-					.padding(5)
-					.background(Color.green)
-					.cornerRadius(5)
-					.padding([.top, .trailing], 10)
-			}
-
-			ScrollView(.vertical, showsIndicators: false) {
-				LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 15), count: 4), spacing: 15) {
-					ForEach(Array(images.enumerated()), id: \.offset) { _, image in
-						Image(image)
-							.resizable()
-							.scaledToFit()
-							.frame(width: 120.25, height: 87.02)
-							.clipped()
-							.background(Color.accentGrayBackground)
-							.cornerRadius(10)
-							.onTapGesture {
-								selectedImage = image
-								resetTimer()
-							}
-							.overlay(
-								RoundedRectangle(cornerRadius: 10)
-									.stroke(selectedImage == image ? Color.blue : Color.clear, lineWidth: 2)
-							)
-					}
+					Text("LIVE")
+						.font(.caption)
+						.fontWeight(.bold)
+						.foregroundColor(.white)
+						.padding(5)
+						.background(Color.green)
+						.cornerRadius(5)
+						.padding([.top, .trailing], 10)
 				}
-				.padding(.horizontal)
-			}
-			.frame(height: 300)
+				.frame(height: geometry.size.height * 0.50)
 
-			Spacer()
+				ScrollView(.vertical, showsIndicators: false) {
+					LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 10), count: 4), spacing: 10) {
+						ForEach(Array(images.enumerated()), id: \.offset) { _, image in
+							Image(image)
+								.resizable()
+								.scaledToFit()
+								.clipped()
+								.background(Color.accentGrayBackground)
+								.cornerRadius(10)
+								.onTapGesture {
+									selectedImage = image
+									resetTimer()
+								}
+								.overlay(
+									RoundedRectangle(cornerRadius: 10)
+										.stroke(selectedImage == image ? Color.blue : Color.clear, lineWidth: 2)
+								)
+						}
+					}
+					.padding(.horizontal)
+				}
+				.frame(height: geometry.size.height * 0.35)
 
-			HStack {
-				ProgressIndicatorView(isVisible: .constant(true), type: .circle(progress: $progress, lineWidth: 3, strokeColor: .accentViolet, backgroundColor: .accentLightViolet))
-					.frame(width: 14, height: 14)
-				Text("This screen will close in \(remainingTime) seconds.")
-					.foregroundColor(.black)
-					.fontWeight(.light)
-					.padding(.leading, 5)
 				Spacer()
+
+				HStack {
+					ProgressIndicatorView(isVisible: .constant(true), type: .circle(progress: $progress, lineWidth: 3, strokeColor: .accentViolet, backgroundColor: .accentLightViolet))
+						.frame(width: 14, height: 14)
+					Text("This screen will close in \(remainingTime) seconds.")
+						.foregroundColor(.black)
+						.fontWeight(.light)
+						.padding(.leading, 5)
+					Spacer()
+				}
+				.padding()
 			}
-			.padding()
 		}
 	}
 }
