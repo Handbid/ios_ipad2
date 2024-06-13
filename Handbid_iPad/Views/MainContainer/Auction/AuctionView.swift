@@ -150,33 +150,36 @@ struct ItemDetailView: View {
 					}
 					else {
 						VStack {
-							if !isLandscape {
-								HStack {
-									Spacer()
-									Button(action: {
-										withAnimation {
-											isVisible = false
-										}
-									}) {
-										Image(systemName: "xmark")
-											.foregroundColor(.black)
-											.padding(10)
-											.background(Color(white: 0.9))
-											.clipShape(Circle())
+							HStack {
+								Spacer()
+								Button(action: {
+									withAnimation {
+										isVisible = false
 									}
-									.padding([.top, .trailing], 20)
+								}) {
+									Image(systemName: "xmark")
+										.foregroundColor(.black)
+										.padding(10)
+										.background(Color(white: 0.9))
+										.clipShape(Circle())
+								}
+								.padding([.top, .trailing], 20)
+							}
+							ScrollView {
+								VStack(spacing: 0) {
+									ImageGalleryView(selectedImage: $selectedImage, remainingTime: $remainingTime, progress: $progress, images: images, resetTimer: resetTimer)
+										.frame(height: geometry.size.height * 0.5)
+									DetailInfoView(isVisible: $isVisible, resetTimer: resetTimer)
+										.background(Color.white)
+										.frame(maxHeight: .infinity)
+										.clipped()
 								}
 							}
-							ImageGalleryView(selectedImage: $selectedImage, remainingTime: $remainingTime, progress: $progress, images: images, resetTimer: resetTimer)
-							ScrollView {
-								DetailInfoView(isVisible: $isVisible, resetTimer: resetTimer)
-									.background(Color.white)
-									.frame(maxHeight: .infinity)
-									.clipped()
-							}
-							.simultaneousGesture(DragGesture().onChanged { _ in resetTimer() }) // Reset timer on drag
+							.simultaneousGesture(DragGesture().onChanged { _ in resetTimer() })
 							ButtonSectionView(item: item, resetTimer: resetTimer)
 								.background(Color.white)
+								.frame(maxWidth: .infinity)
+								.padding(.bottom, 10)
 						}
 						.padding(.horizontal, 10)
 						.padding(.top, 10)
@@ -411,7 +414,7 @@ struct DetailInfoView: View {
 				}
 			}
 
-			Text("Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.")
+			Text("Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.")
 				.font(.body)
 				.padding(.vertical)
 				.onTapGesture {
@@ -436,7 +439,6 @@ struct ButtonSectionView: View {
 
 	var body: some View {
 		VStack {
-		
 			if item.itemType == "forsale" {
 				specialButtons
 			}
