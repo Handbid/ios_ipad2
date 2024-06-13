@@ -289,7 +289,7 @@ struct ImageGalleryView: View {
 
 	var body: some View {
 		GeometryReader { geometry in
-			let itemWidth = (geometry.size.width - 50) / CGFloat(images.count)
+			let itemWidth = (geometry.size.width - 50) / 4
 			let itemHeight = itemWidth * 9 / 16
 
 			VStack(spacing: 10) {
@@ -352,6 +352,13 @@ struct ImageGalleryView: View {
 										RoundedRectangle(cornerRadius: 10)
 											.stroke(selectedImage == image ? Color.blue : Color.clear, lineWidth: 2)
 									)
+							}
+						}
+
+						if images.count < 4 {
+							ForEach(images.count ..< 4, id: \.self) { _ in
+								Color.clear
+									.frame(width: itemWidth, height: itemHeight)
 							}
 						}
 					}
