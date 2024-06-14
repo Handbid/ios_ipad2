@@ -18,9 +18,11 @@ struct AuctionView: View {
 			VStack {
 				if categories.isEmpty {
 					noItemsView
+						.accessibilityIdentifier("noItemsView")
 				}
 				else {
 					categoriesList
+						.accessibilityIdentifier("categoriesList")
 				}
 			}
 			.frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -40,6 +42,7 @@ struct AuctionView: View {
 							showDetailView = false
 						}
 					}
+					.accessibilityIdentifier("overlay")
 
 				ZStack {
 					ItemDetailView(item: selectedItem, isVisible: $showDetailView)
@@ -47,6 +50,7 @@ struct AuctionView: View {
 						.animation(.easeInOut(duration: 0.4), value: showDetailView)
 						.padding(10)
 						.background(Color.accentViolet.opacity(0.5))
+						.accessibilityIdentifier("itemDetailView")
 				}
 			}
 		}
@@ -60,16 +64,19 @@ struct AuctionView: View {
 				Circle()
 					.stroke(Color.accentViolet.opacity(0.3), lineWidth: 1.0)
 					.frame(width: 100, height: 100, alignment: .center)
+					.accessibilityIdentifier("noItemsCircle")
 
 				Image("noItemsIcon")
 					.resizable()
 					.aspectRatio(contentMode: .fill)
 					.frame(width: 50, height: 50, alignment: .center)
+					.accessibilityIdentifier("noItemsIcon")
 			}
 			.padding()
 
 			Text(LocalizedStringKey("auction_label_noItems"))
 				.applyTextStyle(style: .body)
+				.accessibilityIdentifier("noItemsText")
 
 			Spacer()
 		}
@@ -80,6 +87,7 @@ struct AuctionView: View {
 			LazyVStack {
 				ForEach(categories, id: \.id) { category in
 					createCategoryView(for: category)
+						.accessibilityIdentifier("categoryView")
 				}
 			}
 		}
@@ -90,6 +98,7 @@ struct AuctionView: View {
 			Text(category.name ?? "nil")
 				.applyTextStyle(style: .subheader)
 				.padding()
+				.accessibilityIdentifier("categoryName")
 
 			ScrollView(.horizontal) {
 				LazyHStack {
@@ -101,6 +110,7 @@ struct AuctionView: View {
 									showDetailView = true
 								}
 							}
+							.accessibilityIdentifier("itemView")
 					}
 					.padding()
 				}
@@ -131,12 +141,14 @@ struct ItemDetailView: View {
 					if isPad, isLandscape {
 						HStack {
 							ImageGalleryView(selectedImage: $selectedImage, remainingTime: $remainingTime, progress: $progress, images: images, resetTimer: resetTimer)
+								.accessibilityIdentifier("imageGalleryView")
 							VStack(spacing: 0) {
 								ScrollView {
 									DetailInfoView(isVisible: $isVisible, resetTimer: resetTimer)
 										.background(Color.white)
 										.frame(maxHeight: .infinity)
 										.clipped()
+										.accessibilityIdentifier("detailInfoView")
 								}
 								.simultaneousGesture(DragGesture().onChanged { _ in resetTimer() })
 								ButtonSectionView(item: item, resetTimer: resetTimer)
@@ -144,6 +156,7 @@ struct ItemDetailView: View {
 									.frame(maxWidth: .infinity)
 									.clipped()
 									.padding()
+									.accessibilityIdentifier("buttonSectionView")
 							}
 						}
 						.padding(.top, 10)
@@ -164,15 +177,18 @@ struct ItemDetailView: View {
 										.clipShape(Circle())
 								}
 								.padding([.top, .trailing], 20)
+								.accessibilityIdentifier("closeButton")
 							}
 							ScrollView {
 								VStack(spacing: 0) {
 									ImageGalleryView(selectedImage: $selectedImage, remainingTime: $remainingTime, progress: $progress, images: images, resetTimer: resetTimer)
 										.frame(height: geometry.size.height * 0.5)
+										.accessibilityIdentifier("imageGalleryView")
 									DetailInfoView(isVisible: $isVisible, resetTimer: resetTimer)
 										.background(Color.white)
 										.frame(maxHeight: .infinity)
 										.clipped()
+										.accessibilityIdentifier("detailInfoView")
 								}
 							}
 							.simultaneousGesture(DragGesture().onChanged { _ in resetTimer() })
@@ -180,6 +196,7 @@ struct ItemDetailView: View {
 								.background(Color.white)
 								.frame(maxWidth: .infinity)
 								.padding(.bottom, 10)
+								.accessibilityIdentifier("buttonSectionView")
 						}
 						.padding(.horizontal, 10)
 						.padding(.top, 10)
@@ -239,6 +256,7 @@ struct ItemDetailView: View {
 										.clipShape(Circle())
 								}
 								.padding([.top, .trailing], 20)
+								.accessibilityIdentifier("closeButton")
 							}
 						}
 					}
@@ -303,12 +321,14 @@ struct ImageGalleryView: View {
 										.resizable()
 										.scaledToFit()
 										.clipped()
+										.accessibilityIdentifier("selectedImage")
 								}
 								else if let firstImage = images.first {
 									Image(firstImage)
 										.resizable()
 										.scaledToFit()
 										.clipped()
+										.accessibilityIdentifier("firstImage")
 								}
 							}
 						)
@@ -326,6 +346,7 @@ struct ImageGalleryView: View {
 						.background(Color.green)
 						.cornerRadius(20)
 						.padding([.top, .trailing], 10)
+						.accessibilityIdentifier("liveLabel")
 				}
 				.frame(height: geometry.size.height * 0.50)
 
@@ -349,6 +370,7 @@ struct ImageGalleryView: View {
 										selectedImage = image
 										resetTimer()
 									}
+									.accessibilityIdentifier("galleryImage_\(image)")
 									.overlay(
 										RoundedRectangle(cornerRadius: 10)
 											.stroke(selectedImage == image ? Color.blue : Color.clear, lineWidth: 2)
@@ -372,10 +394,12 @@ struct ImageGalleryView: View {
 				HStack {
 					ProgressIndicatorView(isVisible: .constant(true), type: .circle(progress: $progress, lineWidth: 3, strokeColor: .accentViolet, backgroundColor: .accentLightViolet))
 						.frame(width: 14, height: 14)
+						.accessibilityIdentifier("progressIndicator")
 					Text("This screen will close in \(remainingTime) seconds.")
 						.foregroundColor(.black)
 						.fontWeight(.light)
 						.padding(.leading, 5)
+						.accessibilityIdentifier("remainingTimeText")
 					Spacer()
 				}
 				.padding()
@@ -395,16 +419,19 @@ struct DetailInfoView: View {
 				Text("Category Name")
 					.foregroundColor(.black)
 					.fontWeight(.light)
+					.accessibilityIdentifier("categoryName")
 				Text(" | ")
 					.foregroundColor(.gray)
 				Text("#123")
 					.foregroundColor(.black)
 					.fontWeight(.light)
+					.accessibilityIdentifier("itemID")
 				Text(" | ")
 					.foregroundColor(.gray)
 				Text("12 bids")
 					.foregroundColor(.accentViolet)
 					.fontWeight(.light)
+					.accessibilityIdentifier("bidCount")
 				Spacer()
 			}
 			HStack {
@@ -413,6 +440,7 @@ struct DetailInfoView: View {
 					.font(.title2)
 					.fontWeight(.medium)
 					.multilineTextAlignment(.center)
+					.accessibilityIdentifier("itemDescription")
 				Spacer()
 			}
 
@@ -424,6 +452,7 @@ struct DetailInfoView: View {
 						.foregroundColor(.gray)
 					Text("$5,000.00")
 						.font(.headline)
+						.accessibilityIdentifier("itemValue")
 				}
 				VStack(alignment: .leading) {
 					Text("INCREMENT")
@@ -431,6 +460,7 @@ struct DetailInfoView: View {
 						.foregroundColor(.gray)
 					Text("$100.00")
 						.font(.headline)
+						.accessibilityIdentifier("bidIncrement")
 				}
 				VStack(alignment: .trailing) {
 					Text("BUY NOW")
@@ -438,16 +468,18 @@ struct DetailInfoView: View {
 						.foregroundColor(.gray)
 					Text("$3,200.00")
 						.font(.headline)
+						.accessibilityIdentifier("buyNowPrice")
 				}
 				Spacer()
 			}
 
-			Text("Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.")
+			Text("Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.")
 				.font(.body)
 				.padding(.vertical)
 				.onTapGesture {
 					resetTimer()
 				}
+				.accessibilityIdentifier("itemLongDescription")
 
 			Spacer()
 		}
@@ -469,9 +501,11 @@ struct ButtonSectionView: View {
 		VStack {
 			if item.itemType == "forsale" {
 				specialButtons
+					.accessibilityIdentifier("specialButtons")
 			}
 			else {
 				defaultButtons
+					.accessibilityIdentifier("defaultButtons")
 			}
 		}
 		.padding()
@@ -493,6 +527,7 @@ struct ButtonSectionView: View {
 					.foregroundColor(.white)
 					.cornerRadius(10)
 			}
+			.accessibilityIdentifier("specialBidButton")
 		}
 	}
 
@@ -508,11 +543,13 @@ struct ButtonSectionView: View {
 						.background(Color(white: 0.9))
 						.cornerRadius(10)
 				}
+				.accessibilityIdentifier("decreaseBidButton")
 				TextField("", text: .constant("$99,99"))
 					.padding()
 					.background(Color(white: 0.9))
 					.cornerRadius(10)
 					.frame(width: 100, height: 40)
+					.accessibilityIdentifier("bidTextField")
 				Button(action: {
 					resetTimer()
 				}) {
@@ -522,6 +559,7 @@ struct ButtonSectionView: View {
 						.background(Color(white: 0.9))
 						.cornerRadius(10)
 				}
+				.accessibilityIdentifier("increaseBidButton")
 				Button(action: {
 					resetTimer()
 				}) {
@@ -532,6 +570,7 @@ struct ButtonSectionView: View {
 						.foregroundColor(.white)
 						.cornerRadius(10)
 				}
+				.accessibilityIdentifier("bidNowButton")
 			}
 			.padding(.bottom, 10)
 
@@ -546,6 +585,7 @@ struct ButtonSectionView: View {
 						.foregroundColor(.white)
 						.cornerRadius(10)
 				}
+				.accessibilityIdentifier("setMaxBidButton")
 
 				Button(action: {
 					resetTimer()
@@ -557,6 +597,7 @@ struct ButtonSectionView: View {
 						.foregroundColor(.white)
 						.cornerRadius(10)
 				}
+				.accessibilityIdentifier("buyNowButton")
 			}
 		}
 	}
