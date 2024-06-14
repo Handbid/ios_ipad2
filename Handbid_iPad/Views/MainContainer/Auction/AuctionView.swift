@@ -188,25 +188,26 @@ struct ItemDetailView: View {
 			VStack(spacing: 0) {
 				ScrollView {
 					DetailInfoView(isVisible: $isVisible, resetTimer: resetTimer)
-						.background(Color.white)
+						.background(Color.clear)
 						.frame(maxHeight: .infinity)
 						.clipped()
 						.accessibilityIdentifier("detailInfoView")
 				}
 				.simultaneousGesture(DragGesture().onChanged { _ in resetTimer() })
 				ButtonSectionView(item: item, resetTimer: resetTimer)
-					.background(Color.white)
+					.background(Color.clear)
 					.frame(maxWidth: .infinity)
 					.clipped()
 					.padding()
 					.accessibilityIdentifier("buttonSectionView")
 			}
+			.background(Color.accentGrayBackground)
 		}
-		.padding(.top, 10)
+		.padding(.top, 0)
 	}
 
 	private func portraitView(geometry: GeometryProxy) -> some View {
-		VStack {
+		VStack(spacing: 0) {
 			HStack {
 				Spacer()
 				closeButton
@@ -219,7 +220,7 @@ struct ItemDetailView: View {
 						.accessibilityIdentifier("imageGalleryView")
 					DetailInfoView(isVisible: $isVisible, resetTimer: resetTimer)
 						.background(Color.white)
-						.frame(maxHeight: .infinity)
+						.frame(maxHeight: .infinity, alignment: .top)
 						.clipped()
 						.accessibilityIdentifier("detailInfoView")
 				}
@@ -244,8 +245,11 @@ struct ItemDetailView: View {
 			Image(systemName: "xmark")
 				.foregroundColor(.black)
 				.padding(10)
-				.background(Color(white: 0.9))
+				.background(Color.white)
 				.clipShape(Circle())
+				.overlay(
+					Circle().stroke(Color.accentGrayBorder, lineWidth: 1)
+				)
 		}
 		.accessibilityIdentifier("closeButton")
 	}
