@@ -72,7 +72,7 @@ class CreditCardModelTests: XCTestCase {
 		var creditCardModel = CreditCardModel()
 		creditCardModel.deserialize(json)
 
-		XCTAssertNil(creditCardModel.id)
+		XCTAssertEqual(creditCardModel.id, 0)
 		XCTAssertNil(creditCardModel.creditCardsGuid)
 		XCTAssertNil(creditCardModel.creditCardHandle)
 		XCTAssertNil(creditCardModel.creditCardToken)

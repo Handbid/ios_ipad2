@@ -34,6 +34,7 @@ struct AuctionView: ContentView {
 		.onAppear {
 			viewModel.refreshData()
 		}
+		.accessibilityIdentifier("AuctionView")
 	}
 
 	private var noItemsView: some View {

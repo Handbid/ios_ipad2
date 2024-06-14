@@ -71,7 +71,12 @@ struct MainContainer<T: PageProtocol>: View {
 	}
 
 	private func mainContainer(geometry: GeometryProxy) -> some View {
-		MainContainerViewBuilder(selectedView: selectedView)
+		MainContainerViewBuilder(selectedView: selectedView,
+		                         auctionViewModel: auctionViewModel,
+		                         paddleViewModel: paddleViewModel,
+		                         myBidsViewModel: myBidsViewModel,
+		                         managerViewModel: managerViewModel,
+		                         logOutViewModel: logOutViewModel)
 			.frame(width: deviceContext.isPhone || !isSidebarVisible ? geometry.size.width : geometry.size.width - 90)
 			.clipShape(RoundedCornerView(radius: 40, corners: .topLeft))
 			.edgesIgnoringSafeArea(.bottom)

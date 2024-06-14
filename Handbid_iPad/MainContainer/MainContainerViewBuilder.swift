@@ -3,22 +3,26 @@
 import SwiftUI
 
 struct MainContainerViewBuilder: View {
-	@EnvironmentObject var viewFactory: AnyViewMainContainerFactory
 	var selectedView: MainContainerTypeView
+	var auctionViewModel: AuctionViewModel
+	var paddleViewModel: PaddleViewModel
+	var myBidsViewModel: MyBidsViewModel
+	var managerViewModel: ManagerViewModel
+	var logOutViewModel: LogOutViewModel
 
 	@ViewBuilder
 	var body: some View {
 		switch selectedView {
 		case .auction:
-			viewFactory.makeAuctionView()
+			AuctionView(viewModel: auctionViewModel)
 		case .paddle:
-			viewFactory.makePaddleView()
+			PaddleView(viewModel: paddleViewModel)
 		case .myBids:
-			viewFactory.makeMyBidsView()
+			MyBidsView(viewModel: myBidsViewModel)
 		case .manager:
-			viewFactory.makeManagerView()
+			ManagerView(viewModel: managerViewModel)
 		case .logout:
-			viewFactory.makeLogOutView()
+			LogOutView(viewModel: logOutViewModel)
 		}
 	}
 }

@@ -4,7 +4,7 @@ import Arrow
 import NetworkService
 
 struct CreditCardModel: Identifiable, Codable, NetworkingJSONDecodable, AutoEncodable {
-	var id: String
+	var id: Int
 	var creditCardsGuid: String?
 	var creditCardHandle: String?
 	var creditCardToken: String?
@@ -27,7 +27,7 @@ struct CreditCardModel: Identifiable, Codable, NetworkingJSONDecodable, AutoEnco
 
 extension CreditCardModel: ArrowParsable {
 	init() {
-		self.id = String()
+		self.id = Int()
 	}
 
 	mutating func deserialize(_ json: JSON) {

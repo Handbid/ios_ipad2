@@ -6,43 +6,55 @@ import XCTest
 
 final class MainContainerViewBuilderTests: XCTestCase {
 	func testMainContainerViewBuilder() throws {
-		let mockFactory = MockMainContainerProtocolFactory()
-		let factory = AnyViewMainContainerFactory(wrappedFactory: mockFactory)
+		let mockAuctionViewModel = MockAuctionViewModel()
+		let mockPaddleViewModel = MockPaddleViewModel()
+		let mockMyBidsViewModel = MockMyBidsViewModel()
+		let mockManagerViewModel = MockManagerViewModel()
+		let mockLogOutViewModel = MockLogOutViewModel()
 
-		let auctionView = MainContainerViewBuilder(selectedView: .auction)
-			.environmentObject(factory)
-		var text = try auctionView.inspect().find(text: "Mock Auction View")
-		XCTAssertEqual(try text.string(), "Mock Auction View")
+		let auctionView = MainContainerViewBuilder(selectedView: .auction,
+		                                           auctionViewModel: mockAuctionViewModel,
+		                                           paddleViewModel: mockPaddleViewModel,
+		                                           myBidsViewModel: mockMyBidsViewModel,
+		                                           managerViewModel: mockManagerViewModel,
+		                                           logOutViewModel: mockLogOutViewModel)
+		XCTAssertNoThrow(try auctionView.inspect()
+			.find(viewWithAccessibilityIdentifier: "AuctionView"))
 
-		let paddleView = MainContainerViewBuilder(selectedView: .paddle)
-			.environmentObject(factory)
-		text = try paddleView.inspect().find(text: "Mock Paddle View")
+		let paddleView = MainContainerViewBuilder(selectedView: .paddle,
+		                                          auctionViewModel: mockAuctionViewModel,
+		                                          paddleViewModel: mockPaddleViewModel,
+		                                          myBidsViewModel: mockMyBidsViewModel,
+		                                          managerViewModel: mockManagerViewModel,
+		                                          logOutViewModel: mockLogOutViewModel)
+		var text = try paddleView.inspect().find(text: "Mock Paddle View")
 		XCTAssertEqual(try text.string(), "Mock Paddle View")
 
-		let myBidsView = MainContainerViewBuilder(selectedView: .myBids)
-			.environmentObject(factory)
+		let myBidsView = MainContainerViewBuilder(selectedView: .myBids,
+		                                          auctionViewModel: mockAuctionViewModel,
+		                                          paddleViewModel: mockPaddleViewModel,
+		                                          myBidsViewModel: mockMyBidsViewModel,
+		                                          managerViewModel: mockManagerViewModel,
+		                                          logOutViewModel: mockLogOutViewModel)
 		text = try myBidsView.inspect().find(text: "Mock My Bids View")
 		XCTAssertEqual(try text.string(), "Mock My Bids View")
 
-		let managerView = MainContainerViewBuilder(selectedView: .manager)
-			.environmentObject(factory)
+		let managerView = MainContainerViewBuilder(selectedView: .manager,
+		                                           auctionViewModel: mockAuctionViewModel,
+		                                           paddleViewModel: mockPaddleViewModel,
+		                                           myBidsViewModel: mockMyBidsViewModel,
+		                                           managerViewModel: mockManagerViewModel,
+		                                           logOutViewModel: mockLogOutViewModel)
 		text = try managerView.inspect().find(text: "Mock Manager View")
 		XCTAssertEqual(try text.string(), "Mock Manager View")
 
-		let logOutView = MainContainerViewBuilder(selectedView: .logout)
-			.environmentObject(factory)
+		let logOutView = MainContainerViewBuilder(selectedView: .logout,
+		                                          auctionViewModel: mockAuctionViewModel,
+		                                          paddleViewModel: mockPaddleViewModel,
+		                                          myBidsViewModel: mockMyBidsViewModel,
+		                                          managerViewModel: mockManagerViewModel,
+		                                          logOutViewModel: mockLogOutViewModel)
 		text = try logOutView.inspect().find(text: "Mock Log Out View")
 		XCTAssertEqual(try text.string(), "Mock Log Out View")
-	}
-
-	func testAnyViewMainContainerFactory() throws {
-		let mockFactory = MockMainContainerProtocolFactory()
-		let factory = AnyViewMainContainerFactory(wrappedFactory: mockFactory)
-
-		XCTAssertEqual(try factory.makeAuctionView().inspect().find(text: "Mock Auction View").string(), "Mock Auction View")
-		XCTAssertEqual(try factory.makePaddleView().inspect().find(text: "Mock Paddle View").string(), "Mock Paddle View")
-		XCTAssertEqual(try factory.makeMyBidsView().inspect().find(text: "Mock My Bids View").string(), "Mock My Bids View")
-		XCTAssertEqual(try factory.makeManagerView().inspect().find(text: "Mock Manager View").string(), "Mock Manager View")
-		XCTAssertEqual(try factory.makeLogOutView().inspect().find(text: "Mock Log Out View").string(), "Mock Log Out View")
 	}
 }

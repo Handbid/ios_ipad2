@@ -7,7 +7,6 @@ struct AppLaunchControlView: View {
 	@EnvironmentObject var authManager: AuthManager
 	@State private var isValidToken = false
 	@State private var isLoading = true
-	let viewFactory = AnyViewMainContainerFactory(wrappedFactory: MainContainerViewFactory())
 	let dataServiceWrapper = DataServiceFactory.getService()
 
 	var body: some View {
@@ -22,7 +21,6 @@ struct AppLaunchControlView: View {
 			else {
 				if isValidToken {
 					RootPageView(page: MainContainerPage.chooseOrganization)
-						.environmentObject(viewFactory)
 						.environmentObject(dataServiceWrapper)
 				}
 				else {
