@@ -5,7 +5,7 @@ import SwiftUI
 
 struct AuctionView: View {
 	@ObservedObject var viewModel: AuctionViewModel
-	@State var categories: [CategoryModel] = []
+	@State private var categories: [CategoryModel] = []
 	@State private var selectedItem: ItemModel? = nil
 	@State private var showDetailView: Bool = false
 
@@ -18,11 +18,9 @@ struct AuctionView: View {
 			VStack {
 				if categories.isEmpty {
 					noItemsView
-						.accessibilityIdentifier("noItemsView")
 				}
 				else {
 					categoriesList
-						.accessibilityIdentifier("categoriesList")
 				}
 			}
 			.frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -36,22 +34,8 @@ struct AuctionView: View {
 			}
 
 			if let selectedItem, showDetailView {
-				Color.black.opacity(0.5)
-					.onTapGesture {
-						withAnimation {
-							showDetailView = false
-						}
-					}
-					.accessibilityIdentifier("overlay")
-
-				ZStack {
-					ItemDetailView(item: selectedItem, isVisible: $showDetailView)
-						.transition(.move(edge: .bottom))
-						.animation(.easeInOut(duration: 0.4), value: showDetailView)
-						.padding(10)
-						.background(Color.accentViolet.opacity(0.5))
-						.accessibilityIdentifier("itemDetailView")
-				}
+				overlayView
+				itemDetailView(for: selectedItem)
 			}
 		}
 	}
@@ -59,56 +43,75 @@ struct AuctionView: View {
 	private var noItemsView: some View {
 		VStack {
 			Spacer()
-
 			ZStack {
 				Circle()
 					.stroke(Color.accentViolet.opacity(0.3), lineWidth: 1.0)
-					.frame(width: 100, height: 100, alignment: .center)
-					.accessibilityIdentifier("noItemsCircle")
-
+					.frame(width: 100, height: 100)
 				Image("noItemsIcon")
 					.resizable()
 					.aspectRatio(contentMode: .fill)
-					.frame(width: 50, height: 50, alignment: .center)
-					.accessibilityIdentifier("noItemsIcon")
+					.frame(width: 50, height: 50)
 			}
 			.padding()
-
 			Text(LocalizedStringKey("auction_label_noItems"))
 				.applyTextStyle(style: .body)
-				.accessibilityIdentifier("noItemsText")
-
 			Spacer()
 		}
+		.accessibilityIdentifier("noItemsView")
 	}
 
 	private var categoriesList: some View {
 		ScrollView(.vertical) {
 			LazyVStack {
 				ForEach(categories, id: \.id) { category in
-					createCategoryView(for: category)
-						.accessibilityIdentifier("categoryView")
+					CategoryView(category: category) { item in
+						withAnimation {
+							selectedItem = item
+							showDetailView = true
+						}
+					}
 				}
 			}
 		}
+		.accessibilityIdentifier("categoriesList")
 	}
 
-	private func createCategoryView(for category: CategoryModel) -> AnyView {
-		AnyView(VStack {
+	private var overlayView: some View {
+		Color.black.opacity(0.5)
+			.onTapGesture {
+				withAnimation {
+					showDetailView = false
+				}
+			}
+			.accessibilityIdentifier("overlay")
+	}
+
+	private func itemDetailView(for item: ItemModel) -> some View {
+		ItemDetailView(item: item, isVisible: $showDetailView)
+			.transition(.move(edge: .bottom))
+			.animation(.easeInOut(duration: 0.4), value: showDetailView)
+			.padding(10)
+			.background(Color.accentViolet.opacity(0.5))
+			.accessibilityIdentifier("itemDetailView")
+	}
+}
+
+struct CategoryView: View {
+	let category: CategoryModel
+	let onItemSelect: (ItemModel) -> Void
+
+	var body: some View {
+		VStack {
 			Text(category.name ?? "nil")
 				.applyTextStyle(style: .subheader)
 				.padding()
 				.accessibilityIdentifier("categoryName")
-
 			ScrollView(.horizontal) {
 				LazyHStack {
 					ForEach(category.items ?? [], id: \.id) { item in
 						ItemView(item: item)
 							.onTapGesture {
-								withAnimation {
-									selectedItem = item
-									showDetailView = true
-								}
+								onItemSelect(item)
 							}
 							.accessibilityIdentifier("itemView")
 					}
@@ -117,7 +120,8 @@ struct AuctionView: View {
 			}
 			.defaultScrollAnchor(.leading)
 			.frame(height: 370)
-		})
+		}
+		.accessibilityIdentifier("categoryView")
 	}
 }
 
@@ -139,97 +143,16 @@ struct ItemDetailView: View {
 			ZStack {
 				VStack(spacing: 10) {
 					if isPad, isLandscape {
-						HStack {
-							ImageGalleryView(selectedImage: $selectedImage, remainingTime: $remainingTime, progress: $progress, images: images, resetTimer: resetTimer)
-								.accessibilityIdentifier("imageGalleryView")
-							VStack(spacing: 0) {
-								ScrollView {
-									DetailInfoView(isVisible: $isVisible, resetTimer: resetTimer)
-										.background(Color.white)
-										.frame(maxHeight: .infinity)
-										.clipped()
-										.accessibilityIdentifier("detailInfoView")
-								}
-								.simultaneousGesture(DragGesture().onChanged { _ in resetTimer() })
-								ButtonSectionView(item: item, resetTimer: resetTimer)
-									.background(Color.white)
-									.frame(maxWidth: .infinity)
-									.clipped()
-									.padding()
-									.accessibilityIdentifier("buttonSectionView")
-							}
-						}
-						.padding(.top, 10)
+						landscapeView
 					}
 					else {
-						VStack {
-							HStack {
-								Spacer()
-								Button(action: {
-									withAnimation {
-										isVisible = false
-									}
-								}) {
-									Image(systemName: "xmark")
-										.foregroundColor(.black)
-										.padding(10)
-										.background(Color(white: 0.9))
-										.clipShape(Circle())
-								}
-								.padding([.top, .trailing], 20)
-								.accessibilityIdentifier("closeButton")
-							}
-							ScrollView {
-								VStack(spacing: 0) {
-									ImageGalleryView(selectedImage: $selectedImage, remainingTime: $remainingTime, progress: $progress, images: images, resetTimer: resetTimer)
-										.frame(height: geometry.size.height * 0.5)
-										.accessibilityIdentifier("imageGalleryView")
-									DetailInfoView(isVisible: $isVisible, resetTimer: resetTimer)
-										.background(Color.white)
-										.frame(maxHeight: .infinity)
-										.clipped()
-										.accessibilityIdentifier("detailInfoView")
-								}
-							}
-							.simultaneousGesture(DragGesture().onChanged { _ in resetTimer() })
-							ButtonSectionView(item: item, resetTimer: resetTimer)
-								.background(Color.white)
-								.frame(maxWidth: .infinity)
-								.padding(.bottom, 10)
-								.accessibilityIdentifier("buttonSectionView")
-						}
-						.padding(.horizontal, 10)
-						.padding(.top, 10)
+						portraitView(geometry: geometry)
 					}
 				}
 				.background(Color.white)
 				.cornerRadius(20)
 				.offset(y: offset)
-				.gesture(
-					DragGesture()
-						.onChanged { gesture in
-							if gesture.translation.height > 0 {
-								offset = gesture.translation.height
-							}
-							resetTimer()
-						}
-						.onEnded { gesture in
-							if gesture.translation.height > 100 {
-								withAnimation {
-									offset = geometry.size.height
-									DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-										isVisible = false
-										offset = 0
-									}
-								}
-							}
-							else {
-								withAnimation {
-									offset = 0
-								}
-							}
-						}
-				)
+				.gesture(dragGesture(geometry: geometry))
 				.animation(.easeInOut(duration: 0.4), value: offset)
 				.onAppear {
 					startTimer()
@@ -244,33 +167,113 @@ struct ItemDetailView: View {
 						HStack {
 							Spacer()
 							if offset == 0 {
-								Button(action: {
-									withAnimation {
-										isVisible = false
-									}
-								}) {
-									Image(systemName: "xmark")
-										.foregroundColor(.black)
-										.padding(10)
-										.background(Color(white: 0.9))
-										.clipShape(Circle())
-								}
-								.padding([.top, .trailing], 20)
-								.accessibilityIdentifier("closeButton")
+								closeButton
 							}
 						}
 					}
 					Spacer()
 				}
 			}
-			.gesture(
-				TapGesture()
-					.onEnded {
-						resetTimer()
-					}
-			)
+			.gesture(TapGesture().onEnded {
+				resetTimer()
+			})
 		}
 		.background(Color.clear)
+	}
+
+	private var landscapeView: some View {
+		HStack {
+			ImageGalleryView(selectedImage: $selectedImage, remainingTime: $remainingTime, progress: $progress, images: images, resetTimer: resetTimer)
+				.accessibilityIdentifier("imageGalleryView")
+			VStack(spacing: 0) {
+				ScrollView {
+					DetailInfoView(isVisible: $isVisible, resetTimer: resetTimer)
+						.background(Color.white)
+						.frame(maxHeight: .infinity)
+						.clipped()
+						.accessibilityIdentifier("detailInfoView")
+				}
+				.simultaneousGesture(DragGesture().onChanged { _ in resetTimer() })
+				ButtonSectionView(item: item, resetTimer: resetTimer)
+					.background(Color.white)
+					.frame(maxWidth: .infinity)
+					.clipped()
+					.padding()
+					.accessibilityIdentifier("buttonSectionView")
+			}
+		}
+		.padding(.top, 10)
+	}
+
+	private func portraitView(geometry: GeometryProxy) -> some View {
+		VStack {
+			HStack {
+				Spacer()
+				closeButton
+					.padding([.top, .trailing], 20)
+			}
+			ScrollView {
+				VStack(spacing: 0) {
+					ImageGalleryView(selectedImage: $selectedImage, remainingTime: $remainingTime, progress: $progress, images: images, resetTimer: resetTimer)
+						.frame(height: geometry.size.height * 0.5)
+						.accessibilityIdentifier("imageGalleryView")
+					DetailInfoView(isVisible: $isVisible, resetTimer: resetTimer)
+						.background(Color.white)
+						.frame(maxHeight: .infinity)
+						.clipped()
+						.accessibilityIdentifier("detailInfoView")
+				}
+			}
+			.simultaneousGesture(DragGesture().onChanged { _ in resetTimer() })
+			ButtonSectionView(item: item, resetTimer: resetTimer)
+				.background(Color.white)
+				.frame(maxWidth: .infinity)
+				.padding(.bottom, 10)
+				.accessibilityIdentifier("buttonSectionView")
+		}
+		.padding(.horizontal, 10)
+		.padding(.top, 10)
+	}
+
+	private var closeButton: some View {
+		Button(action: {
+			withAnimation {
+				isVisible = false
+			}
+		}) {
+			Image(systemName: "xmark")
+				.foregroundColor(.black)
+				.padding(10)
+				.background(Color(white: 0.9))
+				.clipShape(Circle())
+		}
+		.accessibilityIdentifier("closeButton")
+	}
+
+	private func dragGesture(geometry: GeometryProxy) -> some Gesture {
+		DragGesture()
+			.onChanged { gesture in
+				if gesture.translation.height > 0 {
+					offset = gesture.translation.height
+				}
+				resetTimer()
+			}
+			.onEnded { gesture in
+				if gesture.translation.height > 100 {
+					withAnimation {
+						offset = geometry.size.height
+						DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+							isVisible = false
+							offset = 0
+						}
+					}
+				}
+				else {
+					withAnimation {
+						offset = 0
+					}
+				}
+			}
 	}
 
 	private func startTimer() {
@@ -473,7 +476,7 @@ struct DetailInfoView: View {
 				Spacer()
 			}
 
-			Text("Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.")
+			Text("Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.")
 				.font(.body)
 				.padding(.vertical)
 				.onTapGesture {
@@ -501,11 +504,9 @@ struct ButtonSectionView: View {
 		VStack {
 			if item.itemType == "forsale" {
 				specialButtons
-					.accessibilityIdentifier("specialButtons")
 			}
 			else {
 				defaultButtons
-					.accessibilityIdentifier("defaultButtons")
 			}
 		}
 		.padding()
