@@ -320,11 +320,11 @@ struct ImageGalleryView: View {
 
 					Text("LIVE")
 						.font(.caption)
-						.fontWeight(.bold)
+						.fontWeight(.medium)
 						.foregroundColor(.white)
 						.padding(5)
 						.background(Color.green)
-						.cornerRadius(5)
+						.cornerRadius(20)
 						.padding([.top, .trailing], 10)
 				}
 				.frame(height: geometry.size.height * 0.50)
@@ -390,15 +390,34 @@ struct DetailInfoView: View {
 
 	var body: some View {
 		VStack(alignment: .leading, spacing: 15) {
-			Text("Category Name #123 | 12 BIDS")
-				.font(.headline)
-				.foregroundColor(.gray)
-
-			Text("Item Description - Name and List of Included Items")
-				.font(.title2)
-				.fontWeight(.bold)
+			HStack {
+				Spacer()
+				Text("Category Name")
+					.foregroundColor(.black)
+					.fontWeight(.light)
+				Text(" | ")
+					.foregroundColor(.gray)
+				Text("#123")
+					.foregroundColor(.black)
+					.fontWeight(.light)
+				Text(" | ")
+					.foregroundColor(.gray)
+				Text("12 bids")
+					.foregroundColor(.accentViolet)
+					.fontWeight(.light)
+				Spacer()
+			}
+			HStack {
+				Spacer()
+				Text("Item Description - Name and List of Included Items")
+					.font(.title2)
+					.fontWeight(.medium)
+					.multilineTextAlignment(.center)
+				Spacer()
+			}
 
 			HStack(spacing: 30) {
+				Spacer()
 				VStack(alignment: .leading) {
 					Text("VALUE")
 						.font(.caption)
@@ -413,13 +432,14 @@ struct DetailInfoView: View {
 					Text("$100.00")
 						.font(.headline)
 				}
-				VStack(alignment: .leading) {
+				VStack(alignment: .trailing) {
 					Text("BUY NOW")
 						.font(.caption)
 						.foregroundColor(.gray)
 					Text("$3,200.00")
 						.font(.headline)
 				}
+				Spacer()
 			}
 
 			Text("Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.")
