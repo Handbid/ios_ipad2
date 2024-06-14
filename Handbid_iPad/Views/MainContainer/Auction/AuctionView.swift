@@ -480,13 +480,18 @@ struct DetailInfoView: View {
 				Spacer()
 			}
 
-			Text("Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.")
-				.font(.body)
-				.padding(.vertical)
-				.onTapGesture {
-					resetTimer()
-				}
-				.accessibilityIdentifier("itemLongDescription")
+			HTMLText(html: """
+			Amet minim mollit non deserunt ullamco est sit aliqua <b>dolor</b> do amet sint.
+			Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
+			Amet minim mollit non deserunt ullamco est sit aliqua <i>dolor</i> do amet sint.
+			Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
+			""")
+			.frame(maxWidth: .infinity, alignment: .leading)
+			.fixedSize(horizontal: false, vertical: true)
+			.onTapGesture {
+				resetTimer()
+			}
+			.accessibilityIdentifier("itemDescription")
 
 			Spacer()
 		}
