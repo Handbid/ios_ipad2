@@ -5,6 +5,7 @@ enum ApiEndpoints {
 	static let logInUser = "/auth/login"
 	static let resetPassword = "/auth/reset"
 	static let auctionUser = "/auction/user"
+	static let organizationIndex = "/organization/index"
 	static let auctionInventory = "/auction/inventory"
 	static let getAuctionsUser = "/auction/index"
 }

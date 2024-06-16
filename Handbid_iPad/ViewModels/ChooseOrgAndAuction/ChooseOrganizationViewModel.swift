@@ -62,20 +62,9 @@ class ChooseOrganizationViewModel: ObservableObject {
 		}
 	}
 
-	private func handleOrganizationsReceived(_ user: UserModel) {
-		organizations = user.organization ?? []
+	private func handleOrganizationsReceived(_ organizations: [OrganizationModel]) {
+		self.organizations = organizations
 		isLoading = false
-
-		do {
-			try? dataManager.create(user, in: .user)
-		}
-
-		do {
-			try? dataManager.update(user, withNestedUpdates: true, in: .user)
-		}
-
-		try? dataManager.deleteAll(of: UserModel.self, from: .user)
-
 		filterOrganizations()
 	}
 }
