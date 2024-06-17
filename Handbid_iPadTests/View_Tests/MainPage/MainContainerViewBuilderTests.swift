@@ -27,8 +27,8 @@ final class MainContainerViewBuilderTests: XCTestCase {
 		                                          myBidsViewModel: mockMyBidsViewModel,
 		                                          managerViewModel: mockManagerViewModel,
 		                                          logOutViewModel: mockLogOutViewModel)
-		var text = try paddleView.inspect().find(text: "Mock Paddle View")
-		XCTAssertEqual(try text.string(), "Mock Paddle View")
+		XCTAssertNoThrow(try paddleView.inspect()
+			.find(viewWithAccessibilityIdentifier: "PaddleView"))
 
 		let myBidsView = MainContainerViewBuilder(selectedView: .myBids,
 		                                          auctionViewModel: mockAuctionViewModel,
@@ -36,8 +36,8 @@ final class MainContainerViewBuilderTests: XCTestCase {
 		                                          myBidsViewModel: mockMyBidsViewModel,
 		                                          managerViewModel: mockManagerViewModel,
 		                                          logOutViewModel: mockLogOutViewModel)
-		text = try myBidsView.inspect().find(text: "Mock My Bids View")
-		XCTAssertEqual(try text.string(), "Mock My Bids View")
+		XCTAssertNoThrow(try myBidsView.inspect()
+			.find(viewWithAccessibilityIdentifier: "MyBidsView"))
 
 		let managerView = MainContainerViewBuilder(selectedView: .manager,
 		                                           auctionViewModel: mockAuctionViewModel,
@@ -45,8 +45,8 @@ final class MainContainerViewBuilderTests: XCTestCase {
 		                                           myBidsViewModel: mockMyBidsViewModel,
 		                                           managerViewModel: mockManagerViewModel,
 		                                           logOutViewModel: mockLogOutViewModel)
-		text = try managerView.inspect().find(text: "Mock Manager View")
-		XCTAssertEqual(try text.string(), "Mock Manager View")
+		XCTAssertNoThrow(try managerView.inspect()
+			.find(viewWithAccessibilityIdentifier: "ManagerView"))
 
 		let logOutView = MainContainerViewBuilder(selectedView: .logout,
 		                                          auctionViewModel: mockAuctionViewModel,
@@ -54,7 +54,7 @@ final class MainContainerViewBuilderTests: XCTestCase {
 		                                          myBidsViewModel: mockMyBidsViewModel,
 		                                          managerViewModel: mockManagerViewModel,
 		                                          logOutViewModel: mockLogOutViewModel)
-		text = try logOutView.inspect().find(text: "Mock Log Out View")
-		XCTAssertEqual(try text.string(), "Mock Log Out View")
+		XCTAssertNoThrow(try logOutView.inspect()
+			.find(viewWithAccessibilityIdentifier: "LogOutView"))
 	}
 }

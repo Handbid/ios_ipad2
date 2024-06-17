@@ -14,13 +14,8 @@ struct AuctionCollectionCellView<T: PageProtocol>: View {
 		let colorScheme = colorScheme ?? defaultColorScheme
 
 		Button(action: {
-			do {
-				try dataManager.create(auction, in: .auction)
-				coordinator.push(MainContainerPage.mainContainer as! T)
-			}
-			catch {
-				print(error)
-			}
+			try? dataManager.create(auction, in: .auction)
+			coordinator.push(MainContainerPage.mainContainer as! T)
 		}) {
 			VStack(alignment: .center, spacing: 10) {
 				VStack {

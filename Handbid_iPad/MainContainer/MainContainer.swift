@@ -38,8 +38,11 @@ struct MainContainer<T: PageProtocol>: View {
 		}
 		.onAppear {
 			DispatchQueue.global().async {
+				let auction = try? DataManager.shared.fetchSingle(of: AuctionModel.self,
+				                                                  from: .auction)
 				WebSocketManager.shared.startSocket(urlFactory: HandbidWebSocketFactory(),
-				                                    token: authManager.currentToken)
+				                                    token: authManager.currentToken,
+				                                    auctionGuid: auction?.auctionGuid)
 			}
 		}
 		.navigationBarBackButtonHidden()

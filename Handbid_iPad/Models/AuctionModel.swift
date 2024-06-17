@@ -11,7 +11,7 @@ struct AuctionModel: Identifiable, Codable, NetworkingJSONDecodable, AutoEncodab
 	var imageUrl: String?
 	var auctionGuid: String?
 	var name: String?
-	var status: String?
+	var status: AuctionStatus?
 	var timeZone: String?
 	var startTime: Int?
 	var endTime: Int?
@@ -120,6 +120,10 @@ struct AuctionModel: Identifiable, Codable, NetworkingJSONDecodable, AutoEncodab
 	var auctionAddressCity: String?
 	var auctionAddressProvince: String?
 	var count: Int?
+    
+    enum AuctionStatus: String, Codable {
+        case open, paused, setup, presale, preview, reconciled, closed
+    }
 }
 
 extension AuctionModel: ArrowParsable {

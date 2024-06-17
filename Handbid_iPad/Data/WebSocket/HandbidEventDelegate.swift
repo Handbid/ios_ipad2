@@ -100,7 +100,7 @@ class HandbidEventDelegate: EventDelegate {
 		do {
 			guard let json = try JSONSerialization.jsonObject(with: jsonData) as? [String: Any],
 			      let name = json["name"] as? String,
-			      let argsString = json["args"] as? String
+			      let args = json["args"] as? [[String: Any]]
 			else {
 				logger?.error("JSON does not contain required keys 'name' or 'args'")
 				return
@@ -118,9 +118,7 @@ class HandbidEventDelegate: EventDelegate {
 				return
 			}
 
-			guard let argsData = argsString.data(using: .utf8),
-			      let args = try JSONSerialization.jsonObject(with: argsData) as? [Data],
-			      let eventType = Processor(rawValue: eventId),
+			guard let eventType = Processor(rawValue: eventId),
 			      args.count > 0
 			else {
 				logger?.log("Ignoring event of type \(eventId) due to processing failure")
