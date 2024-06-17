@@ -102,13 +102,12 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 		guard let id = auction.identity,
 		      let name = auction.name,
 		      let status = auction.status,
-		      let currencyCode = auction.currencyCode,
 		      let categories = auction.categories
 		else { return }
 		auctionId = id
 		title = name
 		auctionStatus = status
-		self.currencyCode = currencyCode
+		currencyCode = auction.currencyCode ?? "USD"
 		self.categories = categories.filter { $0.items?.isEmpty == false }
 	}
 }
