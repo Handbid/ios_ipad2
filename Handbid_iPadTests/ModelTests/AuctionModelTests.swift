@@ -15,7 +15,7 @@ class AuctionModelTests: XCTestCase {
 		    "key": "auctionKey",
 		    "imageUrl": "https://example.com/image.jpg",
 		    "name": "Auction Name",
-		    "status": "active",
+		    "status": "open",
 		    "timeZone": "PST",
 		    "startTime": 1622517800,
 		    "endTime": 1625109800,
@@ -48,7 +48,7 @@ class AuctionModelTests: XCTestCase {
 		XCTAssertEqual(auctionModel.key, "auctionKey")
 		XCTAssertEqual(auctionModel.imageUrl, "https://example.com/image.jpg")
 		XCTAssertEqual(auctionModel.name, "Auction Name")
-		XCTAssertEqual(auctionModel.status, "active")
+		XCTAssertEqual(auctionModel.status?.rawValue, "open")
 		XCTAssertEqual(auctionModel.timeZone, "PST")
 		XCTAssertEqual(auctionModel.startTime, 1_622_517_800)
 		XCTAssertEqual(auctionModel.endTime, 1_625_109_800)
@@ -104,6 +104,6 @@ class AuctionModelTests: XCTestCase {
 
 extension AuctionModel {
 	static func mockAuction() -> AuctionModel {
-		AuctionModel(id: "12345", name: "Test Auction", status: "open")
+		AuctionModel(id: "12345", name: "Test Auction", status: AuctionStateStatuses(rawValue: "open"))
 	}
 }

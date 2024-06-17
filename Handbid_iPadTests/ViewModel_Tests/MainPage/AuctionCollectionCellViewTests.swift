@@ -13,7 +13,7 @@ final class AuctionCollectionCellViewTests: XCTestCase {
 		imageUrl: "https://example.com/image.png",
 		auctionGuid: "guid",
 		name: "Auction Name",
-		status: "Active",
+		status: .open,
 		endTime: 1_650_000_000,
 		totalItems: 10,
 		auctionAddressStreet1: "123 Street"
@@ -35,7 +35,7 @@ final class AuctionCollectionCellViewTests: XCTestCase {
 		ViewHosting.host(view: sut)
 		try verifyText(sut, identifier: "auctionNameLabel", expected: "Auction Name")
 		try verifyTextContains(sut, identifier: "auctionItemsLabel", position: 0, expected: "10")
-		try verifyText(sut, identifier: "auctionStatusLabel", expected: "ACTIVE")
+		try verifyText(sut, identifier: "auctionStatusLabel", expected: "OPEN")
 		try verifyExists(sut, identifier: "auctionImage")
 		try verifyText(sut, identifier: "auctionAddressLabel", expected: "123 Street")
 		try verifyEndTime(sut, identifier: "auctionEndTimeLabel", position: 2, timestamp: auction.endTime)

@@ -7,8 +7,8 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 	private var repository: AuctionRepository
 	private var auctionId: Int = 0
 	@ObservedObject var dataService: DataServiceWrapper
-    @Published var title: String
-    @Published var auctionStatus: AuctionModel.AuctionStatus
+	@Published var title: String
+	@Published var auctionStatus: AuctionStateStatuses
 	@Published var categories: [CategoryModel]
 	@Published var currencyCode: String
 	@Published var isLoading: Bool = true
@@ -17,11 +17,11 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 	private var dataManager = DataManager.shared
 
 	init(dataService: DataServiceWrapper, repository: AuctionRepository) {
-        self.title = ""
-        self.auctionStatus = .open
-        self.categories = []
-        self.currencyCode = "USD"
-        
+		self.title = ""
+		self.auctionStatus = .open
+		self.categories = []
+		self.currencyCode = "USD"
+
 		self.dataService = dataService
 		self.repository = repository
 		dataManager.onDataChanged.sink {
@@ -35,7 +35,7 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 		TopBarCenterViewData(
 			type: .custom,
 			customView: AnyView(AuctionTopBarCenterView(title: title,
-                                                        status: auctionStatus.rawValue.capitalized,
+			                                            status: auctionStatus.rawValue.capitalized,
 			                                            date: 1_678_608_000,
 			                                            countItems: 20))
 		)
@@ -99,16 +99,16 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 	}
 
 	private func handleAuctionUpdate(auction: AuctionModel) {
-        guard let id = auction.identity,
-              let name = auction.name,
-              let status = auction.status,
-              let currencyCode = auction.currencyCode,
-              let categories = auction.categories
-        else { return }
-        self.auctionId = id
-        self.title = name
-        self.auctionStatus = status
-        self.currencyCode = currencyCode
-        self.categories = categories.filter { $0.items?.isEmpty == false }
+		guard let id = auction.identity,
+		      let name = auction.name,
+		      let status = auction.status,
+		      let currencyCode = auction.currencyCode,
+		      let categories = auction.categories
+		else { return }
+		auctionId = id
+		title = name
+		auctionStatus = status
+		self.currencyCode = currencyCode
+		self.categories = categories.filter { $0.items?.isEmpty == false }
 	}
 }

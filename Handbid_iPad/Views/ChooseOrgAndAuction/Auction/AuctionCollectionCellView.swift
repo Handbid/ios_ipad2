@@ -34,10 +34,12 @@ struct AuctionCollectionCellView<T: PageProtocol>: View {
 
 						Spacer()
 
-						Text(auction.status?.uppercased() ?? "")
-							.bold()
-							.foregroundColor(AuctionStateStatuses.color(for: auction.status!, in: colorScheme))
-							.accessibilityIdentifier("auctionStatusLabel")
+						if let status = auction.status {
+							Text(status.rawValue.uppercased())
+								.bold()
+								.foregroundColor(status.color(for: colorScheme))
+								.accessibilityIdentifier("auctionStatusLabel")
+						}
 					}
 					.padding([.leading, .trailing], 10)
 				}
