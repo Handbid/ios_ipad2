@@ -5,10 +5,11 @@ import SwiftUI
 
 struct MainContainer<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
+	@EnvironmentObject private var authManager: AuthManager
+	@StateObject var deviceContext = DeviceContext()
 	@State var isSidebarVisible: Bool = DeviceConfigurator.isSidebarAlwaysVisible
 	@State var selectedView: MainContainerTypeView
-	@StateObject var deviceContext = DeviceContext()
-	@EnvironmentObject private var authManager: AuthManager
+	@State var cancellables = Set<AnyCancellable>()
 
 	private let auctionViewModel: AuctionViewModel
 	private let paddleViewModel: PaddleViewModel
@@ -41,6 +42,7 @@ struct MainContainer<T: PageProtocol>: View {
 				WebSocketManager.shared.startSocket(urlFactory: HandbidWebSocketFactory(),
 				                                    token: authManager.currentToken)
 			}
+			subscribeToViewModelEvents()
 		}
 		.navigationBarBackButtonHidden()
 	}
@@ -83,6 +85,30 @@ struct MainContainer<T: PageProtocol>: View {
 			.transition(.move(edge: .leading).combined(with: .opacity))
 			.animation(.easeInOut(duration: 0.5), value: isSidebarVisible)
 			.zIndex(1)
+	}
+
+	private func subscribeToViewModelEvents() {
+		auctionViewModel.eventPublisher
+			.sink { event in
+				handleViewModelEvent(event)
+			}
+			.store(in: &cancellables)
+
+		managerViewModel.eventPublisher
+			.sink { event in
+				handleViewModelEvent(event)
+			}
+			.store(in: &cancellables)
+	}
+
+	private func handleViewModelEvent(_ event: MainContainerChangeViewEvents) {
+		switch event {
+		case .searchItems:
+			// selectedView = .logout
+			coordinator.push(MainContainerPage.searchItems as! T)
+		case .allAuctions:
+			coordinator.popToRoot()
+		}
 	}
 
 	private func topBarContent(for viewType: MainContainerTypeView) -> some View {
