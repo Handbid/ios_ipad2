@@ -168,7 +168,7 @@ class BidderModelTests: XCTestCase {
 		var bidderModel = BidderModel()
 		bidderModel.deserialize(json)
 
-		XCTAssertNil(bidderModel.id)
+		XCTAssertEqual(bidderModel.id, 0)
 		XCTAssertNil(bidderModel.pin)
 		XCTAssertNil(bidderModel.usersGuid)
 		XCTAssertNil(bidderModel.stripeId)

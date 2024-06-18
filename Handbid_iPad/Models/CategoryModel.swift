@@ -3,7 +3,7 @@
 import Arrow
 import NetworkService
 
-struct CategoryModel: Decodable, NetworkingJSONDecodable {
+struct CategoryModel: Identifiable, Codable, NetworkingJSONDecodable, AutoEncodable {
 	var id: Int?
 	var name: String?
 	var auctionId: Int?

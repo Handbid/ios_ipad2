@@ -2,4 +2,5 @@
 
 enum Processor: String {
 	case user = "event.user"
+	case auction = "event.auction"
 }

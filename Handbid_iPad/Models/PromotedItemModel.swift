@@ -3,7 +3,7 @@
 import Arrow
 import NetworkService
 
-struct PromotedItemModel: Decodable, NetworkingJSONDecodable {
+struct PromotedItemModel: Identifiable, Codable, NetworkingJSONDecodable, AutoEncodable {
 	var id: Int?
 	var itemGuid: String?
 	var name: String?

@@ -91,7 +91,7 @@ class ChooseAuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 		let selectedStates = buttonViewModels.filter { $1.isSelected }.map(\.key)
 		let includeAll = selectedStates.contains(.all)
 		filteredAuctions = auctions.filter { auction in
-			auction.name != nil && (includeAll || (auction.status != nil && selectedStates.contains { $0.rawValue == auction.status }))
+			auction.name != nil && (includeAll || (auction.status != nil && selectedStates.contains { $0.rawValue == auction.status?.rawValue }))
 		}.sorted(by: { $0.name?.localizedCompare($1.name ?? "") == .orderedAscending })
 	}
 

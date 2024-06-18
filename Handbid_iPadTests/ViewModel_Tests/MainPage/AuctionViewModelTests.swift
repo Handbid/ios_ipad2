@@ -6,14 +6,16 @@ import XCTest
 
 final class AuctionViewModelTests: XCTestCase {
 	func testAuctionViewModelInitialization() {
-		let viewModel = AuctionViewModel(dataService: DataServiceFactory.getService())
+		let viewModel = AuctionViewModel(dataService: DataServiceFactory.getService(),
+		                                 repository: MockAuctionRepository())
 
-		XCTAssertEqual(viewModel.title, "Auction Details")
-		XCTAssertEqual(viewModel.auctionStatus, "Open")
+		XCTAssertEqual(viewModel.title, "")
+		XCTAssertEqual(viewModel.auctionStatus.rawValue, "open")
 	}
 
 	func testCenterViewData() {
-		let viewModel = AuctionViewModel(dataService: DataServiceFactory.getService())
+		let viewModel = AuctionViewModel(dataService: DataServiceFactory.getService(),
+		                                 repository: MockAuctionRepository())
 		let centerViewData = viewModel.centerViewData
 
 		XCTAssertEqual(centerViewData.type, .custom)
@@ -23,7 +25,8 @@ final class AuctionViewModelTests: XCTestCase {
 	}
 
 	func testActions() {
-		let viewModel = AuctionViewModel(dataService: DataServiceFactory.getService())
+		let viewModel = AuctionViewModel(dataService: DataServiceFactory.getService(),
+		                                 repository: MockAuctionRepository())
 		let actions = viewModel.actions
 
 		XCTAssertEqual(actions.count, 3)
@@ -33,17 +36,20 @@ final class AuctionViewModelTests: XCTestCase {
 	}
 
 	func testSearchData() {
-		let viewModel = AuctionViewModel(dataService: DataServiceFactory.getService())
+		let viewModel = AuctionViewModel(dataService: DataServiceFactory.getService(),
+		                                 repository: MockAuctionRepository())
 		viewModel.searchData()
 	}
 
 	func testRefreshData() {
-		let viewModel = AuctionViewModel(dataService: DataServiceFactory.getService())
+		let viewModel = AuctionViewModel(dataService: DataServiceFactory.getService(),
+		                                 repository: MockAuctionRepository())
 		viewModel.refreshData()
 	}
 
 	func testFilterData() {
-		let viewModel = AuctionViewModel(dataService: DataServiceFactory.getService())
+		let viewModel = AuctionViewModel(dataService: DataServiceFactory.getService(),
+		                                 repository: MockAuctionRepository())
 		viewModel.filterData()
 	}
 }

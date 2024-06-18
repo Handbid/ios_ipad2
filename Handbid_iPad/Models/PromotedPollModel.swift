@@ -3,7 +3,7 @@
 import Arrow
 import NetworkService
 
-struct PromotedPollModel: Decodable, NetworkingJSONDecodable {
+struct PromotedPollModel: Identifiable, Codable, NetworkingJSONDecodable, AutoEncodable {
 	var id: Int?
 	var auctionId: Int?
 	var pollCode: String?

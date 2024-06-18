@@ -56,7 +56,7 @@ enum TextLabelStyles {
 				fontWeightStyle: .bold,
 				textAlignment: .leading,
 				alignment: .leading,
-				defaultTextColor: .black
+				defaultTextColor: .bodyText
 			)
 		case .accentBody:
 			TextStyleConfiguration(
@@ -64,14 +64,14 @@ enum TextLabelStyles {
 				textAlignment: .leading,
 				alignment: .leading,
 				defaultTextColor: .accent,
-				takeMaxWidth: false
+				maxWidth: nil
 			)
 		case .leadingLabel:
 			TextStyleConfiguration(
 				fontStyle: TypographyStyle.small.asFont(),
 				textAlignment: .leading,
 				alignment: .leading,
-				takeMaxWidth: false
+				maxWidth: nil
 			)
 		case .titleLeading:
 			TextStyleConfiguration(

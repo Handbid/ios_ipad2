@@ -3,7 +3,9 @@
 enum ViewModelFactory {
 	static func createAllViewModelsForMainContainer() -> (AuctionViewModel, PaddleViewModel, MyBidsViewModel, ManagerViewModel, LogOutViewModel) {
 		let dataService = DataServiceFactory.getService()
-		return (AuctionViewModel(dataService: dataService),
+		let networkClient = DependencyMainAppProvider.shared.networkClient
+		let auctionRepository = AuctionRepositoryImpl(network: networkClient)
+		return (AuctionViewModel(dataService: dataService, repository: auctionRepository),
 		        PaddleViewModel(dataService: dataService),
 		        MyBidsViewModel(dataService: dataService),
 		        ManagerViewModel(dataService: dataService),

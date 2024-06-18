@@ -18,5 +18,6 @@ struct PaddleView: ContentView {
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		.background(Color.accentGrayBackground)
 		.edgesIgnoringSafeArea(.all)
+		.accessibilityIdentifier("PaddleView")
 	}
 }

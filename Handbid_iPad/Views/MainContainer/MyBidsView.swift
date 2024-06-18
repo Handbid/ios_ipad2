@@ -18,5 +18,6 @@ struct MyBidsView: ContentView {
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		.background(Color.accentGrayBackground)
 		.edgesIgnoringSafeArea(.all)
+		.accessibilityIdentifier("MyBidsView")
 	}
 }

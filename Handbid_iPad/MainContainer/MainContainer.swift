@@ -39,8 +39,11 @@ struct MainContainer<T: PageProtocol>: View {
 		}
 		.onAppear {
 			DispatchQueue.global().async {
+				let auction = try? DataManager.shared.fetchSingle(of: AuctionModel.self,
+				                                                  from: .auction)
 				WebSocketManager.shared.startSocket(urlFactory: HandbidWebSocketFactory(),
-				                                    token: authManager.currentToken)
+				                                    token: authManager.currentToken,
+				                                    auctionGuid: auction?.auctionGuid)
 			}
 			subscribeToViewModelEvents()
 		}
@@ -73,7 +76,12 @@ struct MainContainer<T: PageProtocol>: View {
 	}
 
 	private func mainContainer(geometry: GeometryProxy) -> some View {
-		MainContainerViewBuilder(selectedView: selectedView)
+		MainContainerViewBuilder(selectedView: selectedView,
+		                         auctionViewModel: auctionViewModel,
+		                         paddleViewModel: paddleViewModel,
+		                         myBidsViewModel: myBidsViewModel,
+		                         managerViewModel: managerViewModel,
+		                         logOutViewModel: logOutViewModel)
 			.frame(width: deviceContext.isPhone || !isSidebarVisible ? geometry.size.width : geometry.size.width - 90)
 			.clipShape(RoundedCornerView(radius: 40, corners: .topLeft))
 			.edgesIgnoringSafeArea(.bottom)

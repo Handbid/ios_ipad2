@@ -6,7 +6,7 @@ import XCTest
 final class UserProcessorTests: XCTestCase {
 	func testProcessData() {
 		let processor = UserProcessor()
-		let data = Data()
+		let data = [String: Any]()
 		processor.process(data: data)
 	}
 }

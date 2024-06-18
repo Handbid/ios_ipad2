@@ -8,7 +8,7 @@ class WebSocketManager {
 	var socket: WebSocket?
 	var delegate: EventDelegate?
 
-	func startSocket(urlFactory: WebSocketURLFactory, token: TokenUser?) {
+	func startSocket(urlFactory: WebSocketURLFactory, token: TokenUser?, auctionGuid: String?) {
 		do {
 			let url = try urlFactory.getSocketURL()
 
@@ -20,6 +20,7 @@ class WebSocketManager {
 			initProcessorRegistry()
 			delegate = HandbidEventDelegate()
 			delegate?.userGuid = token?.guid
+			delegate?.auctionGuid = auctionGuid
 			socket?.delegate = delegate
 
 			socket?.connect()
@@ -44,5 +45,6 @@ class WebSocketManager {
 
 	func initProcessorRegistry() {
 		ProcessorRegistry.shared.registerProcessor(UserProcessor(), for: .user)
+		ProcessorRegistry.shared.registerProcessor(AuctionProcessor(), for: .auction)
 	}
 }

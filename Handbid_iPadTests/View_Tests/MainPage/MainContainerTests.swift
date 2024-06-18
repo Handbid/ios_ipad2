@@ -10,25 +10,21 @@ final class MainContainerTests: XCTestCase {
 	private var view: MainContainer<MainContainerPage>!
 	private var coordinator: Coordinator<MainContainerPage, Any?>!
 	private var authManager: AuthManager!
-	private var mainContainerFactory: AnyViewMainContainerFactory!
 	private var sut: AnyView!
 
 	override func setUp() {
 		super.setUp()
 		coordinator = Coordinator<MainContainerPage, Any?>(viewBuilder: { _ in AnyView(EmptyView()) })
 		authManager = AuthManager()
-		mainContainerFactory = AnyViewMainContainerFactory(wrappedFactory: MainContainerViewFactory())
 		view = MainContainer(selectedView: .auction)
 		sut = AnyView(view
 			.environmentObject(coordinator)
-			.environmentObject(authManager)
-			.environmentObject(mainContainerFactory))
+			.environmentObject(authManager))
 	}
 
 	override func tearDown() {
 		coordinator = nil
 		authManager = nil
-		mainContainerFactory = nil
 		view = nil
 		super.tearDown()
 	}

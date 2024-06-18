@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-enum AuctionStateStatuses: String, CaseIterable {
+enum AuctionStateStatuses: String, CaseIterable, Codable {
 	case open, presale, preview, closed, reconciled, all
 
 	func color(for _: ColorScheme) -> Color {

@@ -4,23 +4,37 @@ import SwiftUI
 
 struct AuctionView: ContentView {
 	@ObservedObject var viewModel: AuctionViewModel
+	@State var categories: [CategoryModel] = []
+	@State var isLoading = true
 
 	init(viewModel: AuctionViewModel) {
 		self.viewModel = viewModel
 	}
 
 	var body: some View {
-		VStack {
-			if viewModel.categories.isEmpty {
-				noItemsView
-			}
-			else {
-				categoriesList
+		LoadingOverlay(isLoading: $isLoading) {
+			VStack {
+				if categories.isEmpty, !isLoading {
+					noItemsView
+				}
+				else {
+					categoriesList
+				}
 			}
 		}
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
-		.background(Color.accentGrayBackground)
+		.background(.containerBackground)
 		.edgesIgnoringSafeArea(.all)
+		.onReceive(viewModel.$categories) { categories in
+			self.categories = categories
+		}
+		.onReceive(viewModel.$isLoading) { loading in
+			isLoading = loading
+		}
+		.onAppear {
+			viewModel.refreshData()
+		}
+		.accessibilityIdentifier("AuctionView")
 	}
 
 	private var noItemsView: some View {
@@ -40,9 +54,7 @@ struct AuctionView: ContentView {
 			.padding()
 
 			Text(LocalizedStringKey("auction_label_noItems"))
-				.font(.system(size: 11, weight: .regular))
-				.foregroundColor(.primary)
-				.lineLimit(1)
+				.applyTextStyle(style: .body)
 
 			Spacer()
 		}
@@ -50,25 +62,30 @@ struct AuctionView: ContentView {
 
 	private var categoriesList: some View {
 		ScrollView(.vertical) {
-			ForEach(viewModel.categories, id: \.id) { category in
-				createCategoryView(for: category)
+			LazyVStack {
+				ForEach(categories, id: \.id) { category in
+					createCategoryView(for: category)
+				}
 			}
 		}
+		.scrollIndicators(.never)
 	}
 
 	private func createCategoryView(for category: CategoryModel) -> AnyView {
 		AnyView(VStack {
 			Text(category.name ?? "nil")
 				.applyTextStyle(style: .subheader)
-				.padding()
+				.padding(.bottom, -10)
 
 			ScrollView(.horizontal) {
-				ForEach(category.items ?? [], id: \.id) { item in
-					ItemView(item: item)
+				LazyHStack {
+					ForEach(category.items ?? [], id: \.id) { item in
+						ItemView(item: item, currencyCode: viewModel.currencyCode)
+					}
 				}
 			}
+			.scrollIndicators(.never)
 			.defaultScrollAnchor(.leading)
-			.frame(height: 370)
 		})
 	}
 }
