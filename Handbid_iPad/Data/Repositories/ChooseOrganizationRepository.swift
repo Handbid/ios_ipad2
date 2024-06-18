@@ -4,23 +4,23 @@ import Combine
 import NetworkService
 
 protocol ChooseOrganizationRepository {
-	func fetchUserOrganizations() -> AnyPublisher<UserModel, Error>
+	func fetchUserOrganizations() -> AnyPublisher<[OrganizationModel], Error>
 }
 
 class ChooseOrganizationRepositoryImpl: ChooseOrganizationRepository, NetworkingService {
 	var network: NetworkService.NetworkingClient
-	@Published var user: UserModel = .init()
+	@Published var organizations: [OrganizationModel] = .init()
 
 	init(_ network: NetworkService.NetworkingClient) {
 		self.network = network
 	}
 
-	func fetchUserOrganizations() -> AnyPublisher<UserModel, Error> {
-		post(ApiEndpoints.auctionUser)
-			.tryMap { try UserModel.decode($0) }
+	func fetchUserOrganizations() -> AnyPublisher<[OrganizationModel], Error> {
+		get(ApiEndpoints.organizationIndex, params: ["page": "0", "per-page": "50"])
+			.tryMap { try OrganizationModel.decodeArray($0) }
 			.receive(on: DispatchQueue.main)
-			.handleEvents(receiveOutput: { [weak self] user in
-				self?.user = user
+			.handleEvents(receiveOutput: { [weak self] organizations in
+				self?.organizations = organizations
 			})
 			.eraseToAnyPublisher()
 	}

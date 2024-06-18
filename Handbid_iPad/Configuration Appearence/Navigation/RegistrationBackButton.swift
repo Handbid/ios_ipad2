@@ -16,6 +16,11 @@ struct RegistrationBackButton: View {
 					.foregroundColor(.white)
 					.padding()
 					.font(.title)
+			case .mainContainer:
+				Image(systemName: "arrowshape.left.fill")
+					.foregroundColor(.accentViolet)
+					.padding()
+					.font(.title)
 			}
 		}
 	}

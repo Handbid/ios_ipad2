@@ -135,6 +135,9 @@
 		8C79B4272C040D84005D4AAB /* WebSocketURLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79B41B2C040D84005D4AAB /* WebSocketURLFactory.swift */; };
 		8C79B42D2C05005F005D4AAB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C79B42C2C05005F005D4AAB /* GoogleService-Info.plist */; };
 		8C79B42F2C0502F8005D4AAB /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C79B42E2C0502F8005D4AAB /* AdSupport.framework */; };
+		8C7D964E2C18EE510028C8E0 /* SearchItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7D964C2C18EE510028C8E0 /* SearchItemsView.swift */; };
+		8C7D96512C18EE970028C8E0 /* SearchItemsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7D964F2C18EE970028C8E0 /* SearchItemsViewModel.swift */; };
+		8C7D96532C18EEE30028C8E0 /* MainContainerChangeViewEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7D96522C18EEE30028C8E0 /* MainContainerChangeViewEvents.swift */; };
 		8C8BEC2E2BA975DE0083D904 /* GetStartedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC2D2BA975DE0083D904 /* GetStartedView.swift */; };
 		8C8BEC302BA975F10083D904 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC2F2BA975F10083D904 /* LogInView.swift */; };
 		8C8BEC322BA976030083D904 /* GetStartedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC312BA976030083D904 /* GetStartedViewModel.swift */; };
@@ -407,6 +410,9 @@
 		8C79B41B2C040D84005D4AAB /* WebSocketURLFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocketURLFactory.swift; sourceTree = "<group>"; };
 		8C79B42C2C05005F005D4AAB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8C79B42E2C0502F8005D4AAB /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		8C7D964C2C18EE510028C8E0 /* SearchItemsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchItemsView.swift; sourceTree = "<group>"; };
+		8C7D964F2C18EE970028C8E0 /* SearchItemsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchItemsViewModel.swift; sourceTree = "<group>"; };
+		8C7D96522C18EEE30028C8E0 /* MainContainerChangeViewEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainContainerChangeViewEvents.swift; sourceTree = "<group>"; };
 		8C8BEC2D2BA975DE0083D904 /* GetStartedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedView.swift; sourceTree = "<group>"; };
 		8C8BEC2F2BA975F10083D904 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		8C8BEC312BA976030083D904 /* GetStartedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewModel.swift; sourceTree = "<group>"; };
@@ -827,9 +833,10 @@
 			isa = PBXGroup;
 			children = (
 				8C9FA4512BD8DF090041F28E /* ChooseOrgAndAuction */,
-				8C3D3C052BBB85B8002A5CFC /* MainContainer */,
 				CE7DF82D2BADFD0700FF7694 /* Helpers */,
+				8C3D3C052BBB85B8002A5CFC /* MainContainer */,
 				8C8BEC2C2BA975C30083D904 /* Registration */,
+				8C7D964D2C18EE510028C8E0 /* TopBarMainContainer */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -840,6 +847,7 @@
 				8C9FA4562BD8DF980041F28E /* ChooseOrgAndAuction */,
 				8CD108112BD1232F00E83261 /* MainContainer */,
 				8C8BEC2B2BA975B70083D904 /* Registration */,
+				8C7D96502C18EE970028C8E0 /* TopBarMainContainer */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1067,6 +1075,23 @@
 			path = WebSocket;
 			sourceTree = "<group>";
 		};
+		8C7D964D2C18EE510028C8E0 /* TopBarMainContainer */ = {
+			isa = PBXGroup;
+			children = (
+				8C7D964C2C18EE510028C8E0 /* SearchItemsView.swift */,
+			);
+			path = TopBarMainContainer;
+			sourceTree = "<group>";
+		};
+		8C7D96502C18EE970028C8E0 /* TopBarMainContainer */ = {
+			isa = PBXGroup;
+			children = (
+				8C7D964F2C18EE970028C8E0 /* SearchItemsViewModel.swift */,
+			);
+			name = TopBarMainContainer;
+			path = Handbid_iPad/ViewModels/TopBarMainContainer;
+			sourceTree = SOURCE_ROOT;
+		};
 		8C8BEC2B2BA975B70083D904 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
@@ -1194,6 +1219,7 @@
 			isa = PBXGroup;
 			children = (
 				8C3D3C062BBB85CC002A5CFC /* MainContainer.swift */,
+				8C7D96522C18EEE30028C8E0 /* MainContainerChangeViewEvents.swift */,
 				8CD108002BD11FCC00E83261 /* MainContainerTypeView.swift */,
 				8CD1082C2BD128A600E83261 /* MainContainerViewBuilder.swift */,
 				8C9FA45B2BD93BF90041F28E /* SelectAuctionContainerTypeView.swift */,
@@ -1737,6 +1763,7 @@
 				8C8BEC342BA976A90083D904 /* LogInViewModel.swift in Sources */,
 				8C4BFB712BE1887F00B47154 /* TicketModel.swift in Sources */,
 				8C79B4242C040D84005D4AAB /* HandbidWebSocketFactory.swift in Sources */,
+				8C7D96512C18EE970028C8E0 /* SearchItemsViewModel.swift in Sources */,
 				8C3D3C072BBB85CC002A5CFC /* MainContainer.swift in Sources */,
 				8C3D3C012BBA1E33002A5CFC /* String.swift in Sources */,
 				8CABF5D42BB9E17C00A34870 /* CustomDimensValues.swift in Sources */,
@@ -1794,7 +1821,9 @@
 				8C79B4222C040D84005D4AAB /* EventDelegate.swift in Sources */,
 				8C1E01012BA85E630094FAA7 /* AppDelegate.swift in Sources */,
 				8C4BFB5B2BE113B000B47154 /* UserModel.swift in Sources */,
+				8C7D96532C18EEE30028C8E0 /* MainContainerChangeViewEvents.swift in Sources */,
 				8C9159C62C0FC1EC005C9D11 /* LoadingOverlay.swift in Sources */,
+				8C7D964E2C18EE510028C8E0 /* SearchItemsView.swift in Sources */,
 				8C19678D2BFE135B009360A0 /* DatabaseService.swift in Sources */,
 				8C4B7B872BB6DCC80043B892 /* AuthModel.swift in Sources */,
 				8C79B4252C040D84005D4AAB /* HandshakeResponseProvider.swift in Sources */,

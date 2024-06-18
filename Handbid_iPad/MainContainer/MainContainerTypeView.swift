@@ -3,3 +3,7 @@
 enum MainContainerTypeView {
 	case auction, paddle, myBids, manager, logout
 }
+
+enum MainContainerTypeSubPagesView {
+	case searchItems
+}

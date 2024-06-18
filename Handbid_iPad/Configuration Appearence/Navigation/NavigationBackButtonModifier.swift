@@ -3,7 +3,7 @@
 import SwiftUI
 
 enum NavigationBackButtonStyle {
-	case registration
+	case registration, mainContainer
 }
 
 struct NavigationBackButtonModifier: ViewModifier {

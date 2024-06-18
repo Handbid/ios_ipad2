@@ -6,6 +6,7 @@ import SwiftUI
 class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 	private var repository: AuctionRepository
 	private var auctionId: Int = 0
+	var eventPublisher = PassthroughSubject<MainContainerChangeViewEvents, Never>()
 	@ObservedObject var dataService: DataServiceWrapper
 	@Published var title: String
 	@Published var auctionStatus: AuctionStateStatuses
@@ -49,7 +50,7 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 		]
 	}
 
-	func searchData() {}
+
 	func refreshData() {
 		isLoading = true
 		repository.getAuctionDetails(id: auctionId)
@@ -74,17 +75,8 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 			.store(in: &cancellables)
 	}
 
-	func filterData() {
-		dataService.fetchData { result in
-			DispatchQueue.main.async {
-				switch result {
-				case let .success(data):
-					print("Data fetched successfully: \(data)")
-				case let .failure(error):
-					print("Error fetching data: \(error)")
-				}
-			}
-		}
+	func searchData() {
+		eventPublisher.send(MainContainerChangeViewEvents.searchItems)
 	}
 
 	private func updateAuction() {

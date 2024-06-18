@@ -11,6 +11,7 @@ struct MainAppCoordinator: App {
 	@StateObject private var registrationCoordinator: Coordinator<RegistrationPage, Any?>
 	@StateObject private var mainContainerCoordinator: Coordinator<MainContainerPage, Any?>
 	private let dataManager: DataManager
+	@State private var selectedView: MainContainerTypeView = .auction
 
 	init() {
 		let deps = DependencyMainAppProvider.shared
@@ -59,6 +60,8 @@ struct MainAppCoordinator: App {
 				return AnyView(ChooseAuctionView<MainContainerPage>(viewModel: viewModel, selectedView: .selectAuction))
 			case .mainContainer:
 				return AnyView(MainContainer<MainContainerPage>(selectedView: .auction))
+			case .searchItems:
+				return AnyView(SearchItemsView<MainContainerPage>(viewModel: SearchItemsViewModel()))
 			}
 		}
 	}

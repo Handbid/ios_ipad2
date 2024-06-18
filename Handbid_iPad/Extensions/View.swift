@@ -37,4 +37,9 @@ extension View {
 	func eraseToAnyView() -> AnyView {
 		AnyView(self)
 	}
+
+	func createGridItems(width: CGFloat, targetWidth: CGFloat) -> [GridItem] {
+		let numberOfColumns = max(Int(width / targetWidth), 1)
+		return Array(repeating: GridItem(.fixed(targetWidth), spacing: 20), count: numberOfColumns)
+	}
 }
