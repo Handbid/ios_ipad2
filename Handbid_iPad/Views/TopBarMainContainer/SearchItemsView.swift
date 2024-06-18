@@ -9,8 +9,8 @@ struct SearchItemsView<T: PageProtocol>: View {
 	@FocusState private var focusedField: Field?
 	var inspection = Inspection<Self>()
 
-	private let cellWidth: CGFloat = 307
-	private let cellHeight: CGFloat = 370
+	private let cellWidth: CGFloat = 368
+	private let cellHeight: CGFloat = 444
 
 	var body: some View {
 		GeometryReader { geometry in
@@ -36,7 +36,12 @@ struct SearchItemsView<T: PageProtocol>: View {
 		.onReceive(inspection.notice) {
 			inspection.visit(self, $0)
 		}
+		.onTapGesture {
+			hideKeyboard()
+		}
 		.navigationBarBackButtonHidden()
+		.ignoresSafeArea(.keyboard, edges: .bottom)
+		.keyboardResponsive()
 	}
 
 	private func topBarContent(for viewType: MainContainerTypeSubPagesView) -> some View {
@@ -46,7 +51,7 @@ struct SearchItemsView<T: PageProtocol>: View {
 				VStack(spacing: 5) {
 					HStack {
 						FormField(
-							fieldType: .searchBar,
+							fieldType: .searchBarItems,
 							labelKey: LocalizedStringKey("search_item_label"),
 							hintKey: LocalizedStringKey("search_item_label"),
 							fieldValue: $viewModel.searchText,
