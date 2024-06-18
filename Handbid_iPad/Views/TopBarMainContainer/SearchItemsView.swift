@@ -69,9 +69,18 @@ struct SearchItemsView<T: PageProtocol>: View {
 					}
 					.padding([.leading, .trailing], 30)
 
-					Text("\(viewModel.filteredItems.count) results for \"\(viewModel.searchText)\"")
-						.padding(.top, 8)
-						.foregroundColor(.gray)
+					HStack {
+						Text("\(viewModel.filteredItems.count) results for")
+							.padding(.top, 8)
+							.foregroundColor(.black)
+						Text("\"\(viewModel.searchText)\"")
+							.padding(.top, 8)
+							.padding(.leading, 0)
+							.foregroundColor(.black)
+							.fontWeight(.bold)
+						Spacer()
+					}
+					.padding([.leading, .trailing], 30)
 				}
 			)
 		}

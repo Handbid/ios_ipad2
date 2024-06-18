@@ -100,12 +100,7 @@ struct FormField: View {
 			}
 		case .searchBarItems:
 			ZStack(alignment: .leading) {
-				if fieldValue.isEmpty {
-					Text(hintKey)
-						.foregroundColor(colorScheme == .dark ? .gray : .secondary)
-						.applyTextStyle(style: .formHeader)
-				}
-				TextField("", text: $fieldValue, onEditingChanged: { isEditing in
+				TextField(LocalizedStringKey("search_item_label"), text: $fieldValue, onEditingChanged: { isEditing in
 					self.isEditing = isEditing
 				})
 				.applyTextFieldStyle(style: .searchBarItems)
@@ -125,7 +120,7 @@ struct FormField: View {
 							Button(action: {
 								fieldValue = ""
 							}) {
-								Image(systemName: "multiply.circle.fill")
+								Image(systemName: "xmark")
 									.foregroundColor(colorScheme == .dark ? .gray : .secondary)
 							}
 						}
