@@ -4,36 +4,48 @@ import Combine
 import SwiftUI
 
 class SearchItemsViewModel: ObservableObject {
-	private let dataManager: DataManager?
+	private var dataManager = DataManager.shared
 	@Published var searchText: String = ""
 	@Published var filteredItems: [ItemModel] = []
 	@Published var currencyCode: String
 
-	private var items: [ItemModel] = [ItemModel(id: 1, name: "Test Item", categoryName: "Test",
-	                                            isDirectPurchaseItem: true, isTicket: false, isPuzzle: false,
-	                                            isAppeal: false, currentPrice: 20.0, itemCode: "123")]
+	private var auction: AuctionModel?
+	private var items: [ItemModel] = []
 
-	init(dataManager: DataManager? = nil) {
-		self.dataManager = dataManager
-		self.currencyCode = "USD"
+	private var cancellables = Set<AnyCancellable>()
 
-		// Fetch items from dataManager or other source
-		// self.items = fetchItems()
+	init() {
+		self.auction = try? dataManager.fetchSingle(of: AuctionModel.self, from: .auction)
+		self.currencyCode = auction?.currencyCode ?? "USD"
 		self.filteredItems = items
+
+		self.items = auction?.categories?.first?.items ?? .init()
+
+		$searchText
+			.debounce(for: .milliseconds(300), scheduler: RunLoop.main)
+			.removeDuplicates()
+			.sink { [weak self] _ in
+				self?.search()
+			}
+			.store(in: &cancellables)
 	}
 
 	func search() {
-		// if searchText.isEmpty {
-		filteredItems = items
-//		}
-//		else {
-		// filteredItems = items.filter { $0.contains(searchText)! }
-		// }
+		if searchText.isEmpty {
+			filteredItems = items
+		}
+		else {
+			let lowercasedSearchText = searchText.lowercased()
+			filteredItems = items.filter { item in
+				if let name = item.name {
+					return name.lowercased().contains(lowercasedSearchText)
+				}
+				return false
+			}
+		}
 	}
 
 	private func fetchItems() -> [ItemModel] {
-		// Fetch or generate items
 		filteredItems
-		// []
 	}
 }
