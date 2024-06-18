@@ -50,7 +50,6 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 		]
 	}
 
-
 	func refreshData() {
 		isLoading = true
 		repository.getAuctionDetails(id: auctionId)
@@ -78,6 +77,8 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 	func searchData() {
 		eventPublisher.send(MainContainerChangeViewEvents.searchItems)
 	}
+
+	func filterData() {}
 
 	private func updateAuction() {
 		do {

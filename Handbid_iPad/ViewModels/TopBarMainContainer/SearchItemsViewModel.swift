@@ -7,6 +7,7 @@ class SearchItemsViewModel: ObservableObject {
 	private let dataManager: DataManager?
 	@Published var searchText: String = ""
 	@Published var filteredItems: [ItemModel] = []
+	@Published var currencyCode: String
 
 	private var items: [ItemModel] = [ItemModel(id: 1, name: "Test Item", categoryName: "Test",
 	                                            isDirectPurchaseItem: true, isTicket: false, isPuzzle: false,
@@ -14,6 +15,8 @@ class SearchItemsViewModel: ObservableObject {
 
 	init(dataManager: DataManager? = nil) {
 		self.dataManager = dataManager
+		self.currencyCode = "USD"
+
 		// Fetch items from dataManager or other source
 		// self.items = fetchItems()
 		self.filteredItems = items
