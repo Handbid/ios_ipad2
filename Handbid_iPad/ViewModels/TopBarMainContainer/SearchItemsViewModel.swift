@@ -5,21 +5,15 @@ import SwiftUI
 
 class SearchItemsViewModel: ObservableObject {
 	private var dataManager = DataManager.shared
+	private let repository: SearchItemsRepository
 	@Published var searchText: String = ""
 	@Published var filteredItems: [ItemModel] = []
-	@Published var currencyCode: String
 
-	private var auction: AuctionModel?
 	private var items: [ItemModel] = []
-
 	private var cancellables = Set<AnyCancellable>()
 
-	init() {
-		self.auction = try? dataManager.fetchSingle(of: AuctionModel.self, from: .auction)
-		self.currencyCode = auction?.currencyCode ?? "USD"
-		self.filteredItems = items
-
-		self.items = auction?.categories?.first?.items ?? .init()
+	init(repository: SearchItemsRepository) {
+		self.repository = repository
 
 		$searchText
 			.debounce(for: .milliseconds(300), scheduler: RunLoop.main)
@@ -35,14 +29,25 @@ class SearchItemsViewModel: ObservableObject {
 			filteredItems = items
 		}
 		else {
-			let lowercasedSearchText = searchText.lowercased()
-			filteredItems = items.filter { item in
-				if let name = item.name {
-					return name.lowercased().contains(lowercasedSearchText)
-				}
-				return false
-			}
+			fetchItemsFromRepository()
 		}
+	}
+
+	private func fetchItemsFromRepository() {
+		repository.getSearchItems(name: searchText)
+			.receive(on: DispatchQueue.main)
+			.sink(receiveCompletion: { completion in
+				switch completion {
+				case let .failure(error):
+					print("Error fetching items: \(error)")
+					self.filteredItems = []
+				case .finished:
+					break
+				}
+			}, receiveValue: { [weak self] fetchedItems in
+				self?.filteredItems = fetchedItems
+			})
+			.store(in: &cancellables)
 	}
 
 	private func fetchItems() -> [ItemModel] {

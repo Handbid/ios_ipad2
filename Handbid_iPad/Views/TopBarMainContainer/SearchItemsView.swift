@@ -22,7 +22,7 @@ struct SearchItemsView<T: PageProtocol>: View {
 				ScrollView {
 					LazyVGrid(columns: columns, spacing: 20) {
 						ForEach(viewModel.filteredItems, id: \.id) { item in
-							ItemView(item: item, currencyCode: viewModel.currencyCode)
+							ItemView(item: item, currencyCode: "usd")
 								.frame(width: cellWidth, height: cellHeight)
 								.accessibilityIdentifier("ItemsCollectionCellView")
 						}
