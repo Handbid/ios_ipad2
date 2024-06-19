@@ -249,6 +249,10 @@
 		CE6F8DBE2BCEC6BE009DBE7E /* MockGetStartedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F8DBD2BCEC6BE009DBE7E /* MockGetStartedViewModel.swift */; };
 		CE6F8DC02BCECC3D009DBE7E /* LogInView_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F8DBF2BCECC3D009DBE7E /* LogInView_Tests.swift */; };
 		CE6F8DC22BCEE513009DBE7E /* MockLogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F8DC12BCEE513009DBE7E /* MockLogInViewModel.swift */; };
+		CE7BB48F2C22FF2600D0AB91 /* FiltersItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7BB48E2C22FF2600D0AB91 /* FiltersItemsView.swift */; };
+		CE7BB4912C23080400D0AB91 /* MainContainerOverlayTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7BB4902C23080400D0AB91 /* MainContainerOverlayTypeView.swift */; };
+		CE7BB4932C2309D700D0AB91 /* MainContainerOverlayBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7BB4922C2309D700D0AB91 /* MainContainerOverlayBuilder.swift */; };
+		CE7BB4952C231D4600D0AB91 /* CheckboxToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7BB4942C231D4600D0AB91 /* CheckboxToggleStyle.swift */; };
 		CE7DF8212BAD9E5300FF7694 /* Inter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE7DF8202BAD9E5300FF7694 /* Inter.ttf */; };
 		CE7DF8222BAD9E5300FF7694 /* Inter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE7DF8202BAD9E5300FF7694 /* Inter.ttf */; };
 		CE7DF8272BADF13C00FF7694 /* iPadAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00B12BA823C90094FAA7 /* iPadAssets.xcassets */; };
@@ -525,6 +529,10 @@
 		CE6F8DBD2BCEC6BE009DBE7E /* MockGetStartedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGetStartedViewModel.swift; sourceTree = "<group>"; };
 		CE6F8DBF2BCECC3D009DBE7E /* LogInView_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView_Tests.swift; sourceTree = "<group>"; };
 		CE6F8DC12BCEE513009DBE7E /* MockLogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLogInViewModel.swift; sourceTree = "<group>"; };
+		CE7BB48E2C22FF2600D0AB91 /* FiltersItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersItemsView.swift; sourceTree = "<group>"; };
+		CE7BB4902C23080400D0AB91 /* MainContainerOverlayTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerOverlayTypeView.swift; sourceTree = "<group>"; };
+		CE7BB4922C2309D700D0AB91 /* MainContainerOverlayBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerOverlayBuilder.swift; sourceTree = "<group>"; };
+		CE7BB4942C231D4600D0AB91 /* CheckboxToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxToggleStyle.swift; sourceTree = "<group>"; };
 		CE7DF8202BAD9E5300FF7694 /* Inter.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Inter.ttf; sourceTree = "<group>"; };
 		CE7DF82E2BADFD1900FF7694 /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		CE9E2D0D2BC845D70008FD8A /* Inspection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inspection.swift; sourceTree = "<group>"; };
@@ -1079,6 +1087,7 @@
 			isa = PBXGroup;
 			children = (
 				8C7D964C2C18EE510028C8E0 /* SearchItemsView.swift */,
+				CE7BB48E2C22FF2600D0AB91 /* FiltersItemsView.swift */,
 			);
 			path = TopBarMainContainer;
 			sourceTree = "<group>";
@@ -1220,6 +1229,7 @@
 			children = (
 				8C3D3C062BBB85CC002A5CFC /* MainContainer.swift */,
 				8C7D96522C18EEE30028C8E0 /* MainContainerChangeViewEvents.swift */,
+				CE7BB4902C23080400D0AB91 /* MainContainerOverlayTypeView.swift */,
 				8CD108002BD11FCC00E83261 /* MainContainerTypeView.swift */,
 				8CD1082C2BD128A600E83261 /* MainContainerViewBuilder.swift */,
 				8C9FA45B2BD93BF90041F28E /* SelectAuctionContainerTypeView.swift */,
@@ -1228,6 +1238,7 @@
 				8CD107F12BD11E4E00E83261 /* Factory */,
 				8CD107FD2BD11F8B00E83261 /* Sidebar */,
 				8CD107F02BD11DFD00E83261 /* TopBar */,
+				CE7BB4922C2309D700D0AB91 /* MainContainerOverlayBuilder.swift */,
 			);
 			path = MainContainer;
 			sourceTree = "<group>";
@@ -1372,6 +1383,7 @@
 				8CABF5D72BB9E1BA00A34870 /* Calculate Size View */,
 				CE073EE32BB4809C0079F342 /* FormField.swift */,
 				CE7DF82E2BADFD1900FF7694 /* PinView.swift */,
+				CE7BB4942C231D4600D0AB91 /* CheckboxToggleStyle.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1755,6 +1767,7 @@
 				8C9FA4532BD8DF590041F28E /* ChooseOrganizationView.swift in Sources */,
 				8CD108232BD1251900E83261 /* DataServiceWrapper.swift in Sources */,
 				8C9FA43C2BD256430041F28E /* SidebarItem.swift in Sources */,
+				CE7BB4952C231D4600D0AB91 /* CheckboxToggleStyle.swift in Sources */,
 				8C79B41E2C040D84005D4AAB /* ProcessorRegistry.swift in Sources */,
 				8C3D3C042BBB7F09002A5CFC /* MainAppCoordinator.swift in Sources */,
 				8C4BFB6D2BE1876600B47154 /* ItemImageModel.swift in Sources */,
@@ -1767,6 +1780,7 @@
 				8C3D3C072BBB85CC002A5CFC /* MainContainer.swift in Sources */,
 				8C3D3C012BBA1E33002A5CFC /* String.swift in Sources */,
 				8CABF5D42BB9E17C00A34870 /* CustomDimensValues.swift in Sources */,
+				CE7BB48F2C22FF2600D0AB91 /* FiltersItemsView.swift in Sources */,
 				8CD107F32BD11EB800E83261 /* TopBar.swift in Sources */,
 				CEE2BB292BB5D1070033556D /* ApiConstants.swift in Sources */,
 				8C19678F2BFF54E2009360A0 /* DataManagerEnvironmentKey.swift in Sources */,
@@ -1835,6 +1849,7 @@
 				8C4B7BAB2BB892F20043B892 /* CustomStyledViewText.swift in Sources */,
 				8CD1081C2BD1243800E83261 /* GenericTopBarContent.swift in Sources */,
 				8C79B4212C040D84005D4AAB /* EnvironmentManagerExt.swift in Sources */,
+				CE7BB4912C23080400D0AB91 /* MainContainerOverlayTypeView.swift in Sources */,
 				8C8BEC2E2BA975DE0083D904 /* GetStartedView.swift in Sources */,
 				8C9FA45E2BD93DFB0041F28E /* SelectAuctionTopBarCenterView.swift in Sources */,
 				8C9FA45A2BD8DFBA0041F28E /* ChooseAuctionViewModel.swift in Sources */,
@@ -1855,6 +1870,7 @@
 				8C19678A2BFE132C009360A0 /* DataManager.swift in Sources */,
 				8CD108162BD1237D00E83261 /* PaddleViewModel.swift in Sources */,
 				8C4B7B852BB47E9C0043B892 /* Color.swift in Sources */,
+				CE7BB4932C2309D700D0AB91 /* MainContainerOverlayBuilder.swift in Sources */,
 				8C8BEC382BA977AC0083D904 /* RegistrationPage.swift in Sources */,
 				8C4BFB6B2BE1852800B47154 /* ItemModel.swift in Sources */,
 				8C9FA4442BD282B00041F28E /* MyBidsView.swift in Sources */,

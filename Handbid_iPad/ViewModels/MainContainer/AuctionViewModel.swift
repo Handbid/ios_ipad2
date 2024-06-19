@@ -11,6 +11,7 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 	@Published var title: String
 	@Published var auctionStatus: AuctionStateStatuses
 	@Published var categories: [CategoryModel]
+	@Published var filteredCategories: [CategoryModel]
 	@Published var currencyCode: String
 	@Published var isLoading: Bool = true
 
@@ -21,12 +22,17 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 		self.title = ""
 		self.auctionStatus = .open
 		self.categories = []
+		self.filteredCategories = []
 		self.currencyCode = "USD"
 
 		self.dataService = dataService
 		self.repository = repository
 		dataManager.onDataChanged.sink {
 			self.updateAuction()
+		}.store(in: &cancellables)
+
+		$categories.sink { categories in
+			self.filteredCategories = categories.filter(\.isVisible)
 		}.store(in: &cancellables)
 
 		updateAuction()
@@ -78,7 +84,13 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 		eventPublisher.send(MainContainerChangeViewEvents.searchItems)
 	}
 
-	func filterData() {}
+	func filterData() {
+		eventPublisher.send(MainContainerChangeViewEvents.filterItems)
+	}
+
+	func closeOverlay() {
+		eventPublisher.send(MainContainerChangeViewEvents.closeOverlay)
+	}
 
 	private func updateAuction() {
 		do {

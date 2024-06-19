@@ -9,6 +9,7 @@ struct MainContainer<T: PageProtocol>: View {
 	@StateObject var deviceContext = DeviceContext()
 	@State var isSidebarVisible: Bool = DeviceConfigurator.isSidebarAlwaysVisible
 	@State var selectedView: MainContainerTypeView
+	@State var displayedOverlay: MainContainerOverlayTypeView
 	@State var cancellables = Set<AnyCancellable>()
 
 	private let auctionViewModel: AuctionViewModel
@@ -19,22 +20,29 @@ struct MainContainer<T: PageProtocol>: View {
 
 	init(selectedView: MainContainerTypeView) {
 		self.selectedView = selectedView
+		self.displayedOverlay = .none
 		(self.auctionViewModel, self.paddleViewModel, self.myBidsViewModel, self.managerViewModel, self.logOutViewModel) = ViewModelFactory.createAllViewModelsForMainContainer()
 	}
 
 	var body: some View {
-		VStack(spacing: 0) {
-			topBarContent(for: selectedView)
-				.accessibility(identifier: "topBar")
-			GeometryReader { geometry in
-				if deviceContext.isPhone {
-					phoneView(geometry: geometry)
-						.accessibility(identifier: "phoneView")
+		ZStack {
+			VStack(spacing: 0) {
+				topBarContent(for: selectedView)
+					.accessibility(identifier: "topBar")
+				GeometryReader { geometry in
+					if deviceContext.isPhone {
+						phoneView(geometry: geometry)
+							.accessibility(identifier: "phoneView")
+					}
+					else {
+						tabletView(geometry: geometry)
+							.accessibility(identifier: "tabletView")
+					}
 				}
-				else {
-					tabletView(geometry: geometry)
-						.accessibility(identifier: "tabletView")
-				}
+			}
+
+			if displayedOverlay != .none {
+				overlay()
 			}
 		}
 		.onAppear {
@@ -95,6 +103,13 @@ struct MainContainer<T: PageProtocol>: View {
 			.zIndex(1)
 	}
 
+	private func overlay() -> some View {
+		MainContainerOverlayBuilder(selectedOverlay: displayedOverlay,
+		                            auctionViewModel: auctionViewModel)
+			.frame(width: .infinity, height: .infinity)
+			.edgesIgnoringSafeArea(.all)
+	}
+
 	private func subscribeToViewModelEvents() {
 		auctionViewModel.eventPublisher
 			.sink { event in
@@ -116,6 +131,10 @@ struct MainContainer<T: PageProtocol>: View {
 			coordinator.push(MainContainerPage.searchItems as! T)
 		case .allAuctions:
 			coordinator.popToRoot()
+		case .filterItems:
+			displayedOverlay = .filterItems
+		case .closeOverlay:
+			displayedOverlay = .none
 		}
 	}
 
