@@ -4,7 +4,7 @@ import Foundation
 import SwiftUI
 
 enum Field: Hashable {
-	case email, password, searchBar
+	case email, password, searchBar, searchBarItems
 }
 
 struct FormField: View {
@@ -90,6 +90,37 @@ struct FormField: View {
 								fieldValue = ""
 							}) {
 								Image(systemName: "multiply.circle.fill")
+									.foregroundColor(colorScheme == .dark ? .gray : .secondary)
+							}
+						}
+					}
+					.padding(.trailing, 12),
+					alignment: .trailing
+				)
+			}
+		case .searchBarItems:
+			ZStack(alignment: .leading) {
+				TextField(LocalizedStringKey("search_item_label"), text: $fieldValue, onEditingChanged: { isEditing in
+					self.isEditing = isEditing
+				})
+				.applyTextFieldStyle(style: .searchBarItems)
+				.keyboardType(.alphabet)
+				.textCase(nil)
+				.textContentType(.organizationName)
+				.focused($focusedField, equals: .searchBar)
+				.id(Field.searchBar)
+				.overlay(
+					Group {
+						if fieldValue.isEmpty, !isEditing {
+							Image(systemName: "magnifyingglass")
+								.foregroundColor(.black)
+								.imageScale(.large)
+						}
+						if !fieldValue.isEmpty {
+							Button(action: {
+								fieldValue = ""
+							}) {
+								Image(systemName: "xmark")
 									.foregroundColor(colorScheme == .dark ? .gray : .secondary)
 							}
 						}

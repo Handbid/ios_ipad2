@@ -3,7 +3,7 @@
 import SwiftUI
 
 enum TextFieldStyles {
-	case form, searchBar
+	case form, searchBar, searchBarItems
 
 	var configuration: TextStyleConfiguration {
 		switch self {
@@ -30,6 +30,19 @@ enum TextFieldStyles {
 				borderWidthValue: 1,
 				roundedCornerRadius: 30
 			)
+		case .searchBarItems:
+			TextStyleConfiguration(
+				fontStyle: .body,
+				fontWeightStyle: .medium,
+				textAlignment: .leading,
+				alignment: .leading,
+				defaultTextColor: .black,
+				placeholderColor: .accentGrayBorder,
+				backgroundColor: .white,
+				borderColor: .accentGrayBorder,
+				borderWidthValue: 1,
+				roundedCornerRadius: 30
+			)
 		}
 	}
 
@@ -37,6 +50,7 @@ enum TextFieldStyles {
 		switch type {
 		case .form: TextFieldStyles.form.configuration
 		case .searchBar: TextFieldStyles.searchBar.configuration
+		case .searchBarItems: TextFieldStyles.searchBarItems.configuration
 		}
 	}
 }
