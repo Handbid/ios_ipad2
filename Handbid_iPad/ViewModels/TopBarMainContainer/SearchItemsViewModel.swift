@@ -8,6 +8,7 @@ class SearchItemsViewModel: ObservableObject {
 	private let repository: SearchItemsRepository
 	@Published var searchText: String = ""
 	@Published var filteredItems: [ItemModel] = []
+	@Published var searchHistory: [String] = []
 
 	private var items: [ItemModel] = []
 	private var cancellables = Set<AnyCancellable>()
@@ -52,5 +53,20 @@ class SearchItemsViewModel: ObservableObject {
 
 	private func fetchItems() -> [ItemModel] {
 		filteredItems
+	}
+
+	func addToSearchHistory(_ text: String) {
+		if !searchHistory.contains(text) {
+			searchHistory.insert(text, at: 0)
+			if searchHistory.count > 4 {
+				searchHistory.removeLast()
+			}
+		}
+		else {
+			if let index = searchHistory.firstIndex(of: text) {
+				searchHistory.remove(at: index)
+				searchHistory.insert(text, at: 0)
+			}
+		}
 	}
 }
