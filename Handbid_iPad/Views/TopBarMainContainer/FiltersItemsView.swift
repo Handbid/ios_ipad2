@@ -4,6 +4,7 @@ import SwiftUI
 
 struct FiltersItemsView: View {
 	@ObservedObject var viewModel: AuctionViewModel
+	var inspection = Inspection<Self>()
 
 	var body: some View {
 		ZStack(alignment: .topTrailing) {
@@ -42,6 +43,9 @@ struct FiltersItemsView: View {
 				.onTapGesture(perform: viewModel.closeOverlay)
 				.frame(width: 30, height: 30)
 				.padding([.top, .trailing], 28)
+		}
+		.onReceive(inspection.notice) {
+			inspection.visit(self, $0)
 		}
 	}
 }

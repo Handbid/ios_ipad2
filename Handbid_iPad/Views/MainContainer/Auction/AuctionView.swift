@@ -6,6 +6,7 @@ struct AuctionView: ContentView {
 	@ObservedObject var viewModel: AuctionViewModel
 	@State var categories: [CategoryModel] = []
 	@State var isLoading = true
+	var inspection = Inspection<Self>()
 
 	init(viewModel: AuctionViewModel) {
 		self.viewModel = viewModel
@@ -30,6 +31,9 @@ struct AuctionView: ContentView {
 		}
 		.onReceive(viewModel.$isLoading) { loading in
 			isLoading = loading
+		}
+		.onReceive(inspection.notice) {
+			inspection.visit(self, $0)
 		}
 		.onAppear {
 			viewModel.refreshData()
@@ -58,6 +62,7 @@ struct AuctionView: ContentView {
 
 			Spacer()
 		}
+		.accessibilityIdentifier("NoItemsView")
 	}
 
 	private var categoriesList: some View {
@@ -69,6 +74,7 @@ struct AuctionView: ContentView {
 			}
 		}
 		.scrollIndicators(.never)
+		.accessibilityIdentifier("CategoriesList")
 	}
 
 	private func createCategoryView(for category: CategoryModel) -> AnyView {
