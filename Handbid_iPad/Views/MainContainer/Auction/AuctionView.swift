@@ -25,7 +25,7 @@ struct AuctionView: ContentView {
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		.background(.containerBackground)
 		.edgesIgnoringSafeArea(.all)
-		.onReceive(viewModel.$categories) { categories in
+		.onReceive(viewModel.$filteredCategories) { categories in
 			self.categories = categories
 		}
 		.onReceive(viewModel.$isLoading) { loading in

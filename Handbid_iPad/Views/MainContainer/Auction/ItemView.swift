@@ -77,7 +77,7 @@ struct ItemView: View {
 			}
 			.frame(height: 20)
 			.padding(.all, 0)
-			.lineLimit(1)
+			.lineLimit(2)
 
 			Text(item.name ?? "NaN")
 				.applyTextStyle(style: .titleLeading)

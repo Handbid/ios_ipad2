@@ -5,6 +5,7 @@ import NetworkService
 
 struct CategoryModel: Identifiable, Codable, NetworkingJSONDecodable, AutoEncodable {
 	var id: Int?
+	var isVisible: Bool = true
 	var name: String?
 	var auctionId: Int?
 	var items: [ItemModel]?

@@ -8,9 +8,9 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 	private var auctionId: Int = 0
 	var eventPublisher = PassthroughSubject<MainContainerChangeViewEvents, Never>()
 	@ObservedObject var dataService: DataServiceWrapper
-	@Published var title: String
-	@Published var auctionStatus: AuctionStateStatuses
+	private var auction: AuctionModel?
 	@Published var categories: [CategoryModel]
+	@Published var filteredCategories: [CategoryModel]
 	@Published var currencyCode: String
 	@Published var isLoading: Bool = true
 
@@ -18,9 +18,8 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 	private var dataManager = DataManager.shared
 
 	init(dataService: DataServiceWrapper, repository: AuctionRepository) {
-		self.title = ""
-		self.auctionStatus = .open
 		self.categories = []
+		self.filteredCategories = []
 		self.currencyCode = "USD"
 
 		self.dataService = dataService
@@ -29,16 +28,21 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 			self.updateAuction()
 		}.store(in: &cancellables)
 
+		$categories.sink { categories in
+			self.filteredCategories = categories.filter(\.isVisible)
+		}.store(in: &cancellables)
+
 		updateAuction()
 	}
 
 	var centerViewData: TopBarCenterViewData {
 		TopBarCenterViewData(
 			type: .custom,
-			customView: AnyView(AuctionTopBarCenterView(title: title,
-			                                            status: auctionStatus.rawValue.capitalized,
-			                                            date: 1_678_608_000,
-			                                            countItems: 20))
+			customView: AnyView(AuctionTopBarCenterView(title: auction?.name ?? "",
+			                                            status: auction?.status?.rawValue.capitalized
+			                                            	?? "",
+			                                            date: TimeInterval(auction?.endTime ?? 0),
+			                                            countItems: auction?.totalItems ?? -1))
 		)
 	}
 
@@ -78,7 +82,13 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 		eventPublisher.send(MainContainerChangeViewEvents.searchItems)
 	}
 
-	func filterData() {}
+	func filterData() {
+		eventPublisher.send(MainContainerChangeViewEvents.filterItems)
+	}
+
+	func closeOverlay() {
+		eventPublisher.send(MainContainerChangeViewEvents.closeOverlay)
+	}
 
 	private func updateAuction() {
 		do {
@@ -98,8 +108,7 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 		      let categories = auction.categories
 		else { return }
 		auctionId = id
-		title = name
-		auctionStatus = status
+		self.auction = auction
 		currencyCode = auction.currencyCode ?? "USD"
 		self.categories = categories.filter { $0.items?.isEmpty == false }
 	}

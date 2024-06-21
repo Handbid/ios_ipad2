@@ -9,8 +9,9 @@ final class AuctionViewModelTests: XCTestCase {
 		let viewModel = AuctionViewModel(dataService: DataServiceFactory.getService(),
 		                                 repository: MockAuctionRepository())
 
-		XCTAssertEqual(viewModel.title, "")
-		XCTAssertEqual(viewModel.auctionStatus.rawValue, "open")
+		XCTAssert(viewModel.categories.isEmpty)
+		XCTAssert(viewModel.filteredCategories.isEmpty)
+		XCTAssertEqual(viewModel.currencyCode, "USD")
 	}
 
 	func testCenterViewData() {
