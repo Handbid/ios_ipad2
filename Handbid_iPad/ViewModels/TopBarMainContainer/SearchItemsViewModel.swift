@@ -10,11 +10,16 @@ class SearchItemsViewModel: ObservableObject {
 	@Published var filteredItems: [ItemModel] = []
 	@Published var searchHistory: [String] = []
 
+	private var auction: AuctionModel?
 	private var items: [ItemModel] = []
 	private var cancellables = Set<AnyCancellable>()
 
 	init(repository: SearchItemsRepository) {
 		self.repository = repository
+
+		self.auction = try? dataManager.fetchSingle(of: AuctionModel.self, from: .auction)
+		guard let categories = auction?.categories else { return }
+		self.items = categories.compactMap(\.items).flatMap { $0 }
 
 		$searchText
 			.debounce(for: .milliseconds(300), scheduler: RunLoop.main)
@@ -30,7 +35,15 @@ class SearchItemsViewModel: ObservableObject {
 			filteredItems = items
 		}
 		else {
-			fetchItemsFromRepository()
+			// fetchItemsFromRepository()
+			filteredItems = items.filter { item in
+				if let name = item.name {
+					name.lowercased().contains(searchText.lowercased())
+				}
+				else {
+					false
+				}
+			}
 		}
 	}
 
@@ -49,10 +62,6 @@ class SearchItemsViewModel: ObservableObject {
 				self?.filteredItems = fetchedItems
 			})
 			.store(in: &cancellables)
-	}
-
-	private func fetchItems() -> [ItemModel] {
-		filteredItems
 	}
 
 	func addToSearchHistory(_ text: String) {
