@@ -155,6 +155,11 @@
 		8C9159C62C0FC1EC005C9D11 /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9159C52C0FC1EC005C9D11 /* LoadingOverlay.swift */; };
 		8C9159C82C102D5D005C9D11 /* LoadingViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9159C72C102D5D005C9D11 /* LoadingViewTests.swift */; };
 		8C9159CA2C102D71005C9D11 /* LoadingOverlayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9159C92C102D71005C9D11 /* LoadingOverlayTests.swift */; };
+		8C91A8512C2A04F60057D51B /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C91A8502C2A04F60057D51B /* CategoryView.swift */; };
+		8C91A8532C2A050D0057D51B /* ItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C91A8522C2A050D0057D51B /* ItemDetailView.swift */; };
+		8C91A8552C2A05340057D51B /* ImageGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C91A8542C2A05340057D51B /* ImageGalleryView.swift */; };
+		8C91A8572C2A05490057D51B /* DetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C91A8562C2A05490057D51B /* DetailInfoView.swift */; };
+		8C91A85A2C2A06270057D51B /* ButtonSectionItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C91A8592C2A06270057D51B /* ButtonSectionItemView.swift */; };
 		8C9BC3172C088681004F3DFF /* MockDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC3162C088681004F3DFF /* MockDataService.swift */; };
 		8C9BC3192C08869D004F3DFF /* PaddleViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC3182C08869D004F3DFF /* PaddleViewModelTests.swift */; };
 		8C9BC31F2C089B0C004F3DFF /* MockWebSocketURLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC31E2C089B0C004F3DFF /* MockWebSocketURLFactory.swift */; };
@@ -440,6 +445,11 @@
 		8C9159C52C0FC1EC005C9D11 /* LoadingOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
 		8C9159C72C102D5D005C9D11 /* LoadingViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewTests.swift; sourceTree = "<group>"; };
 		8C9159C92C102D71005C9D11 /* LoadingOverlayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlayTests.swift; sourceTree = "<group>"; };
+		8C91A8502C2A04F60057D51B /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		8C91A8522C2A050D0057D51B /* ItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailView.swift; sourceTree = "<group>"; };
+		8C91A8542C2A05340057D51B /* ImageGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGalleryView.swift; sourceTree = "<group>"; };
+		8C91A8562C2A05490057D51B /* DetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoView.swift; sourceTree = "<group>"; };
+		8C91A8592C2A06270057D51B /* ButtonSectionItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSectionItemView.swift; sourceTree = "<group>"; };
 		8C9BC3162C088681004F3DFF /* MockDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataService.swift; sourceTree = "<group>"; };
 		8C9BC3182C08869D004F3DFF /* PaddleViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddleViewModelTests.swift; sourceTree = "<group>"; };
 		8C9BC31E2C089B0C004F3DFF /* MockWebSocketURLFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWebSocketURLFactory.swift; sourceTree = "<group>"; };
@@ -1005,6 +1015,8 @@
 			isa = PBXGroup;
 			children = (
 				CE2022B52C0F0CF50009415D /* Auction */,
+				8C91A84F2C2A04E90057D51B /* Category */,
+				8C91A84E2C2A04E10057D51B /* Item */,
 				8C9FA4472BD282C30041F28E /* LogOutView.swift */,
 				8C9FA4452BD282B90041F28E /* ManagerView.swift */,
 				8C9FA4432BD282B00041F28E /* MyBidsView.swift */,
@@ -1147,6 +1159,33 @@
 				8C9159C52C0FC1EC005C9D11 /* LoadingOverlay.swift */,
 			);
 			path = LoadingView;
+			sourceTree = "<group>";
+		};
+		8C91A84E2C2A04E10057D51B /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				8C91A8582C2A06150057D51B /* ButtonSection */,
+				8C91A8562C2A05490057D51B /* DetailInfoView.swift */,
+				8C91A8542C2A05340057D51B /* ImageGalleryView.swift */,
+				8C91A8522C2A050D0057D51B /* ItemDetailView.swift */,
+			);
+			path = Item;
+			sourceTree = "<group>";
+		};
+		8C91A84F2C2A04E90057D51B /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				8C91A8502C2A04F60057D51B /* CategoryView.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		8C91A8582C2A06150057D51B /* ButtonSection */ = {
+			isa = PBXGroup;
+			children = (
+				8C91A8592C2A06270057D51B /* ButtonSectionItemView.swift */,
+			);
+			path = ButtonSection;
 			sourceTree = "<group>";
 		};
 		8C9BC3152C088675004F3DFF /* MainPage */ = {
@@ -1455,7 +1494,6 @@
 		CEE2BB252BB5BB7A0033556D /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				CEAE0D0E2C1330C700822A62 /* AuctionRepository.swift */,
 				8C4BFB662BE17C6300B47154 /* ChooseAuctionRepository.swift */,
 				8C4BFB552BE0E2AD00B47154 /* ChooseOrganizationRepository.swift */,
 				8C4A6DF62C22CB8900F320D8 /* SearchItemsRepository.swift */,
@@ -1812,11 +1850,13 @@
 				8C0007BF2BAC764700AAEBA0 /* AppVersionModel.swift in Sources */,
 				8C4B7B7F2BB379440043B892 /* AuthManager.swift in Sources */,
 				8C8BEC342BA976A90083D904 /* LogInViewModel.swift in Sources */,
+				8C91A8552C2A05340057D51B /* ImageGalleryView.swift in Sources */,
 				8C4BFB712BE1887F00B47154 /* TicketModel.swift in Sources */,
 				8C79B4242C040D84005D4AAB /* HandbidWebSocketFactory.swift in Sources */,
 				8C7D96512C18EE970028C8E0 /* SearchItemsViewModel.swift in Sources */,
 				8C3D3C072BBB85CC002A5CFC /* MainContainer.swift in Sources */,
 				8C3D3C012BBA1E33002A5CFC /* String.swift in Sources */,
+				8C91A85A2C2A06270057D51B /* ButtonSectionItemView.swift in Sources */,
 				8CABF5D42BB9E17C00A34870 /* CustomDimensValues.swift in Sources */,
 				CE7BB48F2C22FF2600D0AB91 /* FiltersItemsView.swift in Sources */,
 				8CD107F32BD11EB800E83261 /* TopBar.swift in Sources */,
@@ -1826,6 +1866,7 @@
 				8CD1080E2BD122CC00E83261 /* AuctionView.swift in Sources */,
 				8C4BFB542BDFAE2000B47154 /* AuctionFilterButtonViewModel.swift in Sources */,
 				CE1791622C18A05D009F09A3 /* AuctionProcessor.swift in Sources */,
+				8C91A8512C2A04F60057D51B /* CategoryView.swift in Sources */,
 				8CABF5C32BB9C64E00A34870 /* ForgotPasswordViewModel.swift in Sources */,
 				8C79B4232C040D84005D4AAB /* HandbidEventDelegate.swift in Sources */,
 				8CBDAAC82BC432470010908F /* DispatchQueue.swift in Sources */,
@@ -1837,6 +1878,7 @@
 				8CAFD93A2BBD90F700C7D763 /* KeyboardResponsiveModifier.swift in Sources */,
 				8CD108132BD1233E00E83261 /* AuctionViewModel.swift in Sources */,
 				8C9FA43A2BD157790041F28E /* GenericTopBarContentFactory.swift in Sources */,
+				8C91A8532C2A050D0057D51B /* ItemDetailView.swift in Sources */,
 				8C9FA4402BD27FE80041F28E /* ManagerViewModel.swift in Sources */,
 				8C4BFB792BE189DA00B47154 /* LandingPageModel.swift in Sources */,
 				8C8BEC302BA975F10083D904 /* LogInView.swift in Sources */,
@@ -1912,6 +1954,7 @@
 				8CD108162BD1237D00E83261 /* PaddleViewModel.swift in Sources */,
 				8C4B7B852BB47E9C0043B892 /* Color.swift in Sources */,
 				CE7BB4932C2309D700D0AB91 /* MainContainerOverlayBuilder.swift in Sources */,
+				8C91A8572C2A05490057D51B /* DetailInfoView.swift in Sources */,
 				8C8BEC382BA977AC0083D904 /* RegistrationPage.swift in Sources */,
 				8C4BFB6B2BE1852800B47154 /* ItemModel.swift in Sources */,
 				8C9FA4442BD282B00041F28E /* MyBidsView.swift in Sources */,
