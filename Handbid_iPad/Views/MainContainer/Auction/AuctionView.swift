@@ -120,7 +120,7 @@ struct CategoryView: View {
 			ScrollView(.horizontal) {
 				LazyHStack {
 					ForEach(category.items ?? [], id: \.id) { item in
-						ItemView(item: item, currencyCode: "USD")
+						ItemView(item: item, currencyCode: "USD", viewWidth: 337, viewHeight: 397)
 							.onTapGesture {
 								onItemSelect(item)
 							}
@@ -131,7 +131,7 @@ struct CategoryView: View {
 			}
 			.scrollIndicators(.never)
 			.defaultScrollAnchor(.leading)
-			.frame(height: 370)
+			.frame(height: 397 + 24)
 		}
 		.accessibilityIdentifier("categoryView")
 	}

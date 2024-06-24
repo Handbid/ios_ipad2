@@ -6,6 +6,8 @@ struct ItemView: View {
 	@Environment(\.colorScheme) var colorScheme
 	var item: ItemModel
 	var currencyCode: String
+	var viewWidth: CGFloat
+	var viewHeight: CGFloat
 
 	var body: some View {
 		ZStack(alignment: .topTrailing) {
@@ -20,44 +22,55 @@ struct ItemView: View {
 					.padding([.trailing, .top], 20)
 			}
 		}
-		.frame(width: 337, height: 400) // Stała wysokość dla ItemView
+		.frame(width: viewWidth, height: viewHeight)
 		.padding(.all, 12)
 	}
 
 	private var itemContent: some View {
-		VStack(spacing: 8) { // Użycie spacing dla regulacji odstępów
-			AsyncImage(url: URL(string: item.imageUrl ?? "")) { phase in
-				switch phase {
-				case .empty:
-					Image(systemName: "photo")
-						.resizable()
-						.scaledToFit()
-						.foregroundColor(colorScheme == .dark ? .white : .gray)
-						.frame(height: 187, alignment: .center)
-						.accessibilityIdentifier("ImageLoadingIndicator")
-						.padding()
-				case let .success(image):
-					image.resizable()
-						.aspectRatio(contentMode: .fit)
-						.scaledToFill()
-						.frame(height: 187, alignment: .center)
-						.cornerRadius(32)
-						.accessibilityIdentifier("ItemImage")
-				case .failure:
-					Image(systemName: "photo")
-						.resizable()
-						.scaledToFit()
-						.foregroundColor(colorScheme == .dark ? .white : .gray)
-						.frame(height: 187, alignment: .center)
-						.padding()
-						.accessibilityIdentifier("ItemImagePlaceholder")
-				@unknown default:
-					ProgressView()
-						.progressViewStyle(CircularProgressViewStyle())
-						.scaledToFit()
-						.frame(height: 187, alignment: .center)
+		let imageWidth = viewWidth * (255 / 337)
+		let imageHeight = viewHeight * (173 / 397)
+
+		return VStack(spacing: 8) {
+			ZStack {
+				Rectangle()
+					.fill(Color.accentGrayBackground)
+					.frame(width: viewWidth, height: viewHeight * (228 / 397))
+					.cornerRadius(32)
+
+				AsyncImage(url: URL(string: item.imageUrl ?? "")) { phase in
+					switch phase {
+					case .empty:
+						Image(systemName: "photo")
+							.resizable()
+							.scaledToFit()
+							.foregroundColor(colorScheme == .dark ? .white : .gray)
+							.frame(width: imageWidth, height: imageHeight, alignment: .center)
+							.accessibilityIdentifier("ImageLoadingIndicator")
+							.padding()
+					case let .success(image):
+						image.resizable()
+							.aspectRatio(contentMode: .fill)
+							.frame(width: imageWidth, height: imageHeight, alignment: .center)
+							.scaledToFit()
+							.accessibilityIdentifier("ItemImage")
+					case .failure:
+						Image(systemName: "photo")
+							.resizable()
+							.scaledToFit()
+							.foregroundColor(colorScheme == .dark ? .white : .gray)
+							.frame(width: imageWidth, height: imageHeight, alignment: .center)
+							.padding()
+							.accessibilityIdentifier("ItemImagePlaceholder")
+					@unknown default:
+						ProgressView()
+							.progressViewStyle(CircularProgressViewStyle())
+							.scaledToFit()
+							.frame(width: imageWidth, height: imageHeight, alignment: .center)
+					}
 				}
+				.frame(width: imageWidth, height: imageHeight)
 			}
+			.frame(width: viewWidth, height: viewHeight * (228 / 397))
 
 			HStack {
 				Text(item.categoryName ?? "NaN")
