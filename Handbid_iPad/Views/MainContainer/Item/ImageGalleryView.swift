@@ -7,6 +7,7 @@ struct ImageGalleryView: View {
 	@Binding var selectedImage: String?
 	@Binding var remainingTime: Int
 	@Binding var progress: CGFloat
+	let item: ItemModel
 	let images: [ItemImageModel]
 	let resetTimer: () -> Void
 

@@ -8,7 +8,7 @@ struct ButtonSectionItemView: View {
 
 	var body: some View {
 		VStack {
-			if item.itemType == "forsale" {
+			if item.itemType == .forSale {
 				specialButtons
 			}
 			else {

@@ -1,6 +1,7 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
 import Arrow
+import Foundation
 import NetworkService
 
 struct ItemModel: Identifiable, Codable, NetworkingJSONDecodable, AutoEncodable {
@@ -8,9 +9,9 @@ struct ItemModel: Identifiable, Codable, NetworkingJSONDecodable, AutoEncodable 
 	var itemGuid: String?
 	var name: String?
 	var status: String?
+	var statusId: Int?
 	var categoryId: Int?
 	var categoryName: String?
-	var itemType: String?
 	var isDirectPurchaseItem: Bool?
 	var isLive: Bool?
 	var isTicket: Bool?
@@ -82,6 +83,98 @@ struct ItemModel: Identifiable, Codable, NetworkingJSONDecodable, AutoEncodable 
 	var quantityUnitLabel: String?
 	var discountLabel: String?
 	var discountUnitLabel: String?
+	var itemStatus: ItemStatus?
+	var itemType: ItemType?
+
+	enum ItemStatus: Int, Codable {
+		case setup = 1
+		case preview = 2
+		case presale = 3
+		case open = 4
+		case paused = 5
+		case closed = 6
+		case reconciled = 7
+		case extended = 8
+		case archived = 10
+		case sold = 11
+		case available = 12
+	}
+
+	enum ItemType: String, Codable {
+		case placeOrder = "ItemPlaceOrder"
+		case placeOrderSoldOut = "ItemPlaceOrderSoldOut"
+		case normal = "ItemNormal"
+		case normalSold = "ItemNormalSold"
+		case biddingDisabled = "ItemBiddingDisabled"
+		case buyNow = "ItemBuyNow"
+		case buyNowSoldOut = "ItemBuyNowSoldOut"
+		case liveAuction = "ItemLiveAuction"
+		case directPurchaseEventOnly = "ItemDirectPurchaseEventOnly"
+		case directPurchase = "ItemDirectPurchase"
+		case directPurchaseSoldOut = "ItemDirectPurchaseSoldOut"
+		case puzzle = "ItemPuzzle"
+		case forSale = "ItemForSale"
+	}
+
+	mutating func setTypeBasedOnProperties() {
+		if itemIsAppealAndForSale() {
+			itemType = .forSale
+		}
+		else if isEditablePriorToSale ?? false && isDirectPurchaseItem ?? false && !(isBidpadOnly ?? false) && itemStatus != .sold {
+			itemType = .placeOrder
+		}
+		else if isEditablePriorToSale ?? false && isDirectPurchaseItem ?? false && !(isBidpadOnly ?? false) && itemStatus == .sold {
+			itemType = .placeOrderSoldOut
+		}
+		else if disableMobileBidding ?? false {
+			itemType = .biddingDisabled
+		}
+		else if isLive ?? false && !(isPromoted ?? false) {
+			itemType = .liveAuction
+		}
+		else if isPuzzle ?? false {
+			itemType = .puzzle
+		}
+		else if isDirectPurchaseItem ?? false {
+			if isBidpadOnly ?? false {
+				itemType = .directPurchaseEventOnly
+			}
+			else if itemStatus == .sold || inventoryRemaining == 0 {
+				itemType = .directPurchaseSoldOut
+			}
+			else {
+				itemType = .directPurchase
+			}
+		}
+		else if buyNowPrice ?? 0 > 0 && itemStatus == .sold {
+			itemType = .buyNowSoldOut
+		}
+		else if buyNowPrice ?? 0 > 0 {
+			itemType = .buyNow
+		}
+		else if itemStatus == .open || itemStatus == .available || itemStatus == .extended {
+			itemType = .normal
+		}
+		else if itemStatus == .sold {
+			itemType = .normalSold
+		}
+		else {
+			itemType = .normal
+		}
+	}
+
+	mutating func setStatusBasedOnStatusId(statusId: Int) {
+		if let status = ItemStatus(rawValue: statusId) {
+			itemStatus = status
+		}
+		else {
+			itemStatus = nil
+		}
+	}
+
+	func itemIsAppealAndForSale() -> Bool {
+		isAppeal ?? false || (itemType == .forSale)
+	}
 }
 
 extension ItemModel: ArrowParsable {
@@ -90,9 +183,9 @@ extension ItemModel: ArrowParsable {
 		itemGuid <-- json["itemGuid"]
 		name <-- json["name"]
 		status <-- json["status"]
+		statusId <-- json["statusId"]
 		categoryId <-- json["categoryId"]
 		categoryName <-- json["categoryName"]
-		itemType <-- json["itemType"]
 		isDirectPurchaseItem <-- json["isDirectPurchaseItem"]
 		isLive <-- json["isLive"]
 		isTicket <-- json["isTicket"]
@@ -168,5 +261,11 @@ extension ItemModel: ArrowParsable {
 			images.deserialize(jsonItem)
 			return images
 		}
+
+		if let statusId {
+			setStatusBasedOnStatusId(statusId: statusId)
+		}
+
+		setTypeBasedOnProperties()
 	}
 }

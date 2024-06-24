@@ -59,11 +59,11 @@ struct ItemDetailView: View {
 
 	private var landscapeView: some View {
 		HStack {
-			ImageGalleryView(selectedImage: $selectedImage, remainingTime: $remainingTime, progress: $progress, images: item.images ?? .init(), resetTimer: resetTimer)
+			ImageGalleryView(selectedImage: $selectedImage, remainingTime: $remainingTime, progress: $progress, item: item, images: item.images ?? .init(), resetTimer: resetTimer)
 				.accessibilityIdentifier("imageGalleryView")
 			VStack(spacing: 0) {
 				ScrollView {
-					DetailInfoView(isVisible: $isVisible, resetTimer: resetTimer)
+					DetailInfoView(isVisible: $isVisible, resetTimer: resetTimer, item: item)
 						.background(Color.clear)
 						.frame(maxHeight: .infinity)
 						.clipped()
@@ -91,10 +91,10 @@ struct ItemDetailView: View {
 			}
 			ScrollView {
 				VStack(spacing: 0) {
-					ImageGalleryView(selectedImage: $selectedImage, remainingTime: $remainingTime, progress: $progress, images: item.images ?? .init(), resetTimer: resetTimer)
+					ImageGalleryView(selectedImage: $selectedImage, remainingTime: $remainingTime, progress: $progress, item: item, images: item.images ?? .init(), resetTimer: resetTimer)
 						.frame(height: geometry.size.height * 0.5)
 						.accessibilityIdentifier("imageGalleryView")
-					DetailInfoView(isVisible: $isVisible, resetTimer: resetTimer)
+					DetailInfoView(isVisible: $isVisible, resetTimer: resetTimer, item: item)
 						.background(Color.white)
 						.frame(maxHeight: .infinity, alignment: .top)
 						.clipped()

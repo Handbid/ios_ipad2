@@ -5,6 +5,7 @@ import SwiftUI
 struct DetailInfoView: View {
 	@Binding var isVisible: Bool
 	let resetTimer: () -> Void
+	let item: ItemModel
 
 	var body: some View {
 		VStack(alignment: .leading, spacing: 15) {
