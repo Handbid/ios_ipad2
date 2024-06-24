@@ -79,7 +79,7 @@ public enum EnvironmentManager {
 			("d1-rest.handbid.dev", .d1),
 			("d2-rest.handbid.dev", .d2),
 			("d3-rest.handbid.dev", .d3),
-			("d3v2-rest.handbid.dev", .d3v2),
+			("d3-rest.handbid.dev/api/v2", .d3v2),
 			("rest.handbid.com", .prod),
 		]
 
