@@ -13,7 +13,7 @@ public struct AppEnvironment: EnvironmentProtocol {
 }
 
 public enum AppEnvironmentType: String {
-	case prod, d1, d2, d3, qa
+	case prod, d1, d2, d3, d3v2, qa
 }
 
 public extension AppEnvironmentType {

@@ -20,20 +20,22 @@ struct ItemView: View {
 					.padding([.trailing, .top], 20)
 			}
 		}
-		.frame(width: 337)
+		.frame(width: 337, height: 400) // Stała wysokość dla ItemView
 		.padding(.all, 12)
 	}
 
 	private var itemContent: some View {
-		VStack {
+		VStack(spacing: 8) { // Użycie spacing dla regulacji odstępów
 			AsyncImage(url: URL(string: item.imageUrl ?? "")) { phase in
 				switch phase {
 				case .empty:
-					ProgressView()
-						.progressViewStyle(CircularProgressViewStyle())
+					Image(systemName: "photo")
+						.resizable()
 						.scaledToFit()
+						.foregroundColor(colorScheme == .dark ? .white : .gray)
 						.frame(height: 187, alignment: .center)
 						.accessibilityIdentifier("ImageLoadingIndicator")
+						.padding()
 				case let .success(image):
 					image.resizable()
 						.aspectRatio(contentMode: .fit)
@@ -50,10 +52,12 @@ struct ItemView: View {
 						.padding()
 						.accessibilityIdentifier("ItemImagePlaceholder")
 				@unknown default:
-					EmptyView()
+					ProgressView()
+						.progressViewStyle(CircularProgressViewStyle())
+						.scaledToFit()
+						.frame(height: 187, alignment: .center)
 				}
 			}
-			.padding([.bottom], 10)
 
 			HStack {
 				Text(item.categoryName ?? "NaN")
@@ -82,18 +86,20 @@ struct ItemView: View {
 				Spacer()
 			}
 			.frame(height: 20)
+			.lineLimit(1)
 			.padding(.all, 0)
-			.lineLimit(2)
-
+			
 			Text(item.name ?? "NaN")
 				.applyTextStyle(style: .titleLeading)
-				.accessibilityIdentifier("ItemName")
+				.frame(maxHeight: 60)
+				.lineLimit(3)
+				.padding([.bottom, .top], 3)
 
 			Text(item.currentPrice ?? -1, format: .currency(code: currencyCode))
 				.applyTextStyle(style: .subheader)
-				.accessibilityIdentifier("CurrentPrice")
+				.lineLimit(1)
 		}
-		.padding(.vertical, 16)
+		.padding(.vertical, 8)
 		.padding(.horizontal, 16)
 	}
 

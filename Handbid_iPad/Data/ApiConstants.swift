@@ -8,5 +8,5 @@ enum ApiEndpoints {
 	static let organizationIndex = "/organization/index"
 	static let auctionInventory = "/auction/inventory"
 	static let getAuctionsUser = "/auction/index"
-	static let items = "/items"
+	static let items = "/api/v2/items"
 }

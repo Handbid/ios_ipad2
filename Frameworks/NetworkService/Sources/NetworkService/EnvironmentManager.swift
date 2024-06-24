@@ -40,6 +40,7 @@ public enum EnvironmentManager {
 		case .d1: AppEnvironment(baseURL: "https://d1-rest.handbid.dev", showLog: true)
 		case .d2: AppEnvironment(baseURL: "https://d2-rest.handbid.dev", showLog: true)
 		case .d3: AppEnvironment(baseURL: "https://d3-rest.handbid.dev", showLog: true)
+		case .d3v2: AppEnvironment(baseURL: "https://d3-rest.handbid.dev/api/v2", showLog: true)
 		case .qa: AppEnvironment(baseURL: "https://qa-rest.handbid.dev", showLog: true)
 		case .prod: AppEnvironment(baseURL: "https://rest.handbid.com", showLog: true)
 		}
@@ -55,6 +56,7 @@ public enum EnvironmentManager {
 			("d1-rest.handbid.dev", .d1),
 			("d2-rest.handbid.dev", .d2),
 			("d3-rest.handbid.dev", .d3),
+			("d3-rest.handbid.dev/api/v2", .d3v2),
 			("rest.handbid.com", .prod),
 		]
 
@@ -77,6 +79,7 @@ public enum EnvironmentManager {
 			("d1-rest.handbid.dev", .d1),
 			("d2-rest.handbid.dev", .d2),
 			("d3-rest.handbid.dev", .d3),
+			("d3v2-rest.handbid.dev", .d3v2),
 			("rest.handbid.com", .prod),
 		]
 

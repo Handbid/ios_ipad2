@@ -92,12 +92,12 @@ class AuthManager: ObservableObject {
 	// MARK: Logs in the user with the provided authentication model.
 
 	func loginWithAuthModel(auth: AuthModel) async -> Bool {
-		guard let accessToken = auth.accessToken, isTokenValid(token: accessToken) else {
+		guard let accessToken = auth.token, isTokenValid(token: accessToken) else {
 			return false
 		}
 
 		let expirationInterval = TimeInterval(auth.expiresIn ?? 0)
-		currentToken = TokenUser(validUntil: Date().addingTimeInterval(expirationInterval), id: UUID(), value: accessToken, guid: auth.guid!)
+		currentToken = TokenUser(validUntil: Date().addingTimeInterval(expirationInterval), id: UUID(), value: accessToken, guid: "")
 		saveTokenToKeychain(currentToken!)
 		return true
 	}
@@ -139,9 +139,9 @@ class AuthManager: ObservableObject {
 
 	// MARK: Refreshes the user's token using the provided authentication model.
 
-	private func refreshTokenWithAuth(auth: AuthModel) async throws -> TokenUser {
+	private func refreshTokenWithAuth(auth _: AuthModel) async throws -> TokenUser {
 		let tokenExpiresAt = Date().addingTimeInterval(3600) // 1 hour
-		let newToken = TokenUser(validUntil: tokenExpiresAt, id: UUID(), value: "AuthDataUser", guid: auth.guid!)
+		let newToken = TokenUser(validUntil: tokenExpiresAt, id: UUID(), value: "AuthDataUser", guid: "auth.guid!")
 
 		guard newToken.isValid else {
 			throw AuthError.invalidToken

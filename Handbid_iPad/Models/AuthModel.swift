@@ -37,6 +37,8 @@ struct AuthModel: Decodable, NetworkingJSONDecodable {
 
 extension AuthModel: ArrowParsable {
 	mutating func deserialize(_ json: JSON) {
+		token <-- json["token"]
+		expiresIn <-- json["expires_in"]
 		token <-- json["data.token"]
 		accessToken <-- json["data.access_token"]
 		expiresIn <-- json["data.expires_in"]
