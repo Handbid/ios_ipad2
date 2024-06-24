@@ -5,29 +5,33 @@ import SwiftUI
 
 struct AuctionView: View {
 	@ObservedObject var viewModel: AuctionViewModel
-    @State var isLoading = true
+	@State var isLoading = true
 	var inspection = Inspection<Self>()
 	@State private var categories: [CategoryModel] = []
 	@State private var selectedItem: ItemModel? = nil
 	@State private var showDetailView: Bool = false
-	
+
 	init(viewModel: AuctionViewModel) {
 		self.viewModel = viewModel
 	}
 
 	var body: some View {
 		LoadingOverlay(isLoading: $isLoading) {
-					ZStack {
-
-			VStack {
-				if categories.isEmpty, !isLoading {
-					noItemsView
-				}
-				else {
-					categoriesList
+			ZStack {
+				VStack {
+					if categories.isEmpty, !isLoading {
+						noItemsView
+					}
+					else {
+						categoriesList
+					}
 				}
 			}
-					}
+
+			if let selectedItem, showDetailView {
+				overlayView
+				itemDetailView(for: selectedItem)
+			}
 		}
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		.background(.containerBackground)
@@ -43,13 +47,8 @@ struct AuctionView: View {
 		}
 		.accessibilityIdentifier("AuctionView")
 		.onAppear {
-				viewModel.refreshData()
-			}
-
-			if let selectedItem, showDetailView {
-				overlayView
-				itemDetailView(for: selectedItem)
-			}
+			viewModel.refreshData()
+		}
 	}
 
 	private var noItemsView: some View {
@@ -121,7 +120,7 @@ struct CategoryView: View {
 			ScrollView(.horizontal) {
 				LazyHStack {
 					ForEach(category.items ?? [], id: \.id) { item in
-						ItemView(item: item)
+						ItemView(item: item, currencyCode: "USD")
 							.onTapGesture {
 								onItemSelect(item)
 							}
