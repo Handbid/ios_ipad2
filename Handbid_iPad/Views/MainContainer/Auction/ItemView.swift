@@ -20,12 +20,12 @@ struct ItemView: View {
 					.padding([.trailing, .top], 20)
 			}
 		}
-		.frame(width: 337)
+		.frame(width: 337, height: 400) // Stała wysokość dla ItemView
 		.padding(.all, 12)
 	}
 
 	private var itemContent: some View {
-		VStack {
+		VStack(spacing: 8) { // Użycie spacing dla regulacji odstępów
 			AsyncImage(url: URL(string: item.imageUrl ?? "")) { phase in
 				switch phase {
 				case .empty:
@@ -55,7 +55,6 @@ struct ItemView: View {
 						.frame(height: 187, alignment: .center)
 				}
 			}
-			.padding([.bottom], 10)
 
 			HStack {
 				Text(item.categoryName ?? "NaN")
@@ -81,16 +80,19 @@ struct ItemView: View {
 				Spacer()
 			}
 			.frame(height: 20)
-			.padding(.all, 0)
 			.lineLimit(1)
 
 			Text(item.name ?? "NaN")
 				.applyTextStyle(style: .titleLeading)
+				.frame(maxHeight: 60)
+				.lineLimit(3)
+				.padding([.bottom, .top], 3)
 
 			Text(item.currentPrice ?? -1, format: .currency(code: currencyCode))
 				.applyTextStyle(style: .subheader)
+				.lineLimit(1)
 		}
-		.padding(.vertical, 16)
+		.padding(.vertical, 8)
 		.padding(.horizontal, 16)
 	}
 
