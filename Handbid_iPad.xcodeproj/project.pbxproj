@@ -264,6 +264,9 @@
 		CEAB750F2BD12BEE000AFB46 /* MockForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB750E2BD12BEE000AFB46 /* MockForgotPasswordViewModel.swift */; };
 		CEAB75112BD165D5000AFB46 /* PasswordResetConfirmationView_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB75102BD165D5000AFB46 /* PasswordResetConfirmationView_Tests.swift */; };
 		CEAE0D0F2C1330C700822A62 /* AuctionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE0D0E2C1330C700822A62 /* AuctionRepository.swift */; };
+		CEAE3C4C2C25807200D13328 /* AuctionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE3C4B2C25807200D13328 /* AuctionViewTests.swift */; };
+		CEAE3C4E2C25914800D13328 /* ItemViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE3C4D2C25914800D13328 /* ItemViewTests.swift */; };
+		CEAE3C512C25A87200D13328 /* FilterItemsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE3C502C25A87200D13328 /* FilterItemsViewTests.swift */; };
 		CEE2BB272BB5BBB10033556D /* RegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2BB262BB5BBB10033556D /* RegisterRepository.swift */; };
 		CEE2BB292BB5D1070033556D /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2BB282BB5D1070033556D /* ApiConstants.swift */; };
 		CEEC46132BBD8DE900C685BF /* AnyPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEC46122BBD8DE900C685BF /* AnyPublisher.swift */; };
@@ -543,6 +546,9 @@
 		CEAB750E2BD12BEE000AFB46 /* MockForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		CEAB75102BD165D5000AFB46 /* PasswordResetConfirmationView_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetConfirmationView_Tests.swift; sourceTree = "<group>"; };
 		CEAE0D0E2C1330C700822A62 /* AuctionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionRepository.swift; sourceTree = "<group>"; };
+		CEAE3C4B2C25807200D13328 /* AuctionViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionViewTests.swift; sourceTree = "<group>"; };
+		CEAE3C4D2C25914800D13328 /* ItemViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewTests.swift; sourceTree = "<group>"; };
+		CEAE3C502C25A87200D13328 /* FilterItemsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterItemsViewTests.swift; sourceTree = "<group>"; };
 		CEE2BB262BB5BBB10033556D /* RegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRepository.swift; sourceTree = "<group>"; };
 		CEE2BB282BB5D1070033556D /* ApiConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConstants.swift; sourceTree = "<group>"; };
 		CEEC46122BBD8DE900C685BF /* AnyPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyPublisher.swift; sourceTree = "<group>"; };
@@ -959,6 +965,8 @@
 		8C3AA3EE2C07159500110288 /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
+				CEAE3C4F2C25A85300D13328 /* TopBarMainContainer */,
+				CEAE3C4A2C25805F00D13328 /* Auction */,
 				8C9BC3412C0CB8D5004F3DFF /* MainContainerTests.swift */,
 				8C9BC3372C0C94C0004F3DFF /* ChooseAuctionViewTests.swift */,
 				8C3AA3FD2C07319700110288 /* GenericTopBarContentTests.swift */,
@@ -1410,6 +1418,23 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		CEAE3C4A2C25805F00D13328 /* Auction */ = {
+			isa = PBXGroup;
+			children = (
+				CEAE3C4B2C25807200D13328 /* AuctionViewTests.swift */,
+				CEAE3C4D2C25914800D13328 /* ItemViewTests.swift */,
+			);
+			path = Auction;
+			sourceTree = "<group>";
+		};
+		CEAE3C4F2C25A85300D13328 /* TopBarMainContainer */ = {
+			isa = PBXGroup;
+			children = (
+				CEAE3C502C25A87200D13328 /* FilterItemsViewTests.swift */,
+			);
+			path = TopBarMainContainer;
+			sourceTree = "<group>";
+		};
 		CEE2BB242BB5BB310033556D /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -1695,13 +1720,16 @@
 				8C3AA4032C0799B000110288 /* SidebarItemTests.swift in Sources */,
 				8C9BC33E2C0CA4BF004F3DFF /* DatabaseServiceTests.swift in Sources */,
 				8C3AA4162C08741000110288 /* AuthModelTests.swift in Sources */,
+				CEAE3C512C25A87200D13328 /* FilterItemsViewTests.swift in Sources */,
 				8C3AA4122C08738500110288 /* AddressModelTests.swift in Sources */,
 				8C1B67702BC83F92006B61F6 /* MockForgotPassword.swift in Sources */,
 				8C3AA3F52C07177500110288 /* TopBarContentFactoryTests.swift in Sources */,
 				CE337F312C1C89F000681FE1 /* MockAuctionRepository.swift in Sources */,
 				CE337F2F2C1C86DC00681FE1 /* MockAuctionViewModel.swift in Sources */,
 				8C1B676E2BC834F3006B61F6 /* ResetPasswordModelTest.swift in Sources */,
+				CEAE3C4E2C25914800D13328 /* ItemViewTests.swift in Sources */,
 				8C1CC53D2BC3D8AC00AF80F4 /* MockChooseEnvironment.swift in Sources */,
+				CEAE3C4C2C25807200D13328 /* AuctionViewTests.swift in Sources */,
 				8C3AA41C2C0874E200110288 /* CreditCardModelTests.swift in Sources */,
 				8C3AA4052C07E7B000110288 /* AuctionViewModelTests.swift in Sources */,
 				8C3AA4182C08742800110288 /* BidderModelTests.swift in Sources */,

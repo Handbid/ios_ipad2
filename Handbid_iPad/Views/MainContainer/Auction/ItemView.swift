@@ -33,12 +33,14 @@ struct ItemView: View {
 						.progressViewStyle(CircularProgressViewStyle())
 						.scaledToFit()
 						.frame(height: 187, alignment: .center)
+						.accessibilityIdentifier("ImageLoadingIndicator")
 				case let .success(image):
 					image.resizable()
 						.aspectRatio(contentMode: .fit)
 						.scaledToFill()
 						.frame(height: 187, alignment: .center)
 						.cornerRadius(32)
+						.accessibilityIdentifier("ItemImage")
 				case .failure:
 					Image(systemName: "photo")
 						.resizable()
@@ -46,6 +48,7 @@ struct ItemView: View {
 						.foregroundColor(colorScheme == .dark ? .white : .gray)
 						.frame(height: 187, alignment: .center)
 						.padding()
+						.accessibilityIdentifier("ItemImagePlaceholder")
 				@unknown default:
 					EmptyView()
 				}
@@ -55,12 +58,14 @@ struct ItemView: View {
 			HStack {
 				Text(item.categoryName ?? "NaN")
 					.applyTextStyle(style: .leadingLabel)
+					.accessibilityIdentifier("CategoryName")
 
 				Divider()
 
 				if let itemCode = item.itemCode {
 					Text(itemCode.starts(with: "#") ? itemCode : "#\(itemCode)")
 						.applyTextStyle(style: .leadingLabel)
+						.accessibilityIdentifier("ItemCode")
 				}
 
 				if item.isDirectPurchaseItem == false, item.isAppeal == false, item.isTicket == false {
@@ -71,6 +76,7 @@ struct ItemView: View {
 
 					Text(label)
 						.applyTextStyle(style: .accentBody)
+						.accessibilityIdentifier("NumberOfBids")
 				}
 
 				Spacer()
@@ -81,9 +87,11 @@ struct ItemView: View {
 
 			Text(item.name ?? "NaN")
 				.applyTextStyle(style: .titleLeading)
+				.accessibilityIdentifier("ItemName")
 
 			Text(item.currentPrice ?? -1, format: .currency(code: currencyCode))
 				.applyTextStyle(style: .subheader)
+				.accessibilityIdentifier("CurrentPrice")
 		}
 		.padding(.vertical, 16)
 		.padding(.horizontal, 16)
@@ -102,5 +110,6 @@ struct ItemView: View {
 						item.isDirectPurchaseItem == true ? .accent : .black
 					)
 			}
+			.accessibilityIdentifier("ItemBadge")
 	}
 }

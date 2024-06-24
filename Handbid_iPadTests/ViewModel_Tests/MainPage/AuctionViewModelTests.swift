@@ -1,5 +1,6 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
+import Combine
 @testable import Handbid_iPad
 import SwiftUI
 import XCTest
@@ -39,7 +40,19 @@ final class AuctionViewModelTests: XCTestCase {
 	func testSearchData() {
 		let viewModel = AuctionViewModel(dataService: DataServiceFactory.getService(),
 		                                 repository: MockAuctionRepository())
+		let exp = expectation(description: "Event for searching items is sent via publisher")
+		var cancellables = Set<AnyCancellable>()
+
+		viewModel.eventPublisher.sink { event in
+			XCTAssertEqual(event, .searchItems)
+			exp.fulfill()
+		}.store(in: &cancellables)
+
 		viewModel.searchData()
+
+		wait(for: [exp], timeout: 1)
+
+		cancellables.forEach { $0.cancel() }
 	}
 
 	func testRefreshData() {
@@ -51,6 +64,18 @@ final class AuctionViewModelTests: XCTestCase {
 	func testFilterData() {
 		let viewModel = AuctionViewModel(dataService: DataServiceFactory.getService(),
 		                                 repository: MockAuctionRepository())
+		let exp = expectation(description: "Event for filtering items is sent via publisher")
+		var cancellables = Set<AnyCancellable>()
+
+		viewModel.eventPublisher.sink { event in
+			XCTAssertEqual(event, .filterItems)
+			exp.fulfill()
+		}.store(in: &cancellables)
+
 		viewModel.filterData()
+
+		wait(for: [exp], timeout: 1)
+
+		cancellables.forEach { $0.cancel() }
 	}
 }
