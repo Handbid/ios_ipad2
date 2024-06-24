@@ -20,7 +20,7 @@ struct AppLaunchControlView: View {
 			}
 			else {
 				if isValidToken {
-					RootPageView(page: MainContainerPage.chooseOrganization)
+					RootPageView(page: MainContainerPage.searchItems)
 						.environmentObject(dataServiceWrapper)
 				}
 				else {
