@@ -29,10 +29,12 @@ struct ItemView: View {
 			AsyncImage(url: URL(string: item.imageUrl ?? "")) { phase in
 				switch phase {
 				case .empty:
-					ProgressView()
-						.progressViewStyle(CircularProgressViewStyle())
+					Image(systemName: "photo")
+						.resizable()
 						.scaledToFit()
+						.foregroundColor(colorScheme == .dark ? .white : .gray)
 						.frame(height: 187, alignment: .center)
+						.padding()
 				case let .success(image):
 					image.resizable()
 						.aspectRatio(contentMode: .fit)
@@ -47,7 +49,10 @@ struct ItemView: View {
 						.frame(height: 187, alignment: .center)
 						.padding()
 				@unknown default:
-					EmptyView()
+					ProgressView()
+						.progressViewStyle(CircularProgressViewStyle())
+						.scaledToFit()
+						.frame(height: 187, alignment: .center)
 				}
 			}
 			.padding([.bottom], 10)

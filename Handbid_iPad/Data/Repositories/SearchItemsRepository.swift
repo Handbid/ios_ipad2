@@ -15,8 +15,9 @@ class SearchItemsRepositoryImpl: SearchItemsRepository, NetworkingService {
 		self.network = network
 	}
 
-	func getSearchItems(name: String) -> AnyPublisher<[ItemModel], Error> {
-		get(ApiEndpoints.items, params: ["fields": name, "sort": "-\(name)", "page": 1])
+	func getSearchItems(name _: String) -> AnyPublisher<[ItemModel], Error> {
+//		/get(ApiEndpoints.items, params: ["fields": name, "sort": "-\(name)", "page": 1])
+		get(ApiEndpoints.items)
 			.tryMap { try ItemModel.decodeArray($0) }
 			.eraseToAnyPublisher()
 	}
