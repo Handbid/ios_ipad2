@@ -87,33 +87,30 @@ struct ItemModel: Identifiable, Codable, NetworkingJSONDecodable, AutoEncodable 
 	var itemType: ItemType?
 
 	enum ItemStatus: Int, Codable {
-		case setup = 1
-		case preview = 2
-		case presale = 3
-		case open = 4
-		case paused = 5
-		case closed = 6
-		case reconciled = 7
+		case open = 1
+		case sold = 2
+		case paid = 3
+		case available = 4
+		case pending = 5
+		case unsold = 6
+		case closing = 7
 		case extended = 8
-		case archived = 10
-		case sold = 11
-		case available = 12
 	}
 
 	enum ItemType: String, Codable {
-		case placeOrder = "ItemPlaceOrder"
-		case placeOrderSoldOut = "ItemPlaceOrderSoldOut"
-		case normal = "ItemNormal"
-		case normalSold = "ItemNormalSold"
-		case biddingDisabled = "ItemBiddingDisabled"
-		case buyNow = "ItemBuyNow"
-		case buyNowSoldOut = "ItemBuyNowSoldOut"
-		case liveAuction = "ItemLiveAuction"
-		case directPurchaseEventOnly = "ItemDirectPurchaseEventOnly"
-		case directPurchase = "ItemDirectPurchase"
-		case directPurchaseSoldOut = "ItemDirectPurchaseSoldOut"
-		case puzzle = "ItemPuzzle"
-		case forSale = "ItemForSale"
+		case placeOrder
+		case placeOrderSoldOut
+		case normal
+		case normalSold
+		case biddingDisabled
+		case buyNow
+		case buyNowSoldOut
+		case liveAuction
+		case directPurchaseEventOnly
+		case directPurchase
+		case directPurchaseSoldOut
+		case puzzle
+		case forSale
 	}
 
 	mutating func setTypeBasedOnProperties() {

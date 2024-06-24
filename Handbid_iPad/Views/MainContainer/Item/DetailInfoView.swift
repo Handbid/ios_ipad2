@@ -11,29 +11,37 @@ struct DetailInfoView: View {
 		VStack(alignment: .leading, spacing: 15) {
 			HStack {
 				Spacer()
-				Text("Category Name")
+				Text(item.categoryName ?? "NaN")
 					.foregroundColor(.black)
 					.fontWeight(.light)
+					.font(.headline)
 					.accessibilityIdentifier("categoryName")
 				Text(" | ")
 					.foregroundColor(.gray)
-				Text("#123")
+
+				let formattedItemCode = item.itemCode.map { code in
+					code.hasPrefix("#") ? code : "#\(code)"
+				} ?? "NaN"
+
+				Text("\(formattedItemCode)")
 					.foregroundColor(.black)
 					.fontWeight(.light)
+					.font(.headline)
 					.accessibilityIdentifier("itemID")
 				Text(" | ")
 					.foregroundColor(.gray)
-				Text("12 bids")
+				Text("\(item.bidCount ?? -1) bids")
 					.foregroundColor(.accentViolet)
 					.fontWeight(.light)
+					.font(.headline)
 					.accessibilityIdentifier("bidCount")
 				Spacer()
 			}
 			HStack {
 				Spacer()
-				Text("Item Description - Name and List of Included Items")
-					.font(.title2)
-					.fontWeight(.medium)
+				Text(item.name ?? "NaN")
+					.font(.title)
+					.fontWeight(.bold)
 					.multilineTextAlignment(.center)
 					.accessibilityIdentifier("itemDescription")
 				Spacer()
@@ -45,41 +53,39 @@ struct DetailInfoView: View {
 					Text("VALUE")
 						.font(.caption)
 						.foregroundColor(.gray)
-					Text("$5,000.00")
+					Text("\(item.value ?? -1, format: .currency(code: "USD"))")
 						.font(.headline)
+						.fontWeight(.bold)
 						.accessibilityIdentifier("itemValue")
 				}
 				VStack(alignment: .leading) {
 					Text("INCREMENT")
 						.font(.caption)
 						.foregroundColor(.gray)
-					Text("$100.00")
+					Text("\(item.bidIncrement ?? -1.0, format: .number)")
 						.font(.headline)
+						.fontWeight(.bold)
 						.accessibilityIdentifier("bidIncrement")
 				}
 				VStack(alignment: .trailing) {
 					Text("BUY NOW")
 						.font(.caption)
 						.foregroundColor(.gray)
-					Text("$3,200.00")
+					Text("\(item.buyNowPrice ?? -1, format: .currency(code: "USD"))")
 						.font(.headline)
+						.fontWeight(.bold)
 						.accessibilityIdentifier("buyNowPrice")
 				}
 				Spacer()
 			}
 
-			HTMLText(html: """
-			Amet minim mollit non deserunt ullamco est sit aliqua <b>dolor</b> do amet sint.
-			Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
-			Amet minim mollit non deserunt ullamco est sit aliqua <i>dolor</i> do amet sint.
-			Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
-			""")
-			.frame(maxWidth: .infinity, alignment: .leading)
-			.fixedSize(horizontal: false, vertical: true)
-			.onTapGesture {
-				resetTimer()
-			}
-			.accessibilityIdentifier("itemDescription")
+			HTMLText(html: "\(item.description ?? "NaN")")
+				.frame(maxWidth: .infinity, alignment: .leading)
+				.fixedSize(horizontal: false, vertical: true)
+				.onTapGesture {
+					resetTimer()
+				}
+				.accessibilityIdentifier("itemDescription")
 
 			Spacer()
 		}
