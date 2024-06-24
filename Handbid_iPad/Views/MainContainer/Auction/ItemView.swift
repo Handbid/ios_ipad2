@@ -20,12 +20,12 @@ struct ItemView: View {
 					.padding([.trailing, .top], 20)
 			}
 		}
-		.frame(width: 337, height: 400) // Stała wysokość dla ItemView
+		.frame(width: 337, height: 400)
 		.padding(.all, 12)
 	}
 
 	private var itemContent: some View {
-		VStack(spacing: 8) { // Użycie spacing dla regulacji odstępów
+		VStack(spacing: 8) {
 			AsyncImage(url: URL(string: item.imageUrl ?? "")) { phase in
 				switch phase {
 				case .empty:
@@ -94,10 +94,12 @@ struct ItemView: View {
 				.frame(maxHeight: 60)
 				.lineLimit(3)
 				.padding([.bottom, .top], 3)
+				.accessibilityIdentifier("ItemName")
 
 			Text(item.currentPrice ?? -1, format: .currency(code: currencyCode))
 				.applyTextStyle(style: .subheader)
 				.lineLimit(1)
+				.accessibilityIdentifier("CurrentPrice")
 		}
 		.padding(.vertical, 8)
 		.padding(.horizontal, 16)
