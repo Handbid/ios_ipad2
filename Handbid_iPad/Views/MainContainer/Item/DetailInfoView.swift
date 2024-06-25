@@ -41,7 +41,7 @@ struct DetailInfoView: View {
 				Spacer()
 				Text(item.name ?? "NaN")
 					.font(.title)
-					.fontWeight(.bold)
+					.fontWeight(.medium)
 					.multilineTextAlignment(.center)
 					.accessibilityIdentifier("itemDescription")
 				Spacer()

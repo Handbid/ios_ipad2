@@ -72,15 +72,17 @@ struct ImageGalleryView: View {
 							resetTimer()
 						}
 
-					Text("LIVE")
-						.font(.caption)
-						.fontWeight(.medium)
-						.foregroundColor(.white)
-						.padding(5)
-						.background(Color.green)
-						.cornerRadius(20)
-						.padding([.top, .trailing], 10)
-						.accessibilityIdentifier("liveLabel")
+					if item.isLive ?? false || item.isDirectPurchaseItem ?? false {
+						Text(item.isLive ?? false ? "LIVE" : "FOR SALE")
+							.font(.caption)
+							.fontWeight(.medium)
+							.foregroundColor(.white)
+							.padding(5)
+							.background(item.isLive ?? false ? Color.green : Color.accentViolet)
+							.cornerRadius(20)
+							.padding([.top, .trailing], 10)
+							.accessibilityIdentifier("badgeItem")
+					}
 				}
 				.frame(height: geometry.size.height * 0.50)
 
