@@ -3,7 +3,11 @@
 "chooseOrg_btn_selectOrg" = "Select Organization";
 "chooseOrg_label_searchByName" = "Search by name";
 "chooseOrg_label_selectOrganization" = "Select organization";
+"global_btn_continue" = "Continuer";
 "global_btn_ok" = "Ok";
+"global_hint_email" = "Entrer votre Email";
+"global_label_cellPhone" = "Numéro de téléphone";
+"global_label_email" = "Email";
 "global_label_error" = "L\'erreur";
 "global_label_unknownError" = "Erreur inconnue";
 "item_label_forSale" = "A vendre";
@@ -15,6 +19,9 @@
 "menuBar_label_manager" = "Manager";
 "menuBar_label_myBids" = "My Bids";
 "menuBar_label_paddle" = "Paddle";
+"paddle_btn_createNewAccount" = "Créer un nouveau compte";
+"paddle_hint_cellPhone" = "Saisir le numéro de téléphone";
+"paddle_label_findPaddleByPhoneOrEmail" = "Vous avez perdu votre numéro de pagaie? Pas de problème!\n Retrouvez-le par e-mail ou par téléphone portable:";
 "registration_btn_aboutHandbid" = "À propos de Handbid";
 "registration_btn_changePassword" = "Changer le mot de passe";
 "registration_btn_confirm" = "Confirmer";
@@ -22,11 +29,9 @@
 "registration_btn_login" = "Se connecter";
 "registration_btn_password" = "Mot de passe oublié";
 "registration_btn_save" = "Sauvegarder";
-"registration_hint_email" = "Entrer votre Email";
 "registration_hint_enterPassword" = "Tapez votre mot de passe";
 "registration_label_changePassword" = "Changer le mot de passe";
 "registration_label_chooseEnvironmentToConnect" = "Choisissez Environnement pour vous connecter";
-"registration_label_email" = "E-mail";
 "registration_label_forgotPassword" = "Mot de passe oublié";
 "registration_label_incorrectEmail" = "Format d\'e-mail incorrect";
 "registration_label_login" = "Se connecter";

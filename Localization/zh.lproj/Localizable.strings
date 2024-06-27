@@ -3,7 +3,11 @@
 "chooseOrg_btn_selectOrg" = "Select Organization";
 "chooseOrg_label_searchByName" = "Search by name";
 "chooseOrg_label_selectOrganization" = "Select organization";
+"global_btn_continue" = "继续";
 "global_btn_ok" = "好";
+"global_hint_email" = "输入你的电子邮箱";
+"global_label_cellPhone" = "手机号码";
+"global_label_email" = "邮箱";
 "global_label_error" = "错误";
 "global_label_unknownError" = "未知错误";
 "item_label_forSale" = "待售";
@@ -15,6 +19,9 @@
 "menuBar_label_manager" = "Manager";
 "menuBar_label_myBids" = "My Bids";
 "menuBar_label_paddle" = "Paddle";
+"paddle_btn_createNewAccount" = "创建新账户";
+"paddle_hint_cellPhone" = "输入电话号码";
+"paddle_label_findPaddleByPhoneOrEmail" = "丢失了桨叶号码？没问题！ 通过电子邮件或手机查找：";
 "registration_btn_aboutHandbid" = "关于汉德";
 "registration_btn_changePassword" = "更改密码";
 "registration_btn_confirm" = "确认";
@@ -22,11 +29,9 @@
 "registration_btn_login" = "登录";
 "registration_btn_password" = "忘记密码";
 "registration_btn_save" = "节省";
-"registration_hint_email" = "输入你的电子邮箱";
 "registration_hint_enterPassword" = "输入您的密码";
 "registration_label_changePassword" = "更改密码";
 "registration_label_chooseEnvironmentToConnect" = "选择要连接的环境";
-"registration_label_email" = "电子邮件";
 "registration_label_forgotPassword" = "忘记密码";
 "registration_label_incorrectEmail" = "电子邮件格式不正确";
 "registration_label_login" = "登录";

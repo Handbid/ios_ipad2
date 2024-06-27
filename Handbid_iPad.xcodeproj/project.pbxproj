@@ -260,6 +260,8 @@
 		CE7DF82F2BADFD1900FF7694 /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DF82E2BADFD1900FF7694 /* PinView.swift */; };
 		CE9E2D0E2BC845D70008FD8A /* Inspection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9E2D0D2BC845D70008FD8A /* Inspection.swift */; };
 		CE9E2D112BC846140008FD8A /* InspectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9E2D102BC846140008FD8A /* InspectionExtension.swift */; };
+		CEA0A64E2C2D9FD20088AA46 /* PaddleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA0A64D2C2D9FD20088AA46 /* PaddleRepository.swift */; };
+		CEA0A6502C2DA2A20088AA46 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA0A64F2C2DA2A20088AA46 /* PickerView.swift */; };
 		CEAB750D2BD12B65000AFB46 /* ForgotPasswordView_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB750C2BD12B65000AFB46 /* ForgotPasswordView_Tests.swift */; };
 		CEAB750F2BD12BEE000AFB46 /* MockForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB750E2BD12BEE000AFB46 /* MockForgotPasswordViewModel.swift */; };
 		CEAB75112BD165D5000AFB46 /* PasswordResetConfirmationView_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB75102BD165D5000AFB46 /* PasswordResetConfirmationView_Tests.swift */; };
@@ -542,6 +544,8 @@
 		CE7DF82E2BADFD1900FF7694 /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		CE9E2D0D2BC845D70008FD8A /* Inspection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inspection.swift; sourceTree = "<group>"; };
 		CE9E2D102BC846140008FD8A /* InspectionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionExtension.swift; sourceTree = "<group>"; };
+		CEA0A64D2C2D9FD20088AA46 /* PaddleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddleRepository.swift; sourceTree = "<group>"; };
+		CEA0A64F2C2DA2A20088AA46 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		CEAB750C2BD12B65000AFB46 /* ForgotPasswordView_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView_Tests.swift; sourceTree = "<group>"; };
 		CEAB750E2BD12BEE000AFB46 /* MockForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		CEAB75102BD165D5000AFB46 /* PasswordResetConfirmationView_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetConfirmationView_Tests.swift; sourceTree = "<group>"; };
@@ -1394,6 +1398,7 @@
 				CE073EE32BB4809C0079F342 /* FormField.swift */,
 				CE7DF82E2BADFD1900FF7694 /* PinView.swift */,
 				CE7BB4942C231D4600D0AB91 /* CheckboxToggleStyle.swift */,
+				CEA0A64F2C2DA2A20088AA46 /* PickerView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1455,6 +1460,7 @@
 				8C4A6DF62C22CB8900F320D8 /* SearchItemsRepository.swift */,
 				CEE2BB262BB5BBB10033556D /* RegisterRepository.swift */,
 				CE0CEE7E2BBEB39F004A27FD /* ResetPasswordRepository.swift */,
+				CEA0A64D2C2D9FD20088AA46 /* PaddleRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -1877,6 +1883,7 @@
 				8C9FA4502BD3AD060041F28E /* RoundedCornerView.swift in Sources */,
 				8CD107FC2BD11F7B00E83261 /* ViewModelTopBarProtocol.swift in Sources */,
 				CEE2BB272BB5BBB10033556D /* RegisterRepository.swift in Sources */,
+				CEA0A6502C2DA2A20088AA46 /* PickerView.swift in Sources */,
 				8C9FA4482BD282C30041F28E /* LogOutView.swift in Sources */,
 				8C4B7BAB2BB892F20043B892 /* CustomStyledViewText.swift in Sources */,
 				8CD1081C2BD1243800E83261 /* GenericTopBarContent.swift in Sources */,
@@ -1885,6 +1892,7 @@
 				8C8BEC2E2BA975DE0083D904 /* GetStartedView.swift in Sources */,
 				8C9FA45E2BD93DFB0041F28E /* SelectAuctionTopBarCenterView.swift in Sources */,
 				8C9FA45A2BD8DFBA0041F28E /* ChooseAuctionViewModel.swift in Sources */,
+				CEA0A64E2C2D9FD20088AA46 /* PaddleRepository.swift in Sources */,
 				8C4B7B892BB6FCEA0043B892 /* ButtonStyleConfiguration.swift in Sources */,
 				8C9FA4582BD8DFAB0041F28E /* ChooseOrganizationViewModel.swift in Sources */,
 				8C4B7BA22BB88FFB0043B892 /* ButtonStyles.swift in Sources */,

@@ -3,7 +3,11 @@
 "chooseOrg_btn_selectOrg" = "Select Organization";
 "chooseOrg_label_searchByName" = "Search by name";
 "chooseOrg_label_selectOrganization" = "Select organization";
+"global_btn_continue" = "Continue";
 "global_btn_ok" = "Ok";
+"global_hint_email" = "Enter your e-mail";
+"global_label_cellPhone" = "Cell phone";
+"global_label_email" = "Email";
 "global_label_error" = "Error";
 "global_label_unknownError" = "Unknown error";
 "item_label_forSale" = "For Sale";
@@ -15,6 +19,9 @@
 "menuBar_label_manager" = "Manager";
 "menuBar_label_myBids" = "My Bids";
 "menuBar_label_paddle" = "Paddle";
+"paddle_btn_createNewAccount" = "Create new account";
+"paddle_hint_cellPhone" = "Enter phone number";
+"paddle_label_findPaddleByPhoneOrEmail" = "Lost your paddle number? No problem! \nFind it by email or cell phone:";
 "registration_btn_aboutHandbid" = "About Handbid";
 "registration_btn_changePassword" = "Change Password";
 "registration_btn_confirm" = "Confirm";
@@ -22,11 +29,9 @@
 "registration_btn_login" = "Login";
 "registration_btn_password" = "Forgot Password";
 "registration_btn_save" = "Save";
-"registration_hint_email" = "Enter your e-mail";
 "registration_hint_enterPassword" = "Enter your password";
 "registration_label_changePassword" = "Change Password";
 "registration_label_chooseEnvironmentToConnect" = "Choose Environment to connect";
-"registration_label_email" = "E-mail";
 "registration_label_forgotPassword" = "Forgot Password";
 "registration_label_incorrectEmail" = "Incorrect Email Format";
 "registration_label_login" = "Login";

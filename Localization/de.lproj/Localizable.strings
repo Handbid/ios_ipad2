@@ -3,7 +3,11 @@
 "chooseOrg_btn_selectOrg" = "Select Organization";
 "chooseOrg_label_searchByName" = "Search by name";
 "chooseOrg_label_selectOrganization" = "Select organization";
+"global_btn_continue" = "Weiter";
 "global_btn_ok" = "Ok";
+"global_hint_email" = "Geben sie ihre E-Mail Adresse ein";
+"global_label_cellPhone" = "Handynummer";
+"global_label_email" = "Email";
 "global_label_error" = "Fehler";
 "global_label_unknownError" = "Unbekannter Fehler";
 "item_label_forSale" = "Zu verkaufen";
@@ -15,6 +19,9 @@
 "menuBar_label_manager" = "Manager";
 "menuBar_label_myBids" = "My Bids";
 "menuBar_label_paddle" = "Paddle";
+"paddle_btn_createNewAccount" = "Neues Konto erstellen";
+"paddle_hint_cellPhone" = "Telefonnummer eingeben";
+"paddle_label_findPaddleByPhoneOrEmail" = "Sie haben Ihre Paddelnummer verloren? Kein Problem! \nFinden Sie sie per E-Mail oder Mobiltelefon:";
 "registration_btn_aboutHandbid" = "Über Handbid";
 "registration_btn_changePassword" = "Kennwort ändern";
 "registration_btn_confirm" = "Bestätigen";
@@ -22,11 +29,9 @@
 "registration_btn_login" = "Anmeldung";
 "registration_btn_password" = "Passwort vergessen";
 "registration_btn_save" = "Speichern";
-"registration_hint_email" = "Geben sie ihre E-Mail Adresse ein";
 "registration_hint_enterPassword" = "Geben Sie Ihr Passwort ein";
 "registration_label_changePassword" = "Kennwort ändern";
 "registration_label_chooseEnvironmentToConnect" = "Wählen Sie „Umgebung“, um eine Verbindung herzustellen";
-"registration_label_email" = "Email";
 "registration_label_forgotPassword" = "Passwort vergessen";
 "registration_label_incorrectEmail" = "Falsches E-Mail-Format";
 "registration_label_login" = "Anmeldung";
