@@ -5,10 +5,29 @@ import SwiftUI
 class PaddleViewModel: ObservableObject, ViewModelTopBarProtocol {
 	@ObservedObject var dataService: DataServiceWrapper
 	@Published var title = "Paddle Number"
+	@Published var pickedMethod: SearchBy
+	@Published var email: String
+	@Published var phone: String
+	@Published var countryCode: String
+	@Published var error: String
+
+	var countryCodes = [
+		"+1", "+273", "+35",
+	]
+
+	@Published var firstName: String
+	@Published var lastName: String
 	var actions: [TopBarAction] { [] }
 
 	init(dataService: DataServiceWrapper) {
 		self.dataService = dataService
+		self.pickedMethod = .email
+		self.email = ""
+		self.phone = ""
+		self.countryCode = "+1"
+		self.error = ""
+		self.firstName = ""
+		self.lastName = ""
 	}
 
 	var centerViewData: TopBarCenterViewData {

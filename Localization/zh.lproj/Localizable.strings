@@ -3,6 +3,7 @@
 "chooseOrg_btn_selectOrg" = "Select Organization";
 "chooseOrg_label_searchByName" = "Search by name";
 "chooseOrg_label_selectOrganization" = "Select organization";
+"global_btn_back" = "返回";
 "global_btn_continue" = "继续";
 "global_btn_ok" = "好";
 "global_hint_email" = "输入你的电子邮箱";
@@ -19,9 +20,15 @@
 "menuBar_label_manager" = "Manager";
 "menuBar_label_myBids" = "My Bids";
 "menuBar_label_paddle" = "Paddle";
+"paddle_btn_createAccount" = "创建账户";
 "paddle_btn_createNewAccount" = "创建新账户";
 "paddle_hint_cellPhone" = "输入电话号码";
+"paddle_hint_firstName" = "输入您的名字";
+"paddle_hint_lastName" = "输入您的姓氏";
+"paddle_label_createBidderAccount" = "创建投标人账户";
 "paddle_label_findPaddleByPhoneOrEmail" = "丢失了桨叶号码？没问题！ 通过电子邮件或手机查找：";
+"paddle_label_firstName" = "姓名";
+"paddle_label_lastName" = "姓氏";
 "registration_btn_aboutHandbid" = "关于汉德";
 "registration_btn_changePassword" = "更改密码";
 "registration_btn_confirm" = "确认";

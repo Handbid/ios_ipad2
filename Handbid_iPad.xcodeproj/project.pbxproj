@@ -247,6 +247,10 @@
 		CE337F372C1C8C0400681FE1 /* MockManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE337F362C1C8C0400681FE1 /* MockManagerViewModel.swift */; };
 		CE337F392C1C8C5200681FE1 /* MockLogOutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE337F382C1C8C5200681FE1 /* MockLogOutViewModel.swift */; };
 		CE34FB3F2BB1963300701D2A /* OverlayInternalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE34FB3E2BB1963300701D2A /* OverlayInternalView.swift */; };
+		CE4D21102C2EF02E0085DA1D /* PaddleSubViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D210F2C2EF02E0085DA1D /* PaddleSubViewFactory.swift */; };
+		CE4D21122C2EF0DD0085DA1D /* FindPadleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D21112C2EF0DD0085DA1D /* FindPadleView.swift */; };
+		CE4D21152C2EF1C50085DA1D /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D21142C2EF1C50085DA1D /* CreateAccountView.swift */; };
+		CE4D21172C2EFF080085DA1D /* PhoneField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D21162C2EFF080085DA1D /* PhoneField.swift */; };
 		CE6F8DBE2BCEC6BE009DBE7E /* MockGetStartedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F8DBD2BCEC6BE009DBE7E /* MockGetStartedViewModel.swift */; };
 		CE6F8DC02BCECC3D009DBE7E /* LogInView_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F8DBF2BCECC3D009DBE7E /* LogInView_Tests.swift */; };
 		CE6F8DC22BCEE513009DBE7E /* MockLogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F8DC12BCEE513009DBE7E /* MockLogInViewModel.swift */; };
@@ -533,6 +537,10 @@
 		CE337F362C1C8C0400681FE1 /* MockManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockManagerViewModel.swift; sourceTree = "<group>"; };
 		CE337F382C1C8C5200681FE1 /* MockLogOutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLogOutViewModel.swift; sourceTree = "<group>"; };
 		CE34FB3E2BB1963300701D2A /* OverlayInternalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayInternalView.swift; sourceTree = "<group>"; };
+		CE4D210F2C2EF02E0085DA1D /* PaddleSubViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddleSubViewFactory.swift; sourceTree = "<group>"; };
+		CE4D21112C2EF0DD0085DA1D /* FindPadleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPadleView.swift; sourceTree = "<group>"; };
+		CE4D21142C2EF1C50085DA1D /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
+		CE4D21162C2EFF080085DA1D /* PhoneField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneField.swift; sourceTree = "<group>"; };
 		CE6F8DBD2BCEC6BE009DBE7E /* MockGetStartedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGetStartedViewModel.swift; sourceTree = "<group>"; };
 		CE6F8DBF2BCECC3D009DBE7E /* LogInView_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView_Tests.swift; sourceTree = "<group>"; };
 		CE6F8DC12BCEE513009DBE7E /* MockLogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLogInViewModel.swift; sourceTree = "<group>"; };
@@ -1003,11 +1011,11 @@
 		8C3D3C052BBB85B8002A5CFC /* MainContainer */ = {
 			isa = PBXGroup;
 			children = (
+				CE4D210E2C2EE6250085DA1D /* Paddle */,
 				CE2022B52C0F0CF50009415D /* Auction */,
 				8C9FA4472BD282C30041F28E /* LogOutView.swift */,
 				8C9FA4452BD282B90041F28E /* ManagerView.swift */,
 				8C9FA4432BD282B00041F28E /* MyBidsView.swift */,
-				8CD1080F2BD122E000E83261 /* PaddleView.swift */,
 			);
 			path = MainContainer;
 			sourceTree = "<group>";
@@ -1365,6 +1373,25 @@
 			path = View_Tests;
 			sourceTree = "<group>";
 		};
+		CE4D210E2C2EE6250085DA1D /* Paddle */ = {
+			isa = PBXGroup;
+			children = (
+				CE4D21132C2EF1A20085DA1D /* SubViews */,
+				8CD1080F2BD122E000E83261 /* PaddleView.swift */,
+			);
+			path = Paddle;
+			sourceTree = "<group>";
+		};
+		CE4D21132C2EF1A20085DA1D /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				CE4D21112C2EF0DD0085DA1D /* FindPadleView.swift */,
+				CE4D210F2C2EF02E0085DA1D /* PaddleSubViewFactory.swift */,
+				CE4D21142C2EF1C50085DA1D /* CreateAccountView.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
 		CE6F8DBB2BCEC67B009DBE7E /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1399,6 +1426,7 @@
 				CE7DF82E2BADFD1900FF7694 /* PinView.swift */,
 				CE7BB4942C231D4600D0AB91 /* CheckboxToggleStyle.swift */,
 				CEA0A64F2C2DA2A20088AA46 /* PickerView.swift */,
+				CE4D21162C2EFF080085DA1D /* PhoneField.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1852,8 +1880,10 @@
 				8C4B7BB12BB8944C0043B892 /* TextStyles.swift in Sources */,
 				8C8BEC662BA9B7DD0083D904 /* PageProtocol.swift in Sources */,
 				8C4BFB732BE188DE00B47154 /* PuzzleModel.swift in Sources */,
+				CE4D21172C2EFF080085DA1D /* PhoneField.swift in Sources */,
 				8CFE2CC72BBE84DF00AF60F1 /* NotificationName.swift in Sources */,
 				8C4A6DF72C22CB8900F320D8 /* SearchItemsRepository.swift in Sources */,
+				CE4D21102C2EF02E0085DA1D /* PaddleSubViewFactory.swift in Sources */,
 				8C4BFB502BDFADAE00B47154 /* AuctionStateStatuses.swift in Sources */,
 				8C9FA4422BD27FF20041F28E /* LogOutViewModel.swift in Sources */,
 				8C4B7BAD2BB8942D0043B892 /* TextFieldStyles.swift in Sources */,
@@ -1903,6 +1933,7 @@
 				8C8BEC322BA976030083D904 /* GetStartedViewModel.swift in Sources */,
 				8C9BC3402C0CB67F004F3DFF /* AutoEncodable.swift in Sources */,
 				8C4BFB772BE189B400B47154 /* PromotedPollModel.swift in Sources */,
+				CE4D21152C2EF1C50085DA1D /* CreateAccountView.swift in Sources */,
 				8C79B4262C040D84005D4AAB /* WebSocketManager.swift in Sources */,
 				8C4BFB812BE2208E00B47154 /* DependencyMainAppProvider.swift in Sources */,
 				8C9FA43E2BD27FDF0041F28E /* MyBidsViewModel.swift in Sources */,
@@ -1940,6 +1971,7 @@
 				8C4B7B9B2BB7026D0043B892 /* TextStyleConfiguration.swift in Sources */,
 				8CC6BEE62BD43757007C999F /* AuctionTopBarCenterView.swift in Sources */,
 				8CABF5C82BB9C81100A34870 /* BackgroundContainerImage.swift in Sources */,
+				CE4D21122C2EF0DD0085DA1D /* FindPadleView.swift in Sources */,
 				CE0CEE812BBED0B4004A27FD /* ResetPasswordModel.swift in Sources */,
 				CE2022B72C0F0D120009415D /* ItemView.swift in Sources */,
 				8CD107FA2BD11F3400E83261 /* TopBarAction.swift in Sources */,

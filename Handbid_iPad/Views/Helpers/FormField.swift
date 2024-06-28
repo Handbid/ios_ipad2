@@ -4,7 +4,7 @@ import Foundation
 import SwiftUI
 
 enum Field: Hashable {
-	case email, password, searchBar, searchBarItems
+	case email, firstName, lastName, password, searchBar, searchBarItems
 }
 
 struct FormField: View {
@@ -20,47 +20,56 @@ struct FormField: View {
 
 	var body: some View {
 		switch fieldType {
-		case .email:
-			Text(labelKey)
-				.applyTextStyle(style: .formHeader)
-				.frame(height: 15)
-				.padding(.leading, -15)
-			TextField(hintKey, text: $fieldValue)
-				.applyTextFieldStyle(style: .form)
-				.keyboardType(.emailAddress)
-				.textContentType(.emailAddress)
-				.focused($focusedField, equals: .email)
-				.id(Field.email)
-				.onTapGesture {}
+		case .email, .firstName, .lastName:
+			VStack {
+				Text(labelKey)
+					.applyTextStyle(style: .formHeader)
+					.frame(height: 15)
+					.padding(.leading, -15)
+				TextField(hintKey, text: $fieldValue)
+					.applyTextFieldStyle(style: .form)
+					.keyboardType(
+						fieldType == .email ? .emailAddress : .namePhonePad
+					)
+					.textContentType(
+						fieldType == .email ? .emailAddress :
+							fieldType == .firstName ? .givenName : .familyName
+					)
+					.focused($focusedField, equals: .email)
+					.id(Field.email)
+					.onTapGesture {}
+			}
 		case .password:
-			Text(labelKey)
-				.applyTextStyle(style: .formHeader)
-				.frame(height: 15)
-				.padding(.leading, -15)
+			VStack {
+				Text(labelKey)
+					.applyTextStyle(style: .formHeader)
+					.frame(height: 15)
+					.padding(.leading, -15)
 
-			ZStack(alignment: .trailing) {
-				if isPasswordShown {
-					TextField(hintKey, text: $fieldValue)
-						.applyTextFieldStyle(style: .form)
-						.textContentType(.password)
-						.focused($focusedField, equals: .password)
-						.id(Field.password)
-						.onTapGesture {}
-				}
-				else {
-					SecureField(hintKey, text: $fieldValue)
-						.applySecuredFieldStyle(style: .formField)
-						.textContentType(.password)
-						.focused($focusedField, equals: .password)
-						.id(Field.password)
-						.onTapGesture {}
-				}
-
-				Image(isPasswordShown ? "EyeIconCrossed" : "EyeIcon")
-					.padding()
-					.onTapGesture {
-						isPasswordShown = !isPasswordShown
+				ZStack(alignment: .trailing) {
+					if isPasswordShown {
+						TextField(hintKey, text: $fieldValue)
+							.applyTextFieldStyle(style: .form)
+							.textContentType(.password)
+							.focused($focusedField, equals: .password)
+							.id(Field.password)
+							.onTapGesture {}
 					}
+					else {
+						SecureField(hintKey, text: $fieldValue)
+							.applySecuredFieldStyle(style: .formField)
+							.textContentType(.password)
+							.focused($focusedField, equals: .password)
+							.id(Field.password)
+							.onTapGesture {}
+					}
+
+					Image(isPasswordShown ? "EyeIconCrossed" : "EyeIcon")
+						.padding()
+						.onTapGesture {
+							isPasswordShown = !isPasswordShown
+						}
+				}
 			}
 		case .searchBar:
 			ZStack(alignment: .leading) {

@@ -9,30 +9,30 @@ enum ButtonStyles {
 		switch self {
 		case .primaryButtonStyle:
 			ButtonStyleConfiguration(
-				backgroundColor: Color(hex: "#694BFF"),
-				foregroundColor: Color(hex: "#FFFFFF"),
+				backgroundColor: .accentColor,
+				foregroundColor: .white,
 				cornerRadius: 40,
 				font: .system(size: 16, weight: .semibold)
 			)
 		case .secondaryButtonStyle:
 			ButtonStyleConfiguration(
-				backgroundColor: Color(hex: "#000000"),
-				foregroundColor: Color(hex: "#FFFFFF"),
+				backgroundColor: .black,
+				foregroundColor: .white,
 				cornerRadius: 40,
 				font: .system(size: 16, weight: .semibold),
-				disabledColor: Color(hex: "#000000").opacity(0.5)
+				disabledColor: .white.opacity(0.5)
 			)
 		case .thirdButtonStyle:
 			ButtonStyleConfiguration(
-				foregroundColor: Color(hex: "#694BFF"),
-				borderColor: Color(hex: "#694BFF"),
+				foregroundColor: .accent,
+				borderColor: .accent,
 				borderWidth: 1,
 				cornerRadius: 40,
 				font: .system(size: 16, weight: .semibold)
 			)
 		case .fourthButtonStyle:
 			ButtonStyleConfiguration(
-				foregroundColor: Color(hex: "#694BFF"),
+				foregroundColor: .accent,
 				font: .system(size: 13, weight: .semibold)
 			)
 		case .fifthButtonStyle:

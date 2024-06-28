@@ -86,14 +86,12 @@ struct LogInView<T: PageProtocol>: View {
 			          hintKey: LocalizedStringKey("global_hint_email"),
 			          fieldValue: $viewModel.email,
 			          focusedField: _focusedField)
-				.frame(height: 35)
 
 			FormField(fieldType: .password,
 			          labelKey: LocalizedStringKey("registration_label_password"),
 			          hintKey: LocalizedStringKey("registration_hint_enterPassword"),
 			          fieldValue: $viewModel.password,
 			          focusedField: _focusedField)
-				.frame(height: 35)
 		}
 	}
 
