@@ -4,36 +4,23 @@ import SwiftUI
 
 struct PickerView<Data, Content>: View where Data: Hashable, Content: View {
 	let data: [Data]
-	@State var selection: Data
-	private let itemBuilder: (Data) -> Content
-
-	init(data: [Data],
-	     @ViewBuilder itemBuilder: @escaping (Data) -> Content)
-	{
-		self.data = data
-		self.selection = data[0]
-		self.itemBuilder = itemBuilder
-	}
+	@Binding var selection: Data
+	let itemBuilder: (Data) -> Content
 
 	var body: some View {
 		HStack {
 			ForEach(data, id: \.self) { item in
-				let view = itemBuilder(item)
+				itemBuilder(item)
 					.padding()
 					.frame(maxWidth: .infinity, maxHeight: 34)
 					.background {
 						RoundedRectangle(cornerRadius: 40)
 							.fill(item == selection ? .accent : .itemBackground)
 					}
+					.foregroundStyle(item == selection ? .white : .bodyText)
 					.onTapGesture {
 						selection = item
 					}
-				if selection == item {
-					view.foregroundStyle(.white)
-				}
-				else {
-					view
-				}
 			}
 		}
 		.padding(.all, 4)

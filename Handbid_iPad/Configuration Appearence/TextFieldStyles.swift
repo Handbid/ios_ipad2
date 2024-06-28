@@ -13,7 +13,7 @@ enum TextFieldStyles {
 				fontWeightStyle: .medium,
 				textAlignment: .leading,
 				alignment: .leading,
-				defaultTextColor: .black,
+				defaultTextColor: .bodyText,
 				placeholderColor: .accentGrayForm,
 				borderColor: .accentGrayForm,
 				borderWidthValue: 1

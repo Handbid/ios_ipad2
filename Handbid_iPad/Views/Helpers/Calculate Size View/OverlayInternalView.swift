@@ -9,20 +9,30 @@ struct OverlayInternalView<Content: View>: View {
 	let overlayContent: () -> Content
 	let cornerRadius: CGFloat
 	let backgroundColor: Color?
+	let topLabel: String?
 
 	init(cornerRadius: CGFloat,
 	     backgroundColor: Color? = .white,
+	     topLabel: String? = nil,
 	     @ViewBuilder overlayContent: @escaping () -> Content)
 	{
 		self.cornerRadius = cornerRadius
 		self.overlayContent = overlayContent
 		self.backgroundColor = backgroundColor
+		self.topLabel = topLabel
 	}
 
 	var body: some View {
 		ResponsiveView { layoutProperties in
 			VStack {
 				Spacer()
+				if let label = topLabel {
+					Text(label)
+						.font(TypographyStyle.h2.asFont())
+						.fontWeight(.bold)
+						.multilineTextAlignment(.center)
+						.padding(.bottom, 16)
+				}
 				HStack {
 					Spacer()
 					RoundedRectangle(cornerRadius: cornerRadius)
