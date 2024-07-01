@@ -57,27 +57,39 @@ struct ItemDetailView: View {
 		.background(Color.clear)
 	}
 
+	@State private var showPaddleInput = false
+
 	private var landscapeView: some View {
 		HStack {
 			ImageGalleryView(selectedImage: $selectedImage, remainingTime: $remainingTime, progress: $progress, item: item, images: item.images ?? .init(), resetTimer: resetTimer)
 				.accessibilityIdentifier("imageGalleryView")
-			VStack(spacing: 0) {
-				ScrollView {
-					DetailInfoView(isVisible: $isVisible, resetTimer: resetTimer, item: item)
+				.background(showPaddleInput ? Color.accentGrayBackground : Color.white)
+			ZStack {
+				VStack(spacing: 0) {
+					ScrollView {
+						DetailInfoView(isVisible: $isVisible, resetTimer: resetTimer, item: item)
+							.background(Color.clear)
+							.frame(maxHeight: .infinity)
+							.clipped()
+							.accessibilityIdentifier("detailInfoView")
+					}
+					.simultaneousGesture(DragGesture().onChanged { _ in resetTimer() })
+					ButtonSectionItemView(item: item, resetTimer: resetTimer, showPaddleInput: $showPaddleInput)
 						.background(Color.clear)
-						.frame(maxHeight: .infinity)
+						.frame(maxWidth: .infinity)
 						.clipped()
-						.accessibilityIdentifier("detailInfoView")
+						.padding()
+						.accessibilityIdentifier("buttonSectionView")
 				}
-				.simultaneousGesture(DragGesture().onChanged { _ in resetTimer() })
-				ButtonSectionItemView(item: item, resetTimer: resetTimer)
-					.background(Color.clear)
-					.frame(maxWidth: .infinity)
-					.clipped()
-					.padding()
-					.accessibilityIdentifier("buttonSectionView")
+				.background(Color.accentGrayBackground)
+
+				if showPaddleInput {
+					PaddleInputView(isVisible: $showPaddleInput)
+						.background(Color.white)
+						.transition(.opacity)
+						.zIndex(1)
+				}
 			}
-			.background(Color.accentGrayBackground)
 		}
 		.padding(.top, 0)
 	}
@@ -102,7 +114,7 @@ struct ItemDetailView: View {
 				}
 			}
 			.simultaneousGesture(DragGesture().onChanged { _ in resetTimer() })
-			ButtonSectionItemView(item: item, resetTimer: resetTimer)
+			ButtonSectionItemView(item: item, resetTimer: resetTimer, showPaddleInput: .constant(false))
 				.background(Color.white)
 				.frame(maxWidth: .infinity)
 				.padding(.bottom, 10)
@@ -178,5 +190,109 @@ struct ItemDetailView: View {
 	private func resetTimer() {
 		remainingTime = 60
 		progress = 1.0
+	}
+}
+
+struct PaddleInputView: View {
+	@Binding var isVisible: Bool
+	@State private var inputText: String = ""
+	@State private var activeKey: String? = nil
+	@State private var pressedKeys: Set<String> = []
+
+	var body: some View {
+		VStack {
+			Spacer()
+			VStack(spacing: 40) {
+				Text("Enter your paddle number")
+					.font(.headline)
+					.fontWeight(.bold)
+					.padding()
+
+				ZStack {
+					VStack {
+						Text(inputText)
+							.frame(height: 30)
+							.font(.largeTitle)
+							.fontWeight(.semibold)
+							.frame(maxWidth: .infinity, alignment: .center)
+
+						Rectangle()
+							.frame(height: 1)
+							.foregroundColor(inputText.isEmpty ? .black : Color.accentViolet)
+							.frame(maxWidth: .infinity, alignment: .center)
+							.padding([.leading, .trailing], 60)
+					}
+					.padding([.leading, .trailing], 40)
+				}
+
+				VStack(spacing: 20) {
+					ForEach(["1 2 3", "4 5 6", "7 8 9", "0 ⌫"], id: \.self) { row in
+						HStack(spacing: 20) {
+							ForEach(row.split(separator: " "), id: \.self) { key in
+								Button(action: {
+									handleKeyPress(String(key))
+									animateButtonPress(String(key))
+								}) {
+									Text(key)
+										.font(.headline)
+										.frame(width: 80, height: 80)
+										.fontWeight(.medium)
+										.background(Color.white)
+										.foregroundColor(.black)
+										.clipShape(Circle())
+										.overlay(
+											Circle()
+												.stroke(pressedKeys.contains(String(key)) ? Color.accentViolet : Color.accentGrayBorder, lineWidth: 1)
+										)
+								}
+							}
+						}
+					}
+				}
+				.padding(.bottom, 0)
+
+				HStack {
+					Button<Text>.styled(config: .thirdButtonStyle, action: {
+						isVisible = false
+					}) {
+						Text("Cancel")
+							.textCase(.uppercase)
+					}.accessibilityIdentifier("Cancel")
+						.padding(.leading)
+
+					Button<Text>.styled(config: .secondaryButtonStyle, action: {
+						isVisible = false
+					}) {
+						Text("Confirm")
+							.textCase(.uppercase)
+					}.accessibilityIdentifier("Confirm")
+						.padding(.trailing)
+				}
+			}
+			.frame(maxWidth: .infinity)
+			Spacer()
+		}
+		.frame(maxHeight: .infinity)
+	}
+
+	private func handleKeyPress(_ key: String) {
+		if key == "⌫" {
+			if !inputText.isEmpty {
+				inputText.removeLast()
+			}
+		}
+		else if inputText.isEmpty, key == "0" {
+			return
+		}
+		else if inputText.count < 6 {
+			inputText.append(key)
+		}
+	}
+
+	private func animateButtonPress(_ key: String) {
+		pressedKeys.insert(key)
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+			pressedKeys.remove(key)
+		}
 	}
 }

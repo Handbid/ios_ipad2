@@ -19,7 +19,7 @@ struct ImageGalleryView: View {
 			VStack(spacing: 10) {
 				ZStack(alignment: .topTrailing) {
 					Rectangle()
-						.foregroundColor(Color.accentGrayBackground)
+						// .foregroundColor(Color.accentGrayBackground)
 						.overlay(
 							Group {
 								if let selectedImageUrl = selectedImage {

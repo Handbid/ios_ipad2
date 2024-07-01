@@ -5,6 +5,7 @@ import SwiftUI
 struct ButtonSectionItemView: View {
 	var item: ItemModel
 	let resetTimer: () -> Void
+	@Binding var showPaddleInput: Bool
 
 	var body: some View {
 		VStack {
@@ -68,7 +69,7 @@ struct ButtonSectionItemView: View {
 				}
 				.accessibilityIdentifier("increaseBidButton")
 				Button(action: {
-					resetTimer()
+					showPaddleInput = true
 				}) {
 					Text("BID NOW")
 						.padding()
