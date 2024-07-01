@@ -50,8 +50,9 @@ struct ItemView: View {
 					case let .success(image):
 						image.resizable()
 							.aspectRatio(contentMode: .fill)
-							.frame(width: imageWidth, height: imageHeight, alignment: .center)
-							.scaledToFit()
+							.frame(width: viewWidth, height: viewHeight * (228 / 397))
+							.clipped()
+							.cornerRadius(32)
 							.accessibilityIdentifier("ItemImage")
 					case .failure:
 						Image(systemName: "photo")
