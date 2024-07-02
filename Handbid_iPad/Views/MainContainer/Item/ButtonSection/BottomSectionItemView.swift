@@ -2,18 +2,24 @@
 
 import SwiftUI
 
+enum ItemValueType {
+	case bidAmount(Double)
+	case buyNow(Double)
+	case quantity(Int)
+}
+
 struct BottomSectionItemView: View {
 	var item: ItemModel
 	let resetTimer: () -> Void
 	@Binding var showPaddleInput: Bool
 
-	@State private var bidAmount: Double = 99.99
+	@State private var valueType: ItemValueType = .bidAmount(99.99)
 	private let initialBidAmount: Double = 99.99
 
 	var body: some View {
 		VStack(spacing: 10) {
 			ZStack {
-				AmountViewFactory.createAmountView(for: item, bidAmount: $bidAmount, resetTimer: resetTimer, initialBidAmount: initialBidAmount)
+				HeaderBottomViewItemSectionFactory.createValueView(for: item, valueType: $valueType, resetTimer: resetTimer, initialBidAmount: initialBidAmount)
 			}
 			.frame(maxWidth: .infinity, minHeight: 60, maxHeight: 60)
 			.background(Color.white)
@@ -25,7 +31,7 @@ struct BottomSectionItemView: View {
 			.padding([.leading, .trailing], 20)
 			.padding(.top, 10)
 
-			ButtonSectionItemFactory.createButtonView(for: item, resetTimer: resetTimer, showPaddleInput: $showPaddleInput, bidAmount: $bidAmount)
+			ButtonSectionItemFactory.createButtonView(for: item, resetTimer: resetTimer, showPaddleInput: $showPaddleInput)
 		}
 		.onTapGesture {
 			resetTimer()
@@ -33,17 +39,16 @@ struct BottomSectionItemView: View {
 	}
 }
 
-struct ItemAmountView: View {
-	@Binding var bidAmount: Double
+struct ItemValueView: View {
+	@Binding var valueType: ItemValueType
 	let resetTimer: () -> Void
-	let bidIncrement: Double
 	let initialBidAmount: Double
 
 	var body: some View {
 		HStack(spacing: 20) {
 			Button(action: {
 				resetTimer()
-				decrementBid()
+				decrementValue()
 			}) {
 				Text("-")
 					.font(.title)
@@ -55,16 +60,16 @@ struct ItemAmountView: View {
 			}
 			.accessibilityIdentifier("-")
 
-			TextField("", value: $bidAmount, format: .currency(code: "USD"))
+			TextField("", value: bindingForTextField(), format: .currency(code: "USD"))
 				.multilineTextAlignment(.center)
-				.accessibilityIdentifier("bidTextField")
+				.accessibilityIdentifier("valueTextField")
 				.frame(maxWidth: .infinity, alignment: .center)
 				.disabled(true)
 				.fontWeight(.bold)
 
 			Button(action: {
 				resetTimer()
-				incrementBid()
+				incrementValue()
 			}) {
 				Text("+")
 					.font(.title)
@@ -79,120 +84,148 @@ struct ItemAmountView: View {
 		.padding([.trailing, .leading], 20)
 	}
 
-	private func incrementBid() {
-		bidAmount += bidIncrement
+	private func incrementValue() {
+		switch valueType {
+		case let .bidAmount(value):
+			valueType = .bidAmount(value + 1.0)
+		case let .buyNow(value):
+			valueType = .buyNow(value + 1.0)
+		case let .quantity(value):
+			valueType = .quantity(value + 1)
+		}
 	}
 
-	private func decrementBid() {
-		if bidAmount > initialBidAmount {
-			bidAmount -= bidIncrement
+	private func decrementValue() {
+		switch valueType {
+		case let .bidAmount(value):
+			if value > initialBidAmount {
+				valueType = .bidAmount(value - 1.0)
+			}
+		case let .buyNow(value):
+			if value > initialBidAmount {
+				valueType = .buyNow(value - 1.0)
+			}
+		case let .quantity(value):
+			if value > 1 {
+				valueType = .quantity(value - 1)
+			}
+		}
+	}
+
+	private func bindingForTextField() -> Binding<Double> {
+		switch valueType {
+		case let .bidAmount(value):
+			.constant(value)
+		case let .buyNow(value):
+			.constant(value)
+		case let .quantity(value):
+			.constant(Double(value))
 		}
 	}
 }
 
-class AmountViewFactory {
-	static func createAmountView(for item: ItemModel, bidAmount: Binding<Double>, resetTimer: @escaping () -> Void, initialBidAmount: Double) -> AnyView {
+class HeaderBottomViewItemSectionFactory {
+	static func createValueView(for item: ItemModel, valueType: Binding<ItemValueType>, resetTimer: @escaping () -> Void, initialBidAmount: Double) -> AnyView {
 		switch item.itemType {
 		case .placeOrder:
-			AnyView(PlaceOrderAmountView(bidAmount: bidAmount, resetTimer: resetTimer, initialBidAmount: initialBidAmount))
+			AnyView(PlaceOrderValueView(valueType: valueType, resetTimer: resetTimer, initialBidAmount: initialBidAmount))
 		case .placeOrderSoldOut:
-			AnyView(PlaceOrderSoldOutAmountView(bidAmount: bidAmount, resetTimer: resetTimer, initialBidAmount: initialBidAmount))
+			AnyView(PlaceOrderSoldOutValueView(valueType: valueType, resetTimer: resetTimer, initialBidAmount: initialBidAmount))
 		case .normal:
-			AnyView(NormalAmountView(bidAmount: bidAmount, resetTimer: resetTimer, initialBidAmount: initialBidAmount))
+			AnyView(NormalValueView(valueType: valueType, resetTimer: resetTimer, initialBidAmount: initialBidAmount))
 		default:
-			AnyView(DefaultAmountView(bidAmount: bidAmount, resetTimer: resetTimer, initialBidAmount: initialBidAmount))
+			AnyView(DefaultValueView(valueType: valueType, resetTimer: resetTimer, initialBidAmount: initialBidAmount))
 		}
 	}
 }
 
-protocol AmountItemViewProtocol: View {
-	init(bidAmount: Binding<Double>, resetTimer: @escaping () -> Void, initialBidAmount: Double)
+protocol ValueItemViewProtocol: View {
+	init(valueType: Binding<ItemValueType>, resetTimer: @escaping () -> Void, initialBidAmount: Double)
 }
 
-struct DefaultAmountView: AmountItemViewProtocol {
-	@Binding var bidAmount: Double
+struct DefaultValueView: ValueItemViewProtocol {
+	@Binding var valueType: ItemValueType
 	let resetTimer: () -> Void
 	let initialBidAmount: Double
 
 	var body: some View {
-		ItemAmountView(bidAmount: $bidAmount, resetTimer: resetTimer, bidIncrement: 1.0, initialBidAmount: initialBidAmount)
+		ItemValueView(valueType: $valueType, resetTimer: resetTimer, initialBidAmount: initialBidAmount)
 	}
 }
 
-struct PlaceOrderAmountView: AmountItemViewProtocol {
-	@Binding var bidAmount: Double
+struct PlaceOrderValueView: ValueItemViewProtocol {
+	@Binding var valueType: ItemValueType
 	let resetTimer: () -> Void
 	let initialBidAmount: Double
 
 	var body: some View {
-		ItemAmountView(bidAmount: $bidAmount, resetTimer: resetTimer, bidIncrement: 2.0, initialBidAmount: initialBidAmount)
+		ItemValueView(valueType: $valueType, resetTimer: resetTimer, initialBidAmount: initialBidAmount)
 	}
 }
 
-struct PlaceOrderSoldOutAmountView: AmountItemViewProtocol {
-	@Binding var bidAmount: Double
+struct PlaceOrderSoldOutValueView: ValueItemViewProtocol {
+	@Binding var valueType: ItemValueType
 	let resetTimer: () -> Void
 	let initialBidAmount: Double
 
 	var body: some View {
-		ItemAmountView(bidAmount: $bidAmount, resetTimer: resetTimer, bidIncrement: 1.5, initialBidAmount: initialBidAmount)
+		ItemValueView(valueType: $valueType, resetTimer: resetTimer, initialBidAmount: initialBidAmount)
 	}
 }
 
-struct NormalAmountView: AmountItemViewProtocol {
-	@Binding var bidAmount: Double
+struct NormalValueView: ValueItemViewProtocol {
+	@Binding var valueType: ItemValueType
 	let resetTimer: () -> Void
 	let initialBidAmount: Double
 
 	var body: some View {
-		ItemAmountView(bidAmount: $bidAmount, resetTimer: resetTimer, bidIncrement: 1.0, initialBidAmount: initialBidAmount)
+		ItemValueView(valueType: $valueType, resetTimer: resetTimer, initialBidAmount: initialBidAmount)
 	}
 }
 
 class ButtonSectionItemFactory {
-	static func createButtonView(for item: ItemModel, resetTimer: @escaping () -> Void, showPaddleInput: Binding<Bool>, bidAmount: Binding<Double>) -> AnyView {
+	static func createButtonView(for item: ItemModel, resetTimer: @escaping () -> Void, showPaddleInput: Binding<Bool>) -> AnyView {
 		switch item.itemType {
 		case .placeOrder:
-			AnyView(PlaceOrderButtonView(item: item, resetTimer: resetTimer, showPaddleInput: showPaddleInput, bidAmount: bidAmount))
+			AnyView(PlaceOrderButtonView(item: item, resetTimer: resetTimer, showPaddleInput: showPaddleInput))
 		case .placeOrderSoldOut:
-			AnyView(PlaceOrderSoldOutButtonView(item: item, resetTimer: resetTimer, showPaddleInput: showPaddleInput, bidAmount: bidAmount))
+			AnyView(PlaceOrderSoldOutButtonView(item: item, resetTimer: resetTimer, showPaddleInput: showPaddleInput))
 		case .normal:
-			AnyView(NormalButtonView(item: item, resetTimer: resetTimer, showPaddleInput: showPaddleInput, bidAmount: bidAmount))
+			AnyView(NormalButtonView(item: item, resetTimer: resetTimer, showPaddleInput: showPaddleInput))
 		case .liveAuction:
-			AnyView(LiveAuctionButtonView(item: item, resetTimer: resetTimer, showPaddleInput: showPaddleInput, bidAmount: bidAmount))
+			AnyView(LiveAuctionButtonView(item: item, resetTimer: resetTimer, showPaddleInput: showPaddleInput))
 		case .biddingDisabled:
-			AnyView(BiddingDisabledButtonView(item: item, resetTimer: resetTimer, showPaddleInput: showPaddleInput, bidAmount: bidAmount))
+			AnyView(BiddingDisabledButtonView(item: item, resetTimer: resetTimer, showPaddleInput: showPaddleInput))
 		case .buyNow:
-			AnyView(BuyNowButtonView(item: item, resetTimer: resetTimer, showPaddleInput: showPaddleInput, bidAmount: bidAmount))
+			AnyView(BuyNowButtonView(item: item, resetTimer: resetTimer, showPaddleInput: showPaddleInput))
 		case .buyNowSoldOut:
-			AnyView(BuyNowSoldOutButtonView(item: item, resetTimer: resetTimer, showPaddleInput: showPaddleInput, bidAmount: bidAmount))
+			AnyView(BuyNowSoldOutButtonView(item: item, resetTimer: resetTimer, showPaddleInput: showPaddleInput))
 		case .directPurchaseEventOnly:
-			AnyView(DirectPurchaseEventOnlyButtonView(item: item, resetTimer: resetTimer, showPaddleInput: showPaddleInput, bidAmount: bidAmount))
+			AnyView(DirectPurchaseEventOnlyButtonView(item: item, resetTimer: resetTimer, showPaddleInput: showPaddleInput))
 		case .directPurchase:
-			AnyView(DirectPurchaseButtonView(item: item, resetTimer: resetTimer, showPaddleInput: showPaddleInput, bidAmount: bidAmount))
+			AnyView(DirectPurchaseButtonView(item: item, resetTimer: resetTimer, showPaddleInput: showPaddleInput))
 		case .directPurchaseSoldOut:
-			AnyView(DirectPurchaseSoldOutButtonView(item: item, resetTimer: resetTimer, showPaddleInput: showPaddleInput, bidAmount: bidAmount))
+			AnyView(DirectPurchaseSoldOutButtonView(item: item, resetTimer: resetTimer, showPaddleInput: showPaddleInput))
 		case .puzzle:
-			AnyView(PuzzleButtonView(item: item, resetTimer: resetTimer, showPaddleInput: showPaddleInput, bidAmount: bidAmount))
+			AnyView(PuzzleButtonView(item: item, resetTimer: resetTimer, showPaddleInput: showPaddleInput))
 		case .forSale:
-			AnyView(ForSaleButtonView(item: item, resetTimer: resetTimer, showPaddleInput: showPaddleInput, bidAmount: bidAmount))
+			AnyView(ForSaleButtonView(item: item, resetTimer: resetTimer, showPaddleInput: showPaddleInput))
 		case .normalSold:
-			AnyView(NormalButtonView(item: item, resetTimer: resetTimer, showPaddleInput: showPaddleInput, bidAmount: bidAmount))
+			AnyView(NormalButtonView(item: item, resetTimer: resetTimer, showPaddleInput: showPaddleInput))
 		case .none:
-			AnyView(DefaultButtonView(item: item, resetTimer: resetTimer, showPaddleInput: showPaddleInput, bidAmount: bidAmount))
+			AnyView(DefaultButtonView(item: item, resetTimer: resetTimer, showPaddleInput: showPaddleInput))
 		}
 	}
 }
 
 protocol ButtonItemViewProtocol: View {
-	init(item: ItemModel, resetTimer: @escaping () -> Void, showPaddleInput: Binding<Bool>, bidAmount: Binding<Double>)
+	init(item: ItemModel, resetTimer: @escaping () -> Void, showPaddleInput: Binding<Bool>)
 }
 
 struct DefaultButtonView: ButtonItemViewProtocol {
 	var item: ItemModel
 	let resetTimer: () -> Void
 	@Binding var showPaddleInput: Bool
-	@Binding var bidAmount: Double
 
 	var body: some View {
 		VStack {
@@ -216,7 +249,6 @@ struct PlaceOrderButtonView: ButtonItemViewProtocol {
 	var item: ItemModel
 	let resetTimer: () -> Void
 	@Binding var showPaddleInput: Bool
-	@Binding var bidAmount: Double
 
 	var body: some View {
 		VStack {
@@ -230,7 +262,7 @@ struct PlaceOrderButtonView: ButtonItemViewProtocol {
 			}) {
 				Text("Place Order")
 			}
-			Text("Bid Amount: \(bidAmount, specifier: "%.2f")")
+			// Text("Bid Amount: \(bidAmount, specifier: "%.2f")")
 			// Add more specific UI and logic for PlaceOrder state
 		}
 		.padding()
@@ -242,7 +274,6 @@ struct PlaceOrderSoldOutButtonView: ButtonItemViewProtocol {
 	var item: ItemModel
 	let resetTimer: () -> Void
 	@Binding var showPaddleInput: Bool
-	@Binding var bidAmount: Double
 
 	var body: some View {
 		VStack {
@@ -263,7 +294,6 @@ struct NormalButtonView: ButtonItemViewProtocol {
 	var item: ItemModel
 	let resetTimer: () -> Void
 	@Binding var showPaddleInput: Bool
-	@Binding var bidAmount: Double
 
 	var body: some View {
 		VStack {
@@ -284,7 +314,6 @@ struct NormalSoldButtonView: ButtonItemViewProtocol {
 	var item: ItemModel
 	let resetTimer: () -> Void
 	@Binding var showPaddleInput: Bool
-	@Binding var bidAmount: Double
 
 	var body: some View {
 		VStack {
@@ -305,7 +334,6 @@ struct BiddingDisabledButtonView: ButtonItemViewProtocol {
 	var item: ItemModel
 	let resetTimer: () -> Void
 	@Binding var showPaddleInput: Bool
-	@Binding var bidAmount: Double
 
 	var body: some View {
 		VStack {
@@ -326,7 +354,6 @@ struct BuyNowButtonView: ButtonItemViewProtocol {
 	var item: ItemModel
 	let resetTimer: () -> Void
 	@Binding var showPaddleInput: Bool
-	@Binding var bidAmount: Double
 
 	var body: some View {
 		VStack {
@@ -347,7 +374,6 @@ struct BuyNowSoldOutButtonView: ButtonItemViewProtocol {
 	var item: ItemModel
 	let resetTimer: () -> Void
 	@Binding var showPaddleInput: Bool
-	@Binding var bidAmount: Double
 
 	var body: some View {
 		VStack {
@@ -368,7 +394,6 @@ struct LiveAuctionButtonView: ButtonItemViewProtocol {
 	var item: ItemModel
 	let resetTimer: () -> Void
 	@Binding var showPaddleInput: Bool
-	@Binding var bidAmount: Double
 
 	var body: some View {
 		VStack {
@@ -389,7 +414,6 @@ struct DirectPurchaseEventOnlyButtonView: ButtonItemViewProtocol {
 	var item: ItemModel
 	let resetTimer: () -> Void
 	@Binding var showPaddleInput: Bool
-	@Binding var bidAmount: Double
 
 	var body: some View {
 		VStack {
@@ -410,7 +434,6 @@ struct DirectPurchaseButtonView: ButtonItemViewProtocol {
 	var item: ItemModel
 	let resetTimer: () -> Void
 	@Binding var showPaddleInput: Bool
-	@Binding var bidAmount: Double
 
 	var body: some View {
 		VStack {
@@ -431,7 +454,6 @@ struct DirectPurchaseSoldOutButtonView: ButtonItemViewProtocol {
 	var item: ItemModel
 	let resetTimer: () -> Void
 	@Binding var showPaddleInput: Bool
-	@Binding var bidAmount: Double
 
 	var body: some View {
 		VStack {
@@ -452,7 +474,6 @@ struct PuzzleButtonView: ButtonItemViewProtocol {
 	var item: ItemModel
 	let resetTimer: () -> Void
 	@Binding var showPaddleInput: Bool
-	@Binding var bidAmount: Double
 
 	var body: some View {
 		VStack {
@@ -472,7 +493,6 @@ struct ForSaleButtonView: ButtonItemViewProtocol {
 	var item: ItemModel
 	let resetTimer: () -> Void
 	@Binding var showPaddleInput: Bool
-	@Binding var bidAmount: Double
 
 	var body: some View {
 		VStack {
