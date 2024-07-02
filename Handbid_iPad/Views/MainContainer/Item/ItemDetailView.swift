@@ -10,6 +10,7 @@ struct ItemDetailView: View {
 	@State private var timer: Timer?
 	@State private var remainingTime: Int = 60
 	@State private var progress: CGFloat = 1.0
+	@State private var showPaddleInput = false
 
 	var body: some View {
 		GeometryReader { geometry in
@@ -57,8 +58,6 @@ struct ItemDetailView: View {
 		.background(Color.clear)
 	}
 
-	@State private var showPaddleInput = false
-
 	private var landscapeView: some View {
 		HStack {
 			ImageGalleryView(selectedImage: $selectedImage, remainingTime: $remainingTime, progress: $progress, item: item, images: item.images ?? .init(), resetTimer: resetTimer)
@@ -101,24 +100,32 @@ struct ItemDetailView: View {
 				closeButton
 					.padding([.top, .trailing], 20)
 			}
-			ScrollView {
-				VStack(spacing: 0) {
-					ImageGalleryView(selectedImage: $selectedImage, remainingTime: $remainingTime, progress: $progress, item: item, images: item.images ?? .init(), resetTimer: resetTimer)
-						.frame(height: geometry.size.height * 0.5)
-						.accessibilityIdentifier("imageGalleryView")
-					DetailInfoView(isVisible: $isVisible, resetTimer: resetTimer, item: item)
-						.background(Color.white)
-						.frame(maxHeight: .infinity, alignment: .top)
-						.clipped()
-						.accessibilityIdentifier("detailInfoView")
-				}
+			if showPaddleInput {
+				PaddleInputView(isVisible: $showPaddleInput, resetTimer: resetTimer)
+					.background(Color.white)
+					.transition(.opacity)
+					.zIndex(1)
 			}
-			.simultaneousGesture(DragGesture().onChanged { _ in resetTimer() })
-			ButtonSectionItemView(item: item, resetTimer: resetTimer, showPaddleInput: $showPaddleInput)
-				.background(Color.white)
-				.frame(maxWidth: .infinity)
-				.padding(.bottom, 10)
-				.accessibilityIdentifier("buttonSectionView")
+			else {
+				ScrollView {
+					VStack(spacing: 0) {
+						ImageGalleryView(selectedImage: $selectedImage, remainingTime: $remainingTime, progress: $progress, item: item, images: item.images ?? .init(), resetTimer: resetTimer)
+							.frame(height: geometry.size.height * 0.5)
+							.accessibilityIdentifier("imageGalleryView")
+						DetailInfoView(isVisible: $isVisible, resetTimer: resetTimer, item: item)
+							.background(Color.white)
+							.frame(maxHeight: .infinity, alignment: .top)
+							.clipped()
+							.accessibilityIdentifier("detailInfoView")
+					}
+				}
+				.simultaneousGesture(DragGesture().onChanged { _ in resetTimer() })
+				ButtonSectionItemView(item: item, resetTimer: resetTimer, showPaddleInput: $showPaddleInput)
+					.background(Color.white)
+					.frame(maxWidth: .infinity)
+					.padding(.bottom, 10)
+					.accessibilityIdentifier("buttonSectionView")
+			}
 		}
 		.padding(.horizontal, 10)
 		.padding(.top, 10)
