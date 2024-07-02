@@ -197,6 +197,32 @@
 		8C9FA45A2BD8DFBA0041F28E /* ChooseAuctionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA4592BD8DFBA0041F28E /* ChooseAuctionViewModel.swift */; };
 		8C9FA45C2BD93BF90041F28E /* SelectAuctionContainerTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA45B2BD93BF90041F28E /* SelectAuctionContainerTypeView.swift */; };
 		8C9FA45E2BD93DFB0041F28E /* SelectAuctionTopBarCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA45D2BD93DFB0041F28E /* SelectAuctionTopBarCenterView.swift */; };
+		8CA6C0E02C347B0E0095F469 /* ItemValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6C0DF2C347B0E0095F469 /* ItemValueView.swift */; };
+		8CA6C0E22C347B280095F469 /* ValueTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6C0E12C347B280095F469 /* ValueTextField.swift */; };
+		8CA6C0E42C347B3C0095F469 /* ValueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6C0E32C347B3C0095F469 /* ValueButton.swift */; };
+		8CA6C0E62C347B560095F469 /* ItemValueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6C0E52C347B560095F469 /* ItemValueType.swift */; };
+		8CA6C0E82C347BBC0095F469 /* TopViewOfBottomSectionItemFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6C0E72C347BBC0095F469 /* TopViewOfBottomSectionItemFactory.swift */; };
+		8CA6C0EA2C347C020095F469 /* ValueItemViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6C0E92C347C020095F469 /* ValueItemViewProtocol.swift */; };
+		8CA6C0ED2C347CDF0095F469 /* DefaultValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6C0EC2C347CDF0095F469 /* DefaultValueView.swift */; };
+		8CA6C0EF2C347CE80095F469 /* PlaceOrderValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6C0EE2C347CE80095F469 /* PlaceOrderValueView.swift */; };
+		8CA6C0F12C347CF10095F469 /* PlaceOrderSoldOutValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6C0F02C347CF10095F469 /* PlaceOrderSoldOutValueView.swift */; };
+		8CA6C0F32C347CF90095F469 /* NormalValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6C0F22C347CF90095F469 /* NormalValueView.swift */; };
+		8CA6C0F62C347D780095F469 /* ButtonSectionItemFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6C0F52C347D780095F469 /* ButtonSectionItemFactory.swift */; };
+		8CA6C0F82C347D8B0095F469 /* ButtonItemViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6C0F72C347D8B0095F469 /* ButtonItemViewProtocol.swift */; };
+		8CA6C0FA2C347D9C0095F469 /* DefaultButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6C0F92C347D9C0095F469 /* DefaultButtonView.swift */; };
+		8CA6C0FC2C347DA90095F469 /* PlaceOrderButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6C0FB2C347DA90095F469 /* PlaceOrderButtonView.swift */; };
+		8CA6C0FE2C347DB20095F469 /* PlaceOrderSoldOutButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6C0FD2C347DB20095F469 /* PlaceOrderSoldOutButtonView.swift */; };
+		8CA6C1002C347DBA0095F469 /* NormalButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6C0FF2C347DBA0095F469 /* NormalButtonView.swift */; };
+		8CA6C1022C347DC20095F469 /* NormalSoldButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6C1012C347DC20095F469 /* NormalSoldButtonView.swift */; };
+		8CA6C1042C347DCA0095F469 /* BiddingDisabledButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6C1032C347DCA0095F469 /* BiddingDisabledButtonView.swift */; };
+		8CA6C1062C347DD40095F469 /* BuyNowButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6C1052C347DD40095F469 /* BuyNowButtonView.swift */; };
+		8CA6C1082C347DDB0095F469 /* BuyNowSoldOutButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6C1072C347DDB0095F469 /* BuyNowSoldOutButtonView.swift */; };
+		8CA6C10A2C347DE20095F469 /* LiveAuctionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6C1092C347DE20095F469 /* LiveAuctionButtonView.swift */; };
+		8CA6C10C2C347DEB0095F469 /* DirectPurchaseEventOnlyButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6C10B2C347DEB0095F469 /* DirectPurchaseEventOnlyButtonView.swift */; };
+		8CA6C10E2C347DF40095F469 /* DirectPurchaseButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6C10D2C347DF40095F469 /* DirectPurchaseButtonView.swift */; };
+		8CA6C1102C347DFC0095F469 /* DirectPurchaseSoldOutButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6C10F2C347DFC0095F469 /* DirectPurchaseSoldOutButtonView.swift */; };
+		8CA6C1122C347E040095F469 /* PuzzleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6C1112C347E040095F469 /* PuzzleButtonView.swift */; };
+		8CA6C1142C347E0C0095F469 /* ForSaleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6C1132C347E0C0095F469 /* ForSaleButtonView.swift */; };
 		8CABF5BB2BB9C5F400A34870 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5BA2BB9C5F400A34870 /* ForgotPasswordView.swift */; };
 		8CABF5BD2BB9C60900A34870 /* PasswordResetConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5BC2BB9C60900A34870 /* PasswordResetConfirmationView.swift */; };
 		8CABF5C32BB9C64E00A34870 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5C22BB9C64E00A34870 /* ForgotPasswordViewModel.swift */; };
@@ -488,6 +514,32 @@
 		8C9FA45B2BD93BF90041F28E /* SelectAuctionContainerTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAuctionContainerTypeView.swift; sourceTree = "<group>"; };
 		8C9FA45D2BD93DFB0041F28E /* SelectAuctionTopBarCenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAuctionTopBarCenterView.swift; sourceTree = "<group>"; };
 		8CA455A02BBAAC7300634B5B /* Handbid_iPad.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Handbid_iPad.entitlements; sourceTree = "<group>"; };
+		8CA6C0DF2C347B0E0095F469 /* ItemValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemValueView.swift; sourceTree = "<group>"; };
+		8CA6C0E12C347B280095F469 /* ValueTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueTextField.swift; sourceTree = "<group>"; };
+		8CA6C0E32C347B3C0095F469 /* ValueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueButton.swift; sourceTree = "<group>"; };
+		8CA6C0E52C347B560095F469 /* ItemValueType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemValueType.swift; sourceTree = "<group>"; };
+		8CA6C0E72C347BBC0095F469 /* TopViewOfBottomSectionItemFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewOfBottomSectionItemFactory.swift; sourceTree = "<group>"; };
+		8CA6C0E92C347C020095F469 /* ValueItemViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueItemViewProtocol.swift; sourceTree = "<group>"; };
+		8CA6C0EC2C347CDF0095F469 /* DefaultValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultValueView.swift; sourceTree = "<group>"; };
+		8CA6C0EE2C347CE80095F469 /* PlaceOrderValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceOrderValueView.swift; sourceTree = "<group>"; };
+		8CA6C0F02C347CF10095F469 /* PlaceOrderSoldOutValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceOrderSoldOutValueView.swift; sourceTree = "<group>"; };
+		8CA6C0F22C347CF90095F469 /* NormalValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalValueView.swift; sourceTree = "<group>"; };
+		8CA6C0F52C347D780095F469 /* ButtonSectionItemFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSectionItemFactory.swift; sourceTree = "<group>"; };
+		8CA6C0F72C347D8B0095F469 /* ButtonItemViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonItemViewProtocol.swift; sourceTree = "<group>"; };
+		8CA6C0F92C347D9C0095F469 /* DefaultButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultButtonView.swift; sourceTree = "<group>"; };
+		8CA6C0FB2C347DA90095F469 /* PlaceOrderButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceOrderButtonView.swift; sourceTree = "<group>"; };
+		8CA6C0FD2C347DB20095F469 /* PlaceOrderSoldOutButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceOrderSoldOutButtonView.swift; sourceTree = "<group>"; };
+		8CA6C0FF2C347DBA0095F469 /* NormalButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalButtonView.swift; sourceTree = "<group>"; };
+		8CA6C1012C347DC20095F469 /* NormalSoldButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalSoldButtonView.swift; sourceTree = "<group>"; };
+		8CA6C1032C347DCA0095F469 /* BiddingDisabledButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiddingDisabledButtonView.swift; sourceTree = "<group>"; };
+		8CA6C1052C347DD40095F469 /* BuyNowButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyNowButtonView.swift; sourceTree = "<group>"; };
+		8CA6C1072C347DDB0095F469 /* BuyNowSoldOutButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyNowSoldOutButtonView.swift; sourceTree = "<group>"; };
+		8CA6C1092C347DE20095F469 /* LiveAuctionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveAuctionButtonView.swift; sourceTree = "<group>"; };
+		8CA6C10B2C347DEB0095F469 /* DirectPurchaseEventOnlyButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectPurchaseEventOnlyButtonView.swift; sourceTree = "<group>"; };
+		8CA6C10D2C347DF40095F469 /* DirectPurchaseButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectPurchaseButtonView.swift; sourceTree = "<group>"; };
+		8CA6C10F2C347DFC0095F469 /* DirectPurchaseSoldOutButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectPurchaseSoldOutButtonView.swift; sourceTree = "<group>"; };
+		8CA6C1112C347E040095F469 /* PuzzleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleButtonView.swift; sourceTree = "<group>"; };
+		8CA6C1132C347E0C0095F469 /* ForSaleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForSaleButtonView.swift; sourceTree = "<group>"; };
 		8CABF5BA2BB9C5F400A34870 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		8CABF5BC2BB9C60900A34870 /* PasswordResetConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetConfirmationView.swift; sourceTree = "<group>"; };
 		8CABF5C22BB9C64E00A34870 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
@@ -1166,11 +1218,11 @@
 		8C91A84E2C2A04E10057D51B /* Item */ = {
 			isa = PBXGroup;
 			children = (
-				8C91A8582C2A06150057D51B /* ButtonSection */,
 				8C91A8562C2A05490057D51B /* DetailInfoView.swift */,
 				8C91A8542C2A05340057D51B /* ImageGalleryView.swift */,
 				8C91A8522C2A050D0057D51B /* ItemDetailView.swift */,
 				8C3E8AA22C33FCFD0003F6FB /* PaddleInputView.swift */,
+				8CA6C0DC2C347A530095F469 /* BottomSectionItemDetail */,
 			);
 			path = Item;
 			sourceTree = "<group>";
@@ -1181,14 +1233,6 @@
 				8C91A8502C2A04F60057D51B /* CategoryView.swift */,
 			);
 			path = Category;
-			sourceTree = "<group>";
-		};
-		8C91A8582C2A06150057D51B /* ButtonSection */ = {
-			isa = PBXGroup;
-			children = (
-				8C91A8592C2A06270057D51B /* BottomSectionItemView.swift */,
-			);
-			path = ButtonSection;
 			sourceTree = "<group>";
 		};
 		8C9BC3152C088675004F3DFF /* MainPage */ = {
@@ -1251,6 +1295,72 @@
 				8C9FA4572BD8DFAB0041F28E /* ChooseOrganizationViewModel.swift */,
 			);
 			path = ChooseOrgAndAuction;
+			sourceTree = "<group>";
+		};
+		8CA6C0DC2C347A530095F469 /* BottomSectionItemDetail */ = {
+			isa = PBXGroup;
+			children = (
+				8C91A8592C2A06270057D51B /* BottomSectionItemView.swift */,
+				8CA6C0E52C347B560095F469 /* ItemValueType.swift */,
+				8CA6C0DD2C347A7D0095F469 /* TopView */,
+				8CA6C0EB2C347CCE0095F469 /* TopViewTypes */,
+				8CA6C0DE2C347A910095F469 /* BottomView */,
+				8CA6C0F42C347D600095F469 /* BottomViewTypes */,
+			);
+			path = BottomSectionItemDetail;
+			sourceTree = "<group>";
+		};
+		8CA6C0DD2C347A7D0095F469 /* TopView */ = {
+			isa = PBXGroup;
+			children = (
+				8CA6C0DF2C347B0E0095F469 /* ItemValueView.swift */,
+				8CA6C0E72C347BBC0095F469 /* TopViewOfBottomSectionItemFactory.swift */,
+				8CA6C0E32C347B3C0095F469 /* ValueButton.swift */,
+				8CA6C0E92C347C020095F469 /* ValueItemViewProtocol.swift */,
+				8CA6C0E12C347B280095F469 /* ValueTextField.swift */,
+			);
+			path = TopView;
+			sourceTree = "<group>";
+		};
+		8CA6C0DE2C347A910095F469 /* BottomView */ = {
+			isa = PBXGroup;
+			children = (
+				8CA6C0F52C347D780095F469 /* ButtonSectionItemFactory.swift */,
+				8CA6C0F72C347D8B0095F469 /* ButtonItemViewProtocol.swift */,
+			);
+			path = BottomView;
+			sourceTree = "<group>";
+		};
+		8CA6C0EB2C347CCE0095F469 /* TopViewTypes */ = {
+			isa = PBXGroup;
+			children = (
+				8CA6C0EC2C347CDF0095F469 /* DefaultValueView.swift */,
+				8CA6C0F02C347CF10095F469 /* PlaceOrderSoldOutValueView.swift */,
+				8CA6C0F22C347CF90095F469 /* NormalValueView.swift */,
+				8CA6C0EE2C347CE80095F469 /* PlaceOrderValueView.swift */,
+			);
+			path = TopViewTypes;
+			sourceTree = "<group>";
+		};
+		8CA6C0F42C347D600095F469 /* BottomViewTypes */ = {
+			isa = PBXGroup;
+			children = (
+				8CA6C1032C347DCA0095F469 /* BiddingDisabledButtonView.swift */,
+				8CA6C1052C347DD40095F469 /* BuyNowButtonView.swift */,
+				8CA6C1072C347DDB0095F469 /* BuyNowSoldOutButtonView.swift */,
+				8CA6C0F92C347D9C0095F469 /* DefaultButtonView.swift */,
+				8CA6C10D2C347DF40095F469 /* DirectPurchaseButtonView.swift */,
+				8CA6C10B2C347DEB0095F469 /* DirectPurchaseEventOnlyButtonView.swift */,
+				8CA6C10F2C347DFC0095F469 /* DirectPurchaseSoldOutButtonView.swift */,
+				8CA6C1132C347E0C0095F469 /* ForSaleButtonView.swift */,
+				8CA6C1092C347DE20095F469 /* LiveAuctionButtonView.swift */,
+				8CA6C0FF2C347DBA0095F469 /* NormalButtonView.swift */,
+				8CA6C1012C347DC20095F469 /* NormalSoldButtonView.swift */,
+				8CA6C0FB2C347DA90095F469 /* PlaceOrderButtonView.swift */,
+				8CA6C0FD2C347DB20095F469 /* PlaceOrderSoldOutButtonView.swift */,
+				8CA6C1112C347E040095F469 /* PuzzleButtonView.swift */,
+			);
+			path = BottomViewTypes;
 			sourceTree = "<group>";
 		};
 		8CABF5C62BB9C80400A34870 /* Background */ = {
@@ -1854,15 +1964,19 @@
 				8C4B7B7F2BB379440043B892 /* AuthManager.swift in Sources */,
 				8C8BEC342BA976A90083D904 /* LogInViewModel.swift in Sources */,
 				8C91A8552C2A05340057D51B /* ImageGalleryView.swift in Sources */,
+				8CA6C0E22C347B280095F469 /* ValueTextField.swift in Sources */,
 				8C4BFB712BE1887F00B47154 /* TicketModel.swift in Sources */,
 				8C79B4242C040D84005D4AAB /* HandbidWebSocketFactory.swift in Sources */,
 				8C7D96512C18EE970028C8E0 /* SearchItemsViewModel.swift in Sources */,
 				8C3D3C072BBB85CC002A5CFC /* MainContainer.swift in Sources */,
 				8C3D3C012BBA1E33002A5CFC /* String.swift in Sources */,
+				8CA6C1002C347DBA0095F469 /* NormalButtonView.swift in Sources */,
 				8C91A85A2C2A06270057D51B /* BottomSectionItemView.swift in Sources */,
+				8CA6C0F62C347D780095F469 /* ButtonSectionItemFactory.swift in Sources */,
 				8CABF5D42BB9E17C00A34870 /* CustomDimensValues.swift in Sources */,
 				CE7BB48F2C22FF2600D0AB91 /* FiltersItemsView.swift in Sources */,
 				8CD107F32BD11EB800E83261 /* TopBar.swift in Sources */,
+				8CA6C10C2C347DEB0095F469 /* DirectPurchaseEventOnlyButtonView.swift in Sources */,
 				CEE2BB292BB5D1070033556D /* ApiConstants.swift in Sources */,
 				8C19678F2BFF54E2009360A0 /* DataManagerEnvironmentKey.swift in Sources */,
 				8CABF5CA2BB9CEF900A34870 /* ChooseEnvironmentViewModel.swift in Sources */,
@@ -1910,6 +2024,7 @@
 				8C4BFB562BE0E2AD00B47154 /* ChooseOrganizationRepository.swift in Sources */,
 				8C4BFB7B2BE189FF00B47154 /* ChemicalElementsModel.swift in Sources */,
 				8CABF5CE2BB9D89900A34870 /* TypographyStyle.swift in Sources */,
+				8CA6C1042C347DCA0095F469 /* BiddingDisabledButtonView.swift in Sources */,
 				8C9FA4462BD282B90041F28E /* ManagerView.swift in Sources */,
 				8CD107F52BD11EEA00E83261 /* TopBarContentProtocol.swift in Sources */,
 				8CD108282BD125DC00E83261 /* AuctionDataService.swift in Sources */,
@@ -1918,14 +2033,19 @@
 				8C8BEC3A2BA977F00083D904 /* Coordinator.swift in Sources */,
 				8C4BFB522BDFAE0800B47154 /* AuctionFilterButtonView.swift in Sources */,
 				8C9FA44E2BD29CAB0041F28E /* DeviceContext.swift in Sources */,
+				8CA6C1062C347DD40095F469 /* BuyNowButtonView.swift in Sources */,
+				8CA6C0FE2C347DB20095F469 /* PlaceOrderSoldOutButtonView.swift in Sources */,
 				8C79B4222C040D84005D4AAB /* EventDelegate.swift in Sources */,
 				8C1E01012BA85E630094FAA7 /* AppDelegate.swift in Sources */,
 				8C4BFB5B2BE113B000B47154 /* UserModel.swift in Sources */,
 				8C7D96532C18EEE30028C8E0 /* MainContainerChangeViewEvents.swift in Sources */,
 				8C9159C62C0FC1EC005C9D11 /* LoadingOverlay.swift in Sources */,
+				8CA6C0E42C347B3C0095F469 /* ValueButton.swift in Sources */,
 				8C7D964E2C18EE510028C8E0 /* SearchItemsView.swift in Sources */,
 				8C19678D2BFE135B009360A0 /* DatabaseService.swift in Sources */,
+				8CA6C1082C347DDB0095F469 /* BuyNowSoldOutButtonView.swift in Sources */,
 				8C4B7B872BB6DCC80043B892 /* AuthModel.swift in Sources */,
+				8CA6C0EF2C347CE80095F469 /* PlaceOrderValueView.swift in Sources */,
 				8C79B4252C040D84005D4AAB /* HandshakeResponseProvider.swift in Sources */,
 				8CD107FF2BD11F9500E83261 /* Sidebar.swift in Sources */,
 				8CF232E72C1C1BB300B74EE7 /* HTMLText.swift in Sources */,
@@ -1936,8 +2056,11 @@
 				8C4B7BAB2BB892F20043B892 /* CustomStyledViewText.swift in Sources */,
 				8CD1081C2BD1243800E83261 /* GenericTopBarContent.swift in Sources */,
 				8C79B4212C040D84005D4AAB /* EnvironmentManagerExt.swift in Sources */,
+				8CA6C1122C347E040095F469 /* PuzzleButtonView.swift in Sources */,
 				CE7BB4912C23080400D0AB91 /* MainContainerOverlayTypeView.swift in Sources */,
+				8CA6C1142C347E0C0095F469 /* ForSaleButtonView.swift in Sources */,
 				8C8BEC2E2BA975DE0083D904 /* GetStartedView.swift in Sources */,
+				8CA6C0ED2C347CDF0095F469 /* DefaultValueView.swift in Sources */,
 				8C9FA45E2BD93DFB0041F28E /* SelectAuctionTopBarCenterView.swift in Sources */,
 				8C9FA45A2BD8DFBA0041F28E /* ChooseAuctionViewModel.swift in Sources */,
 				8C4B7B892BB6FCEA0043B892 /* ButtonStyleConfiguration.swift in Sources */,
@@ -1949,14 +2072,19 @@
 				8CABF5D02BB9E11300A34870 /* ResponsiveView.swift in Sources */,
 				8C8BEC322BA976030083D904 /* GetStartedViewModel.swift in Sources */,
 				8C9BC3402C0CB67F004F3DFF /* AutoEncodable.swift in Sources */,
+				8CA6C0E62C347B560095F469 /* ItemValueType.swift in Sources */,
 				8C4BFB772BE189B400B47154 /* PromotedPollModel.swift in Sources */,
+				8CA6C1102C347DFC0095F469 /* DirectPurchaseSoldOutButtonView.swift in Sources */,
 				8C79B4262C040D84005D4AAB /* WebSocketManager.swift in Sources */,
 				8C4BFB812BE2208E00B47154 /* DependencyMainAppProvider.swift in Sources */,
+				8CA6C0FC2C347DA90095F469 /* PlaceOrderButtonView.swift in Sources */,
+				8CA6C0F82C347D8B0095F469 /* ButtonItemViewProtocol.swift in Sources */,
 				8C9FA43E2BD27FDF0041F28E /* MyBidsViewModel.swift in Sources */,
 				8C79B41F2C040D84005D4AAB /* UserProcessor.swift in Sources */,
 				8C19678A2BFE132C009360A0 /* DataManager.swift in Sources */,
 				8CD108162BD1237D00E83261 /* PaddleViewModel.swift in Sources */,
 				8C4B7B852BB47E9C0043B892 /* Color.swift in Sources */,
+				8CA6C0E82C347BBC0095F469 /* TopViewOfBottomSectionItemFactory.swift in Sources */,
 				CE7BB4932C2309D700D0AB91 /* MainContainerOverlayBuilder.swift in Sources */,
 				8C91A8572C2A05490057D51B /* DetailInfoView.swift in Sources */,
 				8C8BEC382BA977AC0083D904 /* RegistrationPage.swift in Sources */,
@@ -1974,13 +2102,17 @@
 				CE0CEE7F2BBEB39F004A27FD /* ResetPasswordRepository.swift in Sources */,
 				8CD1082D2BD128A600E83261 /* MainContainerViewBuilder.swift in Sources */,
 				8C4BFB752BE1895A00B47154 /* PromotedItemModel.swift in Sources */,
+				8CA6C10A2C347DE20095F469 /* LiveAuctionButtonView.swift in Sources */,
 				8C9FA44A2BD29C540041F28E /* ViewModelFactory.swift in Sources */,
 				8C4BFB612BE1144000B47154 /* CreditCardModel.swift in Sources */,
+				8CA6C0F12C347CF10095F469 /* PlaceOrderSoldOutValueView.swift in Sources */,
 				CEEC46132BBD8DE900C685BF /* AnyPublisher.swift in Sources */,
 				8C4B7B832BB47DD30043B892 /* StartupProgressAnimationView.swift in Sources */,
 				8C4BFB7D2BE18A6900B47154 /* AboutModel.swift in Sources */,
 				8C0007D32BAC976700AAEBA0 /* AppInfoProvider.swift in Sources */,
 				8C4BFB652BE114B000B47154 /* OrganizationImageModel.swift in Sources */,
+				8CA6C1022C347DC20095F469 /* NormalSoldButtonView.swift in Sources */,
+				8CA6C0FA2C347D9C0095F469 /* DefaultButtonView.swift in Sources */,
 				8CD1082B2BD1261800E83261 /* ContentView.swift in Sources */,
 				8C9FA45C2BD93BF90041F28E /* SelectAuctionContainerTypeView.swift in Sources */,
 				8CD108202BD124EA00E83261 /* DataServiceFactory.swift in Sources */,
@@ -1988,10 +2120,12 @@
 				8C4B7B9B2BB7026D0043B892 /* TextStyleConfiguration.swift in Sources */,
 				8CC6BEE62BD43757007C999F /* AuctionTopBarCenterView.swift in Sources */,
 				8CABF5C82BB9C81100A34870 /* BackgroundContainerImage.swift in Sources */,
+				8CA6C0E02C347B0E0095F469 /* ItemValueView.swift in Sources */,
 				CE0CEE812BBED0B4004A27FD /* ResetPasswordModel.swift in Sources */,
 				CE2022B72C0F0D120009415D /* ItemView.swift in Sources */,
 				8CD107FA2BD11F3400E83261 /* TopBarAction.swift in Sources */,
 				8C4B7B8B2BB6FD030043B892 /* CustomStyledViewButton.swift in Sources */,
+				8CA6C10E2C347DF40095F469 /* DirectPurchaseButtonView.swift in Sources */,
 				8CD108032BD1208100E83261 /* TopBarContentFactory.swift in Sources */,
 				8C8BEC642BA9ADE20083D904 /* AppLaunchControlView.swift in Sources */,
 				8C0725BA2BF6332600522F8C /* ModelTypeData.swift in Sources */,
@@ -2000,9 +2134,11 @@
 				8C9FA4552BD8DF680041F28E /* ChooseAuctionView.swift in Sources */,
 				8C4BFB492BDFAB8F00B47154 /* MainContainerPage.swift in Sources */,
 				8C4BFB672BE17C6300B47154 /* ChooseAuctionRepository.swift in Sources */,
+				8CA6C0F32C347CF90095F469 /* NormalValueView.swift in Sources */,
 				8CD107F82BD11F2300E83261 /* TopBarActionProvider.swift in Sources */,
 				8C0007B22BAC733900AAEBA0 /* ArrowParsable.swift in Sources */,
 				8C4BFB632BE1147900B47154 /* OrganizationAddressModel.swift in Sources */,
+				8CA6C0EA2C347C020095F469 /* ValueItemViewProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
