@@ -74,10 +74,7 @@ struct ItemDetailView: View {
 					}
 					.simultaneousGesture(DragGesture().onChanged { _ in resetTimer() })
 					ButtonSectionItemView(item: item, resetTimer: resetTimer, showPaddleInput: $showPaddleInput)
-//						.background(Color.clear)
 						.frame(maxWidth: .infinity)
-//						.clipped()
-//						.padding()
 						.accessibilityIdentifier("buttonSectionView")
 				}
 				.background(Color.accentGrayBackground)
