@@ -73,7 +73,7 @@ struct ItemDetailView: View {
 							.accessibilityIdentifier("detailInfoView")
 					}
 					.simultaneousGesture(DragGesture().onChanged { _ in resetTimer() })
-					ButtonSectionItemView(item: item, resetTimer: resetTimer, showPaddleInput: $showPaddleInput)
+					BottomSectionItemView(item: item, resetTimer: resetTimer, showPaddleInput: $showPaddleInput)
 						.frame(maxWidth: .infinity)
 						.accessibilityIdentifier("buttonSectionView")
 				}
@@ -118,7 +118,7 @@ struct ItemDetailView: View {
 					}
 				}
 				.simultaneousGesture(DragGesture().onChanged { _ in resetTimer() })
-				ButtonSectionItemView(item: item, resetTimer: resetTimer, showPaddleInput: $showPaddleInput)
+				BottomSectionItemView(item: item, resetTimer: resetTimer, showPaddleInput: $showPaddleInput)
 					.frame(maxWidth: .infinity)
 					.accessibilityIdentifier("buttonSectionView")
 			}
