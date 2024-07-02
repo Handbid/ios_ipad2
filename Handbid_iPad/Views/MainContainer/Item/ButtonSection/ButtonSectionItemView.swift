@@ -8,129 +8,78 @@ struct ButtonSectionItemView: View {
 	@Binding var showPaddleInput: Bool
 
 	var body: some View {
-		VStack {
+		VStack(spacing: 10) {
+			ZStack {
+				HStack(spacing: 20) {
+					Button(action: {
+						resetTimer()
+					}) {
+						Text("-")
+							.textCase(.uppercase)
+							.background(Color.clear)
+							.foregroundColor(.primary)
+							.clipShape(Circle())
+					}
+					.accessibilityIdentifier("-")
+
+					TextField("", text: .constant("$99,99"))
+						.multilineTextAlignment(.center)
+						.accessibilityIdentifier("bidTextField")
+						.frame(maxWidth: .infinity, alignment: .center)
+
+					Button(action: {
+						resetTimer()
+					}) {
+						Text("+")
+							.textCase(.uppercase)
+							.background(Color.clear)
+							.foregroundColor(.primary)
+							.clipShape(Circle())
+					}
+					.accessibilityIdentifier("+")
+				}
+				.padding([.trailing, .leading], 20)
+			}
+			.frame(maxWidth: .infinity, minHeight: 60, maxHeight: 60)
+			.background(Color.white)
+			.cornerRadius(25)
+			.overlay(
+				RoundedRectangle(cornerRadius: 25)
+					.stroke(Color.accentGrayBorder, lineWidth: 2)
+			)
+			.padding([.leading, .trailing], 20)
+			.padding(.top, 10)
+
 			switch item.itemType {
-			case .placeOrder:
-				defaultButtons
-			case .placeOrderSoldOut:
-				defaultButtons
-			case .normal:
-				defaultButtons
-			case .biddingDisabled:
-				defaultButtons
-			case .buyNow:
-				defaultButtons
-			case .buyNowSoldOut:
-				defaultButtons
-			case .liveAuction:
-				defaultButtons
-			case .directPurchaseEventOnly:
-				defaultButtons
-			case .directPurchase:
-				defaultButtons
-			case .directPurchaseSoldOut:
-				defaultButtons
-			case .puzzle:
-				defaultButtons
-			case .forSale:
-				defaultButtons
-			case .normalSold:
-				defaultButtons
-			case .none:
+			case .placeOrder, .placeOrderSoldOut, .normal, .biddingDisabled, .buyNow, .buyNowSoldOut, .liveAuction, .directPurchaseEventOnly, .directPurchase, .directPurchaseSoldOut, .puzzle, .forSale, .normalSold, .none:
 				defaultButtons
 			}
 		}
-		.padding()
-		.padding(.trailing, 10)
 		.onTapGesture {
 			resetTimer()
 		}
 	}
 
-	private var specialButtons: some View {
-		VStack {
-			Button(action: {
-				resetTimer()
-			}) {
-				Text("SPECIAL BID")
-					.padding()
-					.frame(maxWidth: .infinity, maxHeight: 40)
-					.background(Color.red)
-					.foregroundColor(.white)
-					.cornerRadius(10)
-			}
-			.accessibilityIdentifier("specialBidButton")
-		}
-	}
-
 	private var defaultButtons: some View {
 		VStack {
-			HStack {
-				Button(action: {
-					resetTimer()
-				}) {
-					Text("-")
-						.padding()
-						.frame(width: 40, height: 40)
-						.background(Color(white: 0.9))
-						.cornerRadius(10)
-				}
-				.accessibilityIdentifier("decreaseBidButton")
-				TextField("", text: .constant("$99,99"))
-					.padding()
-					.background(Color(white: 0.9))
-					.cornerRadius(10)
-					.frame(width: 100, height: 40)
-					.accessibilityIdentifier("bidTextField")
-				Button(action: {
-					resetTimer()
-				}) {
-					Text("+")
-						.padding()
-						.frame(width: 40, height: 40)
-						.background(Color(white: 0.9))
-						.cornerRadius(10)
-				}
-				.accessibilityIdentifier("increaseBidButton")
-				Button(action: {
-					showPaddleInput = true
-				}) {
-					Text("BID NOW")
-						.padding()
-						.frame(maxWidth: .infinity, maxHeight: 40)
-						.background(Color.black)
-						.foregroundColor(.white)
-						.cornerRadius(10)
-				}
-				.accessibilityIdentifier("bidNowButton")
+			Button<Text>.styled(config: .secondaryButtonStyle, action: {
+				resetTimer()
+				showPaddleInput = true
+			}) {
+				Text("Confirm")
+					.textCase(.uppercase)
 			}
-			.padding(.bottom, 10)
+			.accessibilityIdentifier("Confirm")
 
-			HStack {
-				Button(action: {
-					resetTimer()
-				}) {
-					Text("SET MAX BID")
-						.padding()
-						.frame(maxWidth: .infinity, maxHeight: 40)
-						.background(Color.purple)
-						.foregroundColor(.white)
-						.cornerRadius(10)
-				}
-				.accessibilityIdentifier("setMaxBidButton")
-
-				Button(action: {
-					resetTimer()
-				}) {
-					Text("BUY NOW")
-						.padding()
-						.frame(maxWidth: .infinity, maxHeight: 40)
-						.background(Color.purple)
-						.foregroundColor(.white)
-						.cornerRadius(10)
-				}
-				.accessibilityIdentifier("buyNowButton")
-			}
+//			Button<Text>.styled(config: .secondaryButtonStyle, action: {
+//				resetTimer()
+//				showPaddleInput = true
+//			}) {
+//				Text("Confirm")
+//					.textCase(.uppercase)
+//			}
+//			.accessibilityIdentifier("Confirm")
 		}
+		.padding()
 	}
 }
