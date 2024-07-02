@@ -84,7 +84,7 @@ struct ItemDetailView: View {
 				.background(Color.accentGrayBackground)
 
 				if showPaddleInput {
-					PaddleInputView(isVisible: $showPaddleInput)
+					PaddleInputView(isVisible: $showPaddleInput, resetTimer: resetTimer)
 						.background(Color.white)
 						.transition(.opacity)
 						.zIndex(1)
@@ -114,7 +114,7 @@ struct ItemDetailView: View {
 				}
 			}
 			.simultaneousGesture(DragGesture().onChanged { _ in resetTimer() })
-			ButtonSectionItemView(item: item, resetTimer: resetTimer, showPaddleInput: .constant(false))
+			ButtonSectionItemView(item: item, resetTimer: resetTimer, showPaddleInput: $showPaddleInput)
 				.background(Color.white)
 				.frame(maxWidth: .infinity)
 				.padding(.bottom, 10)
@@ -198,6 +198,7 @@ struct PaddleInputView: View {
 	@State private var inputText: String = ""
 	@State private var activeKey: String? = nil
 	@State private var pressedKeys: Set<String> = []
+	let resetTimer: () -> Void
 
 	var body: some View {
 		VStack {
@@ -232,6 +233,7 @@ struct PaddleInputView: View {
 								Button(action: {
 									handleKeyPress(String(key))
 									animateButtonPress(String(key))
+									resetTimer()
 								}) {
 									Text(key)
 										.font(.headline)
@@ -254,6 +256,7 @@ struct PaddleInputView: View {
 				HStack {
 					Button<Text>.styled(config: .thirdButtonStyle, action: {
 						isVisible = false
+						resetTimer()
 					}) {
 						Text("Cancel")
 							.textCase(.uppercase)
@@ -262,6 +265,7 @@ struct PaddleInputView: View {
 
 					Button<Text>.styled(config: .secondaryButtonStyle, action: {
 						isVisible = false
+						resetTimer()
 					}) {
 						Text("Confirm")
 							.textCase(.uppercase)
@@ -271,6 +275,9 @@ struct PaddleInputView: View {
 			}
 			.frame(maxWidth: .infinity)
 			Spacer()
+		}
+		.onTapGesture {
+			resetTimer()
 		}
 		.frame(maxHeight: .infinity)
 	}

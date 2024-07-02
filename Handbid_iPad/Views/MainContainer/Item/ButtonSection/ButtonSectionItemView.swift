@@ -9,15 +9,39 @@ struct ButtonSectionItemView: View {
 
 	var body: some View {
 		VStack {
-			if item.itemType == .forSale {
-				specialButtons
-			}
-			else {
+			switch item.itemType {
+			case .placeOrder:
+				defaultButtons
+			case .placeOrderSoldOut:
+				defaultButtons
+			case .normal:
+				defaultButtons
+			case .biddingDisabled:
+				defaultButtons
+			case .buyNow:
+				defaultButtons
+			case .buyNowSoldOut:
+				defaultButtons
+			case .liveAuction:
+				defaultButtons
+			case .directPurchaseEventOnly:
+				defaultButtons
+			case .directPurchase:
+				defaultButtons
+			case .directPurchaseSoldOut:
+				defaultButtons
+			case .puzzle:
+				defaultButtons
+			case .forSale:
+				defaultButtons
+			case .normalSold:
+				defaultButtons
+			case .none:
 				defaultButtons
 			}
 		}
 		.padding()
-		.padding(.trailing, 20)
+		.padding(.trailing, 10)
 		.onTapGesture {
 			resetTimer()
 		}
