@@ -11,15 +11,15 @@ struct BottomSectionItemView: View {
 
 	init(item: ItemModel, resetTimer: @escaping () -> Void, showPaddleInput: Binding<Bool>, valueType: Binding<ItemValueType>) {
 		self._viewModel = StateObject(wrappedValue: BottomSectionItemViewModel(item: item))
-		self.resetTimer = resetTimer
 		self._showPaddleInput = showPaddleInput
 		self._valueType = valueType
+		self.resetTimer = resetTimer
 	}
 
 	var body: some View {
 		VStack(spacing: 10) {
 			if case .none = viewModel.valueType {}
-			else {
+			else if viewModel.item.itemType == .placeOrder || viewModel.item.itemType == .normal || viewModel.item.itemType == .buyNow || viewModel.item.itemIsAppealAndForSale() {
 				ZStack {
 					TopViewOfBottomSectionItemFactory.createValueView(for: viewModel.item, valueType: $viewModel.valueType, resetTimer: resetTimer)
 				}

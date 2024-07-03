@@ -21,7 +21,7 @@ struct PuzzleButtonView: ButtonItemViewProtocol {
 				}
 
 				VStack {
-					Text("\(item.buyNowPrice ?? 0,format: .currency(code: "USD"))")
+					Text("\(item.buyNowPrice ?? 0, format: .currency(code: "USD"))")
 						.fontWeight(.bold)
 						.font(.title2)
 					Text("Price per Piece")
@@ -34,7 +34,7 @@ struct PuzzleButtonView: ButtonItemViewProtocol {
 				resetTimer()
 				showPaddleInput = true
 			}) {
-				Text("Buy Puzzle Piece for \(item.buyNowPrice ?? 0)")
+				Text("Buy Puzzle Piece for \(item.buyNowPrice ?? 0, format: .currency(code: "USD"))")
 			}
 		}
 		.padding()
