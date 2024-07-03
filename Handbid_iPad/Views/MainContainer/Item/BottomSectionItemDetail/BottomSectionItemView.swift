@@ -5,6 +5,7 @@ import SwiftUI
 
 struct BottomSectionItemView: View {
 	@StateObject private var viewModel: BottomSectionItemViewModel
+	@State private var itemValue: ItemValueType = .none
 	@Binding var showPaddleInput: Bool
 	let resetTimer: () -> Void
 
