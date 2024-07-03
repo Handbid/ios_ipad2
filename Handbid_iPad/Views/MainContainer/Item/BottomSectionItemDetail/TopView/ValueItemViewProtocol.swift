@@ -3,5 +3,5 @@
 import SwiftUI
 
 protocol ValueItemViewProtocol: View {
-	init(valueType: Binding<ItemValueType>, resetTimer: @escaping () -> Void, initialBidAmount: Double)
+	init(item: ItemModel, valueType: Binding<ItemValueType>, resetTimer: @escaping () -> Void)
 }

@@ -3,7 +3,7 @@
 import SwiftUI
 
 class ButtonSectionItemFactory {
-	static func createButtonView(for item: ItemModel, resetTimer: @escaping () -> Void, showPaddleInput: Binding<Bool>) -> AnyView {
+	static func createButtonView(for item: ItemModel, valueType _: Binding<ItemValueType>, resetTimer: @escaping () -> Void, showPaddleInput: Binding<Bool>) -> AnyView {
 		switch item.itemType {
 		case .placeOrder:
 			AnyView(PlaceOrderButtonView(item: item, resetTimer: resetTimer, showPaddleInput: showPaddleInput))

@@ -3,16 +3,16 @@
 import SwiftUI
 
 class TopViewOfBottomSectionItemFactory {
-	static func createValueView(for item: ItemModel, valueType: Binding<ItemValueType>, resetTimer: @escaping () -> Void, initialBidAmount: Double) -> AnyView {
+	static func createValueView(for item: ItemModel, valueType: Binding<ItemValueType>, resetTimer: @escaping () -> Void) -> AnyView {
 		switch item.itemType {
 		case .placeOrder:
-			AnyView(PlaceOrderValueView(valueType: valueType, resetTimer: resetTimer, initialBidAmount: initialBidAmount))
+			AnyView(PlaceOrderValueView(item: item, valueType: valueType, resetTimer: resetTimer))
 		case .placeOrderSoldOut:
-			AnyView(PlaceOrderSoldOutValueView(valueType: valueType, resetTimer: resetTimer, initialBidAmount: initialBidAmount))
+			AnyView(PlaceOrderSoldOutValueView(item: item, valueType: valueType, resetTimer: resetTimer))
 		case .normal:
-			AnyView(NormalValueView(valueType: valueType, resetTimer: resetTimer, initialBidAmount: initialBidAmount))
+			AnyView(NormalValueView(item: item, valueType: valueType, resetTimer: resetTimer))
 		default:
-			AnyView(DefaultValueView(valueType: valueType, resetTimer: resetTimer, initialBidAmount: initialBidAmount))
+			AnyView(DefaultValueView(item: item, valueType: valueType, resetTimer: resetTimer))
 		}
 	}
 }

@@ -14,6 +14,8 @@ struct ValueTextField: View {
 				.frame(maxWidth: .infinity, alignment: .center)
 				.disabled(true)
 				.fontWeight(.bold)
+		case .none:
+			EmptyView()
 		default:
 			TextField("", value: bindingForTextField(), format: .currency(code: "USD"))
 				.multilineTextAlignment(.center)
@@ -30,6 +32,8 @@ struct ValueTextField: View {
 			.constant(value)
 		case let .quantity(value):
 			.constant(Double(value))
+		case .none:
+			.constant(0)
 		}
 	}
 }

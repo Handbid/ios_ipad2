@@ -5,6 +5,7 @@ import SwiftUI
 struct ItemDetailView: View {
 	var item: ItemModel
 	@Binding var isVisible: Bool
+	@Binding var loadImages: Bool
 	@State private var offset: CGFloat = 0
 	@State private var selectedImage: String? = nil
 	@State private var timer: Timer?
@@ -60,7 +61,7 @@ struct ItemDetailView: View {
 
 	private var landscapeView: some View {
 		HStack {
-			ImageGalleryView(selectedImage: $selectedImage, remainingTime: $remainingTime, progress: $progress, item: item, images: item.images ?? .init(), resetTimer: resetTimer)
+			ImageGalleryView(selectedImage: $selectedImage, remainingTime: $remainingTime, progress: $progress, loadImages: $loadImages, item: item, images: item.images ?? .init(), resetTimer: resetTimer)
 				.accessibilityIdentifier("imageGalleryView")
 				.background(showPaddleInput ? Color.accentGrayBackground : Color.white)
 			ZStack {
@@ -107,7 +108,7 @@ struct ItemDetailView: View {
 			else {
 				ScrollView {
 					VStack(spacing: 0) {
-						ImageGalleryView(selectedImage: $selectedImage, remainingTime: $remainingTime, progress: $progress, item: item, images: item.images ?? .init(), resetTimer: resetTimer)
+						ImageGalleryView(selectedImage: $selectedImage, remainingTime: $remainingTime, progress: $progress, loadImages: $loadImages, item: item, images: item.images ?? .init(), resetTimer: resetTimer)
 							.frame(height: geometry.size.height * 0.5)
 							.accessibilityIdentifier("imageGalleryView")
 						DetailInfoView(isVisible: $isVisible, resetTimer: resetTimer, item: item)
@@ -174,12 +175,14 @@ struct ItemDetailView: View {
 		stopTimer()
 		remainingTime = 60
 		timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
-			if remainingTime > 0 {
-				remainingTime -= 1
-				progress = CGFloat(remainingTime) / 60.0
-			}
-			else {
-				isVisible = false
+			DispatchQueue.main.async {
+				if remainingTime > 0 {
+					remainingTime -= 1
+					progress = CGFloat(remainingTime) / 60.0
+				}
+				else {
+					isVisible = false
+				}
 			}
 		}
 	}

@@ -5,7 +5,7 @@ import SwiftUI
 struct ItemValueView: View {
 	@Binding var valueType: ItemValueType
 	let resetTimer: () -> Void
-	let initialBidAmount: Double
+	var item: ItemModel
 
 	var body: some View {
 		HStack(spacing: 20) {
@@ -24,23 +24,27 @@ struct ItemValueView: View {
 			valueType = .buyNow(value + 1.0)
 		case let .quantity(value):
 			valueType = .quantity(value + 1)
+		case .none:
+			valueType = .none
 		}
 	}
 
 	private func decrementValue() {
 		switch valueType {
 		case let .bidAmount(value):
-			if value > initialBidAmount {
+			if value > 1.0 {
 				valueType = .bidAmount(value - 1.0)
 			}
 		case let .buyNow(value):
-			if value > initialBidAmount {
+			if value > 1.0 {
 				valueType = .buyNow(value - 1.0)
 			}
 		case let .quantity(value):
 			if value > 1 {
 				valueType = .quantity(value - 1)
 			}
+		case .none:
+			valueType = .none
 		}
 	}
 }

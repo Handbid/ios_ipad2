@@ -3,11 +3,11 @@
 import SwiftUI
 
 struct DefaultValueView: ValueItemViewProtocol {
+	var item: ItemModel
 	@Binding var valueType: ItemValueType
 	let resetTimer: () -> Void
-	let initialBidAmount: Double
 
 	var body: some View {
-		ItemValueView(valueType: $valueType, resetTimer: resetTimer, initialBidAmount: initialBidAmount)
+		ItemValueView(valueType: $valueType, resetTimer: resetTimer, item: item)
 	}
 }

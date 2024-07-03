@@ -7,6 +7,7 @@ struct ImageGalleryView: View {
 	@Binding var selectedImage: String?
 	@Binding var remainingTime: Int
 	@Binding var progress: CGFloat
+	@Binding var loadImages: Bool
 	let item: ItemModel
 	let images: [ItemImageModel]
 	let resetTimer: () -> Void
@@ -19,48 +20,50 @@ struct ImageGalleryView: View {
 			VStack(spacing: 10) {
 				ZStack(alignment: .topTrailing) {
 					Rectangle()
-						// .foregroundColor(Color.accentGrayBackground)
+						.foregroundColor(Color.accentGrayForm.opacity(0.2))
 						.overlay(
 							Group {
-								if let selectedImageUrl = selectedImage {
-									AsyncImage(url: URL(string: selectedImageUrl)) { phase in
-										switch phase {
-										case .empty:
-											ProgressView()
-										case let .success(image):
-											image.resizable()
-												.scaledToFit()
-												.clipped()
-												.accessibilityIdentifier("selectedImage")
-										case .failure:
-											Image(systemName: "photo")
-												.resizable()
-												.scaledToFit()
-												.clipped()
-												.accessibilityIdentifier("selectedImageError")
-										@unknown default:
-											EmptyView()
+								if loadImages {
+									if let selectedImageUrl = selectedImage {
+										AsyncImage(url: URL(string: selectedImageUrl)) { phase in
+											switch phase {
+											case .empty:
+												ProgressView()
+											case let .success(image):
+												image.resizable()
+													.scaledToFit()
+													.clipped()
+													.accessibilityIdentifier("selectedImage")
+											case .failure:
+												Image(systemName: "photo")
+													.resizable()
+													.scaledToFit()
+													.clipped()
+													.accessibilityIdentifier("selectedImageError")
+											@unknown default:
+												EmptyView()
+											}
 										}
 									}
-								}
-								else if let firstImage = images.first?.itemImageUrl, let firstImageUrl = URL(string: firstImage) {
-									AsyncImage(url: firstImageUrl) { phase in
-										switch phase {
-										case .empty:
-											ProgressView()
-										case let .success(image):
-											image.resizable()
-												.scaledToFit()
-												.clipped()
-												.accessibilityIdentifier("firstImage")
-										case .failure:
-											Image(systemName: "photo")
-												.resizable()
-												.scaledToFit()
-												.clipped()
-												.accessibilityIdentifier("firstImageError")
-										@unknown default:
-											EmptyView()
+									else if let firstImage = images.first?.itemImageUrl, let firstImageUrl = URL(string: firstImage) {
+										AsyncImage(url: firstImageUrl) { phase in
+											switch phase {
+											case .empty:
+												ProgressView()
+											case let .success(image):
+												image.resizable()
+													.scaledToFit()
+													.clipped()
+													.accessibilityIdentifier("firstImage")
+											case .failure:
+												Image(systemName: "photo")
+													.resizable()
+													.scaledToFit()
+													.clipped()
+													.accessibilityIdentifier("firstImageError")
+											@unknown default:
+												EmptyView()
+											}
 										}
 									}
 								}
@@ -95,7 +98,7 @@ struct ImageGalleryView: View {
 									.aspectRatio(13 / 9, contentMode: .fit)
 									.cornerRadius(15)
 
-								if let imageUrl = image.itemImageUrl, let url = URL(string: imageUrl) {
+								if let imageUrl = image.itemImageUrl, let url = URL(string: imageUrl), loadImages {
 									AsyncImage(url: url) { phase in
 										switch phase {
 										case .empty:
