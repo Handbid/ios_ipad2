@@ -4,15 +4,18 @@ import SwiftUI
 
 struct PaddleInputView: View {
 	@Binding var isVisible: Bool
+	@Binding var valueType: ItemValueType
 	@State private var inputText: String = ""
 	@State private var activeKey: String? = nil
 	@State private var pressedKeys: Set<String> = []
+	let item: ItemModel
 	let resetTimer: () -> Void
 
 	var body: some View {
 		VStack {
 			Spacer()
 			VStack(spacing: 40) {
+				Text("Selected Value: \(displayValueType())") // Display selected value
 				Text("Enter your paddle number")
 					.font(.headline)
 					.fontWeight(.bold)
@@ -89,6 +92,19 @@ struct PaddleInputView: View {
 			resetTimer()
 		}
 		.frame(maxHeight: .infinity)
+	}
+
+	private func displayValueType() -> String {
+		switch valueType {
+		case let .bidAmount(value):
+			"$\(value)"
+		case let .buyNow(value):
+			"$\(value)"
+		case let .quantity(value):
+			"\(value)"
+		case .none:
+			"None"
+		}
 	}
 
 	private func handleKeyPress(_ key: String) {

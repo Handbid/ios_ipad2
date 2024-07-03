@@ -5,14 +5,15 @@ import SwiftUI
 
 struct BottomSectionItemView: View {
 	@StateObject private var viewModel: BottomSectionItemViewModel
-	@State private var itemValue: ItemValueType = .none
+	@Binding var valueType: ItemValueType
 	@Binding var showPaddleInput: Bool
 	let resetTimer: () -> Void
 
-	init(item: ItemModel, resetTimer: @escaping () -> Void, showPaddleInput: Binding<Bool>) {
+	init(item: ItemModel, resetTimer: @escaping () -> Void, showPaddleInput: Binding<Bool>, valueType: Binding<ItemValueType>) {
 		self._viewModel = StateObject(wrappedValue: BottomSectionItemViewModel(item: item))
 		self.resetTimer = resetTimer
 		self._showPaddleInput = showPaddleInput
+		self._valueType = valueType
 	}
 
 	var body: some View {
@@ -37,6 +38,9 @@ struct BottomSectionItemView: View {
 		}
 		.onTapGesture {
 			resetTimer()
+		}
+		.onChange(of: viewModel.valueType) { newValue in
+			valueType = newValue
 		}
 	}
 }

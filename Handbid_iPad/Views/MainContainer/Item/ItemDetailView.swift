@@ -12,6 +12,7 @@ struct ItemDetailView: View {
 	@State private var remainingTime: Int = 60
 	@State private var progress: CGFloat = 1.0
 	@State private var showPaddleInput = false
+	@State private var valueType: ItemValueType = .none
 
 	var body: some View {
 		GeometryReader { geometry in
@@ -74,7 +75,7 @@ struct ItemDetailView: View {
 							.accessibilityIdentifier("detailInfoView")
 					}
 					.simultaneousGesture(DragGesture().onChanged { _ in resetTimer() })
-					BottomSectionItemView(item: item, resetTimer: resetTimer, showPaddleInput: $showPaddleInput)
+					BottomSectionItemView(item: item, resetTimer: resetTimer, showPaddleInput: $showPaddleInput, valueType: $valueType)
 						.frame(maxWidth: .infinity)
 						.accessibilityIdentifier("buttonSectionView")
 				}
@@ -82,7 +83,7 @@ struct ItemDetailView: View {
 				.padding(.bottom, 10)
 
 				if showPaddleInput {
-					PaddleInputView(isVisible: $showPaddleInput, resetTimer: resetTimer)
+					PaddleInputView(isVisible: $showPaddleInput, valueType: $valueType, item: item, resetTimer: resetTimer)
 						.background(Color.white)
 						.transition(.opacity)
 						.zIndex(1)
@@ -100,7 +101,7 @@ struct ItemDetailView: View {
 					.padding([.top, .trailing], 20)
 			}
 			if showPaddleInput {
-				PaddleInputView(isVisible: $showPaddleInput, resetTimer: resetTimer)
+				PaddleInputView(isVisible: $showPaddleInput, valueType: $valueType, item: item, resetTimer: resetTimer)
 					.background(Color.white)
 					.transition(.opacity)
 					.zIndex(1)
@@ -119,7 +120,7 @@ struct ItemDetailView: View {
 					}
 				}
 				.simultaneousGesture(DragGesture().onChanged { _ in resetTimer() })
-				BottomSectionItemView(item: item, resetTimer: resetTimer, showPaddleInput: $showPaddleInput)
+				BottomSectionItemView(item: item, resetTimer: resetTimer, showPaddleInput: $showPaddleInput, valueType: $valueType)
 					.frame(maxWidth: .infinity)
 					.accessibilityIdentifier("buttonSectionView")
 			}
