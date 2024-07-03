@@ -10,13 +10,8 @@ struct PlaceOrderSoldOutButtonView: ButtonItemViewProtocol {
 
 	var body: some View {
 		VStack {
-			Button<Text>.styled(config: .secondaryButtonStyle, action: {
-				resetTimer()
-				showPaddleInput = true
-			}) {
-				Text("Sold Out")
-			}
-			// Add more specific UI and logic for PlaceOrderSoldOut state
+			Text("Item has been purchased")
+				.fontWeight(.bold)
 		}
 		.padding()
 	}

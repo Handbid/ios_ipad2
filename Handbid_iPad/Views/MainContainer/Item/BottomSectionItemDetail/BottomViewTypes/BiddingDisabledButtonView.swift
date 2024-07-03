@@ -10,13 +10,8 @@ struct BiddingDisabledButtonView: ButtonItemViewProtocol {
 
 	var body: some View {
 		VStack {
-			Button<Text>.styled(config: .secondaryButtonStyle, action: {
-				resetTimer()
-				showPaddleInput = true
-			}) {
-				Text("Bidding Disabled")
-			}
-			// Add more specific UI and logic for BiddingDisabled state
+			Text("Online bidding currently disabled for this item")
+				.fontWeight(.bold)
 		}
 		.padding()
 	}

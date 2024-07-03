@@ -10,14 +10,7 @@ struct DefaultButtonView: ButtonItemViewProtocol {
 
 	var body: some View {
 		VStack {
-			Button<Text>.styled(config: .secondaryButtonStyle, action: {
-				resetTimer()
-				showPaddleInput = true
-			}) {
-				Text("Confirm")
-					.textCase(.uppercase)
-			}
-			.accessibilityIdentifier("Confirm")
+			Text("")
 		}
 		.padding()
 	}

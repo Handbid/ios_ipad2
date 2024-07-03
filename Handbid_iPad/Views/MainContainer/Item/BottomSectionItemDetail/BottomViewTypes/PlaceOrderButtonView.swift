@@ -10,13 +10,17 @@ struct PlaceOrderButtonView: ButtonItemViewProtocol {
 
 	var body: some View {
 		VStack {
-			if item.itemStatus == .pending {}
-
-			Button<Text>.styled(config: .secondaryButtonStyle, action: {
-				resetTimer()
-				showPaddleInput = true
-			}) {
-				Text("Place Order")
+			if item.itemStatus == .pending {
+				Text("Item is not open for bidding")
+					.fontWeight(.bold)
+			}
+			else {
+				Button<Text>.styled(config: .secondaryButtonStyle, action: {
+					resetTimer()
+					showPaddleInput = true
+				}) {
+					Text("Place Order")
+				}
 			}
 		}
 		.padding()

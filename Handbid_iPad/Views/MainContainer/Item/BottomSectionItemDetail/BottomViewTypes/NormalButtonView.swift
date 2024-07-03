@@ -10,13 +10,29 @@ struct NormalButtonView: ButtonItemViewProtocol {
 
 	var body: some View {
 		VStack {
-			Button<Text>.styled(config: .secondaryButtonStyle, action: {
-				resetTimer()
-				showPaddleInput = true
-			}) {
-				Text("Bid Now")
+			if item.itemStatus != .open, item.itemStatus != .extended, item.itemStatus != .pending {
+				Text("Item is not available")
+					.fontWeight(.bold)
 			}
-			// Add more specific UI and logic for Normal state
+			else if item.itemStatus == .pending {
+				Text("Item is not open for bidding")
+					.fontWeight(.bold)
+			}
+			else {
+				Button<Text>.styled(config: .secondaryButtonStyle, action: {
+					resetTimer()
+					showPaddleInput = true
+				}) {
+					Text("BID NOW")
+				}
+
+				Button<Text>.styled(config: .secondaryButtonStyle, action: {
+					resetTimer()
+					showPaddleInput = true
+				}) {
+					Text("SET MAX BID")
+				}
+			}
 		}
 		.padding()
 	}

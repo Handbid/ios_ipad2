@@ -10,13 +10,8 @@ struct DirectPurchaseEventOnlyButtonView: ButtonItemViewProtocol {
 
 	var body: some View {
 		VStack {
-			Button<Text>.styled(config: .secondaryButtonStyle, action: {
-				resetTimer()
-				showPaddleInput = true
-			}) {
-				Text("Event Only Purchase")
-			}
-			// Add more specific UI and logic for DirectPurchaseEventOnly state
+			Text("Event Only")
+				.fontWeight(.bold)
 		}
 		.padding()
 	}

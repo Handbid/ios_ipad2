@@ -10,13 +10,38 @@ struct BuyNowButtonView: ButtonItemViewProtocol {
 
 	var body: some View {
 		VStack {
-			Button<Text>.styled(config: .secondaryButtonStyle, action: {
-				resetTimer()
-				showPaddleInput = true
-			}) {
-				Text("Buy Now for \(item.buyNowPrice)")
+			if item.itemStatus != .open, item.itemStatus != .extended, item.itemStatus != .pending {
+				Text("Item is not available")
+					.fontWeight(.bold)
 			}
-			// Add more specific UI and logic for BuyNow state
+			else if item.itemStatus == .pending {
+				Text("Item is not open for bidding")
+					.fontWeight(.bold)
+			}
+			else {
+				Button<Text>.styled(config: .secondaryButtonStyle, action: {
+					resetTimer()
+					showPaddleInput = true
+				}) {
+					Text("BUY NOW FOR \((valueType.doubleValue ?? 1.0) * (item.buyNowPrice ?? 1.0), format: .currency(code: "USD"))")
+				}
+
+				HStack {
+					Button<Text>.styled(config: .secondaryButtonStyle, action: {
+						resetTimer()
+						showPaddleInput = true
+					}) {
+						Text("SET MAX BID")
+					}
+
+					Button<Text>.styled(config: .secondaryButtonStyle, action: {
+						resetTimer()
+						showPaddleInput = true
+					}) {
+						Text("BID NOW")
+					}
+				}
+			}
 		}
 		.padding()
 	}

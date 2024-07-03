@@ -10,13 +10,8 @@ struct NormalSoldButtonView: ButtonItemViewProtocol {
 
 	var body: some View {
 		VStack {
-			Button<Text>.styled(config: .secondaryButtonStyle, action: {
-				resetTimer()
-				showPaddleInput = true
-			}) {
-				Text("Item Sold")
-			}
-			// Add more specific UI and logic for NormalSold state
+			Text("Item has been purchased")
+				.fontWeight(.bold)
 		}
 		.padding()
 	}

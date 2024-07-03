@@ -10,15 +10,8 @@ struct LiveAuctionButtonView: ButtonItemViewProtocol {
 
 	var body: some View {
 		VStack {
-			Button<Text>.styled(config: .secondaryButtonStyle, action: {
-				resetTimer()
-				showPaddleInput = true
-			}) {
-				Text("Live Auction")
-			}
-			Text("\(valueType)")
-
-			// Add more specific UI and logic for LiveAuction state
+			Text("Live Auction Item")
+				.fontWeight(.bold)
 		}
 		.padding()
 	}

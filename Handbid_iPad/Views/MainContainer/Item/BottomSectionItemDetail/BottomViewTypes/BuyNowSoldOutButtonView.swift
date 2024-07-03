@@ -10,13 +10,8 @@ struct BuyNowSoldOutButtonView: ButtonItemViewProtocol {
 
 	var body: some View {
 		VStack {
-			Button<Text>.styled(config: .secondaryButtonStyle, action: {
-				resetTimer()
-				showPaddleInput = true
-			}) {
-				Text("Sold Out")
-			}
-			// Add more specific UI and logic for BuyNowSoldOut state
+			Text("Item has been purchased")
+				.fontWeight(.bold)
 		}
 		.padding()
 	}
