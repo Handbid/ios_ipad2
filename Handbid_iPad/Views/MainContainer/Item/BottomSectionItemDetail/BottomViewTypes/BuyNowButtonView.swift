@@ -23,7 +23,7 @@ struct BuyNowButtonView: ButtonItemViewProtocol {
 					resetTimer()
 					showPaddleInput = true
 				}) {
-					Text("BUY NOW FOR \((valueType.doubleValue ?? 1.0) * (item.buyNowPrice ?? 1.0), format: .currency(code: "USD"))")
+					Text("BUY NOW FOR \(item.buyNowPrice ?? 1.0, format: .currency(code: "USD"))")
 				}
 
 				HStack {

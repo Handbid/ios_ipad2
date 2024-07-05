@@ -19,7 +19,7 @@ struct ItemValueView: View {
 	private func incrementValue() {
 		switch valueType {
 		case let .bidAmount(value):
-			valueType = .bidAmount(value + 1.0)
+			valueType = .bidAmount(value + (item.bidIncrement ?? 1))
 		case let .buyNow(value):
 			valueType = .buyNow(value + 1.0)
 		case let .quantity(value):
@@ -32,15 +32,15 @@ struct ItemValueView: View {
 	private func decrementValue() {
 		switch valueType {
 		case let .bidAmount(value):
-			if value > 1.0 {
-				valueType = .bidAmount(value - 1.0)
+			if value > item.minimumBidAmount ?? 0 {
+				valueType = .bidAmount(value - (item.bidIncrement ?? 1))
 			}
 		case let .buyNow(value):
-			if value > 1.0 {
-				valueType = .buyNow(value - 1.0)
+			if value > item.buyNowPrice ?? 0 {
+				valueType = .buyNow(value - 1)
 			}
 		case let .quantity(value):
-			if value > 1 {
+			if value > item.inventoryRemaining ?? 0 {
 				valueType = .quantity(value - 1)
 			}
 		case .none:

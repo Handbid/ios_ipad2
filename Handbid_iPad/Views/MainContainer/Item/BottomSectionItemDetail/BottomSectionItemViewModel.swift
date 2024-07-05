@@ -19,27 +19,27 @@ class BottomSectionItemViewModel: ObservableObject {
 		case .buyNow:
 			valueType = .buyNow(item.buyNowPrice ?? 0)
 		case .placeOrder:
-			valueType = .buyNow(item.minimumBidAmount ?? 0)
+			valueType = .quantity(item.inventoryRemaining ?? 0)
 		case .placeOrderSoldOut:
 			valueType = .none
 		case .normal:
-			valueType = .buyNow(item.minimumBidAmount ?? 0)
+			valueType = .bidAmount(item.minimumBidAmount ?? 0)
 		case .normalSold:
 			valueType = .none
 		case .buyNowSoldOut:
 			valueType = .none
 		case .liveAuction:
-			valueType = .buyNow(item.minimumBidAmount ?? 0)
+			valueType = .none
 		case .directPurchaseEventOnly:
-			valueType = .buyNow(item.minimumBidAmount ?? 0)
+			valueType = .none
 		case .directPurchase:
-			valueType = .buyNow(item.minimumBidAmount ?? 0)
+			valueType = .buyNow(item.buyNowPrice ?? 0)
 		case .directPurchaseSoldOut:
 			valueType = .none
 		case .puzzle:
-			valueType = .buyNow(item.minimumBidAmount ?? 0)
+			valueType = .buyNow(item.buyNowPrice ?? 0)
 		case .forSale:
-			valueType = .buyNow(item.minimumBidAmount ?? 0)
+			valueType = .buyNow(item.buyNowPrice ?? 0)
 		case .none:
 			valueType = .none
 		}
