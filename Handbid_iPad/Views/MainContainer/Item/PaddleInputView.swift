@@ -15,7 +15,6 @@ struct PaddleInputView: View {
 		VStack {
 			Spacer()
 			VStack(spacing: 40) {
-				Text("Selected Value: \(displayValueType())") // Display selected value
 				Text("Enter your paddle number")
 					.font(.headline)
 					.fontWeight(.bold)

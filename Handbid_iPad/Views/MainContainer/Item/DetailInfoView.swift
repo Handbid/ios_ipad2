@@ -12,9 +12,8 @@ struct DetailInfoView: View {
 			HStack {
 				Spacer()
 				Text(item.categoryName ?? "NaN")
-					.foregroundColor(.black)
 					.fontWeight(.light)
-					.font(.headline)
+					.font(.callout)
 					.accessibilityIdentifier("categoryName")
 				Text(" | ")
 					.foregroundColor(.gray)
@@ -24,16 +23,15 @@ struct DetailInfoView: View {
 				} ?? "NaN"
 
 				Text("\(formattedItemCode)")
-					.foregroundColor(.black)
 					.fontWeight(.light)
-					.font(.headline)
+					.font(.callout)
 					.accessibilityIdentifier("itemID")
 				Text(" | ")
 					.foregroundColor(.gray)
 				Text("\(item.bidCount ?? -1) bids")
 					.foregroundColor(.accentViolet)
 					.fontWeight(.light)
-					.font(.headline)
+					.font(.callout)
 					.accessibilityIdentifier("bidCount")
 				Spacer()
 			}
@@ -51,28 +49,45 @@ struct DetailInfoView: View {
 				Spacer()
 				VStack(alignment: .leading) {
 					Text("VALUE")
-						.font(.caption)
+						.font(.subheadline)
 						.foregroundColor(.gray)
+						.fontWeight(.light)
 					Text("\(item.value ?? -1, format: .currency(code: "USD"))")
-						.font(.headline)
+						.font(.subheadline)
 						.fontWeight(.bold)
 						.accessibilityIdentifier("itemValue")
 				}
+
+				VStack {
+					Rectangle()
+						.foregroundColor(.gray)
+						.frame(width: 1)
+						.padding(.vertical, 4)
+				}
+
 				VStack(alignment: .leading) {
 					Text("INCREMENT")
-						.font(.caption)
+						.font(.subheadline)
 						.foregroundColor(.gray)
-					Text("\(item.bidIncrement ?? -1.0, format: .number)")
-						.font(.headline)
+						.fontWeight(.light)
+					Text("\(item.bidIncrement ?? -1.0, format: .currency(code: "USD"))")
+						.font(.subheadline)
 						.fontWeight(.bold)
 						.accessibilityIdentifier("bidIncrement")
 				}
+				VStack {
+					Rectangle()
+						.foregroundColor(.gray)
+						.frame(width: 1)
+						.padding(.vertical, 4)
+				}
 				VStack(alignment: .trailing) {
 					Text("BUY NOW")
-						.font(.caption)
+						.font(.subheadline)
 						.foregroundColor(.gray)
+						.fontWeight(.light)
 					Text("\(item.buyNowPrice ?? -1, format: .currency(code: "USD"))")
-						.font(.headline)
+						.font(.subheadline)
 						.fontWeight(.bold)
 						.accessibilityIdentifier("buyNowPrice")
 				}

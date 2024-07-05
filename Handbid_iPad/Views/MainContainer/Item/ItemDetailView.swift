@@ -73,14 +73,15 @@ struct ItemDetailView: View {
 							.frame(maxHeight: .infinity)
 							.clipped()
 							.accessibilityIdentifier("detailInfoView")
+							.padding(.top, 20)
 					}
 					.simultaneousGesture(DragGesture().onChanged { _ in resetTimer() })
 					BottomSectionItemView(item: item, resetTimer: resetTimer, showPaddleInput: $showPaddleInput, valueType: $valueType)
 						.frame(maxWidth: .infinity)
 						.accessibilityIdentifier("buttonSectionView")
+						.padding(.bottom, 10)
 				}
 				.background(Color.accentGrayBackground)
-				.padding(.bottom, 10)
 
 				if showPaddleInput {
 					PaddleInputView(isVisible: $showPaddleInput, valueType: $valueType, item: item, resetTimer: resetTimer)

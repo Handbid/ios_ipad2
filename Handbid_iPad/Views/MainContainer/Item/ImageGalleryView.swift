@@ -154,7 +154,7 @@ struct ImageGalleryView: View {
 						.frame(width: 14, height: 14)
 						.accessibilityIdentifier("progressIndicator")
 					Text("This screen will close in \(remainingTime) seconds.")
-						.foregroundColor(.black)
+						.font(.callout)
 						.fontWeight(.light)
 						.padding(.leading, 5)
 						.accessibilityIdentifier("remainingTimeText")

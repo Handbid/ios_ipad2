@@ -27,14 +27,14 @@ struct BuyNowButtonView: ButtonItemViewProtocol {
 				}
 
 				HStack {
-					Button<Text>.styled(config: .secondaryButtonStyle, action: {
+					Button<Text>.styled(config: .thirdButtonStyle, action: {
 						resetTimer()
 						showPaddleInput = true
 					}) {
 						Text("SET MAX BID")
 					}
 
-					Button<Text>.styled(config: .secondaryButtonStyle, action: {
+					Button<Text>.styled(config: .thirdButtonStyle, action: {
 						resetTimer()
 						showPaddleInput = true
 					}) {
