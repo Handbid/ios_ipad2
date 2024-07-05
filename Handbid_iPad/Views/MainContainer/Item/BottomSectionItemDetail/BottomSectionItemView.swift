@@ -19,7 +19,7 @@ struct BottomSectionItemView: View {
 	var body: some View {
 		VStack(spacing: 10) {
 			if case .none = viewModel.valueType {}
-			else if viewModel.item.itemType == .placeOrder || viewModel.item.itemType == .normal || viewModel.item.itemType == .buyNow || viewModel.item.itemIsAppealAndForSale() {
+			else if viewModel.item.itemType == .placeOrder || viewModel.item.itemType == .normal || viewModel.item.itemType == .buyNow || viewModel.item.itemIsAppealAndForSale() || viewModel.item.itemType == .directPurchase {
 				ZStack {
 					TopViewOfBottomSectionItemFactory.createValueView(for: viewModel.item, valueType: $viewModel.valueType, resetTimer: resetTimer)
 				}

@@ -8,7 +8,7 @@ struct ValueTextField: View {
 	var body: some View {
 		switch valueType {
 		case let .quantity(value):
-			TextField("QTY", value: .constant(Double(value)), format: .number)
+			TextField("QTY", value: .constant(Double(value <= 1 ? 1 : value)), format: .number)
 				.multilineTextAlignment(.center)
 				.accessibilityIdentifier("valueTextField")
 				.frame(maxWidth: .infinity, alignment: .center)

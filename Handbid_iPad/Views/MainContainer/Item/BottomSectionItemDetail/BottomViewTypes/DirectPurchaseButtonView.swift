@@ -28,7 +28,7 @@ struct DirectPurchaseButtonView: ButtonItemViewProtocol {
 						resetTimer()
 						showPaddleInput = true
 					}) {
-						Text("BUY NOW")
+						Text("BUY NOW FOR \((valueType.doubleValue ?? 1.0) * (item.buyNowPrice ?? 1.0), format: .currency(code: "USD"))")
 					}
 				}
 			}

@@ -33,7 +33,7 @@ class BottomSectionItemViewModel: ObservableObject {
 		case .directPurchaseEventOnly:
 			valueType = .none
 		case .directPurchase:
-			valueType = .buyNow(item.buyNowPrice ?? 0)
+			valueType = .quantity(1)
 		case .directPurchaseSoldOut:
 			valueType = .none
 		case .puzzle:

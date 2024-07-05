@@ -11,6 +11,8 @@ class TopViewOfBottomSectionItemFactory {
 			AnyView(PlaceOrderSoldOutValueView(item: item, valueType: valueType, resetTimer: resetTimer))
 		case .normal:
 			AnyView(NormalValueView(item: item, valueType: valueType, resetTimer: resetTimer))
+		case .directPurchase:
+			AnyView(DirectPurchaseValueView(item: item, valueType: valueType, resetTimer: resetTimer))
 		default:
 			AnyView(DefaultValueView(item: item, valueType: valueType, resetTimer: resetTimer))
 		}

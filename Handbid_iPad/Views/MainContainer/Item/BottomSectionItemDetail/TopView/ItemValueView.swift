@@ -41,7 +41,12 @@ struct ItemValueView: View {
 			}
 		case let .quantity(value):
 			if value > item.inventoryRemaining ?? 0 {
-				valueType = .quantity(value - 1)
+				if value <= 1 {
+					valueType = .quantity(1)
+				}
+				else {
+					valueType = .quantity(value - 1)
+				}
 			}
 		case .none:
 			valueType = .none
