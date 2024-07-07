@@ -7,6 +7,7 @@ struct PuzzleButtonView: ButtonItemViewProtocol {
 	let resetTimer: () -> Void
 	@Binding var showPaddleInput: Bool
 	@Binding var valueType: ItemValueType
+	@Binding var selectedAction: ActionButtonType?
 
 	var body: some View {
 		VStack {
@@ -33,6 +34,7 @@ struct PuzzleButtonView: ButtonItemViewProtocol {
 			Button<Text>.styled(config: .secondaryButtonStyle, action: {
 				resetTimer()
 				showPaddleInput = true
+				selectedAction = .buyNowPuzzle
 			}) {
 				Text("Buy Puzzle Piece for \(item.buyNowPrice ?? 0, format: .currency(code: "USD"))")
 			}

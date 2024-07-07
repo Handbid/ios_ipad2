@@ -7,6 +7,7 @@ struct DirectPurchaseButtonView: ButtonItemViewProtocol {
 	let resetTimer: () -> Void
 	@Binding var showPaddleInput: Bool
 	@Binding var valueType: ItemValueType
+	@Binding var selectedAction: ActionButtonType?
 
 	var body: some View {
 		VStack {
@@ -14,6 +15,7 @@ struct DirectPurchaseButtonView: ButtonItemViewProtocol {
 				Button<Text>.styled(config: .secondaryButtonStyle, action: {
 					resetTimer()
 					showPaddleInput = true
+					selectedAction = .donate
 				}) {
 					Text("SUPPORT US")
 				}
@@ -27,6 +29,7 @@ struct DirectPurchaseButtonView: ButtonItemViewProtocol {
 					Button<Text>.styled(config: .secondaryButtonStyle, action: {
 						resetTimer()
 						showPaddleInput = true
+						selectedAction = .directPurchase((valueType.doubleValue ?? 1.0) * (item.buyNowPrice ?? 1.0))
 					}) {
 						Text("BUY NOW FOR \((valueType.doubleValue ?? 1.0) * (item.buyNowPrice ?? 1.0), format: .currency(code: "USD"))")
 					}

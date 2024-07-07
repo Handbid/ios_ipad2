@@ -7,6 +7,7 @@ struct PlaceOrderButtonView: ButtonItemViewProtocol {
 	let resetTimer: () -> Void
 	@Binding var showPaddleInput: Bool
 	@Binding var valueType: ItemValueType
+	@Binding var selectedAction: ActionButtonType?
 
 	var body: some View {
 		VStack {
@@ -18,6 +19,7 @@ struct PlaceOrderButtonView: ButtonItemViewProtocol {
 				Button<Text>.styled(config: .secondaryButtonStyle, action: {
 					resetTimer()
 					showPaddleInput = true
+					selectedAction = .placeOrder
 				}) {
 					Text("Place Order")
 				}

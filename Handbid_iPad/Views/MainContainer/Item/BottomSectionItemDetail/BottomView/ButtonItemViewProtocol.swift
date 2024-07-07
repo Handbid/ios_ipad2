@@ -3,5 +3,5 @@
 import SwiftUI
 
 protocol ButtonItemViewProtocol: View {
-	init(item: ItemModel, resetTimer: @escaping () -> Void, showPaddleInput: Binding<Bool>, valueType: Binding<ItemValueType>)
+	init(item: ItemModel, resetTimer: @escaping () -> Void, showPaddleInput: Binding<Bool>, valueType: Binding<ItemValueType>, selectedAction: Binding<ActionButtonType?>)
 }

@@ -5,9 +5,11 @@ import SwiftUI
 struct PaddleInputView: View {
 	@Binding var isVisible: Bool
 	@Binding var valueType: ItemValueType
+	@Binding var selectedAction: ActionButtonType?
 	@State private var inputText: String = ""
 	@State private var activeKey: String? = nil
 	@State private var pressedKeys: Set<String> = []
+	@StateObject private var viewModel = PaddleInputViewModel()
 	let item: ItemModel
 	let resetTimer: () -> Void
 
@@ -75,7 +77,8 @@ struct PaddleInputView: View {
 						.padding(.leading)
 
 					Button<Text>.styled(config: .secondaryButtonStyle, action: {
-						isVisible = false
+						viewModel.performAction(for: item, valueType: valueType, selectedAction: selectedAction)
+//						isVisible = false
 						resetTimer()
 					}) {
 						Text("Confirm")

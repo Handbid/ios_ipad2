@@ -7,6 +7,7 @@ struct NormalButtonView: ButtonItemViewProtocol {
 	let resetTimer: () -> Void
 	@Binding var showPaddleInput: Bool
 	@Binding var valueType: ItemValueType
+	@Binding var selectedAction: ActionButtonType?
 
 	var body: some View {
 		VStack {
@@ -22,6 +23,7 @@ struct NormalButtonView: ButtonItemViewProtocol {
 				Button<Text>.styled(config: .secondaryButtonStyle, action: {
 					resetTimer()
 					showPaddleInput = true
+					selectedAction = .bidNow
 				}) {
 					Text("BID NOW")
 				}
@@ -29,6 +31,7 @@ struct NormalButtonView: ButtonItemViewProtocol {
 				Button<Text>.styled(config: .secondaryButtonStyle, action: {
 					resetTimer()
 					showPaddleInput = true
+					selectedAction = .setMaxBid
 				}) {
 					Text("SET MAX BID")
 				}

@@ -7,13 +7,15 @@ struct BottomSectionItemView: View {
 	@StateObject private var viewModel: BottomSectionItemViewModel
 	@Binding var valueType: ItemValueType
 	@Binding var showPaddleInput: Bool
+	@Binding var selectedAction: ActionButtonType?
 	let resetTimer: () -> Void
 
-	init(item: ItemModel, resetTimer: @escaping () -> Void, showPaddleInput: Binding<Bool>, valueType: Binding<ItemValueType>) {
+	init(item: ItemModel, resetTimer: @escaping () -> Void, showPaddleInput: Binding<Bool>, valueType: Binding<ItemValueType>, selectedAction: Binding<ActionButtonType?>) {
 		self._viewModel = StateObject(wrappedValue: BottomSectionItemViewModel(item: item))
 		self._showPaddleInput = showPaddleInput
 		self._valueType = valueType
 		self.resetTimer = resetTimer
+		self._selectedAction = selectedAction
 	}
 
 	var body: some View {
@@ -34,7 +36,7 @@ struct BottomSectionItemView: View {
 				.padding(.top, 10)
 			}
 
-			ButtonSectionItemFactory.createButtonView(for: viewModel.item, valueType: $viewModel.valueType, resetTimer: resetTimer, showPaddleInput: $showPaddleInput)
+			ButtonSectionItemFactory.createButtonView(for: viewModel.item, valueType: $viewModel.valueType, resetTimer: resetTimer, showPaddleInput: $showPaddleInput, selectedAction: $selectedAction)
 		}
 		.onTapGesture {
 			resetTimer()

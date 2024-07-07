@@ -162,6 +162,8 @@
 		8C91A8552C2A05340057D51B /* ImageGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C91A8542C2A05340057D51B /* ImageGalleryView.swift */; };
 		8C91A8572C2A05490057D51B /* DetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C91A8562C2A05490057D51B /* DetailInfoView.swift */; };
 		8C91A85A2C2A06270057D51B /* BottomSectionItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C91A8592C2A06270057D51B /* BottomSectionItemView.swift */; };
+		8C969A5A2C3B008F007408FF /* ActionButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C969A592C3B008F007408FF /* ActionButtonType.swift */; };
+		8C969A5D2C3B04F8007408FF /* PaddleInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C969A5C2C3B04F8007408FF /* PaddleInputViewModel.swift */; };
 		8C9BC3172C088681004F3DFF /* MockDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC3162C088681004F3DFF /* MockDataService.swift */; };
 		8C9BC3192C08869D004F3DFF /* PaddleViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC3182C08869D004F3DFF /* PaddleViewModelTests.swift */; };
 		8C9BC31F2C089B0C004F3DFF /* MockWebSocketURLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9BC31E2C089B0C004F3DFF /* MockWebSocketURLFactory.swift */; };
@@ -481,6 +483,8 @@
 		8C91A8542C2A05340057D51B /* ImageGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGalleryView.swift; sourceTree = "<group>"; };
 		8C91A8562C2A05490057D51B /* DetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoView.swift; sourceTree = "<group>"; };
 		8C91A8592C2A06270057D51B /* BottomSectionItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSectionItemView.swift; sourceTree = "<group>"; };
+		8C969A592C3B008F007408FF /* ActionButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonType.swift; sourceTree = "<group>"; };
+		8C969A5C2C3B04F8007408FF /* PaddleInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddleInputViewModel.swift; sourceTree = "<group>"; };
 		8C9BC3162C088681004F3DFF /* MockDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataService.swift; sourceTree = "<group>"; };
 		8C9BC3182C08869D004F3DFF /* PaddleViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddleViewModelTests.swift; sourceTree = "<group>"; };
 		8C9BC31E2C089B0C004F3DFF /* MockWebSocketURLFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWebSocketURLFactory.swift; sourceTree = "<group>"; };
@@ -1239,6 +1243,14 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
+		8C969A5B2C3B04EF007408FF /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				8C969A5C2C3B04F8007408FF /* PaddleInputViewModel.swift */,
+			);
+			path = Item;
+			sourceTree = "<group>";
+		};
 		8C9BC3152C088675004F3DFF /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -1305,6 +1317,7 @@
 			isa = PBXGroup;
 			children = (
 				8C91A8592C2A06270057D51B /* BottomSectionItemView.swift */,
+				8C969A592C3B008F007408FF /* ActionButtonType.swift */,
 				8C22A8F52C35202E00C50621 /* BottomSectionItemViewModel.swift */,
 				8CA6C0E52C347B560095F469 /* ItemValueType.swift */,
 				8CA6C0DD2C347A7D0095F469 /* TopView */,
@@ -1465,6 +1478,7 @@
 				8C9FA43D2BD27FDF0041F28E /* MyBidsViewModel.swift */,
 				8CD108152BD1237D00E83261 /* PaddleViewModel.swift */,
 				8C9FA4492BD29C540041F28E /* ViewModelFactory.swift */,
+				8C969A5B2C3B04EF007408FF /* Item */,
 			);
 			path = MainContainer;
 			sourceTree = "<group>";
@@ -2105,6 +2119,7 @@
 				8CABF5BB2BB9C5F400A34870 /* ForgotPasswordView.swift in Sources */,
 				CE9E2D0E2BC845D70008FD8A /* Inspection.swift in Sources */,
 				8C4BFB7F2BE18AED00B47154 /* BannerModel.swift in Sources */,
+				8C969A5A2C3B008F007408FF /* ActionButtonType.swift in Sources */,
 				8CABF5CC2BB9CF0300A34870 /* ChooseEnvironmentView.swift in Sources */,
 				8C4B7BB52BB9BEDC0043B892 /* CustomStyledViewSecuredField.swift in Sources */,
 				CE0CEE7F2BBEB39F004A27FD /* ResetPasswordRepository.swift in Sources */,
@@ -2145,6 +2160,7 @@
 				8CA6C0F32C347CF90095F469 /* NormalValueView.swift in Sources */,
 				8CD107F82BD11F2300E83261 /* TopBarActionProvider.swift in Sources */,
 				8C0007B22BAC733900AAEBA0 /* ArrowParsable.swift in Sources */,
+				8C969A5D2C3B04F8007408FF /* PaddleInputViewModel.swift in Sources */,
 				8C4BFB632BE1147900B47154 /* OrganizationAddressModel.swift in Sources */,
 				8CA6C0EA2C347C020095F469 /* ValueItemViewProtocol.swift in Sources */,
 			);

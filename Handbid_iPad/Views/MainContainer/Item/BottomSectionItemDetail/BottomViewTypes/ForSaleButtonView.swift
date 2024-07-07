@@ -7,6 +7,7 @@ struct ForSaleButtonView: ButtonItemViewProtocol {
 	let resetTimer: () -> Void
 	@Binding var showPaddleInput: Bool
 	@Binding var valueType: ItemValueType
+	@Binding var selectedAction: ActionButtonType?
 
 	var body: some View {
 		VStack {
@@ -14,6 +15,7 @@ struct ForSaleButtonView: ButtonItemViewProtocol {
 				Button<Text>.styled(config: .secondaryButtonStyle, action: {
 					resetTimer()
 					showPaddleInput = true
+					selectedAction = .donate
 				}) {
 					Text("SUPPORT US")
 				}
@@ -27,6 +29,7 @@ struct ForSaleButtonView: ButtonItemViewProtocol {
 					Button<Text>.styled(config: .secondaryButtonStyle, action: {
 						resetTimer()
 						showPaddleInput = true
+						selectedAction = .buyNow
 					}) {
 						Text("BUY NOW")
 					}

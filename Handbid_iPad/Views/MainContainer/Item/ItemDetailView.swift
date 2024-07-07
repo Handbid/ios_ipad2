@@ -13,6 +13,7 @@ struct ItemDetailView: View {
 	@State private var progress: CGFloat = 1.0
 	@State private var showPaddleInput = false
 	@State private var valueType: ItemValueType = .none
+	@State private var selectedAction: ActionButtonType? = nil
 
 	var body: some View {
 		GeometryReader { geometry in
@@ -76,7 +77,7 @@ struct ItemDetailView: View {
 							.padding(.top, 20)
 					}
 					.simultaneousGesture(DragGesture().onChanged { _ in resetTimer() })
-					BottomSectionItemView(item: item, resetTimer: resetTimer, showPaddleInput: $showPaddleInput, valueType: $valueType)
+					BottomSectionItemView(item: item, resetTimer: resetTimer, showPaddleInput: $showPaddleInput, valueType: $valueType, selectedAction: $selectedAction)
 						.frame(maxWidth: .infinity)
 						.accessibilityIdentifier("buttonSectionView")
 						.padding(.bottom, 10)
@@ -84,7 +85,7 @@ struct ItemDetailView: View {
 				.background(Color.accentGrayBackground)
 
 				if showPaddleInput {
-					PaddleInputView(isVisible: $showPaddleInput, valueType: $valueType, item: item, resetTimer: resetTimer)
+					PaddleInputView(isVisible: $showPaddleInput, valueType: $valueType, selectedAction: $selectedAction, item: item, resetTimer: resetTimer)
 						.background(Color.white)
 						.transition(.opacity)
 						.zIndex(1)
@@ -102,7 +103,7 @@ struct ItemDetailView: View {
 					.padding([.top, .trailing], 20)
 			}
 			if showPaddleInput {
-				PaddleInputView(isVisible: $showPaddleInput, valueType: $valueType, item: item, resetTimer: resetTimer)
+				PaddleInputView(isVisible: $showPaddleInput, valueType: $valueType, selectedAction: $selectedAction, item: item, resetTimer: resetTimer)
 					.background(Color.white)
 					.transition(.opacity)
 					.zIndex(1)
@@ -121,7 +122,7 @@ struct ItemDetailView: View {
 					}
 				}
 				.simultaneousGesture(DragGesture().onChanged { _ in resetTimer() })
-				BottomSectionItemView(item: item, resetTimer: resetTimer, showPaddleInput: $showPaddleInput, valueType: $valueType)
+				BottomSectionItemView(item: item, resetTimer: resetTimer, showPaddleInput: $showPaddleInput, valueType: $valueType, selectedAction: $selectedAction)
 					.frame(maxWidth: .infinity)
 					.accessibilityIdentifier("buttonSectionView")
 			}
