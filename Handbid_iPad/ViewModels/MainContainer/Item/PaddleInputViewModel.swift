@@ -164,7 +164,7 @@ class PaddleInputViewModel: ObservableObject {
 		}
 	}
 
-	private func handleReceivedData(data: BidModel) {
+	private func handleReceivedData(data _: BidModel) {
 		isLoading = false
 	}
 }
