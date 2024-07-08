@@ -147,19 +147,32 @@ class PaddleInputViewModel: ObservableObject {
 			if let urlError = error as? URLError {
 				alertMessage = "Network error: \(urlError.localizedDescription)"
 			}
+			else if let responseError = error as? ResponseError,
+			        let errorData = responseError.data.error,
+			        let paddleNumberError = errorData["paddleNumber"]
+			{
+				alertMessage = paddleNumberError
+			}
 			else {
 				alertMessage = "Unexpected error: \(error.localizedDescription)"
 			}
 			showError = true
 			isLoading = false
-			print(alertMessage)
 		}
 		else {
 			isLoading = false
 		}
 	}
 
-	private func handleReceivedData(_: BidModel) {
+	private func handleReceivedData(data: BidModel) {
 		isLoading = false
+	}
+}
+
+struct ResponseError: Error, Decodable {
+	let data: ErrorData
+
+	struct ErrorData: Decodable {
+		let error: [String: String]?
 	}
 }

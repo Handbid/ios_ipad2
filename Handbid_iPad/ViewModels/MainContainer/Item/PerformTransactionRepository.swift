@@ -50,7 +50,12 @@ class PerformTransactionRepositoryImpl: PerformTransactionRepository, Networking
 		params.addOptional(key: "finalBid", value: finalBid)
 
 		return post(ApiEndpoints.performTransaction, params: params)
-			.tryMap { try BidModel.decode($0) }
+			.tryMap { data -> BidModel in
+				if let responseError = try? JSONDecoder().decode(ResponseError.self, from: data) {
+					throw responseError
+				}
+				return try BidModel.decode(data)
+			}
 			.eraseToAnyPublisher()
 	}
 }
