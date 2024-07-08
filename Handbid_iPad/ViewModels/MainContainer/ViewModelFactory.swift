@@ -5,7 +5,9 @@ enum ViewModelFactory {
 		let dataService = DataServiceFactory.getService()
 		let networkClient = DependencyMainAppProvider.shared.networkClient
 		let auctionRepository = AuctionRepositoryImpl(network: networkClient)
-		return (AuctionViewModel(dataService: dataService, repository: auctionRepository),
+		let performTransactionRepository = PerformTransactionRepositoryImpl(network: networkClient)
+
+		return (AuctionViewModel(dataService: dataService, repository: auctionRepository, repositoryPerformTransaction: performTransactionRepository),
 		        PaddleViewModel(dataService: dataService),
 		        MyBidsViewModel(dataService: dataService),
 		        ManagerViewModel(dataService: dataService),

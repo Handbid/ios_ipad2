@@ -8,7 +8,12 @@ class PaddleInputViewModel: ObservableObject {
 	@Published var showError: Bool = false
 	@Published var isLoading: Bool = false
 
+	private var repositoryTransaction: PerformTransactionRepository
 	private var cancellables = Set<AnyCancellable>()
+
+	init(repositoryPerformTransaction: PerformTransactionRepository) {
+		self.repositoryTransaction = repositoryPerformTransaction
+	}
 
 	func performAction(for item: ItemModel, valueType: ItemValueType, selectedAction: ActionButtonType?) {
 		guard let action = selectedAction else {

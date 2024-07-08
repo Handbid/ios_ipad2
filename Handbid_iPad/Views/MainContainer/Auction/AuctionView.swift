@@ -102,7 +102,7 @@ struct AuctionView: View {
 	}
 
 	private func itemDetailView(for item: ItemModel) -> some View {
-		ItemDetailView(item: item, isVisible: $showDetailView, loadImages: $loadImages)
+		ItemDetailView(isVisible: $showDetailView, loadImages: $loadImages, viewModel: ItemDetailViewModel(item: item, repositoryPerformTransaction: viewModel.repositoryPerformTransaction))
 			.padding(10)
 			.background(Color.accentViolet.opacity(0.5))
 			.onAppear {

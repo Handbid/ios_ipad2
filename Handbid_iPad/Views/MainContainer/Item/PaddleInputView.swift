@@ -9,7 +9,7 @@ struct PaddleInputView: View {
 	@State private var inputText: String = ""
 	@State private var activeKey: String? = nil
 	@State private var pressedKeys: Set<String> = []
-	@StateObject private var viewModel = PaddleInputViewModel()
+	@StateObject var viewModel: PaddleInputViewModel
 	let item: ItemModel
 	let resetTimer: () -> Void
 
