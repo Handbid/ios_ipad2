@@ -9,8 +9,8 @@ protocol PerformTransactionRepository {
 	                        paddleNumber: Int?,
 	                        auctionId: Int,
 	                        itemId: Int,
-	                        amount: Int?,
-	                        maxAmount: Int?,
+	                        amount: Double?,
+	                        maxAmount: Double?,
 	                        quantity: Int?,
 	                        discountId: Int?,
 	                        ignoreCC: Bool?,
@@ -28,8 +28,8 @@ class PerformTransactionRepositoryImpl: PerformTransactionRepository, Networking
 	                        paddleNumber: Int? = nil,
 	                        auctionId: Int,
 	                        itemId: Int,
-	                        amount: Int? = nil,
-	                        maxAmount: Int? = nil,
+	                        amount: Double? = nil,
+	                        maxAmount: Double? = nil,
 	                        quantity: Int? = nil,
 	                        discountId: Int? = nil,
 	                        ignoreCC: Bool? = nil,
@@ -49,7 +49,7 @@ class PerformTransactionRepositoryImpl: PerformTransactionRepository, Networking
 		params.addOptional(key: "ignoreCC", value: ignoreCC)
 		params.addOptional(key: "finalBid", value: finalBid)
 
-		return get(ApiEndpoints.auctionInventory, params: params)
+		return post(ApiEndpoints.performTransaction, params: params)
 			.tryMap { try BidModel.decode($0) }
 			.eraseToAnyPublisher()
 	}

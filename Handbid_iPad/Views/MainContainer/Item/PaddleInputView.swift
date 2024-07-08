@@ -6,7 +6,6 @@ struct PaddleInputView: View {
 	@Binding var isVisible: Bool
 	@Binding var valueType: ItemValueType
 	@Binding var selectedAction: ActionButtonType?
-	@State private var inputText: String = ""
 	@State private var activeKey: String? = nil
 	@State private var pressedKeys: Set<String> = []
 	@StateObject var viewModel: PaddleInputViewModel
@@ -24,7 +23,7 @@ struct PaddleInputView: View {
 
 				ZStack {
 					VStack {
-						Text(inputText)
+						Text(viewModel.inputText)
 							.frame(height: 30)
 							.font(.largeTitle)
 							.fontWeight(.semibold)
@@ -32,7 +31,7 @@ struct PaddleInputView: View {
 
 						Rectangle()
 							.frame(height: 1)
-							.foregroundColor(inputText.isEmpty ? .black : Color.accentViolet)
+							.foregroundColor(viewModel.inputText.isEmpty ? .black : Color.accentViolet)
 							.frame(maxWidth: .infinity, alignment: .center)
 							.padding([.leading, .trailing], 60)
 					}
@@ -94,6 +93,9 @@ struct PaddleInputView: View {
 			resetTimer()
 		}
 		.frame(maxHeight: .infinity)
+		.alert(isPresented: $viewModel.showError) {
+			Alert(title: Text("Error"), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
+		}
 	}
 
 	private func displayValueType() -> String {
@@ -111,15 +113,15 @@ struct PaddleInputView: View {
 
 	private func handleKeyPress(_ key: String) {
 		if key == "⌫" {
-			if !inputText.isEmpty {
-				inputText.removeLast()
+			if !viewModel.inputText.isEmpty {
+				viewModel.inputText.removeLast()
 			}
 		}
-		else if inputText.isEmpty, key == "0" {
+		else if viewModel.inputText.isEmpty, key == "0" {
 			return
 		}
-		else if inputText.count < 6 {
-			inputText.append(key)
+		else if viewModel.inputText.count < 6 {
+			viewModel.inputText.append(key)
 		}
 	}
 
