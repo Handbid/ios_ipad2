@@ -3,13 +3,17 @@
 import SwiftUI
 
 struct ItemDetailView: View {
-	var item: ItemModel
 	@Binding var isVisible: Bool
+	@Binding var loadImages: Bool
 	@State private var offset: CGFloat = 0
 	@State private var selectedImage: String? = nil
 	@State private var timer: Timer?
 	@State private var remainingTime: Int = 60
 	@State private var progress: CGFloat = 1.0
+	@State private var showPaddleInput = false
+	@State private var valueType: ItemValueType = .none
+	@State private var selectedAction: ActionButtonType? = nil
+	@ObservedObject var viewModel: ItemDetailViewModel
 
 	var body: some View {
 		GeometryReader { geometry in
@@ -59,25 +63,34 @@ struct ItemDetailView: View {
 
 	private var landscapeView: some View {
 		HStack {
-			ImageGalleryView(selectedImage: $selectedImage, remainingTime: $remainingTime, progress: $progress, item: item, images: item.images ?? .init(), resetTimer: resetTimer)
+			ImageGalleryView(selectedImage: $selectedImage, remainingTime: $remainingTime, progress: $progress, loadImages: $loadImages, item: viewModel.item, images: viewModel.item.images ?? .init(), resetTimer: resetTimer)
 				.accessibilityIdentifier("imageGalleryView")
-			VStack(spacing: 0) {
-				ScrollView {
-					DetailInfoView(isVisible: $isVisible, resetTimer: resetTimer, item: item)
-						.background(Color.clear)
-						.frame(maxHeight: .infinity)
-						.clipped()
-						.accessibilityIdentifier("detailInfoView")
+				.background(showPaddleInput ? Color.accentGrayBackground : Color.white)
+			ZStack {
+				VStack(spacing: 10) {
+					ScrollView {
+						DetailInfoView(isVisible: $isVisible, resetTimer: resetTimer, item: viewModel.item)
+							.background(Color.clear)
+							.frame(maxHeight: .infinity)
+							.clipped()
+							.accessibilityIdentifier("detailInfoView")
+							.padding(.top, 20)
+					}
+					.simultaneousGesture(DragGesture().onChanged { _ in resetTimer() })
+					BottomSectionItemView(item: viewModel.item, resetTimer: resetTimer, showPaddleInput: $showPaddleInput, valueType: $valueType, selectedAction: $selectedAction)
+						.frame(maxWidth: .infinity)
+						.accessibilityIdentifier("buttonSectionView")
+						.padding(.bottom, 10)
 				}
-				.simultaneousGesture(DragGesture().onChanged { _ in resetTimer() })
-				ButtonSectionItemView(item: item, resetTimer: resetTimer)
-					.background(Color.clear)
-					.frame(maxWidth: .infinity)
-					.clipped()
-					.padding()
-					.accessibilityIdentifier("buttonSectionView")
+				.background(Color.accentGrayBackground)
+
+				if showPaddleInput {
+					PaddleInputView(isVisible: $showPaddleInput, valueType: $valueType, selectedAction: $selectedAction, viewModel: PaddleInputViewModel(repositoryPerformTransaction: viewModel.repositoryPerformTransaction), item: viewModel.item, resetTimer: resetTimer)
+						.background(Color.white)
+						.transition(.opacity)
+						.zIndex(1)
+				}
 			}
-			.background(Color.accentGrayBackground)
 		}
 		.padding(.top, 0)
 	}
@@ -89,27 +102,32 @@ struct ItemDetailView: View {
 				closeButton
 					.padding([.top, .trailing], 20)
 			}
-			ScrollView {
-				VStack(spacing: 0) {
-					ImageGalleryView(selectedImage: $selectedImage, remainingTime: $remainingTime, progress: $progress, item: item, images: item.images ?? .init(), resetTimer: resetTimer)
-						.frame(height: geometry.size.height * 0.5)
-						.accessibilityIdentifier("imageGalleryView")
-					DetailInfoView(isVisible: $isVisible, resetTimer: resetTimer, item: item)
-						.background(Color.white)
-						.frame(maxHeight: .infinity, alignment: .top)
-						.clipped()
-						.accessibilityIdentifier("detailInfoView")
-				}
+			if showPaddleInput {
+				PaddleInputView(isVisible: $showPaddleInput, valueType: $valueType, selectedAction: $selectedAction, viewModel: PaddleInputViewModel(repositoryPerformTransaction: viewModel.repositoryPerformTransaction), item: viewModel.item, resetTimer: resetTimer)
+					.background(Color.white)
+					.transition(.opacity)
+					.zIndex(1)
 			}
-			.simultaneousGesture(DragGesture().onChanged { _ in resetTimer() })
-			ButtonSectionItemView(item: item, resetTimer: resetTimer)
-				.background(Color.white)
-				.frame(maxWidth: .infinity)
-				.padding(.bottom, 10)
-				.accessibilityIdentifier("buttonSectionView")
+			else {
+				ScrollView {
+					VStack(spacing: 0) {
+						ImageGalleryView(selectedImage: $selectedImage, remainingTime: $remainingTime, progress: $progress, loadImages: $loadImages, item: viewModel.item, images: viewModel.item.images ?? .init(), resetTimer: resetTimer)
+							.frame(height: geometry.size.height * 0.5)
+							.accessibilityIdentifier("imageGalleryView")
+						DetailInfoView(isVisible: $isVisible, resetTimer: resetTimer, item: viewModel.item)
+							.background(Color.white)
+							.frame(maxHeight: .infinity, alignment: .top)
+							.clipped()
+							.accessibilityIdentifier("detailInfoView")
+					}
+				}
+				.simultaneousGesture(DragGesture().onChanged { _ in resetTimer() })
+				BottomSectionItemView(item: viewModel.item, resetTimer: resetTimer, showPaddleInput: $showPaddleInput, valueType: $valueType, selectedAction: $selectedAction)
+					.frame(maxWidth: .infinity)
+					.accessibilityIdentifier("buttonSectionView")
+			}
 		}
-		.padding(.horizontal, 10)
-		.padding(.top, 10)
+		.padding(10)
 	}
 
 	private var closeButton: some View {
@@ -160,12 +178,14 @@ struct ItemDetailView: View {
 		stopTimer()
 		remainingTime = 60
 		timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
-			if remainingTime > 0 {
-				remainingTime -= 1
-				progress = CGFloat(remainingTime) / 60.0
-			}
-			else {
-				isVisible = false
+			DispatchQueue.main.async {
+				if remainingTime > 0 {
+					remainingTime -= 1
+					progress = CGFloat(remainingTime) / 60.0
+				}
+				else {
+					isVisible = false
+				}
 			}
 		}
 	}

@@ -2,6 +2,8 @@
 
 import SwiftUI
 
+import SwiftUI
+
 struct AuctionView: View {
 	@ObservedObject var viewModel: AuctionViewModel
 	@State var isLoading = true
@@ -9,6 +11,7 @@ struct AuctionView: View {
 	@State private var categories: [CategoryModel] = []
 	@State private var selectedItem: ItemModel? = nil
 	@State private var showDetailView: Bool = false
+	@State private var loadImages: Bool = false
 
 	init(viewModel: AuctionViewModel) {
 		self.viewModel = viewModel
@@ -91,17 +94,26 @@ struct AuctionView: View {
 			.onTapGesture {
 				withAnimation {
 					showDetailView = false
+					selectedItem = nil
+					loadImages = false
 				}
 			}
 			.accessibilityIdentifier("overlay")
 	}
 
 	private func itemDetailView(for item: ItemModel) -> some View {
-		ItemDetailView(item: item, isVisible: $showDetailView)
-			.transition(.move(edge: .bottom))
-			.animation(.easeInOut(duration: 0.4), value: showDetailView)
+		ItemDetailView(isVisible: $showDetailView, loadImages: $loadImages, viewModel: ItemDetailViewModel(item: item, repositoryPerformTransaction: viewModel.repositoryPerformTransaction))
 			.padding(10)
 			.background(Color.accentViolet.opacity(0.5))
+			.onAppear {
+				DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+					loadImages = true
+				}
+			}
+			.onDisappear {
+				selectedItem = nil
+				loadImages = false
+			}
 			.accessibilityIdentifier("itemDetailView")
 	}
 }

@@ -71,8 +71,8 @@ struct ForgotPasswordView<T: PageProtocol>: View {
 	private func getTextFields() -> some View {
 		VStack {
 			FormField(fieldType: .email,
-			          labelKey: LocalizedStringKey("registration_label_email"),
-			          hintKey: LocalizedStringKey("registration_hint_email"),
+			          labelKey: LocalizedStringKey("global_label_email"),
+			          hintKey: LocalizedStringKey("global_hint_email"),
 			          fieldValue: $viewModel.email,
 			          focusedField: _focusedField)
 		}.padding(.bottom)
