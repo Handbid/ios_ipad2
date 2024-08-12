@@ -276,6 +276,8 @@
 		CEE2BB272BB5BBB10033556D /* RegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2BB262BB5BBB10033556D /* RegisterRepository.swift */; };
 		CEE2BB292BB5D1070033556D /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2BB282BB5D1070033556D /* ApiConstants.swift */; };
 		CEEC46132BBD8DE900C685BF /* AnyPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEC46122BBD8DE900C685BF /* AnyPublisher.swift */; };
+		CEF9EC672C666A45001AF394 /* UserFoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9EC662C666A45001AF394 /* UserFoundView.swift */; };
+		CEF9EC692C6A0B73001AF394 /* ConfirmUserInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9EC682C6A0B73001AF394 /* ConfirmUserInformationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -564,6 +566,8 @@
 		CEE2BB262BB5BBB10033556D /* RegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRepository.swift; sourceTree = "<group>"; };
 		CEE2BB282BB5D1070033556D /* ApiConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConstants.swift; sourceTree = "<group>"; };
 		CEEC46122BBD8DE900C685BF /* AnyPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyPublisher.swift; sourceTree = "<group>"; };
+		CEF9EC662C666A45001AF394 /* UserFoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFoundView.swift; sourceTree = "<group>"; };
+		CEF9EC682C6A0B73001AF394 /* ConfirmUserInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmUserInformationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1388,6 +1392,8 @@
 				CE4D21112C2EF0DD0085DA1D /* FindPadleView.swift */,
 				CE4D210F2C2EF02E0085DA1D /* PaddleSubViewFactory.swift */,
 				CE4D21142C2EF1C50085DA1D /* CreateAccountView.swift */,
+				CEF9EC662C666A45001AF394 /* UserFoundView.swift */,
+				CEF9EC682C6A0B73001AF394 /* ConfirmUserInformationView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -1847,9 +1853,11 @@
 				8CABF5D42BB9E17C00A34870 /* CustomDimensValues.swift in Sources */,
 				CE7BB48F2C22FF2600D0AB91 /* FiltersItemsView.swift in Sources */,
 				8CD107F32BD11EB800E83261 /* TopBar.swift in Sources */,
+				CEF9EC692C6A0B73001AF394 /* ConfirmUserInformationView.swift in Sources */,
 				CEE2BB292BB5D1070033556D /* ApiConstants.swift in Sources */,
 				8C19678F2BFF54E2009360A0 /* DataManagerEnvironmentKey.swift in Sources */,
 				8CABF5CA2BB9CEF900A34870 /* ChooseEnvironmentViewModel.swift in Sources */,
+				CEF9EC672C666A45001AF394 /* UserFoundView.swift in Sources */,
 				8CD1080E2BD122CC00E83261 /* AuctionView.swift in Sources */,
 				8C4BFB542BDFAE2000B47154 /* AuctionFilterButtonViewModel.swift in Sources */,
 				CE1791622C18A05D009F09A3 /* AuctionProcessor.swift in Sources */,
@@ -2140,6 +2148,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

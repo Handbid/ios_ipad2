@@ -22,13 +22,17 @@
 "menuBar_label_paddle" = "Paddle";
 "paddle_btn_createAccount" = "Crear cuenta";
 "paddle_btn_createNewAccount" = "Crear una nueva cuenta";
+"paddle_btn_itsMe" = "Soy yo";
+"paddle_btn_notMe" = "No soy yo";
 "paddle_hint_cellPhone" = "Introducir número de teléfono";
 "paddle_hint_firstName" = "Introduzca su nombre";
 "paddle_hint_lastName" = "Introduzca su apellido";
+"paddle_label_confirmInformation" = "Confirme su información:";
 "paddle_label_createBidderAccount" = "Crear cuenta de licitador";
 "paddle_label_findPaddleByPhoneOrEmail" = "¿Ha perdido su número de pala? No hay problema. \nEncuéntrelo por correo electrónico o teléfono móvil:";
 "paddle_label_firstName" = "Nombre";
 "paddle_label_lastName" = "Apellido";
+"paddle_label_userFound" = "¡Creemos que te encontramos! ¿Eres tú?";
 "registration_btn_aboutHandbid" = "Acerca de Handbid";
 "registration_btn_changePassword" = "Cambiar la contraseña";
 "registration_btn_confirm" = "Confirmar";

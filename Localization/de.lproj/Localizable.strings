@@ -22,13 +22,17 @@
 "menuBar_label_paddle" = "Paddle";
 "paddle_btn_createAccount" = "Konto erstellen";
 "paddle_btn_createNewAccount" = "Neues Konto erstellen";
+"paddle_btn_itsMe" = "Ich bin es";
+"paddle_btn_notMe" = "Nicht ich";
 "paddle_hint_cellPhone" = "Telefonnummer eingeben";
 "paddle_hint_firstName" = "Ihren Vornamen eingeben";
 "paddle_hint_lastName" = "Ihren Nachnamen eingeben";
+"paddle_label_confirmInformation" = "Bestätigen Sie Ihre Angaben:";
 "paddle_label_createBidderAccount" = "Bieterkonto erstellen";
 "paddle_label_findPaddleByPhoneOrEmail" = "Sie haben Ihre Paddelnummer verloren? Kein Problem! \nFinden Sie sie per E-Mail oder Mobiltelefon:";
 "paddle_label_firstName" = "Vornamen";
 "paddle_label_lastName" = "Nachname";
+"paddle_label_userFound" = "Wir glauben, wir haben Sie gefunden! Sind Sie das?";
 "registration_btn_aboutHandbid" = "Über Handbid";
 "registration_btn_changePassword" = "Kennwort ändern";
 "registration_btn_confirm" = "Bestätigen";

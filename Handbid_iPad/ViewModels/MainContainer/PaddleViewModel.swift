@@ -17,6 +17,7 @@ class PaddleViewModel: ObservableObject, ViewModelTopBarProtocol {
 
 	@Published var firstName: String
 	@Published var lastName: String
+	@Published var user: UserModel?
 	var actions: [TopBarAction] { [] }
 
 	init(dataService: DataServiceWrapper) {
@@ -28,6 +29,7 @@ class PaddleViewModel: ObservableObject, ViewModelTopBarProtocol {
 		self.error = ""
 		self.firstName = ""
 		self.lastName = ""
+		self.user = nil
 	}
 
 	var centerViewData: TopBarCenterViewData {

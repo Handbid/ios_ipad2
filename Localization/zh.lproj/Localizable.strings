@@ -22,13 +22,17 @@
 "menuBar_label_paddle" = "Paddle";
 "paddle_btn_createAccount" = "创建账户";
 "paddle_btn_createNewAccount" = "创建新账户";
+"paddle_btn_itsMe" = "是我";
+"paddle_btn_notMe" = "不是我";
 "paddle_hint_cellPhone" = "输入电话号码";
 "paddle_hint_firstName" = "输入您的名字";
 "paddle_hint_lastName" = "输入您的姓氏";
+"paddle_label_confirmInformation" = "确认您的信息：";
 "paddle_label_createBidderAccount" = "创建投标人账户";
 "paddle_label_findPaddleByPhoneOrEmail" = "丢失了桨叶号码？没问题！ 通过电子邮件或手机查找：";
 "paddle_label_firstName" = "姓名";
 "paddle_label_lastName" = "姓氏";
+"paddle_label_userFound" = "我们认为我们找到了你！这是你吗？";
 "registration_btn_aboutHandbid" = "关于汉德";
 "registration_btn_changePassword" = "更改密码";
 "registration_btn_confirm" = "确认";
