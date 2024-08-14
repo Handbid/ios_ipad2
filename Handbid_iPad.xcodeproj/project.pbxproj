@@ -278,6 +278,8 @@
 		CEEC46132BBD8DE900C685BF /* AnyPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEC46122BBD8DE900C685BF /* AnyPublisher.swift */; };
 		CEF9EC672C666A45001AF394 /* UserFoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9EC662C666A45001AF394 /* UserFoundView.swift */; };
 		CEF9EC692C6A0B73001AF394 /* ConfirmUserInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9EC682C6A0B73001AF394 /* ConfirmUserInformationView.swift */; };
+		CEFB53FC2C6CCA5200420D87 /* RegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFB53FB2C6CCA5200420D87 /* RegistrationModel.swift */; };
+		CEFB53FE2C6CDDF800420D87 /* ReCaptchaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFB53FD2C6CDDF800420D87 /* ReCaptchaRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -568,6 +570,8 @@
 		CEEC46122BBD8DE900C685BF /* AnyPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyPublisher.swift; sourceTree = "<group>"; };
 		CEF9EC662C666A45001AF394 /* UserFoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFoundView.swift; sourceTree = "<group>"; };
 		CEF9EC682C6A0B73001AF394 /* ConfirmUserInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmUserInformationView.swift; sourceTree = "<group>"; };
+		CEFB53FB2C6CCA5200420D87 /* RegistrationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModel.swift; sourceTree = "<group>"; };
+		CEFB53FD2C6CDDF800420D87 /* ReCaptchaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReCaptchaRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -857,6 +861,7 @@
 				8C4BFB702BE1887F00B47154 /* TicketModel.swift */,
 				8C4BFB5A2BE113B000B47154 /* UserModel.swift */,
 				CE1791632C18A57B009F09A3 /* WebSocketMessageModel.swift */,
+				CEFB53FB2C6CCA5200420D87 /* RegistrationModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1495,6 +1500,7 @@
 				CEE2BB262BB5BBB10033556D /* RegisterRepository.swift */,
 				CE0CEE7E2BBEB39F004A27FD /* ResetPasswordRepository.swift */,
 				CEA0A64D2C2D9FD20088AA46 /* PaddleRepository.swift */,
+				CEFB53FD2C6CDDF800420D87 /* ReCaptchaRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -1867,6 +1873,7 @@
 				8CABF5D22BB9E16900A34870 /* CustomFontSize.swift in Sources */,
 				8C9FA44C2BD29C8B0041F28E /* DeviceConfigurator.swift in Sources */,
 				8C4B7BA72BB892AC0043B892 /* CustomStyledViewTextField.swift in Sources */,
+				CEFB53FC2C6CCA5200420D87 /* RegistrationModel.swift in Sources */,
 				8CABF5D62BB9E19900A34870 /* LayoutProperties.swift in Sources */,
 				8C8BEC362BA977560083D904 /* RootPageView.swift in Sources */,
 				8CAFD93A2BBD90F700C7D763 /* KeyboardResponsiveModifier.swift in Sources */,
@@ -1875,6 +1882,7 @@
 				8C9FA4402BD27FE80041F28E /* ManagerViewModel.swift in Sources */,
 				8C4BFB792BE189DA00B47154 /* LandingPageModel.swift in Sources */,
 				8C8BEC302BA975F10083D904 /* LogInView.swift in Sources */,
+				CEFB53FE2C6CDDF800420D87 /* ReCaptchaRepository.swift in Sources */,
 				8C4BFB5D2BE113E000B47154 /* OrganizationModel.swift in Sources */,
 				8C4BFB692BE184EA00B47154 /* CategoryModel.swift in Sources */,
 				8C79B4202C040D84005D4AAB /* WebSocketProcessor.swift in Sources */,
