@@ -8,6 +8,7 @@ struct DirectPurchaseButtonView: ButtonItemViewProtocol {
 	@Binding var showPaddleInput: Bool
 	@Binding var valueType: ItemValueType
 	@Binding var selectedAction: ActionButtonType?
+	let auction = try? DataManager.shared.fetchSingle(of: AuctionModel.self, from: .auction)
 
 	var body: some View {
 		VStack {
@@ -31,7 +32,7 @@ struct DirectPurchaseButtonView: ButtonItemViewProtocol {
 						showPaddleInput = true
 						selectedAction = .directPurchase((valueType.doubleValue ?? 1.0) * (item.buyNowPrice ?? 1.0))
 					}) {
-						Text("BUY NOW FOR \((valueType.doubleValue ?? 1.0) * (item.buyNowPrice ?? 1.0), format: .currency(code: "USD"))")
+						Text("BUY NOW FOR \((valueType.doubleValue ?? 1.0) * (item.buyNowPrice ?? 1.0), format: .currency(code: "\(auction?.currencyCode ?? "")"))")
 					}
 				}
 			}

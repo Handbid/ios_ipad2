@@ -6,6 +6,7 @@ struct DetailInfoView: View {
 	@Binding var isVisible: Bool
 	let resetTimer: () -> Void
 	let item: ItemModel
+	let auction = try? DataManager.shared.fetchSingle(of: AuctionModel.self, from: .auction)
 
 	var body: some View {
 		VStack(alignment: .leading, spacing: 15) {
@@ -45,14 +46,14 @@ struct DetailInfoView: View {
 				Spacer()
 			}
 
-			HStack(spacing: 30) {
+			HStack(spacing: 10) {
 				Spacer()
 				VStack(alignment: .leading) {
 					Text("VALUE")
 						.font(.subheadline)
 						.foregroundColor(.gray)
 						.fontWeight(.light)
-					Text("\(item.value ?? -1, format: .currency(code: "USD"))")
+					Text("\(item.value ?? -1, format: .currency(code: "\(auction?.currencyCode ?? "")"))")
 						.font(.subheadline)
 						.fontWeight(.bold)
 						.accessibilityIdentifier("itemValue")
@@ -70,7 +71,7 @@ struct DetailInfoView: View {
 						.font(.subheadline)
 						.foregroundColor(.gray)
 						.fontWeight(.light)
-					Text("\(item.bidIncrement ?? -1.0, format: .currency(code: "USD"))")
+					Text("\(item.bidIncrement ?? -1.0, format: .currency(code: "\(auction?.currencyCode ?? "")"))")
 						.font(.subheadline)
 						.fontWeight(.bold)
 						.accessibilityIdentifier("bidIncrement")
@@ -86,7 +87,7 @@ struct DetailInfoView: View {
 						.font(.subheadline)
 						.foregroundColor(.gray)
 						.fontWeight(.light)
-					Text("\(item.buyNowPrice ?? -1, format: .currency(code: "USD"))")
+					Text("\(item.buyNowPrice ?? -1, format: .currency(code: "\(auction?.currencyCode ?? "")"))")
 						.font(.subheadline)
 						.fontWeight(.bold)
 						.accessibilityIdentifier("buyNowPrice")

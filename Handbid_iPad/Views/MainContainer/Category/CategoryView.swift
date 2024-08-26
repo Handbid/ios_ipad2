@@ -5,6 +5,7 @@ import SwiftUI
 struct CategoryView: View {
 	let category: CategoryModel
 	let onItemSelect: (ItemModel) -> Void
+	let auction = try? DataManager.shared.fetchSingle(of: AuctionModel.self, from: .auction)
 
 	var body: some View {
 		VStack {
@@ -15,7 +16,7 @@ struct CategoryView: View {
 			ScrollView(.horizontal) {
 				LazyHStack {
 					ForEach(category.items ?? [], id: \.id) { item in
-						ItemView(item: item, currencyCode: "USD", viewWidth: 337, viewHeight: 397)
+						ItemView(item: item, currencyCode: "\(auction?.currencyCode ?? "")", viewWidth: 337, viewHeight: 397)
 							.onTapGesture {
 								onItemSelect(item)
 							}
