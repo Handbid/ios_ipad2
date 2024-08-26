@@ -10,7 +10,7 @@ class SearchItemsViewModel: ObservableObject {
 	@Published var filteredItems: [ItemModel] = []
 	@Published var searchHistory: [String] = []
 
-	private var auction: AuctionModel?
+	var auction: AuctionModel?
 	private var items: [ItemModel] = []
 	private var cancellables = Set<AnyCancellable>()
 

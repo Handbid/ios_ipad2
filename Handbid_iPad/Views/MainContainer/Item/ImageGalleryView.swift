@@ -35,7 +35,7 @@ struct ImageGalleryView: View {
 													.clipped()
 													.accessibilityIdentifier("selectedImage")
 											case .failure:
-												Image(systemName: "photo")
+												Image(systemName: "default_photo")
 													.resizable()
 													.scaledToFit()
 													.clipped()
@@ -56,7 +56,7 @@ struct ImageGalleryView: View {
 													.clipped()
 													.accessibilityIdentifier("firstImage")
 											case .failure:
-												Image(systemName: "photo")
+												Image(systemName: "default_photo")
 													.resizable()
 													.scaledToFit()
 													.clipped()
@@ -120,7 +120,7 @@ struct ImageGalleryView: View {
 														.stroke(selectedImage == imageUrl ? Color.blue : Color.clear, lineWidth: 2)
 												)
 										case .failure:
-											Image(systemName: "photo")
+											Image(systemName: "default_photo")
 												.resizable()
 												.scaledToFit()
 												.clipped()
@@ -152,6 +152,7 @@ struct ImageGalleryView: View {
 				HStack {
 					ProgressIndicatorView(isVisible: .constant(true), type: .circle(progress: $progress, lineWidth: 3, strokeColor: .accentViolet, backgroundColor: .accentLightViolet))
 						.frame(width: 14, height: 14)
+						.padding(5)
 						.accessibilityIdentifier("progressIndicator")
 					Text("This screen will close in \(remainingTime) seconds.")
 						.font(.callout)
@@ -160,7 +161,7 @@ struct ImageGalleryView: View {
 						.accessibilityIdentifier("remainingTimeText")
 					Spacer()
 				}
-				.padding()
+				.padding(3)
 			}
 		}
 	}
