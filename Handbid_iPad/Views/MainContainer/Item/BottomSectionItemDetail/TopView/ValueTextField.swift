@@ -4,6 +4,7 @@ import SwiftUI
 
 struct ValueTextField: View {
 	@Binding var valueType: ItemValueType
+	let auction = try? DataManager.shared.fetchSingle(of: AuctionModel.self, from: .auction)
 
 	var body: some View {
 		switch valueType {
@@ -17,7 +18,7 @@ struct ValueTextField: View {
 		case .none:
 			EmptyView()
 		default:
-			TextField("", value: bindingForTextField(), format: .currency(code: "USD"))
+			TextField("", value: bindingForTextField(), format: .currency(code: "\(auction?.currencyCode ?? "")"))
 				.multilineTextAlignment(.center)
 				.accessibilityIdentifier("valueTextField")
 				.frame(maxWidth: .infinity, alignment: .center)

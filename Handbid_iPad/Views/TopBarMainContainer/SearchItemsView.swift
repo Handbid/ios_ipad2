@@ -94,7 +94,7 @@ struct SearchItemsView<T: PageProtocol>: View {
 					ScrollView {
 						LazyVGrid(columns: columns, spacing: 20) {
 							ForEach(viewModel.filteredItems, id: \.id) { item in
-								ItemView(item: item, currencyCode: "USD", viewWidth: 337, viewHeight: 400)
+								ItemView(item: item, currencyCode: viewModel.auction?.currencyCode ?? "", viewWidth: 337, viewHeight: 400)
 									.frame(width: cellWidth, height: cellHeight)
 									.onTapGesture {
 										viewModel.addToSearchHistory(viewModel.searchText)

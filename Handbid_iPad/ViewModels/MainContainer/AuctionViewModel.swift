@@ -22,7 +22,7 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 	init(dataService: DataServiceWrapper, repository: AuctionRepository, repositoryPerformTransaction: PerformTransactionRepository) {
 		self.categories = []
 		self.filteredCategories = []
-		self.currencyCode = "USD"
+		self.currencyCode = auction?.currencyCode ?? ""
 
 		self.dataService = dataService
 		self.repository = repository
@@ -113,7 +113,7 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 		else { return }
 		auctionId = id
 		self.auction = auction
-		currencyCode = auction.currencyCode ?? "USD"
+		currencyCode = auction.currencyCode ?? ""
 		self.categories = categories.filter { $0.items?.isEmpty == false }
 	}
 }

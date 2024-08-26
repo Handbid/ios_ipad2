@@ -8,6 +8,7 @@ struct BuyNowButtonView: ButtonItemViewProtocol {
 	@Binding var showPaddleInput: Bool
 	@Binding var valueType: ItemValueType
 	@Binding var selectedAction: ActionButtonType?
+	let auction = try? DataManager.shared.fetchSingle(of: AuctionModel.self, from: .auction)
 
 	var body: some View {
 		VStack {
@@ -25,7 +26,7 @@ struct BuyNowButtonView: ButtonItemViewProtocol {
 					showPaddleInput = true
 					selectedAction = .buyNow
 				}) {
-					Text("BUY NOW FOR \(item.buyNowPrice ?? 1.0, format: .currency(code: "USD"))")
+					Text("BUY NOW FOR \(item.buyNowPrice ?? 1.0, format: .currency(code: "\(auction?.currencyCode ?? "")"))")
 				}
 
 				HStack {
