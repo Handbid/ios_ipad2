@@ -29,11 +29,11 @@ protocol PaddleRepository {
 
 class PaddleRepositoryImpl: PaddleRepository, NetworkingService {
 	var network: NetworkService.NetworkingClient
-    private let reCaptchaRepository: ReCaptchaRepository
+	private let reCaptchaRepository: ReCaptchaRepository
 
 	init(network: NetworkService.NetworkingClient) {
 		self.network = network
-        self.reCaptchaRepository = ReCaptchaRepository()
+		self.reCaptchaRepository = ReCaptchaRepository()
 	}
 
 	func findPaddle(identifier: String, auctionId: Int) -> AnyPublisher<RegistrationModel, any Error> {
@@ -52,21 +52,18 @@ class PaddleRepositoryImpl: PaddleRepository, NetworkingService {
 			.eraseToAnyPublisher()
 	}
 
-    func registerUser(firstName: String, lastName: String, phoneNumber: String, countryCode: String, email: String) async throws -> RegistrationModel {
-        
-        
-        let recaptchaToken = try await reCaptchaRepository.getReCaptchaToken()
-        
-        return try await get(ApiEndpoints.registerUser, params: ["firstName": firstName,
-                                                       "lastName": lastName,
-                                                       "mobile": phoneNumber,
-                                                       "email": email,
-                                                       "countryCode": countryCode,
-                                                       "recaptchaToken": recaptchaToken])
-        .tryMap { try RegistrationModel.decode($0) }
-        .map { $0 }
-        .eraseToAnyPublisher()
-        .async()
-    }
-	
+	func registerUser(firstName: String, lastName: String, phoneNumber: String, countryCode: String, email: String) async throws -> RegistrationModel {
+		let recaptchaToken = try await reCaptchaRepository.getReCaptchaToken()
+
+		return try await get(ApiEndpoints.registerUser, params: ["firstName": firstName,
+		                                                         "lastName": lastName,
+		                                                         "mobile": phoneNumber,
+		                                                         "email": email,
+		                                                         "countryCode": countryCode,
+		                                                         "recaptchaToken": recaptchaToken])
+			.tryMap { try RegistrationModel.decode($0) }
+			.map { $0 }
+			.eraseToAnyPublisher()
+			.async()
+	}
 }

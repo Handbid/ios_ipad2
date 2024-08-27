@@ -1,6 +1,5 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
-
 class ReCaptchaRepository {
 	private var recaptchaClient: RecaptchaClient?
 	private var recaptchaToken = ""
@@ -13,19 +12,17 @@ class ReCaptchaRepository {
 		try await client.execute(withAction: RecaptchaAction.login)
 	}
 
-    func getReCaptchaToken() async throws -> String {
-        do {
-            if recaptchaClient == nil {
-                recaptchaClient = try await getClientReCaptcha()
-            }
-            recaptchaToken = try await getTokenReCapcha(client: recaptchaClient!)
-        }
-        catch {
-            throw error
-        }
-        
-        return recaptchaToken
-    }
+	func getReCaptchaToken() async throws -> String {
+		do {
+			if recaptchaClient == nil {
+				recaptchaClient = try await getClientReCaptcha()
+			}
+			recaptchaToken = try await getTokenReCapcha(client: recaptchaClient!)
+		}
+		catch {
+			throw error
+		}
 
-	
+		return recaptchaToken
+	}
 }

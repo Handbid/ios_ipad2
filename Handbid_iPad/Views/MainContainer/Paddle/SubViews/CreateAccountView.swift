@@ -33,7 +33,7 @@ struct CreateAccountView: View {
 
 				PhoneField(labelKey: "global_label_cellPhone",
 				           hintKey: "paddle_hint_cellPhone",
-				           countryCodes: viewModel.countryCodes,
+				           countries: viewModel.countries,
 				           selectedCountryCode: $viewModel.countryCode,
 				           fieldValue: $viewModel.phone)
 					.padding(.bottom, 16)

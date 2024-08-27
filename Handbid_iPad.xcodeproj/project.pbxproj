@@ -273,6 +273,8 @@
 		CEAE3C4C2C25807200D13328 /* AuctionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE3C4B2C25807200D13328 /* AuctionViewTests.swift */; };
 		CEAE3C4E2C25914800D13328 /* ItemViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE3C4D2C25914800D13328 /* ItemViewTests.swift */; };
 		CEAE3C512C25A87200D13328 /* FilterItemsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE3C502C25A87200D13328 /* FilterItemsViewTests.swift */; };
+		CEC665852C7DCB9700F07E7D /* CountriesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC665842C7DCB9700F07E7D /* CountriesRepository.swift */; };
+		CEC665872C7DCD5800F07E7D /* CountryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC665862C7DCD5800F07E7D /* CountryModel.swift */; };
 		CEE2BB272BB5BBB10033556D /* RegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2BB262BB5BBB10033556D /* RegisterRepository.swift */; };
 		CEE2BB292BB5D1070033556D /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2BB282BB5D1070033556D /* ApiConstants.swift */; };
 		CEEC46132BBD8DE900C685BF /* AnyPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEC46122BBD8DE900C685BF /* AnyPublisher.swift */; };
@@ -565,6 +567,8 @@
 		CEAE3C4B2C25807200D13328 /* AuctionViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionViewTests.swift; sourceTree = "<group>"; };
 		CEAE3C4D2C25914800D13328 /* ItemViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewTests.swift; sourceTree = "<group>"; };
 		CEAE3C502C25A87200D13328 /* FilterItemsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterItemsViewTests.swift; sourceTree = "<group>"; };
+		CEC665842C7DCB9700F07E7D /* CountriesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesRepository.swift; sourceTree = "<group>"; };
+		CEC665862C7DCD5800F07E7D /* CountryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryModel.swift; sourceTree = "<group>"; };
 		CEE2BB262BB5BBB10033556D /* RegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRepository.swift; sourceTree = "<group>"; };
 		CEE2BB282BB5D1070033556D /* ApiConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConstants.swift; sourceTree = "<group>"; };
 		CEEC46122BBD8DE900C685BF /* AnyPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyPublisher.swift; sourceTree = "<group>"; };
@@ -862,6 +866,7 @@
 				8C4BFB5A2BE113B000B47154 /* UserModel.swift */,
 				CE1791632C18A57B009F09A3 /* WebSocketMessageModel.swift */,
 				CEFB53FB2C6CCA5200420D87 /* RegistrationModel.swift */,
+				CEC665862C7DCD5800F07E7D /* CountryModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1501,6 +1506,7 @@
 				CE0CEE7E2BBEB39F004A27FD /* ResetPasswordRepository.swift */,
 				CEA0A64D2C2D9FD20088AA46 /* PaddleRepository.swift */,
 				CEFB53FD2C6CDDF800420D87 /* ReCaptchaRepository.swift */,
+				CEC665842C7DCB9700F07E7D /* CountriesRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -1846,6 +1852,7 @@
 				8C9FA43C2BD256430041F28E /* SidebarItem.swift in Sources */,
 				CE7BB4952C231D4600D0AB91 /* CheckboxToggleStyle.swift in Sources */,
 				8C79B41E2C040D84005D4AAB /* ProcessorRegistry.swift in Sources */,
+				CEC665852C7DCB9700F07E7D /* CountriesRepository.swift in Sources */,
 				8C3D3C042BBB7F09002A5CFC /* MainAppCoordinator.swift in Sources */,
 				8C4BFB6D2BE1876600B47154 /* ItemImageModel.swift in Sources */,
 				8C0007BF2BAC764700AAEBA0 /* AppVersionModel.swift in Sources */,
@@ -1994,6 +2001,7 @@
 				8C4B7B8B2BB6FD030043B892 /* CustomStyledViewButton.swift in Sources */,
 				8CD108032BD1208100E83261 /* TopBarContentFactory.swift in Sources */,
 				8C8BEC642BA9ADE20083D904 /* AppLaunchControlView.swift in Sources */,
+				CEC665872C7DCD5800F07E7D /* CountryModel.swift in Sources */,
 				8C0725BA2BF6332600522F8C /* ModelTypeData.swift in Sources */,
 				8CABF5DA2BB9F35A00A34870 /* NavigationBackButtonModifier.swift in Sources */,
 				CE34FB3F2BB1963300701D2A /* OverlayInternalView.swift in Sources */,

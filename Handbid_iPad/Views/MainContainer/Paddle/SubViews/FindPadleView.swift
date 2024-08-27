@@ -43,7 +43,7 @@ struct FindPadleView: View {
 						.padding(.bottom, 16)
 				case .cellPhone:
 					PhoneField(hintKey: "paddle_hint_cellPhone",
-					           countryCodes: viewModel.countryCodes,
+					           countries: viewModel.countries,
 					           selectedCountryCode: $viewModel.countryCode,
 					           fieldValue: $viewModel.phone)
 						.padding(.bottom, 16)

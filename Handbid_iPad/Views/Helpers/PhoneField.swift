@@ -5,7 +5,7 @@ import SwiftUI
 struct PhoneField: View {
 	var labelKey: LocalizedStringKey? = nil
 	var hintKey: LocalizedStringKey
-	let countryCodes: [String]
+	let countries: [CountryModel]
 	@Binding var selectedCountryCode: String
 	@Binding var fieldValue: String
 
@@ -22,8 +22,8 @@ struct PhoneField: View {
 				Picker("Country code",
 				       selection: $selectedCountryCode)
 				{
-					ForEach(countryCodes, id: \.self) { code in
-						Text(code).tag(code)
+					ForEach(countries) { country in
+						Text("\(country.name!) +\(country.phoneCode!)").tag(country.countryCode!)
 					}
 				}
 				.pickerStyle(.menu)
