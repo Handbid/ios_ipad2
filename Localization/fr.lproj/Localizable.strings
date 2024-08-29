@@ -22,13 +22,17 @@
 "menuBar_label_paddle" = "Paddle";
 "paddle_btn_createAccount" = "Créer un compte";
 "paddle_btn_createNewAccount" = "Créer un nouveau compte";
+"paddle_btn_itsMe" = "C\'est moi";
+"paddle_btn_notMe" = "Pas moi";
 "paddle_hint_cellPhone" = "Saisir le numéro de téléphone";
 "paddle_hint_firstName" = "Entrez votre prénom";
 "paddle_hint_lastName" = "Entrez votre nom de famille";
+"paddle_label_confirmInformation" = "Confirmez vos informations :";
 "paddle_label_createBidderAccount" = "Créer un compte d\'enchérisseur";
 "paddle_label_findPaddleByPhoneOrEmail" = "Vous avez perdu votre numéro de pagaie? Pas de problème!\n Retrouvez-le par e-mail ou par téléphone portable:";
 "paddle_label_firstName" = "Prénom";
 "paddle_label_lastName" = "Nom de famille";
+"paddle_label_userFound" = "Nous pensons vous avoir trouvé ! Est-ce vous ?";
 "registration_btn_aboutHandbid" = "À propos de Handbid";
 "registration_btn_changePassword" = "Changer le mot de passe";
 "registration_btn_confirm" = "Confirmer";

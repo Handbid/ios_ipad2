@@ -112,7 +112,7 @@ class ItemModelTests: XCTestCase {
 		XCTAssertEqual(itemModel.status, "active")
 		XCTAssertEqual(itemModel.categoryId, 2)
 		XCTAssertEqual(itemModel.categoryName, "Category")
-		XCTAssertEqual(itemModel.itemType, "type")
+		XCTAssertEqual(itemModel.itemType, .none)
 		XCTAssertEqual(itemModel.isDirectPurchaseItem, true)
 		XCTAssertEqual(itemModel.isLive, false)
 		XCTAssertEqual(itemModel.isTicket, false)

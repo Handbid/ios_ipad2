@@ -21,7 +21,7 @@ class ItemViewTests: XCTestCase {
 			itemCode: "123"
 		)
 
-		view = ItemView(item: item, currencyCode: "USD")
+		view = ItemView(item: item, currencyCode: "USD", viewWidth: 337, viewHeight: 397)
 
 		ViewHosting.host(view: view)
 
@@ -65,7 +65,7 @@ class ItemViewTests: XCTestCase {
 			itemCode: "123"
 		)
 
-		view = ItemView(item: item, currencyCode: "USD")
+		view = ItemView(item: item, currencyCode: "USD", viewWidth: 337, viewHeight: 397)
 
 		ViewHosting.host(view: view)
 
@@ -87,7 +87,7 @@ class ItemViewTests: XCTestCase {
 			itemCode: "123"
 		)
 
-		view = ItemView(item: item, currencyCode: "USD")
+		view = ItemView(item: item, currencyCode: "USD", viewWidth: 337, viewHeight: 397)
 
 		ViewHosting.host(view: view)
 

@@ -5,7 +5,7 @@ import SwiftUI
 
 class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 	private var repository: AuctionRepository
-	var repositoryPerformTransaction: PerformTransactionRepository
+	var repositoryPerformTransaction: PerformTransactionRepository?
 
 	private var auctionId: Int = 0
 	private var auction: AuctionModel?
@@ -19,14 +19,17 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 	private var cancellables = Set<AnyCancellable>()
 	private var dataManager = DataManager.shared
 
-	init(dataService: DataServiceWrapper, repository: AuctionRepository, repositoryPerformTransaction: PerformTransactionRepository) {
+	init(dataService: DataServiceWrapper, repository: AuctionRepository, repositoryPerformTransaction: PerformTransactionRepository? = nil) {
 		self.categories = []
 		self.filteredCategories = []
 		self.currencyCode = auction?.currencyCode ?? ""
 
 		self.dataService = dataService
 		self.repository = repository
-		self.repositoryPerformTransaction = repositoryPerformTransaction
+
+		if let repositoryPerformTransaction {
+			self.repositoryPerformTransaction = repositoryPerformTransaction
+		}
 
 		dataManager.onDataChanged.sink {
 			self.updateAuction()

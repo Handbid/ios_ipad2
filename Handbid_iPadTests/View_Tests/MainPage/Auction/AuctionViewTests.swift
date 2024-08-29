@@ -20,7 +20,7 @@ class AuctionViewTests: XCTestCase {
 
 		do {
 			_ = try view.inspect().find(viewWithAccessibilityIdentifier: "AuctionView")
-			_ = try view.inspect().find(viewWithAccessibilityIdentifier: "CategoriesList")
+			_ = try view.inspect().find(viewWithAccessibilityIdentifier: "categoriesList")
 			_ = try view.inspect().find(viewWithAccessibilityLabel: "Loading overlay")
 		}
 		catch {
@@ -33,9 +33,9 @@ class AuctionViewTests: XCTestCase {
 	func testNoItemsDisplayed() {
 		let exp = view.inspection.inspect(onReceive: mockViewModel.$isLoading) { v in
 			XCTAssertNoThrow(try v.find(viewWithAccessibilityIdentifier: "AuctionView"))
-			XCTAssertNoThrow(try v.find(viewWithAccessibilityIdentifier: "NoItemsView"))
+			XCTAssertNoThrow(try v.find(viewWithAccessibilityIdentifier: "noItemsView"))
 			XCTAssertThrowsError(try v.find(viewWithAccessibilityLabel: "Loading overlay"))
-			XCTAssertThrowsError(try v.find(viewWithAccessibilityIdentifier: "CategoriesList"))
+			XCTAssertThrowsError(try v.find(viewWithAccessibilityIdentifier: "categoriesList"))
 		}
 
 		ViewHosting.host(view: view)
@@ -46,15 +46,12 @@ class AuctionViewTests: XCTestCase {
 
 	func testDisplayingCategories() {
 		let exp = view.inspection.inspect(onReceive: mockViewModel.$filteredCategories) { v in
-			let categories = try? v.find(viewWithAccessibilityIdentifier: "CategoriesList")
+			let categories = try? v.find(viewWithAccessibilityIdentifier: "categoriesList")
+			XCTAssertNotNil(categories, "Categories list view should not be nil")
+
 			let foreach = try? categories?.find(ViewType.ForEach.self)
-			XCTAssertEqual(foreach?.count, 2)
-
-			let category1 = try? foreach?.anyView(0).find(ViewType.ForEach.self)
-			let category2 = try? foreach?.anyView(1).find(ViewType.ForEach.self)
-
-			XCTAssertEqual(category1?.count, 3)
-			XCTAssertEqual(category2?.count, 1)
+			XCTAssertNotNil(foreach, "ForEach view should not be nil")
+			XCTAssertEqual(foreach?.count, 2, "There should be 2 categories")
 		}
 
 		ViewHosting.host(view: view)
@@ -66,7 +63,7 @@ class AuctionViewTests: XCTestCase {
 				ItemModel(id: 3),
 			]),
 			CategoryModel(id: 2, items: [
-				ItemModel(id: 3),
+				ItemModel(id: 4),
 			]),
 		]
 

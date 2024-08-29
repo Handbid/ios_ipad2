@@ -102,18 +102,25 @@ struct AuctionView: View {
 	}
 
 	private func itemDetailView(for item: ItemModel) -> some View {
-		ItemDetailView(isVisible: $showDetailView, loadImages: $loadImages, viewModel: ItemDetailViewModel(item: item, repositoryPerformTransaction: viewModel.repositoryPerformTransaction))
-			.padding(10)
-			.background(Color.accentViolet.opacity(0.5))
-			.onAppear {
-				DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-					loadImages = true
-				}
+		ItemDetailView(
+			isVisible: $showDetailView,
+			loadImages: $loadImages,
+			viewModel: ItemDetailViewModel(
+				item: item,
+				repositoryPerformTransaction: viewModel.repositoryPerformTransaction!
+			)
+		)
+		.padding(10)
+		.background(Color.accentViolet.opacity(0.5))
+		.onAppear {
+			DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+				loadImages = true
 			}
-			.onDisappear {
-				selectedItem = nil
-				loadImages = false
-			}
-			.accessibilityIdentifier("itemDetailView")
+		}
+		.onDisappear {
+			selectedItem = nil
+			loadImages = false
+		}
+		.accessibilityIdentifier("itemDetailView")
 	}
 }
