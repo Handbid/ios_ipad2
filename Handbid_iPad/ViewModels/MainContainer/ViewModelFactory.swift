@@ -9,8 +9,7 @@ enum ViewModelFactory {
 		let countriesRepository = CountriesRepositoryImpl(network: networkClient)
 
 		return (AuctionViewModel(dataService: dataService, repository: auctionRepository),
-		        PaddleViewModel(dataService: dataService,
-		                        paddleRepository: paddleRepository,
+		        PaddleViewModel(paddleRepository: paddleRepository,
 		                        countriesRepository: countriesRepository),
 		        MyBidsViewModel(dataService: dataService),
 		        ManagerViewModel(dataService: dataService),

@@ -4,14 +4,15 @@ import SwiftUI
 
 struct PaddleSubViewFactory: View {
 	@ObservedObject var viewModel: PaddleViewModel
-	@Binding var subView: PaddleView.SubView
 
 	var body: some View {
-		switch subView {
+		switch viewModel.subView {
 		case .findPaddle:
-			FindPadleView(viewModel: viewModel, subView: $subView)
+			FindPadleView(viewModel: viewModel)
 		case .createAccount:
-			CreateAccountView(viewModel: viewModel, subView: $subView)
+			CreateAccountView(viewModel: viewModel)
+		case let .userFound(data):
+			UserFoundView(viewModel: viewModel, model: data)
 		default:
 			EmptyView()
 		}

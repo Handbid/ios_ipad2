@@ -4,7 +4,6 @@ import SwiftUI
 
 struct FindPadleView: View {
 	@ObservedObject var viewModel: PaddleViewModel
-	@Binding var subView: PaddleView.SubView
 
 	var body: some View {
 		OverlayInternalView(cornerRadius: 40,
@@ -50,7 +49,7 @@ struct FindPadleView: View {
 				}
 
 				Button<Text>.styled(config: .secondaryButtonStyle, action: {
-					viewModel.error = "Test error"
+					viewModel.requestFindingPaddle()
 				}, label: {
 					Text(LocalizedStringKey("global_btn_continue"))
 						.textCase(.uppercase)
@@ -58,7 +57,7 @@ struct FindPadleView: View {
 				.padding(.bottom, 16)
 
 				Button<Text>.styled(config: .fifthButtonStyle, action: {
-					subView = .createAccount
+					viewModel.subView = .createAccount
 				}, label: {
 					Text(LocalizedStringKey("paddle_btn_createNewAccount"))
 						.textCase(.uppercase)

@@ -33,6 +33,7 @@
 "paddle_label_findPaddleByPhoneOrEmail" = "Lost your paddle number? No problem! \nFind it by email or cell phone:";
 "paddle_label_firstName" = "First name";
 "paddle_label_lastName" = "Last name";
+"paddle_label_paddleNotFound" = "We were not able to find anyone with this data";
 "paddle_label_paddleNumber" = "Paddle number";
 "paddle_label_sponsor" = "Sponsor";
 "paddle_label_tableNumber" = "Table number";

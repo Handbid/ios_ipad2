@@ -4,19 +4,25 @@ import SwiftUI
 
 struct UserFoundView: View {
 	@ObservedObject var viewModel: PaddleViewModel
-	@Binding var subView: PaddleView.SubView
+	private let model: RegistrationModel
+
+	init(viewModel: PaddleViewModel, model: RegistrationModel) {
+		self.viewModel = viewModel
+		self.model = model
+	}
+
 	var body: some View {
 		OverlayInternalView(cornerRadius: 40,
 		                    backgroundColor: .itemBackground,
 		                    topLabel: String(localized: "paddle_label_userFound"))
 		{
 			VStack {
-				Text(viewModel.user?.name ?? "nil")
+				Text("\(model.firstName ?? "nil") \(model.lastName ?? "nil")")
 					.font(TypographyStyle.h2.asFont())
 					.fontWeight(.bold)
 					.padding(.all, 16)
 
-				Text(viewModel.user?.email ?? "nil")
+				Text(model.email ?? "nil")
 					.applyTextStyle(style: .body)
 					.padding(.bottom, 32)
 

@@ -21,13 +21,13 @@ struct RegistrationModel: Decodable, NetworkingJSONDecodable {
 
 extension RegistrationModel: ArrowParsable {
 	mutating func deserialize(_ json: JSON) {
-		firstName <-- json["firstName"]
-		lastName <-- json["lastName"]
-		phoneNumber <-- json["phoneNumber"]
-		username <-- json["username"]
-		countryCode <-- json["countryCode"]
-		countryName <-- json["countryName"]
-		email <-- json["email"]
-		status <-- json["status"]
+		firstName <-- json["data.firstName"]
+		lastName <-- json["data.lastName"]
+		phoneNumber <-- json["data.phoneNumber"]
+		username <-- json["data.username"]
+		countryCode <-- json["data.countryCode"]
+		countryName <-- json["data.countryName"]
+		email <-- json["data.email"]
+		status <-- json["data.status"]
 	}
 }

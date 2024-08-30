@@ -4,21 +4,24 @@ import SwiftUI
 
 struct PaddleView: View {
 	enum SubView {
-		case findPaddle, createAccount, userFound, confirmInformation
+		case findPaddle, createAccount
+		case userFound(RegistrationModel)
+		case confirmInformation
 	}
 
 	@StateObject var viewModel: PaddleViewModel
-	@State var subView: SubView
+
 	init(viewModel: PaddleViewModel) {
 		self._viewModel = StateObject(wrappedValue: viewModel)
-		self.subView = .findPaddle
 	}
 
 	var body: some View {
-		PaddleSubViewFactory(viewModel: viewModel, subView: $subView)
-			.frame(maxWidth: .infinity, maxHeight: .infinity)
-			.background(.containerBackground)
-			.edgesIgnoringSafeArea(.all)
-			.accessibilityIdentifier("PaddleView")
+		LoadingOverlay(isLoading: $viewModel.isLoading) {
+			PaddleSubViewFactory(viewModel: viewModel)
+				.frame(maxWidth: .infinity, maxHeight: .infinity)
+				.background(.containerBackground)
+				.edgesIgnoringSafeArea(.all)
+				.accessibilityIdentifier("PaddleView")
+		}
 	}
 }

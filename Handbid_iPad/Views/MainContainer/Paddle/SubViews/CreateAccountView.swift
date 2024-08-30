@@ -4,7 +4,6 @@ import SwiftUI
 
 struct CreateAccountView: View {
 	@ObservedObject var viewModel: PaddleViewModel
-	@Binding var subView: PaddleView.SubView
 
 	var body: some View {
 		OverlayInternalView(cornerRadius: 40,
@@ -48,7 +47,7 @@ struct CreateAccountView: View {
 
 				Button<Text>.styled(config: .thirdButtonStyle,
 				                    action: {
-				                    	subView = .findPaddle
+				                    	viewModel.subView = .findPaddle
 				                    },
 				                    label: {
 				                    	Text(LocalizedStringKey("global_btn_back"))
