@@ -34,9 +34,12 @@ struct BottomSectionItemView: View {
 				)
 				.padding([.leading, .trailing], 20)
 				.padding(.top, 10)
+				.accessibilityElement(children: .combine)
+				.accessibilityLabel("Value section for \(viewModel.item.name)")
 			}
 
 			ButtonSectionItemFactory.createButtonView(for: viewModel.item, valueType: $viewModel.valueType, resetTimer: resetTimer, showPaddleInput: $showPaddleInput, selectedAction: $selectedAction)
+				.accessibilityLabel("Button section for \(viewModel.item.name)")
 		}
 		.onTapGesture {
 			resetTimer()
@@ -44,5 +47,6 @@ struct BottomSectionItemView: View {
 		.onChange(of: viewModel.valueType) { newValue in
 			valueType = newValue
 		}
+		.accessibilityElement(children: .contain)
 	}
 }

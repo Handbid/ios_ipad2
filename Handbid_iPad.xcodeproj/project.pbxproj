@@ -151,6 +151,8 @@
 		8C8BEC642BA9ADE20083D904 /* AppLaunchControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC632BA9ADE20083D904 /* AppLaunchControlView.swift */; };
 		8C8BEC662BA9B7DD0083D904 /* PageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC652BA9B7DD0083D904 /* PageProtocol.swift */; };
 		8C9030F32C8197B7001E9346 /* BiddingDisabledButtonViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9030F22C8197B7001E9346 /* BiddingDisabledButtonViewTests.swift */; };
+		8C9030F52C8199B4001E9346 /* BottomSectionItemViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9030F42C8199B4001E9346 /* BottomSectionItemViewTests.swift */; };
+		8C9030F72C819A59001E9346 /* ButtonSectionItemFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9030F62C819A59001E9346 /* ButtonSectionItemFactoryTests.swift */; };
 		8C908B2B2C3B9AF7009C8441 /* PerformTransactionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C908B2A2C3B9AF7009C8441 /* PerformTransactionRepository.swift */; };
 		8C908B2D2C3B9CBD009C8441 /* BidModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C908B2C2C3B9CBD009C8441 /* BidModel.swift */; };
 		8C908B2F2C3BA276009C8441 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C908B2E2C3BA276009C8441 /* Dictionary.swift */; };
@@ -478,6 +480,8 @@
 		8C8BEC632BA9ADE20083D904 /* AppLaunchControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLaunchControlView.swift; sourceTree = "<group>"; };
 		8C8BEC652BA9B7DD0083D904 /* PageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageProtocol.swift; sourceTree = "<group>"; };
 		8C9030F22C8197B7001E9346 /* BiddingDisabledButtonViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiddingDisabledButtonViewTests.swift; sourceTree = "<group>"; };
+		8C9030F42C8199B4001E9346 /* BottomSectionItemViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSectionItemViewTests.swift; sourceTree = "<group>"; };
+		8C9030F62C819A59001E9346 /* ButtonSectionItemFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSectionItemFactoryTests.swift; sourceTree = "<group>"; };
 		8C908B2A2C3B9AF7009C8441 /* PerformTransactionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformTransactionRepository.swift; sourceTree = "<group>"; };
 		8C908B2C2C3B9CBD009C8441 /* BidModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidModel.swift; sourceTree = "<group>"; };
 		8C908B2E2C3BA276009C8441 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
@@ -1234,6 +1238,8 @@
 			isa = PBXGroup;
 			children = (
 				8C9030F22C8197B7001E9346 /* BiddingDisabledButtonViewTests.swift */,
+				8C9030F42C8199B4001E9346 /* BottomSectionItemViewTests.swift */,
+				8C9030F62C819A59001E9346 /* ButtonSectionItemFactoryTests.swift */,
 			);
 			path = Item;
 			sourceTree = "<group>";
@@ -1923,6 +1929,7 @@
 				8C3AA3FB2C07199100110288 /* AuctionCollectionCellViewTests.swift in Sources */,
 				8C3AA4032C0799B000110288 /* SidebarItemTests.swift in Sources */,
 				8C9BC33E2C0CA4BF004F3DFF /* DatabaseServiceTests.swift in Sources */,
+				8C9030F52C8199B4001E9346 /* BottomSectionItemViewTests.swift in Sources */,
 				8C3AA4162C08741000110288 /* AuthModelTests.swift in Sources */,
 				CEAE3C512C25A87200D13328 /* FilterItemsViewTests.swift in Sources */,
 				8C3AA4122C08738500110288 /* AddressModelTests.swift in Sources */,
@@ -1931,6 +1938,7 @@
 				CE337F312C1C89F000681FE1 /* MockAuctionRepository.swift in Sources */,
 				CE337F2F2C1C86DC00681FE1 /* MockAuctionViewModel.swift in Sources */,
 				8C1B676E2BC834F3006B61F6 /* ResetPasswordModelTest.swift in Sources */,
+				8C9030F72C819A59001E9346 /* ButtonSectionItemFactoryTests.swift in Sources */,
 				CEAE3C4E2C25914800D13328 /* ItemViewTests.swift in Sources */,
 				8C1CC53D2BC3D8AC00AF80F4 /* MockChooseEnvironment.swift in Sources */,
 				CEAE3C4C2C25807200D13328 /* AuctionViewTests.swift in Sources */,
