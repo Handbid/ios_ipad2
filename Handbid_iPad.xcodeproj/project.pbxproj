@@ -153,6 +153,13 @@
 		8C9030F32C8197B7001E9346 /* BiddingDisabledButtonViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9030F22C8197B7001E9346 /* BiddingDisabledButtonViewTests.swift */; };
 		8C9030F52C8199B4001E9346 /* BottomSectionItemViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9030F42C8199B4001E9346 /* BottomSectionItemViewTests.swift */; };
 		8C9030F72C819A59001E9346 /* ButtonSectionItemFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9030F62C819A59001E9346 /* ButtonSectionItemFactoryTests.swift */; };
+		8C9030FA2C819C21001E9346 /* NormalValueViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9030F92C819C21001E9346 /* NormalValueViewTests.swift */; };
+		8C9030FC2C819C31001E9346 /* PlaceOrderValueViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9030FB2C819C31001E9346 /* PlaceOrderValueViewTests.swift */; };
+		8C9030FE2C819C43001E9346 /* ValueTextFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9030FD2C819C43001E9346 /* ValueTextFieldTests.swift */; };
+		8C9031002C819C61001E9346 /* DirectPurchaseValueViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9030FF2C819C61001E9346 /* DirectPurchaseValueViewTests.swift */; };
+		8C9031022C819C71001E9346 /* ValueButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9031012C819C71001E9346 /* ValueButtonTests.swift */; };
+		8C9031042C819C8B001E9346 /* NormalSoldButtonViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9031032C819C8B001E9346 /* NormalSoldButtonViewTests.swift */; };
+		8C9031062C819C98001E9346 /* DefaultValueViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9031052C819C98001E9346 /* DefaultValueViewTests.swift */; };
 		8C908B2B2C3B9AF7009C8441 /* PerformTransactionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C908B2A2C3B9AF7009C8441 /* PerformTransactionRepository.swift */; };
 		8C908B2D2C3B9CBD009C8441 /* BidModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C908B2C2C3B9CBD009C8441 /* BidModel.swift */; };
 		8C908B2F2C3BA276009C8441 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C908B2E2C3BA276009C8441 /* Dictionary.swift */; };
@@ -482,6 +489,13 @@
 		8C9030F22C8197B7001E9346 /* BiddingDisabledButtonViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiddingDisabledButtonViewTests.swift; sourceTree = "<group>"; };
 		8C9030F42C8199B4001E9346 /* BottomSectionItemViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSectionItemViewTests.swift; sourceTree = "<group>"; };
 		8C9030F62C819A59001E9346 /* ButtonSectionItemFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSectionItemFactoryTests.swift; sourceTree = "<group>"; };
+		8C9030F92C819C21001E9346 /* NormalValueViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalValueViewTests.swift; sourceTree = "<group>"; };
+		8C9030FB2C819C31001E9346 /* PlaceOrderValueViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceOrderValueViewTests.swift; sourceTree = "<group>"; };
+		8C9030FD2C819C43001E9346 /* ValueTextFieldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueTextFieldTests.swift; sourceTree = "<group>"; };
+		8C9030FF2C819C61001E9346 /* DirectPurchaseValueViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectPurchaseValueViewTests.swift; sourceTree = "<group>"; };
+		8C9031012C819C71001E9346 /* ValueButtonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueButtonTests.swift; sourceTree = "<group>"; };
+		8C9031032C819C8B001E9346 /* NormalSoldButtonViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalSoldButtonViewTests.swift; sourceTree = "<group>"; };
+		8C9031052C819C98001E9346 /* DefaultValueViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultValueViewTests.swift; sourceTree = "<group>"; };
 		8C908B2A2C3B9AF7009C8441 /* PerformTransactionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformTransactionRepository.swift; sourceTree = "<group>"; };
 		8C908B2C2C3B9CBD009C8441 /* BidModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidModel.swift; sourceTree = "<group>"; };
 		8C908B2E2C3BA276009C8441 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
@@ -1237,11 +1251,26 @@
 		8C9030F12C8196F2001E9346 /* Item */ = {
 			isa = PBXGroup;
 			children = (
-				8C9030F22C8197B7001E9346 /* BiddingDisabledButtonViewTests.swift */,
 				8C9030F42C8199B4001E9346 /* BottomSectionItemViewTests.swift */,
-				8C9030F62C819A59001E9346 /* ButtonSectionItemFactoryTests.swift */,
+				8C9030FD2C819C43001E9346 /* ValueTextFieldTests.swift */,
+				8C9031052C819C98001E9346 /* DefaultValueViewTests.swift */,
+				8C9030FF2C819C61001E9346 /* DirectPurchaseValueViewTests.swift */,
+				8C9030F82C819C17001E9346 /* Buttons */,
 			);
 			path = Item;
+			sourceTree = "<group>";
+		};
+		8C9030F82C819C17001E9346 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				8C9030F62C819A59001E9346 /* ButtonSectionItemFactoryTests.swift */,
+				8C9030F22C8197B7001E9346 /* BiddingDisabledButtonViewTests.swift */,
+				8C9031012C819C71001E9346 /* ValueButtonTests.swift */,
+				8C9031032C819C8B001E9346 /* NormalSoldButtonViewTests.swift */,
+				8C9030F92C819C21001E9346 /* NormalValueViewTests.swift */,
+				8C9030FB2C819C31001E9346 /* PlaceOrderValueViewTests.swift */,
+			);
+			path = Buttons;
 			sourceTree = "<group>";
 		};
 		8C9159C42C0FC1D7005C9D11 /* LoadingView */ = {
@@ -1951,8 +1980,10 @@
 				8C3AA4282C087ABA00110288 /* UserModelTests.swift in Sources */,
 				8C1B67722BC83FAE006B61F6 /* ForgotPasswordViewModel_Tests.swift in Sources */,
 				8C1CC5392BC3D84F00AF80F4 /* AuthModelTest.swift in Sources */,
+				8C9030FA2C819C21001E9346 /* NormalValueViewTests.swift in Sources */,
 				CEAB750D2BD12B65000AFB46 /* ForgotPasswordView_Tests.swift in Sources */,
 				CE22793E2BC691CC00F4430F /* GetStartedView_Tests.swift in Sources */,
+				8C9030FC2C819C31001E9346 /* PlaceOrderValueViewTests.swift in Sources */,
 				8C9BC3292C0C9064004F3DFF /* DatabaseServiceMock.swift in Sources */,
 				8C3AA42A2C087FC100110288 /* PuzzleModelTests.swift in Sources */,
 				8C9030F32C8197B7001E9346 /* BiddingDisabledButtonViewTests.swift in Sources */,
@@ -1981,8 +2012,10 @@
 				8C3AA41A2C0874BE00110288 /* OrganizationModelTests.swift in Sources */,
 				8C9159C82C102D5D005C9D11 /* LoadingViewTests.swift in Sources */,
 				8C3AA4012C07999800110288 /* SidebarTests.swift in Sources */,
+				8C9030FE2C819C43001E9346 /* ValueTextFieldTests.swift in Sources */,
 				8C9BC3192C08869D004F3DFF /* PaddleViewModelTests.swift in Sources */,
 				8C9BC32B2C0C90DD004F3DFF /* ChooseAuctionRepositoryMock.swift in Sources */,
+				8C9031042C819C8B001E9346 /* NormalSoldButtonViewTests.swift in Sources */,
 				CE6F8DBE2BCEC6BE009DBE7E /* MockGetStartedViewModel.swift in Sources */,
 				8C9BC31F2C089B0C004F3DFF /* MockWebSocketURLFactory.swift in Sources */,
 				8C9BC32F2C0C91C0004F3DFF /* WebSocketManagerTests.swift in Sources */,
@@ -1992,7 +2025,9 @@
 				CE1E7BBE2BD028B600BD3DD1 /* MockChooseEnvironmentViewModel.swift in Sources */,
 				CE6F8DC02BCECC3D009DBE7E /* LogInView_Tests.swift in Sources */,
 				CE9E2D112BC846140008FD8A /* InspectionExtension.swift in Sources */,
+				8C9031002C819C61001E9346 /* DirectPurchaseValueViewTests.swift in Sources */,
 				CEAB750F2BD12BEE000AFB46 /* MockForgotPasswordViewModel.swift in Sources */,
+				8C9031022C819C71001E9346 /* ValueButtonTests.swift in Sources */,
 				8C1CC5412BC3D8B800AF80F4 /* LogInViewModel_Tests.swift in Sources */,
 				8C3AA3F32C0715ED00110288 /* PinViewTests.swift in Sources */,
 				CE1E7BBC2BD0286D00BD3DD1 /* ChooseEnvironmentView_Tests.swift in Sources */,
@@ -2001,6 +2036,7 @@
 				8C1CC53F2BC3D8B000AF80F4 /* MockAuthManager.swift in Sources */,
 				8C3AA4202C087A5100110288 /* PromotedItemModelTests.swift in Sources */,
 				8C9BC3312C0C9202004F3DFF /* MockHandshakeResponseProvider.swift in Sources */,
+				8C9031062C819C98001E9346 /* DefaultValueViewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
