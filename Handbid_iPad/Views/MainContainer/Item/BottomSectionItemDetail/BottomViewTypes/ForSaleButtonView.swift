@@ -12,27 +12,33 @@ struct ForSaleButtonView: ButtonItemViewProtocol {
 	var body: some View {
 		VStack {
 			if item.itemIsAppealAndForSale() {
-				Button<Text>.styled(config: .secondaryButtonStyle, action: {
+				Button(action: {
 					resetTimer()
 					showPaddleInput = true
 					selectedAction = .donate
 				}) {
 					Text("SUPPORT US")
 				}
+				.accessibilityLabel("Support Us")
+				.accessibilityHint("Double-tap to donate and support this cause.")
 			}
 			else {
 				if item.itemStatus != .open, item.itemStatus != .open, item.itemStatus != .open, !(item.isHidden ?? false) {
 					Text("Item is not available for purchase")
 						.fontWeight(.bold)
+						.accessibilityLabel("Item not available")
+						.accessibilityHint("This item is not currently available for purchase.")
 				}
 				else {
-					Button<Text>.styled(config: .secondaryButtonStyle, action: {
+					Button(action: {
 						resetTimer()
 						showPaddleInput = true
 						selectedAction = .buyNow
 					}) {
 						Text("BUY NOW")
 					}
+					.accessibilityLabel("Buy Now")
+					.accessibilityHint("Double-tap to purchase this item immediately.")
 				}
 			}
 		}
