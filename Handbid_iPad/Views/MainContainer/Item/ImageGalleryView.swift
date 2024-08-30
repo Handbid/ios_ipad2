@@ -30,6 +30,7 @@ struct ImageGalleryView: View {
 											case .empty:
 												ProgressView()
 													.accessibilityLabel("Loading image")
+													.accessibilityIdentifier("loadingSelectedImage")
 											case let .success(image):
 												image.resizable()
 													.scaledToFit()
@@ -45,6 +46,7 @@ struct ImageGalleryView: View {
 													.accessibilityIdentifier("selectedImageError")
 											@unknown default:
 												EmptyView()
+													.accessibilityIdentifier("unknownImagePhase")
 											}
 										}
 									}
@@ -54,6 +56,7 @@ struct ImageGalleryView: View {
 											case .empty:
 												ProgressView()
 													.accessibilityLabel("Loading first image")
+													.accessibilityIdentifier("loadingFirstImage")
 											case let .success(image):
 												image.resizable()
 													.scaledToFit()
@@ -69,6 +72,7 @@ struct ImageGalleryView: View {
 													.accessibilityIdentifier("firstImageError")
 											@unknown default:
 												EmptyView()
+													.accessibilityIdentifier("unknownImagePhase")
 											}
 										}
 									}
@@ -78,6 +82,7 @@ struct ImageGalleryView: View {
 											case .empty:
 												ProgressView()
 													.accessibilityLabel("Loading fallback image")
+													.accessibilityIdentifier("loadingFallbackImage")
 											case let .success(image):
 												image.resizable()
 													.scaledToFit()
@@ -93,6 +98,7 @@ struct ImageGalleryView: View {
 													.accessibilityIdentifier("fallbackImageError")
 											@unknown default:
 												EmptyView()
+													.accessibilityIdentifier("unknownImagePhase")
 											}
 										}
 									}
@@ -107,6 +113,7 @@ struct ImageGalleryView: View {
 						.accessibilityAction {
 							resetTimer()
 						}
+						.accessibilityIdentifier("imageOverlay")
 
 					if item.isLive ?? false || item.isDirectPurchaseItem ?? false {
 						Text(item.isLive ?? false ? "LIVE" : "FOR SALE")
@@ -125,12 +132,13 @@ struct ImageGalleryView: View {
 
 				ScrollView(.vertical, showsIndicators: false) {
 					LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 10), count: 4), spacing: 10) {
-						ForEach(Array(images.enumerated()), id: \.offset) { _, image in
+						ForEach(Array(images.enumerated()), id: \.offset) { index, image in
 							ZStack {
 								Rectangle()
 									.foregroundColor(Color.accentGrayBackground)
 									.aspectRatio(13 / 9, contentMode: .fit)
 									.cornerRadius(15)
+									.accessibilityIdentifier("imageSlot_\(index)")
 
 								if let imageUrl = image.itemImageUrl, let url = URL(string: imageUrl), loadImages {
 									AsyncImage(url: url) { phase in
@@ -138,6 +146,7 @@ struct ImageGalleryView: View {
 										case .empty:
 											ProgressView()
 												.accessibilityLabel("Loading gallery image")
+												.accessibilityIdentifier("loadingGalleryImage_\(index)")
 										case let .success(image):
 											image.resizable()
 												.scaledToFit()
@@ -150,7 +159,7 @@ struct ImageGalleryView: View {
 													resetTimer()
 												}
 												.accessibilityLabel("Gallery image")
-												.accessibilityIdentifier("galleryImage_\(imageUrl)")
+												.accessibilityIdentifier("galleryImage_\(index)")
 												.overlay(
 													RoundedRectangle(cornerRadius: 10)
 														.stroke(selectedImage == imageUrl ? Color.blue : Color.clear, lineWidth: 2)
@@ -164,9 +173,10 @@ struct ImageGalleryView: View {
 												.frame(width: itemWidth, height: itemHeight)
 												.cornerRadius(10)
 												.accessibilityLabel("Gallery image failed to load")
-												.accessibilityIdentifier("galleryImageError")
+												.accessibilityIdentifier("galleryImageError_\(index)")
 										@unknown default:
 											EmptyView()
+												.accessibilityIdentifier("unknownGalleryImagePhase_\(index)")
 										}
 									}
 								}
@@ -177,10 +187,12 @@ struct ImageGalleryView: View {
 							ForEach(images.count ..< 4, id: \.self) { _ in
 								Color.clear
 									.frame(width: itemWidth, height: itemHeight)
+									.accessibilityIdentifier("emptySlot")
 							}
 						}
 					}
 					.padding(.horizontal)
+					.accessibilityIdentifier("imageGrid")
 				}
 				.frame(height: geometry.size.height * 0.35)
 
@@ -200,8 +212,10 @@ struct ImageGalleryView: View {
 						.accessibilityIdentifier("remainingTimeText")
 					Spacer()
 				}
+				.accessibilityIdentifier("footer")
 				.padding(3)
 			}
+			.accessibilityIdentifier("imageGalleryView")
 		}
 	}
 }
