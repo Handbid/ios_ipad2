@@ -4,7 +4,7 @@ import Combine
 import SwiftUI
 
 struct BottomSectionItemView: View {
-	@StateObject private var viewModel: BottomSectionItemViewModel
+	@StateObject var viewModel: BottomSectionItemViewModel
 	@Binding var valueType: ItemValueType
 	@Binding var showPaddleInput: Bool
 	@Binding var selectedAction: ActionButtonType?
@@ -24,6 +24,7 @@ struct BottomSectionItemView: View {
 			else if viewModel.item.itemType == .placeOrder || viewModel.item.itemType == .normal || viewModel.item.itemType == .buyNow || viewModel.item.itemIsAppealAndForSale() || viewModel.item.itemType == .directPurchase {
 				ZStack {
 					TopViewOfBottomSectionItemFactory.createValueView(for: viewModel.item, valueType: $viewModel.valueType, resetTimer: resetTimer)
+						.accessibilityIdentifier("valueDisplay")
 				}
 				.frame(maxWidth: .infinity, minHeight: 60, maxHeight: 60)
 				.background(Color.white)
@@ -35,11 +36,11 @@ struct BottomSectionItemView: View {
 				.padding([.leading, .trailing], 20)
 				.padding(.top, 10)
 				.accessibilityElement(children: .combine)
-				.accessibilityLabel("Value section for \(viewModel.item.name)")
+				.accessibilityIdentifier("valueSection")
 			}
 
 			ButtonSectionItemFactory.createButtonView(for: viewModel.item, valueType: $viewModel.valueType, resetTimer: resetTimer, showPaddleInput: $showPaddleInput, selectedAction: $selectedAction)
-				.accessibilityLabel("Button section for \(viewModel.item.name)")
+				.accessibilityIdentifier("buttonSection")
 		}
 		.onTapGesture {
 			resetTimer()
@@ -48,5 +49,6 @@ struct BottomSectionItemView: View {
 			valueType = newValue
 		}
 		.accessibilityElement(children: .contain)
+		.accessibilityIdentifier("bottomSectionItemView")
 	}
 }

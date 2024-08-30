@@ -14,6 +14,8 @@
 		8C0007D32BAC976700AAEBA0 /* AppInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0007C22BAC820500AAEBA0 /* AppInfoProvider.swift */; };
 		8C0725952BF61D7700522F8C /* DataPersistenceAndManagement.md in Resources */ = {isa = PBXBuildFile; fileRef = 8C0725942BF61D7700522F8C /* DataPersistenceAndManagement.md */; };
 		8C0725BA2BF6332600522F8C /* ModelTypeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0725B92BF6332600522F8C /* ModelTypeData.swift */; };
+		8C096C1F2C819F19008DF5E8 /* CenteredViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C096C1E2C819F19008DF5E8 /* CenteredViewTests.swift */; };
+		8C096C212C819F4B008DF5E8 /* BottomSectionItemViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C096C202C819F4B008DF5E8 /* BottomSectionItemViewModelTests.swift */; };
 		8C19678A2BFE132C009360A0 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1967892BFE132C009360A0 /* DataManager.swift */; };
 		8C19678D2BFE135B009360A0 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C19678C2BFE135B009360A0 /* DatabaseService.swift */; };
 		8C19678F2BFF54E2009360A0 /* DataManagerEnvironmentKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C19678E2BFF54E2009360A0 /* DataManagerEnvironmentKey.swift */; };
@@ -160,6 +162,7 @@
 		8C9031022C819C71001E9346 /* ValueButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9031012C819C71001E9346 /* ValueButtonTests.swift */; };
 		8C9031042C819C8B001E9346 /* NormalSoldButtonViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9031032C819C8B001E9346 /* NormalSoldButtonViewTests.swift */; };
 		8C9031062C819C98001E9346 /* DefaultValueViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9031052C819C98001E9346 /* DefaultValueViewTests.swift */; };
+		8C9031082C819EBC001E9346 /* TopBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9031072C819EBC001E9346 /* TopBarTests.swift */; };
 		8C908B2B2C3B9AF7009C8441 /* PerformTransactionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C908B2A2C3B9AF7009C8441 /* PerformTransactionRepository.swift */; };
 		8C908B2D2C3B9CBD009C8441 /* BidModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C908B2C2C3B9CBD009C8441 /* BidModel.swift */; };
 		8C908B2F2C3BA276009C8441 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C908B2E2C3BA276009C8441 /* Dictionary.swift */; };
@@ -167,7 +170,6 @@
 		8C908B332C3C8405009C8441 /* ItemProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C908B322C3C8405009C8441 /* ItemProcessor.swift */; };
 		8C9159B72C0CC86B005C9D11 /* UserProcessorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9159B62C0CC86B005C9D11 /* UserProcessorTests.swift */; };
 		8C9159B92C0CC8BF005C9D11 /* ResetPasswordRepositoryImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9159B82C0CC8BF005C9D11 /* ResetPasswordRepositoryImplTests.swift */; };
-		8C9159BB2C0CD6D1005C9D11 /* TopBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9159BA2C0CD6D1005C9D11 /* TopBarTests.swift */; };
 		8C9159C32C0FC1C8005C9D11 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9159C22C0FC1C8005C9D11 /* LoadingView.swift */; };
 		8C9159C62C0FC1EC005C9D11 /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9159C52C0FC1EC005C9D11 /* LoadingOverlay.swift */; };
 		8C9159C82C102D5D005C9D11 /* LoadingViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9159C72C102D5D005C9D11 /* LoadingViewTests.swift */; };
@@ -349,6 +351,8 @@
 		8C0007D12BAC8FBD00AAEBA0 /* Handbid-iPad-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Handbid-iPad-Bridging-Header.h"; sourceTree = "<group>"; };
 		8C0725942BF61D7700522F8C /* DataPersistenceAndManagement.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DataPersistenceAndManagement.md; sourceTree = "<group>"; };
 		8C0725B92BF6332600522F8C /* ModelTypeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTypeData.swift; sourceTree = "<group>"; };
+		8C096C1E2C819F19008DF5E8 /* CenteredViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenteredViewTests.swift; sourceTree = "<group>"; };
+		8C096C202C819F4B008DF5E8 /* BottomSectionItemViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSectionItemViewModelTests.swift; sourceTree = "<group>"; };
 		8C1967892BFE132C009360A0 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		8C19678C2BFE135B009360A0 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		8C19678E2BFF54E2009360A0 /* DataManagerEnvironmentKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerEnvironmentKey.swift; sourceTree = "<group>"; };
@@ -496,6 +500,7 @@
 		8C9031012C819C71001E9346 /* ValueButtonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueButtonTests.swift; sourceTree = "<group>"; };
 		8C9031032C819C8B001E9346 /* NormalSoldButtonViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalSoldButtonViewTests.swift; sourceTree = "<group>"; };
 		8C9031052C819C98001E9346 /* DefaultValueViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultValueViewTests.swift; sourceTree = "<group>"; };
+		8C9031072C819EBC001E9346 /* TopBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarTests.swift; sourceTree = "<group>"; };
 		8C908B2A2C3B9AF7009C8441 /* PerformTransactionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformTransactionRepository.swift; sourceTree = "<group>"; };
 		8C908B2C2C3B9CBD009C8441 /* BidModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidModel.swift; sourceTree = "<group>"; };
 		8C908B2E2C3BA276009C8441 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
@@ -503,7 +508,6 @@
 		8C908B322C3C8405009C8441 /* ItemProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemProcessor.swift; sourceTree = "<group>"; };
 		8C9159B62C0CC86B005C9D11 /* UserProcessorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProcessorTests.swift; sourceTree = "<group>"; };
 		8C9159B82C0CC8BF005C9D11 /* ResetPasswordRepositoryImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordRepositoryImplTests.swift; sourceTree = "<group>"; };
-		8C9159BA2C0CD6D1005C9D11 /* TopBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarTests.swift; sourceTree = "<group>"; };
 		8C9159C22C0FC1C8005C9D11 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		8C9159C52C0FC1EC005C9D11 /* LoadingOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
 		8C9159C72C102D5D005C9D11 /* LoadingViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewTests.swift; sourceTree = "<group>"; };
@@ -1083,7 +1087,6 @@
 				8C3AA4092C07EA7B00110288 /* MainContainerViewBuilderTests.swift */,
 				8C3AA3EF2C07159F00110288 /* SelectAuctionTopBarCenterViewTests.swift */,
 				8C3AA3F42C07177500110288 /* TopBarContentFactoryTests.swift */,
-				8C9159BA2C0CD6D1005C9D11 /* TopBarTests.swift */,
 				8C3AA3FF2C07994D00110288 /* Sidebar */,
 			);
 			path = MainPage;
@@ -1252,7 +1255,10 @@
 			isa = PBXGroup;
 			children = (
 				8C9030F42C8199B4001E9346 /* BottomSectionItemViewTests.swift */,
+				8C096C202C819F4B008DF5E8 /* BottomSectionItemViewModelTests.swift */,
+				8C9031072C819EBC001E9346 /* TopBarTests.swift */,
 				8C9030FD2C819C43001E9346 /* ValueTextFieldTests.swift */,
+				8C096C1E2C819F19008DF5E8 /* CenteredViewTests.swift */,
 				8C9031052C819C98001E9346 /* DefaultValueViewTests.swift */,
 				8C9030FF2C819C61001E9346 /* DirectPurchaseValueViewTests.swift */,
 				8C9030F82C819C17001E9346 /* Buttons */,
@@ -1949,6 +1955,7 @@
 				8C3AA4242C087A8800110288 /* TicketModelTests.swift in Sources */,
 				8C9BC3382C0C94C0004F3DFF /* ChooseAuctionViewTests.swift in Sources */,
 				8C3AA41E2C08752900110288 /* OrganizationImageModelTests.swift in Sources */,
+				8C9031082C819EBC001E9346 /* TopBarTests.swift in Sources */,
 				8C3AA4142C0873A200110288 /* AuctionModelTests.swift in Sources */,
 				8C3AA3F92C07188100110288 /* ChooseOrganizationRepositoryImplTests.swift in Sources */,
 				CE6F8DC22BCEE513009DBE7E /* MockLogInViewModel.swift in Sources */,
@@ -1993,7 +2000,6 @@
 				CE337F352C1C8BCB00681FE1 /* MockMyBidsViewModel.swift in Sources */,
 				8C9BC33C2C0CA422004F3DFF /* DataManagerTests.swift in Sources */,
 				8C9159CA2C102D71005C9D11 /* LoadingOverlayTests.swift in Sources */,
-				8C9159BB2C0CD6D1005C9D11 /* TopBarTests.swift in Sources */,
 				8C3AA3F72C0717A600110288 /* OrganizationAddressModelTests.swift in Sources */,
 				8C9159B92C0CC8BF005C9D11 /* ResetPasswordRepositoryImplTests.swift in Sources */,
 				8C1CC5402BC3D8B600AF80F4 /* ChooseEnvironmentViewModel_Tests.swift in Sources */,
@@ -2013,7 +2019,9 @@
 				8C9159C82C102D5D005C9D11 /* LoadingViewTests.swift in Sources */,
 				8C3AA4012C07999800110288 /* SidebarTests.swift in Sources */,
 				8C9030FE2C819C43001E9346 /* ValueTextFieldTests.swift in Sources */,
+				8C096C212C819F4B008DF5E8 /* BottomSectionItemViewModelTests.swift in Sources */,
 				8C9BC3192C08869D004F3DFF /* PaddleViewModelTests.swift in Sources */,
+				8C096C1F2C819F19008DF5E8 /* CenteredViewTests.swift in Sources */,
 				8C9BC32B2C0C90DD004F3DFF /* ChooseAuctionRepositoryMock.swift in Sources */,
 				8C9031042C819C8B001E9346 /* NormalSoldButtonViewTests.swift in Sources */,
 				CE6F8DBE2BCEC6BE009DBE7E /* MockGetStartedViewModel.swift in Sources */,

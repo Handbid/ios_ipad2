@@ -2,6 +2,8 @@
 
 import SwiftUI
 
+import SwiftUI
+
 struct TopBar: View {
 	var content: TopBarContentProtocol
 	let barHeight: CGFloat
@@ -13,11 +15,14 @@ struct TopBar: View {
 
 	var body: some View {
 		HStack {
-			leftViews.accessibilityElement(children: .contain)
+			leftViews
+				.accessibilityElement(children: .contain)
 				.accessibility(identifier: "LeftViews")
 			CenteredView(view: content.centerView)
+				.accessibilityElement(children: .contain)
 				.accessibility(identifier: "CenterView")
-			rightViews.accessibilityElement(children: .contain)
+			rightViews
+				.accessibilityElement(children: .contain)
 				.accessibility(identifier: "RightViews")
 		}
 		.frame(height: barHeight)
@@ -38,6 +43,7 @@ struct TopBar: View {
 		.frame(width: 90)
 		.frame(maxHeight: .infinity)
 		.clipped()
+		.accessibilityElement(children: .combine)
 	}
 
 	private var rightViews: some View {
@@ -52,6 +58,7 @@ struct TopBar: View {
 		.padding(.trailing, 10)
 		.frame(maxHeight: .infinity)
 		.clipped()
+		.accessibilityElement(children: .combine)
 	}
 }
 
