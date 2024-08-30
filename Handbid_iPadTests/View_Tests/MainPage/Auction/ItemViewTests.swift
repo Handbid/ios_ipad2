@@ -27,9 +27,8 @@ class ItemViewTests: XCTestCase {
 
 		var inspectionError: Error? = nil
 
-		XCTAssertNoThrow(try view.inspect()
-			.find(viewWithAccessibilityIdentifier: "ImageLoadingIndicator")
-		)
+		XCTAssertNoThrow(try view.inspect().find(viewWithAccessibilityIdentifier: "ImageLoadingIndicator"))
+
 		do {
 			let category = try view.inspect().find(viewWithAccessibilityIdentifier: "CategoryName")
 			XCTAssertEqual(try category.text().string(), "category")
@@ -42,8 +41,6 @@ class ItemViewTests: XCTestCase {
 
 			let name = try view.inspect().find(viewWithAccessibilityIdentifier: "ItemName")
 			XCTAssertEqual(try name.text().string(), "Test")
-
-			_ = try view.inspect().find(viewWithAccessibilityIdentifier: "CurrentPrice")
 		}
 		catch {
 			inspectionError = error

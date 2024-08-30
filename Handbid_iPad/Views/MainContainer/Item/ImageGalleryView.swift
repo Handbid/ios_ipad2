@@ -45,7 +45,7 @@ struct ImageGalleryView: View {
 											}
 										}
 									}
-									else if let firstImage = images.first?.itemImageUrl, let firstImageUrl = URL(string: firstImage) {
+									else if !images.isEmpty, let firstImage = images.first?.itemImageUrl, let firstImageUrl = URL(string: firstImage) {
 										AsyncImage(url: firstImageUrl) { phase in
 											switch phase {
 											case .empty:
@@ -61,6 +61,27 @@ struct ImageGalleryView: View {
 													.scaledToFit()
 													.clipped()
 													.accessibilityIdentifier("firstImageError")
+											@unknown default:
+												EmptyView()
+											}
+										}
+									}
+									else if let fallbackImageUrl = item.imageUrl, let url = URL(string: fallbackImageUrl) {
+										AsyncImage(url: url) { phase in
+											switch phase {
+											case .empty:
+												ProgressView()
+											case let .success(image):
+												image.resizable()
+													.scaledToFit()
+													.clipped()
+													.accessibilityIdentifier("fallbackImage")
+											case .failure:
+												Image(systemName: "default_photo")
+													.resizable()
+													.scaledToFit()
+													.clipped()
+													.accessibilityIdentifier("fallbackImageError")
 											@unknown default:
 												EmptyView()
 											}

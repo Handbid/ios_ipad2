@@ -63,9 +63,17 @@ struct ItemDetailView: View {
 
 	private var landscapeView: some View {
 		HStack {
-			ImageGalleryView(selectedImage: $selectedImage, remainingTime: $remainingTime, progress: $progress, loadImages: $loadImages, item: viewModel.item, images: viewModel.item.images ?? .init(), resetTimer: resetTimer)
-				.accessibilityIdentifier("imageGalleryView")
-				.background(showPaddleInput ? Color.accentGrayBackground : Color.white)
+			ImageGalleryView(
+				selectedImage: $selectedImage,
+				remainingTime: $remainingTime,
+				progress: $progress,
+				loadImages: $loadImages,
+				item: viewModel.item,
+				images: (viewModel.item.images?.isEmpty == false) ? viewModel.item.images! : [ItemImageModel(itemImageUrl: viewModel.item.imageUrl)],
+				resetTimer: resetTimer
+			)
+			.accessibilityIdentifier("imageGalleryView")
+			.background(showPaddleInput ? Color.accentGrayBackground : Color.white)
 			ZStack {
 				VStack(spacing: 10) {
 					ScrollView {
@@ -113,9 +121,17 @@ struct ItemDetailView: View {
 			else {
 				ScrollView {
 					VStack(spacing: 0) {
-						ImageGalleryView(selectedImage: $selectedImage, remainingTime: $remainingTime, progress: $progress, loadImages: $loadImages, item: viewModel.item, images: viewModel.item.images ?? .init(), resetTimer: resetTimer)
-							.frame(height: geometry.size.height * 0.5)
-							.accessibilityIdentifier("imageGalleryView")
+						ImageGalleryView(
+							selectedImage: $selectedImage,
+							remainingTime: $remainingTime,
+							progress: $progress,
+							loadImages: $loadImages,
+							item: viewModel.item,
+							images: (viewModel.item.images?.isEmpty == false) ? viewModel.item.images! : [ItemImageModel(itemImageUrl: viewModel.item.imageUrl)],
+							resetTimer: resetTimer
+						)
+						.frame(height: geometry.size.height * 0.5)
+						.accessibilityIdentifier("imageGalleryView")
 						DetailInfoView(isVisible: $isVisible, resetTimer: resetTimer, item: viewModel.item)
 							.background(Color.white)
 							.frame(maxHeight: .infinity, alignment: .top)

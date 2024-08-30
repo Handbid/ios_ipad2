@@ -108,10 +108,12 @@ struct ItemView: View {
 				.frame(maxHeight: 60)
 				.lineLimit(3)
 				.padding([.bottom, .top], 3)
+				.accessibilityIdentifier("ItemName")
 
 			Text(item.currentPrice ?? -1, format: .currency(code: currencyCode))
 				.applyTextStyle(style: .subheader)
 				.lineLimit(1)
+				.accessibilityIdentifier("CurrentPrice")
 		}
 		.padding(.vertical, 8)
 		.padding(.horizontal, 16)
