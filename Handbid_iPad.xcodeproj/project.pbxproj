@@ -150,6 +150,7 @@
 		8C8BEC3A2BA977F00083D904 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC392BA977F00083D904 /* Coordinator.swift */; };
 		8C8BEC642BA9ADE20083D904 /* AppLaunchControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC632BA9ADE20083D904 /* AppLaunchControlView.swift */; };
 		8C8BEC662BA9B7DD0083D904 /* PageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC652BA9B7DD0083D904 /* PageProtocol.swift */; };
+		8C9030F32C8197B7001E9346 /* BiddingDisabledButtonViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9030F22C8197B7001E9346 /* BiddingDisabledButtonViewTests.swift */; };
 		8C908B2B2C3B9AF7009C8441 /* PerformTransactionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C908B2A2C3B9AF7009C8441 /* PerformTransactionRepository.swift */; };
 		8C908B2D2C3B9CBD009C8441 /* BidModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C908B2C2C3B9CBD009C8441 /* BidModel.swift */; };
 		8C908B2F2C3BA276009C8441 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C908B2E2C3BA276009C8441 /* Dictionary.swift */; };
@@ -476,6 +477,7 @@
 		8C8BEC392BA977F00083D904 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		8C8BEC632BA9ADE20083D904 /* AppLaunchControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLaunchControlView.swift; sourceTree = "<group>"; };
 		8C8BEC652BA9B7DD0083D904 /* PageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageProtocol.swift; sourceTree = "<group>"; };
+		8C9030F22C8197B7001E9346 /* BiddingDisabledButtonViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiddingDisabledButtonViewTests.swift; sourceTree = "<group>"; };
 		8C908B2A2C3B9AF7009C8441 /* PerformTransactionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformTransactionRepository.swift; sourceTree = "<group>"; };
 		8C908B2C2C3B9CBD009C8441 /* BidModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidModel.swift; sourceTree = "<group>"; };
 		8C908B2E2C3BA276009C8441 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
@@ -1054,6 +1056,7 @@
 		8C3AA3EE2C07159500110288 /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
+				8C9030F12C8196F2001E9346 /* Item */,
 				CEAE3C4F2C25A85300D13328 /* TopBarMainContainer */,
 				CEAE3C4A2C25805F00D13328 /* Auction */,
 				8C9BC3412C0CB8D5004F3DFF /* MainContainerTests.swift */,
@@ -1225,6 +1228,14 @@
 				8CABF5BC2BB9C60900A34870 /* PasswordResetConfirmationView.swift */,
 			);
 			path = Registration;
+			sourceTree = "<group>";
+		};
+		8C9030F12C8196F2001E9346 /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				8C9030F22C8197B7001E9346 /* BiddingDisabledButtonViewTests.swift */,
+			);
+			path = Item;
 			sourceTree = "<group>";
 		};
 		8C9159C42C0FC1D7005C9D11 /* LoadingView */ = {
@@ -1936,6 +1947,7 @@
 				CE22793E2BC691CC00F4430F /* GetStartedView_Tests.swift in Sources */,
 				8C9BC3292C0C9064004F3DFF /* DatabaseServiceMock.swift in Sources */,
 				8C3AA42A2C087FC100110288 /* PuzzleModelTests.swift in Sources */,
+				8C9030F32C8197B7001E9346 /* BiddingDisabledButtonViewTests.swift in Sources */,
 				8C1CC53E2BC3D8AE00AF80F4 /* MockRegisterRepository.swift in Sources */,
 				8C3AA3E42C0714B000110288 /* AnyPublisherTests.swift in Sources */,
 				8C9BC3332C0C9224004F3DFF /* HandbidWebSocketFactoryTests.swift in Sources */,
