@@ -18,6 +18,9 @@ struct RegistrationModel: Decodable, NetworkingJSONDecodable {
 	var currentPaddleNumber: Int?
 	var currentPlacement: String?
 	var sponsorName: String?
+
+	var success: Bool?
+	var errorMessage: String?
 }
 
 extension RegistrationModel: ArrowParsable {
@@ -34,5 +37,8 @@ extension RegistrationModel: ArrowParsable {
 		currentPlacement <-- json["data.currentPlacement"]
 		sponsorName <-- json["data.sponsorName"]
 		isCheckedIn <-- json["data.isCheckedIn"]
+
+		success <-- json["success"]
+		errorMessage <-- json["errorMessage"]
 	}
 }

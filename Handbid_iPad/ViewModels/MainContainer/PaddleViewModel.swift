@@ -15,6 +15,7 @@ class PaddleViewModel: ObservableObject, ViewModelTopBarProtocol {
 	@Published var countryCode: String
 	@Published var error: String
 	private var auctionId: Int
+	private var auctionGuid: String
 
 	private let dataManager = DataManager.shared
 
@@ -23,7 +24,6 @@ class PaddleViewModel: ObservableObject, ViewModelTopBarProtocol {
 
 	@Published var firstName: String
 	@Published var lastName: String
-	@Published var user: UserModel?
 	var actions: [TopBarAction] { [] }
 	private var cancellables = Set<AnyCancellable>()
 
@@ -40,9 +40,9 @@ class PaddleViewModel: ObservableObject, ViewModelTopBarProtocol {
 		self.error = ""
 		self.firstName = ""
 		self.lastName = ""
-		self.user = nil
 		self.countries = []
 		self.auctionId = -1
+		self.auctionGuid = ""
 
 		dataManager.onDataChanged.sink {
 			self.updateAuctionId()
@@ -62,10 +62,12 @@ class PaddleViewModel: ObservableObject, ViewModelTopBarProtocol {
 	private func updateAuctionId() {
 		do {
 			guard let auction = try dataManager.fetchSingle(of: AuctionModel.self, from: .auction),
-			      let auctionId = auction.identity
+			      let auctionId = auction.identity,
+			      let auctionGuid = auction.auctionGuid
 			else { return }
 
 			self.auctionId = auctionId
+			self.auctionGuid = auctionGuid
 		}
 		catch {
 			self.error = error.localizedDescription
@@ -149,6 +151,75 @@ class PaddleViewModel: ObservableObject, ViewModelTopBarProtocol {
 					self.subView = .findPaddle
 				})
 				.store(in: &cancellables)
+		}
+	}
+
+	private func validateDataForRegistration() -> Bool {
+		error = ""
+
+		if firstName.isEmpty || lastName.isEmpty {
+			error = String(localized: "paddle_hint_emptyName")
+			return false
+		}
+		else if !email.isValidEmail() {
+			error = String(localized: "paddle_hint_incorrectEmail")
+			return false
+		}
+		else if phone.isEmpty {
+			error = String(localized: "paddle_hint_emptyPhone")
+			return false
+		}
+		else {
+			return true
+		}
+	}
+
+	func registerNewUser() {
+		isLoading = true
+		if validateDataForRegistration() {
+			Task {
+				var response = RegistrationModel()
+
+				do {
+					response = try await self.paddleRepository
+						.registerUser(firstName: self.firstName,
+						              lastName: self.lastName,
+						              phoneNumber: self.phone,
+						              countryCode: self.countryCode,
+						              email: self.email,
+						              auctionGuid: self.auctionGuid)
+				}
+				catch {
+					print(error)
+					DispatchQueue.safeMainAsync {
+						self.error = error.localizedDescription
+						self.isLoading = false
+					}
+					return
+				}
+
+				if response.success != true {
+					DispatchQueue.safeMainAsync {
+						self.isLoading = false
+						self.error = response.errorMessage ?? String(localized: "global_label_unknownError")
+					}
+				}
+				else if response.status == "New-Registration Succeeded" {
+					DispatchQueue.safeMainAsync {
+						self.subView = .confirmInformation(response)
+						self.isLoading = false
+					}
+				}
+				else {
+					DispatchQueue.safeMainAsync {
+						self.subView = .userFound(response)
+						self.isLoading = false
+					}
+				}
+			}
+		}
+		else {
+			isLoading = false
 		}
 	}
 }

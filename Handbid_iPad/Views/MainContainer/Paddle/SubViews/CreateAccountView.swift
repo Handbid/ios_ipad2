@@ -11,7 +11,7 @@ struct CreateAccountView: View {
 		                    topLabel: String(localized: "paddle_label_createBidderAccount"))
 		{
 			VStack {
-				HStack {
+				let nameFields = HStack {
 					FormField(fieldType: .firstName,
 					          labelKey: LocalizedStringKey("paddle_label_firstName"),
 					          hintKey: LocalizedStringKey("paddle_hint_firstName"),
@@ -23,6 +23,21 @@ struct CreateAccountView: View {
 					          fieldValue: $viewModel.lastName)
 				}
 				.padding(.bottom, 16)
+
+				if !viewModel.error.isEmpty {
+					Text(viewModel.error)
+						.applyTextStyle(style: .error)
+						.frame(maxWidth: .infinity, alignment: .center)
+						.background {
+							RoundedRectangle(cornerRadius: 25.0)
+								.fill(.errorBackground)
+						}
+
+					nameFields
+				}
+				else {
+					nameFields.padding(.top, 48)
+				}
 
 				FormField(fieldType: .email,
 				          labelKey: "global_label_email",
@@ -38,7 +53,9 @@ struct CreateAccountView: View {
 					.padding(.bottom, 16)
 
 				Button<Text>.styled(config: .primaryButtonStyle,
-				                    action: {},
+				                    action: {
+				                    	viewModel.registerNewUser()
+				                    },
 				                    label: {
 				                    	Text(LocalizedStringKey("paddle_btn_createAccount"))
 				                    		.textCase(.uppercase)
@@ -47,6 +64,7 @@ struct CreateAccountView: View {
 
 				Button<Text>.styled(config: .thirdButtonStyle,
 				                    action: {
+				                    	viewModel.error = ""
 				                    	viewModel.subView = .findPaddle
 				                    },
 				                    label: {

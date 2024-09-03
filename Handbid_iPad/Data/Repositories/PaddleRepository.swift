@@ -24,7 +24,8 @@ protocol PaddleRepository {
 	                  lastName: String,
 	                  phoneNumber: String,
 	                  countryCode: String,
-	                  email: String) async throws -> RegistrationModel
+	                  email: String,
+	                  auctionGuid: String) async throws -> RegistrationModel
 }
 
 class PaddleRepositoryImpl: PaddleRepository, NetworkingService {
@@ -52,15 +53,22 @@ class PaddleRepositoryImpl: PaddleRepository, NetworkingService {
 			.eraseToAnyPublisher()
 	}
 
-	func registerUser(firstName: String, lastName: String, phoneNumber: String, countryCode: String, email: String) async throws -> RegistrationModel {
+	func registerUser(firstName: String,
+	                  lastName: String,
+	                  phoneNumber: String,
+	                  countryCode: String,
+	                  email: String,
+	                  auctionGuid: String) async throws -> RegistrationModel
+	{
 		let recaptchaToken = try await reCaptchaRepository.getReCaptchaToken()
 
-		return try await get(ApiEndpoints.registerUser, params: ["firstName": firstName,
-		                                                         "lastName": lastName,
-		                                                         "mobile": phoneNumber,
-		                                                         "email": email,
-		                                                         "countryCode": countryCode,
-		                                                         "recaptchaToken": recaptchaToken])
+		return try await post(ApiEndpoints.registerUser, params: ["firstName": firstName,
+		                                                          "lastName": lastName,
+		                                                          "mobile": phoneNumber,
+		                                                          "email": email,
+		                                                          "countryCode": countryCode,
+		                                                          "captchaToken": recaptchaToken,
+		                                                          "auctionGuid": auctionGuid])
 			.tryMap { try RegistrationModel.decode($0) }
 			.map { $0 }
 			.eraseToAnyPublisher()

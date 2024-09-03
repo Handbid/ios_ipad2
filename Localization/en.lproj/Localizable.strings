@@ -26,7 +26,10 @@
 "paddle_btn_itsMe" = "It\'s me";
 "paddle_btn_notMe" = "Not me";
 "paddle_hint_cellPhone" = "Enter phone number";
+"paddle_hint_emptyName" = "Name fields cannot be empty";
+"paddle_hint_emptyPhone" = "Phone number cannot be empty";
 "paddle_hint_firstName" = "Enter your first name";
+"paddle_hint_incorrectEmail" = "Email is incorrect";
 "paddle_hint_lastName" = "Enter your last name";
 "paddle_label_confirmInformation" = "Confirm your information:";
 "paddle_label_createBidderAccount" = "Create bidder account";
