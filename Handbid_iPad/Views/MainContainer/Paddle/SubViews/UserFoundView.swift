@@ -27,7 +27,9 @@ struct UserFoundView: View {
 					.padding(.bottom, 32)
 
 				Button<Text>.styled(config: .secondaryButtonStyle,
-				                    action: {},
+				                    action: {
+				                    	viewModel.subView = .confirmInformation(model)
+				                    },
 				                    label: {
 				                    	Text(
 				                    		LocalizedStringKey("paddle_btn_itsMe")
@@ -35,7 +37,9 @@ struct UserFoundView: View {
 				                    }).padding(.all, 8)
 
 				Button<Text>.styled(config: .fifthButtonStyle,
-				                    action: {},
+				                    action: {
+				                    	viewModel.subView = .findPaddle
+				                    },
 				                    label: {
 				                    	Text(
 				                    		LocalizedStringKey("paddle_btn_notMe")

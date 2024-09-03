@@ -13,8 +13,8 @@ struct PaddleSubViewFactory: View {
 			CreateAccountView(viewModel: viewModel)
 		case let .userFound(data):
 			UserFoundView(viewModel: viewModel, model: data)
-		default:
-			EmptyView()
+		case let .confirmInformation(data):
+			ConfirmUserInformationView(viewModel: viewModel, model: data)
 		}
 	}
 }

@@ -19,7 +19,7 @@ enum SearchBy: String, CaseIterable {
 
 protocol PaddleRepository {
 	func findPaddle(identifier: String, auctionId: Int) -> AnyPublisher<RegistrationModel, Error>
-	func checkInUser(paddleNumber: String, auctionId: Int) -> AnyPublisher<RegistrationModel, Error>
+	func checkInUser(paddleNumber: Int, auctionId: Int) -> AnyPublisher<RegistrationModel, Error>
 	func registerUser(firstName: String,
 	                  lastName: String,
 	                  phoneNumber: String,
@@ -44,7 +44,7 @@ class PaddleRepositoryImpl: PaddleRepository, NetworkingService {
 			.eraseToAnyPublisher()
 	}
 
-	func checkInUser(paddleNumber: String, auctionId: Int) -> AnyPublisher<RegistrationModel, any Error> {
+	func checkInUser(paddleNumber: Int, auctionId: Int) -> AnyPublisher<RegistrationModel, any Error> {
 		get(ApiEndpoints.checkInUser, params: ["paddleNumber": paddleNumber,
 		                                       "auctionId": auctionId])
 			.tryMap { try RegistrationModel.decode($0) }

@@ -6,7 +6,7 @@ struct PaddleView: View {
 	enum SubView {
 		case findPaddle, createAccount
 		case userFound(RegistrationModel)
-		case confirmInformation
+		case confirmInformation(RegistrationModel)
 	}
 
 	@StateObject var viewModel: PaddleViewModel

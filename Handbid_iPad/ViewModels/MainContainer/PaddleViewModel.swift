@@ -121,4 +121,34 @@ class PaddleViewModel: ObservableObject, ViewModelTopBarProtocol {
 			})
 			.store(in: &cancellables)
 	}
+
+	func confirmFoundUser(model: RegistrationModel) {
+		if model.isCheckedIn == 1 {
+			subView = .findPaddle
+		}
+		else {
+			guard let paddle = model.currentPaddleNumber
+			else {
+				subView = .findPaddle
+				return
+			}
+			isLoading = true
+			paddleRepository.checkInUser(paddleNumber: paddle, auctionId: auctionId)
+				.receive(on: DispatchQueue.main)
+				.sink(receiveCompletion: {
+					self.isLoading = false
+					switch $0 {
+					case .finished:
+						print("Finished checking user in")
+					case let .failure(error):
+						print("Failed checking user in: \(error.localizedDescription)")
+						self.error = error.localizedDescription
+						self.subView = .findPaddle
+					}
+				}, receiveValue: { _ in
+					self.subView = .findPaddle
+				})
+				.store(in: &cancellables)
+		}
+	}
 }
