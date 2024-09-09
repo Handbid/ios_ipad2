@@ -3,7 +3,7 @@
 import Arrow
 import NetworkService
 
-struct RegistrationModel: Decodable, NetworkingJSONDecodable {
+struct RegistrationModel: Equatable, Decodable, NetworkingJSONDecodable {
 	var firstName: String?
 	var lastName: String?
 	var phoneNumber: String?

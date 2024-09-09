@@ -16,11 +16,13 @@ struct CreateAccountView: View {
 					          labelKey: LocalizedStringKey("paddle_label_firstName"),
 					          hintKey: LocalizedStringKey("paddle_hint_firstName"),
 					          fieldValue: $viewModel.firstName)
+						.accessibilityIdentifier("createAccountFirstNameField")
 
 					FormField(fieldType: .lastName,
 					          labelKey: LocalizedStringKey("paddle_label_lastName"),
 					          hintKey: LocalizedStringKey("paddle_hint_lastName"),
 					          fieldValue: $viewModel.lastName)
+						.accessibilityIdentifier("createAccountLastNameField")
 				}
 				.padding(.bottom, 16)
 
@@ -32,6 +34,7 @@ struct CreateAccountView: View {
 							RoundedRectangle(cornerRadius: 25.0)
 								.fill(.errorBackground)
 						}
+						.accessibilityIdentifier("createAccountErrorField")
 
 					nameFields
 				}
@@ -44,6 +47,7 @@ struct CreateAccountView: View {
 				          hintKey: "global_hint_email",
 				          fieldValue: $viewModel.email)
 					.padding(.bottom, 16)
+					.accessibilityIdentifier("createAccountEmailField")
 
 				PhoneField(labelKey: "global_label_cellPhone",
 				           hintKey: "paddle_hint_cellPhone",
@@ -51,6 +55,7 @@ struct CreateAccountView: View {
 				           selectedCountryCode: $viewModel.countryCode,
 				           fieldValue: $viewModel.phone)
 					.padding(.bottom, 16)
+					.accessibilityIdentifier("createAccountPhoneField")
 
 				Button<Text>.styled(config: .primaryButtonStyle,
 				                    action: {
@@ -61,6 +66,7 @@ struct CreateAccountView: View {
 				                    		.textCase(.uppercase)
 				                    })
 				                    .padding(.bottom, 16)
+				                    .accessibilityIdentifier("createAccountButton")
 
 				Button<Text>.styled(config: .thirdButtonStyle,
 				                    action: {
@@ -71,6 +77,7 @@ struct CreateAccountView: View {
 				                    	Text(LocalizedStringKey("global_btn_back"))
 				                    		.textCase(.uppercase)
 				                    })
+				                    .accessibilityIdentifier("createAccountBackButton")
 			}
 			.padding(32)
 		}

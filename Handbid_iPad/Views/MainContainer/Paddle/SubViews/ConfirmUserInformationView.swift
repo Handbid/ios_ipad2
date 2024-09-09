@@ -30,6 +30,7 @@ struct ConfirmUserInformationView: View {
 							.padding(.bottom, 16)
 							.frame(maxWidth: .infinity,
 							       alignment: .leading)
+							.accessibilityIdentifier("firstNameField")
 
 						Text(LocalizedStringKey("global_label_email"))
 							.applyTextStyle(style: .leadingLabel)
@@ -40,6 +41,7 @@ struct ConfirmUserInformationView: View {
 							.padding()
 							.frame(maxWidth: .infinity,
 							       alignment: .leading)
+							.accessibilityIdentifier("emailField")
 					}
 
 					VStack(alignment: .leading) {
@@ -54,6 +56,7 @@ struct ConfirmUserInformationView: View {
 							.padding(.bottom, 16)
 							.frame(maxWidth: .infinity,
 							       alignment: .leading)
+							.accessibilityIdentifier("lastNameField")
 
 						Text(LocalizedStringKey("global_label_cellPhone"))
 							.applyTextStyle(style: .leadingLabel)
@@ -64,6 +67,7 @@ struct ConfirmUserInformationView: View {
 							.padding()
 							.frame(maxWidth: .infinity,
 							       alignment: .leading)
+							.accessibilityIdentifier("cellPhoneField")
 					}
 				}
 
@@ -83,6 +87,7 @@ struct ConfirmUserInformationView: View {
 							.padding(.bottom, 16)
 							.frame(maxWidth: .infinity,
 							       alignment: .leading)
+							.accessibilityIdentifier("paddleNumberField")
 					}
 
 					Divider()
@@ -99,6 +104,7 @@ struct ConfirmUserInformationView: View {
 							.padding(.bottom, 16)
 							.frame(maxWidth: .infinity,
 							       alignment: .leading)
+							.accessibilityIdentifier("tableNumberField")
 					}
 
 					Divider()
@@ -117,6 +123,7 @@ struct ConfirmUserInformationView: View {
 							.padding(.bottom, 16)
 							.frame(maxWidth: .infinity,
 							       alignment: .leading)
+							.accessibilityIdentifier("sponsorField")
 					}
 				}
 
@@ -128,6 +135,7 @@ struct ConfirmUserInformationView: View {
 				                    	Text(LocalizedStringKey("paddle_btn_confirm"))
 				                    		.textCase(.uppercase)
 				                    })
+				                    .accessibilityIdentifier("confirmButton")
 			}.padding(32)
 		}
 	}

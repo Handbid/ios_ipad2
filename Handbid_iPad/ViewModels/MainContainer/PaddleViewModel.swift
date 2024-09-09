@@ -74,7 +74,7 @@ class PaddleViewModel: ObservableObject, ViewModelTopBarProtocol {
 		}
 	}
 
-	private func fetchCountries() {
+	func fetchCountries() {
 		countryRepository.getCountries()
 			.sink(
 				receiveCompletion: { completion in

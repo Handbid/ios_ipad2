@@ -4,6 +4,7 @@ import SwiftUI
 
 struct FindPadleView: View {
 	@ObservedObject var viewModel: PaddleViewModel
+	var inspection = Inspection<Self>()
 
 	var body: some View {
 		OverlayInternalView(cornerRadius: 40,
@@ -16,6 +17,7 @@ struct FindPadleView: View {
 				{ item in
 					Text(item.getLocalizedLabel())
 				}
+				.accessibilityIdentifier("findPaddleMethodPicker")
 
 				if !viewModel.error.isEmpty {
 					picker
@@ -27,6 +29,7 @@ struct FindPadleView: View {
 							RoundedRectangle(cornerRadius: 25.0)
 								.fill(.errorBackground)
 						}
+						.accessibilityIdentifier("findPaddleErrorField")
 				}
 				else {
 					picker.padding(.bottom, 48)
@@ -40,12 +43,14 @@ struct FindPadleView: View {
 						.keyboardType(.emailAddress)
 						.textContentType(.emailAddress)
 						.padding(.bottom, 16)
+						.accessibilityIdentifier("findPaddleEmailForm")
 				case .cellPhone:
 					PhoneField(hintKey: "paddle_hint_cellPhone",
 					           countries: viewModel.countries,
 					           selectedCountryCode: $viewModel.countryCode,
 					           fieldValue: $viewModel.phone)
 						.padding(.bottom, 16)
+						.accessibilityIdentifier("findPaddlePhoneForm")
 				}
 
 				Button<Text>.styled(config: .secondaryButtonStyle, action: {
@@ -55,6 +60,7 @@ struct FindPadleView: View {
 						.textCase(.uppercase)
 				})
 				.padding(.bottom, 16)
+				.accessibilityIdentifier("findPaddleContinueButton")
 
 				Button<Text>.styled(config: .fifthButtonStyle, action: {
 					viewModel.subView = .createAccount
@@ -63,10 +69,14 @@ struct FindPadleView: View {
 						.textCase(.uppercase)
 				})
 				.padding(.bottom, 16)
+				.accessibilityIdentifier("findPaddleCreateNewAccountButton")
 			}
 			.padding(32)
 			.frame(maxWidth: .infinity)
 		}
 		.padding(32)
+		.onReceive(inspection.notice) {
+			inspection.visit(self, $0)
+		}
 	}
 }

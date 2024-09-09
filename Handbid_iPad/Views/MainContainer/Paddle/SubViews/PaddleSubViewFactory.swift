@@ -4,9 +4,10 @@ import SwiftUI
 
 struct PaddleSubViewFactory: View {
 	@ObservedObject var viewModel: PaddleViewModel
+	let inspection = Inspection<Self>()
 
 	var body: some View {
-		switch viewModel.subView {
+		let view: any View = switch viewModel.subView {
 		case .findPaddle:
 			FindPadleView(viewModel: viewModel)
 		case .createAccount:
@@ -16,5 +17,10 @@ struct PaddleSubViewFactory: View {
 		case let .confirmInformation(data):
 			ConfirmUserInformationView(viewModel: viewModel, model: data)
 		}
+
+		AnyView(view)
+			.onReceive(inspection.notice) {
+				inspection.visit(self, $0)
+			}
 	}
 }

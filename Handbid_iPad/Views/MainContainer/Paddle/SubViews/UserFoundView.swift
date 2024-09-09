@@ -5,6 +5,7 @@ import SwiftUI
 struct UserFoundView: View {
 	@ObservedObject var viewModel: PaddleViewModel
 	private let model: RegistrationModel
+	var inspection = Inspection<Self>()
 
 	init(viewModel: PaddleViewModel, model: RegistrationModel) {
 		self.viewModel = viewModel
@@ -21,10 +22,12 @@ struct UserFoundView: View {
 					.font(TypographyStyle.h2.asFont())
 					.fontWeight(.bold)
 					.padding(.all, 16)
+					.accessibilityIdentifier("foundUserName")
 
 				Text(model.email ?? "nil")
 					.applyTextStyle(style: .body)
 					.padding(.bottom, 32)
+					.accessibilityIdentifier("foundUserEmail")
 
 				Button<Text>.styled(config: .secondaryButtonStyle,
 				                    action: {
@@ -35,6 +38,7 @@ struct UserFoundView: View {
 				                    		LocalizedStringKey("paddle_btn_itsMe")
 				                    	)
 				                    }).padding(.all, 8)
+					.accessibilityIdentifier("itsMeButton")
 
 				Button<Text>.styled(config: .fifthButtonStyle,
 				                    action: {
@@ -45,8 +49,12 @@ struct UserFoundView: View {
 				                    		LocalizedStringKey("paddle_btn_notMe")
 				                    	)
 				                    }).padding(.all, 8)
+					.accessibilityIdentifier("notMeButton")
 			}
 			.padding(32)
+		}
+		.onReceive(inspection.notice) {
+			inspection.visit(self, $0)
 		}
 	}
 }
