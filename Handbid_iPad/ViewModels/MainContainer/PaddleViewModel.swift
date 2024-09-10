@@ -14,8 +14,8 @@ class PaddleViewModel: ObservableObject, ViewModelTopBarProtocol {
 	@Published var phone: String
 	@Published var countryCode: String
 	@Published var error: String
-	private var auctionId: Int
-	private var auctionGuid: String
+	var auctionId: Int
+	var auctionGuid: String
 
 	private let dataManager = DataManager.shared
 
@@ -60,18 +60,13 @@ class PaddleViewModel: ObservableObject, ViewModelTopBarProtocol {
 	}
 
 	private func updateAuctionId() {
-		do {
-			guard let auction = try dataManager.fetchSingle(of: AuctionModel.self, from: .auction),
-			      let auctionId = auction.identity,
-			      let auctionGuid = auction.auctionGuid
-			else { return }
+		guard let auction = try? dataManager.fetchSingle(of: AuctionModel.self, from: .auction),
+		      let auctionId = auction.identity,
+		      let auctionGuid = auction.auctionGuid
+		else { return }
 
-			self.auctionId = auctionId
-			self.auctionGuid = auctionGuid
-		}
-		catch {
-			self.error = error.localizedDescription
-		}
+		self.auctionId = auctionId
+		self.auctionGuid = auctionGuid
 	}
 
 	func fetchCountries() {
@@ -149,6 +144,7 @@ class PaddleViewModel: ObservableObject, ViewModelTopBarProtocol {
 					}
 				}, receiveValue: { _ in
 					self.subView = .findPaddle
+					self.error = ""
 				})
 				.store(in: &cancellables)
 		}
