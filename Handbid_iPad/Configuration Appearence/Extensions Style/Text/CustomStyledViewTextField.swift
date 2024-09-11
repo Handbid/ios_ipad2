@@ -11,7 +11,7 @@ extension TextField {
 	private func applyTextFieldStyle(style: TextStyleConfiguration) -> some View {
 		let textField = font(style.fontStyle)
 			.fontWeight(style.fontWeightStyle)
-			.foregroundColor(style.defaultTextColor)
+			.foregroundStyle(style.defaultTextColor)
 			.padding()
 			.background(style.backgroundColor)
 			.cornerRadius(style.roundedCornerRadius)

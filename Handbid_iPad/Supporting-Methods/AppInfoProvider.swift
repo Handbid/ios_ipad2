@@ -20,7 +20,7 @@ enum AppInfoProvider {
 	}
 
 	static var captchaKey: String {
-		"6LdU5KkpAAAAANZD-3GdFspTDdqhjg6z29dE9zsR"
+		"6LfiSi0qAAAAAAKA7YjZbIksvKYfGPxLFKKSry7S"
 	}
 
 	static var aboutHandbidLink: String {

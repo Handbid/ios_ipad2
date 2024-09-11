@@ -8,7 +8,6 @@ import RecaptchaEnterprise
 
 protocol RegisterRepository {
 	func getAppVersion() async throws -> AppVersionModel
-	func getReCaptchaToken() async throws -> String
 	func logIn(username: String, password: String?, pin: String?) async throws -> AuthModel
 }
 
@@ -18,33 +17,10 @@ protocol LogInAnonymously {
 
 class RegisterRepositoryImpl: RegisterRepository, LogInAnonymously, NetworkingService {
 	var network: NetworkService.NetworkingClient
-	private var recaptchaClient: RecaptchaClient?
-	private var recaptchaToken = ""
+	private let reCaptchaRepository = ReCaptchaRepository()
 
 	init(_ network: NetworkService.NetworkingClient) {
 		self.network = network
-	}
-
-	private func getClientReCaptcha() async throws -> RecaptchaClient {
-		try await Recaptcha.getClient(withSiteKey: AppInfoProvider.captchaKey)
-	}
-
-	private func getTokenReCapcha(client: RecaptchaClient) async throws -> String {
-		try await client.execute(withAction: RecaptchaAction.login)
-	}
-
-	func getReCaptchaToken() async throws -> String {
-		do {
-			if recaptchaClient == nil {
-				recaptchaClient = try await getClientReCaptcha()
-			}
-			recaptchaToken = try await getTokenReCapcha(client: recaptchaClient!)
-		}
-		catch {
-			throw error
-		}
-
-		return recaptchaToken
 	}
 
 	func logInAnonymously() -> AnyPublisher<AppVersionModel, Error> {
@@ -65,7 +41,7 @@ class RegisterRepositoryImpl: RegisterRepository, LogInAnonymously, NetworkingSe
 	}
 
 	func logIn(username: String, password: String?, pin: String?) async throws -> AuthModel {
-		let captchaToken = try await getReCaptchaToken()
+		let captchaToken = try await reCaptchaRepository.getReCaptchaToken()
 
 		var params: Params = ["username": username,
 		                      "captchaToken": captchaToken,

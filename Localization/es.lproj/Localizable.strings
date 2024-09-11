@@ -3,7 +3,12 @@
 "chooseOrg_btn_selectOrg" = "Select Organization";
 "chooseOrg_label_searchByName" = "Search by name";
 "chooseOrg_label_selectOrganization" = "Select organization";
+"global_btn_back" = "volver";
+"global_btn_continue" = "Continuar";
 "global_btn_ok" = "Ok";
+"global_hint_email" = "Introduce tu correo electrónico";
+"global_label_cellPhone" = "Número de móvil";
+"global_label_email" = "Email";
 "global_label_error" = "Error";
 "global_label_unknownError" = "Error desconocido";
 "item_label_forSale" = "Se vende";
@@ -15,6 +20,19 @@
 "menuBar_label_manager" = "Manager";
 "menuBar_label_myBids" = "My Bids";
 "menuBar_label_paddle" = "Paddle";
+"paddle_btn_createAccount" = "Crear cuenta";
+"paddle_btn_createNewAccount" = "Crear una nueva cuenta";
+"paddle_btn_itsMe" = "Soy yo";
+"paddle_btn_notMe" = "No soy yo";
+"paddle_hint_cellPhone" = "Introducir número de teléfono";
+"paddle_hint_firstName" = "Introduzca su nombre";
+"paddle_hint_lastName" = "Introduzca su apellido";
+"paddle_label_confirmInformation" = "Confirme su información:";
+"paddle_label_createBidderAccount" = "Crear cuenta de licitador";
+"paddle_label_findPaddleByPhoneOrEmail" = "¿Ha perdido su número de pala? No hay problema. \nEncuéntrelo por correo electrónico o teléfono móvil:";
+"paddle_label_firstName" = "Nombre";
+"paddle_label_lastName" = "Apellido";
+"paddle_label_userFound" = "¡Creemos que te encontramos! ¿Eres tú?";
 "registration_btn_aboutHandbid" = "Acerca de Handbid";
 "registration_btn_changePassword" = "Cambiar la contraseña";
 "registration_btn_confirm" = "Confirmar";
@@ -22,11 +40,9 @@
 "registration_btn_login" = "Acceso";
 "registration_btn_password" = "Has olvidado tu contraseña";
 "registration_btn_save" = "Ahorrar";
-"registration_hint_email" = "Introduce tu correo electrónico";
 "registration_hint_enterPassword" = "Ingresa tu contraseña";
 "registration_label_changePassword" = "Cambiar la contraseña";
 "registration_label_chooseEnvironmentToConnect" = "Elija Entorno para conectarse";
-"registration_label_email" = "Correo electrónico";
 "registration_label_forgotPassword" = "Has olvidado tu contraseña";
 "registration_label_incorrectEmail" = "Formato incorrecto del correo electrónico";
 "registration_label_login" = "Acceso";

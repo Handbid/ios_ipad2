@@ -54,7 +54,6 @@
 		8C3AA3F32C0715ED00110288 /* PinViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AA3F22C0715ED00110288 /* PinViewTests.swift */; };
 		8C3AA3F52C07177500110288 /* TopBarContentFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AA3F42C07177500110288 /* TopBarContentFactoryTests.swift */; };
 		8C3AA3F72C0717A600110288 /* OrganizationAddressModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AA3F62C0717A600110288 /* OrganizationAddressModelTests.swift */; };
-		8C3AA3F92C07188100110288 /* ChooseOrganizationRepositoryImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AA3F82C07188100110288 /* ChooseOrganizationRepositoryImplTests.swift */; };
 		8C3AA3FB2C07199100110288 /* AuctionCollectionCellViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AA3FA2C07199100110288 /* AuctionCollectionCellViewTests.swift */; };
 		8C3AA3FE2C07319700110288 /* GenericTopBarContentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AA3FD2C07319700110288 /* GenericTopBarContentTests.swift */; };
 		8C3AA4012C07999800110288 /* SidebarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3AA4002C07999800110288 /* SidebarTests.swift */; };
@@ -149,7 +148,6 @@
 		8C8BEC642BA9ADE20083D904 /* AppLaunchControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC632BA9ADE20083D904 /* AppLaunchControlView.swift */; };
 		8C8BEC662BA9B7DD0083D904 /* PageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BEC652BA9B7DD0083D904 /* PageProtocol.swift */; };
 		8C9159B72C0CC86B005C9D11 /* UserProcessorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9159B62C0CC86B005C9D11 /* UserProcessorTests.swift */; };
-		8C9159B92C0CC8BF005C9D11 /* ResetPasswordRepositoryImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9159B82C0CC8BF005C9D11 /* ResetPasswordRepositoryImplTests.swift */; };
 		8C9159BB2C0CD6D1005C9D11 /* TopBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9159BA2C0CD6D1005C9D11 /* TopBarTests.swift */; };
 		8C9159C32C0FC1C8005C9D11 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9159C22C0FC1C8005C9D11 /* LoadingView.swift */; };
 		8C9159C62C0FC1EC005C9D11 /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9159C52C0FC1EC005C9D11 /* LoadingOverlay.swift */; };
@@ -247,6 +245,14 @@
 		CE337F372C1C8C0400681FE1 /* MockManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE337F362C1C8C0400681FE1 /* MockManagerViewModel.swift */; };
 		CE337F392C1C8C5200681FE1 /* MockLogOutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE337F382C1C8C5200681FE1 /* MockLogOutViewModel.swift */; };
 		CE34FB3F2BB1963300701D2A /* OverlayInternalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE34FB3E2BB1963300701D2A /* OverlayInternalView.swift */; };
+		CE3A555F2C8B113F00984A97 /* ConfirmUserInformationViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3A555E2C8B113F00984A97 /* ConfirmUserInformationViewTests.swift */; };
+		CE3A55612C8B612500984A97 /* FindPaddleViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3A55602C8B612500984A97 /* FindPaddleViewTests.swift */; };
+		CE4D21102C2EF02E0085DA1D /* PaddleSubViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D210F2C2EF02E0085DA1D /* PaddleSubViewFactory.swift */; };
+		CE4D21122C2EF0DD0085DA1D /* FindPadleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D21112C2EF0DD0085DA1D /* FindPadleView.swift */; };
+		CE4D21152C2EF1C50085DA1D /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D21142C2EF1C50085DA1D /* CreateAccountView.swift */; };
+		CE4D21172C2EFF080085DA1D /* PhoneField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D21162C2EFF080085DA1D /* PhoneField.swift */; };
+		CE69E2802C8EF6F600F7CC4F /* CreateAccountViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69E27F2C8EF6F600F7CC4F /* CreateAccountViewTests.swift */; };
+		CE69E2822C8F196D00F7CC4F /* PaddleSubViewFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69E2812C8F196D00F7CC4F /* PaddleSubViewFactoryTests.swift */; };
 		CE6F8DBE2BCEC6BE009DBE7E /* MockGetStartedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F8DBD2BCEC6BE009DBE7E /* MockGetStartedViewModel.swift */; };
 		CE6F8DC02BCECC3D009DBE7E /* LogInView_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F8DBF2BCECC3D009DBE7E /* LogInView_Tests.swift */; };
 		CE6F8DC22BCEE513009DBE7E /* MockLogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F8DC12BCEE513009DBE7E /* MockLogInViewModel.swift */; };
@@ -260,6 +266,8 @@
 		CE7DF82F2BADFD1900FF7694 /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7DF82E2BADFD1900FF7694 /* PinView.swift */; };
 		CE9E2D0E2BC845D70008FD8A /* Inspection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9E2D0D2BC845D70008FD8A /* Inspection.swift */; };
 		CE9E2D112BC846140008FD8A /* InspectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9E2D102BC846140008FD8A /* InspectionExtension.swift */; };
+		CEA0A64E2C2D9FD20088AA46 /* PaddleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA0A64D2C2D9FD20088AA46 /* PaddleRepository.swift */; };
+		CEA0A6502C2DA2A20088AA46 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA0A64F2C2DA2A20088AA46 /* PickerView.swift */; };
 		CEAB750D2BD12B65000AFB46 /* ForgotPasswordView_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB750C2BD12B65000AFB46 /* ForgotPasswordView_Tests.swift */; };
 		CEAB750F2BD12BEE000AFB46 /* MockForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB750E2BD12BEE000AFB46 /* MockForgotPasswordViewModel.swift */; };
 		CEAB75112BD165D5000AFB46 /* PasswordResetConfirmationView_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAB75102BD165D5000AFB46 /* PasswordResetConfirmationView_Tests.swift */; };
@@ -267,9 +275,19 @@
 		CEAE3C4C2C25807200D13328 /* AuctionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE3C4B2C25807200D13328 /* AuctionViewTests.swift */; };
 		CEAE3C4E2C25914800D13328 /* ItemViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE3C4D2C25914800D13328 /* ItemViewTests.swift */; };
 		CEAE3C512C25A87200D13328 /* FilterItemsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE3C502C25A87200D13328 /* FilterItemsViewTests.swift */; };
+		CEC665852C7DCB9700F07E7D /* CountriesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC665842C7DCB9700F07E7D /* CountriesRepository.swift */; };
+		CEC665872C7DCD5800F07E7D /* CountryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC665862C7DCD5800F07E7D /* CountryModel.swift */; };
+		CECAB8C42C89DECB0048F1D3 /* MockCountriesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECAB8C32C89DECB0048F1D3 /* MockCountriesRepository.swift */; };
+		CECAB8C62C89E0B60048F1D3 /* MockPaddleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECAB8C52C89E0B60048F1D3 /* MockPaddleRepository.swift */; };
+		CECAB8C82C89F4D00048F1D3 /* CountryModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECAB8C72C89F4D00048F1D3 /* CountryModelTests.swift */; };
+		CECAB8CC2C89F8AD0048F1D3 /* UserFoundViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECAB8CB2C89F8AD0048F1D3 /* UserFoundViewTests.swift */; };
 		CEE2BB272BB5BBB10033556D /* RegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2BB262BB5BBB10033556D /* RegisterRepository.swift */; };
 		CEE2BB292BB5D1070033556D /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2BB282BB5D1070033556D /* ApiConstants.swift */; };
 		CEEC46132BBD8DE900C685BF /* AnyPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEC46122BBD8DE900C685BF /* AnyPublisher.swift */; };
+		CEF9EC672C666A45001AF394 /* UserFoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9EC662C666A45001AF394 /* UserFoundView.swift */; };
+		CEF9EC692C6A0B73001AF394 /* ConfirmUserInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9EC682C6A0B73001AF394 /* ConfirmUserInformationView.swift */; };
+		CEFB53FC2C6CCA5200420D87 /* RegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFB53FB2C6CCA5200420D87 /* RegistrationModel.swift */; };
+		CEFB53FE2C6CDDF800420D87 /* ReCaptchaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFB53FD2C6CDDF800420D87 /* ReCaptchaRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -337,7 +355,6 @@
 		8C3AA3F22C0715ED00110288 /* PinViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinViewTests.swift; sourceTree = "<group>"; };
 		8C3AA3F42C07177500110288 /* TopBarContentFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarContentFactoryTests.swift; sourceTree = "<group>"; };
 		8C3AA3F62C0717A600110288 /* OrganizationAddressModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationAddressModelTests.swift; sourceTree = "<group>"; };
-		8C3AA3F82C07188100110288 /* ChooseOrganizationRepositoryImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseOrganizationRepositoryImplTests.swift; sourceTree = "<group>"; };
 		8C3AA3FA2C07199100110288 /* AuctionCollectionCellViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionCollectionCellViewTests.swift; sourceTree = "<group>"; };
 		8C3AA3FC2C072EB600110288 /* Handbid_iPadTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Handbid_iPadTests.xctestplan; sourceTree = "<group>"; };
 		8C3AA3FD2C07319700110288 /* GenericTopBarContentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTopBarContentTests.swift; sourceTree = "<group>"; };
@@ -432,7 +449,6 @@
 		8C8BEC632BA9ADE20083D904 /* AppLaunchControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLaunchControlView.swift; sourceTree = "<group>"; };
 		8C8BEC652BA9B7DD0083D904 /* PageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageProtocol.swift; sourceTree = "<group>"; };
 		8C9159B62C0CC86B005C9D11 /* UserProcessorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProcessorTests.swift; sourceTree = "<group>"; };
-		8C9159B82C0CC8BF005C9D11 /* ResetPasswordRepositoryImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordRepositoryImplTests.swift; sourceTree = "<group>"; };
 		8C9159BA2C0CD6D1005C9D11 /* TopBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarTests.swift; sourceTree = "<group>"; };
 		8C9159C22C0FC1C8005C9D11 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		8C9159C52C0FC1EC005C9D11 /* LoadingOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
@@ -531,6 +547,14 @@
 		CE337F362C1C8C0400681FE1 /* MockManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockManagerViewModel.swift; sourceTree = "<group>"; };
 		CE337F382C1C8C5200681FE1 /* MockLogOutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLogOutViewModel.swift; sourceTree = "<group>"; };
 		CE34FB3E2BB1963300701D2A /* OverlayInternalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayInternalView.swift; sourceTree = "<group>"; };
+		CE3A555E2C8B113F00984A97 /* ConfirmUserInformationViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmUserInformationViewTests.swift; sourceTree = "<group>"; };
+		CE3A55602C8B612500984A97 /* FindPaddleViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPaddleViewTests.swift; sourceTree = "<group>"; };
+		CE4D210F2C2EF02E0085DA1D /* PaddleSubViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddleSubViewFactory.swift; sourceTree = "<group>"; };
+		CE4D21112C2EF0DD0085DA1D /* FindPadleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPadleView.swift; sourceTree = "<group>"; };
+		CE4D21142C2EF1C50085DA1D /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
+		CE4D21162C2EFF080085DA1D /* PhoneField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneField.swift; sourceTree = "<group>"; };
+		CE69E27F2C8EF6F600F7CC4F /* CreateAccountViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewTests.swift; sourceTree = "<group>"; };
+		CE69E2812C8F196D00F7CC4F /* PaddleSubViewFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddleSubViewFactoryTests.swift; sourceTree = "<group>"; };
 		CE6F8DBD2BCEC6BE009DBE7E /* MockGetStartedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGetStartedViewModel.swift; sourceTree = "<group>"; };
 		CE6F8DBF2BCECC3D009DBE7E /* LogInView_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView_Tests.swift; sourceTree = "<group>"; };
 		CE6F8DC12BCEE513009DBE7E /* MockLogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLogInViewModel.swift; sourceTree = "<group>"; };
@@ -542,6 +566,8 @@
 		CE7DF82E2BADFD1900FF7694 /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		CE9E2D0D2BC845D70008FD8A /* Inspection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inspection.swift; sourceTree = "<group>"; };
 		CE9E2D102BC846140008FD8A /* InspectionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionExtension.swift; sourceTree = "<group>"; };
+		CEA0A64D2C2D9FD20088AA46 /* PaddleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddleRepository.swift; sourceTree = "<group>"; };
+		CEA0A64F2C2DA2A20088AA46 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		CEAB750C2BD12B65000AFB46 /* ForgotPasswordView_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView_Tests.swift; sourceTree = "<group>"; };
 		CEAB750E2BD12BEE000AFB46 /* MockForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		CEAB75102BD165D5000AFB46 /* PasswordResetConfirmationView_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetConfirmationView_Tests.swift; sourceTree = "<group>"; };
@@ -549,9 +575,19 @@
 		CEAE3C4B2C25807200D13328 /* AuctionViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionViewTests.swift; sourceTree = "<group>"; };
 		CEAE3C4D2C25914800D13328 /* ItemViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewTests.swift; sourceTree = "<group>"; };
 		CEAE3C502C25A87200D13328 /* FilterItemsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterItemsViewTests.swift; sourceTree = "<group>"; };
+		CEC665842C7DCB9700F07E7D /* CountriesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesRepository.swift; sourceTree = "<group>"; };
+		CEC665862C7DCD5800F07E7D /* CountryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryModel.swift; sourceTree = "<group>"; };
+		CECAB8C32C89DECB0048F1D3 /* MockCountriesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCountriesRepository.swift; sourceTree = "<group>"; };
+		CECAB8C52C89E0B60048F1D3 /* MockPaddleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPaddleRepository.swift; sourceTree = "<group>"; };
+		CECAB8C72C89F4D00048F1D3 /* CountryModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryModelTests.swift; sourceTree = "<group>"; };
+		CECAB8CB2C89F8AD0048F1D3 /* UserFoundViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFoundViewTests.swift; sourceTree = "<group>"; };
 		CEE2BB262BB5BBB10033556D /* RegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRepository.swift; sourceTree = "<group>"; };
 		CEE2BB282BB5D1070033556D /* ApiConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConstants.swift; sourceTree = "<group>"; };
 		CEEC46122BBD8DE900C685BF /* AnyPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyPublisher.swift; sourceTree = "<group>"; };
+		CEF9EC662C666A45001AF394 /* UserFoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFoundView.swift; sourceTree = "<group>"; };
+		CEF9EC682C6A0B73001AF394 /* ConfirmUserInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmUserInformationView.swift; sourceTree = "<group>"; };
+		CEFB53FB2C6CCA5200420D87 /* RegistrationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModel.swift; sourceTree = "<group>"; };
+		CEFB53FD2C6CDDF800420D87 /* ReCaptchaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReCaptchaRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -640,6 +676,7 @@
 				8C1B676D2BC834F3006B61F6 /* ResetPasswordModelTest.swift */,
 				8C3AA4232C087A8800110288 /* TicketModelTests.swift */,
 				8C3AA4272C087ABA00110288 /* UserModelTests.swift */,
+				CECAB8C72C89F4D00048F1D3 /* CountryModelTests.swift */,
 			);
 			path = ModelTests;
 			sourceTree = "<group>";
@@ -672,9 +709,9 @@
 				8C1B676F2BC83F92006B61F6 /* MockForgotPassword.swift */,
 				8C1CC5212BC2480D00AF80F4 /* MockLogInAnonymously.swift */,
 				8C1CC5202BC2480D00AF80F4 /* MockRegisterRepository.swift */,
-				8C3AA3F82C07188100110288 /* ChooseOrganizationRepositoryImplTests.swift */,
-				8C9159B82C0CC8BF005C9D11 /* ResetPasswordRepositoryImplTests.swift */,
 				CE337F302C1C89F000681FE1 /* MockAuctionRepository.swift */,
+				CECAB8C32C89DECB0048F1D3 /* MockCountriesRepository.swift */,
+				CECAB8C52C89E0B60048F1D3 /* MockPaddleRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -841,6 +878,8 @@
 				8C4BFB702BE1887F00B47154 /* TicketModel.swift */,
 				8C4BFB5A2BE113B000B47154 /* UserModel.swift */,
 				CE1791632C18A57B009F09A3 /* WebSocketMessageModel.swift */,
+				CEFB53FB2C6CCA5200420D87 /* RegistrationModel.swift */,
+				CEC665862C7DCD5800F07E7D /* CountryModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -965,6 +1004,7 @@
 		8C3AA3EE2C07159500110288 /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
+				CECAB8C92C89F8840048F1D3 /* Paddle */,
 				CEAE3C4F2C25A85300D13328 /* TopBarMainContainer */,
 				CEAE3C4A2C25805F00D13328 /* Auction */,
 				8C9BC3412C0CB8D5004F3DFF /* MainContainerTests.swift */,
@@ -999,11 +1039,11 @@
 		8C3D3C052BBB85B8002A5CFC /* MainContainer */ = {
 			isa = PBXGroup;
 			children = (
+				CE4D210E2C2EE6250085DA1D /* Paddle */,
 				CE2022B52C0F0CF50009415D /* Auction */,
 				8C9FA4472BD282C30041F28E /* LogOutView.swift */,
 				8C9FA4452BD282B90041F28E /* ManagerView.swift */,
 				8C9FA4432BD282B00041F28E /* MyBidsView.swift */,
-				8CD1080F2BD122E000E83261 /* PaddleView.swift */,
 			);
 			path = MainContainer;
 			sourceTree = "<group>";
@@ -1361,6 +1401,27 @@
 			path = View_Tests;
 			sourceTree = "<group>";
 		};
+		CE4D210E2C2EE6250085DA1D /* Paddle */ = {
+			isa = PBXGroup;
+			children = (
+				CE4D21132C2EF1A20085DA1D /* SubViews */,
+				8CD1080F2BD122E000E83261 /* PaddleView.swift */,
+			);
+			path = Paddle;
+			sourceTree = "<group>";
+		};
+		CE4D21132C2EF1A20085DA1D /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				CE4D21112C2EF0DD0085DA1D /* FindPadleView.swift */,
+				CE4D210F2C2EF02E0085DA1D /* PaddleSubViewFactory.swift */,
+				CE4D21142C2EF1C50085DA1D /* CreateAccountView.swift */,
+				CEF9EC662C666A45001AF394 /* UserFoundView.swift */,
+				CEF9EC682C6A0B73001AF394 /* ConfirmUserInformationView.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
 		CE6F8DBB2BCEC67B009DBE7E /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1394,6 +1455,8 @@
 				CE073EE32BB4809C0079F342 /* FormField.swift */,
 				CE7DF82E2BADFD1900FF7694 /* PinView.swift */,
 				CE7BB4942C231D4600D0AB91 /* CheckboxToggleStyle.swift */,
+				CEA0A64F2C2DA2A20088AA46 /* PickerView.swift */,
+				CE4D21162C2EFF080085DA1D /* PhoneField.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1435,6 +1498,26 @@
 			path = TopBarMainContainer;
 			sourceTree = "<group>";
 		};
+		CECAB8C92C89F8840048F1D3 /* Paddle */ = {
+			isa = PBXGroup;
+			children = (
+				CECAB8CA2C89F8910048F1D3 /* SubViews */,
+			);
+			path = Paddle;
+			sourceTree = "<group>";
+		};
+		CECAB8CA2C89F8910048F1D3 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				CECAB8CB2C89F8AD0048F1D3 /* UserFoundViewTests.swift */,
+				CE3A555E2C8B113F00984A97 /* ConfirmUserInformationViewTests.swift */,
+				CE3A55602C8B612500984A97 /* FindPaddleViewTests.swift */,
+				CE69E27F2C8EF6F600F7CC4F /* CreateAccountViewTests.swift */,
+				CE69E2812C8F196D00F7CC4F /* PaddleSubViewFactoryTests.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
 		CEE2BB242BB5BB310033556D /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -1455,6 +1538,9 @@
 				8C4A6DF62C22CB8900F320D8 /* SearchItemsRepository.swift */,
 				CEE2BB262BB5BBB10033556D /* RegisterRepository.swift */,
 				CE0CEE7E2BBEB39F004A27FD /* ResetPasswordRepository.swift */,
+				CEA0A64D2C2D9FD20088AA46 /* PaddleRepository.swift */,
+				CEFB53FD2C6CDDF800420D87 /* ReCaptchaRepository.swift */,
+				CEC665842C7DCB9700F07E7D /* CountriesRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -1711,7 +1797,6 @@
 				8C9BC3382C0C94C0004F3DFF /* ChooseAuctionViewTests.swift in Sources */,
 				8C3AA41E2C08752900110288 /* OrganizationImageModelTests.swift in Sources */,
 				8C3AA4142C0873A200110288 /* AuctionModelTests.swift in Sources */,
-				8C3AA3F92C07188100110288 /* ChooseOrganizationRepositoryImplTests.swift in Sources */,
 				CE6F8DC22BCEE513009DBE7E /* MockLogInViewModel.swift in Sources */,
 				8C3AA3E72C0714F200110288 /* MyBidsViewModelTests.swift in Sources */,
 				8C3AA40A2C07EA7B00110288 /* MainContainerViewBuilderTests.swift in Sources */,
@@ -1722,6 +1807,7 @@
 				8C3AA4162C08741000110288 /* AuthModelTests.swift in Sources */,
 				CEAE3C512C25A87200D13328 /* FilterItemsViewTests.swift in Sources */,
 				8C3AA4122C08738500110288 /* AddressModelTests.swift in Sources */,
+				CECAB8C62C89E0B60048F1D3 /* MockPaddleRepository.swift in Sources */,
 				8C1B67702BC83F92006B61F6 /* MockForgotPassword.swift in Sources */,
 				8C3AA3F52C07177500110288 /* TopBarContentFactoryTests.swift in Sources */,
 				CE337F312C1C89F000681FE1 /* MockAuctionRepository.swift in Sources */,
@@ -1729,6 +1815,7 @@
 				8C1B676E2BC834F3006B61F6 /* ResetPasswordModelTest.swift in Sources */,
 				CEAE3C4E2C25914800D13328 /* ItemViewTests.swift in Sources */,
 				8C1CC53D2BC3D8AC00AF80F4 /* MockChooseEnvironment.swift in Sources */,
+				CE3A55612C8B612500984A97 /* FindPaddleViewTests.swift in Sources */,
 				CEAE3C4C2C25807200D13328 /* AuctionViewTests.swift in Sources */,
 				8C3AA41C2C0874E200110288 /* CreditCardModelTests.swift in Sources */,
 				8C3AA4052C07E7B000110288 /* AuctionViewModelTests.swift in Sources */,
@@ -1743,15 +1830,16 @@
 				CE22793E2BC691CC00F4430F /* GetStartedView_Tests.swift in Sources */,
 				8C9BC3292C0C9064004F3DFF /* DatabaseServiceMock.swift in Sources */,
 				8C3AA42A2C087FC100110288 /* PuzzleModelTests.swift in Sources */,
+				CECAB8CC2C89F8AD0048F1D3 /* UserFoundViewTests.swift in Sources */,
 				8C1CC53E2BC3D8AE00AF80F4 /* MockRegisterRepository.swift in Sources */,
 				8C3AA3E42C0714B000110288 /* AnyPublisherTests.swift in Sources */,
 				8C9BC3332C0C9224004F3DFF /* HandbidWebSocketFactoryTests.swift in Sources */,
+				CECAB8C42C89DECB0048F1D3 /* MockCountriesRepository.swift in Sources */,
 				CE337F352C1C8BCB00681FE1 /* MockMyBidsViewModel.swift in Sources */,
 				8C9BC33C2C0CA422004F3DFF /* DataManagerTests.swift in Sources */,
 				8C9159CA2C102D71005C9D11 /* LoadingOverlayTests.swift in Sources */,
 				8C9159BB2C0CD6D1005C9D11 /* TopBarTests.swift in Sources */,
 				8C3AA3F72C0717A600110288 /* OrganizationAddressModelTests.swift in Sources */,
-				8C9159B92C0CC8BF005C9D11 /* ResetPasswordRepositoryImplTests.swift in Sources */,
 				8C1CC5402BC3D8B600AF80F4 /* ChooseEnvironmentViewModel_Tests.swift in Sources */,
 				8C9BC3172C088681004F3DFF /* MockDataService.swift in Sources */,
 				CE337F332C1C8B8900681FE1 /* MockPaddleViewModel.swift in Sources */,
@@ -1759,10 +1847,12 @@
 				8C3AA40C2C07EF0600110288 /* CategoryModelTests.swift in Sources */,
 				8C3AA4222C087A6E00110288 /* LandingPageModelTests.swift in Sources */,
 				8C9159B72C0CC86B005C9D11 /* UserProcessorTests.swift in Sources */,
+				CE3A555F2C8B113F00984A97 /* ConfirmUserInformationViewTests.swift in Sources */,
 				CE337F372C1C8C0400681FE1 /* MockManagerViewModel.swift in Sources */,
 				8C1CC53A2BC3D85300AF80F4 /* AppVersionModelTest.swift in Sources */,
 				8C3AA3EA2C07152E00110288 /* AuctionDataServiceTests.swift in Sources */,
 				8C3AA42C2C08808F00110288 /* ChemicalElementsModelTests.swift in Sources */,
+				CECAB8C82C89F4D00048F1D3 /* CountryModelTests.swift in Sources */,
 				8C3AA3E12C0710F800110288 /* TypographyStyleTests.swift in Sources */,
 				8C3AA3F02C07159F00110288 /* SelectAuctionTopBarCenterViewTests.swift in Sources */,
 				8C3AA41A2C0874BE00110288 /* OrganizationModelTests.swift in Sources */,
@@ -1774,6 +1864,7 @@
 				8C9BC31F2C089B0C004F3DFF /* MockWebSocketURLFactory.swift in Sources */,
 				8C9BC32F2C0C91C0004F3DFF /* WebSocketManagerTests.swift in Sources */,
 				8C3AA3FE2C07319700110288 /* GenericTopBarContentTests.swift in Sources */,
+				CE69E2822C8F196D00F7CC4F /* PaddleSubViewFactoryTests.swift in Sources */,
 				8C3AA3ED2C07155800110288 /* StringExtensionsTests.swift in Sources */,
 				8C1CC53B2BC3D89200AF80F4 /* GetStartedViewModel_Tests.swift in Sources */,
 				CE1E7BBE2BD028B600BD3DD1 /* MockChooseEnvironmentViewModel.swift in Sources */,
@@ -1785,6 +1876,7 @@
 				CE1E7BBC2BD0286D00BD3DD1 /* ChooseEnvironmentView_Tests.swift in Sources */,
 				8C9BC32D2C0C9192004F3DFF /* MockWebSocket.swift in Sources */,
 				8C3AA40E2C08707F00110288 /* AboutModelTests.swift in Sources */,
+				CE69E2802C8EF6F600F7CC4F /* CreateAccountViewTests.swift in Sources */,
 				8C1CC53F2BC3D8B000AF80F4 /* MockAuthManager.swift in Sources */,
 				8C3AA4202C087A5100110288 /* PromotedItemModelTests.swift in Sources */,
 				8C9BC3312C0C9202004F3DFF /* MockHandshakeResponseProvider.swift in Sources */,
@@ -1800,6 +1892,7 @@
 				8C9FA43C2BD256430041F28E /* SidebarItem.swift in Sources */,
 				CE7BB4952C231D4600D0AB91 /* CheckboxToggleStyle.swift in Sources */,
 				8C79B41E2C040D84005D4AAB /* ProcessorRegistry.swift in Sources */,
+				CEC665852C7DCB9700F07E7D /* CountriesRepository.swift in Sources */,
 				8C3D3C042BBB7F09002A5CFC /* MainAppCoordinator.swift in Sources */,
 				8C4BFB6D2BE1876600B47154 /* ItemImageModel.swift in Sources */,
 				8C0007BF2BAC764700AAEBA0 /* AppVersionModel.swift in Sources */,
@@ -1813,9 +1906,11 @@
 				8CABF5D42BB9E17C00A34870 /* CustomDimensValues.swift in Sources */,
 				CE7BB48F2C22FF2600D0AB91 /* FiltersItemsView.swift in Sources */,
 				8CD107F32BD11EB800E83261 /* TopBar.swift in Sources */,
+				CEF9EC692C6A0B73001AF394 /* ConfirmUserInformationView.swift in Sources */,
 				CEE2BB292BB5D1070033556D /* ApiConstants.swift in Sources */,
 				8C19678F2BFF54E2009360A0 /* DataManagerEnvironmentKey.swift in Sources */,
 				8CABF5CA2BB9CEF900A34870 /* ChooseEnvironmentViewModel.swift in Sources */,
+				CEF9EC672C666A45001AF394 /* UserFoundView.swift in Sources */,
 				8CD1080E2BD122CC00E83261 /* AuctionView.swift in Sources */,
 				8C4BFB542BDFAE2000B47154 /* AuctionFilterButtonViewModel.swift in Sources */,
 				CE1791622C18A05D009F09A3 /* AuctionProcessor.swift in Sources */,
@@ -1825,6 +1920,7 @@
 				8CABF5D22BB9E16900A34870 /* CustomFontSize.swift in Sources */,
 				8C9FA44C2BD29C8B0041F28E /* DeviceConfigurator.swift in Sources */,
 				8C4B7BA72BB892AC0043B892 /* CustomStyledViewTextField.swift in Sources */,
+				CEFB53FC2C6CCA5200420D87 /* RegistrationModel.swift in Sources */,
 				8CABF5D62BB9E19900A34870 /* LayoutProperties.swift in Sources */,
 				8C8BEC362BA977560083D904 /* RootPageView.swift in Sources */,
 				8CAFD93A2BBD90F700C7D763 /* KeyboardResponsiveModifier.swift in Sources */,
@@ -1833,6 +1929,7 @@
 				8C9FA4402BD27FE80041F28E /* ManagerViewModel.swift in Sources */,
 				8C4BFB792BE189DA00B47154 /* LandingPageModel.swift in Sources */,
 				8C8BEC302BA975F10083D904 /* LogInView.swift in Sources */,
+				CEFB53FE2C6CDDF800420D87 /* ReCaptchaRepository.swift in Sources */,
 				8C4BFB5D2BE113E000B47154 /* OrganizationModel.swift in Sources */,
 				8C4BFB692BE184EA00B47154 /* CategoryModel.swift in Sources */,
 				8C79B4202C040D84005D4AAB /* WebSocketProcessor.swift in Sources */,
@@ -1846,8 +1943,10 @@
 				8C4B7BB12BB8944C0043B892 /* TextStyles.swift in Sources */,
 				8C8BEC662BA9B7DD0083D904 /* PageProtocol.swift in Sources */,
 				8C4BFB732BE188DE00B47154 /* PuzzleModel.swift in Sources */,
+				CE4D21172C2EFF080085DA1D /* PhoneField.swift in Sources */,
 				8CFE2CC72BBE84DF00AF60F1 /* NotificationName.swift in Sources */,
 				8C4A6DF72C22CB8900F320D8 /* SearchItemsRepository.swift in Sources */,
+				CE4D21102C2EF02E0085DA1D /* PaddleSubViewFactory.swift in Sources */,
 				8C4BFB502BDFADAE00B47154 /* AuctionStateStatuses.swift in Sources */,
 				8C9FA4422BD27FF20041F28E /* LogOutViewModel.swift in Sources */,
 				8C4B7BAD2BB8942D0043B892 /* TextFieldStyles.swift in Sources */,
@@ -1877,6 +1976,7 @@
 				8C9FA4502BD3AD060041F28E /* RoundedCornerView.swift in Sources */,
 				8CD107FC2BD11F7B00E83261 /* ViewModelTopBarProtocol.swift in Sources */,
 				CEE2BB272BB5BBB10033556D /* RegisterRepository.swift in Sources */,
+				CEA0A6502C2DA2A20088AA46 /* PickerView.swift in Sources */,
 				8C9FA4482BD282C30041F28E /* LogOutView.swift in Sources */,
 				8C4B7BAB2BB892F20043B892 /* CustomStyledViewText.swift in Sources */,
 				8CD1081C2BD1243800E83261 /* GenericTopBarContent.swift in Sources */,
@@ -1885,6 +1985,7 @@
 				8C8BEC2E2BA975DE0083D904 /* GetStartedView.swift in Sources */,
 				8C9FA45E2BD93DFB0041F28E /* SelectAuctionTopBarCenterView.swift in Sources */,
 				8C9FA45A2BD8DFBA0041F28E /* ChooseAuctionViewModel.swift in Sources */,
+				CEA0A64E2C2D9FD20088AA46 /* PaddleRepository.swift in Sources */,
 				8C4B7B892BB6FCEA0043B892 /* ButtonStyleConfiguration.swift in Sources */,
 				8C9FA4582BD8DFAB0041F28E /* ChooseOrganizationViewModel.swift in Sources */,
 				8C4B7BA22BB88FFB0043B892 /* ButtonStyles.swift in Sources */,
@@ -1895,6 +1996,7 @@
 				8C8BEC322BA976030083D904 /* GetStartedViewModel.swift in Sources */,
 				8C9BC3402C0CB67F004F3DFF /* AutoEncodable.swift in Sources */,
 				8C4BFB772BE189B400B47154 /* PromotedPollModel.swift in Sources */,
+				CE4D21152C2EF1C50085DA1D /* CreateAccountView.swift in Sources */,
 				8C79B4262C040D84005D4AAB /* WebSocketManager.swift in Sources */,
 				8C4BFB812BE2208E00B47154 /* DependencyMainAppProvider.swift in Sources */,
 				8C9FA43E2BD27FDF0041F28E /* MyBidsViewModel.swift in Sources */,
@@ -1932,12 +2034,14 @@
 				8C4B7B9B2BB7026D0043B892 /* TextStyleConfiguration.swift in Sources */,
 				8CC6BEE62BD43757007C999F /* AuctionTopBarCenterView.swift in Sources */,
 				8CABF5C82BB9C81100A34870 /* BackgroundContainerImage.swift in Sources */,
+				CE4D21122C2EF0DD0085DA1D /* FindPadleView.swift in Sources */,
 				CE0CEE812BBED0B4004A27FD /* ResetPasswordModel.swift in Sources */,
 				CE2022B72C0F0D120009415D /* ItemView.swift in Sources */,
 				8CD107FA2BD11F3400E83261 /* TopBarAction.swift in Sources */,
 				8C4B7B8B2BB6FD030043B892 /* CustomStyledViewButton.swift in Sources */,
 				8CD108032BD1208100E83261 /* TopBarContentFactory.swift in Sources */,
 				8C8BEC642BA9ADE20083D904 /* AppLaunchControlView.swift in Sources */,
+				CEC665872C7DCD5800F07E7D /* CountryModel.swift in Sources */,
 				8C0725BA2BF6332600522F8C /* ModelTypeData.swift in Sources */,
 				8CABF5DA2BB9F35A00A34870 /* NavigationBackButtonModifier.swift in Sources */,
 				CE34FB3F2BB1963300701D2A /* OverlayInternalView.swift in Sources */,
@@ -2100,6 +2204,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
