@@ -27,12 +27,17 @@
 "paddle_btn_notMe" = "Not me";
 "paddle_hint_cellPhone" = "Enter phone number";
 "paddle_hint_firstName" = "Enter your first name";
+"paddle_hint_emptyName" = "Name fields cannot be empty";
+"paddle_hint_emptyPhone" = "Phone number cannot be empty";
+"paddle_hint_firstName" = "Enter your first name";
+"paddle_hint_incorrectEmail" = "Email is incorrect";
 "paddle_hint_lastName" = "Enter your last name";
 "paddle_label_confirmInformation" = "Confirm your information:";
 "paddle_label_createBidderAccount" = "Create bidder account";
 "paddle_label_findPaddleByPhoneOrEmail" = "Lost your paddle number? No problem! \nFind it by email or cell phone:";
 "paddle_label_firstName" = "First name";
 "paddle_label_lastName" = "Last name";
+"paddle_label_paddleNotFound" = "We were not able to find anyone with this data";
 "paddle_label_paddleNumber" = "Paddle number";
 "paddle_label_sponsor" = "Sponsor";
 "paddle_label_tableNumber" = "Table number";

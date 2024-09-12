@@ -24,11 +24,11 @@ enum TextLabelStyles {
 			)
 		case .error:
 			TextStyleConfiguration(
-				fontStyle: .caption,
+				fontStyle: TypographyStyle.small.asFont(),
 				fontWeightStyle: .medium,
 				textAlignment: .center,
 				alignment: .center,
-				defaultTextColor: Color(hex: "#E2296C")
+				defaultTextColor: .statusError
 			)
 		case .formHeader:
 			TextStyleConfiguration(
