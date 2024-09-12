@@ -18,11 +18,9 @@ struct DetailInfoView: View {
 					.accessibilityIdentifier("categoryName")
 				Text(" | ")
 					.foregroundColor(.gray)
-
 				let formattedItemCode = item.itemCode.map { code in
 					code.hasPrefix("#") ? code : "#\(code)"
 				} ?? "NaN"
-
 				Text("\(formattedItemCode)")
 					.fontWeight(.light)
 					.font(.callout)
@@ -58,14 +56,12 @@ struct DetailInfoView: View {
 						.fontWeight(.bold)
 						.accessibilityIdentifier("itemValue")
 				}
-
 				VStack {
 					Rectangle()
 						.foregroundColor(.gray)
 						.frame(width: 1)
 						.padding(.vertical, 4)
 				}
-
 				VStack(alignment: .leading) {
 					Text("INCREMENT")
 						.font(.subheadline)
