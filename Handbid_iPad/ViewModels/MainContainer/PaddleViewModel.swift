@@ -82,7 +82,11 @@ class PaddleViewModel: ObservableObject, ViewModelTopBarProtocol {
 				},
 				receiveValue: { countries in
 					self.countries = countries.filter { country in
-						country.phoneCode != nil && country.countryCode != nil
+						guard let phoneCode = country.phoneCode,
+						      let countryCode = country.countryCode
+						else { return false }
+
+						return !phoneCode.isEmpty && countryCode.count == 2
 					}
 				}
 			).store(in: &cancellables)
