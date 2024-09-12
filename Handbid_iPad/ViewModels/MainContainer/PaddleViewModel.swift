@@ -124,7 +124,7 @@ class PaddleViewModel: ObservableObject, ViewModelTopBarProtocol {
 			}
 		case .email:
 			identifier = email
-			if !identifier.isValidPin() {
+			if !identifier.isValidEmail() {
 				error = String(localized: "paddle_hint_incorrectEmail")
 				isLoading = false
 				return

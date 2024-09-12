@@ -73,11 +73,13 @@ struct ConfirmUserInformationView: View {
 
 				Divider()
 
-				HStack(alignment: .bottom) {
+				HStack(alignment: .top) {
 					VStack(alignment: .leading) {
 						Text(LocalizedStringKey("paddle_label_paddleNumber"))
 							.applyTextStyle(style: .leadingLabel)
 							.textCase(.uppercase)
+
+						Spacer()
 
 						Text(model.currentPaddleNumber?.formatted() ?? "N/A")
 							.font(TypographyStyle.h2.asFont())
@@ -97,6 +99,8 @@ struct ConfirmUserInformationView: View {
 							.applyTextStyle(style: .leadingLabel)
 							.textCase(.uppercase)
 
+						Spacer()
+
 						Text(model.currentPlacement ?? "N/A")
 							.font(TypographyStyle.h2.asFont())
 							.fontWeight(.bold)
@@ -114,6 +118,8 @@ struct ConfirmUserInformationView: View {
 							.applyTextStyle(style: .leadingLabel)
 							.textCase(.uppercase)
 
+						Spacer()
+
 						let sponsor = model.sponsorName ?? ""
 
 						Text(sponsor.isEmpty ? "N/A" : sponsor)
@@ -122,7 +128,9 @@ struct ConfirmUserInformationView: View {
 							.padding()
 							.padding(.bottom, 16)
 							.frame(maxWidth: .infinity,
+							       maxHeight: .infinity,
 							       alignment: .leading)
+							.fixedSize(horizontal: false, vertical: true)
 							.accessibilityIdentifier("sponsorField")
 					}
 				}
