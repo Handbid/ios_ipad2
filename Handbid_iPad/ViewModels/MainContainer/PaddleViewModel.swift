@@ -50,6 +50,7 @@ class PaddleViewModel: ObservableObject, ViewModelTopBarProtocol {
 
 		fetchCountries()
 		updateAuctionId()
+		setUpClearingError()
 	}
 
 	var centerViewData: TopBarCenterViewData {
@@ -67,6 +68,24 @@ class PaddleViewModel: ObservableObject, ViewModelTopBarProtocol {
 
 		self.auctionId = auctionId
 		self.auctionGuid = auctionGuid
+	}
+
+	private func setUpClearingError() {
+		let fields = [$email, $phone, $firstName, $lastName]
+
+		for field in fields {
+			field.sink { _ in
+				self.clearError()
+			}.store(in: &cancellables)
+		}
+
+		$pickedMethod.sink { _ in
+			self.clearError()
+		}.store(in: &cancellables)
+	}
+
+	func clearError() {
+		error = ""
 	}
 
 	func fetchCountries() {
@@ -94,11 +113,22 @@ class PaddleViewModel: ObservableObject, ViewModelTopBarProtocol {
 
 	func requestFindingPaddle() {
 		isLoading = true
-		let identifier = switch pickedMethod {
+		var identifier = ""
+		switch pickedMethod {
 		case .cellPhone:
-			phone
+			identifier = phone
+			if identifier.isEmpty {
+				error = String(localized: "paddle_hint_emptyPhone")
+				isLoading = false
+				return
+			}
 		case .email:
-			email
+			identifier = email
+			if !identifier.isValidPin() {
+				error = String(localized: "paddle_hint_incorrectEmail")
+				isLoading = false
+				return
+			}
 		}
 
 		paddleRepository.findPaddle(identifier: identifier, auctionId: auctionId)
@@ -148,14 +178,14 @@ class PaddleViewModel: ObservableObject, ViewModelTopBarProtocol {
 					}
 				}, receiveValue: { _ in
 					self.subView = .findPaddle
-					self.error = ""
+					self.clearError()
 				})
 				.store(in: &cancellables)
 		}
 	}
 
 	private func validateDataForRegistration() -> Bool {
-		error = ""
+		clearError()
 
 		if firstName.isEmpty || lastName.isEmpty {
 			error = String(localized: "paddle_hint_emptyName")
