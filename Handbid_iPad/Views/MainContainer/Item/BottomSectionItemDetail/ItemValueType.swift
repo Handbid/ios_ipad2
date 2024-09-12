@@ -18,4 +18,19 @@ enum ItemValueType: Equatable {
 			nil
 		}
 	}
+
+	static func == (lhs: ItemValueType, rhs: ItemValueType) -> Bool {
+		switch (lhs, rhs) {
+		case let (.bidAmount(a), .bidAmount(b)):
+			a == b
+		case let (.buyNow(a), .buyNow(b)):
+			a == b
+		case let (.quantity(a), .quantity(b)):
+			a == b
+		case (.none, .none):
+			true
+		default:
+			false
+		}
+	}
 }
