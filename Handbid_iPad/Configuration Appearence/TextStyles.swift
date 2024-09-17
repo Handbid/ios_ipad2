@@ -4,7 +4,7 @@ import SwiftUI
 
 enum TextLabelStyles {
 	case headerTitle, body, formHeader, error, searchBar,
-	     subheader, accentBody, leadingLabel, titleLeading, itemDetailValue, itemDetailDescription
+	     subheader, accentBody, leadingLabel, titleLeading
 
 	var configuration: TextStyleConfiguration {
 		switch self {
@@ -79,20 +79,6 @@ enum TextLabelStyles {
 				textAlignment: .leading,
 				alignment: .leading
 			)
-		case .itemDetailValue:
-			TextStyleConfiguration(
-				fontStyle: .headline,
-				fontWeightStyle: .bold,
-				textAlignment: .leading,
-				alignment: .leading
-			)
-		case .itemDetailDescription:
-			TextStyleConfiguration(
-				fontStyle: .title2,
-				fontWeightStyle: .medium,
-				textAlignment: .center,
-				alignment: .center
-			)
 		}
 	}
 
@@ -107,8 +93,6 @@ enum TextLabelStyles {
 		case .accentBody: TextLabelStyles.accentBody.configuration
 		case .leadingLabel: TextLabelStyles.leadingLabel.configuration
 		case .titleLeading: TextLabelStyles.titleLeading.configuration
-		case .itemDetailValue: TextLabelStyles.itemDetailValue.configuration
-		case .itemDetailDescription: TextLabelStyles.itemDetailDescription.configuration
 		}
 	}
 }

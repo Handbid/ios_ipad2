@@ -46,6 +46,8 @@ class WebSocketManager {
 	func initProcessorRegistry() {
 		ProcessorRegistry.shared.registerProcessor(UserProcessor(), for: .user)
 		ProcessorRegistry.shared.registerProcessor(AuctionProcessor(), for: .auction)
-		ProcessorRegistry.shared.registerProcessor(ItemProcessor(), for: .auction)
+		ProcessorRegistry.shared.registerProcessor(ItemProcessor(), for: .afterBid)
+		ProcessorRegistry.shared.registerProcessor(ItemProcessor(), for: .quantityThreshold)
+		ProcessorRegistry.shared.registerProcessor(ItemProcessor(), for: .item)
 	}
 }
