@@ -23,7 +23,7 @@ struct PhoneField: View {
 				       selection: $selectedCountryCode)
 				{
 					ForEach(countries) { country in
-						Text("\(country.countryFlag() ?? "") \(country.countryCode!) +\(country.phoneCode!)").tag(country.countryCode!)
+						Text("\(country.countryFlag() ?? "") \(country.countryCode ?? "") +\(country.phoneCode ?? "")").tag(country.countryCode ?? "")
 					}
 				}
 				.pickerStyle(.menu)
