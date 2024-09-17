@@ -4,7 +4,7 @@ import Arrow
 import Combine
 import NetworkService
 
-protocol PerformTransactionRepository {
+protocol BidRepository {
 	func performTransaction(userID: Int?,
 	                        paddleNumber: Int?,
 	                        auctionId: Int,
@@ -17,7 +17,7 @@ protocol PerformTransactionRepository {
 	                        finalBid: Bool?) -> AnyPublisher<BidModel, any Error>
 }
 
-class PerformTransactionRepositoryImpl: PerformTransactionRepository, NetworkingService {
+class BidRepositoryImpl: BidRepository, NetworkingService {
 	var network: NetworkService.NetworkingClient
 
 	init(network: NetworkService.NetworkingClient) {
