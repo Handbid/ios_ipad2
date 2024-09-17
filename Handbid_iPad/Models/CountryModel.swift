@@ -8,6 +8,18 @@ struct CountryModel: Identifiable, Codable, NetworkingJSONDecodable {
 	var name: String?
 	var countryCode: String?
 	var phoneCode: String?
+
+	func countryFlag() -> String? {
+		guard let code = countryCode
+		else { return nil }
+
+		return code
+			.unicodeScalars
+			.map { 127_397 + $0.value }
+			.compactMap(UnicodeScalar.init)
+			.map(String.init)
+			.joined()
+	}
 }
 
 extension CountryModel: ArrowParsable {
