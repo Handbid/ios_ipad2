@@ -2,8 +2,6 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct AuctionView: View {
 	@ObservedObject var viewModel: AuctionViewModel
 	@State var isLoading = true
@@ -12,6 +10,7 @@ struct AuctionView: View {
 	@State private var selectedItem: ItemModel? = nil
 	@State private var showDetailView: Bool = false
 	@State private var loadImages: Bool = false
+	@StateObject private var detailState = ItemDetailState()
 
 	init(viewModel: AuctionViewModel) {
 		self.viewModel = viewModel
@@ -81,6 +80,7 @@ struct AuctionView: View {
 						withAnimation {
 							selectedItem = item
 							showDetailView = true
+							detailState.reset()
 						}
 					}
 				}
@@ -105,10 +105,10 @@ struct AuctionView: View {
 		ItemDetailView(
 			isVisible: $showDetailView,
 			loadImages: $loadImages,
-			viewModel: ItemDetailViewModel(
-				item: item
-			)
+			item: item,
+			detailState: detailState
 		)
+		.id(item.id)
 		.padding(10)
 		.background(Color.accentViolet.opacity(0.5))
 		.onAppear {
