@@ -11,7 +11,10 @@
 "global_label_email" = "E-mail";
 "global_label_error" = "Erro";
 "global_label_unknownError" = "Erro desconhecido";
+"itemGallery_label_screenClose" = "Esta tela se fechará em";
+"itemGallery_label_seconds" = "segundos";
 "item_btn_bidNow" = "OFERTAR AGORA";
+"item_btn_buyNow" = "COMPRAR AGORA";
 "item_btn_buyNowFor" = "COMPRE AGORA POR";
 "item_btn_buyPuzzlePiece" = "Comprar Peça de Quebra-Cabeça por";
 "item_btn_eventOnly" = "Somente Evento";
@@ -19,10 +22,12 @@
 "item_btn_setMaxBid" = "DEFINIR OFERTA MÁXIMA";
 "item_btn_supportUs" = "APOIE-NOS";
 "item_label_biddingDisabled" = "Licitação online atualmente desativada para este item";
+"item_label_buyPuzzlePieceFor" = "Compre peça de quebra-cabeça por";
 "item_label_cancel" = "Cancelar";
 "item_label_confirm" = "Confirmar";
 "item_label_enterYouPadle" = "Digite o número do seu paddle";
 "item_label_forSale" = "À Venda";
+"item_label_increment" = "AUMENTAR";
 "item_label_itemHasPurchased" = "Item foi comprado";
 "item_label_itemNotAvailable" = "Item não está disponível";
 "item_label_itemNotAvailableForPurchase" = "Item não está disponível para compra";
@@ -30,7 +35,10 @@
 "item_label_liveAuctionItem" = "Item de Leilão ao Vivo";
 "item_label_notOpenForBidding" = "Item não está aberto para licitação";
 "item_label_numberOfBids" = "%i ofertas";
+"item_label_piecesLeft" = "Peças restantes";
+"item_label_pricePerPiece" = "Preço por peça";
 "item_label_privePerItem" = "Preço por Peça";
+"item_label_value" = "VALOR";
 "login_label_incorrectCredentials" = "E-mail ou senha incorretos";
 "menuBar_label_auction" = "Leilão";
 "menuBar_label_logout" = "Sair";
@@ -78,4 +86,7 @@
 "registration_label_selectEnvironment" = "Selecionar Ambiente";
 "registration_label_welcomeHandbid" = "Bem-vindo ao \nHandbid App";
 "search_item_label" = "Buscar Item";
+"search_label_filters" = "Filtros";
+"search_label_searchHistory" = "Histórico de pesquisa";
 "topBar_btn_allAuction" = "Todos os leilões";
+"topBar_label_auctions" = "Leilões";

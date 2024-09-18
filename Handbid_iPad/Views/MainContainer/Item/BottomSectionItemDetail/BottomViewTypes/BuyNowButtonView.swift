@@ -19,7 +19,7 @@ struct BuyNowButtonView: ButtonItemViewProtocol {
 					.accessibilityHint("This item is not currently available for purchase.")
 			}
 			else if item.itemStatus == .pending {
-				Text("Item is not open for bidding")
+				Text(LocalizedStringKey("item_label_notOpenForBidding"))
 					.fontWeight(.bold)
 					.accessibilityLabel("Item not open")
 					.accessibilityHint("This item is pending and cannot be bid on yet.")
@@ -30,7 +30,7 @@ struct BuyNowButtonView: ButtonItemViewProtocol {
 					showPaddleInput = true
 					selectedAction = .buyNow
 				}) {
-					Text("BUY NOW FOR \(item.buyNowPrice ?? 1.0, format: .currency(code: "\(auction?.currencyCode ?? "")"))")
+					Text("\(String(format: NSLocalizedString("item_btn_buyNowFor", comment: ""))) \(item.buyNowPrice ?? 1.0, format: .currency(code: "\(auction?.currencyCode ?? "")"))")
 				}
 				.accessibilityLabel("Buy now")
 				.accessibilityValue("\(item.buyNowPrice ?? 1.0, format: .currency(code: auction?.currencyCode ?? ""))")
@@ -42,7 +42,7 @@ struct BuyNowButtonView: ButtonItemViewProtocol {
 						showPaddleInput = true
 						selectedAction = .setMaxBid
 					}) {
-						Text("SET MAX BID")
+						Text(LocalizedStringKey("item_btn_setMaxBid"))
 					}
 					.accessibilityLabel("Set max bid")
 					.accessibilityHint("Double-tap to set the maximum bid amount for this item.")
@@ -52,7 +52,7 @@ struct BuyNowButtonView: ButtonItemViewProtocol {
 						showPaddleInput = true
 						selectedAction = .bidNow
 					}) {
-						Text("BID NOW")
+						Text(LocalizedStringKey("item_btn_bidNow"))
 					}
 					.accessibilityLabel("Bid now")
 					.accessibilityHint("Double-tap to place a bid on this item.")

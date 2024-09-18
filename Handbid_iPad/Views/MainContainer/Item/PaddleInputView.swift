@@ -16,7 +16,7 @@ struct PaddleInputView: View {
 		VStack {
 			Spacer()
 			VStack(spacing: 40) {
-				Text("Enter your paddle number")
+				Text(LocalizedStringKey("item_label_enterYouPadle"))
 					.font(.headline)
 					.fontWeight(.bold)
 					.padding()
@@ -70,7 +70,7 @@ struct PaddleInputView: View {
 						isVisible = false
 						resetTimer()
 					}) {
-						Text("Cancel")
+						Text(LocalizedStringKey("item_label_cancel"))
 							.textCase(.uppercase)
 					}.accessibilityIdentifier("Cancel")
 						.padding(.leading)
@@ -80,7 +80,7 @@ struct PaddleInputView: View {
 //						isVisible = false
 						resetTimer()
 					}) {
-						Text("Confirm")
+						Text(LocalizedStringKey("item_label_confirm"))
 							.textCase(.uppercase)
 					}.accessibilityIdentifier("Confirm")
 						.padding(.trailing)

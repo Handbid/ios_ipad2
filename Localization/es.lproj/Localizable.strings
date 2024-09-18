@@ -11,7 +11,10 @@
 "global_label_email" = "Correo Electrónico";
 "global_label_error" = "Error";
 "global_label_unknownError" = "Error desconocido";
+"itemGallery_label_screenClose" = "Esta pantalla se cerrará en";
+"itemGallery_label_seconds" = "segundos";
 "item_btn_bidNow" = "PUJAR AHORA";
+"item_btn_buyNow" = "COMPRAR AHORA";
 "item_btn_buyNowFor" = "COMPRAR AHORA POR";
 "item_btn_buyPuzzlePiece" = "Comprar pieza de rompecabezas por";
 "item_btn_eventOnly" = "Solo Evento";
@@ -19,10 +22,12 @@
 "item_btn_setMaxBid" = "ESTABLECER OFERTA MÁXIMA";
 "item_btn_supportUs" = "APOYANOS";
 "item_label_biddingDisabled" = "La puja en línea está actualmente desactivada para este artículo";
+"item_label_buyPuzzlePieceFor" = "Acheter une pièce de puzzle pour";
 "item_label_cancel" = "Cancelar";
 "item_label_confirm" = "Confirmar";
 "item_label_enterYouPadle" = "Introduce tu número de paddle";
 "item_label_forSale" = "En Venta";
+"item_label_increment" = "AUMENTAR";
 "item_label_itemHasPurchased" = "El artículo ha sido comprado";
 "item_label_itemNotAvailable" = "El artículo no está disponible";
 "item_label_itemNotAvailableForPurchase" = "El artículo no está disponible para la compra";
@@ -30,7 +35,10 @@
 "item_label_liveAuctionItem" = "Artículo de Subasta en Vivo";
 "item_label_notOpenForBidding" = "El artículo no está abierto a pujas";
 "item_label_numberOfBids" = "%i ofertas";
+"item_label_piecesLeft" = "Piezas restantes";
+"item_label_pricePerPiece" = "Precio por pieza";
 "item_label_privePerItem" = "Precio por Pieza";
+"item_label_value" = "VALOR";
 "login_label_incorrectCredentials" = "Correo electrónico o contraseña incorrectos";
 "menuBar_label_auction" = "Subasta";
 "menuBar_label_logout" = "Cerrar sesión";
@@ -78,4 +86,7 @@
 "registration_label_selectEnvironment" = "Seleccionar Entorno";
 "registration_label_welcomeHandbid" = "Bienvenido a \nHandbid App";
 "search_item_label" = "Buscar Artículo";
+"search_label_filters" = "Filtros";
+"search_label_searchHistory" = "Historial de búsqueda";
 "topBar_btn_allAuction" = "Todas las subastas";
+"topBar_label_auctions" = "Subastas";

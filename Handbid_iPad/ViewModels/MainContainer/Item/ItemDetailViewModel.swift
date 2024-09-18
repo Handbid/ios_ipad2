@@ -4,11 +4,11 @@ import Combine
 import SwiftUI
 
 class ItemDetailViewModel: ObservableObject {
-	let repositoryPerformTransaction: BidRepository
+	// let repositoryPerformTransaction: PerformTransactionRepository
 	let item: ItemModel
 
-	init(item: ItemModel, repositoryPerformTransaction: BidRepository) {
+	init(item: ItemModel) {
 		self.item = item
-		self.repositoryPerformTransaction = repositoryPerformTransaction
+		// self.repositoryPerformTransaction = repositoryPerformTransaction
 	}
 }

@@ -11,7 +11,7 @@ struct LiveAuctionButtonView: ButtonItemViewProtocol {
 
 	var body: some View {
 		VStack {
-			Text("Live Auction Item")
+			Text(LocalizedStringKey("item_label_liveAuctionItem"))
 				.fontWeight(.bold)
 		}
 		.padding()

@@ -24,82 +24,19 @@ struct ImageGalleryView: View {
 						.overlay(
 							Group {
 								if loadImages {
-									if let selectedImageUrl = selectedImage {
-										AsyncImage(url: URL(string: selectedImageUrl)) { phase in
-											switch phase {
-											case .empty:
-												ProgressView()
-													.accessibilityLabel("Loading image")
-													.accessibilityIdentifier("loadingSelectedImage")
-											case let .success(image):
-												image.resizable()
-													.scaledToFit()
-													.clipped()
-													.accessibilityLabel("Selected image")
-													.accessibilityIdentifier("selectedImage")
-											case .failure:
-												Image(systemName: "default_photo")
-													.resizable()
-													.scaledToFit()
-													.clipped()
-													.accessibilityLabel("Image failed to load")
-													.accessibilityIdentifier("selectedImageError")
-											@unknown default:
-												EmptyView()
-													.accessibilityIdentifier("unknownImagePhase")
-											}
+									if let selectedImageUrl = selectedImage, let url = URL(string: selectedImageUrl) {
+										AsyncImage(url: url) { phase in
+											imageLoader(phase: phase)
 										}
 									}
-									else if !images.isEmpty, let firstImage = images.first?.itemImageUrl, let firstImageUrl = URL(string: firstImage) {
-										AsyncImage(url: firstImageUrl) { phase in
-											switch phase {
-											case .empty:
-												ProgressView()
-													.accessibilityLabel("Loading first image")
-													.accessibilityIdentifier("loadingFirstImage")
-											case let .success(image):
-												image.resizable()
-													.scaledToFit()
-													.clipped()
-													.accessibilityLabel("First image in gallery")
-													.accessibilityIdentifier("firstImage")
-											case .failure:
-												Image(systemName: "default_photo")
-													.resizable()
-													.scaledToFit()
-													.clipped()
-													.accessibilityLabel("First image failed to load")
-													.accessibilityIdentifier("firstImageError")
-											@unknown default:
-												EmptyView()
-													.accessibilityIdentifier("unknownImagePhase")
-											}
+									else if let firstImageUrl = images.first?.itemImageUrl, let url = URL(string: firstImageUrl) {
+										AsyncImage(url: url) { phase in
+											imageLoader(phase: phase)
 										}
 									}
 									else if let fallbackImageUrl = item.imageUrl, let url = URL(string: fallbackImageUrl) {
 										AsyncImage(url: url) { phase in
-											switch phase {
-											case .empty:
-												ProgressView()
-													.accessibilityLabel("Loading fallback image")
-													.accessibilityIdentifier("loadingFallbackImage")
-											case let .success(image):
-												image.resizable()
-													.scaledToFit()
-													.clipped()
-													.accessibilityLabel("Fallback image")
-													.accessibilityIdentifier("fallbackImage")
-											case .failure:
-												Image(systemName: "default_photo")
-													.resizable()
-													.scaledToFit()
-													.clipped()
-													.accessibilityLabel("Fallback image failed to load")
-													.accessibilityIdentifier("fallbackImageError")
-											@unknown default:
-												EmptyView()
-													.accessibilityIdentifier("unknownImagePhase")
-											}
+											imageLoader(phase: phase)
 										}
 									}
 								}
@@ -142,42 +79,7 @@ struct ImageGalleryView: View {
 
 								if let imageUrl = image.itemImageUrl, let url = URL(string: imageUrl), loadImages {
 									AsyncImage(url: url) { phase in
-										switch phase {
-										case .empty:
-											ProgressView()
-												.accessibilityLabel("Loading gallery image")
-												.accessibilityIdentifier("loadingGalleryImage_\(index)")
-										case let .success(image):
-											image.resizable()
-												.scaledToFit()
-												.clipped()
-												.background(Color.accentGrayBackground)
-												.frame(width: itemWidth, height: itemHeight)
-												.cornerRadius(10)
-												.onTapGesture {
-													selectedImage = imageUrl
-													resetTimer()
-												}
-												.accessibilityLabel("Gallery image")
-												.accessibilityIdentifier("galleryImage_\(index)")
-												.overlay(
-													RoundedRectangle(cornerRadius: 10)
-														.stroke(selectedImage == imageUrl ? Color.blue : Color.clear, lineWidth: 2)
-												)
-										case .failure:
-											Image(systemName: "default_photo")
-												.resizable()
-												.scaledToFit()
-												.clipped()
-												.background(Color.accentGrayBackground)
-												.frame(width: itemWidth, height: itemHeight)
-												.cornerRadius(10)
-												.accessibilityLabel("Gallery image failed to load")
-												.accessibilityIdentifier("galleryImageError_\(index)")
-										@unknown default:
-											EmptyView()
-												.accessibilityIdentifier("unknownGalleryImagePhase_\(index)")
-										}
+										imageLoader(phase: phase, selectedImage: selectedImage, imageUrl: imageUrl, index: index, itemWidth: itemWidth, itemHeight: itemHeight)
 									}
 								}
 							}
@@ -204,7 +106,7 @@ struct ImageGalleryView: View {
 						.padding(5)
 						.accessibilityLabel("Progress indicator")
 						.accessibilityIdentifier("progressIndicator")
-					Text("This screen will close in \(remainingTime) seconds.")
+					Text("\(String(format: NSLocalizedString("itemGallery_label_screenClose", comment: ""))) \(remainingTime) \(String(format: NSLocalizedString("itemGallery_label_seconds", comment: ""))).")
 						.font(.callout)
 						.fontWeight(.light)
 						.padding(.leading, 5)
@@ -216,6 +118,44 @@ struct ImageGalleryView: View {
 				.padding(3)
 			}
 			.accessibilityIdentifier("imageGalleryView")
+		}
+	}
+
+	@ViewBuilder
+	private func imageLoader(phase: AsyncImagePhase, selectedImage: String? = nil, imageUrl: String? = nil, index: Int = 0, itemWidth: CGFloat = 0, itemHeight: CGFloat = 0) -> some View {
+		switch phase {
+		case .empty:
+			ProgressView()
+				.accessibilityLabel("Loading image")
+				.accessibilityIdentifier("loadingImage_\(index)")
+		case let .success(image):
+			image.resizable()
+				.scaledToFit()
+				.clipped()
+				.background(Color.accentGrayBackground)
+				.frame(width: itemWidth, height: itemHeight)
+				.cornerRadius(10)
+				.onTapGesture {
+					self.selectedImage = imageUrl
+				}
+				.accessibilityLabel("Image loaded successfully")
+				.accessibilityIdentifier("loadedImage_\(index)")
+				.overlay(
+					RoundedRectangle(cornerRadius: 10)
+						.stroke(selectedImage == imageUrl ? Color.blue : Color.clear, lineWidth: 2)
+				)
+		case .failure:
+			Image("default_photo")
+				.resizable()
+				.scaledToFit()
+				.clipped()
+				.background(Color.accentGrayBackground)
+				.frame(width: itemWidth, height: itemHeight)
+				.cornerRadius(10)
+				.accessibilityLabel("Image failed to load")
+				.accessibilityIdentifier("imageError_\(index)")
+		@unknown default:
+			EmptyView()
 		}
 	}
 }

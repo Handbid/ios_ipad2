@@ -12,7 +12,7 @@ struct SelectAuctionTopBarCenterView: View {
 			Text(title)
 				.font(.headline)
 				.foregroundColor(.primary)
-			Text("\(countAuctions) Auctions")
+			Text("\(countAuctions) \(String(format: NSLocalizedString("topBar_label_auctions", comment: "")))")
 				.font(deviceContext.isPhone ? .caption2 : .caption)
 				.foregroundColor(.primary)
 		}

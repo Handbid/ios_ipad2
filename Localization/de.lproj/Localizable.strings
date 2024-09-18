@@ -11,7 +11,10 @@
 "global_label_email" = "E-Mail";
 "global_label_error" = "Fehler";
 "global_label_unknownError" = "Unbekannter Fehler";
+"itemGallery_label_screenClose" = "Dieser Bildschirm schließt sich in";
+"itemGallery_label_seconds" = "Sekunden";
 "item_btn_bidNow" = "JETZT GEBOTEN";
+"item_btn_buyNow" = "JETZT KAUFEN";
 "item_btn_buyNowFor" = "JETZT KAUFEN FÜR";
 "item_btn_buyPuzzlePiece" = "Kaufe Puzzlestück für";
 "item_btn_eventOnly" = "Nur Event";
@@ -19,10 +22,12 @@
 "item_btn_setMaxBid" = "MAXIMALGEBOT FESTLEGEN";
 "item_btn_supportUs" = "UNTERSTÜTZE UNS";
 "item_label_biddingDisabled" = "Online-Gebote sind derzeit für diesen Artikel deaktiviert";
+"item_label_buyPuzzlePieceFor" = "Kaufen Sie Puzzleteile für";
 "item_label_cancel" = "Abbrechen";
 "item_label_confirm" = "Bestätigen";
 "item_label_enterYouPadle" = "Gib deine Paddle-Nummer ein";
 "item_label_forSale" = "Zum Verkauf";
+"item_label_increment" = "ERHÖHEN";
 "item_label_itemHasPurchased" = "Artikel wurde gekauft";
 "item_label_itemNotAvailable" = "Artikel ist nicht verfügbar";
 "item_label_itemNotAvailableForPurchase" = "Artikel ist nicht zum Kauf verfügbar";
@@ -30,7 +35,10 @@
 "item_label_liveAuctionItem" = "Live-Auktionsartikel";
 "item_label_notOpenForBidding" = "Artikel ist nicht für Gebote geöffnet";
 "item_label_numberOfBids" = "%i Gebote";
+"item_label_piecesLeft" = "Reststücke übrig";
+"item_label_pricePerPiece" = "Preis pro Stück";
 "item_label_privePerItem" = "Preis pro Stück";
+"item_label_value" = "WERT";
 "login_label_incorrectCredentials" = "E-Mail oder Passwort falsch";
 "menuBar_label_auction" = "Auktion";
 "menuBar_label_logout" = "Abmelden";
@@ -78,4 +86,7 @@
 "registration_label_selectEnvironment" = "Umgebung auswählen";
 "registration_label_welcomeHandbid" = "Willkommen bei \nHandbid App";
 "search_item_label" = "Artikel suchen";
+"search_label_filters" = "Filter";
+"search_label_searchHistory" = "Suchverlauf";
 "topBar_btn_allAuction" = "Alle Auktionen";
+"topBar_label_auctions" = "Auktionen";

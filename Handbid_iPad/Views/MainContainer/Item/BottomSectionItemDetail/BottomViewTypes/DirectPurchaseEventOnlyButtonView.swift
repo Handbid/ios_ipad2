@@ -11,7 +11,7 @@ struct DirectPurchaseEventOnlyButtonView: ButtonItemViewProtocol {
 
 	var body: some View {
 		VStack {
-			Text("Event Only")
+			Text(LocalizedStringKey("item_btn_eventOnly"))
 				.fontWeight(.bold)
 		}
 		.padding()

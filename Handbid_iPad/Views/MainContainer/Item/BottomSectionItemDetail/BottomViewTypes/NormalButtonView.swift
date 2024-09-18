@@ -12,11 +12,11 @@ struct NormalButtonView: ButtonItemViewProtocol {
 	var body: some View {
 		VStack {
 			if item.itemStatus != .open, item.itemStatus != .extended, item.itemStatus != .pending {
-                Text(LocalizedStringKey("item_label_itemNotAvailable"))
+				Text(LocalizedStringKey("item_label_itemNotAvailable"))
 					.fontWeight(.bold)
 			}
 			else if item.itemStatus == .pending {
-				Text("Item is not open for bidding")
+				Text(LocalizedStringKey("item_label_notOpenForBidding"))
 					.fontWeight(.bold)
 			}
 			else {
@@ -25,7 +25,7 @@ struct NormalButtonView: ButtonItemViewProtocol {
 					showPaddleInput = true
 					selectedAction = .bidNow
 				}) {
-					Text("BID NOW")
+					Text(LocalizedStringKey("item_btn_bidNow"))
 				}
 
 				Button<Text>.styled(config: .secondaryButtonStyle, action: {
@@ -33,7 +33,7 @@ struct NormalButtonView: ButtonItemViewProtocol {
 					showPaddleInput = true
 					selectedAction = .setMaxBid
 				}) {
-					Text("SET MAX BID")
+					Text(LocalizedStringKey("item_btn_setMaxBid"))
 				}
 			}
 		}

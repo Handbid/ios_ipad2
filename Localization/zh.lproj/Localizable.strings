@@ -11,7 +11,10 @@
 "global_label_email" = "电子邮件";
 "global_label_error" = "错误";
 "global_label_unknownError" = "未知错误";
+"itemGallery_label_screenClose" = "此屏幕将在";
+"itemGallery_label_seconds" = "秒后关闭";
 "item_btn_bidNow" = "现在竞标";
+"item_btn_buyNow" = "立即购买";
 "item_btn_buyNowFor" = "现在购买";
 "item_btn_buyPuzzlePiece" = "购买拼图块";
 "item_btn_eventOnly" = "仅限活动";
@@ -19,10 +22,12 @@
 "item_btn_setMaxBid" = "设置最高出价";
 "item_btn_supportUs" = "支持我们";
 "item_label_biddingDisabled" = "此物品的在线竞标目前已禁用";
+"item_label_buyPuzzlePieceFor" = "购买拼图块：";
 "item_label_cancel" = "取消";
 "item_label_confirm" = "确认";
 "item_label_enterYouPadle" = "输入你的 paddle 编号";
 "item_label_forSale" = "待售";
+"item_label_increment" = "增加";
 "item_label_itemHasPurchased" = "物品已被购买";
 "item_label_itemNotAvailable" = "物品不可用";
 "item_label_itemNotAvailableForPurchase" = "物品不可购买";
@@ -30,7 +35,10 @@
 "item_label_liveAuctionItem" = "现场拍卖物品";
 "item_label_notOpenForBidding" = "物品未开放竞标";
 "item_label_numberOfBids" = "%i 竞标";
+"item_label_piecesLeft" = "剩下的棋子";
+"item_label_pricePerPiece" = "每件价格";
 "item_label_privePerItem" = "每件价格";
+"item_label_value" = "价值";
 "login_label_incorrectCredentials" = "邮箱或密码不正确";
 "menuBar_label_auction" = "拍卖";
 "menuBar_label_logout" = "登出";
@@ -78,4 +86,7 @@
 "registration_label_selectEnvironment" = "选择环境";
 "registration_label_welcomeHandbid" = "欢迎使用 \nHandbid 应用";
 "search_item_label" = "搜索物品";
+"search_label_filters" = "过滤器";
+"search_label_searchHistory" = "搜索历史";
 "topBar_btn_allAuction" = "所有拍卖";
+"topBar_label_auctions" = "拍卖";

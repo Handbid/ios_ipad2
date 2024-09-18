@@ -18,12 +18,12 @@ struct DirectPurchaseButtonView: ButtonItemViewProtocol {
 					showPaddleInput = true
 					selectedAction = .donate
 				}) {
-                    Text(LocalizedStringKey("item_btn_supportUs"))
+					Text(LocalizedStringKey("item_btn_supportUs"))
 				}
 			}
 			else {
 				if item.itemStatus != .open, item.itemStatus != .open, item.itemStatus != .open, !(item.isHidden ?? false) {
-                    Text(LocalizedStringKey("item_label_itemNotAvailableForPurchase"))
+					Text(LocalizedStringKey("item_label_itemNotAvailableForPurchase"))
 						.fontWeight(.bold)
 				}
 				else {
@@ -32,7 +32,7 @@ struct DirectPurchaseButtonView: ButtonItemViewProtocol {
 						showPaddleInput = true
 						selectedAction = .directPurchase((valueType.doubleValue ?? 1.0) * (item.buyNowPrice ?? 1.0))
 					}) {
-						Text("BUY NOW FOR \((valueType.doubleValue ?? 1.0) * (item.buyNowPrice ?? 1.0), format: .currency(code: "\(auction?.currencyCode ?? "")"))")
+						Text("\(String(format: NSLocalizedString("item_btn_buyNowFor", comment: ""))) \((valueType.doubleValue ?? 1.0) * (item.buyNowPrice ?? 1.0), format: .currency(code: "\(auction?.currencyCode ?? "")"))")
 					}
 				}
 			}

@@ -11,7 +11,10 @@
 "global_label_email" = "E-mail";
 "global_label_error" = "Erreur";
 "global_label_unknownError" = "Erreur inconnue";
+"itemGallery_label_screenClose" = "Cet écran se fermera dans";
+"itemGallery_label_seconds" = "secondes";
 "item_btn_bidNow" = "ENCHÉRIR MAINTENANT";
+"item_btn_buyNow" = "ACHETER MAINTENANT";
 "item_btn_buyNowFor" = "ACHETER MAINTENANT POUR";
 "item_btn_buyPuzzlePiece" = "Acheter une pièce de puzzle pour";
 "item_btn_eventOnly" = "Événement uniquement";
@@ -19,10 +22,12 @@
 "item_btn_setMaxBid" = "DÉFINIR L\'ENCHÈRE MAXIMALE";
 "item_btn_supportUs" = "SOUTENEZ-NOUS";
 "item_label_biddingDisabled" = "Enchères en ligne actuellement désactivées pour cet article";
+"item_label_buyPuzzlePieceFor" = "Acheter une pièce de puzzle pour";
 "item_label_cancel" = "Annuler";
 "item_label_confirm" = "Confirmer";
 "item_label_enterYouPadle" = "Entrez votre numéro de pagaie";
 "item_label_forSale" = "À vendre";
+"item_label_increment" = "AUGMENTER";
 "item_label_itemHasPurchased" = "L\'article a été acheté";
 "item_label_itemNotAvailable" = "L\'article n\'est pas disponible";
 "item_label_itemNotAvailableForPurchase" = "L\'article n\'est pas disponible à l\'achat";
@@ -30,7 +35,10 @@
 "item_label_liveAuctionItem" = "Article aux enchères en direct";
 "item_label_notOpenForBidding" = "L\'article n\'est pas ouvert aux enchères";
 "item_label_numberOfBids" = "%i enchères";
+"item_label_piecesLeft" = "Pièces restantes";
+"item_label_pricePerPiece" = "Prix ​​par pièce";
 "item_label_privePerItem" = "Prix ​​par pièce";
+"item_label_value" = "VALEUR";
 "login_label_incorrectCredentials" = "Email ou mot de passe incorrect";
 "menuBar_label_auction" = "Enchères";
 "menuBar_label_logout" = "Déconnexion";
@@ -78,4 +86,7 @@
 "registration_label_selectEnvironment" = "Sélectionnez l\'environnement";
 "registration_label_welcomeHandbid" = "Bienvenue sur l\'application \nHandbid";
 "search_item_label" = "Rechercher un article";
+"search_label_filters" = "Filtres";
+"search_label_searchHistory" = "Historique de recherche";
 "topBar_btn_allAuction" = "Toutes les enchères";
+"topBar_label_auctions" = "Enchères";

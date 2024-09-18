@@ -40,7 +40,7 @@ struct ItemView: View {
 				AsyncImage(url: URL(string: item.imageUrl ?? "")) { phase in
 					switch phase {
 					case .empty:
-						Image(systemName: "default_photo")
+						Image("default_photo")
 							.resizable()
 							.scaledToFit()
 							.foregroundColor(colorScheme == .dark ? .white : .gray)
@@ -55,7 +55,7 @@ struct ItemView: View {
 							.cornerRadius(32)
 							.accessibilityIdentifier("ItemImage")
 					case .failure:
-						Image(systemName: "default_photo")
+						Image("default_photo")
 							.resizable()
 							.scaledToFit()
 							.foregroundColor(colorScheme == .dark ? .white : .gray)

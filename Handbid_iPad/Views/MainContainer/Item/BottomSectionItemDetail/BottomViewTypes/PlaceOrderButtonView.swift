@@ -12,7 +12,7 @@ struct PlaceOrderButtonView: ButtonItemViewProtocol {
 	var body: some View {
 		VStack {
 			if item.itemStatus == .pending {
-				Text("Item is not open for bidding")
+				Text(LocalizedStringKey("item_label_notOpenForBidding"))
 					.fontWeight(.bold)
 			}
 			else {
@@ -21,7 +21,7 @@ struct PlaceOrderButtonView: ButtonItemViewProtocol {
 					showPaddleInput = true
 					selectedAction = .placeOrder
 				}) {
-					Text("Place Order")
+					Text(LocalizedStringKey("item_btn_placeOrder"))
 				}
 			}
 		}

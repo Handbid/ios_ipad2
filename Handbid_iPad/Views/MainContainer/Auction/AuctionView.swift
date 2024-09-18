@@ -106,8 +106,7 @@ struct AuctionView: View {
 			isVisible: $showDetailView,
 			loadImages: $loadImages,
 			viewModel: ItemDetailViewModel(
-				item: item,
-				repositoryPerformTransaction: viewModel.repositoryPerformTransaction!
+				item: item
 			)
 		)
 		.padding(10)

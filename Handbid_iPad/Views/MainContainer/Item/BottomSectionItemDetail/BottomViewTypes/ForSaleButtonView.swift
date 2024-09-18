@@ -24,7 +24,7 @@ struct ForSaleButtonView: ButtonItemViewProtocol {
 			}
 			else {
 				if item.itemStatus != .open, item.itemStatus != .open, item.itemStatus != .open, !(item.isHidden ?? false) {
-                    Text(LocalizedStringKey("item_label_itemNotAvailableForPurchase"))
+					Text(LocalizedStringKey("item_label_itemNotAvailableForPurchase"))
 						.fontWeight(.bold)
 						.accessibilityLabel("Item not available")
 						.accessibilityHint("This item is not currently available for purchase.")
@@ -35,7 +35,7 @@ struct ForSaleButtonView: ButtonItemViewProtocol {
 						showPaddleInput = true
 						selectedAction = .buyNow
 					}) {
-						Text("BUY NOW")
+						Text(LocalizedStringKey("item_btn_buyNow"))
 					}
 					.accessibilityLabel("Buy Now")
 					.accessibilityHint("Double-tap to purchase this item immediately.")

@@ -11,12 +11,12 @@ class PaddleInputViewModel: ObservableObject {
 	@Published var isLoading: Bool = false
 	@Published var alertMessage: String = ""
 
-	private var repositoryTransaction: BidRepository
+	private var repositoryTransaction: PerformTransactionRepository
 	private var cancellables = Set<AnyCancellable>()
 	private var dataManager = DataManager.shared
 	private let auction: AuctionModel?
 
-	init(repositoryPerformTransaction: BidRepository) {
+	init(repositoryPerformTransaction: PerformTransactionRepository) {
 		self.repositoryTransaction = repositoryPerformTransaction
 		self.auction = try? dataManager.fetchSingle(of: AuctionModel.self, from: .auction)
 	}

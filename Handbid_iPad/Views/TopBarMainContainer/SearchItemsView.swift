@@ -56,7 +56,7 @@ struct SearchItemsView<T: PageProtocol>: View {
 
 					if !viewModel.searchHistory.isEmpty {
 						VStack(alignment: .leading) {
-							Text("Search History")
+							Text(LocalizedStringKey("search_label_searchHistory"))
 								.font(.subheadline)
 								.foregroundColor(.gray)
 								.padding([.leading, .top], 10)

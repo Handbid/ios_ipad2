@@ -17,7 +17,7 @@ struct PuzzleButtonView: ButtonItemViewProtocol {
 					Text("\(item.puzzlePiecesCount ?? 0)")
 						.font(.title2)
 						.fontWeight(.bold)
-					Text("Pieces Left")
+					Text(LocalizedStringKey("item_label_piecesLeft"))
 						.fontWeight(.medium)
 						.font(.subheadline)
 				}
@@ -26,7 +26,7 @@ struct PuzzleButtonView: ButtonItemViewProtocol {
 					Text("\(item.buyNowPrice ?? 0, format: .currency(code: "\(auction?.currencyCode ?? "")"))")
 						.fontWeight(.bold)
 						.font(.title2)
-					Text("Price per Piece")
+					Text(LocalizedStringKey("item_label_pricePerPiece"))
 						.fontWeight(.medium)
 						.font(.subheadline)
 				}
@@ -37,7 +37,7 @@ struct PuzzleButtonView: ButtonItemViewProtocol {
 				showPaddleInput = true
 				selectedAction = .buyNowPuzzle
 			}) {
-				Text("Buy Puzzle Piece for \(item.buyNowPrice ?? 0, format: .currency(code: "\(auction?.currencyCode ?? "")"))")
+				Text("\(String(format: NSLocalizedString("item_label_buyPuzzlePieceFor", comment: ""))) \(item.buyNowPrice ?? 0, format: .currency(code: "\(auction?.currencyCode ?? "")"))")
 			}
 		}
 		.padding()

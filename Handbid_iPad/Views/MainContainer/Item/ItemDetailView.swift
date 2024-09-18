@@ -93,11 +93,11 @@ struct ItemDetailView: View {
 				.background(Color.accentGrayBackground)
 
 				if showPaddleInput {
-					PaddleInputView(isVisible: $showPaddleInput, valueType: $valueType, selectedAction: $selectedAction, viewModel: PaddleInputViewModel(repositoryPerformTransaction: viewModel.repositoryPerformTransaction), item: viewModel.item, resetTimer: resetTimer)
-						.background(Color.white)
-						.transition(.opacity)
-						.zIndex(1)
-						.accessibilityIdentifier("paddleInputView")
+//					PaddleInputView(isVisible: $showPaddleInput, valueType: $valueType, selectedAction: $selectedAction, viewModel: PaddleInputViewModel(repositoryPerformTransaction: viewModel.repositoryPerformTransaction), item: viewModel.item, resetTimer: resetTimer)
+//						.background(Color.white)
+//						.transition(.opacity)
+//						.zIndex(1)
+//						.accessibilityIdentifier("paddleInputView")
 				}
 			}
 		}
@@ -112,11 +112,11 @@ struct ItemDetailView: View {
 					.padding([.top, .trailing], 20)
 			}
 			if showPaddleInput {
-				PaddleInputView(isVisible: $showPaddleInput, valueType: $valueType, selectedAction: $selectedAction, viewModel: PaddleInputViewModel(repositoryPerformTransaction: viewModel.repositoryPerformTransaction), item: viewModel.item, resetTimer: resetTimer)
-					.background(Color.white)
-					.transition(.opacity)
-					.zIndex(1)
-					.accessibilityIdentifier("paddleInputView")
+//				PaddleInputView(isVisible: $showPaddleInput, valueType: $valueType, selectedAction: $selectedAction, viewModel: PaddleInputViewModel(repositoryPerformTransaction: viewModel.repositoryPerformTransaction), item: viewModel.item, resetTimer: resetTimer)
+//					.background(Color.white)
+//					.transition(.opacity)
+//					.zIndex(1)
+//					.accessibilityIdentifier("paddleInputView")
 			}
 			else {
 				ScrollView {

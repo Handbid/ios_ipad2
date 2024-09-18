@@ -47,7 +47,7 @@ struct DetailInfoView: View {
 			HStack(spacing: 10) {
 				Spacer()
 				VStack(alignment: .leading) {
-					Text("VALUE")
+					Text(LocalizedStringKey("item_label_value"))
 						.font(.subheadline)
 						.foregroundColor(.gray)
 						.fontWeight(.light)
@@ -63,7 +63,7 @@ struct DetailInfoView: View {
 						.padding(.vertical, 4)
 				}
 				VStack(alignment: .leading) {
-					Text("INCREMENT")
+					Text(LocalizedStringKey("item_label_increment"))
 						.font(.subheadline)
 						.foregroundColor(.gray)
 						.fontWeight(.light)
@@ -79,7 +79,7 @@ struct DetailInfoView: View {
 						.padding(.vertical, 4)
 				}
 				VStack(alignment: .trailing) {
-					Text("BUY NOW")
+					Text(LocalizedStringKey("item_btn_buyNow"))
 						.font(.subheadline)
 						.foregroundColor(.gray)
 						.fontWeight(.light)

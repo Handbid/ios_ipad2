@@ -11,7 +11,7 @@ struct PlaceOrderSoldOutButtonView: ButtonItemViewProtocol {
 
 	var body: some View {
 		VStack {
-			Text("Item has been purchased")
+			Text(LocalizedStringKey("item_label_itemHasPurchased"))
 				.fontWeight(.bold)
 		}
 		.padding()

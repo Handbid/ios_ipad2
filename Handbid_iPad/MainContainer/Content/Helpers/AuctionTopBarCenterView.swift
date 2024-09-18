@@ -29,7 +29,7 @@ struct AuctionTopBarCenterView: View {
 				Text("•")
 					.font(deviceContext.isPhone ? .caption2 : .subheadline)
 					.foregroundColor(.accentGrayForm)
-				Text("\(countItems) Items")
+				Text("\(countItems) \(String(format: NSLocalizedString("auction_label_items", comment: "")))")
 					.font(deviceContext.isPhone ? .caption2 : .caption)
 					.foregroundColor(.primary)
 			}
