@@ -11,7 +11,7 @@ struct BiddingDisabledButtonView: ButtonItemViewProtocol {
 
 	var body: some View {
 		VStack {
-			Text("Online bidding currently disabled for this item")
+			Text(LocalizedStringKey("item_label_biddingDisabled"))
 				.fontWeight(.bold)
 				.accessibilityLabel("Bidding disabled")
 		}

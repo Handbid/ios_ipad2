@@ -13,7 +13,7 @@ struct BuyNowButtonView: ButtonItemViewProtocol {
 	var body: some View {
 		VStack {
 			if item.itemStatus != .open, item.itemStatus != .extended, item.itemStatus != .pending {
-				Text("Item is not available")
+				Text(LocalizedStringKey("item_label_itemNotAvailable"))
 					.fontWeight(.bold)
 					.accessibilityLabel("Item not available")
 					.accessibilityHint("This item is not currently available for purchase.")
