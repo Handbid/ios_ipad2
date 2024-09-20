@@ -32,7 +32,7 @@ struct DirectPurchaseButtonView: ButtonItemViewProtocol {
 						showPaddleInput = true
 						selectedAction = .directPurchase((valueType.doubleValue ?? 1.0) * (item.buyNowPrice ?? 1.0))
 					}) {
-						Text("\(String(format: NSLocalizedString("item_btn_buyNowFor", comment: ""))) \((valueType.doubleValue ?? 1.0) * (item.buyNowPrice ?? 1.0), format: .currency(code: "\(auction?.currencyCode ?? "")"))")
+						Text("\(String(localized: "item_btn_buyNowFor")) \((valueType.doubleValue ?? 1.0) * (item.buyNowPrice ?? 1.0), format: .currency(code: "\(auction?.currencyCode ?? "")"))")
 					}
 				}
 			}

@@ -37,7 +37,7 @@ struct PuzzleButtonView: ButtonItemViewProtocol {
 				showPaddleInput = true
 				selectedAction = .buyNowPuzzle
 			}) {
-				Text("\(String(format: NSLocalizedString("item_label_buyPuzzlePieceFor", comment: ""))) \(item.buyNowPrice ?? 0, format: .currency(code: "\(auction?.currencyCode ?? "")"))")
+				Text("\(String(localized: "item_label_buyPuzzlePieceFor")) \(item.buyNowPrice ?? 0, format: .currency(code: "\(auction?.currencyCode ?? "")"))")
 			}
 		}
 		.padding()

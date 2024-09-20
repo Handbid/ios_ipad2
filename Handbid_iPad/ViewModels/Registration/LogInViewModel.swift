@@ -32,12 +32,12 @@ class LogInViewModel: ObservableObject, LogInViewModelProtocol {
 
 	func logIn() {
 		if !email.isValidEmail() {
-			errorMessage = NSLocalizedString("registration_label_incorrectEmail", comment: "Incorrect Email Format")
+			errorMessage = String(localized: "registration_label_incorrectEmail")
 			isFormValid = false
 			return
 		}
 		else if !password.isPasswordSecure() {
-			errorMessage = NSLocalizedString("registration_label_passwordRequirements", comment: "Password doesn't meet the requirements")
+			errorMessage = String(localized: "registration_label_passwordRequirements")
 			isFormValid = false
 			return
 		}
@@ -52,7 +52,7 @@ class LogInViewModel: ObservableObject, LogInViewModelProtocol {
 			}
 			catch {
 				DispatchQueue.safeMainAsync {
-					self.errorMessage = NSLocalizedString("login_label_incorrectCredentials", comment: "Incorrect email or password")
+					self.errorMessage = String(localized: "login_label_incorrectCredentials")
 					self.showError = true
 				}
 				return

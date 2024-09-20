@@ -42,4 +42,8 @@ extension View {
 		let numberOfColumns = max(Int(width / targetWidth), 1)
 		return Array(repeating: GridItem(.fixed(targetWidth), spacing: 20), count: numberOfColumns)
 	}
+
+	func onRotate(perform action: @escaping (UIDeviceOrientation) -> Void) -> some View {
+		modifier(DeviceRotationViewModifier(action: action))
+	}
 }

@@ -30,7 +30,7 @@ struct BuyNowButtonView: ButtonItemViewProtocol {
 					showPaddleInput = true
 					selectedAction = .buyNow
 				}) {
-					Text("\(String(format: NSLocalizedString("item_btn_buyNowFor", comment: ""))) \(item.buyNowPrice ?? 1.0, format: .currency(code: "\(auction?.currencyCode ?? "")"))")
+					Text("\(String(localized: "item_btn_buyNowFor")) \(item.buyNowPrice ?? 1.0, format: .currency(code: "\(auction?.currencyCode ?? "")"))")
 				}
 				.accessibilityLabel("Buy now")
 				.accessibilityValue("\(item.buyNowPrice ?? 1.0, format: .currency(code: auction?.currencyCode ?? ""))")

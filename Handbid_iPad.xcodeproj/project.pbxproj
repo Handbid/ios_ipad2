@@ -128,6 +128,8 @@
 		8C4BFB812BE2208E00B47154 /* DependencyMainAppProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4BFB802BE2208E00B47154 /* DependencyMainAppProvider.swift */; };
 		8C52FE842C9D3F1B00426054 /* FirebasePerformance in Frameworks */ = {isa = PBXBuildFile; productRef = 8C52FE832C9D3F1B00426054 /* FirebasePerformance */; };
 		8C52FE882C9D42A800426054 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8C52FE872C9D42A800426054 /* FirebaseAnalyticsSwift */; };
+		8C52FE8A2C9D5B2300426054 /* ItemDetailState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C52FE892C9D5B2100426054 /* ItemDetailState.swift */; };
+		8C52FE8C2C9D5BC400426054 /* DeviceRotationViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C52FE8B2C9D5BC200426054 /* DeviceRotationViewModifier.swift */; };
 		8C79B41D2C040D84005D4AAB /* Processor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79B4102C040D84005D4AAB /* Processor.swift */; };
 		8C79B41E2C040D84005D4AAB /* ProcessorRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79B4112C040D84005D4AAB /* ProcessorRegistry.swift */; };
 		8C79B41F2C040D84005D4AAB /* UserProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C79B4122C040D84005D4AAB /* UserProcessor.swift */; };
@@ -486,6 +488,8 @@
 		8C4BFB7C2BE18A6900B47154 /* AboutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutModel.swift; sourceTree = "<group>"; };
 		8C4BFB7E2BE18AED00B47154 /* BannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModel.swift; sourceTree = "<group>"; };
 		8C4BFB802BE2208E00B47154 /* DependencyMainAppProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyMainAppProvider.swift; sourceTree = "<group>"; };
+		8C52FE892C9D5B2100426054 /* ItemDetailState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailState.swift; sourceTree = "<group>"; };
+		8C52FE8B2C9D5BC200426054 /* DeviceRotationViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRotationViewModifier.swift; sourceTree = "<group>"; };
 		8C79B4102C040D84005D4AAB /* Processor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Processor.swift; sourceTree = "<group>"; };
 		8C79B4112C040D84005D4AAB /* ProcessorRegistry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessorRegistry.swift; sourceTree = "<group>"; };
 		8C79B4122C040D84005D4AAB /* UserProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProcessor.swift; sourceTree = "<group>"; };
@@ -1180,6 +1184,7 @@
 			children = (
 				8C4B7BA12BB88FFB0043B892 /* ButtonStyles.swift */,
 				8C9FA44F2BD3AD060041F28E /* RoundedCornerView.swift */,
+				8C52FE8B2C9D5BC200426054 /* DeviceRotationViewModifier.swift */,
 				8CAFD9392BBD90F700C7D763 /* KeyboardResponsiveModifier.swift */,
 				8C4B7BAC2BB8942D0043B892 /* TextFieldStyles.swift */,
 				8C4B7BB62BB9C1080043B892 /* TextSecuredStyles.swift */,
@@ -1338,6 +1343,7 @@
 				8C91A8562C2A05490057D51B /* DetailInfoView.swift */,
 				8C91A8542C2A05340057D51B /* ImageGalleryView.swift */,
 				8C91A8522C2A050D0057D51B /* ItemDetailView.swift */,
+				8C52FE892C9D5B2100426054 /* ItemDetailState.swift */,
 				8C3E8AA22C33FCFD0003F6FB /* PaddleInputView.swift */,
 				8CA6C0DC2C347A530095F469 /* BottomSectionItemDetail */,
 			);
@@ -2193,6 +2199,7 @@
 				8C9FA44C2BD29C8B0041F28E /* DeviceConfigurator.swift in Sources */,
 				8C4B7BA72BB892AC0043B892 /* CustomStyledViewTextField.swift in Sources */,
 				CEFB53FC2C6CCA5200420D87 /* RegistrationModel.swift in Sources */,
+				8C52FE8C2C9D5BC400426054 /* DeviceRotationViewModifier.swift in Sources */,
 				8CABF5D62BB9E19900A34870 /* LayoutProperties.swift in Sources */,
 				8C8BEC362BA977560083D904 /* RootPageView.swift in Sources */,
 				8CAFD93A2BBD90F700C7D763 /* KeyboardResponsiveModifier.swift in Sources */,
@@ -2325,6 +2332,7 @@
 				8C4BFB7D2BE18A6900B47154 /* AboutModel.swift in Sources */,
 				8C0007D32BAC976700AAEBA0 /* AppInfoProvider.swift in Sources */,
 				8C4BFB652BE114B000B47154 /* OrganizationImageModel.swift in Sources */,
+				8C52FE8A2C9D5B2300426054 /* ItemDetailState.swift in Sources */,
 				8CA6C1022C347DC20095F469 /* NormalSoldButtonView.swift in Sources */,
 				8CA6C0FA2C347D9C0095F469 /* DefaultButtonView.swift in Sources */,
 				8CD1082B2BD1261800E83261 /* ContentView.swift in Sources */,
