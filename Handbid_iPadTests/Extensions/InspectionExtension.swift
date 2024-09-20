@@ -3,4 +3,4 @@
 @testable import Handbid_iPad
 import ViewInspector
 
-extension Inspection: InspectionEmissary {}
+extension Inspection: @retroactive InspectionEmissary {}

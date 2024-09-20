@@ -30,7 +30,7 @@ class AuctionViewTests: XCTestCase {
 		XCTAssertNil(inspectionError)
 	}
 
-	func testNoItemsDisplayed() {
+	@MainActor func testNoItemsDisplayed() {
 		let exp = view.inspection.inspect(onReceive: mockViewModel.$isLoading) { v in
 			XCTAssertNoThrow(try v.find(viewWithAccessibilityIdentifier: "AuctionView"))
 			XCTAssertNoThrow(try v.find(viewWithAccessibilityIdentifier: "noItemsView"))
@@ -44,7 +44,7 @@ class AuctionViewTests: XCTestCase {
 		wait(for: [exp], timeout: 1)
 	}
 
-	func testDisplayingCategories() {
+	@MainActor func testDisplayingCategories() {
 		let exp = view.inspection.inspect(onReceive: mockViewModel.$filteredCategories) { v in
 			let categories = try? v.find(viewWithAccessibilityIdentifier: "categoriesList")
 			XCTAssertNotNil(categories, "Categories list view should not be nil")

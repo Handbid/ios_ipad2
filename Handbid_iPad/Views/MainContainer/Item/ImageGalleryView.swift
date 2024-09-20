@@ -28,17 +28,23 @@ struct ImageGalleryView: View {
 												switch phase {
 												case .empty:
 													ProgressView()
+														.accessibilityLabel("Loading Selected Image")
+														.accessibilityIdentifier("loadingSelectedImage")
 												case let .success(image):
 													image.resizable()
 														.scaledToFit()
 														.clipped()
 														.cornerRadius(15)
+														.accessibilityLabel("Selected Image")
+														.accessibilityIdentifier("selectedImage")
 												case .failure:
 													Image("default_photo")
 														.resizable()
 														.scaledToFit()
 														.clipped()
 														.cornerRadius(15)
+														.accessibilityLabel("Selected Image Failed to Load")
+														.accessibilityIdentifier("selectedImageError")
 												@unknown default:
 													EmptyView()
 												}
@@ -51,6 +57,8 @@ struct ImageGalleryView: View {
 												.scaledToFit()
 												.clipped()
 												.cornerRadius(15)
+												.accessibilityLabel("Default Photo")
+												.accessibilityIdentifier("defaultPhoto")
 										}
 									}
 								}
@@ -74,6 +82,7 @@ struct ImageGalleryView: View {
 								.background(item.isLive ?? false ? Color.green : Color.accentViolet)
 								.cornerRadius(20)
 								.padding([.top, .trailing], 10)
+								.textCase(.uppercase) // Apply textCase here
 								.accessibilityLabel(item.isLive ?? false ? "Live item" : "Item for sale")
 								.accessibilityIdentifier("badgeItem")
 						}

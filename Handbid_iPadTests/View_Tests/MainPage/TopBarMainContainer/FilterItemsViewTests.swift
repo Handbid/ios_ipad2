@@ -13,7 +13,7 @@ class FilterItemsViewTests: XCTestCase {
 		view = FiltersItemsView(viewModel: mockViewModel)
 	}
 
-	func testDisplayingCategories() {
+	@MainActor func testDisplayingCategories() {
 		let exp = view.inspection.inspect(onReceive: mockViewModel.$categories) { view in
 			let container = try? view.find(ViewType.ForEach.self)
 			XCTAssertEqual(container?.count, 2)
@@ -29,7 +29,7 @@ class FilterItemsViewTests: XCTestCase {
 		wait(for: [exp], timeout: 1)
 	}
 
-	func testSwitchingToggleAffectsViewModel() {
+	@MainActor func testSwitchingToggleAffectsViewModel() {
 		let exp = view.inspection.inspect(onReceive: mockViewModel.$categories) { view in
 			let toggle = try? view.find(ViewType.Toggle.self)
 			XCTAssert(self.mockViewModel.categories[0].isVisible)

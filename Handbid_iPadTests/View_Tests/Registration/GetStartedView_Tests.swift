@@ -68,7 +68,7 @@ final class GetStartedViewTests: XCTestCase {
 		XCTAssertNil(inspectionError)
 	}
 
-	func testLongPressOnLogoMovesToChangeEnv() {
+	@MainActor func testLongPressOnLogoMovesToChangeEnv() {
 		var inspectionError: Error? = nil
 		let expChangeEnv = view.inspection
 			.inspect(onReceive: coordinator.$navigationStack) { _ in
@@ -90,7 +90,7 @@ final class GetStartedViewTests: XCTestCase {
 		wait(for: [expChangeEnv], timeout: 1)
 	}
 
-	func testPressingLoginButtonMovesToLogin() {
+	@MainActor func testPressingLoginButtonMovesToLogin() {
 		let expectation = view.inspection
 			.inspect(onReceive: coordinator.$navigationStack) { _ in
 				let stack = self.coordinator.navigationStack
@@ -101,7 +101,7 @@ final class GetStartedViewTests: XCTestCase {
 		                    expectation: expectation)
 	}
 
-	func testPressingDemoVersionButtonLogsAnonimously() {
+	@MainActor func testPressingDemoVersionButtonLogsAnonimously() {
 		let expectation = view.inspection
 			.inspect(onReceive: mockViewModel.$loggedInAnonymously) { _ in
 				XCTAssert(self.mockViewModel.loggedInAnonymously)
@@ -111,7 +111,7 @@ final class GetStartedViewTests: XCTestCase {
 		                    expectation: expectation)
 	}
 
-	func testPressingAboutButtonOpensHandbidWebsite() {
+	@MainActor func testPressingAboutButtonOpensHandbidWebsite() {
 		let expectation = view.inspection
 			.inspect(onReceive: mockViewModel.$handbidWebsiteOpened) { _ in
 				XCTAssert(self.mockViewModel.handbidWebsiteOpened)

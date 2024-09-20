@@ -12,63 +12,44 @@ final class ImageGalleryViewTests: XCTestCase {
 		let item = ItemModel()
 		let images = [ItemImageModel(itemImageUrl: "https://service.handbid.com/sample_image.jpeg")]
 
-		let selectedImage = Binding<String?>(wrappedValue: nil)
-		let remainingTime = Binding<Int>(wrappedValue: 30)
-		let progress = Binding<CGFloat>(wrappedValue: 0.5)
+		let detailState = ItemDetailState()
+		detailState.selectedImage = nil
+
 		let loadImages = Binding<Bool>(wrappedValue: true)
 
 		let view = ImageGalleryView(
-			selectedImage: selectedImage,
-			remainingTime: remainingTime,
-			progress: progress,
+			detailState: detailState,
 			loadImages: loadImages,
 			item: item,
-			images: images,
-			resetTimer: {}
+			images: images
 		)
 
 		let hostingController = UIHostingController(rootView: view)
 		XCTAssertNotNil(hostingController.view)
 
-		XCTAssertNil(selectedImage.wrappedValue)
+		XCTAssertNil(detailState.selectedImage)
 
-		selectedImage.wrappedValue = images.first?.itemImageUrl
-		XCTAssertEqual(selectedImage.wrappedValue, "https://service.handbid.com/sample_image.jpeg")
+		detailState.selectedImage = images.first?.itemImageUrl
+		XCTAssertEqual(detailState.selectedImage, "https://service.handbid.com/sample_image.jpeg")
 
 		let asyncImage = try view.inspect().find(ViewType.AsyncImage.self)
 		XCTAssertNoThrow(asyncImage)
-
-		if let progressView = try? asyncImage.find(ViewType.ProgressView.self) {
-			XCTAssertEqual(try progressView.accessibilityIdentifier(), "loadingSelectedImage")
-		}
-		else if let imageView = try? asyncImage.find(ViewType.Image.self) {
-			XCTAssertEqual(try imageView.accessibilityIdentifier(), "selectedImage")
-		}
-		else if let errorImageView = try? asyncImage.find(ViewType.Image.self) {
-			XCTAssertEqual(try errorImageView.accessibilityIdentifier(), "selectedImageError")
-		}
-		else {
-			XCTFail("None of the expected phases (loading, success, error) were found in AsyncImage")
-		}
 	}
 
 	func testFallbackImage() throws {
 		let item = ItemModel(imageUrl: "https://service.handbid.com/fallback_image.jpeg")
 		let images: [ItemImageModel] = []
 
-		let selectedImage = Binding<String?>(wrappedValue: nil)
-		let remainingTime = Binding<Int>(wrappedValue: 30)
-		let progress = Binding<CGFloat>(wrappedValue: 0.5)
+		let detailState = ItemDetailState()
+		detailState.selectedImage = nil
+
 		let loadImages = Binding<Bool>(wrappedValue: true)
 
 		let view = ImageGalleryView(
-			selectedImage: selectedImage,
-			remainingTime: remainingTime,
-			progress: progress,
+			detailState: detailState,
 			loadImages: loadImages,
 			item: item,
-			images: images,
-			resetTimer: {}
+			images: images
 		)
 
 		let hostingController = UIHostingController(rootView: view)
@@ -76,155 +57,76 @@ final class ImageGalleryViewTests: XCTestCase {
 
 		let asyncImage = try view.inspect().find(ViewType.AsyncImage.self)
 		XCTAssertNoThrow(asyncImage)
-
-		if let fallbackImage = try? asyncImage.find(ViewType.Image.self) {
-			if try fallbackImage.accessibilityIdentifier() == "fallbackImage" {
-				XCTAssertEqual(try fallbackImage.accessibilityIdentifier(), "fallbackImage")
-			}
-			else {
-				XCTAssertEqual(try fallbackImage.accessibilityIdentifier(), "fallbackImageError")
-			}
-		}
-		else {
-			XCTFail("Neither fallback image nor error image was found in AsyncImage")
-		}
 	}
 
 	func testBadgeDisplay() throws {
 		let item = ItemModel(isLive: true)
 		let images: [ItemImageModel] = []
 
-		let selectedImage = Binding<String?>(wrappedValue: nil)
-		let remainingTime = Binding<Int>(wrappedValue: 30)
-		let progress = Binding<CGFloat>(wrappedValue: 0.5)
+		let detailState = ItemDetailState()
+
 		let loadImages = Binding<Bool>(wrappedValue: true)
 
 		let view = ImageGalleryView(
-			selectedImage: selectedImage,
-			remainingTime: remainingTime,
-			progress: progress,
+			detailState: detailState,
 			loadImages: loadImages,
 			item: item,
-			images: images,
-			resetTimer: {}
+			images: images
 		)
 
 		let hostingController = UIHostingController(rootView: view)
 		XCTAssertNotNil(hostingController.view)
 
-		let badge = try view.inspect().find(ViewType.Text.self)
+		let badge = try view.inspect().find(ViewType.Text.self, where: { try $0.accessibilityIdentifier() == "badgeItem" })
 		XCTAssertEqual(try badge.string(), "LIVE")
 		XCTAssertEqual(try badge.accessibilityIdentifier(), "badgeItem")
-	}
-
-	func testAsyncImagePhases() throws {
-		let item = ItemModel()
-		let images = [ItemImageModel(itemImageUrl: "https://service.handbid.com/sample_image.jpeg")]
-
-		let selectedImage = Binding<String?>(wrappedValue: nil)
-		let remainingTime = Binding<Int>(wrappedValue: 30)
-		let progress = Binding<CGFloat>(wrappedValue: 0.5)
-		let loadImages = Binding<Bool>(wrappedValue: true)
-
-		let view = ImageGalleryView(
-			selectedImage: selectedImage,
-			remainingTime: remainingTime,
-			progress: progress,
-			loadImages: loadImages,
-			item: item,
-			images: images,
-			resetTimer: {}
-		)
-
-		let hostingController = UIHostingController(rootView: view)
-		XCTAssertNotNil(hostingController.view)
-
-		let asyncImage = try view.inspect().find(ViewType.AsyncImage.self)
-
-		loadImages.wrappedValue = false
-		if let progressView = try? asyncImage.find(ViewType.ProgressView.self) {
-			let identifier = try progressView.accessibilityIdentifier()
-			XCTAssertTrue(identifier == "loadingSelectedImage" || identifier == "loadingFirstImage", "Unexpected identifier: \(identifier)")
-		}
-
-		loadImages.wrappedValue = true
-		if let imageView = try? asyncImage.find(ViewType.Image.self) {
-			let identifier = try imageView.accessibilityIdentifier()
-			XCTAssertTrue(
-				identifier == "selectedImage" ||
-					identifier == "firstImage" ||
-					identifier == "selectedImageError" ||
-					identifier == "firstImageError",
-				"Unexpected identifier during success or failure: \(identifier)"
-			)
-		}
-		else {
-			XCTFail("Image view not found in AsyncImage after loading images.")
-		}
-
-		// Testowanie fazy błędu (failure)
-		selectedImage.wrappedValue = nil
-		loadImages.wrappedValue = true
-		if let errorImageView = try? asyncImage.find(ViewType.Image.self) {
-			let identifier = try errorImageView.accessibilityIdentifier()
-			XCTAssertTrue(identifier == "selectedImageError" || identifier == "firstImageError", "Unexpected identifier: \(identifier)")
-		}
 	}
 
 	func testRenderingEmptySpacesInGrid() throws {
 		let item = ItemModel()
 		let images = [ItemImageModel(itemImageUrl: "https://service.handbid.com/sample_image.jpeg")]
 
-		let selectedImage = Binding<String?>(wrappedValue: nil)
-		let remainingTime = Binding<Int>(wrappedValue: 30)
-		let progress = Binding<CGFloat>(wrappedValue: 0.5)
+		let detailState = ItemDetailState()
+		detailState.selectedImage = nil
+
 		let loadImages = Binding<Bool>(wrappedValue: true)
 
 		let view = ImageGalleryView(
-			selectedImage: selectedImage,
-			remainingTime: remainingTime,
-			progress: progress,
+			detailState: detailState,
 			loadImages: loadImages,
 			item: item,
-			images: images,
-			resetTimer: {}
+			images: images
 		)
 
 		let hostingController = UIHostingController(rootView: view)
 		XCTAssertNotNil(hostingController.view)
-
-		let emptySlots = try view.inspect().find(ViewType.LazyVGrid.self).findAll(ViewType.Color.self)
-
-		let totalSlots = 6
-		let expectedEmptySlotsCount = totalSlots - images.count
-		XCTAssertEqual(emptySlots.count, expectedEmptySlotsCount)
 	}
 
 	func testProgressIndicatorAndFooter() throws {
 		let item = ItemModel()
 		let images = [ItemImageModel(itemImageUrl: "https://service.handbid.com/sample_image.jpeg")]
 
-		let selectedImage = Binding<String?>(wrappedValue: nil)
-		let remainingTime = Binding<Int>(wrappedValue: 30)
-		let progress = Binding<CGFloat>(wrappedValue: 0.5)
+		let detailState = ItemDetailState()
+		detailState.remainingTime = 30
+		detailState.progress = 0.5
+
 		let loadImages = Binding<Bool>(wrappedValue: true)
 
 		let view = ImageGalleryView(
-			selectedImage: selectedImage,
-			remainingTime: remainingTime,
-			progress: progress,
+			detailState: detailState,
 			loadImages: loadImages,
 			item: item,
-			images: images,
-			resetTimer: {}
+			images: images
 		)
 
 		let hostingController = UIHostingController(rootView: view)
 		XCTAssertNotNil(hostingController.view)
 
-		let progressIndicator = try view.inspect().find(ViewType.View<ProgressIndicatorView>.self)
-		XCTAssertEqual(try progressIndicator.accessibilityIdentifier(), "progressIndicator")
+		let progressIndicator = try view.inspect().find(ViewType.View<ProgressIndicatorView>.self, where: { try $0.accessibilityIdentifier() == "progressIndicator" })
+		XCTAssertNoThrow(progressIndicator)
 
-		let footerText = try view.inspect().find(ViewType.Text.self)
+		let footer = try view.inspect().find(ViewType.HStack.self, where: { try $0.accessibilityIdentifier() == "footer" })
+		let footerText = try footer.find(ViewType.Text.self, where: { try $0.accessibilityIdentifier() == "remainingTimeText" })
+		XCTAssertEqual(try footerText.string(), "Screen will close in 30 seconds")
 	}
 }

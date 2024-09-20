@@ -199,9 +199,9 @@ final class ButtonSectionItemFactoryTests: XCTestCase {
 
 		let inspectableView = try view.inspect()
 
-		let allTexts = try inspectableView.findAll(ViewType.Text.self)
+		let allTexts = inspectableView.findAll(ViewType.Text.self)
 		for text in allTexts {
-			try print(text.string()) // Wydrukuj wszystkie teksty w konsoli
+			try print(text.string())
 		}
 
 		let buyNowButtonText = try inspectableView.find(ViewType.Button.self).labelView().text().string()

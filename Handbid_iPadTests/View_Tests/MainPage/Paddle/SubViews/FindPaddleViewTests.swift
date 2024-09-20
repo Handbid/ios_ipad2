@@ -15,7 +15,7 @@ class FindPaddleViewTests: XCTestCase {
 		view = FindPadleView(viewModel: mockViewModel)
 	}
 
-	func testSearchByEmailView() {
+	@MainActor func testSearchByEmailView() {
 		let exp = view.inspection.inspect(onReceive: mockViewModel.$pickedMethod) { v in
 			let picker = try? v.find(viewWithAccessibilityIdentifier: "findPaddleMethodPicker")
 				.view(PickerView<SearchBy, Text>.self)
@@ -39,7 +39,7 @@ class FindPaddleViewTests: XCTestCase {
 		wait(for: [exp], timeout: 2)
 	}
 
-	func testSearchByPhoneView() {
+	@MainActor func testSearchByPhoneView() {
 		let exp = view.inspection.inspect(onReceive: mockViewModel.$pickedMethod) { v in
 			let picker = try? v.find(viewWithAccessibilityIdentifier: "findPaddleMethodPicker")
 				.view(PickerView<SearchBy, Text>.self)
@@ -63,7 +63,7 @@ class FindPaddleViewTests: XCTestCase {
 		wait(for: [exp], timeout: 2)
 	}
 
-	func testDisplayingError() {
+	@MainActor func testDisplayingError() {
 		let exp = view.inspection.inspect(onReceive: mockViewModel.$error) { v in
 			let error = try? v.find(viewWithAccessibilityIdentifier: "findPaddleErrorField")
 

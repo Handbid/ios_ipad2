@@ -57,7 +57,7 @@ final class LogInViewTests: XCTestCase {
 		XCTAssertNil(inspectionError)
 	}
 
-	func testLogInCalledOnButtonClick() {
+	@MainActor func testLogInCalledOnButtonClick() {
 		var inspectionError: Error? = nil
 
 		let exp = view.inspection.inspect(onReceive: mockViewModel.$logInCalled) { _ in
@@ -79,7 +79,7 @@ final class LogInViewTests: XCTestCase {
 		wait(for: [exp], timeout: 1)
 	}
 
-	func testPressingForgotPasswordButtonMovesToForgotPassword() {
+	@MainActor func testPressingForgotPasswordButtonMovesToForgotPassword() {
 		var inspectionError: Error? = nil
 
 		let exp = view.inspection.inspect(onReceive: coordinator.$navigationStack) { _ in
@@ -102,7 +102,7 @@ final class LogInViewTests: XCTestCase {
 		wait(for: [exp], timeout: 1)
 	}
 
-	func testAlertShowingWhenFieldsInViewModelChange() {
+	@MainActor func testAlertShowingWhenFieldsInViewModelChange() {
 		let exp = view.inspection.inspect(onReceive: mockViewModel.$showError) { view in
 			let alert = try view.find(ViewType.Alert.self)
 			try alert.actions().button().tap()
@@ -121,7 +121,7 @@ final class LogInViewTests: XCTestCase {
 		wait(for: [exp, exp2], timeout: 1, enforceOrder: true)
 	}
 
-	func testErrorShownWhenFormInvalid() {
+	@MainActor func testErrorShownWhenFormInvalid() {
 		let exp = view.inspection.inspect(onReceive: mockViewModel.$isFormValid) { _ in
 			let error = try self.sut.inspect()
 				.find(viewWithAccessibilityIdentifier: "registration_label_loginError").text()
