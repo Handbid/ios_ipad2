@@ -282,7 +282,6 @@
 		8CD1082B2BD1261800E83261 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD1082A2BD1261800E83261 /* ContentView.swift */; };
 		8CD1082D2BD128A600E83261 /* MainContainerViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD1082C2BD128A600E83261 /* MainContainerViewBuilder.swift */; };
 		8CEA290B2BB3517E005E3B33 /* NetworkService in Frameworks */ = {isa = PBXBuildFile; productRef = 8CEA290A2BB3517E005E3B33 /* NetworkService */; };
-		8CF232E52C1C1B8100B74EE7 /* NSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF232E42C1C1B8100B74EE7 /* NSAttributedString.swift */; };
 		8CF232E72C1C1BB300B74EE7 /* HTMLText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF232E62C1C1BB300B74EE7 /* HTMLText.swift */; };
 		8CF232EB2C37C96100B74EE7 /* DirectPurchaseValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF232EA2C37C96100B74EE7 /* DirectPurchaseValueView.swift */; };
 		8CFE2CC72BBE84DF00AF60F1 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFE2CC62BBE84DF00AF60F1 /* NotificationName.swift */; };
@@ -641,7 +640,6 @@
 		8CD1082A2BD1261800E83261 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8CD1082C2BD128A600E83261 /* MainContainerViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerViewBuilder.swift; sourceTree = "<group>"; };
 		8CEA29082BB345F8005E3B33 /* Handbid_iPadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Handbid_iPadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8CF232E42C1C1B8100B74EE7 /* NSAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedString.swift; sourceTree = "<group>"; };
 		8CF232E62C1C1BB300B74EE7 /* HTMLText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLText.swift; sourceTree = "<group>"; };
 		8CF232EA2C37C96100B74EE7 /* DirectPurchaseValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectPurchaseValueView.swift; sourceTree = "<group>"; };
 		8CFCCFB92BA8B3C600CF6C33 /* Handbid_iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Handbid_iPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -946,7 +944,6 @@
 				8C908B2E2C3BA276009C8441 /* Dictionary.swift */,
 				8CBDAAC72BC432470010908F /* DispatchQueue.swift */,
 				8CFE2CC62BBE84DF00AF60F1 /* NotificationName.swift */,
-				8CF232E42C1C1B8100B74EE7 /* NSAttributedString.swift */,
 				8C3D3C002BBA1E33002A5CFC /* String.swift */,
 				CE073ED72BB42D710079F342 /* View.swift */,
 			);
@@ -2216,7 +2213,6 @@
 				8C79B4272C040D84005D4AAB /* WebSocketURLFactory.swift in Sources */,
 				CE7DF82F2BADFD1900FF7694 /* PinView.swift in Sources */,
 				8C4BFB4B2BDFAD2100B47154 /* AuctionModel.swift in Sources */,
-				8CF232E52C1C1B8100B74EE7 /* NSAttributedString.swift in Sources */,
 				CE073EE42BB4809C0079F342 /* FormField.swift in Sources */,
 				8CD108012BD11FCC00E83261 /* MainContainerTypeView.swift in Sources */,
 				8CD108252BD1255500E83261 /* DataService.swift in Sources */,

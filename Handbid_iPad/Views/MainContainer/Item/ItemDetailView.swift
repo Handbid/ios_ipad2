@@ -15,7 +15,6 @@ class ItemDetailState: ObservableObject {
 			guard let self else { return }
 			if remainingTime > 0 {
 				remainingTime -= 1
-				print(remainingTime)
 				progress = CGFloat(remainingTime) / 60.0
 			}
 			else {
@@ -99,14 +98,8 @@ struct ItemDetailView: View {
 				.background(Color.white)
 				.cornerRadius(20)
 				.offset(y: offset)
-				.gesture(dragGesture(geometry: geometry))
+				// .gesture(dragGesture(geometry: geometry))
 				.animation(.easeInOut(duration: 0.4), value: offset)
-				.onAppear {
-					detailState.startTimer()
-				}
-				.onDisappear {
-					detailState.stopTimer()
-				}
 				.padding(10)
 
 				VStack {
@@ -132,50 +125,53 @@ struct ItemDetailView: View {
 	}
 
 	private var landscapeView: some View {
-		HStack {
-			ImageGalleryView(
-				detailState: detailState,
-				loadImages: $loadImages,
-				item: viewModel.item,
-				images: viewModel.item.images ?? [ItemImageModel(itemImageUrl: viewModel.item.imageUrl)]
-			)
-			.accessibilityIdentifier("imageGalleryView")
-			.background(showPaddleInput ? Color.accentGrayBackground : Color.white)
+		GeometryReader { geometry in
+			HStack(spacing: 0) {
+				ImageGalleryView(
+					detailState: detailState,
+					loadImages: $loadImages,
+					item: viewModel.item,
+					images: viewModel.item.images ?? [ItemImageModel(itemImageUrl: viewModel.item.imageUrl)]
+				)
+				.accessibilityIdentifier("imageGalleryView")
+				.background(showPaddleInput ? Color.accentGrayBackground : Color.white)
+				.frame(width: geometry.size.width * 0.5)
 
-			ZStack {
-				VStack(spacing: 10) {
-					ScrollView {
-						DetailInfoView(isVisible: $isVisible, resetTimer: detailState.resetTimer, item: viewModel.item)
-							.background(Color.clear)
-							.frame(maxHeight: .infinity)
-							.clipped()
-							.accessibilityIdentifier("detailInfoView")
-							.padding(.top, 20)
+				ZStack {
+					VStack(spacing: 10) {
+						ScrollView {
+							DetailInfoView(isVisible: $isVisible, resetTimer: detailState.resetTimer, item: viewModel.item)
+								.background(Color.clear)
+								.frame(maxHeight: .infinity)
+								.clipped()
+								.accessibilityIdentifier("detailInfoView")
+								.padding(.top, 20)
+						}
+						.simultaneousGesture(DragGesture().onChanged { _ in detailState.resetTimer() })
+
+						BottomSectionItemView(
+							item: viewModel.item,
+							resetTimer: detailState.resetTimer,
+							showPaddleInput: $showPaddleInput,
+							valueType: $valueType,
+							selectedAction: $selectedAction
+						)
+						.frame(maxWidth: .infinity)
+						.accessibilityIdentifier("buttonSectionView")
+						.padding(.bottom, 10)
 					}
-					.simultaneousGesture(DragGesture().onChanged { _ in detailState.resetTimer() })
+					.background(Color.accentGrayBackground)
 
-					BottomSectionItemView(
-						item: viewModel.item,
-						resetTimer: detailState.resetTimer,
-						showPaddleInput: $showPaddleInput,
-						valueType: $valueType,
-						selectedAction: $selectedAction
-					)
-					.frame(maxWidth: .infinity)
-					.accessibilityIdentifier("buttonSectionView")
-					.padding(.bottom, 10)
-				}
-				.background(Color.accentGrayBackground)
-
-				if showPaddleInput {
-					// PaddleInputView code
+					if showPaddleInput {
+						// PaddleInputView code
+					}
 				}
 			}
+			.padding(.top, 0)
 		}
-		.padding(.top, 0)
 	}
 
-	private func portraitView(geometry: GeometryProxy) -> some View {
+	private func portraitView(geometry _: GeometryProxy) -> some View {
 		VStack(spacing: 0) {
 			HStack {
 				Spacer()
@@ -187,20 +183,17 @@ struct ItemDetailView: View {
 			}
 			else {
 				ScrollView {
-					VStack(spacing: 0) {
+					VStack(spacing: 10) { // Reduced spacing in portrait mode
 						ImageGalleryView(
 							detailState: detailState,
 							loadImages: $loadImages,
 							item: viewModel.item,
 							images: viewModel.item.images ?? [ItemImageModel(itemImageUrl: viewModel.item.imageUrl)]
 						)
-						.frame(height: geometry.size.height * 0.5)
 						.accessibilityIdentifier("imageGalleryView")
 
 						DetailInfoView(isVisible: $isVisible, resetTimer: detailState.resetTimer, item: viewModel.item)
 							.background(Color.white)
-							.frame(maxHeight: .infinity, alignment: .top)
-							.clipped()
 							.accessibilityIdentifier("detailInfoView")
 					}
 				}

@@ -91,7 +91,7 @@ struct DetailInfoView: View {
 				Spacer()
 			}
 
-			HTMLText(html: "\(item.description ?? "NaN")")
+			HTMLTextView(htmlContent: item.description ?? "")
 				.frame(maxWidth: .infinity, alignment: .leading)
 				.fixedSize(horizontal: false, vertical: true)
 				.onTapGesture {
