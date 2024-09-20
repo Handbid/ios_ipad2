@@ -3,19 +3,19 @@
 @testable import Handbid_iPad
 
 class MockLogInViewModel: LogInViewModel {
-	@Published var logInCalled = false
-	@Published var resetErrorMessageCalled = false
+    @Published var logInCalled = false
+    @Published var resetErrorMessageCalled = false
 
-	init() {
-		super.init(repository: MockRegisterRepository(), authManager: MockAuthManager())
-	}
+    init() {
+        super.init(repository: MockRegisterRepository(), authManager: MockAuthManager())
+    }
 
-	override func logIn() {
-		logInCalled = true
-	}
+    override func logIn() {
+        logInCalled = true
+    }
 
-	override func resetErrorMessage() {
-		super.resetErrorMessage()
-		resetErrorMessageCalled = true
-	}
+    override func resetErrorMessage() {
+        super.resetErrorMessage()
+        resetErrorMessageCalled = true
+    }
 }
