@@ -98,7 +98,7 @@ struct ItemDetailView: View {
 				.background(Color.white)
 				.cornerRadius(20)
 				.offset(y: offset)
-				// .gesture(dragGesture(geometry: geometry))
+				.gesture(dragGesture(geometry: geometry))
 				.animation(.easeInOut(duration: 0.4), value: offset)
 				.padding(10)
 
@@ -113,6 +113,9 @@ struct ItemDetailView: View {
 					}
 					Spacer()
 				}
+			}
+			.onAppear {
+				detailState.startTimer()
 			}
 			.gesture(TapGesture().onEnded {
 				detailState.resetTimer()
