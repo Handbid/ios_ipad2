@@ -4,6 +4,7 @@ import SwiftUI
 
 struct PaddleInputView: View {
 	@Binding var isVisible: Bool
+	@Binding var showPaddleInput: Bool
 	@Binding var valueType: ItemValueType
 	@Binding var selectedAction: ActionButtonType?
 	@State private var activeKey: String? = nil
@@ -11,6 +12,24 @@ struct PaddleInputView: View {
 	@StateObject var viewModel: PaddleInputViewModel
 	let item: ItemModel
 	let resetTimer: () -> Void
+
+	init(
+		isVisible: Binding<Bool>,
+		showPaddleInput: Binding<Bool>,
+		valueType: Binding<ItemValueType>,
+		selectedAction: Binding<ActionButtonType?>,
+		item: ItemModel,
+		resetTimer: @escaping () -> Void,
+		viewModel: PaddleInputViewModel = PaddleInputViewModel()
+	) {
+		self._isVisible = isVisible
+		self._showPaddleInput = showPaddleInput
+		self._valueType = valueType
+		self._selectedAction = selectedAction
+		self.item = item
+		self.resetTimer = resetTimer
+		self._viewModel = StateObject(wrappedValue: viewModel)
+	}
 
 	var body: some View {
 		VStack {
@@ -67,23 +86,25 @@ struct PaddleInputView: View {
 
 				HStack {
 					Button<Text>.styled(config: .thirdButtonStyle, action: {
-						isVisible = false
+						showPaddleInput = false
 						resetTimer()
 					}) {
 						Text(LocalizedStringKey("item_label_cancel"))
 							.textCase(.uppercase)
-					}.accessibilityIdentifier("Cancel")
-						.padding(.leading)
+					}
+					.accessibilityIdentifier("Cancel")
+					.padding(.leading)
 
 					Button<Text>.styled(config: .secondaryButtonStyle, action: {
 						viewModel.performAction(for: item, valueType: valueType, selectedAction: selectedAction)
-//						isVisible = false
+						showPaddleInput = false
 						resetTimer()
 					}) {
 						Text(LocalizedStringKey("item_label_confirm"))
 							.textCase(.uppercase)
-					}.accessibilityIdentifier("Confirm")
-						.padding(.trailing)
+					}
+					.accessibilityIdentifier("Confirm")
+					.padding(.trailing)
 				}
 			}
 			.frame(maxWidth: .infinity)
@@ -92,6 +113,7 @@ struct PaddleInputView: View {
 		.onTapGesture {
 			resetTimer()
 		}
+		.background(Color.white)
 		.frame(maxHeight: .infinity)
 		.alert(isPresented: $viewModel.showError) {
 			Alert(title: Text("Error"), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))

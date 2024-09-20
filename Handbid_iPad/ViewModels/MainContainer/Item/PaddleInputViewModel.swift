@@ -11,13 +11,12 @@ class PaddleInputViewModel: ObservableObject {
 	@Published var isLoading: Bool = false
 	@Published var alertMessage: String = ""
 
-	private var repositoryTransaction: OfferSubmissionRepository
+	private var repositoryTransaction: OfferSubmissionRepository?
 	private var cancellables = Set<AnyCancellable>()
 	private var dataManager = DataManager.shared
 	private let auction: AuctionModel?
 
-	init(repositoryPerformTransaction: OfferSubmissionRepository) {
-		self.repositoryTransaction = repositoryPerformTransaction
+	init() {
 		self.auction = try? dataManager.fetchSingle(of: AuctionModel.self, from: .auction)
 	}
 
@@ -55,16 +54,16 @@ class PaddleInputViewModel: ObservableObject {
 	private func handleBidNow(for item: ItemModel, amount: Double) {
 		guard let itemId = item.id else { return }
 		print("Bid Now for item \(String(describing: item.id)) with amount \(amount)")
-		repositoryTransaction.createBid(userID: nil,
-		                                         paddleNumber: Int(inputText),
-		                                         auctionId: auction?.identity ?? -1,
-		                                         itemId: itemId,
-		                                         amount: amount,
-		                                         maxAmount: nil,
-		                                         quantity: nil,
-		                                         discountId: nil,
-		                                         ignoreCC: false,
-		                                         finalBid: nil)
+		repositoryTransaction?.createBid(userID: nil,
+		                                 paddleNumber: Int(inputText),
+		                                 auctionId: auction?.identity ?? -1,
+		                                 itemId: itemId,
+		                                 amount: amount,
+		                                 maxAmount: nil,
+		                                 quantity: nil,
+		                                 discountId: nil,
+		                                 ignoreCC: false,
+		                                 finalBid: nil)
 			.receive(on: DispatchQueue.main)
 			.sink(receiveCompletion: handleCompletion, receiveValue: handleReceivedData)
 			.store(in: &cancellables)
@@ -73,16 +72,16 @@ class PaddleInputViewModel: ObservableObject {
 	private func handleSetMaxBid(for item: ItemModel, amount: Double) {
 		print("Set Max Bid for item \(item.id) with amount \(amount)")
 		guard let itemId = item.id else { return }
-		repositoryTransaction.createBid(userID: nil,
-		                                         paddleNumber: Int(inputText),
-		                                         auctionId: auction?.identity ?? -1,
-		                                         itemId: itemId,
-		                                         amount: nil,
-		                                         maxAmount: amount,
-		                                         quantity: nil,
-		                                         discountId: nil,
-		                                         ignoreCC: false,
-		                                         finalBid: nil)
+		repositoryTransaction?.createBid(userID: nil,
+		                                 paddleNumber: Int(inputText),
+		                                 auctionId: auction?.identity ?? -1,
+		                                 itemId: itemId,
+		                                 amount: nil,
+		                                 maxAmount: amount,
+		                                 quantity: nil,
+		                                 discountId: nil,
+		                                 ignoreCC: false,
+		                                 finalBid: nil)
 			.receive(on: DispatchQueue.main)
 			.sink(receiveCompletion: handleCompletion, receiveValue: handleReceivedData)
 			.store(in: &cancellables)
@@ -91,16 +90,16 @@ class PaddleInputViewModel: ObservableObject {
 	private func handleBuyNow(for item: ItemModel, amount: Double) {
 		print("Buy Now for item \(item.id) with amount \(amount)")
 		guard let itemId = item.id else { return }
-		repositoryTransaction.createBid(userID: nil,
-		                                         paddleNumber: Int(inputText),
-		                                         auctionId: auction?.identity ?? -1,
-		                                         itemId: itemId,
-		                                         amount: amount,
-		                                         maxAmount: nil,
-		                                         quantity: nil,
-		                                         discountId: nil,
-		                                         ignoreCC: false,
-		                                         finalBid: nil)
+		repositoryTransaction?.createBid(userID: nil,
+		                                 paddleNumber: Int(inputText),
+		                                 auctionId: auction?.identity ?? -1,
+		                                 itemId: itemId,
+		                                 amount: amount,
+		                                 maxAmount: nil,
+		                                 quantity: nil,
+		                                 discountId: nil,
+		                                 ignoreCC: false,
+		                                 finalBid: nil)
 			.receive(on: DispatchQueue.main)
 			.sink(receiveCompletion: handleCompletion, receiveValue: handleReceivedData)
 			.store(in: &cancellables)
@@ -109,16 +108,16 @@ class PaddleInputViewModel: ObservableObject {
 	private func handlePurchase(for item: ItemModel, amount: Double) {
 		print("Purchase for item \(item.id) with amount \(amount)")
 		guard let itemId = item.id else { return }
-		repositoryTransaction.createBid(userID: nil,
-		                                         paddleNumber: Int(inputText),
-		                                         auctionId: auction?.identity ?? -1,
-		                                         itemId: itemId,
-		                                         amount: item.buyNowPrice,
-		                                         maxAmount: nil,
-		                                         quantity: nil,
-		                                         discountId: nil,
-		                                         ignoreCC: false,
-		                                         finalBid: nil)
+		repositoryTransaction?.createBid(userID: nil,
+		                                 paddleNumber: Int(inputText),
+		                                 auctionId: auction?.identity ?? -1,
+		                                 itemId: itemId,
+		                                 amount: item.buyNowPrice,
+		                                 maxAmount: nil,
+		                                 quantity: nil,
+		                                 discountId: nil,
+		                                 ignoreCC: false,
+		                                 finalBid: nil)
 			.receive(on: DispatchQueue.main)
 			.sink(receiveCompletion: handleCompletion, receiveValue: handleReceivedData)
 			.store(in: &cancellables)
@@ -127,16 +126,16 @@ class PaddleInputViewModel: ObservableObject {
 	private func handlePurchaseWithQuantity(for item: ItemModel, quantity: Double) {
 		print("Purchase quantity for item \(item.id) with quantity \(quantity)")
 		guard let itemId = item.id else { return }
-		repositoryTransaction.createBid(userID: nil,
-		                                         paddleNumber: Int(inputText),
-		                                         auctionId: auction?.identity ?? -1,
-		                                         itemId: itemId,
-		                                         amount: Double(quantity) * (item.buyNowPrice ?? -1),
-		                                         maxAmount: nil,
-		                                         quantity: Int(quantity),
-		                                         discountId: nil,
-		                                         ignoreCC: false,
-		                                         finalBid: nil)
+		repositoryTransaction?.createBid(userID: nil,
+		                                 paddleNumber: Int(inputText),
+		                                 auctionId: auction?.identity ?? -1,
+		                                 itemId: itemId,
+		                                 amount: Double(quantity) * (item.buyNowPrice ?? -1),
+		                                 maxAmount: nil,
+		                                 quantity: Int(quantity),
+		                                 discountId: nil,
+		                                 ignoreCC: false,
+		                                 finalBid: nil)
 			.receive(on: DispatchQueue.main)
 			.sink(receiveCompletion: handleCompletion, receiveValue: handleReceivedData)
 			.store(in: &cancellables)

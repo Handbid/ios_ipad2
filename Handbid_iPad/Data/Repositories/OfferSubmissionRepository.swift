@@ -6,15 +6,15 @@ import NetworkService
 
 protocol OfferSubmissionRepository {
 	func createBid(userID: Int?,
-	                        paddleNumber: Int?,
-	                        auctionId: Int,
-	                        itemId: Int,
-	                        amount: Double?,
-	                        maxAmount: Double?,
-	                        quantity: Int?,
-	                        discountId: Int?,
-	                        ignoreCC: Bool?,
-	                        finalBid: Bool?) -> AnyPublisher<BidModel, any Error>
+	               paddleNumber: Int?,
+	               auctionId: Int,
+	               itemId: Int,
+	               amount: Double?,
+	               maxAmount: Double?,
+	               quantity: Int?,
+	               discountId: Int?,
+	               ignoreCC: Bool?,
+	               finalBid: Bool?) -> AnyPublisher<BidModel, any Error>
 }
 
 class OfferSubmissionRepositoryImpl: OfferSubmissionRepository, NetworkingService {
@@ -25,15 +25,15 @@ class OfferSubmissionRepositoryImpl: OfferSubmissionRepository, NetworkingServic
 	}
 
 	func createBid(userID: Int? = nil,
-	                        paddleNumber: Int? = nil,
-	                        auctionId: Int,
-	                        itemId: Int,
-	                        amount: Double? = nil,
-	                        maxAmount: Double? = nil,
-	                        quantity: Int? = nil,
-	                        discountId: Int? = nil,
-	                        ignoreCC: Bool? = nil,
-	                        finalBid: Bool? = nil) -> AnyPublisher<BidModel, any Error>
+	               paddleNumber: Int? = nil,
+	               auctionId: Int,
+	               itemId: Int,
+	               amount: Double? = nil,
+	               maxAmount: Double? = nil,
+	               quantity: Int? = nil,
+	               discountId: Int? = nil,
+	               ignoreCC: Bool? = nil,
+	               finalBid: Bool? = nil) -> AnyPublisher<BidModel, any Error>
 	{
 		var params: [String: CustomStringConvertible] = [
 			"auctionId": auctionId,

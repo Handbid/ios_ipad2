@@ -104,7 +104,14 @@ struct ItemDetailView: View {
 					.background(Color.accentGrayBackground)
 
 					if showPaddleInput {
-						// PaddleInputView code
+						PaddleInputView(
+							isVisible: $isVisible,
+							showPaddleInput: $showPaddleInput,
+							valueType: $valueType,
+							selectedAction: $selectedAction,
+							item: viewModel.item,
+							resetTimer: detailState.resetTimer
+						)
 					}
 				}
 			}
@@ -120,11 +127,18 @@ struct ItemDetailView: View {
 					.padding([.top, .trailing], 20)
 			}
 			if showPaddleInput {
-				// PaddleInputView code
+				PaddleInputView(
+					isVisible: $isVisible,
+					showPaddleInput: $showPaddleInput,
+					valueType: $valueType,
+					selectedAction: $selectedAction,
+					item: viewModel.item,
+					resetTimer: detailState.resetTimer
+				)
 			}
 			else {
 				ScrollView {
-					VStack(spacing: 10) { // Reduced spacing in portrait mode
+					VStack(spacing: 10) {
 						ImageGalleryView(
 							detailState: detailState,
 							loadImages: $loadImages,
