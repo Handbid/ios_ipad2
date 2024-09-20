@@ -66,7 +66,7 @@ struct ImageGalleryView: View {
 							.accessibilityIdentifier("imageOverlay")
 
 						if item.isLive ?? false || item.isDirectPurchaseItem ?? false {
-							Text(item.isLive ?? false ? "LIVE" : "FOR SALE")
+							Text(item.isLive ?? false ? String(localized: "item_label_live").uppercased() : String(localized: "item_label_forSale").uppercased())
 								.font(.caption)
 								.fontWeight(.medium)
 								.foregroundColor(.white)
