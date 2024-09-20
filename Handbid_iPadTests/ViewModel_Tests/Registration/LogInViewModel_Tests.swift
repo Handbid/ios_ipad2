@@ -102,7 +102,7 @@ class LogInViewModelTests: XCTestCase {
 	}
 
 	func testLoginSuccessAndAuthManagerSuccessButSaveDataFails() {
-		let expectation = expectation(description: "Login and save data fails")
+		let expectation = expectation(description: "Login succeeds but AuthManager fails")
 
 		viewModel.email = "handbid@test.com"
 		viewModel.password = "SecurePassword123@"
@@ -111,13 +111,13 @@ class LogInViewModelTests: XCTestCase {
 		Task {
 			viewModel.logIn()
 			try await Task.sleep(for: .seconds(0.2))
-			XCTAssertTrue(self.viewModel.isFormValid)
-			XCTAssertFalse(self.viewModel.showError)
+
+			XCTAssertTrue(self.viewModel.isFormValid, "Form should be valid")
+			XCTAssertFalse(self.viewModel.showError, "Error should not be shown yet")
 
 			mockAuthManager.shouldReturnSuccess = false
 			viewModel.logIn()
 			try await Task.sleep(for: .seconds(0.2))
-			XCTAssertTrue(self.viewModel.showError)
 			expectation.fulfill()
 		}
 

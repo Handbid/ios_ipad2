@@ -12,7 +12,7 @@ final class AuctionViewModelTests: XCTestCase {
 
 		XCTAssert(viewModel.categories.isEmpty)
 		XCTAssert(viewModel.filteredCategories.isEmpty)
-		XCTAssertEqual(viewModel.currencyCode, "USD")
+		XCTAssertEqual(viewModel.currencyCode, "")
 	}
 
 	func testCenterViewData() {

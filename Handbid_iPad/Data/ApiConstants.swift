@@ -9,6 +9,7 @@ enum ApiEndpoints {
 	static let auctionInventory = "/auction/inventory"
 	static let getAuctionsUser = "/auction/index"
 	static let items = "/api/v2/items"
+	static let bidCreate = "/bid/create"
 	static let findPaddle = "/auth/lookup"
 	static let checkInUser = "/auth/checkin"
 	static let registerUser = "/auth/register"

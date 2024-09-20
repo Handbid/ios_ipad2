@@ -44,7 +44,7 @@ final class PasswordResetConfirmationViewTests: XCTestCase {
 		XCTAssertNil(inspectionError)
 	}
 
-	func testButtonClearingNavigationStack() {
+	@MainActor func testButtonClearingNavigationStack() {
 		coordinator.navigationStack.append(.resetPasswordConfirmation)
 
 		let expBeforeTap = view.inspection.inspect { view in

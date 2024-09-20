@@ -20,6 +20,7 @@ extension Color {
 	}
 
 	static var accentViolet = Color(hex: "694BFF")
+	static var accentLightViolet = Color(hex: "F0EDFF")
 	static var accentGrayForm = Color(hex: "B1B1B1")
 	static var accentGrayBackground = Color(hex: "F7F7F9")
 	static var accentGrayBorder = Color(hex: "D9D9D9")

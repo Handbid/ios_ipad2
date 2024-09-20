@@ -49,7 +49,7 @@ final class ForgotPasswordViewTests: XCTestCase {
 		XCTAssert(coordinator.navigationStack.isEmpty)
 	}
 
-	func testOnSuccessfulRequestMovesToConfirmation() {
+	@MainActor func testOnSuccessfulRequestMovesToConfirmation() {
 		let exp = view.inspection.inspect(onReceive: coordinator.$navigationStack) { _ in
 			let stack = self.coordinator.navigationStack
 			XCTAssert(stack.count == 1 && stack[0] == .resetPasswordConfirmation)
@@ -62,7 +62,7 @@ final class ForgotPasswordViewTests: XCTestCase {
 		wait(for: [exp], timeout: 1)
 	}
 
-	func testErrorDisplayedOnFailedRequest() {
+	@MainActor func testErrorDisplayedOnFailedRequest() {
 		mockViewModel.errorMessage = "error"
 
 		let exp = view.inspection.inspect(onReceive: mockViewModel.$requestStatus) { v in
@@ -78,7 +78,7 @@ final class ForgotPasswordViewTests: XCTestCase {
 		wait(for: [exp], timeout: 1)
 	}
 
-	func testErrorDisplayedOnInvalidForm() {
+	@MainActor func testErrorDisplayedOnInvalidForm() {
 		mockViewModel.errorMessage = "error"
 
 		let exp = view.inspection.inspect(onReceive: mockViewModel.$isFormValid) { v in
@@ -94,7 +94,7 @@ final class ForgotPasswordViewTests: XCTestCase {
 		wait(for: [exp], timeout: 1)
 	}
 
-	func testRequestResetInvokedOnButtonClick() {
+	@MainActor func testRequestResetInvokedOnButtonClick() {
 		let expClick = view.inspection.inspect { v in
 			let button = try v.find(
 				viewWithAccessibilityIdentifier: "registration_btn_confirm"

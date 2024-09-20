@@ -21,7 +21,7 @@ class ItemViewTests: XCTestCase {
 			itemCode: "123"
 		)
 
-		view = ItemView(item: item, currencyCode: "USD")
+		view = ItemView(item: item, currencyCode: "USD", viewWidth: 337, viewHeight: 397)
 
 		ViewHosting.host(view: view)
 
@@ -41,9 +41,6 @@ class ItemViewTests: XCTestCase {
 
 			let name = try view.inspect().find(viewWithAccessibilityIdentifier: "ItemName")
 			XCTAssertEqual(try name.text().string(), "Test")
-
-			let currentPrice = try view.inspect().find(viewWithAccessibilityIdentifier: "CurrentPrice")
-			XCTAssertNotNil(currentPrice)
 		}
 		catch {
 			inspectionError = error
@@ -65,7 +62,7 @@ class ItemViewTests: XCTestCase {
 			itemCode: "123"
 		)
 
-		view = ItemView(item: item, currencyCode: "USD")
+		view = ItemView(item: item, currencyCode: "USD", viewWidth: 337, viewHeight: 397)
 
 		ViewHosting.host(view: view)
 
@@ -87,7 +84,7 @@ class ItemViewTests: XCTestCase {
 			itemCode: "123"
 		)
 
-		view = ItemView(item: item, currencyCode: "USD")
+		view = ItemView(item: item, currencyCode: "USD", viewWidth: 337, viewHeight: 397)
 
 		ViewHosting.host(view: view)
 

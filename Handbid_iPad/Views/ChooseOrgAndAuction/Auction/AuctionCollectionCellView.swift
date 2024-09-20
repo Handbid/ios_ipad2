@@ -62,7 +62,7 @@ struct AuctionCollectionCellView<T: PageProtocol>: View {
 							.cornerRadius(10)
 							.accessibilityIdentifier("auctionImage")
 					case .failure:
-						Image(systemName: "photo")
+						Image("default_photo")
 							.resizable()
 							.scaledToFit()
 							.foregroundColor(colorScheme == .dark ? .white : .gray)

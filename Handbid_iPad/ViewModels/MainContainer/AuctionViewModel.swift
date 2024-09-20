@@ -5,10 +5,11 @@ import SwiftUI
 
 class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 	private var repository: AuctionRepository
+
 	private var auctionId: Int = 0
+	private var auction: AuctionModel?
 	var eventPublisher = PassthroughSubject<MainContainerChangeViewEvents, Never>()
 	@ObservedObject var dataService: DataServiceWrapper
-	private var auction: AuctionModel?
 	@Published var categories: [CategoryModel]
 	@Published var filteredCategories: [CategoryModel]
 	@Published var currencyCode: String
@@ -20,10 +21,11 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 	init(dataService: DataServiceWrapper, repository: AuctionRepository) {
 		self.categories = []
 		self.filteredCategories = []
-		self.currencyCode = "USD"
+		self.currencyCode = auction?.currencyCode ?? ""
 
 		self.dataService = dataService
 		self.repository = repository
+
 		dataManager.onDataChanged.sink {
 			self.updateAuction()
 		}.store(in: &cancellables)
@@ -103,13 +105,11 @@ class AuctionViewModel: ObservableObject, ViewModelTopBarProtocol {
 
 	private func handleAuctionUpdate(auction: AuctionModel) {
 		guard let id = auction.identity,
-		      let name = auction.name,
-		      let status = auction.status,
 		      let categories = auction.categories
 		else { return }
 		auctionId = id
 		self.auction = auction
-		currencyCode = auction.currencyCode ?? "USD"
+		currencyCode = auction.currencyCode ?? ""
 		self.categories = categories.filter { $0.items?.isEmpty == false }
 	}
 }

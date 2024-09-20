@@ -10,8 +10,8 @@ class SearchItemsViewModel: ObservableObject {
 	@Published var filteredItems: [ItemModel] = []
 	@Published var searchHistory: [String] = []
 
-	private var auction: AuctionModel?
-	private var items: [ItemModel] = []
+	var auction: AuctionModel?
+	var items: [ItemModel] = []
 	private var cancellables = Set<AnyCancellable>()
 
 	init(repository: SearchItemsRepository) {
@@ -47,7 +47,7 @@ class SearchItemsViewModel: ObservableObject {
 		}
 	}
 
-	private func fetchItemsFromRepository() {
+	func fetchItemsFromRepository() {
 		repository.getSearchItems(name: searchText)
 			.receive(on: DispatchQueue.main)
 			.sink(receiveCompletion: { completion in

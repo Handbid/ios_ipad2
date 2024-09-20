@@ -59,7 +59,7 @@ final class ChooseEnvironmentViewTests: XCTestCase {
 		XCTAssertNil(inspectionError)
 	}
 
-	func testEnvironmentIsSavedOnClickingButton() {
+	@MainActor func testEnvironmentIsSavedOnClickingButton() {
 		var inspectionError: Error? = nil
 
 		let exp = view.inspection.inspect(onReceive: mockViewModel.$saveEnvironmentCalled) { _ in

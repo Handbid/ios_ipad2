@@ -2,11 +2,15 @@
 
 import SwiftUI
 
-struct AuctionView: ContentView {
+struct AuctionView: View {
 	@ObservedObject var viewModel: AuctionViewModel
-	@State var categories: [CategoryModel] = []
 	@State var isLoading = true
 	var inspection = Inspection<Self>()
+	@State private var categories: [CategoryModel] = []
+	@State private var selectedItem: ItemModel? = nil
+	@State private var showDetailView: Bool = false
+	@State private var loadImages: Bool = false
+	@StateObject private var detailState = ItemDetailState()
 
 	init(viewModel: AuctionViewModel) {
 		self.viewModel = viewModel
@@ -14,13 +18,20 @@ struct AuctionView: ContentView {
 
 	var body: some View {
 		LoadingOverlay(isLoading: $isLoading) {
-			VStack {
-				if categories.isEmpty, !isLoading {
-					noItemsView
+			ZStack {
+				VStack {
+					if categories.isEmpty, !isLoading {
+						noItemsView
+					}
+					else {
+						categoriesList
+					}
 				}
-				else {
-					categoriesList
-				}
+			}
+
+			if let selectedItem, showDetailView {
+				overlayView
+				itemDetailView(for: selectedItem)
 			}
 		}
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -35,63 +46,80 @@ struct AuctionView: ContentView {
 		.onReceive(inspection.notice) {
 			inspection.visit(self, $0)
 		}
+		.accessibilityIdentifier("AuctionView")
 		.onAppear {
 			viewModel.refreshData()
 		}
-		.accessibilityIdentifier("AuctionView")
 	}
 
 	private var noItemsView: some View {
 		VStack {
 			Spacer()
-
 			ZStack {
 				Circle()
 					.stroke(Color.accentViolet.opacity(0.3), lineWidth: 1.0)
-					.frame(width: 100, height: 100, alignment: .center)
-
+					.frame(width: 100, height: 100)
 				Image("noItemsIcon")
 					.resizable()
 					.aspectRatio(contentMode: .fill)
-					.frame(width: 50, height: 50, alignment: .center)
+					.frame(width: 50, height: 50)
 			}
 			.padding()
-
 			Text(LocalizedStringKey("auction_label_noItems"))
 				.applyTextStyle(style: .body)
-
 			Spacer()
 		}
-		.accessibilityIdentifier("NoItemsView")
+		.accessibilityIdentifier("noItemsView")
 	}
 
 	private var categoriesList: some View {
 		ScrollView(.vertical) {
 			LazyVStack {
 				ForEach(categories, id: \.id) { category in
-					createCategoryView(for: category)
-				}
-			}
-		}
-		.scrollIndicators(.never)
-		.accessibilityIdentifier("CategoriesList")
-	}
-
-	private func createCategoryView(for category: CategoryModel) -> AnyView {
-		AnyView(VStack {
-			Text(category.name ?? "nil")
-				.applyTextStyle(style: .subheader)
-				.padding(.bottom, -10)
-
-			ScrollView(.horizontal) {
-				LazyHStack {
-					ForEach(category.items ?? [], id: \.id) { item in
-						ItemView(item: item, currencyCode: viewModel.currencyCode)
+					CategoryView(category: category) { item in
+						withAnimation {
+							selectedItem = item
+							showDetailView = true
+							detailState.reset()
+						}
 					}
 				}
 			}
-			.scrollIndicators(.never)
-			.defaultScrollAnchor(.leading)
-		})
+		}
+		.accessibilityIdentifier("categoriesList")
+	}
+
+	private var overlayView: some View {
+		Color.black.opacity(0.5)
+			.onTapGesture {
+				withAnimation {
+					showDetailView = false
+					selectedItem = nil
+					loadImages = false
+				}
+			}
+			.accessibilityIdentifier("overlay")
+	}
+
+	private func itemDetailView(for item: ItemModel) -> some View {
+		ItemDetailView(
+			isVisible: $showDetailView,
+			loadImages: $loadImages,
+			item: item,
+			detailState: detailState
+		)
+		.id(item.id)
+		.padding(10)
+		.background(Color.accentViolet.opacity(0.5))
+		.onAppear {
+			DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+				loadImages = true
+			}
+		}
+		.onDisappear {
+			selectedItem = nil
+			loadImages = false
+		}
+		.accessibilityIdentifier("itemDetailView")
 	}
 }

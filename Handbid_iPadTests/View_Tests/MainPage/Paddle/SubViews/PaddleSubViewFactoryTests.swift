@@ -14,7 +14,7 @@ class PaddleSubViewFactoryTests: XCTestCase {
 		factory = PaddleSubViewFactory(viewModel: mockViewModel)
 	}
 
-	func testDisplayingSubViews() {
+	@MainActor func testDisplayingSubViews() {
 		let expFindPaddle = factory.inspection
 			.inspect(onReceive: mockViewModel.$subView) { v in
 				XCTAssertNoThrow(try v.find(FindPadleView.self))
