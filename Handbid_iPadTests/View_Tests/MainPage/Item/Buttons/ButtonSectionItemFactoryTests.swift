@@ -17,7 +17,7 @@ final class ButtonSectionItemFactoryTests: XCTestCase {
 		)
 
 		XCTAssertNoThrow(try view.inspect().find(PlaceOrderButtonView.self))
-		XCTAssertNoThrow(try view.inspect().find(button: "Place Order"))
+		XCTAssertNoThrow(try view.inspect().find(button: String(localized: "item_btn_placeOrder")))
 	}
 
 	func testCreateButtonViewForPlaceOrderWhenPending() throws {
@@ -31,7 +31,7 @@ final class ButtonSectionItemFactoryTests: XCTestCase {
 		)
 
 		XCTAssertNoThrow(try view.inspect().find(PlaceOrderButtonView.self))
-		XCTAssertNoThrow(try view.inspect().find(text: "Item is not open for bidding"))
+		XCTAssertNoThrow(try view.inspect().find(text: String(localized: "item_label_notOpenForBidding")))
 	}
 
 	func testCreateButtonViewForPlaceOrderSoldOut() throws {
@@ -45,7 +45,7 @@ final class ButtonSectionItemFactoryTests: XCTestCase {
 		)
 
 		XCTAssertNoThrow(try view.inspect().find(PlaceOrderSoldOutButtonView.self))
-		XCTAssertNoThrow(try view.inspect().find(text: "Item has been purchased"))
+		XCTAssertNoThrow(try view.inspect().find(text: String(localized: "item_label_itemHasPurchased")))
 	}
 
 	func testCreateButtonViewForNormalWhenOpen() throws {
@@ -60,8 +60,8 @@ final class ButtonSectionItemFactoryTests: XCTestCase {
 
 		let inspectableView = try view.inspect()
 		XCTAssertNoThrow(try inspectableView.find(NormalButtonView.self))
-		XCTAssertNoThrow(try inspectableView.find(button: "BID NOW"))
-		XCTAssertNoThrow(try inspectableView.find(button: "SET MAX BID"))
+		XCTAssertNoThrow(try inspectableView.find(button: String(localized: "item_btn_bidNow")))
+		XCTAssertNoThrow(try inspectableView.find(button: String(localized: "item_btn_setMaxBid")))
 	}
 
 	func testCreateButtonViewForNormalWhenPending() throws {
@@ -76,7 +76,7 @@ final class ButtonSectionItemFactoryTests: XCTestCase {
 
 		let inspectableView = try view.inspect()
 		XCTAssertNoThrow(try inspectableView.find(NormalButtonView.self))
-		XCTAssertNoThrow(try inspectableView.find(text: "Item is not open for bidding"))
+		XCTAssertNoThrow(try inspectableView.find(text: String(localized: "item_label_notOpenForBidding")))
 	}
 
 	func testCreateButtonViewForNormalWhenNotAvailable() throws {
@@ -91,7 +91,7 @@ final class ButtonSectionItemFactoryTests: XCTestCase {
 
 		let inspectableView = try view.inspect()
 		XCTAssertNoThrow(try inspectableView.find(NormalButtonView.self))
-		XCTAssertNoThrow(try inspectableView.find(text: "Item is not available"))
+		XCTAssertNoThrow(try inspectableView.find(text: String(localized: "item_label_itemNotAvailable")))
 	}
 
 	func testCreateButtonViewForLiveAuction() throws {
@@ -105,7 +105,7 @@ final class ButtonSectionItemFactoryTests: XCTestCase {
 		)
 
 		XCTAssertNoThrow(try view.inspect().find(LiveAuctionButtonView.self))
-		XCTAssertNoThrow(try view.inspect().find(text: "Live Auction Item"))
+		XCTAssertNoThrow(try view.inspect().find(text: String(localized: "item_label_liveAuctionItem")))
 	}
 
 	func testCreateButtonViewForBiddingDisabled() throws {
@@ -120,7 +120,7 @@ final class ButtonSectionItemFactoryTests: XCTestCase {
 
 		let inspectableView = try view.inspect()
 		XCTAssertNoThrow(try inspectableView.find(BiddingDisabledButtonView.self))
-		XCTAssertNoThrow(try inspectableView.find(text: "Online bidding currently disabled for this item"))
+		XCTAssertNoThrow(try inspectableView.find(text: String(localized: "item_label_biddingDisabled")))
 	}
 
 	func testCreateButtonViewForBuyNowWhenOpen() throws {
@@ -156,7 +156,7 @@ final class ButtonSectionItemFactoryTests: XCTestCase {
 
 		let inspectableView = try view.inspect()
 		XCTAssertNoThrow(try inspectableView.find(BuyNowButtonView.self))
-		XCTAssertNoThrow(try inspectableView.find(text: "Item is not open for bidding"))
+		XCTAssertNoThrow(try inspectableView.find(text: String(localized: "item_label_notOpenForBidding")))
 	}
 
 	func testCreateButtonViewForBuyNowSoldOut() throws {
@@ -170,7 +170,7 @@ final class ButtonSectionItemFactoryTests: XCTestCase {
 		)
 
 		XCTAssertNoThrow(try view.inspect().find(BuyNowSoldOutButtonView.self))
-		XCTAssertNoThrow(try view.inspect().find(text: "Item has been purchased"))
+		XCTAssertNoThrow(try view.inspect().find(text: String(localized: "item_label_itemHasPurchased")))
 	}
 
 	func testCreateButtonViewForDirectPurchaseEventOnly() throws {
@@ -184,7 +184,7 @@ final class ButtonSectionItemFactoryTests: XCTestCase {
 		)
 
 		XCTAssertNoThrow(try view.inspect().find(DirectPurchaseEventOnlyButtonView.self))
-		XCTAssertNoThrow(try view.inspect().find(text: "Event Only"))
+		XCTAssertNoThrow(try view.inspect().find(text: String(localized: "item_btn_eventOnly")))
 	}
 
 	func testCreateButtonViewForDirectPurchaseWhenOpen() throws {
@@ -220,7 +220,7 @@ final class ButtonSectionItemFactoryTests: XCTestCase {
 
 		let inspectableView = try view.inspect()
 		XCTAssertNoThrow(try inspectableView.find(DirectPurchaseButtonView.self))
-		XCTAssertNoThrow(try inspectableView.find(text: "Item is not available for purchase"))
+		XCTAssertNoThrow(try inspectableView.find(text: String(localized: "item_label_itemNotAvailableForPurchase")))
 	}
 
 	func testCreateButtonViewForDirectPurchaseSoldOut() throws {
@@ -234,7 +234,7 @@ final class ButtonSectionItemFactoryTests: XCTestCase {
 		)
 
 		XCTAssertNoThrow(try view.inspect().find(DirectPurchaseSoldOutButtonView.self))
-		XCTAssertNoThrow(try view.inspect().find(text: "Item has been purchased"))
+		XCTAssertNoThrow(try view.inspect().find(text: String(localized: "item_label_itemHasPurchased")))
 	}
 
 	func testCreateButtonViewForPuzzle() throws {
