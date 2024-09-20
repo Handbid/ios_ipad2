@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		8C0007B22BAC733900AAEBA0 /* ArrowParsable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0007952BAC733900AAEBA0 /* ArrowParsable.swift */; };
 		8C0007BF2BAC764700AAEBA0 /* AppVersionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0007BE2BAC764700AAEBA0 /* AppVersionModel.swift */; };
-		8C0007CC2BAC8D4400AAEBA0 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00F72BA82A9F0094FAA7 /* Debug.xcconfig */; };
-		8C0007CD2BAC8D4500AAEBA0 /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8C1E00F82BA82AAC0094FAA7 /* Release.xcconfig */; };
 		8C0007D32BAC976700AAEBA0 /* AppInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0007C22BAC820500AAEBA0 /* AppInfoProvider.swift */; };
 		8C0725952BF61D7700522F8C /* DataPersistenceAndManagement.md in Resources */ = {isa = PBXBuildFile; fileRef = 8C0725942BF61D7700522F8C /* DataPersistenceAndManagement.md */; };
 		8C0725BA2BF6332600522F8C /* ModelTypeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0725B92BF6332600522F8C /* ModelTypeData.swift */; };
@@ -1887,7 +1885,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1520;
-				LastUpgradeCheck = 1520;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					8C1CC52F2BC3D77100AF80F4 = {
 						CreatedOnToolsVersion = 15.2;
@@ -1951,11 +1949,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE7DF8212BAD9E5300FF7694 /* Inter.ttf in Resources */,
-				8C0007CD2BAC8D4500AAEBA0 /* Release.xcconfig in Resources */,
 				8C0725952BF61D7700522F8C /* DataPersistenceAndManagement.md in Resources */,
 				8C1E00F62BA82A130094FAA7 /* Localizable.strings in Resources */,
 				8C1E00B22BA823C90094FAA7 /* iPadAssets.xcassets in Resources */,
-				8C0007CC2BAC8D4400AAEBA0 /* Debug.xcconfig in Resources */,
 				8C79B42D2C05005F005D4AAB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1975,7 +1971,7 @@
 		8C1E00E92BA827D10094FAA7 /* Fetch localization */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
-			buildActionMask = 12;
+			buildActionMask = 8;
 			files = (
 			);
 			inputFileListPaths = (
@@ -1987,15 +1983,14 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "\"$SRCROOT/Extras/localization_ios.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8C1E01042BA866E00094FAA7 /* SwiftFormat */ = {
 			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 12;
+			buildActionMask = 8;
 			files = (
 			);
 			inputFileListPaths = (
@@ -2007,7 +2002,7 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/SwiftFormat/CommandLineTool/swiftformat\" \"$SRCROOT\" --config .swiftformat --swiftversion 5.9\n\n";
 			showEnvVarsInLog = 0;
