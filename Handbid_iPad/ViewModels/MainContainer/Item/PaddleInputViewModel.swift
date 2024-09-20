@@ -11,12 +11,12 @@ class PaddleInputViewModel: ObservableObject {
 	@Published var isLoading: Bool = false
 	@Published var alertMessage: String = ""
 
-	private var repositoryTransaction: PerformTransactionRepository
+	private var repositoryTransaction: OfferSubmissionRepository
 	private var cancellables = Set<AnyCancellable>()
 	private var dataManager = DataManager.shared
 	private let auction: AuctionModel?
 
-	init(repositoryPerformTransaction: PerformTransactionRepository) {
+	init(repositoryPerformTransaction: OfferSubmissionRepository) {
 		self.repositoryTransaction = repositoryPerformTransaction
 		self.auction = try? dataManager.fetchSingle(of: AuctionModel.self, from: .auction)
 	}
@@ -55,7 +55,7 @@ class PaddleInputViewModel: ObservableObject {
 	private func handleBidNow(for item: ItemModel, amount: Double) {
 		guard let itemId = item.id else { return }
 		print("Bid Now for item \(String(describing: item.id)) with amount \(amount)")
-		repositoryTransaction.performTransaction(userID: nil,
+		repositoryTransaction.createBid(userID: nil,
 		                                         paddleNumber: Int(inputText),
 		                                         auctionId: auction?.identity ?? -1,
 		                                         itemId: itemId,
@@ -73,7 +73,7 @@ class PaddleInputViewModel: ObservableObject {
 	private func handleSetMaxBid(for item: ItemModel, amount: Double) {
 		print("Set Max Bid for item \(item.id) with amount \(amount)")
 		guard let itemId = item.id else { return }
-		repositoryTransaction.performTransaction(userID: nil,
+		repositoryTransaction.createBid(userID: nil,
 		                                         paddleNumber: Int(inputText),
 		                                         auctionId: auction?.identity ?? -1,
 		                                         itemId: itemId,
@@ -91,7 +91,7 @@ class PaddleInputViewModel: ObservableObject {
 	private func handleBuyNow(for item: ItemModel, amount: Double) {
 		print("Buy Now for item \(item.id) with amount \(amount)")
 		guard let itemId = item.id else { return }
-		repositoryTransaction.performTransaction(userID: nil,
+		repositoryTransaction.createBid(userID: nil,
 		                                         paddleNumber: Int(inputText),
 		                                         auctionId: auction?.identity ?? -1,
 		                                         itemId: itemId,
@@ -109,7 +109,7 @@ class PaddleInputViewModel: ObservableObject {
 	private func handlePurchase(for item: ItemModel, amount: Double) {
 		print("Purchase for item \(item.id) with amount \(amount)")
 		guard let itemId = item.id else { return }
-		repositoryTransaction.performTransaction(userID: nil,
+		repositoryTransaction.createBid(userID: nil,
 		                                         paddleNumber: Int(inputText),
 		                                         auctionId: auction?.identity ?? -1,
 		                                         itemId: itemId,
@@ -127,7 +127,7 @@ class PaddleInputViewModel: ObservableObject {
 	private func handlePurchaseWithQuantity(for item: ItemModel, quantity: Double) {
 		print("Purchase quantity for item \(item.id) with quantity \(quantity)")
 		guard let itemId = item.id else { return }
-		repositoryTransaction.performTransaction(userID: nil,
+		repositoryTransaction.createBid(userID: nil,
 		                                         paddleNumber: Int(inputText),
 		                                         auctionId: auction?.identity ?? -1,
 		                                         itemId: itemId,

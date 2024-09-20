@@ -4,8 +4,8 @@ import Arrow
 import Combine
 import NetworkService
 
-protocol PerformTransactionRepository {
-	func performTransaction(userID: Int?,
+protocol OfferSubmissionRepository {
+	func createBid(userID: Int?,
 	                        paddleNumber: Int?,
 	                        auctionId: Int,
 	                        itemId: Int,
@@ -17,14 +17,14 @@ protocol PerformTransactionRepository {
 	                        finalBid: Bool?) -> AnyPublisher<BidModel, any Error>
 }
 
-class PerformTransactionRepositoryImpl: PerformTransactionRepository, NetworkingService {
+class OfferSubmissionRepositoryImpl: OfferSubmissionRepository, NetworkingService {
 	var network: NetworkService.NetworkingClient
 
 	init(network: NetworkService.NetworkingClient) {
 		self.network = network
 	}
 
-	func performTransaction(userID: Int? = nil,
+	func createBid(userID: Int? = nil,
 	                        paddleNumber: Int? = nil,
 	                        auctionId: Int,
 	                        itemId: Int,
@@ -49,7 +49,7 @@ class PerformTransactionRepositoryImpl: PerformTransactionRepository, Networking
 		params.addOptional(key: "ignoreCC", value: ignoreCC)
 		params.addOptional(key: "finalBid", value: finalBid)
 
-		return post(ApiEndpoints.performTransaction, params: params)
+		return post(ApiEndpoints.bidCreate, params: params)
 			.tryMap { data -> BidModel in
 				if let responseError = try? JSONDecoder().decode(ResponseError.self, from: data) {
 					throw responseError
