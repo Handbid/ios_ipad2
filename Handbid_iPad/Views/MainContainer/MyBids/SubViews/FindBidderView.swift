@@ -34,7 +34,8 @@ struct FindBidderView: View {
 
 				Button<Text>.styled(config: .fifthButtonStyle, action: {
 					if viewModel.validatePaddleNumber() {
-						viewModel.subView = .findPaddle
+//						/viewModel.subView = .findPaddle
+						viewModel.requestFindingBidder()
 					}
 				}, label: {
 					Text(LocalizedStringKey("myBids_btn_searchBidder"))

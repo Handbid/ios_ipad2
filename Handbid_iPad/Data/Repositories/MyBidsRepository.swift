@@ -15,10 +15,20 @@ class MyBidsRepositoryImpl: MyBidsRepository, NetworkingService {
 	}
 
 	func findBidder(paddleId: String, auctionId: Int) -> AnyPublisher<BidderModel, Error> {
-		get(ApiEndpoints.findBidder, params: ["paddleId": paddleId,
-		                                      "auctionId": auctionId])
-			.tryMap { try BidderModel.decode($0) }
-			.map { $0 }
+		get(ApiEndpoints.findBidder, params: ["paddleNumber": paddleId,
+		                                      "id": auctionId])
+			.tryMap { data -> BidderModel in
+				guard let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []),
+				      let jsonDict = jsonObject as? [String: Any],
+				      let bidderJSON = jsonDict["Bidder"]
+				else {
+					throw NSError(domain: "DecodingError",
+					              code: 400,
+					              userInfo: [NSLocalizedDescriptionKey: "Paddle Number not found"])
+				}
+
+				return try BidderModel.decode(bidderJSON)
+			}
 			.eraseToAnyPublisher()
 	}
 }

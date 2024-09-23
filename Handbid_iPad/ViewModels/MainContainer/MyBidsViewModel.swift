@@ -1,6 +1,7 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
 import Combine
+import NetworkService
 import SwiftUI
 
 class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
@@ -17,10 +18,10 @@ class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
 
 	private let dataManager = DataManager.shared
 	private var cancellables = Set<AnyCancellable>()
-	private let paddleRepository: MyBidsRepository
+	private let myBidsRepository: MyBidsRepository
 
-	init(paddleRepository: MyBidsRepository) {
-		self.paddleRepository = paddleRepository
+	init(myBidsRepository: MyBidsRepository) {
+		self.myBidsRepository = myBidsRepository
 		self.auctionId = -1
 		self.auctionGuid = ""
 		self.paddleNumber = ""
@@ -84,5 +85,31 @@ class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
 
 		error = ""
 		return true
+	}
+
+	func requestFindingBidder() {
+		isLoading = true
+
+		myBidsRepository.findBidder(paddleId: paddleNumber, auctionId: auctionId)
+			.receive(on: DispatchQueue.main)
+			.sink(receiveCompletion: {
+				self.isLoading = false
+				switch $0 {
+				case .finished:
+					print("Finished finding user")
+				case let .failure(e):
+					print("Error finding user: \(e)")
+					self.error = e.localizedDescription
+				}
+			}, receiveValue: { response in
+				print(response)
+				if response.usersGuid != nil {
+					// self.subView = .userFound(response)
+				}
+				else {
+					self.error = String(localized: "global_error_bidderNotFound")
+				}
+			})
+			.store(in: &cancellables)
 	}
 }

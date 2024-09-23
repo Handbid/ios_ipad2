@@ -13,7 +13,7 @@ enum ViewModelFactory {
 		                         repository: auctionRepository),
 		        PaddleViewModel(paddleRepository: paddleRepository,
 		                        countriesRepository: countriesRepository),
-		        MyBidsViewModel(paddleRepository: myBidsRepository),
+		        MyBidsViewModel(myBidsRepository: myBidsRepository),
 		        ManagerViewModel(dataService: dataService),
 		        LogOutViewModel(dataService: dataService))
 	}
