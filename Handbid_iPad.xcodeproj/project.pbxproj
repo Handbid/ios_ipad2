@@ -204,7 +204,6 @@
 		8C9FA43E2BD27FDF0041F28E /* MyBidsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA43D2BD27FDF0041F28E /* MyBidsViewModel.swift */; };
 		8C9FA4402BD27FE80041F28E /* ManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA43F2BD27FE80041F28E /* ManagerViewModel.swift */; };
 		8C9FA4422BD27FF20041F28E /* LogOutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA4412BD27FF20041F28E /* LogOutViewModel.swift */; };
-		8C9FA4442BD282B00041F28E /* MyBidsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA4432BD282B00041F28E /* MyBidsView.swift */; };
 		8C9FA4462BD282B90041F28E /* ManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA4452BD282B90041F28E /* ManagerView.swift */; };
 		8C9FA4482BD282C30041F28E /* LogOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA4472BD282C30041F28E /* LogOutView.swift */; };
 		8C9FA44A2BD29C540041F28E /* ViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9FA4492BD29C540041F28E /* ViewModelFactory.swift */; };
@@ -243,6 +242,10 @@
 		8CA6C1102C347DFC0095F469 /* DirectPurchaseSoldOutButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6C10F2C347DFC0095F469 /* DirectPurchaseSoldOutButtonView.swift */; };
 		8CA6C1122C347E040095F469 /* PuzzleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6C1112C347E040095F469 /* PuzzleButtonView.swift */; };
 		8CA6C1142C347E0C0095F469 /* ForSaleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6C1132C347E0C0095F469 /* ForSaleButtonView.swift */; };
+		8CA8A05C2CA126FC00AAE69D /* MyBidsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA8A05B2CA126F600AAE69D /* MyBidsRepository.swift */; };
+		8CA8A0602CA12B9800AAE69D /* FindBidderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA8A05F2CA12B9200AAE69D /* FindBidderView.swift */; };
+		8CA8A0622CA12BE900AAE69D /* MyBidsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA8A0612CA12BE000AAE69D /* MyBidsView.swift */; };
+		8CA8A0642CA12C8E00AAE69D /* MyBidsSubViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA8A0632CA12C7F00AAE69D /* MyBidsSubViewFactory.swift */; };
 		8CABF5BB2BB9C5F400A34870 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5BA2BB9C5F400A34870 /* ForgotPasswordView.swift */; };
 		8CABF5BD2BB9C60900A34870 /* PasswordResetConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5BC2BB9C60900A34870 /* PasswordResetConfirmationView.swift */; };
 		8CABF5C32BB9C64E00A34870 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5C22BB9C64E00A34870 /* ForgotPasswordViewModel.swift */; };
@@ -563,7 +566,6 @@
 		8C9FA43D2BD27FDF0041F28E /* MyBidsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBidsViewModel.swift; sourceTree = "<group>"; };
 		8C9FA43F2BD27FE80041F28E /* ManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerViewModel.swift; sourceTree = "<group>"; };
 		8C9FA4412BD27FF20041F28E /* LogOutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutViewModel.swift; sourceTree = "<group>"; };
-		8C9FA4432BD282B00041F28E /* MyBidsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBidsView.swift; sourceTree = "<group>"; };
 		8C9FA4452BD282B90041F28E /* ManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerView.swift; sourceTree = "<group>"; };
 		8C9FA4472BD282C30041F28E /* LogOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutView.swift; sourceTree = "<group>"; };
 		8C9FA4492BD29C540041F28E /* ViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelFactory.swift; sourceTree = "<group>"; };
@@ -603,6 +605,10 @@
 		8CA6C10F2C347DFC0095F469 /* DirectPurchaseSoldOutButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectPurchaseSoldOutButtonView.swift; sourceTree = "<group>"; };
 		8CA6C1112C347E040095F469 /* PuzzleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleButtonView.swift; sourceTree = "<group>"; };
 		8CA6C1132C347E0C0095F469 /* ForSaleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForSaleButtonView.swift; sourceTree = "<group>"; };
+		8CA8A05B2CA126F600AAE69D /* MyBidsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBidsRepository.swift; sourceTree = "<group>"; };
+		8CA8A05F2CA12B9200AAE69D /* FindBidderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindBidderView.swift; sourceTree = "<group>"; };
+		8CA8A0612CA12BE000AAE69D /* MyBidsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBidsView.swift; sourceTree = "<group>"; };
+		8CA8A0632CA12C7F00AAE69D /* MyBidsSubViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBidsSubViewFactory.swift; sourceTree = "<group>"; };
 		8CABF5BA2BB9C5F400A34870 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		8CABF5BC2BB9C60900A34870 /* PasswordResetConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetConfirmationView.swift; sourceTree = "<group>"; };
 		8CABF5C22BB9C64E00A34870 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
@@ -1156,13 +1162,13 @@
 		8C3D3C052BBB85B8002A5CFC /* MainContainer */ = {
 			isa = PBXGroup;
 			children = (
+				8CA8A05D2CA12B7500AAE69D /* MyBids */,
 				CE4D210E2C2EE6250085DA1D /* Paddle */,
 				CE2022B52C0F0CF50009415D /* Auction */,
 				8C91A84F2C2A04E90057D51B /* Category */,
 				8C91A84E2C2A04E10057D51B /* Item */,
 				8C9FA4472BD282C30041F28E /* LogOutView.swift */,
 				8C9FA4452BD282B90041F28E /* ManagerView.swift */,
-				8C9FA4432BD282B00041F28E /* MyBidsView.swift */,
 			);
 			path = MainContainer;
 			sourceTree = "<group>";
@@ -1496,6 +1502,24 @@
 			path = BottomViewTypes;
 			sourceTree = "<group>";
 		};
+		8CA8A05D2CA12B7500AAE69D /* MyBids */ = {
+			isa = PBXGroup;
+			children = (
+				8CA8A0612CA12BE000AAE69D /* MyBidsView.swift */,
+				8CA8A05E2CA12B7F00AAE69D /* SubViews */,
+			);
+			path = MyBids;
+			sourceTree = "<group>";
+		};
+		8CA8A05E2CA12B7F00AAE69D /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				8CA8A05F2CA12B9200AAE69D /* FindBidderView.swift */,
+				8CA8A0632CA12C7F00AAE69D /* MyBidsSubViewFactory.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
 		8CABF5C62BB9C80400A34870 /* Background */ = {
 			isa = PBXGroup;
 			children = (
@@ -1784,16 +1808,17 @@
 		CEE2BB252BB5BB7A0033556D /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				8C908B2A2C3B9AF7009C8441 /* OfferSubmissionRepository.swift */,
+				CEAE0D0E2C1330C700822A62 /* AuctionRepository.swift */,
 				8C4BFB662BE17C6300B47154 /* ChooseAuctionRepository.swift */,
 				8C4BFB552BE0E2AD00B47154 /* ChooseOrganizationRepository.swift */,
-				8C4A6DF62C22CB8900F320D8 /* SearchItemsRepository.swift */,
-				CEE2BB262BB5BBB10033556D /* RegisterRepository.swift */,
-				CE0CEE7E2BBEB39F004A27FD /* ResetPasswordRepository.swift */,
-				CEAE0D0E2C1330C700822A62 /* AuctionRepository.swift */,
+				CEC665842C7DCB9700F07E7D /* CountriesRepository.swift */,
+				8CA8A05B2CA126F600AAE69D /* MyBidsRepository.swift */,
+				8C908B2A2C3B9AF7009C8441 /* OfferSubmissionRepository.swift */,
 				CEA0A64D2C2D9FD20088AA46 /* PaddleRepository.swift */,
 				CEFB53FD2C6CDDF800420D87 /* ReCaptchaRepository.swift */,
-				CEC665842C7DCB9700F07E7D /* CountriesRepository.swift */,
+				CEE2BB262BB5BBB10033556D /* RegisterRepository.swift */,
+				CE0CEE7E2BBEB39F004A27FD /* ResetPasswordRepository.swift */,
+				8C4A6DF62C22CB8900F320D8 /* SearchItemsRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -1970,8 +1995,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		8C1E00E92BA827D10094FAA7 /* Fetch localization */ = {
 			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -1983,14 +2007,15 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"$SRCROOT/Extras/localization_ios.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8C1E01042BA866E00094FAA7 /* SwiftFormat */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			alwaysOutOfDate = 1;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -2002,9 +2027,9 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/SwiftFormat/CommandLineTool/swiftformat\" \"$SRCROOT\" --config .swiftformat --swiftversion 5.9\n\n";
+			shellScript = "\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/SwiftFormat/CommandLineTool/swiftformat\" \"$SRCROOT\" --config .swiftformat --swiftversion 6.0\n\n";
 			showEnvVarsInLog = 0;
 		};
 		8C79B4312C050AAB005D4AAB /* Upload dSym */ = {
@@ -2182,6 +2207,7 @@
 				CEE2BB292BB5D1070033556D /* ApiConstants.swift in Sources */,
 				8C19678F2BFF54E2009360A0 /* DataManagerEnvironmentKey.swift in Sources */,
 				8CABF5CA2BB9CEF900A34870 /* ChooseEnvironmentViewModel.swift in Sources */,
+				8CA8A0622CA12BE900AAE69D /* MyBidsView.swift in Sources */,
 				CEF9EC672C666A45001AF394 /* UserFoundView.swift in Sources */,
 				8CD1080E2BD122CC00E83261 /* AuctionView.swift in Sources */,
 				8C4BFB542BDFAE2000B47154 /* AuctionFilterButtonViewModel.swift in Sources */,
@@ -2240,6 +2266,8 @@
 				8C79B41D2C040D84005D4AAB /* Processor.swift in Sources */,
 				8C8BEC3A2BA977F00083D904 /* Coordinator.swift in Sources */,
 				8C4BFB522BDFAE0800B47154 /* AuctionFilterButtonView.swift in Sources */,
+				8CA8A05C2CA126FC00AAE69D /* MyBidsRepository.swift in Sources */,
+				8CA8A0602CA12B9800AAE69D /* FindBidderView.swift in Sources */,
 				8C9FA44E2BD29CAB0041F28E /* DeviceContext.swift in Sources */,
 				8CA6C1062C347DD40095F469 /* BuyNowButtonView.swift in Sources */,
 				8CA6C0FE2C347DB20095F469 /* PlaceOrderSoldOutButtonView.swift in Sources */,
@@ -2273,6 +2301,7 @@
 				8C8BEC2E2BA975DE0083D904 /* GetStartedView.swift in Sources */,
 				8CA6C0ED2C347CDF0095F469 /* DefaultValueView.swift in Sources */,
 				8C9FA45E2BD93DFB0041F28E /* SelectAuctionTopBarCenterView.swift in Sources */,
+				8CA8A0642CA12C8E00AAE69D /* MyBidsSubViewFactory.swift in Sources */,
 				8C9FA45A2BD8DFBA0041F28E /* ChooseAuctionViewModel.swift in Sources */,
 				CEA0A64E2C2D9FD20088AA46 /* PaddleRepository.swift in Sources */,
 				8C4B7B892BB6FCEA0043B892 /* ButtonStyleConfiguration.swift in Sources */,
@@ -2303,7 +2332,6 @@
 				8C91A8572C2A05490057D51B /* DetailInfoView.swift in Sources */,
 				8C8BEC382BA977AC0083D904 /* RegistrationPage.swift in Sources */,
 				8C4BFB6B2BE1852800B47154 /* ItemModel.swift in Sources */,
-				8C9FA4442BD282B00041F28E /* MyBidsView.swift in Sources */,
 				8C4B7BB72BB9C1080043B892 /* TextSecuredStyles.swift in Sources */,
 				8CABF5BD2BB9C60900A34870 /* PasswordResetConfirmationView.swift in Sources */,
 				CE1791642C18A57B009F09A3 /* WebSocketMessageModel.swift in Sources */,

@@ -4,7 +4,7 @@ import Foundation
 import SwiftUI
 
 enum Field: Hashable {
-	case email, firstName, lastName, password, searchBar, searchBarItems
+	case email, firstName, lastName, password, searchBar, searchBarItems, number
 }
 
 struct FormField: View {
@@ -20,7 +20,7 @@ struct FormField: View {
 
 	var body: some View {
 		switch fieldType {
-		case .email, .firstName, .lastName:
+		case .email, .firstName, .lastName, .number:
 			VStack {
 				Text(labelKey)
 					.applyTextStyle(style: .formHeader)
@@ -29,10 +29,12 @@ struct FormField: View {
 				TextField(hintKey, text: $fieldValue)
 					.applyTextFieldStyle(style: .form)
 					.keyboardType(
-						fieldType == .email ? .emailAddress : .namePhonePad
+						fieldType == .email ? .emailAddress :
+							fieldType == .number ? .phonePad : .namePhonePad
 					)
 					.textContentType(
 						fieldType == .email ? .emailAddress :
+							fieldType == .number ? .telephoneNumber :
 							fieldType == .firstName ? .givenName : .familyName
 					)
 					.focused($focusedField, equals: .email)

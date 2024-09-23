@@ -5,6 +5,7 @@ enum ViewModelFactory {
 		let dataService = DataServiceFactory.getService()
 		let networkClient = DependencyMainAppProvider.shared.networkClient
 		let auctionRepository = AuctionRepositoryImpl(network: networkClient)
+		let myBidsRepository = MyBidsRepositoryImpl(network: networkClient)
 		let paddleRepository = PaddleRepositoryImpl(network: networkClient)
 		let countriesRepository = CountriesRepositoryImpl(network: networkClient)
 
@@ -12,7 +13,7 @@ enum ViewModelFactory {
 		                         repository: auctionRepository),
 		        PaddleViewModel(paddleRepository: paddleRepository,
 		                        countriesRepository: countriesRepository),
-		        MyBidsViewModel(dataService: dataService),
+		        MyBidsViewModel(paddleRepository: myBidsRepository),
 		        ManagerViewModel(dataService: dataService),
 		        LogOutViewModel(dataService: dataService))
 	}
