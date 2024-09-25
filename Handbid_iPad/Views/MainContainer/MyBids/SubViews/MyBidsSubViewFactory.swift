@@ -10,6 +10,8 @@ struct MyBidsSubViewFactory: View {
 		let view: any View = switch viewModel.subView {
 		case .findPaddle:
 			FindBidderView(viewModel: viewModel)
+		case .detailsPurchaseBidder:
+			BidderDetailsView(viewModel: viewModel)
 		}
 
 		AnyView(view)

@@ -246,6 +246,7 @@
 		8CA8A0602CA12B9800AAE69D /* FindBidderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA8A05F2CA12B9200AAE69D /* FindBidderView.swift */; };
 		8CA8A0622CA12BE900AAE69D /* MyBidsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA8A0612CA12BE000AAE69D /* MyBidsView.swift */; };
 		8CA8A0642CA12C8E00AAE69D /* MyBidsSubViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA8A0632CA12C7F00AAE69D /* MyBidsSubViewFactory.swift */; };
+		8CA8A0662CA2B89F00AAE69D /* BidderDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA8A0652CA2B89E00AAE69D /* BidderDetailsView.swift */; };
 		8CABF5BB2BB9C5F400A34870 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5BA2BB9C5F400A34870 /* ForgotPasswordView.swift */; };
 		8CABF5BD2BB9C60900A34870 /* PasswordResetConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5BC2BB9C60900A34870 /* PasswordResetConfirmationView.swift */; };
 		8CABF5C32BB9C64E00A34870 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CABF5C22BB9C64E00A34870 /* ForgotPasswordViewModel.swift */; };
@@ -609,6 +610,7 @@
 		8CA8A05F2CA12B9200AAE69D /* FindBidderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindBidderView.swift; sourceTree = "<group>"; };
 		8CA8A0612CA12BE000AAE69D /* MyBidsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBidsView.swift; sourceTree = "<group>"; };
 		8CA8A0632CA12C7F00AAE69D /* MyBidsSubViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBidsSubViewFactory.swift; sourceTree = "<group>"; };
+		8CA8A0652CA2B89E00AAE69D /* BidderDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidderDetailsView.swift; sourceTree = "<group>"; };
 		8CABF5BA2BB9C5F400A34870 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		8CABF5BC2BB9C60900A34870 /* PasswordResetConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetConfirmationView.swift; sourceTree = "<group>"; };
 		8CABF5C22BB9C64E00A34870 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
@@ -1515,6 +1517,7 @@
 			isa = PBXGroup;
 			children = (
 				8CA8A05F2CA12B9200AAE69D /* FindBidderView.swift */,
+				8CA8A0652CA2B89E00AAE69D /* BidderDetailsView.swift */,
 				8CA8A0632CA12C7F00AAE69D /* MyBidsSubViewFactory.swift */,
 			);
 			path = SubViews;
@@ -2270,6 +2273,7 @@
 				8CA8A0602CA12B9800AAE69D /* FindBidderView.swift in Sources */,
 				8C9FA44E2BD29CAB0041F28E /* DeviceContext.swift in Sources */,
 				8CA6C1062C347DD40095F469 /* BuyNowButtonView.swift in Sources */,
+				8CA8A0662CA2B89F00AAE69D /* BidderDetailsView.swift in Sources */,
 				8CA6C0FE2C347DB20095F469 /* PlaceOrderSoldOutButtonView.swift in Sources */,
 				8C79B4222C040D84005D4AAB /* EventDelegate.swift in Sources */,
 				8C1E01012BA85E630094FAA7 /* AppDelegate.swift in Sources */,

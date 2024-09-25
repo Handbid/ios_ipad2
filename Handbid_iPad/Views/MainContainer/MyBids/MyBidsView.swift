@@ -5,6 +5,7 @@ import SwiftUI
 struct MyBidsView: View {
 	enum SubView {
 		case findPaddle
+		case detailsPurchaseBidder
 	}
 
 	@StateObject var viewModel: MyBidsViewModel
