@@ -11,6 +11,36 @@ class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
 	@Published var isLoading: Bool = false
 	@Published var subView: MyBidsView.SubView
 	@Published var showError: Bool = false
+	@Published var selectedBidder: BidderModel?
+
+	@Published var winningItems: [String] = ["Win 1", "Win 2"]
+	@Published var losingItems: [String] = ["Lose 1"]
+	@Published var purchasedItems: [String] = ["Purchase 1", "Purchase 2", "Purchase 3"]
+
+	@Published var isWinningExpanded: Bool = false
+	@Published var isLosingExpanded: Bool = false
+	@Published var isPurchasedExpanded: Bool = false
+
+	@Published var winningTotal: String = "$100"
+	@Published var losingTotal: String = "$50"
+	@Published var purchasedTotal: String = "$200"
+
+	var winningCount: Int { winningItems.count }
+	var losingCount: Int { losingItems.count }
+	var purchasedCount: Int { purchasedItems.count }
+
+	@Published var creditCards: [CreditCardModel] = [
+		CreditCardModel(id: 12, nameOnCard: "test"),
+		CreditCardModel(id: 23, nameOnCard: "abc"),
+	]
+
+	func deleteCard(at offsets: IndexSet) {
+		creditCards.remove(atOffsets: offsets)
+	}
+
+	func addNewCard() {
+		creditCards.append(CreditCardModel(id: 45, nameOnCard: "etdf"))
+	}
 
 	var auctionId: Int
 	var auctionGuid: String
@@ -103,8 +133,10 @@ class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
 				}
 			}, receiveValue: { response in
 				print(response)
+				self.selectedBidder = nil
 				if response.usersGuid != nil {
-					// self.subView = .userFound(response)
+					self.selectedBidder = response
+					self.subView = .detailsPurchaseBidder
 				}
 				else {
 					self.error = String(localized: "global_error_bidderNotFound")

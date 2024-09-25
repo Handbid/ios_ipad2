@@ -10,7 +10,7 @@ struct BidderModel: Identifiable, Codable, NetworkingJSONDecodable, AutoEncodabl
 	var stripeId: String?
 	var name: String?
 	var alias: String?
-	var currentPaddleNumber: String?
+	var currentPaddleNumber: Int?
 	var currentPlacement: String?
 	var placementLabel: String?
 	var firstName: String?
