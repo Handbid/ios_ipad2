@@ -1998,7 +1998,8 @@
 /* Begin PBXShellScriptBuildPhase section */
 		8C1E00E92BA827D10094FAA7 /* Fetch localization */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
+			alwaysOutOfDate = 1;
+			buildActionMask = 8;
 			files = (
 			);
 			inputFileListPaths = (
@@ -2010,7 +2011,7 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "\"$SRCROOT/Extras/localization_ios.sh\"\n";
 			showEnvVarsInLog = 0;

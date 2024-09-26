@@ -195,19 +195,16 @@ struct BidderDetailsView: View {
 					.padding(.bottom, 5)
 
 				VStack(spacing: 10) {
-					ForEach(viewModel.creditCards) { card in
+					ForEach(viewModel.selectedBidder?.creditCards ?? .init()) { card in
 						HStack {
-							/*
-							 Image(card.type.imageName)
-							     .resizable()
-							     .scaledToFit()
-							     .frame(width: 30, height: 20)
+							if let cardType = card.cardType {
+								Image(cardType.imageName)
+									.resizable()
+									.scaledToFit()
+									.frame(width: 30, height: 20)
+							}
 
-							 Text(card.nameOnCard)
-							      .font(.body)
-							 */
-
-							Text("Card")
+							Text("\(card.cardType?.rawValue ?? "") *\(card.lastFour ?? "")")
 								.frame(maxWidth: .infinity, alignment: .leading)
 								.font(.subheadline)
 								.fontWeight(.bold)
@@ -218,12 +215,12 @@ struct BidderDetailsView: View {
 							Button(action: {
 								viewModel.creditCards.removeAll { $0.id == card.id }
 							}) {
-								Text("Delete").applyTextStyle(style: .error)
+								Text("Delete")
+									.applyTextStyle(style: .error)
 									.font(.subheadline)
 									.fontWeight(.bold)
-									.multilineTextAlignment(.trailing)
 							}
-							.buttonStyle(BorderlessButtonStyle())
+							.fixedSize()
 						}
 						.padding(.vertical, 5)
 						.background(Color(UIColor.systemBackground))

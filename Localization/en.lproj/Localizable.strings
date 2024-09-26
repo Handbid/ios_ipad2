@@ -6,6 +6,7 @@
 "global_btn_back" = "Back";
 "global_btn_continue" = "Continue";
 "global_btn_ok" = "Ok";
+"global_error_bidderNotFound" = "Bidder Not Found";
 "global_hint_email" = "Enter your e-mail";
 "global_label_cellPhone" = "Cell phone";
 "global_label_email" = "Email";
@@ -45,6 +46,8 @@
 "menuBar_label_manager" = "Manager";
 "menuBar_label_myBids" = "My Bids";
 "menuBar_label_paddle" = "Paddle";
+"myBids_btn_searchBidder" = "Search Bidder";
+"myBids_label_findBidderByPaddleNumber" = "Enter Paddle Number";
 "paddle_btn_confirm" = "Confirm";
 "paddle_btn_createAccount" = "Create account";
 "paddle_btn_createNewAccount" = "Create new account";
@@ -66,6 +69,9 @@
 "paddle_label_sponsor" = "Sponsor";
 "paddle_label_tableNumber" = "Table number";
 "paddle_label_userFound" = "We think we found you! Is this you?";
+"paddle_number_empty_error" = "Paddle number cannot be empty.";
+"paddle_number_invalid_error" = "Paddle number must be an integer.";
+"paddle_number_positive_error" = "Paddle number must be greater than zero.";
 "registration_btn_aboutHandbid" = "About Handbid";
 "registration_btn_changePassword" = "Change Password";
 "registration_btn_confirm" = "Confirm";
