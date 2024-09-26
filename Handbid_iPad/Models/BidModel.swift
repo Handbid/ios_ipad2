@@ -1,13 +1,13 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
 import Arrow
-import Foundation
 import NetworkService
 
 struct BidModel: Identifiable, Codable, NetworkingJSONDecodable, AutoEncodable {
-	var id: Int?
+	var id: Int
 	var name: String?
 	var status: String?
+	var statusBidType: StatusBidType?
 	var statusReason: String?
 	var bidType: String?
 	var itemId: Int?
@@ -33,20 +33,40 @@ struct BidModel: Identifiable, Codable, NetworkingJSONDecodable, AutoEncodable {
 	var phoneCode: String?
 	var countryId: Int?
 	var countryCode: String?
+	var item: ItemModel?
+
+	enum StatusBidType: String, Codable {
+		case winning
+		case losing
+		case purchase
+		case failed
+		case removed
+	}
 }
 
 extension BidModel: ArrowParsable {
+	init() {
+		self.id = Int()
+	}
+
 	mutating func deserialize(_ json: JSON) {
-		id <-- json["identity"]
+		if json["identity"] != nil {
+			id <-- json["identity"]
+		}
+
+		if json["id"] != nil {
+			id <-- json["id"]
+		}
+
 		name <-- json["name"]
 		status <-- json["status"]
 		statusReason <-- json["statusReason"]
-		bidType <-- json["bidType"]
 		itemId <-- json["itemId"]
 		bidId <-- json["bidId"]
 		receiptId <-- json["receiptId"]
 		auctionId <-- json["auctionId"]
 		amount <-- json["amount"]
+		bidType <-- json["bidType"]
 		currentAmount <-- json["currentAmount"]
 		eventRevenue <-- json["eventRevenue"]
 		maxAmount <-- json["maxAmount"]
@@ -65,5 +85,11 @@ extension BidModel: ArrowParsable {
 		phoneCode <-- json["phoneCode"]
 		countryId <-- json["countryId"]
 		countryCode <-- json["countryCode"]
+
+		item <-- json["item"]
+
+		if let status {
+			statusBidType = StatusBidType(rawValue: status)
+		}
 	}
 }

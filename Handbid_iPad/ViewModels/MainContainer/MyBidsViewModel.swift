@@ -9,30 +9,50 @@ class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
 	@Published var paddleNumber: String
 	@Published var error: String
 	@Published var isLoading: Bool = false
+	@Published var isLoadingBids: Bool = false
 	@Published var subView: MyBidsView.SubView
 	@Published var showError: Bool = false
 	@Published var selectedBidder: BidderModel?
-
-	@Published var winningItems: [String] = ["Win 1", "Win 2"]
-	@Published var losingItems: [String] = ["Lose 1"]
-	@Published var purchasedItems: [String] = ["Purchase 1", "Purchase 2", "Purchase 3"]
-
 	@Published var isWinningExpanded: Bool = false
 	@Published var isLosingExpanded: Bool = false
 	@Published var isPurchasedExpanded: Bool = false
 
-	@Published var winningTotal: String = "$100"
-	@Published var losingTotal: String = "$50"
-	@Published var purchasedTotal: String = "$200"
+	var winningTotal: String {
+		let totalAmount = winningItems.reduce(0) { $0 + ($1.amount ?? 0) }
+		return "$\(totalAmount)"
+	}
 
-	var winningCount: Int { winningItems.count }
-	var losingCount: Int { losingItems.count }
-	var purchasedCount: Int { purchasedItems.count }
+	var losingTotal: String {
+		let totalAmount = losingItems.reduce(0) { $0 + ($1.amount ?? 0) }
+		return "$\(totalAmount)"
+	}
+
+	var purchasedTotal: String {
+		let totalAmount = purchasedItems.reduce(0) { $0 + ($1.amount ?? 0) }
+		return "$\(totalAmount)"
+	}
 
 	@Published var creditCards: [CreditCardModel] = [
 		CreditCardModel(id: 12, nameOnCard: "test"),
 		CreditCardModel(id: 23, nameOnCard: "abc"),
 	]
+
+	@Published var bidsBidder: [BidModel]? {
+		didSet {
+			updateBidItems()
+		}
+	}
+
+	@Published var winningItems: [BidModel] = []
+	@Published var losingItems: [BidModel] = []
+	@Published var purchasedItems: [BidModel] = []
+
+	private func updateBidItems() {
+		let bids = bidsBidder ?? []
+		winningItems = bids.filter { $0.statusBidType == .winning }
+		losingItems = bids.filter { $0.statusBidType == .losing }
+		purchasedItems = bids.filter { $0.statusBidType == .purchase }
+	}
 
 	func deleteCard(at offsets: IndexSet) {
 		creditCards.remove(atOffsets: offsets)
@@ -120,7 +140,7 @@ class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
 	func requestFindingBidder() {
 		isLoading = true
 
-		myBidsRepository.findBidder(paddleId: paddleNumber, auctionId: auctionId)
+		myBidsRepository.findBidder(paddleNumber: paddleNumber, auctionId: auctionId)
 			.receive(on: DispatchQueue.main)
 			.sink(receiveCompletion: {
 				self.isLoading = false
@@ -141,6 +161,32 @@ class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
 				else {
 					self.error = String(localized: "global_error_bidderNotFound")
 				}
+			})
+			.store(in: &cancellables)
+	}
+
+	func requestFetchBids() {
+		isLoadingBids = true
+		myBidsRepository.fetchBidderBids(paddleNumber: paddleNumber, auctionId: auctionId)
+			.receive(on: DispatchQueue.main)
+			.sink(receiveCompletion: {
+				switch $0 {
+				case .finished:
+					print("Finished fetching bids")
+				case let .failure(e):
+					print("Error fetching bids: \(e)")
+					self.error = e.localizedDescription
+				}
+			}, receiveValue: { response in
+				print(response)
+				self.bidsBidder = nil
+				if response.count > 0 {
+					self.bidsBidder = response
+				}
+				else {
+					self.error = "Bids not found"
+				}
+				self.isLoadingBids = false
 			})
 			.store(in: &cancellables)
 	}

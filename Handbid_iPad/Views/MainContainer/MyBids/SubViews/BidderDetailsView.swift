@@ -4,7 +4,7 @@ import Combine
 import SwiftUI
 
 struct BidderDetailsView: View {
-	@ObservedObject var viewModel: MyBidsViewModel
+	@StateObject var viewModel: MyBidsViewModel
 	@FocusState var focusedField: Field?
 	var inspection = Inspection<Self>()
 
@@ -18,6 +18,9 @@ struct BidderDetailsView: View {
 				leftColumn
 					.frame(width: geometry.size.width * 0.6)
 					.padding()
+					.onAppear {
+						viewModel.requestFetchBids()
+					}
 
 				rightColumn
 					.frame(width: geometry.size.width * 0.4)
@@ -32,38 +35,52 @@ struct BidderDetailsView: View {
 	// MARK: - Left Column
 
 	private var leftColumn: some View {
-		ScrollView {
-			VStack(alignment: .leading, spacing: 20) {
-				VStack(alignment: .leading, spacing: 5) {
-					Text(viewModel.selectedBidder?.name ?? "")
-						.font(.title)
-						.fontWeight(.bold)
-					Text("Paddle #\(viewModel.selectedBidder?.currentPaddleNumber ?? -1)")
-						.font(.subheadline)
-						.foregroundColor(.black)
-				}
+		LoadingOverlay(isLoading: $viewModel.isLoadingBids, backgroundColor: .clear) {
+			ScrollView {
+				VStack(alignment: .leading, spacing: 20) {
+					VStack(alignment: .leading, spacing: 5) {
+						Text(viewModel.selectedBidder?.name ?? "")
+							.font(.title)
+							.fontWeight(.bold)
+						Text("Paddle #\(viewModel.selectedBidder?.currentPaddleNumber ?? -1)")
+							.font(.subheadline)
+							.foregroundColor(.black)
+					}
+					VStack(spacing: 15) {
+						expandableSection(
+							title: "Winning",
+							count: viewModel.winningItems.count,
+							total: viewModel.winningTotal,
+							isExpanded: $viewModel.isWinningExpanded
+						) {
+							VStack(spacing: 0) {
+								ForEach(Array(viewModel.winningItems.enumerated()), id: \.element.id) { index, bid in
+									HStack {
+										AsyncImage(url: URL(string: bid.item?.imageUrl ?? "")) { image in
+											image
+												.resizable()
+												.aspectRatio(contentMode: .fill)
+										} placeholder: {
+											Image("default_photo")
+										}
+										.frame(width: 40, height: 40)
+										.cornerRadius(8)
 
-				VStack(spacing: 15) {
-					expandableSection(
-						title: "Winning",
-						count: viewModel.winningCount,
-						total: viewModel.winningTotal,
-						isExpanded: $viewModel.isWinningExpanded
-					) {
-						VStack(spacing: 0) {
-							ForEach(Array(viewModel.winningItems.enumerated()), id: \.element) { index, item in
-								Text(item)
-									.padding(.all, 20)
-									.frame(maxWidth: .infinity, alignment: .leading)
+										Text(bid.item?.name ?? "")
+											.padding(.all, 20)
+											.frame(maxWidth: .infinity, alignment: .leading)
+											.font(.headline)
+											.fontWeight(.regular)
+											.multilineTextAlignment(.leading)
+									}
+									.padding(.leading, 20)
 									.background(Color.white)
-									.font(.headline)
-									.fontWeight(.regular)
-									.multilineTextAlignment(.leading)
 
-								if index < viewModel.winningItems.count - 1 {
-									Divider()
-										.background(Color.accentGrayBackground)
-										.padding([.leading, .trailing], 20)
+									if index < viewModel.winningItems.count - 1 {
+										Divider()
+											.background(Color.accentGrayBackground)
+											.padding([.leading, .trailing], 20)
+									}
 								}
 							}
 						}
@@ -72,19 +89,32 @@ struct BidderDetailsView: View {
 
 					expandableSection(
 						title: "Losing",
-						count: viewModel.losingCount,
+						count: viewModel.losingItems.count,
 						total: viewModel.losingTotal,
 						isExpanded: $viewModel.isLosingExpanded
 					) {
 						VStack(spacing: 0) {
-							ForEach(Array(viewModel.losingItems.enumerated()), id: \.element) { index, item in
-								Text(item)
-									.padding(.all, 20)
-									.frame(maxWidth: .infinity, alignment: .leading)
-									.background(Color.white)
-									.font(.headline)
-									.fontWeight(.regular)
-									.multilineTextAlignment(.leading)
+							ForEach(Array(viewModel.losingItems.enumerated()), id: \.element.id) { index, bid in
+								HStack {
+									AsyncImage(url: URL(string: bid.item?.imageUrl ?? "")) { image in
+										image
+											.resizable()
+											.aspectRatio(contentMode: .fill)
+									} placeholder: {
+										Image("default_photo")
+									}
+									.frame(width: 40, height: 40)
+									.cornerRadius(8)
+
+									Text(bid.item?.name ?? "")
+										.padding(.all, 20)
+										.frame(maxWidth: .infinity, alignment: .leading)
+										.font(.headline)
+										.fontWeight(.regular)
+										.multilineTextAlignment(.leading)
+								}
+								.padding(.leading, 20)
+								.background(Color.white)
 
 								if index < viewModel.losingItems.count - 1 {
 									Divider()
@@ -98,19 +128,32 @@ struct BidderDetailsView: View {
 
 					expandableSection(
 						title: "Purchased",
-						count: viewModel.purchasedCount,
+						count: viewModel.purchasedItems.count,
 						total: viewModel.purchasedTotal,
 						isExpanded: $viewModel.isPurchasedExpanded
 					) {
 						VStack(spacing: 0) {
-							ForEach(Array(viewModel.purchasedItems.enumerated()), id: \.element) { index, item in
-								Text(item)
-									.padding(.all, 20)
-									.frame(maxWidth: .infinity, alignment: .leading)
-									.background(Color.white)
-									.font(.headline)
-									.fontWeight(.regular)
-									.multilineTextAlignment(.leading)
+							ForEach(Array(viewModel.purchasedItems.enumerated()), id: \.element.id) { index, bid in
+								HStack {
+									AsyncImage(url: URL(string: bid.item?.imageUrl ?? "")) { image in
+										image
+											.resizable()
+											.aspectRatio(contentMode: .fill)
+									} placeholder: {
+										Image("default_photo")
+									}
+									.frame(width: 40, height: 40)
+									.cornerRadius(8)
+
+									Text(bid.item?.name ?? "")
+										.padding(.all, 20)
+										.frame(maxWidth: .infinity, alignment: .leading)
+										.font(.headline)
+										.fontWeight(.regular)
+										.multilineTextAlignment(.leading)
+								}
+								.padding(.leading, 20)
+								.background(Color.white)
 
 								if index < viewModel.purchasedItems.count - 1 {
 									Divider()
@@ -228,7 +271,8 @@ struct BidderDetailsView: View {
 				}
 
 				Button<Text>.styled(config: .fifthButtonStyle, action: {
-					viewModel.addNewCard()
+					// viewModel.addNewCard()
+					viewModel.requestFetchBids()
 				}, label: {
 					Text("ADD NEW CARD")
 						.textCase(.uppercase)
