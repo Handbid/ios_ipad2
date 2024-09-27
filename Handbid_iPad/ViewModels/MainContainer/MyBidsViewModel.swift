@@ -4,38 +4,54 @@ import Combine
 import NetworkService
 import SwiftUI
 
+enum BidSectionType: String, CaseIterable, Identifiable {
+	var id: String { rawValue }
+	case winning = "Winning"
+	case losing = "Losing"
+	case purchased = "Purchased"
+}
+
+struct BidSection: Identifiable {
+	let id = UUID()
+	let type: BidSectionType
+	let title: String
+	let items: [BidModel]
+	let total: String
+}
+
 class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
 	@Published var title = "My Bids"
-	@Published var paddleNumber: String
-	@Published var error: String
+	@Published var paddleNumber: String = ""
+	@Published var error: String = ""
 	@Published var isLoading: Bool = false
 	@Published var isLoadingBids: Bool = false
-	@Published var subView: MyBidsView.SubView
+	@Published var subView: MyBidsView.SubView = .findPaddle
 	@Published var showError: Bool = false
 	@Published var selectedBidder: BidderModel?
+
 	@Published var isWinningExpanded: Bool = false
 	@Published var isLosingExpanded: Bool = false
 	@Published var isPurchasedExpanded: Bool = false
 
+	var sections: [BidSection] {
+		[
+			BidSection(type: .winning, title: "Winning", items: winningItems, total: winningTotal),
+			BidSection(type: .losing, title: "Losing", items: losingItems, total: losingTotal),
+			BidSection(type: .purchased, title: "Purchased", items: purchasedItems, total: purchasedTotal),
+		]
+	}
+
 	var winningTotal: String {
-		let totalAmount = winningItems.reduce(0) { $0 + ($1.amount ?? 0) }
-		return "$\(totalAmount)"
+		totalAmount(for: winningItems)
 	}
 
 	var losingTotal: String {
-		let totalAmount = losingItems.reduce(0) { $0 + ($1.amount ?? 0) }
-		return "$\(totalAmount)"
+		totalAmount(for: losingItems)
 	}
 
 	var purchasedTotal: String {
-		let totalAmount = purchasedItems.reduce(0) { $0 + ($1.amount ?? 0) }
-		return "$\(totalAmount)"
+		totalAmount(for: purchasedItems)
 	}
-
-	@Published var creditCards: [CreditCardModel] = [
-		CreditCardModel(id: 12, nameOnCard: "test"),
-		CreditCardModel(id: 23, nameOnCard: "abc"),
-	]
 
 	@Published var bidsBidder: [BidModel]? {
 		didSet {
@@ -54,12 +70,30 @@ class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
 		purchasedItems = bids.filter { $0.statusBidType == .purchase }
 	}
 
-	func deleteCard(at offsets: IndexSet) {
-		creditCards.remove(atOffsets: offsets)
+	func deleteCard(withId _: Int) {
+		// selectedBidder?.creditCards.removeAll { $0.id == id }
 	}
 
 	func addNewCard() {
-		creditCards.append(CreditCardModel(id: 45, nameOnCard: "etdf"))
+		// Implement adding a new card
+		// let newCard = CreditCardModel(id: Int.random(in: 100 ... 999), nameOnCard: "New Card")
+		// selectedBidder?.creditCards.append(newCard)
+	}
+
+	func colorForSection(title: String) -> Color {
+		switch title {
+		case "Winning":
+			.green
+		case "Losing":
+			.red
+		default:
+			.yellow
+		}
+	}
+
+	private func totalAmount(for items: [BidModel]) -> String {
+		let total = items.reduce(0) { $0 + ($1.amount ?? 0) }
+		return "$\(total)"
 	}
 
 	var auctionId: Int
@@ -74,13 +108,12 @@ class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
 		self.myBidsRepository = myBidsRepository
 		self.auctionId = -1
 		self.auctionGuid = ""
-		self.paddleNumber = ""
-		self.error = ""
-		self.subView = .findPaddle
 
-		dataManager.onDataChanged.sink {
-			self.updateAuctionId()
-		}.store(in: &cancellables)
+		dataManager.onDataChanged
+			.sink { [weak self] in
+				self?.updateAuctionId()
+			}
+			.store(in: &cancellables)
 
 		updateAuctionId()
 		setUpClearingError()
@@ -104,13 +137,11 @@ class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
 	}
 
 	private func setUpClearingError() {
-		let fields = [$paddleNumber]
-
-		for field in fields {
-			field.sink { _ in
-				self.clearError()
-			}.store(in: &cancellables)
-		}
+		$paddleNumber
+			.sink { [weak self] _ in
+				self?.clearError()
+			}
+			.store(in: &cancellables)
 	}
 
 	func clearError() {
@@ -123,13 +154,8 @@ class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
 			return false
 		}
 
-		guard let number = Int(paddleNumber) else {
+		guard let number = Int(paddleNumber), number > 0 else {
 			error = String(localized: "paddle_number_invalid_error")
-			return false
-		}
-
-		guard number > 0 else {
-			error = String(localized: "paddle_number_positive_error")
 			return false
 		}
 
@@ -142,24 +168,18 @@ class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
 
 		myBidsRepository.findBidder(paddleNumber: paddleNumber, auctionId: auctionId)
 			.receive(on: DispatchQueue.main)
-			.sink(receiveCompletion: {
-				self.isLoading = false
-				switch $0 {
-				case .finished:
-					print("Finished finding user")
-				case let .failure(e):
-					print("Error finding user: \(e)")
-					self.error = e.localizedDescription
+			.sink(receiveCompletion: { [weak self] completion in
+				self?.isLoading = false
+				if case let .failure(error) = completion {
+					self?.error = error.localizedDescription
 				}
-			}, receiveValue: { response in
-				print(response)
-				self.selectedBidder = nil
+			}, receiveValue: { [weak self] response in
 				if response.usersGuid != nil {
-					self.selectedBidder = response
-					self.subView = .detailsPurchaseBidder
+					self?.selectedBidder = response
+					self?.subView = .detailsPurchaseBidder
 				}
 				else {
-					self.error = String(localized: "global_error_bidderNotFound")
+					self?.error = String(localized: "global_error_bidderNotFound")
 				}
 			})
 			.store(in: &cancellables)
@@ -169,24 +189,18 @@ class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
 		isLoadingBids = true
 		myBidsRepository.fetchBidderBids(paddleNumber: paddleNumber, auctionId: auctionId)
 			.receive(on: DispatchQueue.main)
-			.sink(receiveCompletion: {
-				switch $0 {
-				case .finished:
-					print("Finished fetching bids")
-				case let .failure(e):
-					print("Error fetching bids: \(e)")
-					self.error = e.localizedDescription
+			.sink(receiveCompletion: { [weak self] completion in
+				self?.isLoadingBids = false
+				if case let .failure(error) = completion {
+					self?.error = error.localizedDescription
 				}
-			}, receiveValue: { response in
-				print(response)
-				self.bidsBidder = nil
-				if response.count > 0 {
-					self.bidsBidder = response
+			}, receiveValue: { [weak self] response in
+				if !response.isEmpty {
+					self?.bidsBidder = response
 				}
 				else {
-					self.error = "Bids not found"
+					self?.error = "Bids not found"
 				}
-				self.isLoadingBids = false
 			})
 			.store(in: &cancellables)
 	}

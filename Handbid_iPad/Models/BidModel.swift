@@ -36,11 +36,7 @@ struct BidModel: Identifiable, Codable, NetworkingJSONDecodable, AutoEncodable {
 	var item: ItemModel?
 
 	enum StatusBidType: String, Codable {
-		case winning
-		case losing
-		case purchase
-		case failed
-		case removed
+		case winning, losing, purchase, failed, removed, new, bid, final_bid, max_bid, buy_now, sold_out, replaced, incomplete, winning_changed, transferred
 	}
 }
 
