@@ -32,6 +32,7 @@ class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
 	@Published var isWinningExpanded: Bool = false
 	@Published var isLosingExpanded: Bool = false
 	@Published var isPurchasedExpanded: Bool = false
+	let auction = try? DataManager.shared.fetchSingle(of: AuctionModel.self, from: .auction)
 
 	var sections: [BidSection] {
 		[
@@ -92,8 +93,8 @@ class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
 	}
 
 	private func totalAmount(for items: [BidModel]) -> String {
-		let total = items.reduce(0) { $0 + ($1.amount ?? 0) }
-		return "$\(total)"
+		let total = items.reduce(0) { $0 + ($1.currentAmount ?? 0) }
+		return String(total.formatted(.currency(code: "\(selectedBidder?.currency ?? "")")))
 	}
 
 	var auctionId: Int

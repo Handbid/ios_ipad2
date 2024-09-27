@@ -31,16 +31,18 @@ struct BidderDetailsView: View {
 	}
 
 	var body: some View {
-		content
-			.fullScreenCover(isPresented: $isShowingInvoice) {
-				InvoiceView(
-					viewModel: InvoiceViewModel(
-						auctionId: viewModel.auctionId,
-						paddleNumber: Int(viewModel.paddleNumber) ?? -1
-					),
-					isPresented: $isShowingInvoice
-				)
-			}
+		LoadingOverlay(isLoading: $viewModel.isLoadingBids, backgroundColor: .clear) {
+			content
+				.fullScreenCover(isPresented: $isShowingInvoice) {
+					InvoiceView(
+						viewModel: InvoiceViewModel(
+							auctionId: viewModel.auctionId,
+							paddleNumber: Int(viewModel.paddleNumber) ?? -1
+						),
+						isPresented: $isShowingInvoice
+					)
+				}
+		}
 	}
 
 	private var content: some View {
@@ -66,12 +68,10 @@ struct BidderDetailsView: View {
 	// MARK: - Left Column
 
 	private var leftColumn: some View {
-		LoadingOverlay(isLoading: $viewModel.isLoadingBids, backgroundColor: .clear) {
-			ScrollView {
-				LazyVStack(alignment: .leading, spacing: 20) {
-					bidderInfo
-					itemsSection
-				}
+		ScrollView {
+			LazyVStack(alignment: .leading, spacing: 20) {
+				bidderInfo
+				itemsSection
 			}
 		}
 	}
@@ -156,9 +156,17 @@ struct BidderDetailsView: View {
 			Text(bid.item?.name ?? "")
 				.padding(.all, 20)
 				.frame(maxWidth: .infinity, alignment: .leading)
-				.font(.headline)
-				.fontWeight(.regular)
+				.font(.subheadline)
+				.fontWeight(.semibold)
 				.multilineTextAlignment(.leading)
+
+			Spacer()
+
+			Text(bid.item?.currentPrice ?? -1, format: .currency(code: viewModel.selectedBidder?.currency ?? ""))
+				.padding(.trailing, 10)
+				.font(.caption)
+				.fontWeight(.regular)
+				.multilineTextAlignment(.trailing)
 		}
 		.padding(.leading, 20)
 		.background(Color.white)
