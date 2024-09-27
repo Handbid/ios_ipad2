@@ -32,18 +32,15 @@ struct BidderDetailsView: View {
 
 	var body: some View {
 		content
-
-		if isShowingInvoice {
-			InvoiceView(
-				viewModel: InvoiceViewModel(
-					auctionId: viewModel.auctionId,
-					paddleNumber: Int(viewModel.paddleNumber) ?? -1
-				),
-				isPresented: $isShowingInvoice
-			)
-			.transition(.move(edge: .bottom))
-			.zIndex(1)
-		}
+			.fullScreenCover(isPresented: $isShowingInvoice) {
+				InvoiceView(
+					viewModel: InvoiceViewModel(
+						auctionId: viewModel.auctionId,
+						paddleNumber: Int(viewModel.paddleNumber) ?? -1
+					),
+					isPresented: $isShowingInvoice
+				)
+			}
 	}
 
 	private var content: some View {

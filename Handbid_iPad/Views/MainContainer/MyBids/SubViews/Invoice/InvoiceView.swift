@@ -10,6 +10,12 @@ struct InvoiceView: View {
 		VStack {
 			HStack {
 				Spacer()
+
+				Text("Invocie")
+					.fontWeight(.bold)
+					.font(.body)
+				Spacer()
+
 				Button(action: {
 					withAnimation {
 						isPresented = false
@@ -24,6 +30,7 @@ struct InvoiceView: View {
 							Circle().stroke(Color.accentGrayBorder, lineWidth: 1)
 						)
 				}
+				.padding(.top, 20)
 				.padding()
 			}
 			content
@@ -43,9 +50,9 @@ struct InvoiceView: View {
 					.frame(width: geometry.size.width * 0.6)
 					.padding()
 				rightColumn
-					.frame(width: geometry.size.width * 0.4)
 					.padding()
 			}
+			.frame(maxWidth: .infinity, maxHeight: .infinity)
 		}
 	}
 
@@ -196,4 +203,3 @@ struct InvoiceView: View {
 		}
 	}
 }
-
