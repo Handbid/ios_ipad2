@@ -10,7 +10,8 @@ struct CreditCardModel: Identifiable, Codable, NetworkingJSONDecodable, AutoEnco
 	var creditCardToken: String?
 	var stripeId: String?
 	var lastFour: String?
-	var cardType: String?
+	var cardTypeString: String?
+	var cardType: CardType?
 	var nameOnCard: String?
 	var expMonth: Int?
 	var expYear: Int?
@@ -23,6 +24,46 @@ struct CreditCardModel: Identifiable, Codable, NetworkingJSONDecodable, AutoEnco
 	var ccAddressCountryId: Int?
 	var gatewayId: Int?
 	var tokenizedCard: String?
+
+	enum CardType: String, Codable {
+		case visa = "Visa"
+		case mastercard = "MasterCard"
+		case amex = "Amex"
+		case dankort = "Dankort"
+		case diners = "Diners"
+		case discover = "Discover"
+		case electron = "Electron"
+		case interpayment = "Interpayment"
+		case maestro = "Maestro"
+		case unionpay = "UnionPay"
+	}
+}
+
+extension CreditCardModel.CardType {
+	var imageName: String {
+		switch self {
+		case .amex:
+			"amex_Image"
+		case .dankort:
+			"dankort_Image"
+		case .diners:
+			"diners_Image"
+		case .discover:
+			"discover_Image"
+		case .electron:
+			"electron_Image"
+		case .interpayment:
+			"interPay_Image"
+		case .maestro:
+			"maestro_Image"
+		case .mastercard:
+			"masterdCard_Image"
+		case .unionpay:
+			"unionPay_Image"
+		case .visa:
+			"visa_Image"
+		}
+	}
 }
 
 extension CreditCardModel: ArrowParsable {
@@ -37,7 +78,7 @@ extension CreditCardModel: ArrowParsable {
 		creditCardToken <-- json["creditCardToken"]
 		stripeId <-- json["stripeId"]
 		lastFour <-- json["lastFour"]
-		cardType <-- json["cardType"]
+		cardTypeString <-- json["cardType"]
 		nameOnCard <-- json["nameOnCard"]
 		expMonth <-- json["expMonth"]
 		expYear <-- json["expYear"]
@@ -50,5 +91,9 @@ extension CreditCardModel: ArrowParsable {
 		ccAddressCountryId <-- json["ccAddressCountryId"]
 		gatewayId <-- json["gatewayId"]
 		tokenizedCard <-- json["tokenizedCard"]
+
+		if let cardTypeString {
+			cardType = CardType(rawValue: cardTypeString)
+		}
 	}
 }
