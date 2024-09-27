@@ -3,7 +3,7 @@
 import Arrow
 import NetworkService
 
-struct CreditCardModel: Identifiable, Codable, NetworkingJSONDecodable, AutoEncodable {
+struct CreditCardModel: Identifiable, Codable, NetworkingJSONDecodable, AutoEncodable, Hashable {
 	var id: Int
 	var creditCardsGuid: String?
 	var creditCardHandle: String?
@@ -25,7 +25,7 @@ struct CreditCardModel: Identifiable, Codable, NetworkingJSONDecodable, AutoEnco
 	var gatewayId: Int?
 	var tokenizedCard: String?
 
-	enum CardType: String, Codable {
+	enum CardType: String, Codable, Hashable {
 		case visa = "Visa"
 		case mastercard = "MasterCard"
 		case amex = "Amex"

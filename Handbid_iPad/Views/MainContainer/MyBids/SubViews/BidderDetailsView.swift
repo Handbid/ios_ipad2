@@ -6,6 +6,7 @@ import SwiftUI
 struct BidderDetailsView: View {
 	@StateObject var viewModel: MyBidsViewModel
 	@FocusState var focusedField: Field?
+	@State private var isShowingInvoice = false
 	var inspection = Inspection<Self>()
 
 	private var isWinningExpandedBinding: Binding<Bool> {
@@ -31,6 +32,18 @@ struct BidderDetailsView: View {
 
 	var body: some View {
 		content
+
+		if isShowingInvoice {
+			InvoiceView(
+				viewModel: InvoiceViewModel(
+					auctionId: viewModel.auctionId,
+					paddleNumber: Int(viewModel.paddleNumber) ?? -1
+				),
+				isPresented: $isShowingInvoice
+			)
+			.transition(.move(edge: .bottom))
+			.zIndex(1)
+		}
 	}
 
 	private var content: some View {
@@ -210,7 +223,11 @@ struct BidderDetailsView: View {
 
 	private var rightColumn: some View {
 		VStack(alignment: .leading, spacing: 20) {
-			Button<Text>.styled(config: .secondaryButtonStyle, action: {}, label: {
+			Button<Text>.styled(config: .secondaryButtonStyle, action: {
+				withAnimation {
+					isShowingInvoice = true
+				}
+			}, label: {
 				Text("VIEW INVOICE")
 					.textCase(.uppercase)
 			})
