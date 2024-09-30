@@ -7,6 +7,7 @@ protocol MyBidsRepository {
 	func findBidder(paddleNumber: String, auctionId: Int) -> AnyPublisher<BidderModel, Error>
 	func fetchBidderBids(paddleNumber: String, auctionId: Int) -> AnyPublisher<[BidModel], Error>
 	func fetchReceipts(paddleNumber: Int, auctionId: Int) -> AnyPublisher<[ReceiptModel], any Error>
+	func checkInUser(paddleNumber: Int, auctionId: Int) -> AnyPublisher<BidderModel, Error>
 }
 
 class MyBidsRepositoryImpl: MyBidsRepository, NetworkingService {
@@ -66,6 +67,14 @@ class MyBidsRepositoryImpl: MyBidsRepository, NetworkingService {
 				}
 				return try ReceiptModel.decodeArray(receiptsJSON)
 			}
+			.eraseToAnyPublisher()
+	}
+
+	func checkInUser(paddleNumber: Int, auctionId: Int) -> AnyPublisher<BidderModel, any Error> {
+		get(ApiEndpoints.checkInUser, params: ["paddleNumber": paddleNumber,
+		                                       "auctionId": auctionId])
+			.tryMap { try BidderModel.decode($0) }
+			.map { $0 }
 			.eraseToAnyPublisher()
 	}
 }

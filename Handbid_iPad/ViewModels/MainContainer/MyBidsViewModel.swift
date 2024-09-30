@@ -34,7 +34,7 @@ class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
 	@Published var winningItems: [BidModel] = []
 	@Published var losingItems: [BidModel] = []
 	@Published var purchasedItems: [BidModel] = []
-	@Published var receiptsBidder: ReceiptModel?
+	@Published var receiptBidder: ReceiptModel?
 
 	let auction = try? DataManager.shared.fetchSingle(of: AuctionModel.self, from: .auction)
 	var auctionId: Int
@@ -118,8 +118,10 @@ class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
 			.green
 		case "Losing":
 			.red
-		default:
+		case "Purchased":
 			.yellow
+		default:
+			.pink
 		}
 	}
 
@@ -206,11 +208,29 @@ class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
 				}
 			}, receiveValue: { [weak self] response in
 				if !response.isEmpty {
-					self?.receiptsBidder = response.first
+					self?.receiptBidder = response.first
 				}
 				else {
 					self?.error = "Invoice not found"
 				}
+			})
+			.store(in: &cancellables)
+	}
+
+	func checkIn() {
+		myBidsRepository.checkInUser(paddleNumber: Int(paddleNumber) ?? -1, auctionId: auctionId)
+			.receive(on: DispatchQueue.main)
+			.sink(receiveCompletion: {
+				self.isLoading = false
+				switch $0 {
+				case .finished:
+					print("Finished checking user in")
+				case let .failure(error):
+					print("Failed checking user in: \(error.localizedDescription)")
+					self.error = error.localizedDescription
+				}
+			}, receiveValue: { response in
+				self.selectedBidder?.isCheckedIn = response.isCheckedIn
 			})
 			.store(in: &cancellables)
 	}

@@ -5,7 +5,6 @@ import SwiftUI
 
 class InvoiceViewModel: ObservableObject {
 	@Published var lineItems: [ReceiptLineItemModel] = []
-
 	@Published var coverFees: Bool = true
 	@Published var subtotal: Double?
 	@Published var transactionFees: Double?
@@ -13,7 +12,6 @@ class InvoiceViewModel: ObservableObject {
 	@Published var alreadyPaid: Double?
 	@Published var due: Double?
 	@Published var isPaid: Bool?
-
 	@Published var creditCards: [CreditCardModel] = []
 	@Published var selectedCard: CreditCardModel?
 	@Published var receipt: ReceiptModel?
@@ -25,7 +23,7 @@ class InvoiceViewModel: ObservableObject {
 	init(myBidsViewModel: MyBidsViewModel) {
 		self.myBidsViewModel = myBidsViewModel
 
-		myBidsViewModel.$receiptsBidder
+		myBidsViewModel.$receiptBidder
 			.compactMap { $0 }
 			.sink { [weak self] receipt in
 				self?.processReceipt(receipt)

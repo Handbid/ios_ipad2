@@ -236,11 +236,22 @@ struct BidderDetailsView: View {
 					.textCase(.uppercase)
 			})
 
+			if viewModel.selectedBidder?.isCheckedIn?.description == "N" {
+				Button<Text>.styled(config: .primaryButtonStyle, action: {
+					viewModel.checkIn()
+				}, label: {
+					Text("CHECK IN")
+						.textCase(.uppercase)
+				})
+			}
+
 			creditCardsSection
 
 			Spacer()
 		}
 	}
+
+	// MARK: - Credit Cards Section
 
 	private var creditCardsSection: some View {
 		VStack(alignment: .leading, spacing: 10) {
