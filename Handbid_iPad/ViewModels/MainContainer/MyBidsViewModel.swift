@@ -28,10 +28,22 @@ class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
 	@Published var subView: MyBidsView.SubView = .findPaddle
 	@Published var showError: Bool = false
 	@Published var selectedBidder: BidderModel?
-
 	@Published var isWinningExpanded: Bool = false
 	@Published var isLosingExpanded: Bool = false
 	@Published var isPurchasedExpanded: Bool = false
+	@Published var winningItems: [BidModel] = []
+	@Published var losingItems: [BidModel] = []
+	@Published var purchasedItems: [BidModel] = []
+	@Published var receiptBidder: ReceiptModel?
+
+	let auction = try? DataManager.shared.fetchSingle(of: AuctionModel.self, from: .auction)
+	var auctionId: Int
+	var auctionGuid: String
+	var actions: [TopBarAction] { [] }
+
+	private let dataManager = DataManager.shared
+	private var cancellables = Set<AnyCancellable>()
+	private let myBidsRepository: MyBidsRepository
 
 	var sections: [BidSection] {
 		[
@@ -41,68 +53,15 @@ class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
 		]
 	}
 
-	var winningTotal: String {
-		totalAmount(for: winningItems)
-	}
-
-	var losingTotal: String {
-		totalAmount(for: losingItems)
-	}
-
-	var purchasedTotal: String {
-		totalAmount(for: purchasedItems)
-	}
+	var winningTotal: String { totalAmount(for: winningItems) }
+	var losingTotal: String { totalAmount(for: losingItems) }
+	var purchasedTotal: String { totalAmount(for: purchasedItems) }
 
 	@Published var bidsBidder: [BidModel]? {
 		didSet {
 			updateBidItems()
 		}
 	}
-
-	@Published var winningItems: [BidModel] = []
-	@Published var losingItems: [BidModel] = []
-	@Published var purchasedItems: [BidModel] = []
-
-	private func updateBidItems() {
-		let bids = bidsBidder ?? []
-		winningItems = bids.filter { $0.statusBidType == .winning }
-		losingItems = bids.filter { $0.statusBidType == .losing }
-		purchasedItems = bids.filter { $0.statusBidType == .purchase }
-	}
-
-	func deleteCard(withId _: Int) {
-		// selectedBidder?.creditCards.removeAll { $0.id == id }
-	}
-
-	func addNewCard() {
-		// Implement adding a new card
-		// let newCard = CreditCardModel(id: Int.random(in: 100 ... 999), nameOnCard: "New Card")
-		// selectedBidder?.creditCards.append(newCard)
-	}
-
-	func colorForSection(title: String) -> Color {
-		switch title {
-		case "Winning":
-			.green
-		case "Losing":
-			.red
-		default:
-			.yellow
-		}
-	}
-
-	private func totalAmount(for items: [BidModel]) -> String {
-		let total = items.reduce(0) { $0 + ($1.amount ?? 0) }
-		return "$\(total)"
-	}
-
-	var auctionId: Int
-	var auctionGuid: String
-	var actions: [TopBarAction] { [] }
-
-	private let dataManager = DataManager.shared
-	private var cancellables = Set<AnyCancellable>()
-	private let myBidsRepository: MyBidsRepository
 
 	init(myBidsRepository: MyBidsRepository) {
 		self.myBidsRepository = myBidsRepository
@@ -134,6 +93,41 @@ class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
 
 		self.auctionId = auctionId
 		self.auctionGuid = auctionGuid
+	}
+
+	private func updateBidItems() {
+		let bids = bidsBidder ?? []
+		winningItems = bids.filter { $0.statusBidType == .winning }
+		losingItems = bids.filter { $0.statusBidType == .losing }
+		purchasedItems = bids.filter { $0.statusBidType == .purchase }
+	}
+
+	func deleteCard(withId _: Int) {
+		// selectedBidder?.creditCards.removeAll { $0.id == id }
+	}
+
+	func addNewCard() {
+		// Implement adding a new card
+		// let newCard = CreditCardModel(id: Int.random(in: 100 ... 999), nameOnCard: "New Card")
+		// selectedBidder?.creditCards.append(newCard)
+	}
+
+	func colorForSection(title: String) -> Color {
+		switch title {
+		case "Winning":
+			.green
+		case "Losing":
+			.red
+		case "Purchased":
+			.yellow
+		default:
+			.pink
+		}
+	}
+
+	private func totalAmount(for items: [BidModel]) -> String {
+		let total = items.reduce(0) { $0 + ($1.currentAmount ?? 0) }
+		return String(total.formatted(.currency(code: "\(selectedBidder?.currency ?? "")")))
 	}
 
 	private func setUpClearingError() {
@@ -201,6 +195,42 @@ class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
 				else {
 					self?.error = "Bids not found"
 				}
+			})
+			.store(in: &cancellables)
+	}
+
+	func requestFetchReceipt() {
+		myBidsRepository.fetchReceipts(paddleNumber: Int(paddleNumber) ?? -1, auctionId: auctionId)
+			.receive(on: DispatchQueue.main)
+			.sink(receiveCompletion: { [weak self] completion in
+				if case let .failure(error) = completion {
+					self?.error = error.localizedDescription
+				}
+			}, receiveValue: { [weak self] response in
+				if !response.isEmpty {
+					self?.receiptBidder = response.first
+				}
+				else {
+					self?.error = "Invoice not found"
+				}
+			})
+			.store(in: &cancellables)
+	}
+
+	func checkIn() {
+		myBidsRepository.checkInUser(paddleNumber: Int(paddleNumber) ?? -1, auctionId: auctionId)
+			.receive(on: DispatchQueue.main)
+			.sink(receiveCompletion: {
+				self.isLoading = false
+				switch $0 {
+				case .finished:
+					print("Finished checking user in")
+				case let .failure(error):
+					print("Failed checking user in: \(error.localizedDescription)")
+					self.error = error.localizedDescription
+				}
+			}, receiveValue: { response in
+				self.selectedBidder?.isCheckedIn = response.isCheckedIn
 			})
 			.store(in: &cancellables)
 	}

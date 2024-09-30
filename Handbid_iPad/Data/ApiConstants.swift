@@ -16,4 +16,5 @@ enum ApiEndpoints {
 	static let getCountries = "/country/index"
 	static let findBidder = "/auction/bidder"
 	static let paddleBids = "/auction/paddlebids"
+	static let fetchInvoice = "/auction/paddlereceipts"
 }

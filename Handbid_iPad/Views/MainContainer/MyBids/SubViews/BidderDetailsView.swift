@@ -6,6 +6,7 @@ import SwiftUI
 struct BidderDetailsView: View {
 	@StateObject var viewModel: MyBidsViewModel
 	@FocusState var focusedField: Field?
+	@State private var isShowingInvoice = false
 	var inspection = Inspection<Self>()
 
 	private var isWinningExpandedBinding: Binding<Bool> {
@@ -30,7 +31,17 @@ struct BidderDetailsView: View {
 	}
 
 	var body: some View {
-		content
+		LoadingOverlay(isLoading: $viewModel.isLoadingBids, backgroundColor: .clear) {
+			content
+				.fullScreenCover(isPresented: $isShowingInvoice) {
+					InvoiceView(
+						viewModel: InvoiceViewModel(
+							myBidsViewModel: viewModel
+						),
+						isPresented: $isShowingInvoice
+					)
+				}
+		}
 	}
 
 	private var content: some View {
@@ -56,12 +67,10 @@ struct BidderDetailsView: View {
 	// MARK: - Left Column
 
 	private var leftColumn: some View {
-		LoadingOverlay(isLoading: $viewModel.isLoadingBids, backgroundColor: .clear) {
-			ScrollView {
-				LazyVStack(alignment: .leading, spacing: 20) {
-					bidderInfo
-					itemsSection
-				}
+		ScrollView {
+			LazyVStack(alignment: .leading, spacing: 20) {
+				bidderInfo
+				itemsSection
 			}
 		}
 	}
@@ -146,9 +155,17 @@ struct BidderDetailsView: View {
 			Text(bid.item?.name ?? "")
 				.padding(.all, 20)
 				.frame(maxWidth: .infinity, alignment: .leading)
-				.font(.headline)
-				.fontWeight(.regular)
+				.font(.subheadline)
+				.fontWeight(.semibold)
 				.multilineTextAlignment(.leading)
+
+			Spacer()
+
+			Text(bid.item?.currentPrice ?? -1, format: .currency(code: viewModel.selectedBidder?.currency ?? ""))
+				.padding(.trailing, 10)
+				.font(.caption)
+				.fontWeight(.regular)
+				.multilineTextAlignment(.trailing)
 		}
 		.padding(.leading, 20)
 		.background(Color.white)
@@ -210,16 +227,31 @@ struct BidderDetailsView: View {
 
 	private var rightColumn: some View {
 		VStack(alignment: .leading, spacing: 20) {
-			Button<Text>.styled(config: .secondaryButtonStyle, action: {}, label: {
+			Button<Text>.styled(config: .secondaryButtonStyle, action: {
+				withAnimation {
+					isShowingInvoice = true
+				}
+			}, label: {
 				Text("VIEW INVOICE")
 					.textCase(.uppercase)
 			})
+
+			if viewModel.selectedBidder?.isCheckedIn?.description == "N" {
+				Button<Text>.styled(config: .primaryButtonStyle, action: {
+					viewModel.checkIn()
+				}, label: {
+					Text("CHECK IN")
+						.textCase(.uppercase)
+				})
+			}
 
 			creditCardsSection
 
 			Spacer()
 		}
 	}
+
+	// MARK: - Credit Cards Section
 
 	private var creditCardsSection: some View {
 		VStack(alignment: .leading, spacing: 10) {
