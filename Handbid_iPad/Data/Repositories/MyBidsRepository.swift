@@ -6,6 +6,7 @@ import NetworkService
 protocol MyBidsRepository {
 	func findBidder(paddleNumber: String, auctionId: Int) -> AnyPublisher<BidderModel, Error>
 	func fetchBidderBids(paddleNumber: String, auctionId: Int) -> AnyPublisher<[BidModel], Error>
+	func fetchReceipts(paddleNumber: Int, auctionId: Int) -> AnyPublisher<[ReceiptModel], any Error>
 }
 
 class MyBidsRepositoryImpl: MyBidsRepository, NetworkingService {
@@ -47,6 +48,23 @@ class MyBidsRepositoryImpl: MyBidsRepository, NetworkingService {
 				}
 
 				return try BidModel.decodeArray(bidsJSON)
+			}
+			.eraseToAnyPublisher()
+	}
+
+	func fetchReceipts(paddleNumber: Int, auctionId: Int) -> AnyPublisher<[ReceiptModel], any Error> {
+		get(ApiEndpoints.fetchInvoice, params: ["id": auctionId,
+		                                        "paddleNumber": paddleNumber])
+			.tryMap { data -> [ReceiptModel] in
+				guard let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []),
+				      let jsonDict = jsonObject as? [String: Any],
+				      let receiptsJSON = jsonDict["receipts"]
+				else {
+					throw NSError(domain: "DecodingError",
+					              code: 400,
+					              userInfo: [NSLocalizedDescriptionKey: "Invocies Not Found"])
+				}
+				return try ReceiptModel.decodeArray(receiptsJSON)
 			}
 			.eraseToAnyPublisher()
 	}

@@ -36,8 +36,7 @@ struct BidderDetailsView: View {
 				.fullScreenCover(isPresented: $isShowingInvoice) {
 					InvoiceView(
 						viewModel: InvoiceViewModel(
-							auctionId: viewModel.auctionId,
-							paddleNumber: Int(viewModel.paddleNumber) ?? -1
+							myBidsViewModel: viewModel
 						),
 						isPresented: $isShowingInvoice
 					)

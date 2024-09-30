@@ -28,11 +28,22 @@ class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
 	@Published var subView: MyBidsView.SubView = .findPaddle
 	@Published var showError: Bool = false
 	@Published var selectedBidder: BidderModel?
-
 	@Published var isWinningExpanded: Bool = false
 	@Published var isLosingExpanded: Bool = false
 	@Published var isPurchasedExpanded: Bool = false
+	@Published var winningItems: [BidModel] = []
+	@Published var losingItems: [BidModel] = []
+	@Published var purchasedItems: [BidModel] = []
+	@Published var receiptsBidder: ReceiptModel?
+
 	let auction = try? DataManager.shared.fetchSingle(of: AuctionModel.self, from: .auction)
+	var auctionId: Int
+	var auctionGuid: String
+	var actions: [TopBarAction] { [] }
+
+	private let dataManager = DataManager.shared
+	private var cancellables = Set<AnyCancellable>()
+	private let myBidsRepository: MyBidsRepository
 
 	var sections: [BidSection] {
 		[
@@ -42,17 +53,9 @@ class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
 		]
 	}
 
-	var winningTotal: String {
-		totalAmount(for: winningItems)
-	}
-
-	var losingTotal: String {
-		totalAmount(for: losingItems)
-	}
-
-	var purchasedTotal: String {
-		totalAmount(for: purchasedItems)
-	}
+	var winningTotal: String { totalAmount(for: winningItems) }
+	var losingTotal: String { totalAmount(for: losingItems) }
+	var purchasedTotal: String { totalAmount(for: purchasedItems) }
 
 	@Published var bidsBidder: [BidModel]? {
 		didSet {
@@ -60,9 +63,37 @@ class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
 		}
 	}
 
-	@Published var winningItems: [BidModel] = []
-	@Published var losingItems: [BidModel] = []
-	@Published var purchasedItems: [BidModel] = []
+	init(myBidsRepository: MyBidsRepository) {
+		self.myBidsRepository = myBidsRepository
+		self.auctionId = -1
+		self.auctionGuid = ""
+
+		dataManager.onDataChanged
+			.sink { [weak self] in
+				self?.updateAuctionId()
+			}
+			.store(in: &cancellables)
+
+		updateAuctionId()
+		setUpClearingError()
+	}
+
+	var centerViewData: TopBarCenterViewData {
+		TopBarCenterViewData(
+			type: .title,
+			title: title
+		)
+	}
+
+	private func updateAuctionId() {
+		guard let auction = try? dataManager.fetchSingle(of: AuctionModel.self, from: .auction),
+		      let auctionId = auction.identity,
+		      let auctionGuid = auction.auctionGuid
+		else { return }
+
+		self.auctionId = auctionId
+		self.auctionGuid = auctionGuid
+	}
 
 	private func updateBidItems() {
 		let bids = bidsBidder ?? []
@@ -95,46 +126,6 @@ class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
 	private func totalAmount(for items: [BidModel]) -> String {
 		let total = items.reduce(0) { $0 + ($1.currentAmount ?? 0) }
 		return String(total.formatted(.currency(code: "\(selectedBidder?.currency ?? "")")))
-	}
-
-	var auctionId: Int
-	var auctionGuid: String
-	var actions: [TopBarAction] { [] }
-
-	private let dataManager = DataManager.shared
-	private var cancellables = Set<AnyCancellable>()
-	private let myBidsRepository: MyBidsRepository
-
-	init(myBidsRepository: MyBidsRepository) {
-		self.myBidsRepository = myBidsRepository
-		self.auctionId = -1
-		self.auctionGuid = ""
-
-		dataManager.onDataChanged
-			.sink { [weak self] in
-				self?.updateAuctionId()
-			}
-			.store(in: &cancellables)
-
-		updateAuctionId()
-		setUpClearingError()
-	}
-
-	var centerViewData: TopBarCenterViewData {
-		TopBarCenterViewData(
-			type: .title,
-			title: title
-		)
-	}
-
-	private func updateAuctionId() {
-		guard let auction = try? dataManager.fetchSingle(of: AuctionModel.self, from: .auction),
-		      let auctionId = auction.identity,
-		      let auctionGuid = auction.auctionGuid
-		else { return }
-
-		self.auctionId = auctionId
-		self.auctionGuid = auctionGuid
 	}
 
 	private func setUpClearingError() {
@@ -201,6 +192,24 @@ class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
 				}
 				else {
 					self?.error = "Bids not found"
+				}
+			})
+			.store(in: &cancellables)
+	}
+
+	func requestFetchReceipt() {
+		myBidsRepository.fetchReceipts(paddleNumber: Int(paddleNumber) ?? -1, auctionId: auctionId)
+			.receive(on: DispatchQueue.main)
+			.sink(receiveCompletion: { [weak self] completion in
+				if case let .failure(error) = completion {
+					self?.error = error.localizedDescription
+				}
+			}, receiveValue: { [weak self] response in
+				if !response.isEmpty {
+					self?.receiptsBidder = response.first
+				}
+				else {
+					self?.error = "Invoice not found"
 				}
 			})
 			.store(in: &cancellables)
