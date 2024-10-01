@@ -16,6 +16,8 @@ class InvoiceViewModel: ObservableObject {
 	@Published var selectedCard: CreditCardModel?
 	@Published var receipt: ReceiptModel?
 	@Published var isDataLoaded: Bool = false
+	@Published var showAlert: Bool = false
+	@Published var alertMessage: String = ""
 
 	let myBidsViewModel: MyBidsViewModel
 	private var cancellables = Set<AnyCancellable>()
@@ -29,6 +31,14 @@ class InvoiceViewModel: ObservableObject {
 				self?.processReceipt(receipt)
 			}
 			.store(in: &cancellables)
+
+		myBidsViewModel.$showAlert
+			.receive(on: DispatchQueue.main)
+			.assign(to: &$showAlert)
+
+		myBidsViewModel.$alertMessage
+			.receive(on: DispatchQueue.main)
+			.assign(to: &$alertMessage)
 	}
 
 	func fetchInvoice() {
@@ -71,10 +81,10 @@ class InvoiceViewModel: ObservableObject {
 	}
 
 	func sendSMSInvoice() {
-		// Implement SMS invoice sending logic here
+		myBidsViewModel.sendReceipt()
 	}
 
 	func sendEmailInvoice() {
-		// Implement email invoice sending logic here
+		myBidsViewModel.sendReceipt(email: myBidsViewModel.selectedBidder?.email)
 	}
 }

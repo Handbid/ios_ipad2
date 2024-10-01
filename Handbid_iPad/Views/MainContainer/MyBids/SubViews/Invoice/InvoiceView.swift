@@ -24,6 +24,13 @@ struct InvoiceView: View {
 			viewModel.isDataLoaded = false
 			viewModel.fetchInvoice()
 		}
+		.alert(isPresented: $viewModel.showAlert) {
+			Alert(
+				title: Text(viewModel.alertMessage.contains("success") ? "Success" : "Error"),
+				message: Text(viewModel.alertMessage),
+				dismissButton: .default(Text("OK"))
+			)
+		}
 	}
 
 	// MARK: - Header View

@@ -35,6 +35,8 @@ class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
 	@Published var losingItems: [BidModel] = []
 	@Published var purchasedItems: [BidModel] = []
 	@Published var receiptBidder: ReceiptModel?
+	@Published var showAlert: Bool = false
+	@Published var alertMessage: String = ""
 
 	let auction = try? DataManager.shared.fetchSingle(of: AuctionModel.self, from: .auction)
 	var auctionId: Int
@@ -231,6 +233,29 @@ class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
 				}
 			}, receiveValue: { response in
 				self.selectedBidder?.isCheckedIn = response.isCheckedIn
+			})
+			.store(in: &cancellables)
+	}
+
+	func sendReceipt(email: String? = nil) {
+		myBidsRepository.sendReceipt(receiptId: receiptBidder?.id ?? -1, email: email)
+			.receive(on: DispatchQueue.main)
+			.sink(receiveCompletion: { [weak self] completion in
+				switch completion {
+				case .finished:
+					break
+				case let .failure(error):
+					self?.alertMessage = error.localizedDescription
+					self?.showAlert = true
+				}
+			}, receiveValue: { [weak self] success in
+				if success {
+					self?.alertMessage = "The invoice was sent successfully."
+				}
+				else {
+					self?.alertMessage = "Unknown error occurred."
+				}
+				self?.showAlert = true
 			})
 			.store(in: &cancellables)
 	}
