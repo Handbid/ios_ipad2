@@ -6,11 +6,11 @@ class AlertManager: ObservableObject {
 	static let shared = AlertManager()
 
 	@Published var alertStack: [AnyView] = []
-	var backgroundColor: Color = .black.opacity(0.4)
+	var backgroundColor: Color = .gray.opacity(0.4)
 
 	private init() {}
 
-	func showAlert(_ alert: some View, backgroundColor: Color = Color.black.opacity(0.4)) {
+	func showAlert(_ alert: some View, backgroundColor: Color = Color.gray.opacity(0.4)) {
 		self.backgroundColor = backgroundColor
 		DispatchQueue.main.async {
 			self.alertStack.append(AnyView(alert))

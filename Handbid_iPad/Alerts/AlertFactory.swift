@@ -5,10 +5,8 @@ import SwiftUI
 
 enum AlertType {
 	case addCard(title: String)
-	//    case deleteCard(title: String, message: String, cardNumber: String)
-	//    case sendInvoice(title: String, message: String)
 	case enterPin(title: String, body: String)
-	// Additional cases as needed
+	case sendReceipt(sendMethod: String, sendTo: String, errorSend: Bool)
 }
 
 class AlertFactory {
@@ -28,6 +26,10 @@ class AlertFactory {
 				combineSubject: combineSubject as? PassthroughSubject<String, Never>
 			)
 			let alert = EnterPinAlertView(title: title, bodyText: body, viewModel: viewModel)
+			return AnyView(alert)
+
+		case let .sendReceipt(sendMethod: sendMethod, sendTo: sendTo, errorSend: errorSend):
+			let alert = SendReceiptAlertView(sendMethod: sendMethod, sendTo: sendTo, errorSend: errorSend)
 			return AnyView(alert)
 		}
 	}

@@ -44,7 +44,6 @@
 		8C22A8F62C35202E00C50621 /* BottomSectionItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C22A8F52C35202E00C50621 /* BottomSectionItemViewModel.swift */; };
 		8C3155772CAA4DBD008590A3 /* ReceiptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3155762CAA4DB6008590A3 /* ReceiptModel.swift */; };
 		8C3155792CAA5289008590A3 /* ReceiptLineItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3155782CAA5288008590A3 /* ReceiptLineItemModel.swift */; };
-		8C31557C2CABFA67008590A3 /* DelegateHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C31557B2CABFA66008590A3 /* DelegateHolder.swift */; };
 		8C31557E2CAC439D008590A3 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C31557D2CAC439C008590A3 /* AlertManager.swift */; };
 		8C3155802CAC43BE008590A3 /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C31557F2CAC43BD008590A3 /* AlertFactory.swift */; };
 		8C3155852CAC4440008590A3 /* AddCardAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3155842CAC443F008590A3 /* AddCardAlertView.swift */; };
@@ -275,6 +274,8 @@
 		8CAFD93A2BBD90F700C7D763 /* KeyboardResponsiveModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFD9392BBD90F700C7D763 /* KeyboardResponsiveModifier.swift */; };
 		8CB8C6AC2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB8C6AB2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift */; };
 		8CBDAAC82BC432470010908F /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBDAAC72BC432470010908F /* DispatchQueue.swift */; };
+		8CBE49C72CAC74B20095B362 /* SendReceiptAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBE49C62CAC74AA0095B362 /* SendReceiptAlertView.swift */; };
+		8CBE49C92CAC74C30095B362 /* SendReceiptAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBE49C82CAC74B90095B362 /* SendReceiptAlertViewModel.swift */; };
 		8CC6BEE62BD43757007C999F /* AuctionTopBarCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC6BEE52BD43757007C999F /* AuctionTopBarCenterView.swift */; };
 		8CC6BEE92BD439A9007C999F /* DataFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC6BEE82BD439A9007C999F /* DataFormatter.swift */; };
 		8CD107F32BD11EB800E83261 /* TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD107F22BD11EB800E83261 /* TopBar.swift */; };
@@ -425,7 +426,6 @@
 		8C22A8F52C35202E00C50621 /* BottomSectionItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSectionItemViewModel.swift; sourceTree = "<group>"; };
 		8C3155762CAA4DB6008590A3 /* ReceiptModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptModel.swift; sourceTree = "<group>"; };
 		8C3155782CAA5288008590A3 /* ReceiptLineItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptLineItemModel.swift; sourceTree = "<group>"; };
-		8C31557B2CABFA66008590A3 /* DelegateHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegateHolder.swift; sourceTree = "<group>"; };
 		8C31557D2CAC439C008590A3 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		8C31557F2CAC43BD008590A3 /* AlertFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFactory.swift; sourceTree = "<group>"; };
 		8C3155842CAC443F008590A3 /* AddCardAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardAlertView.swift; sourceTree = "<group>"; };
@@ -651,6 +651,8 @@
 		8CAFD9392BBD90F700C7D763 /* KeyboardResponsiveModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponsiveModifier.swift; sourceTree = "<group>"; };
 		8CB8C6AB2BAAE8EC002F2E8C /* NavigationCoordinatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinatorTest.swift; sourceTree = "<group>"; };
 		8CBDAAC72BC432470010908F /* DispatchQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueue.swift; sourceTree = "<group>"; };
+		8CBE49C62CAC74AA0095B362 /* SendReceiptAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendReceiptAlertView.swift; sourceTree = "<group>"; };
+		8CBE49C82CAC74B90095B362 /* SendReceiptAlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendReceiptAlertViewModel.swift; sourceTree = "<group>"; };
 		8CC6BEE52BD43757007C999F /* AuctionTopBarCenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionTopBarCenterView.swift; sourceTree = "<group>"; };
 		8CC6BEE82BD439A9007C999F /* DataFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFormatter.swift; sourceTree = "<group>"; };
 		8CD107F22BD11EB800E83261 /* TopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBar.swift; sourceTree = "<group>"; };
@@ -1110,7 +1112,6 @@
 			children = (
 				8C31557D2CAC439C008590A3 /* AlertManager.swift */,
 				8C31557F2CAC43BD008590A3 /* AlertFactory.swift */,
-				8C31557B2CABFA66008590A3 /* DelegateHolder.swift */,
 				8C3155812CAC4408008590A3 /* Modals */,
 			);
 			path = Alerts;
@@ -1130,6 +1131,7 @@
 			children = (
 				8C3155842CAC443F008590A3 /* AddCardAlertView.swift */,
 				8C3155882CAC4471008590A3 /* EnterPinAlertView.swift */,
+				8CBE49C62CAC74AA0095B362 /* SendReceiptAlertView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1139,6 +1141,7 @@
 			children = (
 				8C3155862CAC4456008590A3 /* AddCardAlertViewModel.swift */,
 				8C31558A2CAC4484008590A3 /* EnterPinAlertViewModel.swift */,
+				8CBE49C82CAC74B90095B362 /* SendReceiptAlertViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -2287,6 +2290,7 @@
 				CEF9EC692C6A0B73001AF394 /* ConfirmUserInformationView.swift in Sources */,
 				8C3155892CAC4472008590A3 /* EnterPinAlertView.swift in Sources */,
 				CEE2BB292BB5D1070033556D /* ApiConstants.swift in Sources */,
+				8CBE49C72CAC74B20095B362 /* SendReceiptAlertView.swift in Sources */,
 				8C19678F2BFF54E2009360A0 /* DataManagerEnvironmentKey.swift in Sources */,
 				8CABF5CA2BB9CEF900A34870 /* ChooseEnvironmentViewModel.swift in Sources */,
 				8CA8A0622CA12BE900AAE69D /* MyBidsView.swift in Sources */,
@@ -2348,6 +2352,7 @@
 				8C4BFB4E2BDFAD7F00B47154 /* AuctionCollectionCellView.swift in Sources */,
 				8C908B332C3C8405009C8441 /* ItemProcessor.swift in Sources */,
 				8C79B41D2C040D84005D4AAB /* Processor.swift in Sources */,
+				8CBE49C92CAC74C30095B362 /* SendReceiptAlertViewModel.swift in Sources */,
 				8C8BEC3A2BA977F00083D904 /* Coordinator.swift in Sources */,
 				8C4BFB522BDFAE0800B47154 /* AuctionFilterButtonView.swift in Sources */,
 				8CA8A05C2CA126FC00AAE69D /* MyBidsRepository.swift in Sources */,
@@ -2409,7 +2414,6 @@
 				8C22A8F62C35202E00C50621 /* BottomSectionItemViewModel.swift in Sources */,
 				8C4BFB812BE2208E00B47154 /* DependencyMainAppProvider.swift in Sources */,
 				8CA6C0FC2C347DA90095F469 /* PlaceOrderButtonView.swift in Sources */,
-				8C31557C2CABFA67008590A3 /* DelegateHolder.swift in Sources */,
 				8CA6C0F82C347D8B0095F469 /* ButtonItemViewProtocol.swift in Sources */,
 				8C9FA43E2BD27FDF0041F28E /* MyBidsViewModel.swift in Sources */,
 				8CA8A0682CA6B42300AAE69D /* InvoiceView.swift in Sources */,

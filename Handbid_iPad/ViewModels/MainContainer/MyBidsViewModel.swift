@@ -237,23 +237,17 @@ class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
 			.store(in: &cancellables)
 	}
 
-	func sendReceipt(email: String? = nil) {
+	func sendReceipt(email: String? = nil, completion: @escaping (Bool) -> Void) {
 		myBidsRepository.sendReceipt(receiptId: receiptBidder?.id ?? -1, email: email)
 			.receive(on: DispatchQueue.main)
-			.sink(receiveCompletion: { [weak self] completion in
-				switch completion {
-				case .finished:
-					break
-				case let .failure(error):
-					self?.alertMessage = error.localizedDescription
-					self?.showAlert = true
-				}
-			}, receiveValue: { [weak self] success in
+			.sink(receiveCompletion: { _ in }, receiveValue: { [weak self] success in
 				if success {
 					self?.alertMessage = "The invoice was sent successfully."
+					completion(true)
 				}
 				else {
 					self?.alertMessage = "Unknown error occurred."
+					completion(false)
 				}
 				self?.showAlert = true
 			})
@@ -266,9 +260,7 @@ class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
 		AlertManager.shared.showAlert(alert, backgroundColor: .red.opacity(0.4))
 
 		subject
-			.sink { _ in
-				// Handle the card details
-			}
+			.sink { _ in }
 			.store(in: &cancellables)
 	}
 }

@@ -81,10 +81,22 @@ class InvoiceViewModel: ObservableObject {
 	}
 
 	func sendSMSInvoice() {
-		myBidsViewModel.sendReceipt()
+		myBidsViewModel.sendReceipt(completion: { _ in
+		})
+
+		//        let alert = AlertFactory.createAlert(type: .sendReceipt(sendMethod: "SMS",
+		//                                                                sendTo: self.myBidsViewModel.selectedBidder?.userPhone ?? "",
+		//                                                                errorSend: response))
+		//        AlertManager.shared.showAlert(alert)
 	}
 
 	func sendEmailInvoice() {
-		myBidsViewModel.sendReceipt(email: myBidsViewModel.selectedBidder?.email)
+		//            let alert = AlertFactory.createAlert(type: .sendReceipt(sendMethod: "EMAIL",
+		//                                                                    sendTo: self.myBidsViewModel.selectedBidder?.email ?? "",
+		//                                                                    errorSend: response))
+		//            AlertManager.shared.showAlert(alert)
+
+		myBidsViewModel.sendReceipt(email: myBidsViewModel.selectedBidder?.email, completion: { _ in
+		})
 	}
 }
