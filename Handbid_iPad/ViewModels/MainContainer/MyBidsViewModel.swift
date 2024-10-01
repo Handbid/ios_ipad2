@@ -259,4 +259,16 @@ class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
 			})
 			.store(in: &cancellables)
 	}
+
+	func showAddCardAlerta() {
+		let subject = PassthroughSubject<CardDetails, Never>()
+		let alert = AlertFactory.createAlert(type: .addCard(title: "Add Card"), combineSubject: subject)
+		AlertManager.shared.showAlert(alert, backgroundColor: .red.opacity(0.4))
+
+		subject
+			.sink { _ in
+				// Handle the card details
+			}
+			.store(in: &cancellables)
+	}
 }

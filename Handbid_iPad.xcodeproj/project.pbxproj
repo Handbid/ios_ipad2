@@ -44,6 +44,7 @@
 		8C22A8F62C35202E00C50621 /* BottomSectionItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C22A8F52C35202E00C50621 /* BottomSectionItemViewModel.swift */; };
 		8C3155772CAA4DBD008590A3 /* ReceiptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3155762CAA4DB6008590A3 /* ReceiptModel.swift */; };
 		8C3155792CAA5289008590A3 /* ReceiptLineItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3155782CAA5288008590A3 /* ReceiptLineItemModel.swift */; };
+		8C31557C2CABFA67008590A3 /* ModalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C31557B2CABFA66008590A3 /* ModalManager.swift */; };
 		8C3AA3D82C06A64000110288 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 8C3AA3D72C06A64000110288 /* ViewInspector */; };
 		8C3AA3DA2C06A71100110288 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 8C3AA3D92C06A71100110288 /* ViewInspector */; };
 		8C3AA3DC2C06A86B00110288 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8C3AA3DB2C06A86B00110288 /* FirebaseCrashlytics */; };
@@ -418,6 +419,7 @@
 		8C22A8F52C35202E00C50621 /* BottomSectionItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSectionItemViewModel.swift; sourceTree = "<group>"; };
 		8C3155762CAA4DB6008590A3 /* ReceiptModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptModel.swift; sourceTree = "<group>"; };
 		8C3155782CAA5288008590A3 /* ReceiptLineItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptLineItemModel.swift; sourceTree = "<group>"; };
+		8C31557B2CABFA66008590A3 /* ModalManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalManager.swift; sourceTree = "<group>"; };
 		8C38CD1D2C0517DF00EFA4DE /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		8C3AA3E02C0710F800110288 /* TypographyStyleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypographyStyleTests.swift; sourceTree = "<group>"; };
 		8C3AA3E32C0714B000110288 /* AnyPublisherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyPublisherTests.swift; sourceTree = "<group>"; };
@@ -905,6 +907,7 @@
 				8C1E00DD2BA825230094FAA7 /* Fonts */,
 				8CD107EF2BD11DE900E83261 /* MainContainer */,
 				8C1E01032BA862BB0094FAA7 /* MainPointApp */,
+				8C31557A2CABFA4B008590A3 /* Modal */,
 				8C1E00DF2BA825500094FAA7 /* Models */,
 				8C1E00DE2BA8253F0094FAA7 /* Resources */,
 				8C1E00E52BA825C30094FAA7 /* Supporting-Methods */,
@@ -1088,6 +1091,14 @@
 				8C4B7B822BB47DD30043B892 /* StartupProgressAnimationView.swift */,
 			);
 			path = MainPointApp;
+			sourceTree = "<group>";
+		};
+		8C31557A2CABFA4B008590A3 /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				8C31557B2CABFA66008590A3 /* ModalManager.swift */,
+			);
+			path = Modal;
 			sourceTree = "<group>";
 		};
 		8C3AA3DF2C070D1600110288 /* Configuration Appearence */ = {
@@ -2351,6 +2362,7 @@
 				8C22A8F62C35202E00C50621 /* BottomSectionItemViewModel.swift in Sources */,
 				8C4BFB812BE2208E00B47154 /* DependencyMainAppProvider.swift in Sources */,
 				8CA6C0FC2C347DA90095F469 /* PlaceOrderButtonView.swift in Sources */,
+				8C31557C2CABFA67008590A3 /* ModalManager.swift in Sources */,
 				8CA6C0F82C347D8B0095F469 /* ButtonItemViewProtocol.swift in Sources */,
 				8C9FA43E2BD27FDF0041F28E /* MyBidsViewModel.swift in Sources */,
 				8CA8A0682CA6B42300AAE69D /* InvoiceView.swift in Sources */,
