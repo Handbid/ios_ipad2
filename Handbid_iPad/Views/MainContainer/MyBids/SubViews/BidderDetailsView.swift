@@ -8,6 +8,7 @@ struct BidderDetailsView: View {
 	@FocusState var focusedField: Field?
 	@State private var isShowingInvoice = false
 	var inspection = Inspection<Self>()
+	@EnvironmentObject var mainContainerViewModel: MainContainerViewModel
 
 	private var isWinningExpandedBinding: Binding<Bool> {
 		Binding(
@@ -31,16 +32,10 @@ struct BidderDetailsView: View {
 	}
 
 	var body: some View {
-		LoadingOverlay(isLoading: $viewModel.isLoadingBids, backgroundColor: .clear) {
-			content
-				.fullScreenCover(isPresented: $isShowingInvoice) {
-					InvoiceView(
-						viewModel: InvoiceViewModel(
-							myBidsViewModel: viewModel
-						),
-						isPresented: $isShowingInvoice
-					)
-				}
+		ZStack {
+			LoadingOverlay(isLoading: $viewModel.isLoadingBids, backgroundColor: .clear) {
+				content
+			}
 		}
 	}
 
@@ -229,7 +224,10 @@ struct BidderDetailsView: View {
 		VStack(alignment: .leading, spacing: 20) {
 			Button<Text>.styled(config: .secondaryButtonStyle, action: {
 				withAnimation {
-					isShowingInvoice = true
+					mainContainerViewModel.invoiceViewModel = InvoiceViewModel(
+						myBidsViewModel: viewModel
+					)
+					mainContainerViewModel.displayedOverlay = .invoiceView
 				}
 			}, label: {
 				Text("VIEW INVOICE")
