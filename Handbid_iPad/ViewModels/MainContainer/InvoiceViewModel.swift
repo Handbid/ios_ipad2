@@ -33,10 +33,13 @@ class InvoiceViewModel: ObservableObject {
 			.store(in: &cancellables)
 
 		myBidsViewModel.$showAlert
+			.removeDuplicates()
+			.filter { $0 }
 			.receive(on: DispatchQueue.main)
 			.assign(to: &$showAlert)
 
 		myBidsViewModel.$alertMessage
+			.dropFirst()
 			.receive(on: DispatchQueue.main)
 			.assign(to: &$alertMessage)
 	}
@@ -81,10 +84,20 @@ class InvoiceViewModel: ObservableObject {
 	}
 
 	func sendSMSInvoice() {
-		myBidsViewModel.sendReceipt()
+		myBidsViewModel.sendReceipt(completion: { response in
+			let alert = AlertFactory.createAlert(type: .sendReceipt(sendMethod: "SMS",
+			                                                        sendTo: self.myBidsViewModel.selectedBidder?.userPhone ?? "",
+			                                                        errorSend: response))
+			AlertManager.shared.showAlert(alert)
+		})
 	}
 
 	func sendEmailInvoice() {
-		myBidsViewModel.sendReceipt(email: myBidsViewModel.selectedBidder?.email)
+		myBidsViewModel.sendReceipt(email: myBidsViewModel.selectedBidder?.email, completion: { response in
+			let alert = AlertFactory.createAlert(type: .sendReceipt(sendMethod: "EMAIL",
+			                                                        sendTo: self.myBidsViewModel.selectedBidder?.email ?? "",
+			                                                        errorSend: response))
+			AlertManager.shared.showAlert(alert)
+		})
 	}
 }

@@ -24,6 +24,7 @@ struct CreditCardModel: Identifiable, Codable, NetworkingJSONDecodable, AutoEnco
 	var ccAddressCountryId: Int?
 	var gatewayId: Int?
 	var tokenizedCard: String?
+	var numberCard: String?
 
 	enum CardType: String, Codable, Hashable {
 		case visa = "Visa"

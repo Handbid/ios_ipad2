@@ -4,7 +4,7 @@ import SwiftUI
 
 struct InvoiceView: View {
 	@ObservedObject var viewModel: InvoiceViewModel
-	@Binding var isPresented: Bool
+	var dismissAction: () -> Void
 
 	var body: some View {
 		VStack {
@@ -24,13 +24,6 @@ struct InvoiceView: View {
 			viewModel.isDataLoaded = false
 			viewModel.fetchInvoice()
 		}
-		.alert(isPresented: $viewModel.showAlert) {
-			Alert(
-				title: Text(viewModel.alertMessage.contains("success") ? "Success" : "Error"),
-				message: Text(viewModel.alertMessage),
-				dismissButton: .default(Text("OK"))
-			)
-		}
 	}
 
 	// MARK: - Header View
@@ -46,7 +39,7 @@ struct InvoiceView: View {
 
 			Button(action: {
 				withAnimation {
-					isPresented = false
+					dismissAction()
 				}
 			}) {
 				Image(systemName: "xmark")
