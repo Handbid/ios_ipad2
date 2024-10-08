@@ -35,12 +35,7 @@ final class MainContainerTests: XCTestCase {
 		ViewHosting.host(view: sut)
 		do {
 			_ = try sut.inspect().find(viewWithAccessibilityIdentifier: "topBar")
-			if UIDevice.current.userInterfaceIdiom == .phone {
-				_ = try sut.inspect().find(viewWithAccessibilityIdentifier: "phoneView")
-			}
-			else {
-				_ = try sut.inspect().find(viewWithAccessibilityIdentifier: "tabletView")
-			}
+            _ = try sut.inspect().find(viewWithAccessibilityIdentifier: "contentView")
 		}
 		catch {
 			inspectionError = error
@@ -49,15 +44,13 @@ final class MainContainerTests: XCTestCase {
 		XCTAssertNil(inspectionError)
 	}
 
-	func testTabletViewContent() throws {
-		view.deviceContext.isPhone = false
-
-		ViewHosting.host(view: sut)
-		if UIDevice.current.userInterfaceIdiom != .phone {
-			let tabletView = try sut.inspect().find(viewWithAccessibilityIdentifier: "tabletView")
-			XCTAssertNotNil(tabletView)
-		}
-	}
+    func testContentView() throws {
+        view.deviceContext.isPhone = false
+        
+        ViewHosting.host(view: sut)
+        let tabletView = try sut.inspect().find(viewWithAccessibilityIdentifier: "contentView")
+        XCTAssertNotNil(tabletView)
+    }
 
 	func testMainContainerContent() throws {
 		ViewHosting.host(view: sut)

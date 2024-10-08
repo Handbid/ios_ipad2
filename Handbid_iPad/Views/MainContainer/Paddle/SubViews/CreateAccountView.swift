@@ -82,5 +82,6 @@ struct CreateAccountView: View {
 			.padding(32)
 		}
 		.padding(32)
+        .keyboardResponsive()
 	}
 }

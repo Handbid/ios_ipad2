@@ -19,6 +19,7 @@ struct LogInView<T: PageProtocol>: View {
 		LoadingOverlay(isLoading: $isLoading) {
 			ZStack {
 				content
+                    .keyboardResponsive()
 			}
 			.background {
 				backgroundView(for: .color(.accentViolet))
@@ -45,7 +46,6 @@ struct LogInView<T: PageProtocol>: View {
 			.onReceive(inspection.notice) {
 				inspection.visit(self, $0)
 			}
-			.keyboardResponsive()
 			.backButtonNavigation(style: .registration)
 			.ignoresSafeArea(.keyboard, edges: .bottom)
 		}

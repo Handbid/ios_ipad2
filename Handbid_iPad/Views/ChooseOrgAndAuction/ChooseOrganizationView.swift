@@ -41,7 +41,6 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 		.onReceive(inspection.notice) {
 			inspection.visit(self, $0)
 		}
-		.keyboardResponsive()
 		.navigationBarBackButtonHidden()
 		.ignoresSafeArea(.keyboard, edges: .bottom)
 	}
@@ -56,6 +55,7 @@ struct ChooseOrganizationView<T: PageProtocol>: View {
 			.blur(radius: isBlurred ? 10 : 0)
 			.padding()
 		}
+		.keyboardResponsive()
 	}
 
 	private var headerText: some View {
