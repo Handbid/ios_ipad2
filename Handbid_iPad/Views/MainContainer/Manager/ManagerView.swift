@@ -12,6 +12,15 @@ struct ManagerView: View {
 
 	var body: some View {
 		VStack {
+            PickerView(data: TabSection.sections, selection: $viewModel.selectedTab, style: .noBackground) {section in
+                HStack {
+                    Image(section.iconName)
+                        .padding()
+                    
+                    Text(section.localizedText)
+                }
+            }
+            
 			Text(viewModel.title)
 				.accessibility(label: Text("Manager Title"))
 				.accessibility(identifier: "managerTitle")

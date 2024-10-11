@@ -13,7 +13,8 @@ struct FindPadleView: View {
 		{
 			VStack {
 				let picker = PickerView(data: SearchBy.allCases,
-				                        selection: $viewModel.pickedMethod)
+                                        selection: $viewModel.pickedMethod,
+                                        style: .roundedBackground)
 				{ item in
 					Text(item.getLocalizedLabel())
 				}
