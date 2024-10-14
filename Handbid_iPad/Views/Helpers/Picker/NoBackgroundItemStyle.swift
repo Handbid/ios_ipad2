@@ -10,14 +10,15 @@ struct NoBackgroundItemStyle<Data>: ViewModifier where Data: Hashable {
         VStack {
             content
                 .foregroundStyle(item == selection ? .managerTabSelected : .managerTab)
-                .padding()
-                .padding(.bottom, 16)
+                .fontWeight(item == selection ? .bold : .regular)
+                .padding(.bottom, 4)
             
-            if item == selection {
-                Divider()
+            Rectangle()
+                .frame(maxWidth: .infinity, minHeight: 2, maxHeight: 5)
                     .foregroundStyle(.managerTabSelected)
-            }
+                    .opacity(item == selection ? 1.0 : 0.0)
+            
         }
-        .frame(maxHeight: 34)
+        .frame(maxHeight: 34, alignment: .leading)
     }
 }

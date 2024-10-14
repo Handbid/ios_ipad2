@@ -6,6 +6,7 @@
 "global_btn_back" = "返回";
 "global_btn_continue" = "继续";
 "global_btn_ok" = "确定";
+"global_error_bidderNotFound" = "未找到竞标者";
 "global_hint_email" = "输入你的电子邮件";
 "global_label_cellPhone" = "手机";
 "global_label_email" = "电子邮件";
@@ -40,11 +41,19 @@
 "item_label_privePerItem" = "每件价格";
 "item_label_value" = "价值";
 "login_label_incorrectCredentials" = "邮箱或密码不正确";
+"manager_label_activity" = "活动";
+"manager_label_appeals" = "申诉";
+"manager_label_dashboard" = "仪表板";
+"manager_label_guestList" = "嘉宾名单";
+"manager_label_live" = "直播";
+"manager_label_stream" = "流";
 "menuBar_label_auction" = "拍卖";
 "menuBar_label_logout" = "登出";
 "menuBar_label_manager" = "经理";
 "menuBar_label_myBids" = "我的竞标";
 "menuBar_label_paddle" = "拍卖 paddle";
+"myBids_btn_searchBidder" = "搜索竞标者";
+"myBids_label_findBidderByPaddleNumber" = "输入竞拍号";
 "paddle_btn_confirm" = "确认";
 "paddle_btn_createAccount" = "创建账户";
 "paddle_btn_createNewAccount" = "创建新账户";
@@ -66,6 +75,9 @@
 "paddle_label_sponsor" = "赞助商";
 "paddle_label_tableNumber" = "桌号";
 "paddle_label_userFound" = "我们认为找到了你！是你吗？";
+"paddle_number_empty_error" = "竞拍号不能为空。";
+"paddle_number_invalid_error" = "竞拍号必须是整数。";
+"paddle_number_positive_error" = "竞拍号必须大于零。";
 "registration_btn_aboutHandbid" = "关于 Handbid";
 "registration_btn_changePassword" = "更改密码";
 "registration_btn_confirm" = "确认";

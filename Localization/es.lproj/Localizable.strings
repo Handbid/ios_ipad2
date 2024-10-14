@@ -6,6 +6,7 @@
 "global_btn_back" = "Volver";
 "global_btn_continue" = "Continuar";
 "global_btn_ok" = "Aceptar";
+"global_error_bidderNotFound" = "Postor no encontrado";
 "global_hint_email" = "Introduce tu correo electrónico";
 "global_label_cellPhone" = "Teléfono móvil";
 "global_label_email" = "Correo Electrónico";
@@ -40,11 +41,19 @@
 "item_label_privePerItem" = "Precio por Pieza";
 "item_label_value" = "VALOR";
 "login_label_incorrectCredentials" = "Correo electrónico o contraseña incorrectos";
+"manager_label_activity" = "Actividad";
+"manager_label_appeals" = "Apelaciones";
+"manager_label_dashboard" = "Tablero";
+"manager_label_guestList" = "Lista de invitados";
+"manager_label_live" = "En vivo";
+"manager_label_stream" = "Transmisión";
 "menuBar_label_auction" = "Subasta";
 "menuBar_label_logout" = "Cerrar sesión";
 "menuBar_label_manager" = "Administrador";
 "menuBar_label_myBids" = "Mis Ofertas";
 "menuBar_label_paddle" = "Paddle";
+"myBids_btn_searchBidder" = "Buscar Postor";
+"myBids_label_findBidderByPaddleNumber" = "Ingrese el número de paleta";
 "paddle_btn_confirm" = "Confirmar";
 "paddle_btn_createAccount" = "Crear cuenta";
 "paddle_btn_createNewAccount" = "Crear nueva cuenta";
@@ -66,6 +75,9 @@
 "paddle_label_sponsor" = "Patrocinador";
 "paddle_label_tableNumber" = "Número de mesa";
 "paddle_label_userFound" = "¡Creemos que te hemos encontrado! ¿Eres tú?";
+"paddle_number_empty_error" = "El número de paleta no puede estar vacío.";
+"paddle_number_invalid_error" = "El número de paleta debe ser un número entero.";
+"paddle_number_positive_error" = "El número de paleta debe ser mayor que cero.";
 "registration_btn_aboutHandbid" = "Acerca de Handbid";
 "registration_btn_changePassword" = "Cambiar Contraseña";
 "registration_btn_confirm" = "Confirmar";

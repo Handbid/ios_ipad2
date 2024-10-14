@@ -6,6 +6,7 @@
 "global_btn_back" = "Voltar";
 "global_btn_continue" = "Continuar";
 "global_btn_ok" = "Ok";
+"global_error_bidderNotFound" = "Licitante não encontrado";
 "global_hint_email" = "Digite seu e-mail";
 "global_label_cellPhone" = "Celular";
 "global_label_email" = "E-mail";
@@ -40,11 +41,19 @@
 "item_label_privePerItem" = "Preço por Peça";
 "item_label_value" = "VALOR";
 "login_label_incorrectCredentials" = "E-mail ou senha incorretos";
+"manager_label_activity" = "Atividade";
+"manager_label_appeals" = "Apelações";
+"manager_label_dashboard" = "Painel";
+"manager_label_guestList" = "Lista de convidados";
+"manager_label_live" = "Ao vivo";
+"manager_label_stream" = "Transmissão";
 "menuBar_label_auction" = "Leilão";
 "menuBar_label_logout" = "Sair";
 "menuBar_label_manager" = "Gerente";
 "menuBar_label_myBids" = "Minhas Ofertas";
 "menuBar_label_paddle" = "Paddle";
+"myBids_btn_searchBidder" = "Buscar Licitante";
+"myBids_label_findBidderByPaddleNumber" = "Insira o número da raquete";
 "paddle_btn_confirm" = "Confirmar";
 "paddle_btn_createAccount" = "Criar conta";
 "paddle_btn_createNewAccount" = "Criar nova conta";
@@ -66,6 +75,9 @@
 "paddle_label_sponsor" = "Patrocinador";
 "paddle_label_tableNumber" = "Número da mesa";
 "paddle_label_userFound" = "Achamos que encontramos você! É você?";
+"paddle_number_empty_error" = "O número da raquete não pode estar vazio.";
+"paddle_number_invalid_error" = "O número da raquete deve ser um número inteiro.";
+"paddle_number_positive_error" = "O número da raquete deve ser maior que zero.";
 "registration_btn_aboutHandbid" = "Sobre o Handbid";
 "registration_btn_changePassword" = "Alterar Senha";
 "registration_btn_confirm" = "Confirmar";

@@ -11,15 +11,16 @@ struct ManagerView: View {
 	}
 
 	var body: some View {
-		VStack {
+        VStack {
             PickerView(data: TabSection.sections, selection: $viewModel.selectedTab, style: .noBackground) {section in
                 HStack {
                     Image(section.iconName)
-                        .padding()
                     
                     Text(section.localizedText)
+                        .frame(alignment: .leading)
                 }
             }
+            .padding()
             
 			Text(viewModel.title)
 				.accessibility(label: Text("Manager Title"))

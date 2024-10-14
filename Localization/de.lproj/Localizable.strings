@@ -6,6 +6,7 @@
 "global_btn_back" = "Zurück";
 "global_btn_continue" = "Fortfahren";
 "global_btn_ok" = "OK";
+"global_error_bidderNotFound" = "Bieter nicht gefunden";
 "global_hint_email" = "Gib deine E-Mail-Adresse ein";
 "global_label_cellPhone" = "Handy";
 "global_label_email" = "E-Mail";
@@ -40,11 +41,19 @@
 "item_label_privePerItem" = "Preis pro Stück";
 "item_label_value" = "WERT";
 "login_label_incorrectCredentials" = "E-Mail oder Passwort falsch";
+"manager_label_activity" = "Aktivität";
+"manager_label_appeals" = "Berufungen";
+"manager_label_dashboard" = "Dashboard";
+"manager_label_guestList" = "Gästeliste";
+"manager_label_live" = "Live";
+"manager_label_stream" = "Stream";
 "menuBar_label_auction" = "Auktion";
 "menuBar_label_logout" = "Abmelden";
 "menuBar_label_manager" = "Manager";
 "menuBar_label_myBids" = "Meine Gebote";
 "menuBar_label_paddle" = "Paddle";
+"myBids_btn_searchBidder" = "Bieter suchen";
+"myBids_label_findBidderByPaddleNumber" = "Geben Sie die Paddelnummer ein";
 "paddle_btn_confirm" = "Bestätigen";
 "paddle_btn_createAccount" = "Konto erstellen";
 "paddle_btn_createNewAccount" = "Neues Konto erstellen";
@@ -66,6 +75,9 @@
 "paddle_label_sponsor" = "Sponsor";
 "paddle_label_tableNumber" = "Tischnummer";
 "paddle_label_userFound" = "Wir glauben, dass wir dich gefunden haben! Bist du das?";
+"paddle_number_empty_error" = "Die Paddelnummer darf nicht leer sein.";
+"paddle_number_invalid_error" = "Die Paddelnummer muss eine ganze Zahl sein.";
+"paddle_number_positive_error" = "Die Paddelnummer muss größer als null sein.";
 "registration_btn_aboutHandbid" = "Über Handbid";
 "registration_btn_changePassword" = "Passwort ändern";
 "registration_btn_confirm" = "Bestätigen";

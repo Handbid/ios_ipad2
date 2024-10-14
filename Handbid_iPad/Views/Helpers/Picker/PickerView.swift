@@ -9,7 +9,7 @@ struct PickerView<Data, Content>: View where Data: Hashable, Content: View {
 	let itemBuilder: (Data) -> Content
 
     var body: some View {
-        HStack {
+        let content = HStack {
             ForEach(data, id: \.self) { item in
                 applyItemStyleModifier(to: itemBuilder(item), item: item)
                     .onTapGesture {
@@ -17,12 +17,8 @@ struct PickerView<Data, Content>: View where Data: Hashable, Content: View {
                     }
             }
         }
-        .padding(.all, 4)
-        .frame(maxWidth: .infinity, maxHeight: 42)
-        .background {
-            RoundedRectangle(cornerRadius: 40)
-                .stroke(.hbGray, lineWidth: 1.0)
-        }
+        
+        applyViewStyleModifier(to: content)
     }
     
     @ViewBuilder
@@ -32,6 +28,22 @@ struct PickerView<Data, Content>: View where Data: Hashable, Content: View {
             view.modifier(NoBackgroundItemStyle(item: item, selection: selection))
         case .roundedBackground:
             view.modifier(RoundedBackgroundItemStyle(item: item, selection: selection))
+        }
+    }
+    
+    @ViewBuilder
+    private func applyViewStyleModifier(to view: some View) -> some View {
+        switch style {
+        case .noBackground:
+            view
+        case .roundedBackground:
+            view
+                .padding(.all, 4)
+                .frame(maxWidth: .infinity, maxHeight: 42)
+                .background {
+                    RoundedRectangle(cornerRadius: 40)
+                        .stroke(.hbGray, lineWidth: 1.0)
+                }
         }
     }
     
