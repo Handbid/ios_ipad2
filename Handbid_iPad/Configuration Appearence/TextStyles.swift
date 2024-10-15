@@ -24,7 +24,7 @@ enum TextLabelStyles {
 			)
 		case .error:
 			TextStyleConfiguration(
-				fontStyle: TypographyStyle.small.asFont(),
+				fontStyle: TypographyStyle.regular.asFont(),
 				fontWeightStyle: .medium,
 				textAlignment: .center,
 				alignment: .center,
@@ -60,7 +60,7 @@ enum TextLabelStyles {
 			)
 		case .accentBody:
 			TextStyleConfiguration(
-				fontStyle: TypographyStyle.small.asFont(),
+				fontStyle: TypographyStyle.regular.asFont(),
 				textAlignment: .leading,
 				alignment: .leading,
 				defaultTextColor: .accent,
@@ -68,7 +68,7 @@ enum TextLabelStyles {
 			)
 		case .leadingLabel:
 			TextStyleConfiguration(
-				fontStyle: TypographyStyle.small.asFont(),
+				fontStyle: TypographyStyle.regular.asFont(),
 				textAlignment: .leading,
 				alignment: .leading,
 				maxWidth: nil

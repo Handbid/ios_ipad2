@@ -342,6 +342,13 @@
 		CECAB8CC2C89F8AD0048F1D3 /* UserFoundViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECAB8CB2C89F8AD0048F1D3 /* UserFoundViewTests.swift */; };
 		CEE2BB272BB5BBB10033556D /* RegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2BB262BB5BBB10033556D /* RegisterRepository.swift */; };
 		CEE2BB292BB5D1070033556D /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2BB282BB5D1070033556D /* ApiConstants.swift */; };
+		CEE778312CBD4CFB008152F5 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE778302CBD4CFB008152F5 /* DashboardView.swift */; };
+		CEE778352CBD4D53008152F5 /* GuestListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE778342CBD4D53008152F5 /* GuestListView.swift */; };
+		CEE778372CBD4D6F008152F5 /* LiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE778362CBD4D6F008152F5 /* LiveView.swift */; };
+		CEE778392CBD4D86008152F5 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE778382CBD4D86008152F5 /* ActivityView.swift */; };
+		CEE7783B2CBD4DA2008152F5 /* StreamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE7783A2CBD4DA2008152F5 /* StreamView.swift */; };
+		CEE7783D2CBD4DB5008152F5 /* AppealsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE7783C2CBD4DB5008152F5 /* AppealsView.swift */; };
+		CEE7783F2CBD4DF6008152F5 /* ManagerSubViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE7783E2CBD4DF6008152F5 /* ManagerSubViewFactory.swift */; };
 		CEEC46132BBD8DE900C685BF /* AnyPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEC46122BBD8DE900C685BF /* AnyPublisher.swift */; };
 		CEF9EC672C666A45001AF394 /* UserFoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9EC662C666A45001AF394 /* UserFoundView.swift */; };
 		CEF9EC692C6A0B73001AF394 /* ConfirmUserInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9EC682C6A0B73001AF394 /* ConfirmUserInformationView.swift */; };
@@ -704,6 +711,13 @@
 		CECAB8CB2C89F8AD0048F1D3 /* UserFoundViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFoundViewTests.swift; sourceTree = "<group>"; };
 		CEE2BB262BB5BBB10033556D /* RegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRepository.swift; sourceTree = "<group>"; };
 		CEE2BB282BB5D1070033556D /* ApiConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConstants.swift; sourceTree = "<group>"; };
+		CEE778302CBD4CFB008152F5 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		CEE778342CBD4D53008152F5 /* GuestListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListView.swift; sourceTree = "<group>"; };
+		CEE778362CBD4D6F008152F5 /* LiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveView.swift; sourceTree = "<group>"; };
+		CEE778382CBD4D86008152F5 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
+		CEE7783A2CBD4DA2008152F5 /* StreamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamView.swift; sourceTree = "<group>"; };
+		CEE7783C2CBD4DB5008152F5 /* AppealsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppealsView.swift; sourceTree = "<group>"; };
+		CEE7783E2CBD4DF6008152F5 /* ManagerSubViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerSubViewFactory.swift; sourceTree = "<group>"; };
 		CEEC46122BBD8DE900C685BF /* AnyPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyPublisher.swift; sourceTree = "<group>"; };
 		CEF9EC662C666A45001AF394 /* UserFoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFoundView.swift; sourceTree = "<group>"; };
 		CEF9EC682C6A0B73001AF394 /* ConfirmUserInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmUserInformationView.swift; sourceTree = "<group>"; };
@@ -1683,6 +1697,7 @@
 		CE57F8E22CB9615500967FB3 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				CEE7782F2CBD4CE0008152F5 /* SubViews */,
 				CE57F8E92CB97E0E00967FB3 /* TabView */,
 				8C9FA4452BD282B90041F28E /* ManagerView.swift */,
 			);
@@ -1829,6 +1844,20 @@
 				CEC665842C7DCB9700F07E7D /* CountriesRepository.swift */,
 			);
 			path = Repositories;
+			sourceTree = "<group>";
+		};
+		CEE7782F2CBD4CE0008152F5 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				CEE778302CBD4CFB008152F5 /* DashboardView.swift */,
+				CEE778342CBD4D53008152F5 /* GuestListView.swift */,
+				CEE778362CBD4D6F008152F5 /* LiveView.swift */,
+				CEE778382CBD4D86008152F5 /* ActivityView.swift */,
+				CEE7783A2CBD4DA2008152F5 /* StreamView.swift */,
+				CEE7783C2CBD4DB5008152F5 /* AppealsView.swift */,
+				CEE7783E2CBD4DF6008152F5 /* ManagerSubViewFactory.swift */,
+			);
+			path = SubViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2198,6 +2227,7 @@
 				8C8BEC342BA976A90083D904 /* LogInViewModel.swift in Sources */,
 				8C91A8552C2A05340057D51B /* ImageGalleryView.swift in Sources */,
 				8CA6C0E22C347B280095F469 /* ValueTextField.swift in Sources */,
+				CEE778312CBD4CFB008152F5 /* DashboardView.swift in Sources */,
 				8C4BFB712BE1887F00B47154 /* TicketModel.swift in Sources */,
 				8C79B4242C040D84005D4AAB /* HandbidWebSocketFactory.swift in Sources */,
 				8C7D96512C18EE970028C8E0 /* SearchItemsViewModel.swift in Sources */,
@@ -2210,6 +2240,7 @@
 				8CABF5D42BB9E17C00A34870 /* CustomDimensValues.swift in Sources */,
 				CE7BB48F2C22FF2600D0AB91 /* FiltersItemsView.swift in Sources */,
 				8CD107F32BD11EB800E83261 /* TopBar.swift in Sources */,
+				CEE778352CBD4D53008152F5 /* GuestListView.swift in Sources */,
 				8CA6C10C2C347DEB0095F469 /* DirectPurchaseEventOnlyButtonView.swift in Sources */,
 				CEF9EC692C6A0B73001AF394 /* ConfirmUserInformationView.swift in Sources */,
 				CEE2BB292BB5D1070033556D /* ApiConstants.swift in Sources */,
@@ -2287,6 +2318,7 @@
 				8CA6C1082C347DDB0095F469 /* BuyNowSoldOutButtonView.swift in Sources */,
 				8C4B7B872BB6DCC80043B892 /* AuthModel.swift in Sources */,
 				8CA6C0EF2C347CE80095F469 /* PlaceOrderValueView.swift in Sources */,
+				CEE778372CBD4D6F008152F5 /* LiveView.swift in Sources */,
 				8C908B312C3BD7B7009C8441 /* ItemDetailViewModel.swift in Sources */,
 				8C79B4252C040D84005D4AAB /* HandshakeResponseProvider.swift in Sources */,
 				8CD107FF2BD11F9500E83261 /* Sidebar.swift in Sources */,
@@ -2336,7 +2368,9 @@
 				CE7BB4932C2309D700D0AB91 /* MainContainerOverlayBuilder.swift in Sources */,
 				8C91A8572C2A05490057D51B /* DetailInfoView.swift in Sources */,
 				8C8BEC382BA977AC0083D904 /* RegistrationPage.swift in Sources */,
+				CEE7783B2CBD4DA2008152F5 /* StreamView.swift in Sources */,
 				8C4BFB6B2BE1852800B47154 /* ItemModel.swift in Sources */,
+				CEE7783F2CBD4DF6008152F5 /* ManagerSubViewFactory.swift in Sources */,
 				8C9FA4442BD282B00041F28E /* MyBidsView.swift in Sources */,
 				8C4B7BB72BB9C1080043B892 /* TextSecuredStyles.swift in Sources */,
 				8CABF5BD2BB9C60900A34870 /* PasswordResetConfirmationView.swift in Sources */,
@@ -2380,6 +2414,7 @@
 				8C4B7B8B2BB6FD030043B892 /* CustomStyledViewButton.swift in Sources */,
 				8CA6C10E2C347DF40095F469 /* DirectPurchaseButtonView.swift in Sources */,
 				8CD108032BD1208100E83261 /* TopBarContentFactory.swift in Sources */,
+				CEE778392CBD4D86008152F5 /* ActivityView.swift in Sources */,
 				8C8BEC642BA9ADE20083D904 /* AppLaunchControlView.swift in Sources */,
 				CEC665872C7DCD5800F07E7D /* CountryModel.swift in Sources */,
 				8C0725BA2BF6332600522F8C /* ModelTypeData.swift in Sources */,
@@ -2390,6 +2425,7 @@
 				8C4BFB492BDFAB8F00B47154 /* MainContainerPage.swift in Sources */,
 				8C4BFB672BE17C6300B47154 /* ChooseAuctionRepository.swift in Sources */,
 				8CA6C0F32C347CF90095F469 /* NormalValueView.swift in Sources */,
+				CEE7783D2CBD4DB5008152F5 /* AppealsView.swift in Sources */,
 				8CD107F82BD11F2300E83261 /* TopBarActionProvider.swift in Sources */,
 				CE57F8E82CB96B5D00967FB3 /* NoBackgroundItemStyle.swift in Sources */,
 				8C0007B22BAC733900AAEBA0 /* ArrowParsable.swift in Sources */,

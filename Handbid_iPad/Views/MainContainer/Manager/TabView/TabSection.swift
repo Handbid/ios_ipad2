@@ -2,25 +2,32 @@
 
 import SwiftUICore
 
-struct TabSection: Hashable {
-    private let text: String
-    let iconName: String
+enum TabSection: Hashable, CaseIterable {
+    case dashboard
+    case guestList
+    case live
+    case activity
+    case stream
+    case appeals
+    
+    var iconName: String {
+        switch self {
+        case .dashboard: "managerDashboardIcon"
+        case .guestList: "managerGuestListIcon"
+        case .live: "managerLiveIcon"
+        case .activity: "managerActivityIcon"
+        case .stream: "managerStreamIcon"
+        case .appeals: "managerAppealsIcon"
+        }
+    }
     var localizedText: LocalizedStringKey {
-        LocalizedStringKey(text)
+        switch self {
+        case .dashboard: LocalizedStringKey("manager_label_dashboard")
+        case .guestList: LocalizedStringKey("manager_label_guestList")
+        case .live: LocalizedStringKey("manager_label_live")
+        case .activity: LocalizedStringKey("manager_label_activity")
+        case .stream: LocalizedStringKey("manager_label_stream")
+        case .appeals: LocalizedStringKey("manager_label_appeals")
+        }
     }
-    
-    init(text: String, iconName: String) {
-        self.text = text
-        self.iconName = iconName
-    }
-    
-    static let sections: [TabSection] = [
-        .init(text: "manager_label_dashboard", iconName: "managerDashboardIcon"),
-        .init(text: "manager_label_guestList", iconName: "managerGuestListIcon"),
-        .init(text: "manager_label_live", iconName: "managerLiveIcon"),
-        .init(text: "manager_label_activity", iconName: "managerActivityIcon"),
-        .init(text: "manager_label_stream", iconName: "managerStreamIcon"),
-        .init(text: "manager_label_appeals", iconName: "managerAppealsIcon")
-        
-    ]
 }

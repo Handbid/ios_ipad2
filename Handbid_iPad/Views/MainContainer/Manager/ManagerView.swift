@@ -12,19 +12,19 @@ struct ManagerView: View {
 
 	var body: some View {
         VStack {
-            PickerView(data: TabSection.sections, selection: $viewModel.selectedTab, style: .noBackground) {section in
+            PickerView(data: TabSection.allCases, selection: $viewModel.selectedTab, style: .noBackground) {section in
                 HStack {
                     Image(section.iconName)
                     
                     Text(section.localizedText)
                         .frame(alignment: .leading)
+                        .font(TypographyStyle.small.asFont())
                 }
             }
-            .padding()
+            .padding(.all, 16)
             
-			Text(viewModel.title)
-				.accessibility(label: Text("Manager Title"))
-				.accessibility(identifier: "managerTitle")
+            ManagerSubViewFactory(viewModel: viewModel)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
 		}
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		.background(Color.accentGrayBackground)

@@ -37,7 +37,7 @@ struct ConfirmUserInformationView: View {
 							.textCase(.uppercase)
 
 						Text(model.email ?? "N/A")
-							.font(TypographyStyle.small.asFont())
+							.font(TypographyStyle.regular.asFont())
 							.padding()
 							.frame(maxWidth: .infinity,
 							       alignment: .leading)
@@ -63,7 +63,7 @@ struct ConfirmUserInformationView: View {
 							.textCase(.uppercase)
 
 						Text(model.phoneNumber ?? "N/A")
-							.font(TypographyStyle.small.asFont())
+							.font(TypographyStyle.regular.asFont())
 							.padding()
 							.frame(maxWidth: .infinity,
 							       alignment: .leading)

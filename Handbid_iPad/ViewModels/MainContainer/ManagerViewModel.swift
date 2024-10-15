@@ -11,7 +11,7 @@ class ManagerViewModel: ObservableObject, ViewModelTopBarProtocol {
 
 	init(dataService: DataServiceWrapper) {
 		self.dataService = dataService
-        selectedTab = TabSection.sections[0]
+        selectedTab = TabSection.dashboard
 	}
 
 	var centerViewData: TopBarCenterViewData {

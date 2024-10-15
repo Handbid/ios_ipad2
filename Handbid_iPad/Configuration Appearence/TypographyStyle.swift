@@ -3,11 +3,11 @@
 import SwiftUI
 
 enum TypographyStyle {
-	case headerTitleRegistration, subheader, small, h2
+	case headerTitleRegistration, subheader, regular, h2, small
 
 	var fontName: String {
 		switch self {
-		case .headerTitleRegistration, .subheader, .small, .h2:
+        case .headerTitleRegistration, .subheader, .regular, .h2, .small:
 			"Inter"
 		}
 	}
@@ -16,7 +16,7 @@ enum TypographyStyle {
 		switch self {
 		case .headerTitleRegistration, .subheader, .h2:
 			.headline
-		case .small:
+        case .regular, .small:
 			.body
 		}
 	}
@@ -29,8 +29,10 @@ enum TypographyStyle {
 			24
 		case .h2:
 			20
-		case .small:
+		case .regular:
 			16
+        case .small:
+            13
 		}
 	}
 
@@ -42,8 +44,10 @@ enum TypographyStyle {
 			24
 		case .h2:
 			20
-		case .small:
+		case .regular:
 			16
+        case .small:
+            13
 		}
 	}
 
@@ -55,8 +59,10 @@ enum TypographyStyle {
 			24
 		case .h2:
 			20
-		case .small:
+		case .regular:
 			16
+        case .small:
+            13
 		}
 	}
 
