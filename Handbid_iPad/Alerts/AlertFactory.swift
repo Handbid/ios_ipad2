@@ -4,28 +4,19 @@ import Combine
 import SwiftUI
 
 enum AlertType {
-	case addCard(title: String)
-	case enterPin(title: String, body: String)
+	case addCard(title: String, delegate: AddCardAlertDelegate, combineSubject: PassthroughSubject<CardDetails, Never>)
 	case sendReceipt(sendMethod: String, sendTo: String, errorSend: Bool)
 }
 
 class AlertFactory {
-	static func createAlert(type: AlertType, delegate: AnyObject? = nil, combineSubject: Any? = nil) -> AnyView {
+	static func createAlert(type: AlertType) -> AnyView {
 		switch type {
-		case let .addCard(title):
+		case let .addCard(title, delegate, combineSubject):
 			let viewModel = AddCardAlertViewModel(
-				delegate: delegate as? AddCardAlertDelegate,
-				combineSubject: combineSubject as? PassthroughSubject<CardDetails, Never>
+				delegate: delegate,
+				combineSubject: combineSubject
 			)
 			let alert = AddCardAlertView(title: title, viewModel: viewModel)
-			return AnyView(alert)
-
-		case let .enterPin(title, body):
-			let viewModel = EnterPinAlertViewModel(
-				delegate: delegate as? EnterPinAlertDelegate,
-				combineSubject: combineSubject as? PassthroughSubject<String, Never>
-			)
-			let alert = EnterPinAlertView(title: title, bodyText: body, viewModel: viewModel)
 			return AnyView(alert)
 
 		case let .sendReceipt(sendMethod: sendMethod, sendTo: sendTo, errorSend: errorSend):

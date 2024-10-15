@@ -20,6 +20,7 @@ struct BidSection: Identifiable {
 }
 
 class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
+
 	@Published var title = "My Bids"
 	@Published var paddleNumber: String = ""
 	@Published var error: String = ""
@@ -254,13 +255,20 @@ class MyBidsViewModel: ObservableObject, ViewModelTopBarProtocol {
 			.store(in: &cancellables)
 	}
 
-	func showAddCardAlerta() {
+	func showAddCardAlert() {
 		let subject = PassthroughSubject<CardDetails, Never>()
-		let alert = AlertFactory.createAlert(type: .addCard(title: "Add Card"), combineSubject: subject)
+        let alert = AlertFactory.createAlert(type: .addCard(title: "Add Card", delegate: self, combineSubject: subject))
 		AlertManager.shared.showAlert(alert, backgroundColor: .red.opacity(0.4))
 
 		subject
 			.sink { _ in }
 			.store(in: &cancellables)
 	}
+}
+
+
+extension MyBidsViewModel: AddCardAlertDelegate {
+    func didAddCard(details: CardDetails) {
+        
+    }
 }
