@@ -3,13 +3,18 @@
 import Combine
 import SwiftUI
 
+class MainContainerViewModel: ObservableObject {
+	@Published var displayedOverlay: MainContainerOverlayTypeView = .none
+	@Published var invoiceViewModel: InvoiceViewModel? = nil
+}
+
 struct MainContainer<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@EnvironmentObject private var authManager: AuthManager
 	@StateObject var deviceContext = DeviceContext()
 	@State var isSidebarVisible: Bool = DeviceConfigurator.isSidebarAlwaysVisible
 	@State var selectedView: MainContainerTypeView
-	@State var displayedOverlay: MainContainerOverlayTypeView
+	@StateObject var mainContainerViewModel = MainContainerViewModel()
 	@State var cancellables = Set<AnyCancellable>()
 
 	private let auctionViewModel: AuctionViewModel
@@ -20,7 +25,6 @@ struct MainContainer<T: PageProtocol>: View {
 
 	init(selectedView: MainContainerTypeView) {
 		self.selectedView = selectedView
-		self.displayedOverlay = .none
 		(self.auctionViewModel, self.paddleViewModel, self.myBidsViewModel, self.managerViewModel, self.logOutViewModel) = ViewModelFactory.createAllViewModelsForMainContainer()
 	}
 
@@ -33,14 +37,14 @@ struct MainContainer<T: PageProtocol>: View {
 					.accessibility(identifier: "contentView")
 			}
 
-			if displayedOverlay != .none {
+			if mainContainerViewModel.displayedOverlay != .none {
 				overlay()
 			}
 		}
+		.environmentObject(mainContainerViewModel)
 		.onAppear {
 			DispatchQueue.global().async {
-				let auction = try? DataManager.shared.fetchSingle(of: AuctionModel.self,
-				                                                  from: .auction)
+				let auction = try? DataManager.shared.fetchSingle(of: AuctionModel.self, from: .auction)
 				WebSocketManager.shared.startSocket(urlFactory: HandbidWebSocketFactory(),
 				                                    token: authManager.currentToken,
 				                                    auctionGuid: auction?.auctionGuid)
@@ -82,10 +86,19 @@ struct MainContainer<T: PageProtocol>: View {
 	}
 
 	private func overlay() -> some View {
-		MainContainerOverlayBuilder(selectedOverlay: displayedOverlay,
-		                            auctionViewModel: auctionViewModel)
-			.frame(width: .infinity, height: .infinity)
-			.edgesIgnoringSafeArea(.all)
+		MainContainerOverlayBuilder(
+			selectedOverlay: mainContainerViewModel.displayedOverlay,
+			auctionViewModel: auctionViewModel,
+			invoiceViewModel: mainContainerViewModel.invoiceViewModel,
+			dismissOverlay: {
+				withAnimation {
+					mainContainerViewModel.displayedOverlay = .none
+					mainContainerViewModel.invoiceViewModel = nil
+				}
+			}
+		)
+		.frame(maxWidth: .infinity, maxHeight: .infinity)
+		.edgesIgnoringSafeArea(.all)
 	}
 
 	private func subscribeToViewModelEvents() {
@@ -105,14 +118,13 @@ struct MainContainer<T: PageProtocol>: View {
 	private func handleViewModelEvent(_ event: MainContainerChangeViewEvents) {
 		switch event {
 		case .searchItems:
-			// selectedView = .logout
 			coordinator.push(MainContainerPage.searchItems as! T)
 		case .allAuctions:
 			coordinator.popToRoot()
 		case .filterItems:
-			displayedOverlay = .filterItems
+			mainContainerViewModel.displayedOverlay = .filterItems
 		case .closeOverlay:
-			displayedOverlay = .none
+			mainContainerViewModel.displayedOverlay = .none
 		}
 	}
 

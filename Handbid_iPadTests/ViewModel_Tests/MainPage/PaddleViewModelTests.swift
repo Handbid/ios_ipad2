@@ -84,112 +84,110 @@ class PaddleViewModelTests: XCTestCase {
 		XCTAssertEqual(viewModel.countries.count, 1)
 	}
 
-    func testFetchCountriesWithError() {
-        mockCountriesRepository.returnedCountriesPublisher =
-            Fail(error: URLError(.badServerResponse))
-                .delay(for: .milliseconds(100), scheduler: DispatchQueue.main)
-                .eraseToAnyPublisher()
+	func testFetchCountriesWithError() {
+		mockCountriesRepository.returnedCountriesPublisher =
+			Fail(error: URLError(.badServerResponse))
+				.delay(for: .milliseconds(100), scheduler: DispatchQueue.main)
+				.eraseToAnyPublisher()
 
-        let expectation = self.expectation(description: "Error is updated")
-        
-        viewModel = PaddleViewModel(paddleRepository: mockPaddleRepository,
-                                    countriesRepository: mockCountriesRepository)
-        
-        viewModel.$error
-            .sink { error in
-                if !error.isEmpty {
-                    expectation.fulfill()
-                }
-            }
-            .store(in: &cancellables)
+		let expectation = expectation(description: "Error is updated")
 
-        wait(for: [expectation], timeout: 2)
+		viewModel = PaddleViewModel(paddleRepository: mockPaddleRepository,
+		                            countriesRepository: mockCountriesRepository)
 
-        XCTAssertFalse(viewModel.error.isEmpty, "Error should not be empty when fetching countries fails.")
-    }
+		viewModel.$error
+			.sink { error in
+				if !error.isEmpty {
+					expectation.fulfill()
+				}
+			}
+			.store(in: &cancellables)
 
+		wait(for: [expectation], timeout: 2)
 
+		XCTAssertFalse(viewModel.error.isEmpty, "Error should not be empty when fetching countries fails.")
+	}
 
-    func testRequestFindingPaddleSuccessfully() {
-        let endpointReturnValue = RegistrationModel(status: "FOUND")
-        let exp = expectation(description: "Sub view was changed successfully")
-        let expLoading = getLoadingCycleExpectation()
-        var methodLaunched = false
+	func testRequestFindingPaddleSuccessfully() {
+		let endpointReturnValue = RegistrationModel(status: "FOUND")
+		let exp = expectation(description: "Sub view was changed successfully")
+		let expLoading = getLoadingCycleExpectation()
+		var methodLaunched = false
 
-        mockPaddleRepository.findPaddlePublisher = Just(endpointReturnValue)
-            .setFailureType(to: Error.self)
-            .eraseToAnyPublisher()
-        
-        viewModel.email = "test.user@example.com"
+		mockPaddleRepository.findPaddlePublisher = Just(endpointReturnValue)
+			.setFailureType(to: Error.self)
+			.eraseToAnyPublisher()
 
-        viewModel.$subView
-            .drop { _ in !methodLaunched }
-            .sink { subView in
-                switch subView {
-                case let .userFound(model):
-                    XCTAssertEqual(model, endpointReturnValue)
-                    exp.fulfill()
-                default:
-                    XCTFail("SubView did not change to .userFound as expected.")
-                }
-            }
-            .store(in: &cancellables)
+		viewModel.email = "test.user@example.com"
 
-        methodLaunched = true
-        viewModel.requestFindingPaddle()
+		viewModel.$subView
+			.drop { _ in !methodLaunched }
+			.sink { subView in
+				switch subView {
+				case let .userFound(model):
+					XCTAssertEqual(model, endpointReturnValue)
+					exp.fulfill()
+				default:
+					XCTFail("SubView did not change to .userFound as expected.")
+				}
+			}
+			.store(in: &cancellables)
 
-        wait(for: [exp, expLoading], timeout: 2)
-    }
+		methodLaunched = true
+		viewModel.requestFindingPaddle()
 
-    func testRequestFindingPaddleNotFound() {
-        let endpointReturnValue = RegistrationModel(status: "NOT_FOUND")
-        let exp = expectation(description: "Error value updated")
-        let expLoading = getLoadingCycleExpectation()
-        var methodLaunched = false
+		wait(for: [exp, expLoading], timeout: 2)
+	}
 
-        mockPaddleRepository.findPaddlePublisher = Just(endpointReturnValue)
-            .setFailureType(to: Error.self)
-            .eraseToAnyPublisher()
-        
-        viewModel.email = "test.user@example.com"
+	func testRequestFindingPaddleNotFound() {
+		let endpointReturnValue = RegistrationModel(status: "NOT_FOUND")
+		let exp = expectation(description: "Error value updated")
+		let expLoading = getLoadingCycleExpectation()
+		var methodLaunched = false
 
-        viewModel.$error
-            .drop { _ in !methodLaunched }
-            .sink { message in
-                XCTAssertEqual(message, String(localized: "paddle_label_paddleNotFound"))
-                exp.fulfill()
-            }
-            .store(in: &cancellables)
+		mockPaddleRepository.findPaddlePublisher = Just(endpointReturnValue)
+			.setFailureType(to: Error.self)
+			.eraseToAnyPublisher()
 
-        methodLaunched = true
-        viewModel.requestFindingPaddle()
+		viewModel.email = "test.user@example.com"
 
-        wait(for: [exp, expLoading], timeout: 2)
-    }
+		viewModel.$error
+			.drop { _ in !methodLaunched }
+			.sink { message in
+				XCTAssertEqual(message, String(localized: "paddle_label_paddleNotFound"))
+				exp.fulfill()
+			}
+			.store(in: &cancellables)
 
-    func testRequestFindingPaddleFailure() {
-        let error = URLError(.badServerResponse)
-        let exp = expectation(description: "Error value updated")
-        let expLoading = getLoadingCycleExpectation()
-        var methodLaunched = false
+		methodLaunched = true
+		viewModel.requestFindingPaddle()
 
-        mockPaddleRepository.findPaddlePublisher = Fail(error: error).eraseToAnyPublisher()
-        
-        viewModel.email = "test.user@example.com"
+		wait(for: [exp, expLoading], timeout: 2)
+	}
 
-        viewModel.$error
-            .drop { _ in !methodLaunched }
-            .sink { message in
-                XCTAssertEqual(message, error.localizedDescription)
-                exp.fulfill()
-            }
-            .store(in: &cancellables)
+	func testRequestFindingPaddleFailure() {
+		let error = URLError(.badServerResponse)
+		let exp = expectation(description: "Error value updated")
+		let expLoading = getLoadingCycleExpectation()
+		var methodLaunched = false
 
-        methodLaunched = true
-        viewModel.requestFindingPaddle()
+		mockPaddleRepository.findPaddlePublisher = Fail(error: error).eraseToAnyPublisher()
 
-        wait(for: [exp, expLoading], timeout: 2)
-    }
+		viewModel.email = "test.user@example.com"
+
+		viewModel.$error
+			.drop { _ in !methodLaunched }
+			.sink { message in
+				XCTAssertEqual(message, error.localizedDescription)
+				exp.fulfill()
+			}
+			.store(in: &cancellables)
+
+		methodLaunched = true
+		viewModel.requestFindingPaddle()
+
+		wait(for: [exp, expLoading], timeout: 2)
+	}
 
 	func testRequestFindingPaddlePassedIdentifier() {
 		viewModel.email = "test.user@test.com"
