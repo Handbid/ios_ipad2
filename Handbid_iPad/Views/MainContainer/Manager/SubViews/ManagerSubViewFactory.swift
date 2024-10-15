@@ -8,7 +8,8 @@ struct ManagerSubViewFactory: View {
     var body: some View {
         switch viewModel.selectedTab {
         case .dashboard:
-            DashboardView()
+            let viewModel = DashboardViewModel()
+            DashboardView(viewModel: viewModel)
         case .guestList:
             GuestListView()
         case .live:

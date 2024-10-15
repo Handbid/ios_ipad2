@@ -349,6 +349,9 @@
 		CEE7783B2CBD4DA2008152F5 /* StreamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE7783A2CBD4DA2008152F5 /* StreamView.swift */; };
 		CEE7783D2CBD4DB5008152F5 /* AppealsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE7783C2CBD4DB5008152F5 /* AppealsView.swift */; };
 		CEE7783F2CBD4DF6008152F5 /* ManagerSubViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE7783E2CBD4DF6008152F5 /* ManagerSubViewFactory.swift */; };
+		CEE778422CBE73AD008152F5 /* DashboardGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE778412CBE73AD008152F5 /* DashboardGoalView.swift */; };
+		CEE778472CBE8212008152F5 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE778462CBE820C008152F5 /* DashboardViewModel.swift */; };
+		CEE778492CBE86CB008152F5 /* DashboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE778482CBE86CB008152F5 /* DashboardModel.swift */; };
 		CEEC46132BBD8DE900C685BF /* AnyPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEC46122BBD8DE900C685BF /* AnyPublisher.swift */; };
 		CEF9EC672C666A45001AF394 /* UserFoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9EC662C666A45001AF394 /* UserFoundView.swift */; };
 		CEF9EC692C6A0B73001AF394 /* ConfirmUserInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9EC682C6A0B73001AF394 /* ConfirmUserInformationView.swift */; };
@@ -718,6 +721,9 @@
 		CEE7783A2CBD4DA2008152F5 /* StreamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamView.swift; sourceTree = "<group>"; };
 		CEE7783C2CBD4DB5008152F5 /* AppealsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppealsView.swift; sourceTree = "<group>"; };
 		CEE7783E2CBD4DF6008152F5 /* ManagerSubViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerSubViewFactory.swift; sourceTree = "<group>"; };
+		CEE778412CBE73AD008152F5 /* DashboardGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardGoalView.swift; sourceTree = "<group>"; };
+		CEE778462CBE820C008152F5 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		CEE778482CBE86CB008152F5 /* DashboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardModel.swift; sourceTree = "<group>"; };
 		CEEC46122BBD8DE900C685BF /* AnyPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyPublisher.swift; sourceTree = "<group>"; };
 		CEF9EC662C666A45001AF394 /* UserFoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFoundView.swift; sourceTree = "<group>"; };
 		CEF9EC682C6A0B73001AF394 /* ConfirmUserInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmUserInformationView.swift; sourceTree = "<group>"; };
@@ -1016,6 +1022,7 @@
 				CE1791632C18A57B009F09A3 /* WebSocketMessageModel.swift */,
 				CEFB53FB2C6CCA5200420D87 /* RegistrationModel.swift */,
 				CEC665862C7DCD5800F07E7D /* CountryModel.swift */,
+				CEE778482CBE86CB008152F5 /* DashboardModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1606,9 +1613,9 @@
 		8CD108112BD1232F00E83261 /* MainContainer */ = {
 			isa = PBXGroup;
 			children = (
+				CEE778432CBE81E0008152F5 /* Manager */,
 				8CD108122BD1233E00E83261 /* AuctionViewModel.swift */,
 				8C9FA4412BD27FF20041F28E /* LogOutViewModel.swift */,
-				8C9FA43F2BD27FE80041F28E /* ManagerViewModel.swift */,
 				8C9FA43D2BD27FDF0041F28E /* MyBidsViewModel.swift */,
 				8CD108152BD1237D00E83261 /* PaddleViewModel.swift */,
 				8C9FA4492BD29C540041F28E /* ViewModelFactory.swift */,
@@ -1849,13 +1856,39 @@
 		CEE7782F2CBD4CE0008152F5 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
-				CEE778302CBD4CFB008152F5 /* DashboardView.swift */,
+				CEE778402CBE732D008152F5 /* Dashboard */,
 				CEE778342CBD4D53008152F5 /* GuestListView.swift */,
 				CEE778362CBD4D6F008152F5 /* LiveView.swift */,
 				CEE778382CBD4D86008152F5 /* ActivityView.swift */,
 				CEE7783A2CBD4DA2008152F5 /* StreamView.swift */,
 				CEE7783C2CBD4DB5008152F5 /* AppealsView.swift */,
 				CEE7783E2CBD4DF6008152F5 /* ManagerSubViewFactory.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
+		CEE778402CBE732D008152F5 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				CEE778302CBD4CFB008152F5 /* DashboardView.swift */,
+				CEE778412CBE73AD008152F5 /* DashboardGoalView.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		CEE778432CBE81E0008152F5 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				8C9FA43F2BD27FE80041F28E /* ManagerViewModel.swift */,
+				CEE778442CBE81EB008152F5 /* SubViews */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		CEE778442CBE81EB008152F5 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				CEE778462CBE820C008152F5 /* DashboardViewModel.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -2304,6 +2337,7 @@
 				8C79B41D2C040D84005D4AAB /* Processor.swift in Sources */,
 				8C8BEC3A2BA977F00083D904 /* Coordinator.swift in Sources */,
 				8C4BFB522BDFAE0800B47154 /* AuctionFilterButtonView.swift in Sources */,
+				CEE778492CBE86CB008152F5 /* DashboardModel.swift in Sources */,
 				8C9FA44E2BD29CAB0041F28E /* DeviceContext.swift in Sources */,
 				8CA6C1062C347DD40095F469 /* BuyNowButtonView.swift in Sources */,
 				8CA6C0FE2C347DB20095F469 /* PlaceOrderSoldOutButtonView.swift in Sources */,
@@ -2332,6 +2366,7 @@
 				8CD1081C2BD1243800E83261 /* GenericTopBarContent.swift in Sources */,
 				8C79B4212C040D84005D4AAB /* EnvironmentManagerExt.swift in Sources */,
 				8CA6C1122C347E040095F469 /* PuzzleButtonView.swift in Sources */,
+				CEE778422CBE73AD008152F5 /* DashboardGoalView.swift in Sources */,
 				8C908B2D2C3B9CBD009C8441 /* BidModel.swift in Sources */,
 				CE7BB4912C23080400D0AB91 /* MainContainerOverlayTypeView.swift in Sources */,
 				8CA6C1142C347E0C0095F469 /* ForSaleButtonView.swift in Sources */,
@@ -2404,6 +2439,7 @@
 				8CD108202BD124EA00E83261 /* DataServiceFactory.swift in Sources */,
 				8C4BFB6F2BE1883800B47154 /* BidderModel.swift in Sources */,
 				8C4B7B9B2BB7026D0043B892 /* TextStyleConfiguration.swift in Sources */,
+				CEE778472CBE8212008152F5 /* DashboardViewModel.swift in Sources */,
 				8CC6BEE62BD43757007C999F /* AuctionTopBarCenterView.swift in Sources */,
 				8CABF5C82BB9C81100A34870 /* BackgroundContainerImage.swift in Sources */,
 				8CA6C0E02C347B0E0095F469 /* ItemValueView.swift in Sources */,
