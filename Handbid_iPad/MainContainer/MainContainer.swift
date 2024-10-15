@@ -33,16 +33,8 @@ struct MainContainer<T: PageProtocol>: View {
 			VStack(spacing: 0) {
 				topBarContent(for: selectedView)
 					.accessibility(identifier: "topBar")
-				GeometryReader { geometry in
-					if deviceContext.isPhone {
-						phoneView(geometry: geometry)
-							.accessibility(identifier: "phoneView")
-					}
-					else {
-						tabletView(geometry: geometry)
-							.accessibility(identifier: "tabletView")
-					}
-				}
+				contentView()
+					.accessibility(identifier: "contentView")
 			}
 
 			if mainContainerViewModel.displayedOverlay != .none {
@@ -63,43 +55,29 @@ struct MainContainer<T: PageProtocol>: View {
 	}
 
 	@ViewBuilder
-	private func phoneView(geometry: GeometryProxy) -> some View {
-		ZStack(alignment: .leading) {
-			mainContainer(geometry: geometry)
-				.accessibility(identifier: "mainContainer")
-
-			if isSidebarVisible {
-				sidebar(geometry: geometry)
-					.accessibility(identifier: "sidebar")
-			}
-		}
-	}
-
-	@ViewBuilder
-	private func tabletView(geometry: GeometryProxy) -> some View {
+	private func contentView() -> some View {
 		HStack(spacing: 0) {
 			if isSidebarVisible {
-				sidebar(geometry: geometry)
+				sidebar()
 					.accessibility(identifier: "sidebar")
 			}
-			mainContainer(geometry: geometry)
+			mainContainer()
 				.accessibility(identifier: "mainContainer")
 		}
 	}
 
-	private func mainContainer(geometry: GeometryProxy) -> some View {
+	private func mainContainer() -> some View {
 		MainContainerViewBuilder(selectedView: selectedView,
 		                         auctionViewModel: auctionViewModel,
 		                         paddleViewModel: paddleViewModel,
 		                         myBidsViewModel: myBidsViewModel,
 		                         managerViewModel: managerViewModel,
 		                         logOutViewModel: logOutViewModel)
-			.frame(width: deviceContext.isPhone || !isSidebarVisible ? geometry.size.width : geometry.size.width - 90)
 			.clipShape(RoundedCornerView(radius: 40, corners: .topLeft))
 			.edgesIgnoringSafeArea(.bottom)
 	}
 
-	private func sidebar(geometry _: GeometryProxy) -> some View {
+	private func sidebar() -> some View {
 		Sidebar(selectedView: $selectedView)
 			.frame(width: 90)
 			.transition(.move(edge: .leading).combined(with: .opacity))

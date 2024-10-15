@@ -8,7 +8,7 @@ struct ResponsiveView<Content: View>: View {
 		GeometryReader { geo in
 			let height = geo.size.height
 			let width = geo.size.width
-			let landScape = height < width
+            let landScape = width / height >= 4 / 3
 			let dimensValues = CustomDimensValues(height: height, width: width)
 			let customFontSize = CustomFontSize(height: height, width: width)
 			content(
