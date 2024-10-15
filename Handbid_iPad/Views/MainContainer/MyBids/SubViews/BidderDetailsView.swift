@@ -265,7 +265,7 @@ struct BidderDetailsView: View {
 			}
 
 			Button<Text>.styled(config: .fifthButtonStyle, action: {
-				viewModel.showAddCardAlerta()
+                viewModel.showAddCardAlert()
 			}, label: {
 				Text("ADD NEW CARD")
 					.textCase(.uppercase)
