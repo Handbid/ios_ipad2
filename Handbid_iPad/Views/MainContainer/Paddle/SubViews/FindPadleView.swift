@@ -75,6 +75,7 @@ struct FindPadleView: View {
 			.frame(maxWidth: .infinity)
 		}
 		.padding(32)
+        .keyboardResponsive()
 		.onReceive(inspection.notice) {
 			inspection.visit(self, $0)
 		}
