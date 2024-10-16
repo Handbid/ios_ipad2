@@ -3,6 +3,16 @@
 "chooseOrg_btn_selectOrg" = "选择组织";
 "chooseOrg_label_searchByName" = "按名称搜索";
 "chooseOrg_label_selectOrganization" = "选择组织";
+"dashboard_label_active" = "活跃";
+"dashboard_label_auctionPerformance" = "拍卖表现";
+"dashboard_label_bidders" = "竞标者";
+"dashboard_label_checkedIn" = "已签到";
+"dashboard_label_fmv" = "公平市值";
+"dashboard_label_goal" = "目标";
+"dashboard_label_guests" = "客人";
+"dashboard_label_overallGoal" = "总体目标";
+"dashboard_label_raised" = "筹集";
+"dashboard_label_registered" = "注册";
 "global_btn_back" = "返回";
 "global_btn_continue" = "继续";
 "global_btn_ok" = "确定";

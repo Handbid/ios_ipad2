@@ -3,6 +3,16 @@
 "chooseOrg_btn_selectOrg" = "Select Organization";
 "chooseOrg_label_searchByName" = "Search by name";
 "chooseOrg_label_selectOrganization" = "Select organization";
+"dashboard_label_active" = "Active";
+"dashboard_label_auctionPerformance" = "Auction performance";
+"dashboard_label_bidders" = "Bidders";
+"dashboard_label_checkedIn" = "Checked in";
+"dashboard_label_fmv" = "FMV";
+"dashboard_label_goal" = "Goal";
+"dashboard_label_guests" = "Guests";
+"dashboard_label_overallGoal" = "Overall goal";
+"dashboard_label_raised" = "Raised";
+"dashboard_label_registered" = "Registered";
 "global_btn_back" = "Back";
 "global_btn_continue" = "Continue";
 "global_btn_ok" = "Ok";

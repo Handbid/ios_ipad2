@@ -3,7 +3,7 @@
 class DashboardViewModel: ObservableObject {
     @Published var dashboardModel: DashboardModel? =
     DashboardModel(
-        overallGoal: "$1000",
+        overallGoal: "$1000000000",
         overallRaised: "$500",
         overallRatio: 0.5,
         biddersRegistered: 15,

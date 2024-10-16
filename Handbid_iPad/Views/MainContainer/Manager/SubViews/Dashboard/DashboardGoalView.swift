@@ -2,16 +2,17 @@
 
 import SwiftUI
 import ProgressIndicatorView
+import Combine
 
 enum DashboardGoal: CaseIterable, Hashable {
     case goal, bidders, guests, performance
     
     var title: LocalizedStringKey {
         switch self {
-        case .goal: return .init("")
-        case .bidders: return .init("")
-        case .guests: return .init("")
-        case .performance: return .init("")
+        case .goal: return .init("dashboard_label_overallGoal")
+        case .bidders: return .init("dashboard_label_bidders")
+        case .guests: return .init("dashboard_label_guests")
+        case .performance: return .init("dashboard_label_auctionPerformance")
         }
     }
     
@@ -28,6 +29,24 @@ enum DashboardGoal: CaseIterable, Hashable {
         case .bidders: .dashboardBiddersProgress
         case .guests: .dashboardGuestsProgress
         case .performance: .dashboradPreformanceProgress
+        }
+    }
+    
+    var progressAmountLabel: LocalizedStringKey {
+        switch self {
+        case .goal: .init("dashboard_label_raised")
+        case .bidders: .init("dashboard_label_active")
+        case .guests: .init("dashboard_label_checkedIn")
+        case .performance: .init("dashboard_label_raised")
+        }
+    }
+    
+    var progressGoalLabel: LocalizedStringKey {
+        switch self {
+        case .goal: .init("dashboard_label_goal")
+        case .bidders: .init("dashboard_label_registered")
+        case .guests: .init("dashboard_label_registered")
+        case .performance: .init("dashboard_label_fmv")
         }
     }
     
@@ -65,6 +84,8 @@ enum DashboardGoal: CaseIterable, Hashable {
 
 struct DashboardGoalView: View {
     var type: DashboardGoal
+    var width: CGFloat
+    var height: CGFloat
     @ObservedObject var viewModel: DashboardViewModel
     @State var progress: CGFloat = 0.5
     
@@ -76,23 +97,64 @@ struct DashboardGoalView: View {
                 .padding()
             
             HStack {
-                ProgressIndicatorView(isVisible: .constant(true),
-                                      type: .circle(
-                                        progress: $progress,
-                                        lineWidth: 9,
-                                        strokeColor: type.color,
-                                        backgroundColor: type.color.opacity(0.5)))
+                ZStack(alignment: .center) {
+                    ProgressIndicatorView(isVisible: .constant(true),
+                                          type: .circle(
+                                            progress: $progress,
+                                            lineWidth: 9,
+                                            strokeColor: type.color,
+                                            backgroundColor: type.color.opacity(0.5)))
+                    .padding()
+                    
+                    Text(progress, format: .percent.precision(
+                        .fractionLength(0))
+                        .rounded(rule: .toNearestOrEven)
+                    )
+                        .font(TypographyStyle.regular.asFont())
+                        .fontWeight(.bold)
+                }
+                .frame(maxWidth: .infinity)
                 
                 VStack(alignment: .leading) {
                     Text(type.getProgressAmount(from: viewModel.dashboardModel))
+                        .font(TypographyStyle.regular.asFont())
+                        .fontWeight(.bold)
+                        .foregroundStyle(.bodyText)
+                        .padding(.bottom, 4)
+                    
+                    Text(type.progressAmountLabel)
+                        .font(TypographyStyle.small.asFont())
+                        .textCase(.uppercase)
+                        .foregroundStyle(.managerTab)
+                        .padding(.bottom, 8)
                     
                     Text(type.getProgressGoal(from: viewModel.dashboardModel))
+                        .font(TypographyStyle.regular.asFont())
+                        .fontWeight(.bold)
+                        .foregroundStyle(.bodyText)
+                        .padding(.bottom, 4)
+                    
+                    Text(type.progressGoalLabel)
+                        .font(TypographyStyle.small.asFont())
+                        .textCase(.uppercase)
+                        .foregroundStyle(.managerTab)
+                        .padding(.bottom, 8)
                 }
+                .frame(maxWidth: .infinity)
+            }
+            .padding(.all, 16)
+            .background {
+                RoundedRectangle(cornerRadius: 18.0)
+                    .foregroundStyle(.white)
             }
         }
-        .background {
-            RoundedRectangle(cornerRadius: 18.0)
-                .foregroundStyle(.white)
+        .frame(width: width, height: height)
+        .padding(.all, 8)
+        .onReceive(viewModel.$dashboardModel) { model in
+            progress = type.getProgress(from: model)
+        }
+        .onAppear {
+            progress = type.getProgress(from: viewModel.dashboardModel)
         }
     }
 }

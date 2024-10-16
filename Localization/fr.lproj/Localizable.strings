@@ -3,6 +3,16 @@
 "chooseOrg_btn_selectOrg" = "Sélectionnez une organisation";
 "chooseOrg_label_searchByName" = "Rechercher par nom";
 "chooseOrg_label_selectOrganization" = "Sélectionnez une organisation";
+"dashboard_label_active" = "Actif";
+"dashboard_label_auctionPerformance" = "Performance de l\'enchère";
+"dashboard_label_bidders" = "Enchérisseurs";
+"dashboard_label_checkedIn" = "Enregistré";
+"dashboard_label_fmv" = "Valeur marchande équitable";
+"dashboard_label_goal" = "Objectif";
+"dashboard_label_guests" = "Invités";
+"dashboard_label_overallGoal" = "Objectif global";
+"dashboard_label_raised" = "Levé";
+"dashboard_label_registered" = "Inscrit";
 "global_btn_back" = "Dos";
 "global_btn_continue" = "Continuer";
 "global_btn_ok" = "D\'accord";
