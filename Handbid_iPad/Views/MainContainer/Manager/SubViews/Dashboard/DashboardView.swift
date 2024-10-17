@@ -20,7 +20,12 @@ struct DashboardView: View {
                                           viewModel: viewModel)
                     }
                 }
+                .padding(.bottom, 16)
                 
+                DashboardItemsStatsTable(vm: viewModel)
+                    .padding(.top, 16)
+                
+                DashboardBidStatsTable(vm: viewModel)
                 Spacer()
             }
             .padding()

@@ -294,6 +294,7 @@
 		CE1E7BBE2BD028B600BD3DD1 /* MockChooseEnvironmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1E7BBD2BD028B600BD3DD1 /* MockChooseEnvironmentViewModel.swift */; };
 		CE2022B72C0F0D120009415D /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2022B62C0F0D120009415D /* ItemView.swift */; };
 		CE22793E2BC691CC00F4430F /* GetStartedView_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE22793D2BC691CC00F4430F /* GetStartedView_Tests.swift */; };
+		CE2FBFEF2CC012E800606B7F /* DashboardItemsStatsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2FBFEE2CC012E800606B7F /* DashboardItemsStatsTable.swift */; };
 		CE337F2F2C1C86DC00681FE1 /* MockAuctionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE337F2E2C1C86DC00681FE1 /* MockAuctionViewModel.swift */; };
 		CE337F312C1C89F000681FE1 /* MockAuctionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE337F302C1C89F000681FE1 /* MockAuctionRepository.swift */; };
 		CE337F332C1C8B8900681FE1 /* MockPaddleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE337F322C1C8B8900681FE1 /* MockPaddleViewModel.swift */; };
@@ -307,6 +308,7 @@
 		CE4D21122C2EF0DD0085DA1D /* FindPadleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D21112C2EF0DD0085DA1D /* FindPadleView.swift */; };
 		CE4D21152C2EF1C50085DA1D /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D21142C2EF1C50085DA1D /* CreateAccountView.swift */; };
 		CE4D21172C2EFF080085DA1D /* PhoneField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D21162C2EFF080085DA1D /* PhoneField.swift */; };
+		CE53FD4D2CC11A38007DEC89 /* DashboardBidStatsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53FD4C2CC11A38007DEC89 /* DashboardBidStatsTable.swift */; };
 		CE57F8E62CB9686800967FB3 /* RoundedBackgroundItemStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57F8E52CB9686800967FB3 /* RoundedBackgroundItemStyle.swift */; };
 		CE57F8E82CB96B5D00967FB3 /* NoBackgroundItemStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57F8E72CB96B5D00967FB3 /* NoBackgroundItemStyle.swift */; };
 		CE57F8EB2CB97EE500967FB3 /* TabSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57F8EA2CB97E2500967FB3 /* TabSection.swift */; };
@@ -668,6 +670,7 @@
 		CE1E7BBD2BD028B600BD3DD1 /* MockChooseEnvironmentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockChooseEnvironmentViewModel.swift; sourceTree = "<group>"; };
 		CE2022B62C0F0D120009415D /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		CE22793D2BC691CC00F4430F /* GetStartedView_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedView_Tests.swift; sourceTree = "<group>"; };
+		CE2FBFEE2CC012E800606B7F /* DashboardItemsStatsTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardItemsStatsTable.swift; sourceTree = "<group>"; };
 		CE337F2E2C1C86DC00681FE1 /* MockAuctionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuctionViewModel.swift; sourceTree = "<group>"; };
 		CE337F302C1C89F000681FE1 /* MockAuctionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuctionRepository.swift; sourceTree = "<group>"; };
 		CE337F322C1C8B8900681FE1 /* MockPaddleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPaddleViewModel.swift; sourceTree = "<group>"; };
@@ -681,6 +684,7 @@
 		CE4D21112C2EF0DD0085DA1D /* FindPadleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPadleView.swift; sourceTree = "<group>"; };
 		CE4D21142C2EF1C50085DA1D /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
 		CE4D21162C2EFF080085DA1D /* PhoneField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneField.swift; sourceTree = "<group>"; };
+		CE53FD4C2CC11A38007DEC89 /* DashboardBidStatsTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardBidStatsTable.swift; sourceTree = "<group>"; };
 		CE57F8E52CB9686800967FB3 /* RoundedBackgroundItemStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBackgroundItemStyle.swift; sourceTree = "<group>"; };
 		CE57F8E72CB96B5D00967FB3 /* NoBackgroundItemStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoBackgroundItemStyle.swift; sourceTree = "<group>"; };
 		CE57F8EA2CB97E2500967FB3 /* TabSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSection.swift; sourceTree = "<group>"; };
@@ -1872,6 +1876,8 @@
 			children = (
 				CEE778302CBD4CFB008152F5 /* DashboardView.swift */,
 				CEE778412CBE73AD008152F5 /* DashboardGoalView.swift */,
+				CE2FBFEE2CC012E800606B7F /* DashboardItemsStatsTable.swift */,
+				CE53FD4C2CC11A38007DEC89 /* DashboardBidStatsTable.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -2462,11 +2468,13 @@
 				8C4BFB672BE17C6300B47154 /* ChooseAuctionRepository.swift in Sources */,
 				8CA6C0F32C347CF90095F469 /* NormalValueView.swift in Sources */,
 				CEE7783D2CBD4DB5008152F5 /* AppealsView.swift in Sources */,
+				CE53FD4D2CC11A38007DEC89 /* DashboardBidStatsTable.swift in Sources */,
 				8CD107F82BD11F2300E83261 /* TopBarActionProvider.swift in Sources */,
 				CE57F8E82CB96B5D00967FB3 /* NoBackgroundItemStyle.swift in Sources */,
 				8C0007B22BAC733900AAEBA0 /* ArrowParsable.swift in Sources */,
 				8C969A5D2C3B04F8007408FF /* PaddleInputViewModel.swift in Sources */,
 				8C4BFB632BE1147900B47154 /* OrganizationAddressModel.swift in Sources */,
+				CE2FBFEF2CC012E800606B7F /* DashboardItemsStatsTable.swift in Sources */,
 				8CA6C0EA2C347C020095F469 /* ValueItemViewProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
