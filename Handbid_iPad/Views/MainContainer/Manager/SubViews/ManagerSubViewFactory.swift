@@ -1,14 +1,17 @@
 //Copyright (c) 2024 by Handbid. All rights reserved.
 
 import SwiftUI
+import NetworkService
 
 struct ManagerSubViewFactory: View {
     @ObservedObject var viewModel: ManagerViewModel
+    private let network = DependencyMainAppProvider.shared.networkClient
     
     var body: some View {
         switch viewModel.selectedTab {
         case .dashboard:
-            let viewModel = DashboardViewModel()
+            let repository = DashboardRepositoryImpl(network: network)
+            let viewModel = DashboardViewModel(dashboardRepository: repository)
             DashboardView(viewModel: viewModel)
         case .guestList:
             GuestListView()

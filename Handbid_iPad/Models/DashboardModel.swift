@@ -40,38 +40,38 @@ struct DashboardModel: Codable, NetworkingJSONDecodable, AutoEncodable {
 
 extension DashboardModel: ArrowParsable {
     mutating func deserialize(_ json: JSON) {
-        overallGoal <-- json["overallGoal.goal"]
-        overallRaised <-- json["overallGoal.raised"]
-        overallRatio <-- json["overallGoal.ratio"]
+        overallGoal <-- json["data.overallGoal.goal"]
+        overallRaised <-- json["data.overallGoal.raised"]
+        overallRatio <-- json["data.overallGoal.ratio"]
         
-        biddersRegistered <-- json["bidders.registered"]
-        biddersActive <-- json["bidders.active"]
-        donors <-- json["bidders.uniqueDonors"]
-        local <-- json["bidders.local"]
+        biddersRegistered <-- json["data.bidders.registered"]
+        biddersActive <-- json["data.bidders.active"]
+        donors <-- json["data.bidders.uniqueDonors"]
+        local <-- json["data.bidders.local"]
         
-        guestsRegistered <-- json["guests.registered"]
-        guestsCheckedIn <-- json["guests.checkedIn"]
+        guestsRegistered <-- json["data.guests.registered"]
+        guestsCheckedIn <-- json["data.guests.checkedIn"]
         
-        performanceFmv <-- json["auctionPerformance.fmv"]
-        performanceRaised <-- json["auctionPerformance.revenue"]
-        performanceRatio <-- json["auctionPerformance.ratio"]
+        performanceFmv <-- json["data.auctionPerformance.fmv"]
+        performanceRaised <-- json["data.auctionPerformance.revenue"]
+        performanceRatio <-- json["data.auctionPerformance.ratio"]
         
-        itemsSilent <-- json["items.silent"]
-        itemsLive <-- json["items.live"]
-        itemsPurchase <-- json["items.purchase"]
-        itemsTicket <-- json["items.ticket"]
-        itemsDonation <-- json["items.donation"]
+        itemsSilent <-- json["data.items.silent"]
+        itemsLive <-- json["data.items.live"]
+        itemsPurchase <-- json["data.items.purchase"]
+        itemsTicket <-- json["data.items.ticket"]
+        itemsDonation <-- json["data.items.donation"]
         
-        revenueSilent <-- json["revenue.silent"]
-        revenueLive <-- json["revenue.live"]
-        revenuePurchase <-- json["revenue.purchase"]
-        revenueTicket <-- json["revenue.ticket"]
-        revenueDonation <-- json["revenue.donation"]
-        revenueTotal <-- json["revenue.total"]
+        revenueSilent <-- json["data.revenue.silent"]
+        revenueLive <-- json["data.revenue.live"]
+        revenuePurchase <-- json["data.revenue.purchase"]
+        revenueTicket <-- json["data.revenue.ticket"]
+        revenueDonation <-- json["data.revenue.donation"]
+        revenueTotal <-- json["data.revenue.total"]
         
-        itemsNoBids <-- json["bidStats.itemsNoBids"]
-        bidderNoBids <-- json["bidStats.bidderNoBids"]
-        bidsPerBidders <-- json["bidStats.bidsPerBidders"]
+        itemsNoBids <-- json["data.bidStats.itemsNoBids"]
+        bidderNoBids <-- json["data.bidStats.bidderNoBids"]
+        bidsPerBidders <-- json["data.bidStats.bidsPerBidders"]
     }
     
     

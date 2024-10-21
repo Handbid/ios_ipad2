@@ -1,6 +1,14 @@
 //Copyright (c) 2024 by Handbid. All rights reserved.
 
+import Combine
+
 class DashboardViewModel: ObservableObject {
+    private let dashboardRepository: DashboardRepository
+    private let dataManager: DataManager
+    
+    private var cancelables: Set<AnyCancellable>
+    
+    private var auctionGuid: String
     @Published var dashboardModel: DashboardModel? =
     DashboardModel(
         overallGoal: "$1000000000",
@@ -30,4 +38,48 @@ class DashboardViewModel: ObservableObject {
         bidderNoBids: 2,
         bidsPerBidders: 5.67
     )
+    @Published var error: String
+    @Published var showError: Bool
+    
+    init(dashboardRepository: DashboardRepository) {
+        self.dashboardRepository = dashboardRepository
+        self.dataManager = DataManager.shared
+        self.dashboardModel = nil
+        self.cancelables = []
+        self.auctionGuid = ""
+        self.error = ""
+        self.showError = false
+        
+        dataManager.onDataChanged.sink {
+            self.updateGuid()
+        }
+        .store(in: &cancelables)
+        
+        updateGuid()
+        !auctionGuid.isEmpty ? getDashboardData() : nil
+    }
+    
+    private func updateGuid() {
+        guard let auction = try? dataManager.fetchSingle(of: AuctionModel.self, from: .auction),
+              let guid = auction.auctionGuid
+        else { return }
+        
+        auctionGuid = guid
+    }
+    
+    func getDashboardData() {
+        dashboardRepository.fetchDashboard(auctionGuid: auctionGuid)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case let .failure(error):
+                    self.error = error.localizedDescription
+                    self.showError = true
+                case .finished:
+                    break
+                }
+            },receiveValue: { dashboard in
+                self.dashboardModel = dashboard
+            })
+            .store(in: &cancelables)
+    }
 }

@@ -14,4 +14,5 @@ enum ApiEndpoints {
 	static let checkInUser = "/auth/checkin"
 	static let registerUser = "/auth/register"
 	static let getCountries = "/country/index"
+    static let fetchDashboard = "/auction/dashboard"
 }

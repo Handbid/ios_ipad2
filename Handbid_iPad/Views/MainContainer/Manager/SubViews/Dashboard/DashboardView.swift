@@ -30,5 +30,8 @@ struct DashboardView: View {
             }
             .padding()
         }
+        .alert(viewModel.error, isPresented: $viewModel.showError) {
+            
+        }
     }
 }
