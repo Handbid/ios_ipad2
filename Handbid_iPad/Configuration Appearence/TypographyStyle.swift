@@ -7,7 +7,7 @@ enum TypographyStyle {
 
 	var fontName: String {
 		switch self {
-        case .headerTitleRegistration, .subheader, .regular, .h2, .small:
+		case .headerTitleRegistration, .subheader, .regular, .h2, .small:
 			"Inter"
 		}
 	}
@@ -16,7 +16,7 @@ enum TypographyStyle {
 		switch self {
 		case .headerTitleRegistration, .subheader, .h2:
 			.headline
-        case .regular, .small:
+		case .regular, .small:
 			.body
 		}
 	}
@@ -31,8 +31,8 @@ enum TypographyStyle {
 			20
 		case .regular:
 			16
-        case .small:
-            13
+		case .small:
+			13
 		}
 	}
 
@@ -46,8 +46,8 @@ enum TypographyStyle {
 			20
 		case .regular:
 			16
-        case .small:
-            13
+		case .small:
+			13
 		}
 	}
 
@@ -61,8 +61,8 @@ enum TypographyStyle {
 			20
 		case .regular:
 			16
-        case .small:
-            13
+		case .small:
+			13
 		}
 	}
 

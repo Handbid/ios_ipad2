@@ -102,47 +102,46 @@ final class LogInViewTests: XCTestCase {
 		wait(for: [exp], timeout: 1)
 	}
 
-    @MainActor func testAlertShowingWhenFieldsInViewModelChange() {
-        let exp = view.inspection.inspect(onReceive: mockViewModel.$showError) { view in
-            let alert = try view.find(ViewType.Alert.self)
-            try alert.actions().button().tap()
-            XCTAssertEqual(try alert.message().text().string(), "test")
-        }
+	@MainActor func testAlertShowingWhenFieldsInViewModelChange() {
+		let exp = view.inspection.inspect(onReceive: mockViewModel.$showError) { view in
+			let alert = try view.find(ViewType.Alert.self)
+			try alert.actions().button().tap()
+			XCTAssertEqual(try alert.message().text().string(), "test")
+		}
 
-        let exp2 = view.inspection.inspect(onReceive: mockViewModel.$resetErrorMessageCalled) { _ in
-            XCTAssert(self.mockViewModel.resetErrorMessageCalled)
-        }
+		let exp2 = view.inspection.inspect(onReceive: mockViewModel.$resetErrorMessageCalled) { _ in
+			XCTAssert(self.mockViewModel.resetErrorMessageCalled)
+		}
 
-        ViewHosting.host(view: sut)
+		ViewHosting.host(view: sut)
 
-        DispatchQueue.main.async {
-            self.mockViewModel.errorMessage = "test"
-            self.mockViewModel.showError = true
-        }
+		DispatchQueue.main.async {
+			self.mockViewModel.errorMessage = "test"
+			self.mockViewModel.showError = true
+		}
 
-        wait(for: [exp, exp2], timeout: 1, enforceOrder: true)
-    }
+		wait(for: [exp, exp2], timeout: 1, enforceOrder: true)
+	}
 
-    @MainActor func testErrorShownWhenFormInvalid() {
-        let exp = view.inspection.inspect(onReceive: mockViewModel.$isFormValid) { _ in
-            let errorLabel = try self.sut.inspect()
-                .find(viewWithAccessibilityIdentifier: "registration_label_loginError").text()
-            XCTAssertEqual(try errorLabel.string(), "test")
-        }
+	@MainActor func testErrorShownWhenFormInvalid() {
+		let exp = view.inspection.inspect(onReceive: mockViewModel.$isFormValid) { _ in
+			let errorLabel = try self.sut.inspect()
+				.find(viewWithAccessibilityIdentifier: "registration_label_loginError").text()
+			XCTAssertEqual(try errorLabel.string(), "test")
+		}
 
-        ViewHosting.host(view: sut)
+		ViewHosting.host(view: sut)
 
-        XCTAssertThrowsError(try sut.inspect()
-            .find(viewWithAccessibilityIdentifier: "registration_label_loginError").text())
+		XCTAssertThrowsError(try sut.inspect()
+			.find(viewWithAccessibilityIdentifier: "registration_label_loginError").text())
 
-        DispatchQueue.main.async {
-            self.mockViewModel.errorMessage = "test"
-            self.mockViewModel.isFormValid = false
-        }
+		DispatchQueue.main.async {
+			self.mockViewModel.errorMessage = "test"
+			self.mockViewModel.isFormValid = false
+		}
 
-        wait(for: [exp], timeout: 1)
-    }
-
+		wait(for: [exp], timeout: 1)
+	}
 
 	func testLoadingViewVisible() {
 		ViewHosting.host(view: AnyView(loadingView))

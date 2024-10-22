@@ -4,6 +4,7 @@ import Combine
 import SwiftUI
 
 struct AppLaunchControlView: View {
+	@ObservedObject var alertManager = AlertManager.shared
 	@EnvironmentObject var authManager: AuthManager
 	@State private var isValidToken = false
 	@State private var isLoading = true
@@ -26,6 +27,12 @@ struct AppLaunchControlView: View {
 				else {
 					RootPageView(page: RegistrationPage.getStarted)
 				}
+			}
+
+			if let alert = alertManager.alertStack.last {
+				alertManager.backgroundColor
+					.edgesIgnoringSafeArea(.all)
+				alert
 			}
 		}
 		.onReceive(NotificationCenter.default.publisher(for: .userLoggedIn).receive(on: RunLoop.main)) { _ in

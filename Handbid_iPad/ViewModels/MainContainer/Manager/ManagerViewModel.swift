@@ -7,11 +7,11 @@ class ManagerViewModel: ObservableObject, ViewModelTopBarProtocol {
 	var eventPublisher = PassthroughSubject<MainContainerChangeViewEvents, Never>()
 	@ObservedObject var dataService: DataServiceWrapper
 	@Published var title = "Manager Details"
-    @Published var selectedTab: TabSection
+	@Published var selectedTab: TabSection
 
 	init(dataService: DataServiceWrapper) {
 		self.dataService = dataService
-        selectedTab = TabSection.dashboard
+		self.selectedTab = TabSection.dashboard
 	}
 
 	var centerViewData: TopBarCenterViewData {

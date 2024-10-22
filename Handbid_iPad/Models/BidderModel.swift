@@ -10,7 +10,7 @@ struct BidderModel: Identifiable, Codable, NetworkingJSONDecodable, AutoEncodabl
 	var stripeId: String?
 	var name: String?
 	var alias: String?
-	var currentPaddleNumber: String?
+	var currentPaddleNumber: Int?
 	var currentPlacement: String?
 	var placementLabel: String?
 	var firstName: String?
@@ -29,6 +29,7 @@ struct BidderModel: Identifiable, Codable, NetworkingJSONDecodable, AutoEncodabl
 	var imageUrl: String?
 	var organization: [OrganizationModel]?
 	var creditCards: [CreditCardModel]?
+	var isCheckedIn: String?
 	var isCheckinAgent: Bool?
 	var canCloseAuction: Bool?
 	var canSendBroadcast: Bool?
@@ -63,6 +64,7 @@ extension BidderModel: ArrowParsable {
 		currency <-- json["currency"]
 		timeZone <-- json["timeZone"]
 		imageUrl <-- json["imageUrl"]
+		isCheckedIn <-- json["isCheckedIn"]
 		isCheckinAgent <-- json["isCheckinAgent"]
 		canCloseAuction <-- json["canCloseAuction"]
 		canSendBroadcast <-- json["canSendBroadcast"]

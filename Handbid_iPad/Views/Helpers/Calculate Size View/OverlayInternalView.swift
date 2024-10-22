@@ -5,7 +5,6 @@ import SwiftUI
 
 struct OverlayInternalView<Content: View>: View {
 	@State private var contentHeight: CGFloat = 0
-	@State private var keyboardHeight: CGFloat = 0
 	let overlayContent: () -> Content
 	let cornerRadius: CGFloat
 	let backgroundColor: Color?
@@ -40,7 +39,7 @@ struct OverlayInternalView<Content: View>: View {
 						.cornerRadius(cornerRadius)
 						.frame(
 							width: calculateWidth(layoutProperties: layoutProperties),
-							height: max(contentHeight, keyboardHeight)
+							height: contentHeight
 						)
 						.overlay(
 							overlayContent()
@@ -50,20 +49,9 @@ struct OverlayInternalView<Content: View>: View {
 									}
 								})
 						)
-						.padding(.bottom, keyboardHeight)
 					Spacer()
 				}
 				Spacer()
-			}
-		}
-		.onAppear {
-			NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { notification in
-				if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-					keyboardHeight = keyboardSize.height
-				}
-			}
-			NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { _ in
-				keyboardHeight = 0
 			}
 		}
 	}

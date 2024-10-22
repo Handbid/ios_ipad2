@@ -79,13 +79,13 @@ enum TextLabelStyles {
 				textAlignment: .leading,
 				alignment: .leading
 			)
-        case .bold:
-            TextStyleConfiguration(
-                fontStyle: TypographyStyle.regular.asFont(),
-                fontWeightStyle: .bold,
-                textAlignment: .leading,
-                alignment: .leading
-            )
+		case .bold:
+			TextStyleConfiguration(
+				fontStyle: TypographyStyle.regular.asFont(),
+				fontWeightStyle: .bold,
+				textAlignment: .leading,
+				alignment: .leading
+			)
 		}
 	}
 
@@ -100,7 +100,7 @@ enum TextLabelStyles {
 		case .accentBody: TextLabelStyles.accentBody.configuration
 		case .leadingLabel: TextLabelStyles.leadingLabel.configuration
 		case .titleLeading: TextLabelStyles.titleLeading.configuration
-        case .bold: TextLabelStyles.bold.configuration
+		case .bold: TextLabelStyles.bold.configuration
 		}
 	}
 }
