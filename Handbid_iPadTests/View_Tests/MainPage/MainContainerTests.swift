@@ -16,7 +16,7 @@ final class MainContainerTests: XCTestCase {
 		super.setUp()
 		coordinator = Coordinator<MainContainerPage, Any?>(viewBuilder: { _ in AnyView(EmptyView()) })
 		authManager = AuthManager()
-		view = MainContainer(selectedView: .auction)
+		view = MainContainer()
 		sut = AnyView(view
 			.environmentObject(coordinator)
 			.environmentObject(authManager))
@@ -77,7 +77,7 @@ final class MainContainerTests: XCTestCase {
 	}
 
 	func testTopBarContentForAuction() throws {
-		view.selectedView = .auction
+		view.mainContainerViewModel.selectedView = .auction
 
 		ViewHosting.host(view: sut)
 		let topBar = try sut.inspect().find(viewWithAccessibilityIdentifier: "topBar")
@@ -86,7 +86,7 @@ final class MainContainerTests: XCTestCase {
 	}
 
 	func testTopBarContentForPaddle() throws {
-		view.selectedView = .paddle
+		view.mainContainerViewModel.selectedView = .paddle
 
 		ViewHosting.host(view: sut)
 		let topBar = try sut.inspect().find(viewWithAccessibilityIdentifier: "topBar")
@@ -95,7 +95,7 @@ final class MainContainerTests: XCTestCase {
 	}
 
 	func testTopBarContentForMyBids() throws {
-		view.selectedView = .myBids
+		view.mainContainerViewModel.selectedView = .myBids
 
 		ViewHosting.host(view: sut)
 		let topBar = try sut.inspect().find(viewWithAccessibilityIdentifier: "topBar")
@@ -104,7 +104,7 @@ final class MainContainerTests: XCTestCase {
 	}
 
 	func testTopBarContentForManager() throws {
-		view.selectedView = .manager
+		view.mainContainerViewModel.selectedView = .manager
 
 		ViewHosting.host(view: sut)
 		let topBar = try sut.inspect().find(viewWithAccessibilityIdentifier: "topBar")
@@ -113,7 +113,7 @@ final class MainContainerTests: XCTestCase {
 	}
 
 	func testTopBarContentForLogout() throws {
-		view.selectedView = .logout
+		view.mainContainerViewModel.selectedView = .logout
 
 		ViewHosting.host(view: sut)
 		let topBar = try sut.inspect().find(viewWithAccessibilityIdentifier: "topBar")

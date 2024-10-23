@@ -59,7 +59,7 @@ struct MainAppCoordinator: App {
 				let viewModel = ChooseAuctionViewModel(repository: repository, dataManager: dataManager)
 				return AnyView(ChooseAuctionView<MainContainerPage>(viewModel: viewModel, selectedView: .selectAuction))
 			case .mainContainer:
-				return AnyView(MainContainer<MainContainerPage>(selectedView: .auction))
+				return AnyView(MainContainer<MainContainerPage>())
 			case .searchItems:
 				let repository = SearchItemsRepositoryImpl(deps.networkClient)
 				return AnyView(SearchItemsView<MainContainerPage>(viewModel: SearchItemsViewModel(repository: repository)))

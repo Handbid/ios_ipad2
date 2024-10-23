@@ -3,18 +3,12 @@
 import Combine
 import SwiftUI
 
-class MainContainerViewModel: ObservableObject {
-	@Published var displayedOverlay: MainContainerOverlayTypeView = .none
-	@Published var invoiceViewModel: InvoiceViewModel? = nil
-}
-
 struct MainContainer<T: PageProtocol>: View {
 	@EnvironmentObject private var coordinator: Coordinator<T, Any?>
 	@EnvironmentObject private var authManager: AuthManager
 	@StateObject var deviceContext = DeviceContext()
 	@State var isSidebarVisible: Bool = DeviceConfigurator.isSidebarAlwaysVisible
-	@State var selectedView: MainContainerTypeView
-	@StateObject var mainContainerViewModel = MainContainerViewModel()
+	@StateObject var mainContainerViewModel: MainContainerViewModel
 	@State var cancellables = Set<AnyCancellable>()
 
 	private let auctionViewModel: AuctionViewModel
@@ -23,15 +17,16 @@ struct MainContainer<T: PageProtocol>: View {
 	private let managerViewModel: ManagerViewModel
 	private let logOutViewModel: LogOutViewModel
 
-	init(selectedView: MainContainerTypeView) {
-		self.selectedView = selectedView
-		(self.auctionViewModel, self.paddleViewModel, self.myBidsViewModel, self.managerViewModel, self.logOutViewModel) = ViewModelFactory.createAllViewModelsForMainContainer()
+	init() {
+		let mainViewModel: MainContainerViewModel
+		(mainViewModel, auctionViewModel, paddleViewModel, myBidsViewModel, managerViewModel, logOutViewModel) = ViewModelFactory.createAllViewModelsForMainContainer()
+		self._mainContainerViewModel = .init(wrappedValue: mainViewModel)
 	}
 
 	var body: some View {
 		ZStack {
 			VStack(spacing: 0) {
-				topBarContent(for: selectedView)
+				topBarContent(for: mainContainerViewModel.selectedView)
 					.accessibility(identifier: "topBar")
 				contentView()
 					.accessibility(identifier: "contentView")
@@ -67,7 +62,7 @@ struct MainContainer<T: PageProtocol>: View {
 	}
 
 	private func mainContainer() -> some View {
-		MainContainerViewBuilder(selectedView: selectedView,
+		MainContainerViewBuilder(selectedView: mainContainerViewModel.selectedView,
 		                         auctionViewModel: auctionViewModel,
 		                         paddleViewModel: paddleViewModel,
 		                         myBidsViewModel: myBidsViewModel,
@@ -78,7 +73,7 @@ struct MainContainer<T: PageProtocol>: View {
 	}
 
 	private func sidebar() -> some View {
-		Sidebar(selectedView: $selectedView)
+		Sidebar()
 			.frame(width: 90)
 			.transition(.move(edge: .leading).combined(with: .opacity))
 			.animation(.easeInOut(duration: 0.5), value: isSidebarVisible)

@@ -19,4 +19,5 @@ enum ApiEndpoints {
 	static let paddleBids = "/auction/paddlebids"
 	static let fetchInvoice = "/auction/paddlereceipts"
 	static let sendReceipt = "/receipt/send"
+	static let verifyManagerPin = "/guest/accesstolist?auctionId="
 }

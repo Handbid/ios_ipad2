@@ -1,15 +1,17 @@
 // Copyright (c) 2024 by Handbid. All rights reserved.
 
 enum ViewModelFactory {
-	static func createAllViewModelsForMainContainer() -> (AuctionViewModel, PaddleViewModel, MyBidsViewModel, ManagerViewModel, LogOutViewModel) {
+	static func createAllViewModelsForMainContainer() -> (MainContainerViewModel, AuctionViewModel, PaddleViewModel, MyBidsViewModel, ManagerViewModel, LogOutViewModel) {
 		let dataService = DataServiceFactory.getService()
 		let networkClient = DependencyMainAppProvider.shared.networkClient
 		let auctionRepository = AuctionRepositoryImpl(network: networkClient)
 		let myBidsRepository = MyBidsRepositoryImpl(network: networkClient)
 		let paddleRepository = PaddleRepositoryImpl(network: networkClient)
 		let countriesRepository = CountriesRepositoryImpl(network: networkClient)
+		let managerRepository = ManagerRepositoryImpl(network: networkClient)
 
-		return (AuctionViewModel(dataService: dataService,
+		return (MainContainerViewModel(managerRepository: managerRepository),
+		        AuctionViewModel(dataService: dataService,
 		                         repository: auctionRepository),
 		        PaddleViewModel(paddleRepository: paddleRepository,
 		                        countriesRepository: countriesRepository),

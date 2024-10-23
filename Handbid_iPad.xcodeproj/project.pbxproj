@@ -335,6 +335,8 @@
 		CE6F8DC02BCECC3D009DBE7E /* LogInView_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F8DBF2BCECC3D009DBE7E /* LogInView_Tests.swift */; };
 		CE6F8DC22BCEE513009DBE7E /* MockLogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F8DC12BCEE513009DBE7E /* MockLogInViewModel.swift */; };
 		CE76494A2CC66DBB00C3C77C /* DashboardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7649492CC66DBB00C3C77C /* DashboardRepository.swift */; };
+		CE7898032CC9220200F05DFB /* VerifyManagerPinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7898022CC9220200F05DFB /* VerifyManagerPinModel.swift */; };
+		CE7898052CC928BF00F05DFB /* MainContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7898042CC928BF00F05DFB /* MainContainerViewModel.swift */; };
 		CE7BB48F2C22FF2600D0AB91 /* FiltersItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7BB48E2C22FF2600D0AB91 /* FiltersItemsView.swift */; };
 		CE7BB4912C23080400D0AB91 /* MainContainerOverlayTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7BB4902C23080400D0AB91 /* MainContainerOverlayTypeView.swift */; };
 		CE7BB4932C2309D700D0AB91 /* MainContainerOverlayBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7BB4922C2309D700D0AB91 /* MainContainerOverlayBuilder.swift */; };
@@ -360,6 +362,7 @@
 		CECAB8C62C89E0B60048F1D3 /* MockPaddleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECAB8C52C89E0B60048F1D3 /* MockPaddleRepository.swift */; };
 		CECAB8C82C89F4D00048F1D3 /* CountryModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECAB8C72C89F4D00048F1D3 /* CountryModelTests.swift */; };
 		CECAB8CC2C89F8AD0048F1D3 /* UserFoundViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECAB8CB2C89F8AD0048F1D3 /* UserFoundViewTests.swift */; };
+		CED8CDCE2CC80E3C00287896 /* ManagerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED8CDCD2CC80E3C00287896 /* ManagerRepository.swift */; };
 		CEE2BB272BB5BBB10033556D /* RegisterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2BB262BB5BBB10033556D /* RegisterRepository.swift */; };
 		CEE2BB292BB5D1070033556D /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2BB282BB5D1070033556D /* ApiConstants.swift */; };
 		CEE778312CBD4CFB008152F5 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE778302CBD4CFB008152F5 /* DashboardView.swift */; };
@@ -729,6 +732,8 @@
 		CE6F8DBF2BCECC3D009DBE7E /* LogInView_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView_Tests.swift; sourceTree = "<group>"; };
 		CE6F8DC12BCEE513009DBE7E /* MockLogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLogInViewModel.swift; sourceTree = "<group>"; };
 		CE7649492CC66DBB00C3C77C /* DashboardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardRepository.swift; sourceTree = "<group>"; };
+		CE7898022CC9220200F05DFB /* VerifyManagerPinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyManagerPinModel.swift; sourceTree = "<group>"; };
+		CE7898042CC928BF00F05DFB /* MainContainerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerViewModel.swift; sourceTree = "<group>"; };
 		CE7BB48E2C22FF2600D0AB91 /* FiltersItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersItemsView.swift; sourceTree = "<group>"; };
 		CE7BB4902C23080400D0AB91 /* MainContainerOverlayTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerOverlayTypeView.swift; sourceTree = "<group>"; };
 		CE7BB4922C2309D700D0AB91 /* MainContainerOverlayBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerOverlayBuilder.swift; sourceTree = "<group>"; };
@@ -752,6 +757,7 @@
 		CECAB8C52C89E0B60048F1D3 /* MockPaddleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPaddleRepository.swift; sourceTree = "<group>"; };
 		CECAB8C72C89F4D00048F1D3 /* CountryModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryModelTests.swift; sourceTree = "<group>"; };
 		CECAB8CB2C89F8AD0048F1D3 /* UserFoundViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFoundViewTests.swift; sourceTree = "<group>"; };
+		CED8CDCD2CC80E3C00287896 /* ManagerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerRepository.swift; sourceTree = "<group>"; };
 		CEE2BB262BB5BBB10033556D /* RegisterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRepository.swift; sourceTree = "<group>"; };
 		CEE2BB282BB5D1070033556D /* ApiConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConstants.swift; sourceTree = "<group>"; };
 		CEE778302CBD4CFB008152F5 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
@@ -1047,7 +1053,6 @@
 				8C908B2C2C3B9CBD009C8441 /* BidModel.swift */,
 				8C4BFB682BE184EA00B47154 /* CategoryModel.swift */,
 				8C4BFB7A2BE189FF00B47154 /* ChemicalElementsModel.swift */,
-				CEC665862C7DCD5800F07E7D /* CountryModel.swift */,
 				8C4BFB602BE1144000B47154 /* CreditCardModel.swift */,
 				8C4BFB6C2BE1876600B47154 /* ItemImageModel.swift */,
 				8C4BFB6A2BE1852800B47154 /* ItemModel.swift */,
@@ -1058,7 +1063,6 @@
 				8C4BFB742BE1895A00B47154 /* PromotedItemModel.swift */,
 				8C4BFB762BE189B400B47154 /* PromotedPollModel.swift */,
 				8C4BFB722BE188DE00B47154 /* PuzzleModel.swift */,
-				CEFB53FB2C6CCA5200420D87 /* RegistrationModel.swift */,
 				8C3155762CAA4DB6008590A3 /* ReceiptModel.swift */,
 				8C3155782CAA5288008590A3 /* ReceiptLineItemModel.swift */,
 				CE0CEE802BBED0B4004A27FD /* ResetPasswordModel.swift */,
@@ -1068,6 +1072,7 @@
 				CEFB53FB2C6CCA5200420D87 /* RegistrationModel.swift */,
 				CEC665862C7DCD5800F07E7D /* CountryModel.swift */,
 				CEE778482CBE86CB008152F5 /* DashboardModel.swift */,
+				CE7898022CC9220200F05DFB /* VerifyManagerPinModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1734,6 +1739,7 @@
 				8CD108152BD1237D00E83261 /* PaddleViewModel.swift */,
 				8C9FA4492BD29C540041F28E /* ViewModelFactory.swift */,
 				8C969A5B2C3B04EF007408FF /* Item */,
+				CE7898042CC928BF00F05DFB /* MainContainerViewModel.swift */,
 			);
 			path = MainContainer;
 			sourceTree = "<group>";
@@ -1956,7 +1962,6 @@
 				CEAE0D0E2C1330C700822A62 /* AuctionRepository.swift */,
 				8C4BFB662BE17C6300B47154 /* ChooseAuctionRepository.swift */,
 				8C4BFB552BE0E2AD00B47154 /* ChooseOrganizationRepository.swift */,
-				CEC665842C7DCB9700F07E7D /* CountriesRepository.swift */,
 				8CA8A05B2CA126F600AAE69D /* MyBidsRepository.swift */,
 				8C908B2A2C3B9AF7009C8441 /* OfferSubmissionRepository.swift */,
 				CEA0A64D2C2D9FD20088AA46 /* PaddleRepository.swift */,
@@ -1966,6 +1971,7 @@
 				CEE2BB262BB5BBB10033556D /* RegisterRepository.swift */,
 				CE0CEE7E2BBEB39F004A27FD /* ResetPasswordRepository.swift */,
 				8C4A6DF62C22CB8900F320D8 /* SearchItemsRepository.swift */,
+				CED8CDCD2CC80E3C00287896 /* ManagerRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -2422,6 +2428,7 @@
 				8CAFD93A2BBD90F700C7D763 /* KeyboardResponsiveModifier.swift in Sources */,
 				8CD108132BD1233E00E83261 /* AuctionViewModel.swift in Sources */,
 				8C3E8AA32C33FCFD0003F6FB /* PaddleInputView.swift in Sources */,
+				CED8CDCE2CC80E3C00287896 /* ManagerRepository.swift in Sources */,
 				8C9FA43A2BD157790041F28E /* GenericTopBarContentFactory.swift in Sources */,
 				8C91A8532C2A050D0057D51B /* ItemDetailView.swift in Sources */,
 				8C9FA4402BD27FE80041F28E /* ManagerViewModel.swift in Sources */,
@@ -2430,6 +2437,7 @@
 				CEFB53FE2C6CDDF800420D87 /* ReCaptchaRepository.swift in Sources */,
 				8C4BFB5D2BE113E000B47154 /* OrganizationModel.swift in Sources */,
 				8C4BFB692BE184EA00B47154 /* CategoryModel.swift in Sources */,
+				CE7898052CC928BF00F05DFB /* MainContainerViewModel.swift in Sources */,
 				8C79B4202C040D84005D4AAB /* WebSocketProcessor.swift in Sources */,
 				CE073ED82BB42D710079F342 /* View.swift in Sources */,
 				8C79B4272C040D84005D4AAB /* WebSocketURLFactory.swift in Sources */,
@@ -2596,6 +2604,7 @@
 				8CABF5DA2BB9F35A00A34870 /* NavigationBackButtonModifier.swift in Sources */,
 				8C3155872CAC4457008590A3 /* AddCardAlertViewModel.swift in Sources */,
 				CE34FB3F2BB1963300701D2A /* OverlayInternalView.swift in Sources */,
+				CE7898032CC9220200F05DFB /* VerifyManagerPinModel.swift in Sources */,
 				8C9FA4552BD8DF680041F28E /* ChooseAuctionView.swift in Sources */,
 				8C4BFB492BDFAB8F00B47154 /* MainContainerPage.swift in Sources */,
 				8C4BFB672BE17C6300B47154 /* ChooseAuctionRepository.swift in Sources */,
